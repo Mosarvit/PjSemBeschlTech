@@ -88,6 +88,22 @@ Nun können mit der Funktion geta(U_quest, U_in) die Vorfaktoren a bestimmt werd
 
 Hier wird auf den Status aller zu erstellenden Funktionen eingegagen.
 
+## Aufgaben und Zuständigkeitsbereiche
+
+Anmerkung: momentan werden hier lediglich die momentaten Aufgabenverteilungen aufgeführt. 
+
+Kommunikation mit Jens: Artem
+Reportführung nach jedem Treffen: noch nicht zugewiesen
+
+Design des Codes: Artem
+Unit & System tests: Artem
+Programmieren der Funktionen: Artem
+Documentation des Codes: noch nicht zugewiesen
+Testen des Codes an den Geräten: noch nicht zugewiesen
+
+Report in Latex schreiben: noch nicht zugewiesen
+Präsentation erstellen: noch nicht zugewiesen
+
 ## Zeitplanung:
 
 #### 11.05. 11:00 - Treffen an der TU
