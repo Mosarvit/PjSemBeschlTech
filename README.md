@@ -90,25 +90,19 @@ Hier wird auf den Status aller zu erstellenden Funktionen eingegagen.
 
 ## Aufgaben und Zuständigkeitsbereiche
 
-Anmerkung: momentan werden hier lediglich die momentaten Aufgabenverteilungen aufgeführt. 
+*Anmerkung:* momentan werden hier lediglich die momentaten Aufgabenverteilungen aufgeführt. 
 
-Kommunikation mit Jens: Artem
+Kommunikation mit Jens: Artem<br/>
+Reportführung nach jedem Treffen: noch nicht zugewiesen<br/>
 
-Reportführung nach jedem Treffen: noch nicht zugewiesen
+Design des Codes: Artem<br/>
+Unit & System tests: Artem<br/>
+Programmieren der Funktionen: Artem<br/>
 
-Design des Codes: Artem
-
-Unit & System tests: Artem
-
-Programmieren der Funktionen: Artem
-
-Documentation des Codes: noch nicht zugewiesen
-
-Testen des Codes an den Geräten: noch nicht zugewiesen
-
-Report in Latex schreiben: noch nicht zugewiesen
-
-Präsentation erstellen: noch nicht zugewiesen
+Documentation des Codes: noch nicht zugewiesen<br/>
+Testen des Codes an den Geräten: noch nicht zugewiesen<br/>
+Report in Latex schreiben: noch nicht zugewiesen<br/>
+Präsentation erstellen: noch nicht zugewiesen<br/>
 
 ## Zeitplanung:
 
@@ -128,7 +122,7 @@ Zielsetzung:
   
 Status: Noch nicht angefragt
 
-## Frei Kommentare
+## Freie Kommentare
 
 #### 05.08. Artem : 
 
