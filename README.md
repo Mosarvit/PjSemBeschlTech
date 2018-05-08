@@ -18,7 +18,7 @@ Hier kommt also der Versuch einer einfachen Erklärung (für einen Sechjährigen
 
 
 
- - Was ist das Ziel der Software, wann hat sie ihren Zweck erfüllt?
+#### Was ist das Ziel der Software, wann hat sie ihren Zweck erfüllt?
  
 Die Software soll fongendes können:
 
