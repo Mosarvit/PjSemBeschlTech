@@ -104,6 +104,21 @@ Testen des Codes an den Geräten: noch nicht zugewiesen<br/>
 Report in Latex schreiben: noch nicht zugewiesen<br/>
 Präsentation erstellen: noch nicht zugewiesen<br/>
 
+## Fragen zu klären
+
+#### Frage:<br/>
+Im Matlab-Code von Jens in U_inp3.m in Zeile 44 :
+```
+Y=2*ufft/L;
+```
+Warum wird hier mit 2 multipliziert?
+
+#### Überlegung:<br/>
+Es wird mit 2 multipliziert, weil die Impedanzen angepasst sind.
+
+#### Antwort:<br/>
+noch keine Antwort
+
 ## Zeitplanung:
 
 #### 11.05. 11:00 - Treffen an der TU
