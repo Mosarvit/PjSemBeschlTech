@@ -6,8 +6,8 @@
 Hier soll die Software sehr allgemein und in möglichst einfacher Sprache erklärt werden. Ganz nach dem Motto :
 "Wenn du es einem Sechjärigen nicht erklären kannst, hast du es nicht verstanden." (angeblich ein Zitat von A.Einstein)
 Dieser Teil ist wichtig, damit wir uns auf der oberen Design-Ebene maximal einig sind, was die Software macht.
-Es werden bewusst soweit es geht die Details der Implementierung ausgelassen. 
-Ziel ist es, zu beschreiben, was die wichtigsten Funktionen machen und nicht Wie sie es machen. 
+Es werden bewusst soweit es geht die Details der Implementierung sowie Fachwörter ausgelassen. 
+Ziel ist es, zu beschreiben, Was die wichtigsten Funktionen machen und nicht Wie sie es machen. 
 Für die Erklärung des Wie kann auf das Skript oder den Sourcecode zugegriffen werden. 
 
 *Hinweis:* Die Ein- und Ausgabegabevariablen der Funktionen sind in dieser Erklärung als Pseudocode zu betrachten 
