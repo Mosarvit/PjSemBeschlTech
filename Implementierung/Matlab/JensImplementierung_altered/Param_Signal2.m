@@ -1,4 +1,4 @@
-function [ a, K ] = Param_Signal2( u_in, in_pp, u_out, N, H_kompl)
+function [ a, K ] = Param_Signal2( u_in, in_pp, u_out, N, H_kompl, verbosity)
 %Unterschied zu Param_Signal2:
 %Bestimmt zwei verschiedene Polynome, eines für den positiven und eines für
 %den negativen Ast der Kennlinie
@@ -38,7 +38,7 @@ end
 %Eingangssignal aus Ausgangssignal berechnen:
 u_out=U_inp3(u_out, 900000, H_kompl);
 
-[ a, K ] = computeParams( u_in, in_pp, u_out, N );
+[ a, K ] = computeParams( u_in, in_pp, u_out, N, verbosity);
 
 
 
