@@ -39,7 +39,7 @@ Das gewünschte Barrier-Bucket Signal wird definiert durch:
   - die Grenzfrequenz f_g   
 
     
-#### 1.2. Wie wird U_in berechenet?
+#### 1.2. Wie wird U_in berechnet?
 
 Das Signal U_in läuft im System folgende Stufen durch:
                                            
