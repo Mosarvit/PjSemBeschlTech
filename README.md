@@ -82,7 +82,7 @@ Nun können mit der Funktion geta(U_quest, U_in) die Vorfaktoren a bestimmt werd
 ### 2. Das berechnete Eingangssingal an das System senden. 
 
 #### 2.1. Wie wird das berechnete Signal an das System gesendet?
- - Das Senden des berechneten Signals U_in wird von der Funktion sendToAWG(U_in) ausgeführt.
+Das Senden des berechneten Signals U_in wird von der Funktion sendToAWG(U_in) ausgeführt.
 
 ## Status der Codes
 
