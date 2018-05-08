@@ -120,7 +120,7 @@ Zielsetzung:
   - Den Linearen Code von Denys ausprobieren
   - evtl. unseren Code ausporobieren (falls dieser bis dahin läuft)
   
-Status: Noch nicht angefragt
+Status: angefragt bei Jens
 
 ## Freie Kommentare
 
