@@ -50,7 +50,7 @@ Das Signal U_in läuft im System folgende Stufen durch:
    
 Somit kann durch Rückrechnung für jedes beliebiege U_out das U_in bestimmt werden:
 
-U_in <---- getU_in(U_quest, a) <---- U_quest ---<-- getU_quest(U_out, H) ------ U_out
+U_in <---- getU_in(U_quest, a) <---- U_quest ---<-- getU_quest(U_out, H) <----- U_out
 
 Wenn wir also die Vorfaktoren a und die Übertragunsfunktion H hätten, 
 könnten wir U_in mithilfe der Funktionnen U_quest und getU_in bestimmmen. 
@@ -71,7 +71,7 @@ getH kommuniziert mit den Geräten und gibt das komplexe H aus.
  
 Wir betrachten wieder das vollständige nichtlineare System:
 
-U_in <---- getU_in(U_quest, a) <---- U_quest ---<-- getU_quest(U_out, H) ------ U_out
+U_in <---- getU_in(U_quest, a) <---- U_quest ---<-- getU_quest(U_out, H) <----- U_out
 
 Wir senden ein beliebiges Signal U_in und messen U_out. Wir nehmen an, dass die Übertragungsfunktion H bestimmt wurde. 
 Somit können mir mithilfe von getU_quest das getU_quest bestimmen. 
