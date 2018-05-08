@@ -10,7 +10,7 @@ Es werden bewusst soweit es geht die Details der Implementierung ausgelassen.
 Ziel ist es, zu beschreiben, was die wichtigsten Funktionen machen und nicht Wie sie es machen. 
 Für die Erklärung des Wie kann auf das Skript oder den Sourcecode zugegriffen werden. 
 
-Hinweis: Die Ein- und Ausgabegabevariablen der Funktionen sind in dieser Erklärung als Pseudocode zu betrachten 
+*Hinweis:* Die Ein- und Ausgabegabevariablen der Funktionen sind in dieser Erklärung als Pseudocode zu betrachten 
 (stimmen also teilweise nicht mit dem echten Code überein). Die detailierte Beschreibungen der Fuktionen und deren Parameter 
 werden in den Funktionen selbst dokumentiert.
 
