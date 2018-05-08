@@ -98,9 +98,9 @@ Reportführung nach jedem Treffen: noch nicht zugewiesen<br/>
 Design des Codes: Artem<br/>
 Unit & System tests: Artem<br/>
 Programmieren der Funktionen: Artem<br/>
-
 Documentation des Codes: noch nicht zugewiesen<br/>
 Testen des Codes an den Geräten: noch nicht zugewiesen<br/>
+
 Report in Latex schreiben: noch nicht zugewiesen<br/>
 Präsentation erstellen: noch nicht zugewiesen<br/>
 
