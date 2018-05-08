@@ -1,7 +1,7 @@
 # PjSemBeschlTech
 
 
-## Einfache Erklärung des Codes Software
+## Einfache Erklärung der Software
 
 Hier soll die Software sehr allgemein und in möglichst einfacher Sprache erklärt werden. Ganz nach dem Motto :
 "Wenn du es einem Sechjärigen nicht erklären kannst, hast du es nicht verstanden." (angeblich ein Zitat von A.Einstein)
