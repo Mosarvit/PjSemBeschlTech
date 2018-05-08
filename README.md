@@ -120,7 +120,7 @@ Zielsetzung:
   - Den Linearen Code von Denys ausprobieren
   - evtl. unseren Code ausporobieren (falls dieser bis dahin läuft)
   
-Status: angefragt bei Jens
+Status: angefragt bei Jens - Update: Findet Statt _MN
 
 ## Freie Kommentare
 
