@@ -130,6 +130,16 @@ Jens Fragen.
 noch keine Antwort
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+#### Frage:<br/>
+Nehmen wir an, dass die nichlineare Verzerrung frequenzuanhängig ist?
+
+#### Überlegung:<br/>
+Jens Fragen.
+
+#### Antwort:<br/>
+noch keine Antwort
+
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ## Zeitplanung:
 
