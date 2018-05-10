@@ -29,11 +29,11 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
             formatOutput=1, modus=False):
 
     import visa
-    import MLBS
+    from Helpers import MLBS
     import time
     import matplotlib.pyplot as plt
     import numpy as np
-    import FFT
+    from Helpers import FFT
     import csv
     import os
     
@@ -263,9 +263,9 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
     dataUout = dataUout[0:ind]
     
     # Compute FFT of signals in time domain
-    [frq, UinAmpl, PhaseUin, Uin] = FFT.get(dataUin, 1/(time[-1]-time[-2]));
+    [frq, UinAmpl, PhaseUin, Uin] = FFT.get(dataUin, 1 / (time[-1] - time[-2]));
     [frq, UoutAmpl, PhaseUout, Uout] = FFT.get(dataUout, \
-                                                1/(time[-1]-time[-2]));
+                                               1 / (time[-1]-time[-2]));
     
     # Reduce frequency domain signal to maximum frequency fPlot
     ind = np.argmin(abs(frq-fPlot))
