@@ -137,6 +137,17 @@ noch keine Antwort
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+#### Frage:<br/>
+Reicht es aus, a einmal zu berechnen, oder soll a jedes Mal neu berechnet werden?
+
+#### Überlegung:<br/>
+Jens Fragen.
+
+#### Antwort:<br/>
+noch keine Antwort
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
 ## Zeitplanung:
 
 #### 11.05. 11:00 - Treffen an der TU
