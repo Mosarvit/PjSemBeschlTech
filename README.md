@@ -121,7 +121,7 @@ noch keine Antwort
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 #### Frage:<br/>
-Gibt es bereits eine Implementierung von getU_in(U_quest, a) in Matlab?
+Gibt es bereits eine Implementierung von **getU_in(** U_quest, a **)** in Matlab?
 
 #### Überlegung:<br/>
 Jens Fragen.
