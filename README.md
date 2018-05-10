@@ -119,11 +119,11 @@ Es wird mit 2 multipliziert, weil die Impedanzen angepasst sind.
 #### Antwort:<br/>
 noch keine Antwort
 
-## Fragen zu klären
-
-
 #### Frage:<br/>
 Gibt es bereits eine Implementierung von getU_in(U_quest, a) in Matlab?
+
+#### Überlegung:<br/>
+Jens Fragen.
 
 #### Antwort:<br/>
 noch keine Antwort
