@@ -17,8 +17,8 @@ class TestComputeParam(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_computeU_quest_300(self):
-        u_out = genfromtxt('../data/out_300.csv', delimiter=',')[:, 1]
-        u_quest_matlab = genfromtxt('../data/testdata/u_quest_300.csv', delimiter=',')
+        u_out = genfromtxt('data/out_300.csv', delimiter=',')[:, 1 ]
+        u_quest_matlab = genfromtxt('data/testdata/u_quest_300.csv', delimiter=',')
 
         u_quest = computeU_quest_fromAnySignal.compute(u_out, self.H, self.freqA, False)
 
@@ -28,8 +28,8 @@ class TestComputeParam(TestCase):
     # @unittest.skip("reason for skipping")
     def test_computeU_quest_400(self):
 
-        u_out = genfromtxt('../data/out_400.csv', delimiter=',')[:, 1]
-        u_quest_matlab = genfromtxt('../data/testdata/u_quest_400.csv', delimiter=',')
+        u_out = genfromtxt('data/out_400.csv', delimiter=',')[:, 1]
+        u_quest_matlab = genfromtxt('data/testdata/u_quest_400.csv', delimiter=',')
 
         u_quest = computeU_quest_fromAnySignal.compute(u_out, self.H, self.freqA, False)
 
@@ -37,9 +37,9 @@ class TestComputeParam(TestCase):
         self.assertTrue(err<1e-3)
 
     def test_computea(self):
-        u_quest_300_matlab = genfromtxt('../data/testdata/u_quest_300.csv', delimiter=',')
-        U_in = np.transpose(genfromtxt('../data/testdata/U_in.csv', delimiter=',')[:, 1])
-        a_param2_300_matlab = genfromtxt('../data/testdata/a_param2_300.csv', delimiter=',')
+        u_quest_300_matlab = genfromtxt('data/testdata/u_quest_300.csv', delimiter=',')
+        U_in = np.transpose(genfromtxt('data/testdata/U_in.csv', delimiter=',')[:, 1])
+        a_param2_300_matlab = genfromtxt('data/testdata/a_param2_300.csv', delimiter=',')
 
         vpp = 300e-3
         N = 3
@@ -52,11 +52,11 @@ class TestComputeParam(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_All(self):
-        u_out = genfromtxt('../data/testdata/out_300.csv', delimiter=',')[:, 1]
-        U_in = np.transpose(genfromtxt('../data/testdata/U_in.csv', delimiter=',')[:, 1])
+        u_out = genfromtxt('data/testdata/out_300.csv', delimiter=',')[:, 1]
+        U_in = np.transpose(genfromtxt('data/testdata/U_in.csv', delimiter=',')[:, 1])
         u_quest = computeU_quest_fromAnySignal.compute(u_out, self.H, self.freqA, False)
 
-        a_param2_300_matlab = genfromtxt('../data/testdata/a_param2_300.csv', delimiter=',')
+        a_param2_300_matlab = genfromtxt('data/testdata/a_param2_300.csv', delimiter=',')
 
         N = 3
         vpp = 300e-3
@@ -68,7 +68,7 @@ class TestComputeParam(TestCase):
         print(err)
 
     def getHFromCSV(self):
-        str_H = np.genfromtxt('../data/testdata/H.csv', dtype=str, delimiter=',')
+        str_H = np.genfromtxt('data/testdata/H.csv', dtype=str, delimiter=',')
         self.H = np.zeros((len(str_H)), dtype=complex)
         self.freqA = np.zeros((len(str_H)))
         for k in range(0, len(str_H)):
