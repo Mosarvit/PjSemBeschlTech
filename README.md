@@ -71,13 +71,9 @@ getH kommuniziert mit den Geräten und gibt das komplexe H aus.
  
 Wir betrachten wieder das vollständige nichtlineare System:
 
-U_in <---- **getU_in(** U_quest, a **)** <---- U_quest ---<-- **getU_quest(** U_out, H **)** <----- U_out
+U_in <---- **getU_in(** U_quest, a **)** <---- U_quest  ---<-- **getU_quest(** U_out, H **)** <----- U_out
 
-Wir senden ein beliebiges Signal U_in und messen U_out. Wir nehmen an, dass die Übertragungsfunktion H bestimmt wurde. 
-Somit können mir mithilfe von **getU_quest** das **getU_quest** bestimmen. 
-
-Nun können mit der Funktion **geta(** U_quest, U_in **)** die Vorfaktoren a bestimmt werden
-
+Für ein beliebiges U_out berechnen wir zuerst U_quest0 mit **getU_quest** . Das U_quest0 senden wir in das System als U_in und messen das  neue U_quest1 (An dieser Stelle ist es etwas verwirrend, ich weiss). Mithilfe von **geta(** U_quest1, U_in **)** berechnen wir a. 
 
 ### 2. Das berechnete Eingangssingal an das System senden. 
 
