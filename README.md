@@ -89,7 +89,8 @@ Hier wird auf den Status aller zu erstellenden Funktionen eingegagen.
 *Anmerkung:* momentan werden hier lediglich die momentaten Aufgabenverteilungen aufgeführt. 
 
 Kommunikation mit Jens: Artem<br/>
-Reportführung nach jedem Treffen: noch nicht zugewiesen<br/>
+Reportführung nach jedem Treffen: Jonas<br/>
+Zeitplanung Abschnitt verwalten: Jonas<br/>
 
 Design des Codes: Artem<br/>
 Unit & System tests: Artem<br/>
@@ -139,6 +140,27 @@ noch keine Antwort
 
 #### Frage:<br/>
 Reicht es aus, a einmal zu berechnen, oder soll a jedes Mal neu berechnet werden?
+
+#### Überlegung:<br/>
+Jens Fragen.
+
+#### Antwort:<br/>
+noch keine Antwort
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+#### Frage:<br/>
+Warum geht die K Kennlinie nur bis 300 mV
+
+#### Überlegung:<br/>
+Jens Fragen.
+
+#### Antwort:<br/>
+noch keine Antwort
+
+----------------------------------------------------------------------------------------------------------------------------------------
+#### Frage:<br/>
+Sind alle Kabel / Geräte (sonstige?) am GSI vor Ort, damit wir am 18.05. die Testdaten für Matlab nochmal neu erzeugen und messen können? Ziel ist, durch senden des (bereits durch Matlab berechneten) Eingangssignals ein Ausgangssignal zu messen und auf Übereinstimmung mit den bereits gegebenen Daten zu prüfen.
 
 #### Überlegung:<br/>
 Jens Fragen.
