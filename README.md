@@ -158,9 +158,8 @@ Jens Fragen.
 noch keine Antwort
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-
 #### Frage:<br/>
-Ploblem der Surjektivität der Look-Up Tabelle
+Sind alle Kabel / Geräte (sonstige?) am GSI vor Ort, damit wir am 18.05. die Testdaten für Matlab nochmal neu erzeugen und messen können? Ziel ist, durch senden des (bereits durch Matlab berechneten) Eingangssignals ein Ausgangssignal zu messen und auf Übereinstimmung mit den bereits gegebenen Daten zu prüfen.
 
 #### Überlegung:<br/>
 Jens Fragen.
