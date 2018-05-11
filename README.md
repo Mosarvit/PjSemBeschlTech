@@ -170,6 +170,17 @@ noch keine Antwort
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+#### Frage:<br/>
+Muss das ideale BB Signal "per Hand" Fourier-Transformiert sein, oder reicht es aus, ein ideales BB Singal zu erschaffen und es dann mit FFT zu transformieren?
+
+#### Überlegung:<br/>
+Jens Fragen.
+
+#### Antwort:<br/>
+noch keine Antwort
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
 ## Zeitplanung:
 
 #### 11.05. 11:00 - Treffen an der TU
