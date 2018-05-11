@@ -1,4 +1,4 @@
-function [ a, K ] = computetaK( u_in, in_pp, u_out, N, verbosity )
+function [ a ] = computetaK( u_in, in_pp, u_out, N, verbosity )
 %formely computeParams
 
 l_in=length(u_in);
@@ -70,7 +70,6 @@ end
     
 a=U\out';
 
-K=K1(a,1);
 
 if verbosity
     figure
@@ -80,12 +79,5 @@ if verbosity
     xlabel('t in us')
     ylabel('u in mV')
     legend('U_in', 'H^-1*U_out')
-
-    figure
-    plot(K(:,1),K(:,2));
-    title('Kennlinie')
-    xlabel('U_in in mV')
-    ylabel('U_out in mV')
-
 end
 
