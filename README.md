@@ -36,7 +36,7 @@ Das gewünschte Signal kann jedes beliebige Signal sein. (Für dieses Projekt wi
     
 #### 1.2. Wie wird Uin berechnet?
 
-Das Signal U_in läuft im System folgende Stufen durch:
+Das Signal Uin läuft im System folgende Stufen durch:
                                            
   Uin ----> Nichtlineares Verstärkung(a) --->-- Uquest ----> Linear Verstärkung (H) ------> Uout
   
