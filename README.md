@@ -47,7 +47,7 @@ Somit kann durch Rückrechnung für jedes beliebiege U_out das U_in bestimmt wer
 
 Uin <---- **get_Uin(** Uquest, a **)** <---- Uquest ---<-- **compute_Uquest(** Uout, H **)** <----- Uout
 
-Wenn wir also die Vorfaktoren a und die Übertragunsfunktion H hätten, 
+Wenn wir also die Lookup-Tabelle K und die Übertragunsfunktion H hätten, 
 könnten wir U_in mithilfe der Funktionnen **Uquest** und **get_Uin** bestimmmen. 
 
 #### 1.3. Wie kann die Übertragungsfunktion H bestimmt werden?
@@ -60,15 +60,15 @@ könnten wir U_in mithilfe der Funktionnen **Uquest** und **get_Uin** bestimmmen
 Um H zu bestimmen, wird die zur Verfügung gestellte funktionierende Funktion getH benutzt. 
 getH kommuniziert mit den Geräten und gibt das komplexe H aus. 
 
-!! Zu klären: bei dem nichtlinearen System wird die die lineare Verstärkung separat betrachtet. Eignet sich get_H immer noch dazu, das H zu bestimmen?
+!! Zu klären: bei dem nichtlinearen System wird die lineare Verstärkung separat betrachtet. Eignet sich get_H immer noch dazu, das H zu bestimmen?
 
-#### 1.4. Wie können die Vorfaktoren a bestimmt werden?
+#### 1.4. Wie kann die Lookup-Tabelle K bestimmt werden?
  
 Wir betrachten wieder das vollständige nichtlineare System:
 
 Uin <---- **compute_Uin(** Uquest, K **)** <---- Uquest  ---<-- **compute_Uquest(** Uout, H **)** <----- Uout
 
-Für ein beliebiges Uout berechnen wir zuerst U_quest0 mit **compute_Uquest** . Das U_quest0 senden wir in das System als Uin und messen das  neue Uquest1 (An dieser Stelle ist es etwas verwirrend, ich weiss). Mithilfe von **get_aK(** Uquest1, Uin **)** berechnen wir a. 
+Für ein beliebiges Uout berechnen wir zuerst U_quest0 mit **compute_Uquest** . Das U_quest0 senden wir in das System als Uin und messen das  neue Uquest1 (An dieser Stelle ist es etwas verwirrend, ich weiss). Mithilfe von **get_K(** Uquest1, Uin **)** berechnen wir die Lookup-Tabelle K. 
 
 ### 2. Das berechnete Eingangssingal an das System senden. 
 
