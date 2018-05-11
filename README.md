@@ -34,7 +34,7 @@ Nun gehen wir auf die 2 Funktionalitäten ein:
  
 Das gewünschte Signal kann jedes beliebige Signal sein. (Für dieses Projekt wird ein Barrier-Bucket Signal gewüscht, für die Software mach es aber keinen Unterschiede, denn sie kann mit jedem Signal arbeiten.)
     
-#### 1.2. Wie wird U_in berechnet?
+#### 1.2. Wie wird Uin berechnet?
 
 Das Signal U_in läuft im System folgende Stufen durch:
                                            
