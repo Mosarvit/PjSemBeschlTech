@@ -89,7 +89,8 @@ Hier wird auf den Status aller zu erstellenden Funktionen eingegagen.
 *Anmerkung:* momentan werden hier lediglich die momentaten Aufgabenverteilungen aufgeführt. 
 
 Kommunikation mit Jens: Artem<br/>
-Reportführung nach jedem Treffen: noch nicht zugewiesen<br/>
+Reportführung nach jedem Treffen: Jonas<br/>
+Zeitplanung Abschnitt verwalten: Jonas<br/>
 
 Design des Codes: Artem<br/>
 Unit & System tests: Artem<br/>
