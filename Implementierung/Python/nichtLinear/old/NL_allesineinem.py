@@ -10,7 +10,7 @@ import computeU_quest_fromBBsignal
 import getH
 import numpy as np
 from Helpers import writeAWG, writeDSO
-import computeU_quest_fromAnySignal
+import computeU_out_to_U_quest
 #import matplotlib.pyplot as plt
 #import copy
 
@@ -52,7 +52,7 @@ dataUout = dataUout[0:ind]
 
 ##Nichtlinearer Teil
 #gemessenes Ausgangssignal mit linearer Übertragungsfunktion zurückrechnen
-u_mid =  computeU_quest_fromAnySignal.compute(dataUout, H, PhaseH, frq)    #kann nur 900kHz             #INDIZES IN DER FOR SCHLEIFE?
+u_mid =  computeU_out_to_U_quest.compute(dataUout, H, PhaseH, frq)    #kann nur 900kHz             #INDIZES IN DER FOR SCHLEIFE?
 
 #Parameter Nl Vorverzerrung
 N=3

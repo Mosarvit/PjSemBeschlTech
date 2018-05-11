@@ -4,7 +4,7 @@ Created on Thu Jul 13 09:46:20 2017
 
 @author: denys
 """
-def compute(u_in, in_pp, u_out, N, toPlot):
+def compute(u_in, in_pp, u_quest, N, toPlot):
     import numpy as np
     import math
     import copy
@@ -20,24 +20,24 @@ def compute(u_in, in_pp, u_out, N, toPlot):
     #import csv
  
     l_in=len(u_in)
-    l_out=len(u_out)
+    l_out=len(u_quest)
     #Signallängen anpassen und interpolieren
     x_in=np.linspace(1,l_out,l_in)
     x_out=np.linspace(1,l_out, l_out)
     f=interp1d(x_in, u_in)
-    g=interp1d(x_out,u_out)
+    g=interp1d(x_out, u_quest)
     u_in=f(x_out)
-    u_out=g(x_out)
+    u_quest=g(x_out)
     #Signale übereinanderschieben -> über Kreuzkorrelation
     print("Kreuzkorrelation")
-    xc=np.correlate(u_in, u_out,'full')
+    xc=np.correlate(u_in, u_quest, 'full')
     print("Kreuzkorrelation fertig")
     shift=np.where(xc==max(xc))
     shift=int(math.floor(shift[0]))
     if shift >= 0:
-        if shift >= np.size(u_out):
-            shift = shift - np.size(u_out)
-        uout=copy.copy(u_out)
+        if shift >= np.size(u_quest):
+            shift = shift - np.size(u_quest)
+        uout=copy.copy(u_quest)
         uin=copy.copy(uout)
         uin[0:l_out-shift]=u_in[shift:]
         uin[l_out-shift:]=u_in[0:shift]
