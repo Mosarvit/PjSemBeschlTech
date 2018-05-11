@@ -10,7 +10,7 @@ def get(U_out, N, toPlot):
     import computea
     import numpy as np
     from Helpers import writeAWG, writeDSO
-    import computeU_quest_fromAnySignal
+    import computeU_out_to_U_quest
 
     samplerateAWG = 999900000
 
@@ -32,7 +32,7 @@ def get(U_out, N, toPlot):
 
     [frq, H, PhaseH] = getH.compute(80e6, 40e-3, 10, True, True, True, 1, False)
 
-    U_in = computeU_quest_fromAnySignal.compute(U_out, H)
+    U_in = computeU_out_to_U_quest.compute(U_out, H)
 
     sendUinToAWG(U_in)
 

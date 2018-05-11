@@ -6,7 +6,7 @@ from scipy import linalg
 import computea
 import numpy as np
 
-import computeU_quest_fromAnySignal
+import computeU_out_to_U_quest
 
 
 class TestComputeParam(TestCase):
@@ -18,11 +18,11 @@ class TestComputeParam(TestCase):
     # @unittest.skip("reason for skipping")
     def test_computeU_quest_300(self):
         u_out = genfromtxt('data/out_300.csv', delimiter=',')[:, 1 ]
-        u_quest_matlab = genfromtxt('data/testdata/u_quest_300.csv', delimiter=',')
+        u_quest_ideal = genfromtxt('data/testdata/u_quest_300.csv', delimiter=',')
 
-        u_quest = computeU_quest_fromAnySignal.compute(u_out, self.H, self.freqA, False)
+        u_quest = computeU_out_to_U_quest.compute(u_out, self.H, self.freqA, False)
 
-        err = linalg.norm(u_quest - u_quest_matlab) / linalg.norm(u_quest_matlab)
+        err = linalg.norm(u_quest - u_quest_ideal) / linalg.norm(u_quest_ideal)
         self.assertTrue(err < 1e-3)
 
     # @unittest.skip("reason for skipping")
@@ -31,7 +31,7 @@ class TestComputeParam(TestCase):
         u_out = genfromtxt('data/out_400.csv', delimiter=',')[:, 1]
         u_quest_matlab = genfromtxt('data/testdata/u_quest_400.csv', delimiter=',')
 
-        u_quest = computeU_quest_fromAnySignal.compute(u_out, self.H, self.freqA, False)
+        u_quest = computeU_out_to_U_quest.compute(u_out, self.H, self.freqA, False)
 
         err = linalg.norm(u_quest - u_quest_matlab) / linalg.norm(u_quest_matlab)
         self.assertTrue(err<1e-3)
@@ -51,10 +51,10 @@ class TestComputeParam(TestCase):
         print(err)
 
     # @unittest.skip("reason for skipping")
-    def test_All(self):
+    def test_System(self):
         u_out = genfromtxt('data/testdata/out_300.csv', delimiter=',')[:, 1]
         U_in = np.transpose(genfromtxt('data/testdata/U_in.csv', delimiter=',')[:, 1])
-        u_quest = computeU_quest_fromAnySignal.compute(u_out, self.H, self.freqA, False)
+        u_quest = computeU_out_to_U_quest.compute(u_out, self.H, self.freqA, False)
 
         a_param2_300_matlab = genfromtxt('data/testdata/a_param2_300.csv', delimiter=',')
 

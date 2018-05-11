@@ -8,7 +8,7 @@ import csv
 import computea as param
 import numpy as np
 import NL_vorverzerrung
-import computeU_quest_fromAnySignal
+import computeU_out_to_U_quest
 import computeU_quest_fromBBsignal
 
 blub1 = open("UinL.csv", "r")
@@ -80,7 +80,7 @@ for ind in range (0,(len(Phase)-1)):
 signal= computeU_quest_fromBBsignal.compute(900e3, 5e6, 80e6, 1e9, freq, Ampl, Phase)
 u_in=signal[1]
     
-u_mid = computeU_quest_fromAnySignal.compute(u_out, Ampl, Phase, freq)
+u_mid = computeU_out_to_U_quest.compute(u_out, Ampl, Phase, freq)
 
 [ a, K ] = param.compute(u_in, 320, u_mid, 3)
 
