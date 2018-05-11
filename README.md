@@ -28,57 +28,52 @@ Die Software soll fongendes können:
 Nun gehen wir auf die 2 Funktionalitäten ein:
 
 
-### 1. Für ein gewünschtes Barrier-Bucket Signal U_out ein Eingangssignal U_in berechnen.
+### 1. Für ein gewünschtes Signal U_out ein Eingangssignal U_in berechnen.
 
-#### 1.1. Wodurch wird das gewünschte Barrier-Bucket Signal definiert?
+#### 1.1. Was wird das gewünschte Signal definiert?
  
-Das gewünschte Barrier-Bucket Signal wird definiert durch: 
-
-  - die Wiederholfrequenz f_rep
-  - die Barrier_Bucket Frequenz f_bb
-  - die Grenzfrequenz f_g   
-
+Das gewünschte Signal kann jedes beliebige Signal sein. (Für dieses Projekt wird ein Barrier-Bucket Signal gewüscht, für die Software mach es aber keinen Unterschiede, denn sie kann mit jedem Signal arbeiten.)
     
 #### 1.2. Wie wird U_in berechnet?
 
 Das Signal U_in läuft im System folgende Stufen durch:
                                            
-  U_in ----> Nichtlineares Verstärkung(a) --->-- U_quest ----> Linear Verstärkung (H) ------> U_out
+  Uin ----> Nichtlineares Verstärkung(a) --->-- Uquest ----> Linear Verstärkung (H) ------> Uout
   
   - das nichtliare Verstärkung wird durch eine Summe mehrerer Funktionen mit den Vorfaktoren a beschrieben
   - die lineare Verstärkung wird mit der Übertragungsfunktion H beschrieben    
    
 Somit kann durch Rückrechnung für jedes beliebiege U_out das U_in bestimmt werden:
 
-U_in <---- **getU_in(** U_quest, a **)** <---- U_quest ---<-- **getU_quest(** U_out, H **)** <----- U_out
+Uin <---- **get_Uin(** Uquest, a **)** <---- Uquest ---<-- **compute_Uquest(** Uout, H **)** <----- Uout
 
 Wenn wir also die Vorfaktoren a und die Übertragunsfunktion H hätten, 
-könnten wir U_in mithilfe der Funktionnen **U_quest** und **getU_in** bestimmmen. 
+könnten wir U_in mithilfe der Funktionnen **Uquest** und **get_Uin** bestimmmen. 
 
 #### 1.3. Wie kann die Übertragungsfunktion H bestimmt werden?
  
  Für die Bestimmung von H gibt es bereits einen funktionierenen Python Code (von Denys).
  Dabei wird für niedrigen Amplituden die gesamte Verstärkung als linear angenommen und das System vereinfacht sich zu:
  
-   U_in ----> Linear Verstärkung (H) ------> U_out
+   Uin ----> Linear Verstärkung (H) ------> Uout
 
 Um H zu bestimmen, wird die zur Verfügung gestellte funktionierende Funktion getH benutzt. 
 getH kommuniziert mit den Geräten und gibt das komplexe H aus. 
 
-!! Zu klären: bei dem nichtlinearen System wird die die lineare Verstärkung separat betrachtet. Eignet sich getH immer noch dazu, das H zu bestimmen?
+!! Zu klären: bei dem nichtlinearen System wird die die lineare Verstärkung separat betrachtet. Eignet sich get_H immer noch dazu, das H zu bestimmen?
 
 #### 1.4. Wie können die Vorfaktoren a bestimmt werden?
  
 Wir betrachten wieder das vollständige nichtlineare System:
 
-U_in <---- **getU_in(** U_quest, a **)** <---- U_quest  ---<-- **getU_quest(** U_out, H **)** <----- U_out
+Uin <---- **compute_Uin(** Uquest, K **)** <---- Uquest  ---<-- **compute_Uquest(** Uout, H **)** <----- Uout
 
-Für ein beliebiges U_out berechnen wir zuerst U_quest0 mit **getU_quest** . Das U_quest0 senden wir in das System als U_in und messen das  neue U_quest1 (An dieser Stelle ist es etwas verwirrend, ich weiss). Mithilfe von **geta(** U_quest1, U_in **)** berechnen wir a. 
+Für ein beliebiges Uout berechnen wir zuerst U_quest0 mit **compute_Uquest** . Das U_quest0 senden wir in das System als Uin und messen das  neue Uquest1 (An dieser Stelle ist es etwas verwirrend, ich weiss). Mithilfe von **get_aK(** Uquest1, Uin **)** berechnen wir a. 
 
 ### 2. Das berechnete Eingangssingal an das System senden. 
 
 #### 2.1. Wie wird das berechnete Signal an das System gesendet?
-Das Senden des berechneten Signals U_in wird von der Funktion **sendToAWG(** U_in **)** ausgeführt.
+Das Senden des berechneten Signals Uin wird von der Funktion **sendToAWG(** Uin **)** ausgeführt.
 
 ## Status der Codes
 
