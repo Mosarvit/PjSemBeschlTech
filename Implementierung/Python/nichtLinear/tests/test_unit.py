@@ -1,59 +1,82 @@
-import unittest
 from unittest import TestCase
 from numpy import genfromtxt
 from scipy import linalg
+from compute import compute_K_from_a, compute_a_from_Uin_Uquet, compute_Uin_from_Uquest, compute_Uquest_from_Uout
 
-import computea
 import numpy as np
 
-import computeU_out_to_U_quest
 
+class test_unit(TestCase):
 
-class TestComputeParam(TestCase):
+    global fixPath # fuer den Fall, dass er H.csv nicht finden kann
+    fixPath = '../'
+    # fixPath = ''
 
     def __init__(self, *args, **kwargs):
-        super(TestComputeParam, self).__init__(*args, **kwargs)
+        super(test_unit, self).__init__(*args, **kwargs)
         self.getHFromCSV()
 
-    # @unittest.skip("reason for skipping")
-    def test_computeU_quest_300(self):
-        u_out = genfromtxt('data/out_300.csv', delimiter=',')[:, 1 ]
-        u_quest_ideal = genfromtxt('data/testdata/u_quest_300.csv', delimiter=',')
-
-        u_quest = computeU_out_to_U_quest.compute(u_out, self.H, self.freqA, False)
-
-        err = linalg.norm(u_quest - u_quest_ideal) / linalg.norm(u_quest_ideal)
-        self.assertTrue(err < 1e-3)
-
-    # @unittest.skip("reason for skipping")
-    def test_computeU_quest_400(self):
-
-        u_out = genfromtxt('data/out_400.csv', delimiter=',')[:, 1]
-        u_quest_matlab = genfromtxt('data/testdata/u_quest_400.csv', delimiter=',')
-
-        u_quest = computeU_out_to_U_quest.compute(u_out, self.H, self.freqA, False)
-
-        err = linalg.norm(u_quest - u_quest_matlab) / linalg.norm(u_quest_matlab)
-        self.assertTrue(err<1e-3)
-
-    def test_computea(self):
-        u_quest_300_matlab = genfromtxt('data/testdata/u_quest_300.csv', delimiter=',')
-        U_in = np.transpose(genfromtxt('data/testdata/U_in.csv', delimiter=',')[:, 1])
-        a_param2_300_matlab = genfromtxt('data/testdata/a_param2_300.csv', delimiter=',')
-
-        vpp = 300e-3
-        N = 3
-
-        [a, K] = computea.compute(U_in, vpp, u_quest_300_matlab, N, False)
-
-        err = linalg.norm(a - a_param2_300_matlab) / linalg.norm(a_param2_300_matlab)
-        self.assertTrue(err < 1e-3)
-        print(err)
-
     def getHFromCSV(self):
-        str_H = np.genfromtxt('data/testdata/H.csv', dtype=str, delimiter=',')
+        str_H = np.genfromtxt(fixPath + 'data/testdata/H.csv', dtype=str, delimiter=',')
         self.H = np.zeros((len(str_H)), dtype=complex)
         self.freqA = np.zeros((len(str_H)))
         for k in range(0, len(str_H)):
             self.H[k] = np.complex(str_H[k, 1].replace('i', 'j'))
             self.freqA[k] = float(str_H[k, 0])
+
+    # @unittest.skip("reason for skipping")
+    def test_compute_Uquest_from_Uout_300(self):
+        u_out = genfromtxt(fixPath + 'data/testdata/out_300.csv', delimiter=',')[:, 1 ]
+        u_quest_ideal = genfromtxt(fixPath + 'data/testdata/u_quest_300.csv', delimiter=',')
+
+        u_quest = compute_Uquest_from_Uout.compute(u_out, self.H, self.freqA, verbosity=False)
+
+        err = linalg.norm(u_quest - u_quest_ideal) / linalg.norm(u_quest_ideal)
+        self.assertTrue(err < 1e-3)
+
+    # @unittest.skip("reason for skipping")
+    def test_compute_Uquest_from_Uout_400(self):
+
+        u_out = genfromtxt(fixPath + 'data/testdata/out_400.csv', delimiter=',')[:, 1]
+        u_quest_matlab = genfromtxt(fixPath + 'data/testdata/u_quest_400.csv', delimiter=',')
+
+        u_quest = compute_Uquest_from_Uout.compute(u_out, self.H, self.freqA, verbosity=False)
+
+        err = linalg.norm(u_quest - u_quest_matlab) / linalg.norm(u_quest_matlab)
+        self.assertTrue(err<1e-3)
+
+    # @unittest.skip("reason for skipping")
+    def test_compute_a_from_Uin_Uquet(self):
+        u_quest_300_matlab = genfromtxt(fixPath + 'data/testdata/u_quest_300.csv', delimiter=',')
+        U_in = np.transpose(genfromtxt(fixPath + 'data/testdata/U_in.csv', delimiter=',')[:, 1])
+        a_param2_300_matlab = genfromtxt(fixPath + 'data/testdata/a_param2_300.csv', delimiter=',')
+
+        vpp = 300e-3
+        N = 3
+
+        a = compute_a_from_Uin_Uquet.compute(U_in, vpp, u_quest_300_matlab, N, False)
+
+        err = linalg.norm(a - a_param2_300_matlab) / linalg.norm(a_param2_300_matlab)
+        self.assertTrue(err < 1e-3)
+
+    # @unittest.skip("reason for skipping")
+    def test_compute_K_from_a(self):
+        a_ideal_300 = genfromtxt(fixPath + 'data/testdata/a_param2_300.csv', delimiter=',')
+        K_ideal_300 = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
+
+        K_calculated = compute_K_from_a.compute(a_ideal_300, verbosity=False)
+
+        err = linalg.norm(K_calculated - K_ideal_300) / linalg.norm(K_ideal_300)
+        self.assertTrue(err < 1e-3)
+
+    # @unittest.skip("reason for skipping")
+    def test_compute_Uin_from_Uquest(self):
+        Uin_ideal_300 = genfromtxt(fixPath + 'data/testdata/U_in.csv', delimiter=',')[:,1]
+        Uquest_ideal_300 = genfromtxt(fixPath + 'data/testdata/u_quest_300.csv', delimiter=',')
+        K_param2_ideal_300 = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
+
+        Uin_calculated = compute_Uin_from_Uquest.compute(Uquest_ideal_300, K_param2_ideal_300, verbosity=False)
+
+        err = linalg.norm(Uin_calculated - Uin_ideal_300) / linalg.norm(Uin_ideal_300)
+        self.assertTrue(err < 1e-3)
+        print(err)

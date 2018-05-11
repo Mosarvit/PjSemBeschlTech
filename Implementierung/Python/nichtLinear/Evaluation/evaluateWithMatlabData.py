@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import genfromtxt
 import numpy as np
 
-from Helpers import writeAWG, writeDSO
+from helpers import writeAWG, writeDSO
 
 samplerateAWG = 999900000  # Samplerate des AWG Signals
 vpp = 300e-3  # Vpp die das awg ausgeben soll

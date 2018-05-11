@@ -5,11 +5,12 @@ Created on Mon Aug 21 17:11:40 2017
 @author: denys
 """
 import csv
-import computea as param
+import Param_Signal as param
 import numpy as np
+import matplotlib.pyplot as plt
 import NL_vorverzerrung
-import computeU_out_to_U_quest
-import computeU_quest_fromBBsignal
+import U_inp_allg
+import computeUin
 
 blub1 = open("UinL.csv", "r")
 reader1 = csv.reader(blub1, delimiter = ';')
@@ -77,17 +78,17 @@ for ind in range (0,(len(Phase)-1)):
             Phase[ind+1:]=Phase[ind+1:]-2*np.pi
         
 
-signal= computeU_quest_fromBBsignal.compute(900e3, 5e6, 80e6, 1e9, freq, Ampl, Phase)
+signal=computeUin.computeUin(900e3,5e6,80e6,1e9, freq, Ampl, Phase) 
 u_in=signal[1]
     
-u_mid = computeU_out_to_U_quest.compute(u_out, Ampl, Phase, freq)
+u_mid = U_inp_allg.U_inp_allg( u_out, Ampl, Phase, freq )
 
-[ a, K ] = param.compute(u_in, 320, u_mid, 3)
+[ a, K ] = param.computeParam(u_in,320,u_mid,3)
 
 t=np.linspace(1,0.1/900000*1000000,len(u_in))
 u=np.array(u_in)
 U=np.column_stack((t,u))
-U_nl = NL_vorverzerrung.NL_vorverzerrung(U, 40e-3, K)
+U_nl = NL_vorverzerrung.NL_vorverzerrung( U, 40e-3, K )
 
 
 

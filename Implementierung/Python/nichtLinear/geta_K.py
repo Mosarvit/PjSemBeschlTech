@@ -6,11 +6,10 @@ Created on Thu Jul 13 11:22:44 2017
 """
 def get(U_out, N, toPlot):
 
-    import getH
-    import computea
-    import numpy as np
-    from Helpers import writeAWG, writeDSO
-    import computeU_out_to_U_quest
+    import get_H
+    from compute import compute_a_from_Uin_Uquet
+    from helpers import writeAWG, writeDSO
+    from compute import compute_Uquest_from_Uout
 
     samplerateAWG = 999900000
 
@@ -30,9 +29,9 @@ def get(U_out, N, toPlot):
         return(time, dataUin, dataUout)
 
 
-    [frq, H, PhaseH] = getH.compute(80e6, 40e-3, 10, True, True, True, 1, False)
+    [frq, H, PhaseH] = get_H.compute(80e6, 40e-3, 10, True, True, True, 1, False)
 
-    U_in = computeU_out_to_U_quest.compute(U_out, H)
+    U_in = compute_Uquest_from_Uout.compute(U_out, H)
 
     sendUinToAWG(U_in)
 
@@ -40,6 +39,6 @@ def get(U_out, N, toPlot):
 
     in_pp = max(U_in) - min(U_in)
 
-    [a, K] = computea.compute(U_in, in_pp, U_quest, N, toPlot)
+    [a, K] = compute_a_from_Uin_Uquet.compute(U_in, in_pp, U_quest, N, toPlot)
 
     return(a, K)

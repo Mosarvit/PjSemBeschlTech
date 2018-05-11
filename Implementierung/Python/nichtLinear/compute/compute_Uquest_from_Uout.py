@@ -4,10 +4,10 @@ Created on Thu Jul 13 11:22:44 2017
 
 @author: denys
 """
-def compute(u_out, H_, freqA, toPlot):
+def compute(Uout, H_, freqA, verbosity):
     """
 
-    :type u_out: object
+    :type Uout: object
     """
     import math
     import copy
@@ -28,7 +28,7 @@ def compute(u_out, H_, freqA, toPlot):
     f_max=math.floor(max(freq)/f_rep)*f_rep
     w=np.linspace(f_rep, f_max, f_max/f_rep)
 
-    dt=1/f_rep/len(u_out)
+    dt=1/f_rep/len(Uout)
     t=np.linspace(0, 1/f_rep, round(1/f_rep/dt))
 
 
@@ -40,7 +40,7 @@ def compute(u_out, H_, freqA, toPlot):
     H = abs(H_neu)
     arg = np.angle(H_neu)
 
-    u=copy.copy(u_out)
+    u=copy.copy(Uout)
 #fft
     L=len(u)
     NFFT = L
@@ -63,7 +63,7 @@ def compute(u_out, H_, freqA, toPlot):
         u_in = u_in + c
 
 
-    if toPlot:
+    if verbosity:
         plt.figure()
         plt.plot(u_in)
         plt.grid(True)

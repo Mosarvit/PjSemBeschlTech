@@ -29,11 +29,11 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
             formatOutput=1, modus=False):
 
     import visa
-    from Helpers import MLBS
+    from helpers import MLBS
     import time
     import matplotlib.pyplot as plt
     import numpy as np
-    from Helpers import FFT
+    from helpers import FFT
     import csv
     import os
     
