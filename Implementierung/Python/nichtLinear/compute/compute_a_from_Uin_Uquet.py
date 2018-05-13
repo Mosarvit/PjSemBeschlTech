@@ -4,7 +4,7 @@ Created on Thu Jul 13 09:46:20 2017
 
 @author: denys
 """
-def compute(u_in, in_pp, u_quest, N, verbosity):
+def compute(Uin, in_pp, Uquest, N, verbosity):
     import numpy as np
     import math
     import copy
@@ -18,47 +18,47 @@ def compute(u_in, in_pp, u_quest, N, verbosity):
     #from scipy import interpolate
     #import csv
  
-    l_in=len(u_in)
-    l_out=len(u_quest)
+    l_in=len(Uin)
+    l_out=len(Uquest)
     #Signallängen anpassen und interpolieren
     x_in=np.linspace(1,l_out,l_in)
     x_out=np.linspace(1,l_out, l_out)
-    f=interp1d(x_in, u_in)
-    g=interp1d(x_out, u_quest)
-    u_in=f(x_out)
-    u_quest=g(x_out)
+    f=interp1d(x_in, Uin)
+    g=interp1d(x_out, Uquest)
+    Uin=f(x_out)
+    Uquest=g(x_out)
     #Signale übereinanderschieben -> über Kreuzkorrelation
     print("Kreuzkorrelation")
-    xc=np.correlate(u_in, u_quest, 'full')
+    xc=np.correlate(Uin, Uquest, 'full')
     print("Kreuzkorrelation fertig")
     shift=np.where(xc==max(xc))
     shift=int(math.floor(shift[0]))
     if shift >= 0:
-        if shift >= np.size(u_quest):
-            shift = shift - np.size(u_quest)
-        uout=copy.copy(u_quest)
-        uin=copy.copy(uout)
-        uin[0:l_out-shift]=u_in[shift:]
-        uin[l_out-shift:]=u_in[0:shift]
+        if shift >= np.size(Uquest):
+            shift = shift - np.size(Uquest)
+        Uout=copy.copy(Uquest)
+        Uin=copy.copy(Uout)
+        Uin[0:l_out-shift]= Uin[shift:]
+        Uin[l_out-shift:]= Uin[0:shift]
         
     #Normierung: u_out wird in V gemessen--> mV
     #u_in Normierung händisch anhand in_pp
-    uout=1000*uout                                          #STIMMT DAS IMMER?
-    uin=(in_pp*uin)/(max(uin)-min(uin))
+    Uout=1000*Uout                                          #STIMMT DAS IMMER?
+    Uin=(in_pp*Uin)/(max(Uin)-min(Uin))
 
     #%Spannungsmatrix erzeugen
     print("Spannungsmatrix")
     U=np.zeros((l_out,N))
     for ind in range(0,N):
-        U[:,ind] = uin**(ind+1)
+        U[:,ind] = Uin**(ind+1)
     print("LGS lösen")
-    a=np.linalg.lstsq(U,np.transpose(uout))
+    a=np.linalg.lstsq(U,np.transpose(Uout))
     lsg=a[0]
 
     if verbosity:
         plt.figure
-        plt.plot(uin)
-        plt.plot(uout)
+        plt.plot(Uin)
+        plt.plot(Uout)
         plt.title('Spannungssignale')
         plt.ylabel('u in mV')
         plt.legend('U_in', 'H^-1*U_out')

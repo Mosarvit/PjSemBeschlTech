@@ -47,7 +47,7 @@ def compute(Uout, H_, freqA, verbosity):
     ufft = np.fft.fft(u, NFFT)
     Y = 2 * ufft / L
 
-    u_in = np.zeros(L)
+    Uin = np.zeros(L)
 
     for k in range (int(math.floor(f_max/f_rep))):
 
@@ -60,15 +60,15 @@ def compute(Uout, H_, freqA, verbosity):
 
         c = 1 / abs(H[k]) * ( a_n *np.cos(phi) + b_n * np.sin(phi) )
 
-        u_in = u_in + c
+        Uin = Uin + c
 
 
     if verbosity:
         plt.figure()
-        plt.plot(u_in)
+        plt.plot(Uin)
         plt.grid(True)
         plt.ylabel('u_in')
         plt.xlabel('punkte')
         plt.show()
 
-    return (u_in)
+    return (Uin)

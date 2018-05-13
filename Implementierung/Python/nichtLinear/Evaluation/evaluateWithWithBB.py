@@ -6,8 +6,8 @@ f_bb = 10e3
 f_g = 40e3
 Samplingrate = 999900000
 
-U_out_ideal = computeIdealBBsignal(f_rep, f_bb, f_g, Samplingrate)
-U_out_real = getBB_Uout.get(f_rep, f_bb, f_g, Samplingrate)
+Uout_ideal = computeIdealBBsignal(f_rep, f_bb, f_g, Samplingrate)
+Uout_real = getBB_Uout.get(f_rep, f_bb, f_g, Samplingrate)
 
-err = linalg.norm(U_out_real - U_out_ideal) / linalg.norm(U_out_ideal)
+err = linalg.norm(Uout_real - Uout_ideal) / linalg.norm(Uout_ideal)
 print(err)

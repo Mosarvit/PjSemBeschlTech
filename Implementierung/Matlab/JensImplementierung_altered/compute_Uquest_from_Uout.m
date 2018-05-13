@@ -1,4 +1,4 @@
-function [ u_in ] = computeU_quest( U_out, f_rep, H_, verbosity )
+function [ Uin ] = computeU_quest( Uout, f_rep, H_, verbosity )
 
 
 %Berechnet das Eingangssignal eines Spannugnssignals U_out (eine
@@ -20,7 +20,7 @@ f_max=floor(max(H_(:,1))/f_rep)*f_rep;
 %Periodenlängen 1/f_rep)
 
 w=linspace(f_rep, f_max, f_max/f_rep);
-dt=1/f_rep/length(U_out);
+dt=1/f_rep/length(Uout);
 t=linspace(0,1/f_rep, round(1/f_rep/dt));
 
 %H=spline(H_(:,1), H_(:,2), w);
@@ -38,7 +38,7 @@ arg=angle(H_neu);%/180*pi;
 %end
 
 %u=u_in(1:length(u_in)/2);
-u=U_out;
+u=Uout;
 
 L=length(u);
 NFFT=L;
@@ -48,7 +48,7 @@ Y=2*ufft/L;
 
 %Gleichanteil des Signals --> weg - u_out=zeros(1, length(t));
 %u_out=ones(1, length(t))*Y(1);
-u_in=zeros(1, length(t));
+Uin=zeros(1, length(t));
 
 if size(Y,1)==1
     Y = Y';
@@ -68,7 +68,7 @@ for ind=1:f_max/f_rep
     
     c = 1/abs(H(ind))*( a_n*cos(phi) + b_n*sin(phi) ); 
     
-    u_in = u_in + c;
+    Uin = Uin + c;
     
 %     a_n=Y(ind+1)+Y(end+1-ind);    
 %     b_n=1i*(Y(ind+1)-Y(end+1-ind));    

@@ -1,16 +1,16 @@
-function [ a ] = computetaK( Uin, in_pp, Uout, N, verbosity )
+function [ a ] = computetaK( u_in, in_pp, u_out, N, verbosity )
 %formely computeParams
 
-l_in=length(Uin);
-l_out=length(Uout);
+l_in=length(u_in);
+l_out=length(u_out);
 %Signale übereinanderlegen --> Interpolation und Signale übereinander
 %legen: 
 %Interpolation
 x_in=linspace(1,l_out,l_in);
 x_out=linspace(1,l_out, l_out);
-Uin=interp1(x_in, Uin, x_out);
+u_in=interp1(x_in, u_in, x_out);
 %Signale übereinanderschieben -> über Kreuzkorrelation
-xc=xcorr(Uin, Uout);
+xc=xcorr(u_in, u_out);
 shift=find(xc==max(xc));
 
 %if shift>=0
@@ -28,22 +28,22 @@ shift=find(xc==max(xc));
 %end
 
 
-if shift > length(Uout)
-    shift=length(Uout)-shift;
+if shift > length(u_out)
+    shift=length(u_out)-shift;
 end
 
 if shift>=0
-   out=Uout;
+   out=u_out;
    in=out;
-   in(1:l_out-shift)=Uin(shift+1:end);
-   in(l_out-shift+1:end)=Uin(1:shift);
+   in(1:l_out-shift)=u_in(shift+1:end);
+   in(l_out-shift+1:end)=u_in(1:shift);
 end
 
 if shift<0
-   out=Uout;
+   out=u_out;
    in=out;
-   in(l_out+shift+1:end)=Uin(1:-shift);
-   in(1:l_out+shift)=Uin(-shift+1:end);
+   in(l_out+shift+1:end)=u_in(1:-shift);
+   in(1:l_out+shift)=u_in(-shift+1:end);
 end
 
 

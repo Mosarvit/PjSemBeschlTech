@@ -90,16 +90,16 @@ def compute(f_rep, f_bb, f_g, Samplingrate, frq, H, PhaseH):
     plt.xlabel(r'$f$ in $Hz$')
     plt.show()
     """    
-    u_in = np.zeros(len(t))
+    Uin = np.zeros(len(t))
     F = np.ones(len(w))
     P=F
     B=F
-    U=u_in
+    U=Uin
     
     for ind in range (0,len(w)):
 # b=Fourierkoeffizient
         b=-f_rep/f_bb*(np.sinc(((ind+1)*2*f_rep-2*f_bb)/f_bb/2)-np.sinc(((ind+1)*2*f_rep+2*f_bb)/f_bb/2))
-        u_in=u_in+b/H[ind]*np.sin((ind+1)*2*np.pi*f_rep*t-np.ones(len(t))*arg[ind])
+        Uin=Uin+b/H[ind]*np.sin((ind+1)*2*np.pi*f_rep*t-np.ones(len(t))*arg[ind])
   
         
         F[ind]=b/H[ind]
@@ -117,8 +117,8 @@ def compute(f_rep, f_bb, f_g, Samplingrate, frq, H, PhaseH):
     with open(directory + '/csv/UinL.csv', 'w', newline="") as csvfile:
             writer = csv.writer(csvfile, delimiter=';',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            for i in range(0,u_in.size):
-                writer.writerow([str(t[i]), str(u_in[i])])
+            for i in range(0,Uin.size):
+                writer.writerow([str(t[i]), str(Uin[i])])
     
-    return (t, u_in)
+    return (t, Uin)
     

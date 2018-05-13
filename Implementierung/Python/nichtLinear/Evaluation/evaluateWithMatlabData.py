@@ -14,7 +14,7 @@ def plot_Results():
     # fig, ax = plt.subplots(num=None, figsize=(18, 10), dpi=80, facecolor='w', edgecolor='k')
 
     plt.subplot(2, 2, 1)
-    plt.plot(t_in, U_in)
+    plt.plot(t_in, Uin)
     plt.title('Das berechnete U_in')
     plt.ylabel('u in mV')
 
@@ -24,8 +24,8 @@ def plot_Results():
     plt.ylabel('u in mV')
 
     # plt.subplot(2, 2, 3)
-    # plt.plot(t_real, U_in_real)
-    # plt.title('Das reale U_in')
+    # plt.plot(t_real, Uin_real)
+    # plt.title('Das reale Uin')
     # plt.ylabel('u in mV')
     #
     # plt.subplot(2, 2, 4)
@@ -38,32 +38,32 @@ def plot_Results():
 
     plt.show()
 
-def readIn_U_in():
-    U_in = genfromtxt('../data/testdata/U_in.csv', delimiter=',')
-    t_in = U_in[:, 0]
-    U_in = U_in[:, 1]
-    return U_in, t_in
+def readIn_Uin():
+    Uin = genfromtxt('../data/testdata/Uin.csv', delimiter=',')
+    t_in = Uin[:, 0]
+    Uin = Uin[:, 1]
+    return Uin, t_in
 
-def readIn_U_out_ideal():
-    U_and_t_out_ideal = genfromtxt('../data/testdata/out_300.csv', delimiter=',')
-    t_out_ideal = U_and_t_out_ideal[:, 0]
-    U_out_ideal = U_and_t_out_ideal[:, 1]
-    return t_out_ideal, U_out_ideal
+def readIn_Uout_ideal():
+    Uout_and_t_ideal = genfromtxt('../data/testdata/Uout_300.csv', delimiter=',')
+    tout_ideal = Uout_and_t_ideal[:, 0]
+    Uout_ideal = Uout_and_t_ideal[:, 1]
+    return tout_ideal, Uout_ideal
 
-def sendU_inToAWG():
-    writeAWG.writeAWG(U_in, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
+def sendUinToAWG():
+    writeAWG.writeAWG(Uin, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
 
 def receiveFromDSO():
     fmax = 80e6
     samplerateOszi = 100 * samplerateAWG
-    [time, dataUin, dataUout] = writeDSO.writeDSO(samplerateOszi, vpp, fmax, U_in)
+    [time, dataUin, dataUout] = writeDSO.writeDSO(samplerateOszi, vpp, fmax, Uin)
     return time, dataUin, dataUout
 
 
-t_out_ideal, U_out_ideal = readIn_U_out_ideal()
-U_in, t_in = readIn_U_in()
-# sendU_inToAWG()
-# t_real, U_in_real, U_out_real = receiveFromDSO()
+t_out_ideal, U_out_ideal = readIn_Uout_ideal()
+Uin, t_in = readIn_Uin()
+# sendUinToAWG()
+# t_real, Uin_real, Uout_real = receiveFromDSO()
 
 plot_Results()
 
