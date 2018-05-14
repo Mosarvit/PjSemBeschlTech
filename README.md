@@ -115,11 +115,11 @@ noch keine Antwort
 #### Frage:<br/>
 Gibt es bereits eine Implementierung von **getU_in(** U_quest, a **)** in Matlab?
 
-#### Überlegung:<br/>
-Jens Fragen.
+
+
 
 #### Antwort:<br/>
-noch keine Antwort
+Ja, wird uns zu geschickt. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 #### Frage:<br/>
@@ -140,18 +140,19 @@ Reicht es aus, a einmal zu berechnen, oder soll a jedes Mal neu berechnet werden
 Jens Fragen.
 
 #### Antwort:<br/>
-noch keine Antwort
+beides sollte möglich sein. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 #### Frage:<br/>
-Warum geht die K Kennlinie nur bis 300 mV
+(Warum geht die K Kennlinie nur bis 300 mV) Kann die K Kennlinie invertiert werden, obwohl es an den Rändwern nicht surjektiv ist? 
+
 
 #### Überlegung:<br/>
 Jens Fragen.
 
 #### Antwort:<br/>
-noch keine Antwort
+Um Subjektivität zu behalten, wird die K Kennlinie nur zwischen den Extremas ausgewertet. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 #### Frage:<br/>
@@ -161,7 +162,7 @@ Sind alle Kabel / Geräte (sonstige?) am GSI vor Ort, damit wir am 18.05. die Te
 Jens Fragen.
 
 #### Antwort:<br/>
-noch keine Antwort
+Alle Kabel sind vor Ort verfügbar. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -172,7 +173,7 @@ Muss das ideale BB Signal "per Hand" Fourier-Transformiert sein, oder reicht es 
 Jens Fragen.
 
 #### Antwort:<br/>
-noch keine Antwort
+FFT genügt. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -183,7 +184,8 @@ Welche VISA-Bibliothek sollen wir nehmen?
 Jens Fragen.
 
 #### Antwort:<br/>
-noch keine Antwort
+wird uns mitgeteilt. 
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
