@@ -12,17 +12,12 @@ csvwrite('..\..\Python\nichtLinear\data\testdata\a_param2_300.csv',a_param2_300)
 csvwrite('..\..\Python\nichtLinear\data\testdata\a_param2_400.csv',a_param2_400);
 
 csvwrite('..\..\Python\nichtLinear\data\testdata\K_param2_300.csv',K_param2_300);
-csvwrite('..\..\Python\nichtLinear\data\testdata\K_param2_400.csv',K_param2_400);
+csvwrite('..\..\Python\nichtLinear\data\testdata\K_param2_400.csv',K_param2_400);  
 
-  
-load('u_quest_400.mat');
+Uquest_400=compute_Uquest_from_Uout(out_400, 900000, H); 
 
-u_quest_400_test=compute_Uquest_from_Uout(out_400, 900000, H); 
+dlmwrite('..\..\Python\nichtLinear\data\testdata\Uquest_400.csv',Uquest_400, 'delimiter', ',', 'precision', 18);
 
-csvwrite('..\..\Python\nichtLinear\data\testdata\Uquest_400.csv',u_quest_400_test);
+Uquest_300=compute_Uquest_from_Uout(out_300, 900000, H); 
 
-load('u_quest_300.mat');
-
-u_quest_300_test=compute_Uquest_from_Uout(out_300, 900000, H); 
-
-csvwrite('..\..\Python\nichtLinear\data\testdata\Uquest_300.csv',u_quest_300_test);
+dlmwrite('..\..\Python\nichtLinear\data\testdata\Uquest_300.csv',Uquest_300, 'delimiter', ',', 'precision', 18);

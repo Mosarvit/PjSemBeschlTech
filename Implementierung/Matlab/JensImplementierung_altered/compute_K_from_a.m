@@ -21,7 +21,6 @@ function [ K ] = computetaK( a, verbosity )
         title('Kennlinie')
         xlabel('U_in in mV')
         ylabel('U_out in mV')
-
     end
 
 end

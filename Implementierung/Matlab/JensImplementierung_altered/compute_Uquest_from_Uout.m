@@ -1,4 +1,4 @@
-function [ Uin ] = computeU_quest( Uout, f_rep, H_, verbosity )
+function [ Uquest ] = computeU_quest( Uout, f_rep, H_, verbosity )
 
 
 %Berechnet das Eingangssignal eines Spannugnssignals U_out (eine
@@ -21,7 +21,9 @@ f_max=floor(max(H_(:,1))/f_rep)*f_rep;
 
 w=linspace(f_rep, f_max, f_max/f_rep);
 dt=1/f_rep/length(Uout);
-t=linspace(0,1/f_rep, round(1/f_rep/dt));
+t=round(linspace(0,1/f_rep,1/f_rep/dt),18);
+
+Uquest(:,1)=t;
 
 %H=spline(H_(:,1), H_(:,2), w);
 %arg=interp1(H_(:,1), H_(:,3), w, 'linear')/180*pi;
@@ -48,7 +50,7 @@ Y=2*ufft/L;
 
 %Gleichanteil des Signals --> weg - u_out=zeros(1, length(t));
 %u_out=ones(1, length(t))*Y(1);
-Uin=zeros(1, length(t));
+Uquest(:,2)=zeros(1, length(t));
 
 if size(Y,1)==1
     Y = Y';
@@ -68,7 +70,7 @@ for ind=1:f_max/f_rep
     
     c = 1/abs(H(ind))*( a_n*cos(phi) + b_n*sin(phi) ); 
     
-    Uin = Uin + c;
+    Uquest(:,2) = Uquest(:,2) + c';
     
 %     a_n=Y(ind+1)+Y(end+1-ind);    
 %     b_n=1i*(Y(ind+1)-Y(end+1-ind));    
