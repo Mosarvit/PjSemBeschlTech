@@ -27,7 +27,7 @@ class test_unit(TestCase):
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_300(self):
         Uout = genfromtxt(fixPath + 'data/testdata/Uout_300.csv', delimiter=',')[:, 1 ]
-        Uquest_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
+        Uquest_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')[:,1]
 
         Uquest_computed = compute_Uquest_from_Uout.compute(Uout, self.H, self.freqA, verbosity=False)
 
@@ -38,7 +38,7 @@ class test_unit(TestCase):
     def test_compute_Uquest_from_Uout_400(self):
 
         Uout = genfromtxt(fixPath + 'data/testdata/Uout_400.csv', delimiter=',')[:, 1]
-        Uquest_matlab = genfromtxt(fixPath + 'data/testdata/Uquest_400.csv', delimiter=',')
+        Uquest_matlab = genfromtxt(fixPath + 'data/testdata/Uquest_400.csv', delimiter=',') [:,1]
 
         Uquest = compute_Uquest_from_Uout.compute(Uout, self.H, self.freqA, verbosity=False)
 
@@ -47,7 +47,7 @@ class test_unit(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_compute_a_from_Uin_Uquet(self):
-        Uquest_300_matlab = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
+        Uquest_300_matlab = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')[:,1]
         Uin = np.transpose(genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:, 1])
         a_param2_300_matlab = genfromtxt(fixPath + 'data/testdata/a_param2_300.csv', delimiter=',')
 
