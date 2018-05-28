@@ -1,11 +1,9 @@
 function passed = test_compute_a_from_Uin_Uquest()
-
-    addpath(genpath(pwd)); 
-    
+     
     verbosity = 0;
 
-    load('data\matlab_Workspace_nichtlin_VV_AR.mat');
-    Uquest_300 = load('..\..\Python\nichtLinear\data\testdata\Uquest_300.csv');
+    load('data/matlab_Workspace_nichtlin_VV_AR.mat');
+    Uquest_300 = load('../../Python/nichtLinear/data/testdata/Uquest_300.csv');
 
 %    keyboard;
     

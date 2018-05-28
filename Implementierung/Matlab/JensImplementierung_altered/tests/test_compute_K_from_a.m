@@ -2,7 +2,7 @@ function passed = test_compute_K_from_a()
 
     verbosity = 0;
 
-    load('matlab_Workspace_nichtlin_VV_AR.mat');
+    load('data/matlab_Workspace_nichtlin_VV_AR.mat');
 
     K = compute_K_from_a( a_param2_300, verbosity);
     

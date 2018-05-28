@@ -1,27 +1,27 @@
-function [ Uquest ] = computeU_quest( Uout, f_rep, H_, verbosity )
+function [ Uquest ] = compute_Uquest_from_Uout( Uout, f_rep, H_, verbosity )
 
 
 %Berechnet das Eingangssignal eines Spannugnssignals U_out (eine
-%Periodenlänge der Periodendauer 1/f_rep) basierend auf der
-%Übertragungsfunktion, die im Quelltect dieser Funktion angegeben ist.
-%Unterschied Vers 1: ÜF variable (Pfad)
-%Unterschied Vers 2: ÜF wird direkt übergeben. Format: [f, H(komplex)]
+%Periodenlï¿½nge der Periodendauer 1/f_rep) basierend auf der
+%ï¿½bertragungsfunktion, die im Quelltect dieser Funktion angegeben ist.
+%Unterschied Vers 1: ï¿½F variable (Pfad)
+%Unterschied Vers 2: ï¿½F wird direkt ï¿½bergeben. Format: [f, H(komplex)]
 
-%Übertragungsfkt:
+%ï¿½bertragungsfkt:
 %H_=csvread(Pfad);
 
 f_max=floor(max(H_(:,1))/f_rep)*f_rep;
 
  %u_in,f_rep, f_grenz, Samplingrate)
-%Änderung zu U_out: Grenzfrequenz f_grenz variabel, nicht mehr fest bei 80
+%ï¿½nderung zu U_out: Grenzfrequenz f_grenz variabel, nicht mehr fest bei 80
 %MHz
 %   Detailed explanation goes here
 %Berechnete das Ausgangssignal zu einem Eingagnssignal u_in (2
-%Periodenlängen 1/f_rep)
+%Periodenlï¿½ngen 1/f_rep)
 
 w=linspace(f_rep, f_max, f_max/f_rep);
 dt=1/f_rep/length(Uout);
-t=round(linspace(0,1/f_rep,1/f_rep/dt),18);
+t=round(linspace(0,1/f_rep,1/f_rep/dt).* 10e18) ./ 10e18;
 
 Uquest(:,1)=t;
 
@@ -31,7 +31,7 @@ H_neu=interp1(H_(:,1), H_(:,2), w);
 H=abs(H_neu);
 arg=angle(H_neu);%/180*pi;
 
-%Fehler, falls über die Grenze hinaus interpoliert werden soll -> Manuell
+%Fehler, falls ï¿½ber die Grenze hinaus interpoliert werden soll -> Manuell
 %korrigieren
 %for ind1=1:length(w)
 %    if w(ind1)>H_(length(H_),1)
