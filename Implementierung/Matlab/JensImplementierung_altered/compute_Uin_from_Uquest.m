@@ -141,9 +141,9 @@ Uquest(:,2)=Uquest(:,2)*amplitude/(max(Uquest(:,2))-min(Uquest(:,2)));
 [~, index] = sort(K(:,1));
 
 %F = griddedInterpolant(K(index,2), K(index,1)); % original von Matlab
-F = interp1(K(index,2), K(index,1));
+Uin(:,2) = interp1(K(index,2), K(index,1), Uquest(:,2));
 
-Uin(:,2) = F(Uquest(:,2));
+%Uin(:,2) = F(Uquest(:,2));
 
 
 

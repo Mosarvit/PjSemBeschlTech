@@ -1,4 +1,4 @@
-function [ K ] = computetaK( a, verbosity )
+function [ K ] = compute_K_from_a( a, verbosity )
 
     b=a;
     du=1;
