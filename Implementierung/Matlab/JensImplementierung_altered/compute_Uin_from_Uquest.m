@@ -2,14 +2,14 @@ function [ Uin ] = compute_Uin_from_Uquest( Uquest, K, amplitude )
 % function [ U_vv ] = Vorverzerrung2arbarb_K( inputfilename, KL, amplitude,
 % f, fName )
 % Erzeugt aus einem linear vorverzerrten Signal (als .arb Datei unter
-% dem Pfad "inputfilename" abgelegt) ein für eine bestimmte Amplitude
-% amplitude für die Kennlinie KL vor verzerrtes Signal.
+% dem Pfad "inputfilename" abgelegt) ein fï¿½r eine bestimmte Amplitude
+% amplitude fï¿½r die Kennlinie KL vor verzerrtes Signal.
 % inputfilname: Dateiname des linear vorverzerrten Signal (.arb-file)
 % KL: Kennlinie, Nx2 Matrix mit Eingangsspannungswerten in der ersten und
 % Ausgangsspannugnswerten inder zweiten Spalte.
-% amplitude: gewünschte Amplitude des nichtlinear vorverzerrten Signals in
+% amplitude: gewï¿½nschte Amplitude des nichtlinear vorverzerrten Signals in
 % mVpp.
-% fName: Dateiname (samt Ordnerpfad) für das erzeugte nichtlinear
+% fName: Dateiname (samt Ordnerpfad) fï¿½r das erzeugte nichtlinear
 % vorverzerrte .arb-file
 %f = Wiederholfrequenz der BB-Pulse in Hz
 
@@ -28,9 +28,9 @@ function [ Uin ] = compute_Uin_from_Uquest( Uquest, K, amplitude )
 %     U = csvread(inputfilename);
 % %.xls
 % else if xlsx > 0
-%         uiwait(msgbox('Zeitschritte Linear Vorverzerrtes Eingangssignal auswählen','Select Zeitschritte','modal'));
+%         uiwait(msgbox('Zeitschritte Linear Vorverzerrtes Eingangssignal auswï¿½hlen','Select Zeitschritte','modal'));
 %         U1 = xlsread(inputfilename, -1);
-%         uiwait(msgbox('Spannungen Linear Vorverzerrtes Eingangssignal auswählen','Select Spannungen','modal'));
+%         uiwait(msgbox('Spannungen Linear Vorverzerrtes Eingangssignal auswï¿½hlen','Select Spannungen','modal'));
 %         U2 = xlsread(inputfilename, -1);
 %         U = [U1, U2];
 % %.arb
@@ -78,24 +78,24 @@ function [ Uin ] = compute_Uin_from_Uquest( Uquest, K, amplitude )
 % 
 % %Steigung in linearem Bereich bestimmen
 % [N,i]=size(K);
-% %5% der Kennlinie für Fit der Steigung
+% %5% der Kennlinie fï¿½r Fit der Steigung
 % l=0.2; % vorher 0.05
 % %Runden
 % n=round(N*l);
 % 
 % %Linearisierung um 0
 % ind1=find(K(:,2)>=0,1);  %Index, an der Kennlinie durch 0 geht
-% x=K(ind1:(ind1+n),1);   %n Punkte von da an für die Linearisierungsgerade verwenden
+% x=K(ind1:(ind1+n),1);   %n Punkte von da an fï¿½r die Linearisierungsgerade verwenden
 % y=K(ind1:(ind1+n),2);
 % m=(sum(y.*x))/(sum(x.^2)); %Steigung
 % 
 % %-------> Falls U_steuer_max*m>U_Kmax: Fehler werfen oder Steigung
 % %bestimmen zu U_Kmax/U_steuer(U_kmax) -> damit weiterrechnen -->
-% %Vorverzerrung bei kleinen Amplituden = Dämpfung / Steuerspannung wird
+% %Vorverzerrung bei kleinen Amplituden = Dï¿½mpfung / Steuerspannung wird
 % %soweit reduziert, bis maximale Ausgangsspannung mit gegebener Kennlinie
-% %möglich ist! -> Meldung ausgeben (Weiter verzerren / Abbrechen) und mit
+% %mï¿½glich ist! -> Meldung ausgeben (Weiter verzerren / Abbrechen) und mit
 % %modifiziertem m weiter rechnen
-% if m*max(U(:,2))> max(K(:,2))      %Falls über die Kennlinie verzerrt würde: Linearisierungsgerade anpassen
+% if m*max(U(:,2))> max(K(:,2))      %Falls ï¿½ber die Kennlinie verzerrt wï¿½rde: Linearisierungsgerade anpassen
 %     m=max(K(:,2))/max(U(:,2));
 % end
 % if m*min(U(:,2))< min(K(:,2))       %auch im negativen Bereich
@@ -114,8 +114,8 @@ function [ Uin ] = compute_Uin_from_Uquest( Uquest, K, amplitude )
 % 
 % %nichtlineare Vorverzerrung an der Kennlinie
 % for ind=1:size(U(:,1))
-%     U_a=m*U(ind,2);%gewünschte Ausgangsspannung=Ui*m
-%     l=find(Kennlinie(:,2)>=U_a,1);%in Kennlinie suchen -> Index l (Stelle, an der der Wert der Ausgangsspannung die gewünschte Spannung übersteigt)
+%     U_a=m*U(ind,2);%gewï¿½nschte Ausgangsspannung=Ui*m
+%     l=find(Kennlinie(:,2)>=U_a,1);%in Kennlinie suchen -> Index l (Stelle, an der der Wert der Ausgangsspannung die gewï¿½nschte Spannung ï¿½bersteigt)
 %     U_vv(ind,2)=Kennlinie(l,1); %dem Zeitschritt die passende Steuerspannung zuordnen
 % end
 % 
@@ -140,9 +140,10 @@ Uquest(:,2)=Uquest(:,2)*amplitude/(max(Uquest(:,2))-min(Uquest(:,2)));
 
 [~, index] = sort(K(:,1));
 
-F = griddedInterpolant(K(index,2), K(index,1));
+%F = griddedInterpolant(K(index,2), K(index,1)); % original von Matlab
+Uin(:,2) = interp1(K(index,2), K(index,1), Uquest(:,2));
 
-Uin(:,2) = F(Uquest(:,2));
+%Uin(:,2) = F(Uquest(:,2));
 
 
 
