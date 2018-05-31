@@ -10,10 +10,7 @@ def evaluateWithSomeU_out() :
 
     verbosity = 1
 
-    fq1 = 50
-    fq2 = 20
-    vpp = 300
-    Uout_ideal = create_BBsignal.create(fq1, fq2, vpp)
+    Uout_ideal = create_BBsignal.create(fq1=50, fq2=20, vpp=300)
     H = measure_H.measure()
     Uquest_ideal = compute_Uquest_from_Uout.compute(Uout_ideal, H, verbosity)
     Uin = Uquest_ideal
@@ -22,6 +19,7 @@ def evaluateWithSomeU_out() :
     N=3 # degree of a
     a = compute_a_from_Uin_Uquet.compute(Uin, Uquest_measured, N, verbosity)
     K = compute_K_from_a.compute(a, verbosity)
-    Uin = compute_Uin_from_Uquest.compute(Uquest_ideal, K, )
+    Uin = compute_Uin_from_Uquest.compute(Uquest_ideal, K, verbosity)
+    Uout_measured = measure_Uout(Uin)
 
 

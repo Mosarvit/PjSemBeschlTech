@@ -5,16 +5,30 @@ Created on Thu Jul 13 11:22:44 2017
 @author: denys
 """
 from compute import compute_Uin_from_Uquest
+from helpers import writeAWG, writeDSO
+import numpy as np
 
 
 def measure(Uin, verbosity):
 
-    from later import compute_Uquest_from_BBUout
-
-    a = read_a_FromCSV()
-    [frq, H, PhaseH] = read_H_FromCSV()
-
     samplerateAWG = 999900000
 
-    Uquest = compute_Uquest_from_BBUout.compute(f_rep, f_bb, f_g, samplerateAWG, frq, H, PhaseH)
-    Uin = compute_Uin_from_Uquest.compute(Uquest, a)
+    def sendUinToAWG(Uin):
+        vpp = max(Uin)-min(Uin)
+        writeAWG.writeAWG(Uin, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
+
+    def receiveFromDSO(Uin):
+        vpp = max(Uin) - min(Uin)
+        fmax = 80e6
+        samplerateOszi = 100 * samplerateAWG
+        [time, dataUin, dataUout] = writeDSO.writeDSO(samplerateOszi, vpp, fmax, Uin)
+
+    sendUinToAWG(Uin)
+    [time, dataUin, dataUout] = receiveFromDSO(Uin)
+    Uout_measured = np.zeros((len(time),2));
+    Uout_measured[:,0] = time
+    Uout_measured[:,1] = dataUout
+
+    return(Uout_measured)
+
+
