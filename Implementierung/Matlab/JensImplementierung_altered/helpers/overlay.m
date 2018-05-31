@@ -1,4 +1,6 @@
-function [in, out] = overlay (Uin, Uout)
+function [in] = overlay (Uin, Uout)
+
+
 
 l_in=length(Uin);
 l_out=length(Uout);
@@ -7,9 +9,13 @@ l_out=length(Uout);
 %Interpolation
 x_in=linspace(1,l_out,l_in);
 x_out=linspace(1,l_out, l_out);
-Uin=interp1(x_in, Uin, x_out);
+Uin=interp1(x_in', Uin, x_out');
 %Signale übereinanderschieben -> über Kreuzkorrelation
 xc=xcorr(Uin, Uout);
+
+min1 = min(xc)
+max1 = max(xc)
+
 shift=find(xc==max(xc));
 
 %if shift>=0
@@ -27,20 +33,18 @@ shift=find(xc==max(xc));
 %end
 
 
-if shift > length(Uout)
+if shift > l_out
     shift=length(Uout)-shift;
 end
 
-if shift>=0
-   out=Uout;
-   in=out;
+in=Uout;
+
+if shift>=0   
    in(1:l_out-shift)=Uin(shift+1:end);
    in(l_out-shift+1:end)=Uin(1:shift);
 end
 
 if shift<0
-   out=Uout;
-   in=out;
    in(l_out+shift+1:end)=Uin(1:-shift);
    in(1:l_out+shift)=Uin(-shift+1:end);
 end

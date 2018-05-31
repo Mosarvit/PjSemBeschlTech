@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 from numpy import genfromtxt
+import numpy as np
 
 
 def compute(Uquest, K, amplitude, verbosity):
 
-    global fixPath  # fuer den Fall, dass er H.csv nicht finden kann
-    fixPath = '../'
-    # fixPath = ''
+    # dummy value, damit der unit test kompeliert:
+    Uin = np.zeros(len(Uquest))
 
-    Uin_300 = genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:, 1]
+    # # ideal output, damit der unit test bestanden wird:
+    #
+    # global fixPath    # wenn er Uin.csv nicht finden kann
+    # fixPath = '../'   # entweder dies
+    # # fixPath = ''    # oder das waehlen
+    # Uin = genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:, 1]
 
-    return (Uin_300)
+    return (Uin)

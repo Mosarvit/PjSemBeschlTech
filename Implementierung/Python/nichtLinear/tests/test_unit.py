@@ -3,8 +3,9 @@ from numpy import genfromtxt
 from scipy import linalg
 from compute import compute_K_from_a, compute_a_from_Uin_Uquet, compute_Uin_from_Uquest, compute_Uquest_from_Uout
 
+from helpers import overlay
 import numpy as np
-
+import copy
 
 class test_unit(TestCase):
 
@@ -72,12 +73,26 @@ class test_unit(TestCase):
     # @unittest.skip("reason for skipping")
     def test_compute_Uin_from_Uquest(self):
 
-        Uin_ideal_300 = genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:,1]
-        Uquest_ideal_300 = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
-        K_param2_ideal_300 = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
+        Uin_ideal = genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:,1]
+        Uquest_300_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
+        K_param2_300_ideal = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_ideal_300, K_param2_ideal_300, 300, verbosity=False)
+        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, 300, verbosity=False)
 
-        err = linalg.norm(Uin_computed - Uin_ideal_300) / linalg.norm(Uin_ideal_300)
+        # testing the test
+
+        # in1 = copy.copy(Uin_computed)
+        # in1[0:2] = Uin_computed[-2:]
+        # in1[2:] = Uin_computed[0:-2]
+
+        # in1 = copy.copy(Uin_computed)
+        # in1[0:1] = Uin_computed[-1:]
+        # in1[1:] = Uin_computed[0:-1]
+
+        # end testing the test
+
+        Uin_computed = overlay.overlay(Uin_computed, Uin_ideal )
+
+        err = linalg.norm(Uin_computed - Uin_ideal) / linalg.norm(Uin_ideal)
         self.assertTrue(err < 1e-3)
         print(err)

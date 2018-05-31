@@ -4,7 +4,7 @@ function [ a ] = compute_a_from_Uin_Uquest( Uin, in_pp, Uout, N, verbosity )
 l_in=length(Uin);
 l_out=length(Uout);
 
-[in, out] = overlay(Uin, Uout);
+[in] = overlay(Uin, Uout);
 
 % l_in=length(Uin);
 % l_out=length(Uout);
@@ -64,7 +64,7 @@ l_out=length(Uout);
 
 %NOrmierung: u_out wird in V gemessen--> mV; u_in aus arb-file:Normierung
 %händisch anhand in_pp
-out=1000*out;
+Uout=1000*Uout;
 in=in_pp/(max(in)-min(in))*in;
 
 %Spannungsmatrix erzeugen
@@ -73,12 +73,12 @@ for ind=1:N
     U(:,ind)=in.^ind;
 end
     
-a=U\out;
+a=U\Uout;
 
 if verbosity
     figure
     t=linspace(0,1/900000*1000000,length(in));
-    plot(t,in,t,out)
+    plot(t,in,t,Uout)
     title('Spannungssignale')
     xlabel('t in us')
     ylabel('u in mV')
