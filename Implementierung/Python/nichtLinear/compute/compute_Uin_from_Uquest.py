@@ -3,7 +3,7 @@ from numpy import genfromtxt
 import numpy as np
 
 
-def compute(Uquest, K, amplitude, verbosity):
+def compute(Uquest, K, verbosity):
 
     # dummy value, damit der unit test kompeliert:
     Uin = np.zeros(len(Uquest))

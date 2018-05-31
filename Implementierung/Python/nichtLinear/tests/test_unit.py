@@ -63,8 +63,9 @@ class test_unit(TestCase):
 
         vpp = 300e-3
         N = 3
+        Uin = (vpp) / (max(Uin) - min(Uin)) * Uin * 1000
 
-        a = compute_a_from_Uin_Uquet.compute(Uin, vpp, Uquest_300_matlab, N, False)
+        a = compute_a_from_Uin_Uquet.compute(Uin, Uquest_300_matlab, N, False)
 
         err = linalg.norm(a - a_param2_300_matlab) / linalg.norm(a_param2_300_matlab)
         self.assertTrue(err < 1e-3)
@@ -86,7 +87,7 @@ class test_unit(TestCase):
         Uquest_300_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
         K_param2_300_ideal = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, 300, verbosity=False)
+        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, verbosity=False)
 
         # testing the test
 

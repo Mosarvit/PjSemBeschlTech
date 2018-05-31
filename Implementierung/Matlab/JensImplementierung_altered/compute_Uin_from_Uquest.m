@@ -1,4 +1,4 @@
-function [ Uin ] = compute_Uin_from_Uquest( Uquest, K, amplitude )
+function [ Uin ] = compute_Uin_from_Uquest( Uquest, K)
 % function [ U_vv ] = Vorverzerrung2arbarb_K( inputfilename, KL, amplitude,
 % f, fName )
 % Erzeugt aus einem linear vorverzerrten Signal (als .arb Datei unter
@@ -136,7 +136,7 @@ function [ Uin ] = compute_Uin_from_Uquest( Uquest, K, amplitude )
 
 Uin(:,1) = Uquest(:,1);
 
-Uquest(:,2)=Uquest(:,2)*amplitude/(max(Uquest(:,2))-min(Uquest(:,2)));
+% Uquest(:,2)=Uquest(:,2)*amplitude/(max(Uquest(:,2))-min(Uquest(:,2)));
 
 [~, index] = sort(K(:,1));
 

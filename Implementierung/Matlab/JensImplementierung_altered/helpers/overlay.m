@@ -11,11 +11,7 @@ x_in=linspace(1,l_out,l_in);
 x_out=linspace(1,l_out, l_out);
 Uin=interp1(x_in', Uin, x_out');
 %Signale übereinanderschieben -> über Kreuzkorrelation
-xc=xcorr(Uin, Uout);
-
-min1 = min(xc)
-max1 = max(xc)
-
+xc=xcorr(Uin, Uout); 
 shift=find(xc==max(xc));
 
 %if shift>=0

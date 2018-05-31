@@ -14,7 +14,7 @@ from helpers import overlay
 #from scipy import interpolate
 #import csv
 
-def compute(Uin, Uin_pp, Uquest, N, verbosity):
+def compute(Uin, Uquest, N, verbosity):
     l_out = len(Uquest)
 
 
@@ -23,7 +23,7 @@ def compute(Uin, Uin_pp, Uquest, N, verbosity):
     #Normierung: u_out wird in V gemessen--> mV
     #u_in Normierung händisch anhand in_pp
     Uquest=Uquest*1000                                          #STIMMT DAS IMMER?
-    Uin= (Uin_pp) / (max(Uin) - min(Uin)) * Uin * 1000                    #Wo kommt der Faktor 1000 her??
+    # Uin = (Uin_pp) / (max(Uin) - min(Uin)) * Uin * 1000                    #Wo kommt der Faktor 1000 her??
 
 
 

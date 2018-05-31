@@ -7,7 +7,7 @@ Created on Thu Jul 13 11:22:44 2017
 from compute import compute_Uin_from_Uquest
 
 
-def get(f_rep, f_bb, f_g, N, toPlot):
+def measure(Uin, verbosity):
 
     from later import compute_Uquest_from_BBUout
 
