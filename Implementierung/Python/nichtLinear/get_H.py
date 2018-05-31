@@ -25,8 +25,8 @@ Input:  fmax          ------  max frequency of interest
         modus         ------  False CH3-CH4, True CH3, 1Channel vs 2Channel
 """
 
-def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
-            formatOutput=1, modus=False):
+def get(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
+        formatOutput=1, modus=False):
 
     import visa
     from helpers import MLBS

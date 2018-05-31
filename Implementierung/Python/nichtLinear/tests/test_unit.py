@@ -18,11 +18,20 @@ class test_unit(TestCase):
         self.getHFromCSV()
 
     def getHFromCSV(self):
+
+        Ha = genfromtxt(fixPath + 'data/testdata/H_a.csv', delimiter=',')
+        Hph = genfromtxt(fixPath + 'data/testdata/H_p.csv', delimiter=',')
+
+        self.H = np.zeros(((Ha.shape[0]),3))
+        self.H[:, 0:2] = Ha
+        self.H[:, 2] = Hph[:, 1]
+
+    def getComplexHFromCSV(self):
         str_H = np.genfromtxt(fixPath + 'data/testdata/H.csv', dtype=str, delimiter=',')
-        self.H = np.zeros((len(str_H)), dtype=complex)
+        self.H_ = np.zeros((len(str_H)), dtype=complex)
         self.freqA = np.zeros((len(str_H)))
         for k in range(0, len(str_H)):
-            self.H[k] = np.complex(str_H[k, 1].replace('i', 'j'))
+            self.H_[k] = np.complex(str_H[k, 1].replace('i', 'j'))
             self.freqA[k] = float(str_H[k, 0])
 
     # @unittest.skip("reason for skipping")
@@ -30,10 +39,10 @@ class test_unit(TestCase):
         Uout = genfromtxt(fixPath + 'data/testdata/Uout_300.csv', delimiter=',')[:, 1 ]
         Uquest_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')[:,1]
 
-        Uquest_computed = compute_Uquest_from_Uout.compute(Uout, self.H, self.freqA, verbosity=False)
+        Uquest_computed = compute_Uquest_from_Uout.compute(Uout, self.H, verbosity=False)
 
         err = linalg.norm(Uquest_computed - Uquest_ideal) / linalg.norm(Uquest_ideal)
-        self.assertTrue(err < 1e-3)
+        self.assertTrue(err < 0.03)
 
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_400(self):
@@ -41,10 +50,10 @@ class test_unit(TestCase):
         Uout = genfromtxt(fixPath + 'data/testdata/Uout_400.csv', delimiter=',')[:, 1]
         Uquest_matlab = genfromtxt(fixPath + 'data/testdata/Uquest_400.csv', delimiter=',') [:,1]
 
-        Uquest = compute_Uquest_from_Uout.compute(Uout, self.H, self.freqA, verbosity=False)
+        Uquest = compute_Uquest_from_Uout.compute(Uout, self.H, verbosity=False)
 
         err = linalg.norm(Uquest - Uquest_matlab) / linalg.norm(Uquest_matlab)
-        self.assertTrue(err<1e-3)
+        self.assertTrue(err<0.03)
 
     # @unittest.skip("reason for skipping")
     def test_compute_a_from_Uin_Uquet(self):

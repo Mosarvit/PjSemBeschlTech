@@ -29,7 +29,7 @@ def get(Uout, N, toPlot):
         return(time, dataUin, dataUout)
 
 
-    [frq, H, PhaseH] = get_H.compute(80e6, 40e-3, 10, True, True, True, 1, False)
+    [frq, H, PhaseH] = get_H.get(80e6, 40e-3, 10, True, True, True, 1, False)
 
     Uin = compute_Uquest_from_Uout.compute(Uout, H)
 
