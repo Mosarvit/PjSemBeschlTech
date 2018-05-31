@@ -1,26 +1,24 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jul 13 09:46:20 2017
+import numpy as np
+import math
+import copy
+#import FFT
+import matplotlib.pyplot as plt
+from scipy.interpolate import interp1d
+from compute import compute_K_from_a
+from helpers import overlay
+#import csv
+#import os
+#import time
+#import FFT
+#from scipy import interpolate
+#import csv
 
-@author: denys
-"""
 def compute(Uin, in_pp, Uquest, N, verbosity):
-    import numpy as np
-    import math
-    import copy
-    #import FFT
-    import matplotlib.pyplot as plt
-    from scipy.interpolate import interp1d
-    from compute import compute_K_from_a
-    #import csv
-    #import os
-    #import time
-    #import FFT
-    #from scipy import interpolate
-    #import csv
+
 
     l_in=len(Uin)
-    l_out=len(Uquest)
+    l_out = len(Uquest)
     #Signallängen anpassen und interpolieren
     x_in=np.linspace(1,l_out,l_in)
     x_out=np.linspace(1,l_out, l_out)
@@ -29,26 +27,8 @@ def compute(Uin, in_pp, Uquest, N, verbosity):
     Uin=f(x_out)
     #Uquest=g(x_out)
     #Signale übereinanderschieben -> über Kreuzkorrelation
-    print("Kreuzkorrelation")
-    xc=np.correlate(Uin, Uquest, 'full')
-    print("Kreuzkorrelation fertig")
-    shift=np.where(xc==max(xc))
-    shift=int(math.floor(shift[0]))
 
-    if shift >= np.size(Uquest):
-        shift = np.size(Uquest) - shift
-
-    if shift >= 0:
-
-        Uout=copy.copy(Uquest)
-        In=copy.copy(Uout)
-        In[0:l_out-shift]= Uin[shift:]
-        In[l_out-shift:]= Uin[0:shift]
-    else:
-        Uout = copy.copy(Uquest)
-        In = copy.copy(Uout)
-        In[l_out + shift:] = Uin[:-shift]
-        In[:l_out + shift] = Uin[-shift:]
+    In, Uout = overlay.overlay(Uin, Uquest)
 
     #Normierung: u_out wird in V gemessen--> mV
     #u_in Normierung händisch anhand in_pp
@@ -78,3 +58,27 @@ def compute(Uin, in_pp, Uquest, N, verbosity):
         plt.show()
     
     return (lsg)
+
+
+# def overlay(Uin, Uquest):
+#     l_out = len(Uquest)
+#     print("Kreuzkorrelation")
+#     xc = np.correlate(Uin, Uquest, 'full')
+#     print("Kreuzkorrelation fertig")
+#     shift = np.where(xc == max(xc))
+#     shift = int(math.floor(shift[0]))
+#     if shift >= np.size(Uquest):
+#         shift = np.size(Uquest) - shift
+#     if shift >= 0:
+#
+#         Uout = copy.copy(Uquest)
+#         In = copy.copy(Uout)
+#         In[0:l_out - shift] = Uin[shift:]
+#         In[l_out - shift:] = Uin[0:shift]
+#     else:
+#         Uout = copy.copy(Uquest)
+#         In = copy.copy(Uout)
+#         In[l_out + shift:] = Uin[:-shift]
+#         In[:l_out + shift] = Uin[-shift:]
+#
+#     return In, Uout

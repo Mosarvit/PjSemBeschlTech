@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
-import numpy as np
+from numpy import genfromtxt
 
 
-def compute(Uquest, K, verbosity):
+def compute(Uquest, K, amplitude, verbosity):
 
-    Uin=np.zeros(1111)
+    global fixPath  # fuer den Fall, dass er H.csv nicht finden kann
+    fixPath = '../'
+    # fixPath = ''
 
-    return (Uin)
+    Uin_300 = genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:, 1]
+
+    return (Uin_300)

@@ -64,19 +64,20 @@ class test_unit(TestCase):
         a_ideal_300 = genfromtxt(fixPath + 'data/testdata/a_param2_300.csv', delimiter=',')
         K_ideal_300 = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
 
-        K_calculated = compute_K_from_a.compute(a_ideal_300, verbosity=False)
+        K_computed = compute_K_from_a.compute(a_ideal_300, verbosity=False)
 
-        err = linalg.norm(K_calculated - K_ideal_300) / linalg.norm(K_ideal_300)
+        err = linalg.norm(K_computed - K_ideal_300) / linalg.norm(K_ideal_300)
         self.assertTrue(err < 1e-3)
 
     # @unittest.skip("reason for skipping")
     def test_compute_Uin_from_Uquest(self):
+
         Uin_ideal_300 = genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:,1]
         Uquest_ideal_300 = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
         K_param2_ideal_300 = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
 
-        Uin_calculated = compute_Uin_from_Uquest.compute(Uquest_ideal_300, K_param2_ideal_300, verbosity=False)
+        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_ideal_300, K_param2_ideal_300, 300, verbosity=False)
 
-        err = linalg.norm(Uin_calculated - Uin_ideal_300) / linalg.norm(Uin_ideal_300)
+        err = linalg.norm(Uin_computed - Uin_ideal_300) / linalg.norm(Uin_ideal_300)
         self.assertTrue(err < 1e-3)
         print(err)
