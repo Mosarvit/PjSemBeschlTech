@@ -17,7 +17,7 @@ from helpers import overlay
 def compute(Uin, Uquest, N, verbosity):
     l_out = len(Uquest)
 
-
+    np.sin(Uin)
     Uin = overlay.overlay(Uin, Uquest)
 
     #Normierung: u_out wird in V gemessen--> mV

@@ -1,16 +1,18 @@
 
 import measure_H
 
-from compute import create_BBsignal
+from compute import generate_BBsignal
 from compute import compute_Uquest_from_Uout
 import measure_Uout
 from compute import compute_a_from_Uin_Uquet, compute_K_from_a, compute_Uin_from_Uquest
+
+
 
 def evaluateWithSomeU_out() :
 
     verbosity = 1
 
-    Uout_ideal = create_BBsignal.create(fq1=50, fq2=20, vpp=300)
+    Uout_ideal = generate_BBsignal.create(fq1=50, fq2=21, vpp=300, samplerate2= 55556, verbosity=verbosity)
     H = measure_H.measure()
     Uquest_ideal = compute_Uquest_from_Uout.compute(Uout_ideal, H, verbosity)
     Uin = Uquest_ideal
@@ -23,3 +25,4 @@ def evaluateWithSomeU_out() :
     Uout_measured = measure_Uout(Uin)
 
 
+evaluateWithSomeU_out()
