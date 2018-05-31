@@ -20,9 +20,9 @@ Hier kommt also der Versuch einer einfachen Erklärung (für einen Sechjährigen
 
 #### Was ist das Ziel der Software, wann hat sie ihren Zweck erfüllt?
  
-Die Software soll fongendes können:
+Die Software soll folgendes können:
 
-  1. Für ein gewünschtes Barrier-Bucket Signal U_out ein Eingangssignal U_in berechnet.
+  1. Für ein gewünschtes Barrier-Bucket Signal U_out (an den Gates der Kavität) ein Eingangssignal U_in berechnen.
   2. Das berechnete Eingangssingal an das System senden. 
   
 Nun gehen wir auf die 2 Funktionalitäten ein:
@@ -162,7 +162,7 @@ Sind alle Kabel / Geräte (sonstige?) am GSI vor Ort, damit wir am 18.05. die Te
 Jens Fragen.
 
 #### Antwort:<br/>
-Alle Kabel sind vor Ort verfügbar. 
+Alle Kabel sind vor Ort verfügbar, Ansclüsse siehe separate Datei Handhabung. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -184,12 +184,40 @@ Welche VISA-Bibliothek sollen wir nehmen?
 Jens Fragen.
 
 #### Antwort:<br/>
-wird uns mitgeteilt. 
+NI-Visa wird verwendet.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+#### Frage:<br/>
+Funktioniert die Ausführung vom eigenen PC mit den unter "Handhabung" aufgeführten Treibern wie erhofft?
+
+#### Überlegung:<br/>
+Beim nächsten Mal an der GSI ausprobieren.
+
+#### Antwort:<br/>
+--- Ausstehend
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
 ## Zeitplanung:
+
+### Abwesenheiten ab mehreren Tagen:
+
+#### Juni:
+
+#### Juli:
+
+#### August:
+	- 18. bis 21. : Jonas erreichbar, zeitlich sehr eingeschränkt
+
+#### September:
+	- 3. bis 14.9. : Jonas erreichbar, zeitlich sehr eingeschränkt
+
+### Termine & Treffen
 
 #### 11.05. 11:00 - Treffen an der TU
 
@@ -197,6 +225,8 @@ Zielsetzung:
  - Die Unterlagen besprechen und den weiteren Verlauf planen
 
 Status: Findet statt
+
+Report: Erste grobe Zuteilung der Aufgaben vorgenommen.
 
 #### 18.05. 11:00 - Termin mit Jen
 
@@ -206,6 +236,24 @@ Zielsetzung:
   - Für den nichtlinearen Fall die Funktion evaluateWithMatlabData ausprobieren
   
 Status: angefragt bei Jens - Update: Findet Statt _MN
+
+Report:
+	- Erklären und Aufbauen hat funktioniert: Siehe separate Datei Handhabung
+	- Linearer Fall: Code von Denys hat funktioniert
+	- nichtlinearer Fall funktioniert auch im Original-Code
+	- Aber: nur ohne Refactoring, also im Original. Version mit Refactoring hat Probleme gemacht -> Artem hat später nochmal drüber geschaut
+	- Leichte Abweichungen vom als ideal erwarteten Signal kommen daher, dass wir inzwischen mit der zweiten, baugleichen Kavität arbeiten (die erste ist inzwischen im Ring verbaut) und die Umgebungsumstände anders sind.
+	- Ausführung auf eigenem PC (Laptop Jonas) scheitert an fehlendem Treiber für das AWG, konnte vor Ort nicht geladen werden. Siehe "Handhabung" für Infos zu den Treibern.
+
+Ausblick:
+	- Treiber-Probleme klären (insb. Jonas)
+	- Refactoring-Probleme beheben (insb. Artem)
+	- Übertragen Matlab-Code in Python verfolgen
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
 
 ## Freie Kommentare
 
