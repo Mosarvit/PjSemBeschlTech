@@ -11,6 +11,7 @@ Benutzte Geräte:
 ###Vorbemerkungen:
 Grundeinstellung AWG: Kanäle 1 & 2 über Tracking gleich stellen
 PC: - Beachte Fire-Wall / IP-Erlaubnis gemäß Anleitung Denys (Appendix 8.1.1)
+	- NI-Visa installieren siehe Website
 	- Treiber für Keysight laden:
 		!!! Bei Erstellen des Dokuments noch nicht auf richtiges Funktionieren geprüft!
 		-- IviSharedComponents (nicht: .NET) in der entsprechenden Version, 2.4.2 oder höher unter 
@@ -40,43 +41,6 @@ PC: - Beachte Fire-Wall / IP-Erlaubnis gemäß Anleitung Denys (Appendix 8.1.1)
 	 -------- Jens fragen ------------
 
 
-#### Was ist das Ziel der Software, wann hat sie ihren Zweck erfüllt?
- 
-Die Software soll fongendes können:
-
-  1. Für ein gewünschtes Barrier-Bucket Signal U_out ein Eingangssignal U_in berechnet.
-  2. Das berechnete Eingangssingal an das System senden. 
-  
-Nun gehen wir auf die 2 Funktionalitäten ein:
-
-
-### 1. Für ein gewünschtes Signal U_out ein Eingangssignal U_in berechnen.
-
-#### 1.1. Was wird das gewünschte Signal definiert?
- 
-Das gewünschte Signal kann jedes beliebige Signal sein. (Für dieses Projekt wird ein Barrier-Bucket Signal gewüscht, für die Software mach es aber keinen Unterschiede, denn sie kann mit jedem Signal arbeiten.)
-    
-#### 1.2. Wie wird Uin berechnet?
-
-Das Signal Uin läuft im System folgende Stufen durch:
-                                           
-  Uin ----> Nichtlineares Verstärkung(a) --->-- Uquest ----> Linear Verstärkung (H) ------> Uout
-  
-  - das nichtliare Verstärkung wird durch eine Summe mehrerer Funktionen mit den Vorfaktoren a beschrieben
-  - die lineare Verstärkung wird mit der Übertragungsfunktion H beschrieben    
-   
-Somit kann durch Rückrechnung für jedes beliebiege U_out das U_in bestimmt werden:
-
-Uin <---- **get_Uin(** Uquest, a **)** <---- Uquest ---<-- **compute_Uquest(** Uout, H **)** <----- Uout
-
-Wenn wir also die Lookup-Tabelle K und die Übertragunsfunktion H hätten, 
-könnten wir U_in mithilfe der Funktionnen **Uquest** und **get_Uin** bestimmmen. 
-
-
-## Ausführen der Software
-
-Hier wird auf den Status aller zu erstellenden Funktionen eingegagen.
-
 ## Bekannte Fehlerquellen & Lösungen
 
-	- Treiber für 
+	- Treiber nicht installiert
