@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 
 def create(fq1, fq2, vpp, samplerate2, verbosity):
 
+
+    if samplerate2 % 2 == 1 :
+        samplerate2 += 1
+
     T1 = 1/fq1
     T2 = 1/fq2
     samplerate1 = samplerate2/T2*T1
