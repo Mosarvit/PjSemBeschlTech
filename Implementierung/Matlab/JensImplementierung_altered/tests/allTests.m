@@ -3,7 +3,6 @@ function allTests()
     runAllTest();
 
     function runAllTest()        
-        Folder = mfilename('fullpath');
         allFiles = dir('tests');    
         for i=1:numel(allFiles)
             filename = allFiles(i).name;

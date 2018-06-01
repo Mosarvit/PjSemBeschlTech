@@ -12,7 +12,7 @@ def evaluateWithSomeU_out() :
 
     verbosity = 1
 
-    Uout_ideal = generate_BBsignal.create(fq1=50, fq2=21, vpp=300, samplerate2= 55556, verbosity=verbosity)
+    Uout_ideal = generate_BBsignal.create(fq1=51, fq2=21, vpp=300, samplerate2= 55556, verbosity=verbosity)
     H = measure_H.measure()
     Uquest_ideal = compute_Uquest_from_Uout.compute(Uout_ideal, H, verbosity)
     Uin = Uquest_ideal

@@ -7,7 +7,7 @@ function [ passed ] = test_compute_Uin_from_Uquest( )
     
     Uin_300_computed=compute_Uin_from_Uquest(Uquest_300_ideal, K_param2_300);   
    
-    [Uin_300_computed] = overlay(U_in(:,2), U_in(:,2));
+    [Uin_300_computed] = overlay(Uin_300_computed(:,2), U_in(:,2));
     
     Uin_300_computed = setVpp(Uin_300_computed, 1);
     U_300_ideal = setVpp( U_in(:,2), 1);
