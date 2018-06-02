@@ -1,9 +1,9 @@
 # PjSemBeschlTech - Handhabung der Geräte
 
 Benutzte Geräte:
-	- AWG<\br> 		Keysight 33600A
-	- Oszi<\br>		Tektronix TDS 5054 DOS
-	- Verstärker<\br>	
+	- AWG		Keysight 33600A
+	- Osz		Tektronix TDS 5054 DOS
+	- Verstärker	
 	- Kavität		
 
 ## Verkabeln & Einstellen der Geräte ---- Stand 31.05.
@@ -22,10 +22,13 @@ PC: - Beachte Fire-Wall / IP-Erlaubnis gemäß Anleitung Denys (Appendix 8.1.1)
 		
 ###Getting started:
 	1) Lan-Kabel hinten an Oszi, anderes Ende an den Switch, diesen mit zweitem Lan-Kabel an Computer
+	
 	2) USB-Kabel hinten an AWG, anders Ende an den PC
+	
 	3) Anschlüsse der Kavität auf Kanäle 3 & 4 des Oszi anschließen:
 		- mit 50 Ohm Abschlussstück am T-Stück ans Oszi versehen
 		- Oszi auf hochohmige Eingänge stellen (da 50 Ohm Abschluss des Kabels bereits durch Abschlussstück realisiert -> schützt das Oszi vor höheren Strömen)
+		
 	4) Anschluss des einen Ausgangs des AWG auf Kanal 1 des Oszi, Vorgehen analog zu 2)
 	5) Anschluss & Anschalten Verstärker:
 		- zweiten Ausgang des AWG auf den Eingang des Verstärkers an der Rückseite
