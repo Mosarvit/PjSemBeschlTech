@@ -88,7 +88,9 @@ class test_unit(TestCase):
         Uquest_300_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
         K_param2_300_ideal = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
         # why has Uin_ideal more time steps than Uquest_ideal???
+        #  - because they come from different places. Uin is the input of the AWG nad Uquest is computed form the measured Uout
         # Uin_computed has same number of time steps as Uquest_ideal
+        #  - corrent, since it was computed from Uquest
         Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, verbosity=False)
 
         # testing the test
