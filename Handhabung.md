@@ -1,10 +1,10 @@
 # PjSemBeschlTech - Handhabung der Geräte
 
 Benutzte Geräte:
-	- AWG		Keysight 33600A
-	- Osz		Tektronix TDS 5054 DOS
-	- Verstärker	
-	- Kavität		
+- AWG		Keysight 33600A
+- Oszi		Tektronix TDS 5054 DOS
+- Verstärker	
+- Kavität		
 
 ## Verkabeln & Einstellen der Geräte ---- Stand 31.05.
 
