@@ -36,7 +36,7 @@ PC:
 	- Gain auf 100 % hoch drehen -> beste Linearität
 	- Local on, RF on
 6) Beachte bei erstem Einstellen des Oszis:
-	- Oszi darf nicht ans Netz des Labors, da Windows-Version zu alt, nicht mehr gesichert
+	- Oszi darf nicht mit Internet des Labors verbunden werden, da Windows-Version zu alt, nicht mehr gesichert
 	- in Windows-Oberfläche -> über roten Kreis unten rechts starten des Servers VXI-11
 	- vertikale Einstellungen so regeln, dass die Signale oben / unten nicht abgeschnitten werden
 7) Ausschalten des Verstärkers:
