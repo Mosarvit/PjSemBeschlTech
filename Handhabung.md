@@ -10,6 +10,7 @@ Benutzte Geräte:
 
 ###Vorbemerkungen:
 Grundeinstellung AWG: Kanäle 1 & 2 über Tracking gleich stellen
+
 PC: 
 - Beachte Fire-Wall / IP-Erlaubnis gemäß Anleitung Denys (Appendix 8.1.1)
 	- NI-Visa installieren siehe Website
@@ -29,19 +30,18 @@ PC:
 	- Oszi auf hochohmige Eingänge stellen (da 50 Ohm Abschluss des Kabels bereits durch Abschlussstück realisiert -> schützt das Oszi vor höheren Strömen)
 4) Anschluss des einen Ausgangs des AWG auf Kanal 1 des Oszi, Vorgehen analog zu 2)
 5) Anschluss & Anschalten Verstärker:
-		- zweiten Ausgang des AWG auf den Eingang des Verstärkers an der Rückseite
-		- Main-Schalter auf der Rückseite anstellen
-		- auf der Vorderseite anschalten
-		- Gain auf 100 % hoch drehen -> beste Linearität
-		- Local on, RF on
-	6) Beachte bei erstem Einstellen des Oszis:
-		- Oszi darf nicht ans Netz des Labors, da Windows-Version zu alt, nicht mehr gesichert
-		- in Windows-Oberfläche -> über roten Kreis unten rechts starten des Servers VXI-11
-		- vertikale Einstellungen so regeln, dass die Signale oben / unten nicht abgeschnitten werden
-	7) Ausschalten des Verstärkers:
+	- zweiten Ausgang des AWG auf den Eingang des Verstärkers an der Rückseite
+	- Main-Schalter auf der Rückseite anstellen
+	- auf der Vorderseite anschalten
+	- Gain auf 100 % hoch drehen -> beste Linearität
+	- Local on, RF on
+6) Beachte bei erstem Einstellen des Oszis:
+	- Oszi darf nicht ans Netz des Labors, da Windows-Version zu alt, nicht mehr gesichert
+	- in Windows-Oberfläche -> über roten Kreis unten rechts starten des Servers VXI-11
+	- vertikale Einstellungen so regeln, dass die Signale oben / unten nicht abgeschnitten werden
+7) Ausschalten des Verstärkers:
 	 -------- Jens fragen ------------
 
 
 ## Bekannte Fehlerquellen & Lösungen
-
-	- Treiber nicht installiert
+- Treiber nicht installiert -> siehe oben
