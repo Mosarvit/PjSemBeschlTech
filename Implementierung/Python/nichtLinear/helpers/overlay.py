@@ -38,7 +38,7 @@ def overlay(Uin, Uout):
     if shift > 0:
 
         In[0:l_out - shift - 1] = Uin[shift+1:]
-        In[0:] = Uin[0:shift+1]
+        In[l_out - shift - 1:] = Uin[0:shift+1]
     else:
 
         In[l_out + shift - 1:] = Uin[:-shift+1]
