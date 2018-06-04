@@ -63,4 +63,12 @@ def compute(Uquest, K, verbosity=False):
 
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
 
+    if verbosity:
+        plt.figure()
+        plt.plot(Uin)
+        plt.title('Uin')
+        plt.ylabel('u')
+        plt.ylabel('t')
+        plt.show()
+
     return (Uin)

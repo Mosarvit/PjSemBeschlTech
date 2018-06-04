@@ -73,9 +73,10 @@ def compute(Uout, H, verbosity):
     if verbosity:
         plt.figure()
         plt.plot(Uin)
-        plt.grid(True)
-        plt.ylabel('u_in')
-        plt.xlabel('punkte')
+        plt.title('Uquest')
+        # plt.grid(True)
+        plt.ylabel('u')
+        plt.xlabel('t')
         plt.show()
 
     return (Uin)

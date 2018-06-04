@@ -33,18 +33,10 @@ def compute(Uin, Uquest, N, verbosity):
     for ind in [1,2,3]:
         U[:,(ind-1)] = [np.power(x,ind) for x in Uin]
 
-    print("LGS lösen")
+    # print("LGS lösen")
     a=np.linalg.lstsq(U,np.transpose(Uquest),rcond=None)
     lsg=a[0]
-    print(lsg)
-    if verbosity:
-        compute_K_from_a.compute(lsg, True)
-        plt.figure
-        plt.plot(Uin)
-        plt.plot(Uquest)
-        #plt.title('Spannungssignale')
-        #plt.ylabel('u in mV')
-        #plt.legend('U_in', 'H^-1*U_out')
-        plt.show()
+    # print(lsg)
+ s
     
     return (lsg)

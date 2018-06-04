@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def create(fq1, fq2, vpp, samplerate2, verbosity):
+def create(fq1=51, fq2=21, vpp=300, samplerate2= 55556, verbosity=False):
 
 
     if samplerate2 % 2 == 1 :
