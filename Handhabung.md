@@ -13,7 +13,7 @@ Grundeinstellung AWG: Kanäle 1 & 2 über Tracking gleich stellen
 
 PC: 
 - Beachte Fire-Wall / IP-Erlaubnis gemäß Anleitung Denys (Appendix 8.1.1)
-	- NI-Visa installieren siehe Website
+	- NI-Visa installieren siehe Website (z.B. unter dem [link](http://search.ni.com/nisearch/app/main/p/bot/no/ap/tech/lang/de/pg/1/sn/ssnav:drv/q/ni%20visa%20/)
 	- Treiber für Keysight laden:
 		!!! Bei Erstellen des Dokuments noch nicht auf richtiges Funktionieren geprüft!
 		-- IviSharedComponents (nicht: .NET) in der entsprechenden Version, 2.4.2 oder höher unter 
