@@ -20,6 +20,7 @@ PC:
 			http://www.ivifoundation.org/shared_components/Default.aspx
 		-- 335XX / 336XX Function / Arbitrary Waveform Generator IVI and MATLAB Instrument Drivers unter:
 			https://www.keysight.com/main/software.jspx?ckey=1937336&lc=ger&cc=DE&nid=-11143.0.00&id=1937336
+	- PyVISA in Python installieren, z.B. Version 1.9.0
 		
 		
 ###Getting started:
