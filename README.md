@@ -123,6 +123,16 @@ Ja, wird uns zu geschickt.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 #### Frage:<br/>
+Was bedeutet die Linearisierungsgerade im Matlab Code compute_Uin_from_Uquest?
+
+#### Überlegung:<br/>
+Jens Fragen.
+
+#### Antwort:<br/>
+noch keine Antwort
+
+----------------------------------------------------------------------------------------------------------------------------------------
+#### Frage:<br/>
 Nehmen wir an, dass die nichlineare Verzerrung frequenzuanhängig ist?
 
 #### Überlegung:<br/>
