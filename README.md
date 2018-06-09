@@ -206,7 +206,7 @@ Funktioniert die Ausführung vom eigenen PC mit den unter "Handhabung" aufgefüh
 Beim nächsten Mal an der GSI ausprobieren.
 
 #### Antwort:<br/>
---- Ausstehend
+Funktionsweise Oszi noch nicht
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -215,30 +215,10 @@ Beim nächsten Mal an der GSI ausprobieren.
 
 ## Zeitplanung:
 
-### Abwesenheiten ab mehreren Tagen:
-
-#### Juni:
-
-#### Juli:
-
-#### August:
-	- 18. bis 21. : Jonas erreichbar, zeitlich sehr eingeschränkt
-
-#### September:
-	- 3. bis 14.9. : Jonas erreichbar, zeitlich sehr eingeschränkt
 
 ### Termine & Treffen
 
-#### 11.05. 11:00 - Treffen an der TU
-
-Zielsetzung: 
- - Die Unterlagen besprechen und den weiteren Verlauf planen
-
-Status: Findet statt
-
-Report: Erste grobe Zuteilung der Aufgaben vorgenommen.
-
-#### 18.05. 11:00 - Termin mit Jen
+#### 18.05. 11:00 - Termin mit Jens
 
 Zielsetzung: 
   - Sich die Geräte erklären lassen  

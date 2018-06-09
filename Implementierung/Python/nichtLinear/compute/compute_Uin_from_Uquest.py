@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 
 
 def compute(Uquest, K, verbosity=False):
+    #VAS fuer Funktionalitaet ist Verhalten einer Potenzreihe in K -> keine Spruenge zw zwei Werten
 
     # dummy value, damit der unit test kompeliert:
     #Uin = np.zeros(len(Uquest))
@@ -29,9 +30,9 @@ def compute(Uquest, K, verbosity=False):
     # Uquest i d Form (Time, Voltage) -> Uquest(:, 0) = Time, Uquest(:, 1) = Voltage [V]
     # K i d Form (Uin, Uquest) -> K(:, 0) = Uin Werte der Kennlinie in [mV], K(:, 1) = Uquest-Werte der Standard-Kennlinie in [mV]
     # Notwendig:
-    # ----------------------------- Amplitude von U_in wird nicht berechnet! worauf ist K geeicht????
 
     # schraenke K auf surjektiven Bereich ein ---- ggf spaeter als helper auslagern!
+    # erste Maxima und Minima fuer N != 3
     K_ind_high = int(np.argmax(K[:, 0]))
     K_ind_low = int(np.argmin(K[:, 0]))
     K = K[K_ind_low:K_ind_high, :]
