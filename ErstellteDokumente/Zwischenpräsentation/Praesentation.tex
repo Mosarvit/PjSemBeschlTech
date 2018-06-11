@@ -1,0 +1,580 @@
+%Struktur: 20 min Vortrag mit 1,5 min pro Folie -> 15 Folien inkl. Titelfolie
+%10 min Fragen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[colorbacktitle,inverttitle,landscape,presentation,
+	english,
+	aspectratio=43, %43 or 169, 1610
+	accentcolor=tud9b, %tud9b (temf) or tud5b (gsce) 
+]{tudbeamer}
+
+%%additional packages(Praesentation)
+%%standard:
+
+%%language:
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%%math:
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+%%tikz:
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage[siunitx,americaninductors]{circuitikz}
+\usepackage{siunitx}
+%%pgfplots:
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{patchplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}\usepgfplotslibrary{units}
+%%scaling:
+\usepackage{adjustbox}
+\usepackage{wrapfig,lipsum,booktabs}
+%%additional packages(Praesentation)
+ 
+
+%needs to come last
+\usepackage{temfbeamer}
+
+%remove TU logo from every slide but the title
+\setbeamertemplate{headline}[TUD theme nologo] 
+
+%set date
+\date{April 19, 2018}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Time parallelised Waveform Relaxation for Field/Circuit Coupled Systems}
+
+\subtitle{\\[0.3\baselineskip]
+	Artem Moskalew, Frederik Quetscher and Peter Förster\\[0.3\baselineskip]
+{\small Idoia Cortes Garcia, M.Sc., Iryna Kulchytska-Ruchka, M.Sc.,\linebreak Prof. Dr. Sebastian Schöps}\\
+[0.3\baselineskip]
+{\tiny Projektseminar Elektromagnetisches CAD}\\[0.3em]
+	\mbox{\scriptsize}~}
+	
+\institute[TU Darmstadt | Fachbereich 18 | Institut Theorie Elektromagnetischer Felder]{Institut für Theorie Elektromagnetischer Felder, TU Darmstadt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+\begin{titleframe}
+	\tudtitle[images/temf_logo.pdf]{images/temf_background.jpg} 
+	%\tudtitle[images/gsce_logo.pdf]{images/gsce_background.jpg}
+	\end{titleframe}
+	
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents%[currentsection,subsectionstyle=show/show/hide]
+\end{frame}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Einführung}
+
+\subsection{Problemstellung}
+\input{slides/Problemstellung}
+
+\subsection{Zielsetzung}
+\input{slides/Zielsetzung}
+
+\subsection{Gegeben}
+\input{slides/Gegeben}
+
+\section{Erreichtes}
+
+\subsection{Gerätekommunikation}
+\input{slides/ResultGeraetekommunikation}
+
+\subsection{Code}
+\input{slides/ResultCode}
+
+\section{Evaluierung}
+\subsection{Gerätekommunikation}
+\input{slides/EvalGeraetekommunikation}
+
+\subsection{Code}
+\input{slides/EvalCode}
+
+\section{Ausblick}
+\input{slides/Ausblick}
+
+	
+%\section{Motivation}
+%\begin{frame}
+%\frametitle{Motivation}
+%	\begin{itemize}
+%	\item field/circuit coupling enables detailed simulation of the electromagnetic field inside a device coupled to a circuit
+%	
+%	\item can be achieved using a Waveform Relaxation (WR) scheme
+%	
+%	\item used to simulate the protection system of the superconducting magnets at the LHC (CERN)
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Problem setting}
+%	\begin{itemize}
+%	\item solving the equations formulated during field/circuit coupling monolithically is computationally costly 
+%	
+%	\item WR can provide speed up by applying different solvers for field and circuit parts respectively
+%	
+%	\item parallelising parts of the simulation could provide further speed up \linebreak $\rightarrow$ Parareal is a parallel in time integration method
+%	
+%	\item How can WR and Parareal be combined efficiently?
+%	\end{itemize}
+%\end{frame}
+%		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\section{Problem setting}
+%\begin{frame}
+%\frametitle{Magnetic Vector Potential (MVP)}
+%	\begin{itemize}
+%	\item in the continous form the MVP is denoted as $\vec{A}$ and the equation reads
+%	\begin{equation*}
+%	\nabla\times(\nu\nabla\times\vec{A}) + \sigma\frac{\partial\vec{A}}{\partial \mathit{t}} = \vec{J}_{\mathrm{src}}
+%	\end{equation*}
+%	where $\nu$ = $\mu^{-1}$ is the reluctivity, $\mu>0$ the permeability and $\sigma\geq0$ the conductivity
+%	
+%	\item MVP and current through the MQS device are coupled by \textit{winding functions} denoted as $\vec{\chi}$
+%	\begin{equation*}
+%\vec{J}_{\mathrm{src}} = \vec{\chi}\ \mathbf{i}
+%	\end{equation*}
+%	where $\vec{J}_{\mathrm{src}}$ is the current density inside the MQS device and $\mathbf{i}$ the current in the circuit	
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Magnetic Vector Potential (MVP)}
+%	\begin{itemize}
+%	\item in the discretised form the MVP is denoted as $\mathbf{a}$ and described by the discrete curl-curl equation
+%	\begin{equation*}
+%	\mathbf{M}_{\sigma}\frac{\mathrm{d}}{\mathrm{d}\mathit{t}}\mathbf{a} + \mathbf{K}_{\nu}(\mathbf{a})\mathbf{a} = \mathbf{j}_{\mathrm{str}}
+%	\end{equation*}
+%	
+%	\item where $\mathbf{M}_{\sigma}$ is the conductivity matrix and $\mathbf{K}_{\nu}(\mathbf{a})$ is the nonlinear curl-curl matrix		
+%	
+%	\item in the case of stranded conductor models the circuit coupling is given by
+%	\begin{equation*}
+%	\mathbf{j}_{\mathrm{str}} = \mathbf{X}_{\mathrm{str}}\mathbf{i}_{\mathrm{str}}
+%	\end{equation*}
+%	and
+%	\begin{equation*}
+%	\mathbf{X}_{\mathrm{str}}^{T}\frac{\mathrm{d}}{\mathrm{d}\mathit{t}}\mathbf{a} = \mathbf{v}_{\mathrm{str}}
+%	\end{equation*}
+%	where $\mathbf{X}_{\mathrm{str}}$ is the discretised winding function
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Modified Nodal Analysis (MNA)}
+%	\begin{itemize}
+%	\item the classical modified nodal analysis (MNA) gives the following system of equations
+%	\begin{align*}
+%	\mathbf{A}_{C}\mathbf{C}_{Q}\mathbf{A}_{C}^{T}\frac{\mathrm{d}\mathbf{u}}{\mathrm{d}\mathit{t}} + \mathbf{A}_{R}\mathbf{G}_{R}\mathbf{A}_{R}^{T}\mathbf{u} + \mathbf{A}_{L}\mathbf{i}_{L} + \mathbf{A}_{V}\mathbf{i}_{v} + \mathbf{A}_{M}\mathbf{i}_{M} + \mathbf{A}_{I}\mathbf{i}_{s}(\mathit{t}) = \mathbf{0}\\
+%	\mathbf{L}_{\Phi}\frac{\mathrm{d}\mathbf{i}_{L}}{\mathrm{d}\mathit{t}} - \mathbf{A}_{L}^{T}\mathbf{u} = \mathbf{0}\\
+%	\mathbf{A}_{V}^{T}\mathbf{u} - \mathbf{v}_{s}(\mathit{t}) = \mathbf{0}\\
+%	\mathbf{A}_{M}^{T}\mathbf{u} - \mathbf{v}_{M}(\mathit{t}) = \mathbf{0}
+%	\end{align*}
+%	where $\mathbf{A}_*$ denotes the respective incidence matrix, $\mathbf{C}_{Q}$, $\mathbf{G}_{R}$ and $\mathbf{L}_{\Phi}$ are diagonal matrices containing the parameter values and $\mathbf{u}$ contains the node potentials
+%	\end{itemize}
+%\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	
+%\section{Waveform Relaxation}
+%\begin{frame}
+%\frametitle{Waveform Relaxation}	
+%	\begin{itemize}
+%	\item subsystems can be solved independently
+%	
+%	\item solutions of each subsystem are exchanged iteratively until convergence 	
+%	\end{itemize}
+%	
+%	\begin{figure}
+%	\begin{tikzpicture}[scale = 1.5]
+%    \draw[thick,->] (0,1) -- (6,1);
+%    \draw (1, 1) -- (1, 1.1) node [above=1pt]{\textcolor{gray}{$T_{1,1}$}};
+%    \draw (3, 1) -- (3, 1.1) node [above=1pt]{\textcolor{gray}{$T_{3,1}$}};
+%    \draw (5, 1) -- (5, 1.1) node [above=1pt]{\textcolor{gray}{$T_{5,1}$}};
+%    \foreach \t in {1,2,...,5}
+%    \draw [-stealth, bend angle=45, bend left]  ({\t-1},1) to (\t,1);                        
+%    \draw[thick,->] (0,0) -- (6,0);
+%    \draw (0.66, 0) -- (0.66, -0.1) node [below=1pt]{\textcolor{gray}{$T_{1,2}$}};
+%    \draw (1.33, 0) -- (1.33, -0.1) node [below=1pt]{\textcolor{gray}{$T_{2,2}$}};
+%    \draw (2.66, 0) -- (2.66, -0.1) node [below=1pt]{\textcolor{gray}{$T_{4,2}$}};
+%    \draw (3.33, 0) -- (3.33, -0.1) node [below=1pt]{\textcolor{gray}{$T_{5,2}$}};
+%    \draw (4.66, 0) -- (4.66, -0.1) node [below=1pt]{\textcolor{gray}{$T_{7,2}$}};
+%    \draw (5.33, 0) -- (5.33, -0.1) node [below=1pt]{\textcolor{gray}{$T_{8,2}$}};
+%    \foreach \t in {0.66,1.33,...,5.66}
+%    \draw [-stealth, bend angle=45, bend right]  ({\t-0.66},0) to (\t,0);                       
+%    \draw (0, 0) -- (0, 1.2) node [above=1pt]{$t_0$};
+%    \draw (2, 0) -- (2, 1.2) node [above=1pt]{$t_1$};
+%    \draw (4, 0) -- (4, 1.2) node [above=1pt]{$t_2$};                       
+%    \foreach \t in {2,4}
+%    \draw [-stealth, dashed, tud5c]  (\t,1) to ({\t-2},0);
+%    \foreach \t in {2,4}
+%    \draw [-stealth, dashed, tud5c]  (\t,0) to ({\t-2},1);                       
+%    \node at (5,0.5) {\huge{\textcolor{tud5c}{...}}};                             
+%	\end{tikzpicture}
+%	\caption{WR scheme}
+%	\end{figure}
+%\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\section{Validation of WR}
+%\begin{frame}
+%\frametitle{Validation of WR}	
+%	\begin{itemize}
+%	\item MQS device represents a steel pipe cross section
+%		
+%	\item aim is to calculate the magnetic flux density inside the MQS device
+%	
+%	\item monolithic solution (Mono) is used as reference
+%	\end{itemize}		
+%	
+%	\begin{figure}
+%	\begin{minipage}{0.5\textwidth}
+%	\begin{center}
+%	\begin{tikzpicture}[scale = 0.5]
+%	\filldraw[fill=lightgray, draw=black] (0,0) circle[radius=2];
+%	\filldraw[fill=white, draw=black] (0,0) circle[radius=1.2];
+%	\draw[pattern=dots, pattern color=black] (0,0) circle[radius=0.3];
+%	\end{tikzpicture}
+%	\caption{steel pipe cross section}
+%	\end{center}
+%	\end{minipage}\begin{minipage}{0.5\textwidth}
+%	\begin{center}
+%	\begin{adjustbox}{scale=0.4}
+%	\begin{circuitikz}
+%	\draw (0,0)
+%	to[sV,v=$v_s$] (0,2)
+%	to[R=$R_S$] (2,2)
+%	to[L=$L_S$] (4,2)
+%	to[C=$C_S$] (6,2)
+%	to[short] (6,2)
+%	to[R=$R_P$] (6,0);
+%	\draw (6,2)
+%	to[short] (8,2) 
+%	to[L=$L_P$] (8,0);
+%	\draw (8,2)
+%	to[short] (10,2)
+%	to[C=$C_P$] (10,0);
+%	\draw (10,2)
+%	to[short] (12,2)
+%	to[twoport, t=$MQS$] (12,0)
+%	to[short] (0,0);	
+%	\end{circuitikz}
+%	\end{adjustbox}
+%	\caption{circuit with MQS device}
+%	\end{center}
+%	\end{minipage}
+%	\end{figure}
+%\end{frame}
+%
+%
+%
+%
+% 
+%
+%\input{WR_normal1.tex}
+%
+%%\input{Numerical_Test2.tex}
+%
+%%\input{WR_normal2.tex}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\section{Parareal algorithm}
+%\begin{frame}
+%\frametitle{Parareal algorithm}
+%	\begin{itemize}
+%	\item uses a very accurate and costly fine propagator, computed in parallel
+%	
+%	\item uses a less accurate but cheap coarse propagator, computed sequentially
+%	\end{itemize}
+%	
+%	\begin{figure}
+%	\begin{minipage}{0.5\textwidth}
+%	\begin{center}
+%	\begin{tikzpicture}[scale=1]
+%	\draw[dotted,very thin,gray] (1,0) -- (1,2);
+%	\draw[dotted,very thin,gray] (2,0) -- (2,2);
+%	\draw[dotted,very thin,gray] (3,0) -- (3,2);
+%	\draw [<->,thick] (0,2) node (yaxis) [above] {$u(\mathit{t})$} |- (3.5,0) node (xaxis) [right] {$\mathit{t}$};
+%	\draw (0,0) node[below]{\textcolor{black}{$t_{0}$}};
+%	\draw (1,0) node[below]{\textcolor{black}{$t_{1}$}};
+%	\draw (2,0) node[below]{\textcolor{black}{$t_{2}$}};
+%	\draw (3,0) node[below]{\textcolor{black}{$t_{3}$}};
+%	\coordinate (A) at (0,0) {};
+%	\coordinate (B) at (1,0.7) {};
+%	\coordinate (C) at (2,0.9) {};
+%	\coordinate (D) at (3,0.3) {};
+%	\fill [cyan] (A) circle(2pt);
+%	\draw [cyan] plot [smooth, tension=0.5] coordinates{(A) (0.4,0.2) (B)};
+%	\fill [cyan] (B) circle(2pt);
+%	\draw [cyan] plot [smooth, tension=0.4] coordinates{(B) (1.4,1.3) (C)};
+%	\fill [cyan] (C) circle(2pt);
+%	\draw [cyan] plot [smooth, tension=0.4] coordinates{(C) (2.3,0.5) (D)};
+%	\fill [cyan] (D) circle(2pt);
+%	\coordinate (E) at (1,0.4) {};
+%	\coordinate (F) at (2,1.5) {};
+%	\coordinate (G) at (3,0.4) {};
+%	\draw [olive] plot [smooth, tension=0.9] coordinates{(A) (0.4,0.1) (E)};
+%	\draw [olive] plot [smooth, tension=0.4] coordinates{(B) (1.4,1.8) (F)};
+%	\draw [olive] plot [smooth, tension=0.8] coordinates{(C) (2.4,0.6) (G)};
+%	\end{tikzpicture}
+%	\caption{first iteration of coarse propagator in \textcolor{cyan}{cyan} and fine propagator in \textcolor{olive}{olive}, initial values for fine marked in \textcolor{cyan}{cyan}}
+%	\end{center}
+%	\end{minipage}\begin{minipage}{0.5\textwidth}
+%	\begin{center}
+%	\begin{tikzpicture}[scale=1,node distance=2cm]
+%	\draw[dotted,very thin,gray] (1,0) -- (1,2);
+%	\draw[dotted,very thin,gray] (2,0) -- (2,2);
+%	\draw[dotted,very thin,gray] (3,0) -- (3,2);
+%	\draw [<->,thick] (0,2) node (yaxis) [above] {$u(\mathit{t})$} |- (3.5,0) node (xaxis) [right] {$\mathit{t}$};
+%	\draw (0,0) node[below]{\textcolor{black}{$t_{0}$}};
+%	\draw (1,0) node[below]{\textcolor{black}{$t_{1}$}};
+%	\draw (2,0) node[below]{\textcolor{black}{$t_{2}$}};
+%	\draw (3,0) node[below]{\textcolor{black}{$t_{3}$}};
+%	\node [fill,circle,red,scale=0.5] (A) at (0,0) {};
+%	\node [fill,circle,cyan,scale=0.5] (B) at (1,0.7) {};
+%	\node [fill,circle,cyan,scale=0.5] (C) at (2,0.9) {};
+%	\node [fill,circle,cyan,scale=0.5] (D) at (3,0.3) {};
+%	\draw [orange] plot [smooth, tension=0.5] coordinates{(A) (0.4,0.2) (B)};
+%	\draw [cyan] plot [smooth, tension=0.4] coordinates{(B) (1.4,1.3) (C)};
+%	\draw [cyan] plot [smooth, tension=0.4] coordinates{(C) (2.3,0.5) (D)};
+%	\node [fill,circle,red,scale=0.5] (E) at (1,0.4) {};
+%	\draw [->,red] (B) -- (E);
+%	\coordinate (F) at (2,1.5) {};
+%	\coordinate (G) at (3,0.4) {};
+%	\draw [olive] plot [smooth, tension=0.9] coordinates{(A) (0.4,0.1) (E)};
+%	\draw [olive] plot [smooth, tension=0.4] coordinates{(B) (1.4,1.8) (F)};
+%	\draw [olive] plot [smooth, tension=0.8] coordinates{(C) (2.4,0.6) (G)};
+%	\coordinate (H) at (2,0.8);
+%	\coordinate (I) at (3,0.6);
+%	\node [fill,circle,red,scale=0.5] (K) at (2,1.4) {};
+%	\draw [->,red] (C) -- (K);
+%	\draw [orange] plot [smooth, tension=0.4] coordinates{(E) (1.5,0.5) (H)};
+%	\draw [orange] plot [smooth, tension=0.9] coordinates{(K) (2.4,0.9) (I)};
+%	\node [fill,circle,red,scale=0.5] (L) at (3,0.7) {};
+%	\draw [->,red] (D) -- (L);	
+%	\end{tikzpicture}
+%	\caption{second iteration of coarse propagator in \textcolor{orange}{orange}, updated initial values in \textcolor{red}{red}}
+%	\end{center}
+%	\end{minipage}
+%	\end{figure}
+%\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\section{Time parallelised WR}
+%\begin{frame}
+%\frametitle{Time parallelised WR}
+%	\begin{itemize}
+%	\item first variation uses WR for both coarse and fine propagators, other two variants use WR as fine and introduce different coarse propagators
+%	
+%	\item let
+%	\begin{align}
+%\mathbf{u}_n^k(t) = \mathcal{F}(\mathit{t}, \mathit{t}_n, \mathbf{U}_n^k),\ \mathit{t} \in T_n
+%	\end{align} define the entire solution of fine 
+%	
+%	\item let the initial guess for the next iteration be defined as 	\begin{align}
+%\mathbf{w}_n^k(\mathit{t}) = \mathbf{u}_n^{k}(\mathit{t}) - \mathbf{U}_n^k + \mathbf{U}_n^{k+1}
+%	\end{align}
+%	
+%	\item functionality referred to as (\textit{StartAtPrev}), might lead to WR converging in less iterations
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Time parallelised WR}
+%	\begin{itemize}
+%	\item[1.] \textit{(PR-WR)} coarse propagator of first variant implements WR with less steps per time window and a higher tolerance
+%	
+%	\item[2.] \textit{(PR-LK)} approximates the MQS device by a constant linear inductivity defined as
+%	\begin{align*}
+%L_{\mathrm{MQS}} = \mathbf{X}_{\mathrm{str}}^T \mathbf{K}_{\nu}^{-1} \mathbf{X}_{str}
+%	\end{align*}
+%	first circuit system containing $L_{\mathrm{MQS}}$ is solved to determine initial values for $\mathbf{i}$ and $\mathbf{v}$
+%	then a static approximation of the field system is solved
+%\begin{align*}
+%\mathbf{K}_{\nu}\mathbf{a} = \mathbf{X}_{\mathrm{str}}\mathbf{i}_{\mathrm{str}}
+%\end{align*}
+%	\end{itemize}
+%\end{frame}	
+%
+%\begin{frame}
+%\frametitle{Time parallelised WR}
+%	\begin{itemize}
+%	\item[3.] \textit{(PR-LMK)} uses the same approximation $L_{\mathrm{MQS}}$ and same circuit system to determine initial values for $\mathbf{i}$ and $\mathbf{v}$
+%	
+%	then solves the entire field system using only a few steps in time
+%\begin{align*}
+%\mathbf{M}_{\sigma}\frac{\mathrm{d}}{\mathrm{d}\mathit{t}}\mathbf{a} + \mathbf{K}_{\nu}(\mathbf{a})\mathbf{a} = \mathbf{X}_{\mathrm{str}}\mathbf{i}_{\mathrm{str}}
+%\end{align*}
+%	\end{itemize}
+%\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\input{PR_wo_StartAtPrev.tex}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\section{Numerical Tests}
+%
+%\input{Numerical_Test1.tex}
+%
+%%%\begin{frame} 
+%% \frametitle{Numerical Tests} 
+%% 	\begin{figure} 
+%% 	\begin{center}	 
+%% 	\begin{tikzpicture}[scale=0.7] 
+%% 		\begin{loglogaxis}[ 
+%% 		xlabel={number of field systems solved}, 
+%% 		ylabel={$\frac{\| \mathbf{i}_{*} - \mathbf{i}_{Mono}\|_2}{\| \mathbf{i}_{Mono}\|_2}$}, 
+%% 		grid=major, 
+%% 		cycle multi list={color list\nextlist mark=none}, 
+%% 		legend entries={WR,PR-WR w/o StartAtPrev,PR-WR w/ StartAtPrev,PR-LK w/o StartAtPrev,PR-LK w/ StartAtPrev,PR-LMK w/o StartAtPrev,PR-LMK w/ StartAtPrev}, 
+%% 		legend style={at={(1.5,1)},anchor=north} 
+%% 		]
+%% 
+%% 		\addplot table[x=num_steps_WR, y=err_WR, col sep=comma] {images/Evaluation_window_size_1_96/WR_Evaluation_window_size_1_96.csv};  
+%% 		\addplot table[x=num_steps_PR, y=err_PR, col sep=comma] {images/Evaluation_window_size_1_96/PR_WR_noPrev_Evaluation_window_size_1_96.csv};  
+%% 		\addplot table[x=num_steps_PR, y=err_PR, col sep=comma] {images/Evaluation_window_size_1_96/PR_WR_withPrev_Evaluation_window_size_1_96.csv};  
+%% 		\addplot table[x=num_steps_PR, y=err_PR, col sep=comma] {images/Evaluation_window_size_1_96/PR_LK_noPrev_Evaluation_window_size_1_96.csv};  
+%% 		\addplot table[x=num_steps_PR, y=err_PR, col sep=comma] {images/Evaluation_window_size_1_96/PR_LK_withPrev_Evaluation_window_size_1_96.csv};  
+%% 		\addplot table[x=num_steps_PR, y=err_PR, col sep=comma] {images/Evaluation_window_size_1_96/PR_LMK_noPrev_Evaluation_window_size_1_96.csv};  
+%% 		\addplot table[x=num_steps_PR, y=err_PR, col sep=comma] {images/Evaluation_window_size_1_96/PR_LMK_withPrev_Evaluation_window_size_1_96.csv};  
+%%		\end{loglogaxis}
+%%	\end{tikzpicture} 
+%% 	\caption{comparison of computational effort for different algorithms and different accuracies} 
+%% 	\end{center} 
+%% 	\end{figure}
+%%\end{frame}
+%%
+%%
+%%
+%%
+%%\begin{frame}
+%%\frametitle{Numerical Tests}
+%%	\begin{figure}
+%%	\begin{center}	
+%%	\begin{tikzpicture}[scale=0.7]
+%%		\begin{loglogaxis}[
+%%		xlabel={number of field systems solved},
+%%		ylabel={$\frac{\| \mathbf{i}_{*} - \mathbf{i}_{Mono}\|_2}{\| \mathbf{i}_{Mono}\|_2}$},
+%%		grid=major,
+%%		cycle multi list={color list\nextlist mark=none},
+%%		legend entries={WR,PR-WR w/o StartAtPrev,PR-WR w/ StartAtPrev,PR-LK w/o StartAtPrev,PR-LK w/ StartAtPrev,PR-LMK w/o StartAtPrev,PR-LMK w/ StartAtPrev},
+%%		legend style={at={(1.5,1)},anchor=north}
+%%		]
+%%		\addplot table[x index=0,  y index=1, col sep=comma] {images/Evaluation_window_size_1_96/WR_Evaluation_window_size_1_96.csv}; 
+%%		\end{loglogaxis}
+%%	\end{tikzpicture}
+%%	\caption{comparison of computational effort for different algorithms and different accuracies}
+%%	\end{center}
+%%	\end{figure}
+%%\end{frame}
+%	
+%%\begin{frame}
+%%\frametitle{Numerical Tests}
+%%	\begin{figure}		
+%%	\begin{center}	
+%%	\begin{tikzpicture}[scale=0.7]
+%%		\begin{loglogaxis}[
+%%		xlabel={number of time windows},
+%%		ylabel={number of field systems solved},
+%%		grid=major,
+%%		cycle multi list={color list\nextlist [1 of]mark list},
+%%		legend entries={WR,PR-WR w/o StartAtPrev,PR-WR w/ StartAtPrev,PR-LK w/o StartAtPrev,PR-LK w/ StartAtPrev,PR-LMK w/o StartAtPrev,PR-LMK w/ StartAtPrev},
+%%		legend style={at={(1.5,1)},anchor=north}
+%%		]
+%%		\addplot table[x=num_wins_WR, y=steps_WR, col sep=comma] {images/Evaluation_window_size_1_1/WR_Evaluation_window_size_1_1.csv};
+%%		\addplot table[x=num_wins_PR, y=steps_PR, col sep=comma] {images/Evaluation_window_size_1_1/PR_WR_noPrev_Evaluation_window_size_1_1.csv};
+%%		\addplot table[x=num_wins_PR, y=steps_PR, col sep=comma] {images/Evaluation_window_size_1_1/PR_WR_withPrev_Evaluation_window_size_1_1.csv};
+%%		\addplot table[x=num_wins_PR, y=steps_PR, col sep=comma] {images/Evaluation_window_size_1_1/PR_LK_noPrev_Evaluation_window_size_1_1.csv};
+%%		\addplot table[x=num_wins_PR, y=steps_PR, col sep=comma] {images/Evaluation_window_size_1_1/PR_LK_withPrev_Evaluation_window_size_1_1.csv};
+%%		\addplot table[x=num_wins_PR, y=steps_PR, col sep=comma] {images/Evaluation_window_size_1_1/PR_LMK_noPrev_Evaluation_window_size_1_1.csv};
+%%		\addplot table[x=num_wins_PR, y=steps_PR, col sep=comma] {images/Evaluation_window_size_1_1/PR_LMK_withPrev_Evaluation_window_size_1_1.csv};
+%%		\end{loglogaxis}
+%%	\end{tikzpicture}
+%%	\caption{comparison of computational effort for different algorithms and different numbers of time windows}
+%%	\end{center}
+%%	\end{figure}
+%%\end{frame}
+%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{frame}
+%\frametitle{Conclusion}
+%	\begin{itemize}
+%	\item speedup is shown for different combinations of WR and PR
+%	
+%	\item \textit{(PR-WR)} provides speedup under many circumstances
+%	
+%	speedup for other variants depends on window size, among other factors
+%	
+%	\item all combinations of WR and PR maintain the benefits of WR
+%	\end{itemize}
+%\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{frame}
+%\frametitle{List of References}
+%	\begin{enumerate}
+%	\item[{[1]}]
+%Sebastian Schöps, Idoia Cortes Garcia, Michał Maciejewski and Bernhard
+%Auchmann. Reduced Order Modelling for the Simulation of Quenches in
+%Superconducting Magnets. In Proceedings of the 7th GACM Colloquium on
+%Computational Mechanics for Young Scientists from Academia and Industry
+%October 11-13, 2017 in Stuttgart, Germany.
+%
+%	\item[{[2]}]
+%Sebastian Schöps, Herbert De Gersem, Thomas Weiland, (2013) "Winding
+%functions in transient magnetoquasistatic field-circuit coupled simulations",
+%COMPEL: The International Journal for Computation and Mathematics in
+%Electrical and Electronic Engineering, Vol. 32 Issue: 6, pp.2063-2083.
+%
+%	\item[{[3]}]
+%Sebastian Schöps, Herbert De Gersem and Andreas Bartel. A
+%Cosimulation Framework for Multirate Time Integration of Field/Circuit
+%Coupled Problems. IEEE TRANSACTIONS ON MAGNETICS, VOL. 46,
+%NO. 8, pp.3233-3236, AUGUST 2010.
+%	\end{enumerate}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{List of References}
+%	\begin{enumerate}
+%	\item[{[4]}]
+%Jacques-Louis Lions, Yvon Maday, Gabriel Turinici. Résolution d’EDP par
+%un schéma en temps «pararéel». C. R. Acad. Sci. Paris, t. 332, Série I, p.
+%661–668, 2001.
+%
+%	\item[{[5]}]
+%Thomas Cadeau and Frédéric Magoulès. Coupling the Parareal algorithm
+%with the Waveform Relaxation method for the solution of Differential
+%Algebraic Equations. In Proceedings of the 10th International Symposium
+%on Distributed Computing and Applications to Business, Engineering and
+%Science. 2011.
+%
+%	\item[{[6]}]
+%Chung-Wen Ho, Albert E. Ruehli and Pierce A. Brennan. The Modified
+%Nodal Approach to Network Analysis. IEEE Transactions on Circuits and Systems, Vol. 22, No.6, pp.504-509, June 1975.
+%	\end{enumerate}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+\end{document}
