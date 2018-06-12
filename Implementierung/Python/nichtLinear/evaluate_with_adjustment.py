@@ -27,5 +27,10 @@ def evaluate() :
     sigma_quest = 0.5
     Hneu = adjust_H(H, Uout_ideal, Uout_measured, sigma_H )
     aneu = adjust_a(a, Uin, Uout_measured, sigma_quest )
+    Kneu = compute_K_from_a.compute(aneu, verbosity)
+
+    Uquest_ideal_adj = compute_Uquest_from_Uout.compute(Uout_ideal, Hneu, verbosity)
+    Uin_adj = compute_Uin_from_Uquest.compute(Uquest_ideal_adj, Kneu, verbosity)
+    Uout_measured_adj = measure_Uout(Uin_adj, verbosity)
 
 evaluate()
