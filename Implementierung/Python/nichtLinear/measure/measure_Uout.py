@@ -15,8 +15,8 @@ def measure(Uin, verbosity):
     samplerateAWG = 999900000
 
     def sendUinToAWG(Uin):
-        vpp = max(Uin)-min(Uin)
-        UinNormalized = Uin/vpp
+        vpp = max(Uin[1,:])-min(Uin[1,:])
+        UinNormalized = Uin[1,:]/vpp
         write_to_AWG.send(UinNormalized, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
 
     def receiveFromDSO(Uin):
