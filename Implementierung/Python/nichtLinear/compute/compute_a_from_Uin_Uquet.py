@@ -37,6 +37,6 @@ def compute(Uin, Uquest, N, verbosity):
     a=np.linalg.lstsq(U,np.transpose(Uquest),rcond=None)
     lsg=a[0]
     # print(lsg)
- s
+ 
     
     return (lsg)
