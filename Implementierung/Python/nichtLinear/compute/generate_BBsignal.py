@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+from helpers import csvHelper
 
 def generate(fq1=51, fq2=21, vpp=300, samplerate2= 55556, saveCSV=True, verbosity=False):
 
@@ -46,10 +47,9 @@ def generate(fq1=51, fq2=21, vpp=300, samplerate2= 55556, saveCSV=True, verbosit
         plt.show()
 
     if saveCSV :
-        with open('data/current_data/BBsignal_ideal.csv', 'w+', newline="") as csvfile:
-            writer = csv.writer(csvfile, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            for i in range(0, U2.shape[1]):
-                writer.writerow([str(U2[0,i]), str(U2[1,i])])
+
+        csvHelper.save_2cols('data/current_data/BBsignal_ideal.csv', U2[0,:], U2[1,:])
 
     return(U2)
+
+

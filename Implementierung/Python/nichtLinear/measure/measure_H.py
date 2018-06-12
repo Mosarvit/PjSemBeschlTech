@@ -2,6 +2,7 @@ from get import get_H
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
+from helpers import csvHelper
 
 def measure(loadCSV, verbosity):
 
@@ -14,6 +15,9 @@ def measure(loadCSV, verbosity):
         fmax = 80e6
         vpp = 40e-3
         f, Ha, Hph = get_H.get(fmax, vpp)
+
+        csvHelper.save_2cols('data/current_data/H_a.csv', f, Ha)
+        csvHelper.save_2cols('data/current_data/H_p.csv', f, Hph)
 
     # assemble H
 

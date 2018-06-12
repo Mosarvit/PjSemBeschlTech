@@ -32,7 +32,7 @@ def get(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
     import time
     import matplotlib.pyplot as plt
     import numpy as np
-    from helpers import FFT
+    from helpers import FFT, write_to_AWG
     import csv
     import os
 
@@ -77,7 +77,7 @@ def get(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
     ##################################################
     if writeAWG:
 
-        send_to_AWG(awg_volt, samplerateAWG, signal)
+        write_to_AWG.send(awg_volt, samplerateAWG, signal)
 
     ##################################################
     ################## Write to DSO ##################
