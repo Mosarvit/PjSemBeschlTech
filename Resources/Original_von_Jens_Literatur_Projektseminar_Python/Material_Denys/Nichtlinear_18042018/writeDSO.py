@@ -4,7 +4,7 @@ Created on Wed Dec 20 10:43:54 2017
 
 @author: denys
 """
-def read(samplerateOszi, awg_volt, fmax, signal):
+def writeDSO(samplerateOszi, awg_volt, fmax, signal):
     import visa
     import numpy as np
     import time
@@ -94,28 +94,7 @@ def read(samplerateOszi, awg_volt, fmax, signal):
                     #transfer of partial waveforms to and from the instrument.
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
        #last data point that will be transferred when using the CURVe? query
-
-    time_attempt = 1        #chooses version to wait for finishing commands
-    if time_attempt == 1:
-        time.sleep(5)       #enough time to finish every Process
-    elif time_attempt == 2:
-        DSO.query("*OPC?")  #new attempt 1 to reduce time to wait -> does not proceed until *OPC? is set to 1 by internal queue.
-                        # so, finishing this line in the program will last until the device is ready
-                        # In case this is not working, try DSO.write("*OPC?") instead, just as a guess
-                        # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
-    elif time_attempt == 3:
-        busy = DSO.query("BUSY?")          #new attempt 2 to reduce time to wait -> runs until OPC? is set to 1
-        while busy:                        #loop until not busy any more
-               time.sleep(0.01)         #just to pose less requests to DSO, 10 msec waiting time -> not necessary
-               busy = DSO.query("BUSY?")
-               print(a)                 #just to have a control option -> not necessary, it an attempt work
-                                        # In case this is not working, try DSO.write("BUSY") instead, just as a guess
-    else :
-        DSO.write("*WAI")   #new attempt 3 to reduce time to wait -> DSO will wait till commands above are finished.
-                            # python will go on and write the commands in the input buffer
-                            # they will be executed after WAI has finished
-    # new attempt 3 and another not named attempt are possible, but 1 and 2 are faster and more stable
-
+    time.sleep(5)
     dataUin = DSO.query("CURVe?")
     DSO.write("DATa:SOUrce MATH3")   #This command sets the location of
                                    #waveform data that is transferred from the
@@ -127,28 +106,7 @@ def read(samplerateOszi, awg_volt, fmax, signal):
                     #transfer of partial waveforms to and from the instrument.
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
          #last data point that will be transferred when using the CURVe? query
-
-    time_attempt = 1  # chooses version to wait for finishing commands
-    if time_attempt == 1:
-        time.sleep(5)  # enough time to finish every Process -> original implementation
-    elif time_attempt == 2:
-        DSO.query("*OPC?")  # new attempt 1 to reduce time to wait -> does not proceed until *OPC? is set to 1 by internal queue.
-        # so, finishing this line in the program will last until the device is ready
-        # In case this is not working, try DSO.write("*OPC?") instead, just as a guess
-        # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
-    elif time_attempt == 3:
-        busy = DSO.query("BUSY?")  # new attempt 2 to reduce time to wait -> runs until OPC? is set to 1
-        while busy:  # loop until not busy any more
-            time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
-            busy = DSO.query("BUSY?")
-            print(a)  # just to have a control option -> not necessary, it an attempt work
-            # In case this is not working, try DSO.write("BUSY") instead, just as a guess
-    else:
-        DSO.write("*WAI")  # new attempt 3 to reduce time to wait -> DSO will wait till commands above are finished.
-        # python will go on and write the commands in the input buffer
-        # they will be executed after WAI has finished
-    # new attempt 3 and another not named attempt are possible, but 1 and 2 are faster and more stable
-
+    time.sleep(5)
     dataUout = DSO.query("CURVe?")
     
     recordLength = DSO.query("HORIZONTAL:RECOrdlength?")

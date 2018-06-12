@@ -23,7 +23,7 @@ def measure(Uin, verbosity):
         vpp = max(Uin) - min(Uin)
         fmax = 80e6
         samplerateOszi = 100 * samplerateAWG
-        [time, dataUin, dataUout] = writeDSO.writeDSO(samplerateOszi, vpp, fmax, Uin)
+        [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin)
 
     sendUinToAWG(Uin)
     [time, dataUin, dataUout] = receiveFromDSO(Uin)
