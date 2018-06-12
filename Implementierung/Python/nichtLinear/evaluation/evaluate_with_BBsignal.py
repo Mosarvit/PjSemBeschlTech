@@ -11,9 +11,10 @@ from compute import compute_a_from_Uin_Uquet, compute_K_from_a, compute_Uin_from
 def evaluateWithSomeU_out() :
 
     verbosity = 1
+    loadCSV = 1
 
     Uout_ideal = generate_BBsignal.create(verbosity=verbosity)
-    H = measure_H.measure(verbosity)
+    H = measure_H.measure(loadCSV, verbosity)
     Uquest_ideal = compute_Uquest_from_Uout.compute(Uout_ideal, H, verbosity)
     Uin = Uquest_ideal
     Uout_measured = measure_Uout(Uin, verbosity)

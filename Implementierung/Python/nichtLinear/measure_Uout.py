@@ -16,7 +16,8 @@ def measure(Uin, verbosity):
 
     def sendUinToAWG(Uin):
         vpp = max(Uin)-min(Uin)
-        writeAWG.writeAWG(Uin, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
+        UinNormalized = Uin/vpp
+        send_to_AWG.send(UinNormalized, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
 
     def receiveFromDSO(Uin):
         vpp = max(Uin) - min(Uin)

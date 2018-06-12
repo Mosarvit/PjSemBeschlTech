@@ -2,11 +2,21 @@ import get_H
 import numpy as np
 import matplotlib.pyplot as plt
 
-def measure(verbosity):
-    fmax = 1000
-    vpp = 100
-    f, Ha, Hph = get_H.get(fmax, vpp)
-    H = np.zeros((len(f), 3));
+def measure(loadCSV, verbosity):
+
+    if loadCSV :
+        Ha = genfromtxt('data/currentdata/H_a.csv', delimiter=',')
+        Hph = genfromtxt('data/currentdata/H_p.csv', delimiter=',')[:,1]
+        f = Ha[:,0]
+        Ha = Ha[:,1]
+    else :
+        fmax = 1000
+        vpp = 100
+        f, Ha, Hph = get_H.get(fmax, vpp)
+        H = np.zeros((len(f), 3));
+
+    # assemble H
+    
     H[:,0] = f
     H[:,1] = Ha
     H[:,2] = Hph
