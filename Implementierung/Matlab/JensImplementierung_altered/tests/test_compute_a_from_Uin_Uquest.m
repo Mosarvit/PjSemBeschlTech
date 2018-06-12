@@ -1,12 +1,12 @@
 function passed = test_compute_a_from_Uin_Uquest()
 
     %load('matlab_Workspace_nichtlin_VV_AR.mat');
-    %load('..\..\Python\nichtLinear\data\testdata\Uquest_300.csv');
+    %load('..\..\Python\nichtLinear\data\test_data\Uquest_300.csv');
      
     verbosity = 0;
 
     load('data/matlab_Workspace_nichtlin_VV_AR.mat');
-    Uquest_300 = load('../../Python/nichtLinear/data/testdata/Uquest_300.csv');
+    Uquest_300 = load('../../Python/nichtLinear/data/test_data/Uquest_300.csv');
 
 %    keyboard;
     

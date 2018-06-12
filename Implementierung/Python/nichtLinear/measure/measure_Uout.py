@@ -5,7 +5,7 @@ Created on Thu Jul 13 11:22:44 2017
 @author: denys
 """
 from compute import compute_Uin_from_Uquest
-from helpers import writeAWG, writeDSO
+from helpers import read_from_DSO, write_to_AWG
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -17,7 +17,7 @@ def measure(Uin, verbosity):
     def sendUinToAWG(Uin):
         vpp = max(Uin)-min(Uin)
         UinNormalized = Uin/vpp
-        send_to_AWG.send(UinNormalized, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
+        write_to_AWG.send(UinNormalized, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
 
     def receiveFromDSO(Uin):
         vpp = max(Uin) - min(Uin)

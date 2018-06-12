@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 
-def create(fq1=51, fq2=21, vpp=300, samplerate2= 55556, verbosity=False):
+def generate(fq1=51, fq2=21, vpp=300, samplerate2= 55556, saveCSV=True, verbosity=False):
 
 
     if samplerate2 % 2 == 1 :
@@ -30,18 +31,25 @@ def create(fq1=51, fq2=21, vpp=300, samplerate2= 55556, verbosity=False):
 
     U1 = np.sin(2 * np.pi * fq1 * t1)
 
-    U2 = np.zeros(samplerate2+1)
+    U2 = np.zeros([2,samplerate2+1])
+    U2[0,:] = t2;
 
     half1 = int(samplerate1/2)
     mid2 = int((samplerate2+1)/2)
 
-    U2[mid2-half1:mid2+half1+1] = vpp*U1
+    U2[1,mid2-half1:mid2+half1+1] = vpp*U1
 
     if verbosity :
-        plt.plot(t2, U2)
+        plt.plot(t2, U2[1,:])
         plt.title('Das ideale U_BB')
         plt.ylabel('u in mV')
+        plt.show()
 
-    plt.show()
+    if saveCSV :
+        with open('data/current_data/BBsignal_ideal.csv', 'w+', newline="") as csvfile:
+            writer = csv.writer(csvfile, delimiter=',',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for i in range(0, U2.shape[1]):
+                writer.writerow([str(U2[0,i]), str(U2[1,i])])
 
-    return(U1)
+    return(U2)

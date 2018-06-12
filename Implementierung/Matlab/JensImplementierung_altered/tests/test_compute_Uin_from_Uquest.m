@@ -3,7 +3,7 @@ function [ passed ] = test_compute_Uin_from_Uquest( )
     verbosity = 0;
 
     load('data/matlab_Workspace_nichtlin_VV_AR.mat');
-    Uquest_300_ideal = load('../../Python/nichtLinear/data/testdata/Uquest_300.csv');
+    Uquest_300_ideal = load('../../Python/nichtLinear/data/test_data/Uquest_300.csv');
     
     Uin_300_computed=compute_Uin_from_Uquest(Uquest_300_ideal, K_param2_300);   
    

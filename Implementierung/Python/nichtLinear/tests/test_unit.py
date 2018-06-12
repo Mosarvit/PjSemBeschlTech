@@ -20,15 +20,15 @@ class test_unit(TestCase):
 
     def getHFromCSV(self):
 
-        Ha = genfromtxt(fixPath + 'data/testdata/H_a.csv', delimiter=',')
-        Hph = genfromtxt(fixPath + 'data/testdata/H_p.csv', delimiter=',')
+        Ha = genfromtxt(fixPath + 'data/test_data/H_a.csv', delimiter=',')
+        Hph = genfromtxt(fixPath + 'data/test_data/H_p.csv', delimiter=',')
 
         self.H = np.zeros(((Ha.shape[0]),3))
         self.H[:, 0:2] = Ha
         self.H[:, 2] = Hph[:, 1]
 
     def getComplexHFromCSV(self):
-        str_H = np.genfromtxt(fixPath + 'data/testdata/H.csv', dtype=str, delimiter=',')
+        str_H = np.genfromtxt(fixPath + 'data/test_data/H.csv', dtype=str, delimiter=',')
         self.H_ = np.zeros((len(str_H)), dtype=complex)
         self.freqA = np.zeros((len(str_H)))
         for k in range(0, len(str_H)):
@@ -36,31 +36,39 @@ class test_unit(TestCase):
             self.freqA[k] = float(str_H[k, 0])
 
     # @unittest.skip("reason for skipping")
-    def test_compute_Uquest_from_Uout_300(self):
-        Uout = genfromtxt(fixPath + 'data/testdata/Uout_300.csv', delimiter=',')[:, 1 ]
-        Uquest_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')[:,1]
+    def test_compute_Uquest_from_Uout_Vpp300(self):
+        Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300.csv', delimiter=',', unpack=True)
+        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',', unpack=True)
 
-        Uquest_computed = compute_Uquest_from_Uout.compute(Uout, self.H, verbosity=False)
+        Uquest_300_computed = compute_Uquest_from_Uout.compute(Uout_300, self.H, verbosity=False)
 
-        err = linalg.norm(Uquest_computed - Uquest_ideal) / linalg.norm(Uquest_ideal)
+        err = linalg.norm(Uquest_300_computed[:,1] - Uquest_300_ideal[:,1]) / linalg.norm( Uquest_300_ideal[:,1])
         self.assertTrue(err < 0.03)
 
     # @unittest.skip("reason for skipping")
-    def test_compute_Uquest_from_Uout_400(self):
+    def test_compute_Uquest_from_Uout_with_BBsignal_ideal(self):
 
-        Uout = genfromtxt(fixPath + 'data/testdata/Uout_400.csv', delimiter=',')[:, 1]
-        Uquest_matlab = genfromtxt(fixPath + 'data/testdata/Uquest_400.csv', delimiter=',') [:,1]
+        BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',', unpack=True)
+        Uquest_from_BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_from_BBsignal_ideal.csv', delimiter=',', unpack=True)
 
-        Uquest = compute_Uquest_from_Uout.compute(Uout, self.H, verbosity=False)
+        Uquest_from_BBsignal_computed = compute_Uquest_from_Uout.compute(BBsignal_ideal, self.H, verbosity=False)
 
-        err = linalg.norm(Uquest - Uquest_matlab) / linalg.norm(Uquest_matlab)
-        self.assertTrue(err<0.03)
+        err = linalg.norm(Uquest_from_BBsignal_computed[:,1] - Uquest_from_BBsignal_ideal[:,1]) / linalg.norm(Uquest_from_BBsignal_ideal[:,1])
+        self.assertTrue(err<0.01)
+
+    # @unittest.skip("reason for skipping")
+    def test_compute_Uquest_from_Uout_catch_imaginary(self):
+
+        BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',', unpack=True)
+        Uquest_from_BBsignal_computed = compute_Uquest_from_Uout.compute(BBsignal_ideal, self.H, verbosity=False)
+
+        self.assertFalse(np.iscomplex(Uquest_from_BBsignal_computed.any()))
 
     # @unittest.skip("reason for skipping")
     def test_compute_a_from_Uin_Uquet(self):
-        Uquest_300_matlab = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')[:,1]
-        Uin = np.transpose(genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')[:, 1])
-        a_param2_300_matlab = genfromtxt(fixPath + 'data/testdata/a_param2_300.csv', delimiter=',')
+        Uquest_300_matlab = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')[:,1]
+        Uin = np.transpose(genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')[:, 1])
+        a_param2_300_matlab = genfromtxt(fixPath + 'data/test_data/a_param2_300.csv', delimiter=',')
 
         vpp = 300e-3
         N = 3
@@ -73,8 +81,8 @@ class test_unit(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_compute_K_from_a(self):
-        a_ideal_300 = genfromtxt(fixPath + 'data/testdata/a_param2_300.csv', delimiter=',')
-        K_ideal_300 = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
+        a_ideal_300 = genfromtxt(fixPath + 'data/test_data/a_param2_300.csv', delimiter=',')
+        K_ideal_300 = genfromtxt(fixPath + 'data/test_data/K_param2_300.csv', delimiter=',')
 
         K_computed = compute_K_from_a.compute(a_ideal_300, verbosity=False)
 
@@ -84,9 +92,9 @@ class test_unit(TestCase):
     # @unittest.skip("reason for skipping")
     def test_compute_Uin_from_Uquest(self):
 
-        Uin_ideal = genfromtxt(fixPath + 'data/testdata/Uin.csv', delimiter=',')
-        Uquest_300_ideal = genfromtxt(fixPath + 'data/testdata/Uquest_300.csv', delimiter=',')
-        K_param2_300_ideal = genfromtxt(fixPath + 'data/testdata/K_param2_300.csv', delimiter=',')
+        Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')
+        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')
+        K_param2_300_ideal = genfromtxt(fixPath + 'data/test_data/K_param2_300.csv', delimiter=',')
         # why has Uin_ideal more time steps than Uquest_ideal???
         #  - because they come from different places. Uin is the input of the AWG nad Uquest is computed form the measured Uout
         # Uin_computed has same number of time steps as Uquest_ideal
