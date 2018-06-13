@@ -37,8 +37,8 @@ class test_unit(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_Vpp300(self):
-        Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300.csv', delimiter=',', unpack=True)
-        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',', unpack=True)
+        Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300.csv', delimiter=',')
+        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')
 
         Uquest_300_computed = compute_Uquest_from_Uout.compute(Uout_300, self.H, verbosity=False)
 
@@ -59,7 +59,7 @@ class test_unit(TestCase):
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_catch_imaginary(self):
 
-        BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',', unpack=True)
+        BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',')
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout.compute(BBsignal_ideal, self.H, verbosity=False)
 
         self.assertFalse(np.iscomplex(Uquest_from_BBsignal_computed.any()))
@@ -93,13 +93,13 @@ class test_unit(TestCase):
     def test_compute_Uin_from_Uquest(self):
 
         Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')
-        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')
+        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',' )
         K_param2_300_ideal = genfromtxt(fixPath + 'data/test_data/K_param2_300.csv', delimiter=',')
         # why has Uin_ideal more time steps than Uquest_ideal???
         #  - because they come from different places. Uin is the input of the AWG nad Uquest is computed form the measured Uout
         # Uin_computed has same number of time steps as Uquest_ideal
         #  - corrent, since it was computed from Uquest
-        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, verbosity=False)
+        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, 1e9, verbosity=False)
 
         # testing the test
         # compare different time-steps:
@@ -139,4 +139,21 @@ class test_unit(TestCase):
         err = linalg.norm(Uin_computed_overlay - Uin_ideal) / linalg.norm(Uin_ideal)
         print(err)
         self.assertTrue(err < 0.2)
+
+    def test_compute_Uin_from_Uquest_sample_rate(self):
+
+
+
+        Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')
+        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')
+        K_param2_300_ideal = genfromtxt(fixPath + 'data/test_data/K_param2_300.csv', delimiter=',')
+
+        sampleRateAWG = 1e9
+
+        T = max(Uquest_300_ideal[:, 0]) - min(Uquest_300_ideal[:, 0])
+        lenght_new = int(np.floor(T * sampleRateAWG))
+
+        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, 1e9, verbosity=False)
+
+        self.assertTrue(Uin_computed.shape[0] == lenght_new)
 

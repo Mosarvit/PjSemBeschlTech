@@ -12,18 +12,19 @@ import matplotlib.pyplot as plt
 
 def measure(Uin, verbosity):
 
-    samplerateAWG = 999900000
+    T = max(Uin[:, 0]) - min(Uin[:, 0])
+    sampleRateAWG = Uin.shape[0] / T
 
     def sendUinToAWG(Uin):
         vpp = max(Uin[1,:])-min(Uin[1,:])
         UinNormalized = Uin[1,:]/vpp
-        write_to_AWG.send(UinNormalized, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
+        write_to_AWG.send(UinNormalized, sampleRateAWG, vpp)  # Rückbage wird nicht benötigt
 
     def receiveFromDSO(Uin):
-        vpp = max(Uin) - min(Uin)
+        vpp = max(Uin[:,1]) - min(Uin[:,1])
         fmax = 80e6
-        samplerateOszi = 100 * samplerateAWG
-        [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin)
+        samplerateOszi = 100 * sampleRateAWG
+        [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin[:,1])
 
     sendUinToAWG(Uin)
     [time, dataUin, dataUout] = receiveFromDSO(Uin)

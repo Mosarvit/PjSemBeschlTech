@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun June 3 2018
-
 @author: Jonas
 """
 from numpy import genfromtxt
@@ -11,7 +10,7 @@ import copy
 import matplotlib.pyplot as plt
 
 
-def compute(Uquest, K, verbosity=False):
+def compute(Uquest, K, sampleRateAWG, verbosity=False):
     #VAS fuer Funktionalitaet ist Verhalten einer Potenzreihe in K -> keine Spruenge zw zwei Werten
 
     # dummy value, damit der unit test kompeliert:
@@ -62,11 +61,22 @@ def compute(Uquest, K, verbosity=False):
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
     Uin[:, 1] = K_function(Uquest[:, 1])/10     #### woher der Faktor 10 vorher????
 
+    # passe die Lange von Uin an sampleRateAWG an
+
+    T = max(Uin[:,0]) - min(Uin[:,0])
+    lenght_new = int(np.floor(T*sampleRateAWG))
+
+    indices_old = np.arange(0, Uin.shape[0])
+    indices_new = np.linspace(0, Uin.shape[0]-1, num=lenght_new, endpoint=True)
+
+    interpolator1 = interp1d(indices_old, np.transpose(Uin))
+    Uin = np.transpose(interpolator1(indices_new))
+
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
 
     if verbosity:
         plt.figure()
-        plt.plot(Uin)
+        plt.plot(Uin[:,0],Uin[:,1])
         plt.title('Uin')
         plt.ylabel('u')
         plt.ylabel('t')
