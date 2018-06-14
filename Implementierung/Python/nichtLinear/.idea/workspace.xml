@@ -2,13 +2,119 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/Praesentation.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/Praesentation.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.nav" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.nav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/build/Praesentation.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/slides/CodeErgebenisse.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/slides/Gegeben.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/slides/Gegeben.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/slides/ResultCode.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpräsentation/slides/ResultCode.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lineareVorverzerrung/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/FFT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/Python-ast.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/Python.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/abstract.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/asdl.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/ast.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/bitset.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/boolobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/bufferobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/bytearrayobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/bytes_methods.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/bytesobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/cStringIO.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/cellobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/ceval.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/classobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/cobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/code.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/codecs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/compile.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/complexobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/datetime.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/descrobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/dictobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/dtoa.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/enumobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/errcode.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/eval.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/fileobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/floatobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/frameobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/funcobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/genobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/graminit.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/grammar.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/import.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/intobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/intrcheck.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/iterobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/listobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/longintrepr.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/longobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/marshal.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/memoryobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/metagrammar.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/methodobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/modsupport.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/moduleobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/node.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/object.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/objimpl.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/opcode.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/osdefs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/parsetok.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/patchlevel.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pgen.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pgenheaders.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/py_curses.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pyarena.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pycapsule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pyconfig.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pyctype.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pydebug.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pyerrors.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pyexpat.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pyfpe.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pygetopt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pymacconfig.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pymactoolbox.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pymath.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pymem.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pyport.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pystate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pystrcmp.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pystrtod.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pythonrun.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/pythread.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/rangeobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/setobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/sliceobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/stringobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/structmember.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/structseq.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/symtable.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/sysmodule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/timefuncs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/token.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/traceback.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/tupleobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/ucnhash.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/unicodeobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/warnings.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Include/weakrefobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/MLBS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/Uefkt_exp155b.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/computeUin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/getH.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/mehrtest.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/pip-selfcheck.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lineareVorverzerrung/venv/runme_compute.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compute/compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/compute/compute_Uin_from_Uquest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compute/compute_Uquest_from_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/compute/compute_Uquest_from_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compute/generate_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/compute/generate_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/current_data/BBsignal_ideal.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/current_data/BBsignal_ideal.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/measure/measure_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/measure/measure_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,11 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="272">
+              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -56,8 +162,8 @@
       <file leaf-file-name="generate_BBsignal.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compute/generate_BBsignal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+            <state relative-caret-position="119">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -98,7 +204,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate_with_adjustment.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="evaluate_with_adjustment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluate_with_adjustment.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
@@ -167,7 +273,6 @@
         <option value="$PROJECT_DIR$/measure_Uout.py" />
         <option value="$PROJECT_DIR$/measure_H.py" />
         <option value="$PROJECT_DIR$/evaluation/evaluate_with_BBsignal.py" />
-        <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
         <option value="$PROJECT_DIR$/adjust/adjust_H.py" />
         <option value="$PROJECT_DIR$/evaluate_with_Adjustment.py" />
         <option value="$PROJECT_DIR$/evaluate_with_adjustment.py" />
@@ -179,14 +284,15 @@
         <option value="$PROJECT_DIR$/tests/test_unit.py" />
         <option value="$PROJECT_DIR$/measure/measure_Uout.py" />
         <option value="$PROJECT_DIR$/compute/generate_BBsignal.py" />
+        <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="607" />
-    <option name="y" value="-8" />
-    <option name="width" value="838" />
-    <option name="height" value="1050" />
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -246,7 +352,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lineareVorverzerrung" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -442,7 +548,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -451,7 +557,7 @@
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4255544" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4255544" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -466,13 +572,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/evaluate_with_adjustment.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -745,16 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/measure/measure_H.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -809,20 +898,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_with_adjustment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/compute/generate_BBsignal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_with_adjustment.py">
+    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="272">
+          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

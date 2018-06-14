@@ -1,4 +1,3 @@
-\begin{frame}[fragile]
 \frametitle{Erreichtes: Code}
 
 
@@ -12,9 +11,5 @@
 \only<8>{ \lstinputlisting[firstline=1,lastline=8]{slides/ResultCode/file.txt} }
 \only<9>{ \lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt} }
 \only<10>{ \lstinputlisting[firstline=1,lastline=10]{slides/ResultCode/file.txt} }
-
-
-\end{frame}
-
 
 

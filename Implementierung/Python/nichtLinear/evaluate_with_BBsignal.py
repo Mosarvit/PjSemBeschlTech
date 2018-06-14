@@ -13,8 +13,8 @@ def evaluate() :
     H = measure_H.measure(loadCSV, verbosity)
     Uquest_ideal = compute_Uquest_from_Uout.compute(Uout_ideal, H, verbosity)
     Uin = Uquest_ideal
-    Uout_measured = measure_Uout(Uin, verbosity)
-    Uquest_measured=compute_Uquest_from_Uout(Uout_measured, H, verbosity)
+    Uout_measured = measure_Uout.measure(Uin, verbosity)
+    Uquest_measured=compute_Uquest_from_Uout.compute(Uout_measured, H, verbosity)
     N=3 # degree of a
     a = compute_a_from_Uin_Uquet.compute(Uin, Uquest_measured, N, verbosity)
     K = compute_K_from_a.compute(a, verbosity)
