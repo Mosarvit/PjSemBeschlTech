@@ -48,13 +48,13 @@ class test_unit(TestCase):
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_with_BBsignal_ideal(self):
 
-        BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',', unpack=True)
-        Uquest_from_BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_from_BBsignal_ideal.csv', delimiter=',', unpack=True)
+        BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',')
+        Uquest_from_BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_from_BBsignal_ideal.csv', delimiter=',')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout.compute(BBsignal_ideal, self.H, verbosity=False)
 
         err = linalg.norm(Uquest_from_BBsignal_computed[:,1] - Uquest_from_BBsignal_ideal[:,1]) / linalg.norm(Uquest_from_BBsignal_ideal[:,1])
-        self.assertTrue(err<0.01)
+        self.assertTrue(err<0.04)
 
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_catch_imaginary(self):
