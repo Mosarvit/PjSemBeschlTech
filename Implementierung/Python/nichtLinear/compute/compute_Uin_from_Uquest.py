@@ -8,6 +8,7 @@ import numpy as np
 from scipy.interpolate import interp1d
 import copy
 import matplotlib.pyplot as plt
+from helpers import conform_to_sampleRateAWG
 
 
 def compute(Uquest, K, sampleRateAWG, verbosity=False):
@@ -63,14 +64,7 @@ def compute(Uquest, K, sampleRateAWG, verbosity=False):
 
     # passe die Lange von Uin an sampleRateAWG an
 
-    T = max(Uin[:,0]) - min(Uin[:,0])
-    lenght_new = int(np.floor(T*sampleRateAWG))
-
-    indices_old = np.arange(0, Uin.shape[0])
-    indices_new = np.linspace(0, Uin.shape[0]-1, num=lenght_new, endpoint=True)
-
-    interpolator1 = interp1d(indices_old, np.transpose(Uin))
-    Uin = np.transpose(interpolator1(indices_new))
+    Uin = conform_to_sampleRateAWG.conform(Uin=Uin, sampleRateAWG=999900000)
 
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
 

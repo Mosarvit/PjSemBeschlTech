@@ -22,7 +22,7 @@ def compute(Uin, Uquest, N, verbosity):
 
     #Normierung: u_out wird in V gemessen--> mV
     #u_in Normierung händisch anhand in_pp
-    Uquest=Uquest*1000                                          #STIMMT DAS IMMER?
+    Uquest=Uquest[:,1]*1000                                          #STIMMT DAS IMMER?
     # Uin = (Uin_pp) / (max(Uin) - min(Uin)) * Uin * 1000                    #Wo kommt der Faktor 1000 her??
 
 
@@ -34,7 +34,7 @@ def compute(Uin, Uquest, N, verbosity):
         U[:,(ind-1)] = [np.power(x,ind) for x in Uin]
 
     # print("LGS lösen")
-    a=np.linalg.lstsq(U,np.transpose(Uquest),rcond=None)
+    a=np.linalg.lstsq(U,np.transpose(Uquest),rcond=-1)
     lsg=a[0]
     # print(lsg)
 

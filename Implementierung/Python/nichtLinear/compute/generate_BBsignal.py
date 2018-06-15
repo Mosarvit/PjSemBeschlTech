@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import csv
 from helpers import csvHelper
 
-def generate(fq1=5e6, fq2=900e3, vpp=300, samplerate2= 55556, saveCSV=True, verbosity=False):
+def generate(fq1=5e6, fq2=900e3, vpp=3, samplerate2= 55556, saveCSV=True, verbosity=False):
 
 
     if samplerate2 % 2 == 1 :

@@ -77,150 +77,108 @@ def get(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
     ##################################################
     if writeAWG:
 
-        write_to_AWG.send(awg_volt, samplerateAWG, signal)
+        write_to_AWG.send(signal, samplerateAWG, awg_volt)
+#        write_to_AWG.send(signal=signal, samplerateAWG=samplerateAWG, awg_volt=awg_volt)
 
     ##################################################
     ################## Write to DSO ##################
     ##################################################
 
-    DSO.write("*RST")  # Restores the state of the instrument from a copy of
-    # the settings stored in memory
-    DSO.write("ACQUIRE:STATE OFF")  # This command stops acquisitions
-    DSO.write("SELECT:CH1 ON")  # Turns the channel 1 waveform display on, and
-    # selects channel 1.
-    DSO.write("MATH3:DEFIne \"CH3-CH4\"")  # Defines MATH function
-
+    DSO.write("*RST") #Restores the state of the instrument from a copy of 
+                      #the settings stored in memory
+    DSO.write("ACQUIRE:STATE OFF") #This command stops acquisitions
+    DSO.write("SELECT:CH1 ON") #Turns the channel 1 waveform display on, and
+                               #selects channel 1.
+    DSO.write("MATH3:DEFIne \"CH3-CH4\"") #Defines MATH function
+    
     if modus:
-        DSO.write("MATH3:DEFIne \"CH3\"")  # Defines MATH function
-
-    DSO.write("SELECT:MATH3 ON")  # Turns MATH3 display on
-    DSO.write("MATH1:DEFIne \"CH1\"")  # Defines MATH function. CH1 is copied
-    # to MATH1, because output format of
-    # MATH1 is easier to handle
-    DSO.write("SELECT:MATH1 ON")  # Turns MATH1 display on
-    DSO.write("TRIGger:A:EDGE:SOUrce CH1")  # This command sets or queries the
-    # source for the A edge trigger.
-    DSO.write("TRIGger:A:EDGE:SLOpe FALL")  # This command sets or queries the
-    # slope for the A edge trigger.
-
-    DSO.write("HORizontal:MAIn:SCAle " + str(horizontalScalePerDiv))  # Sets the
-    # time per division for the time base
+        DSO.write("MATH3:DEFIne \"CH3\"") #Defines MATH function
+        
+    DSO.write("SELECT:MATH3 ON") #Turns MATH3 display on
+    DSO.write("MATH1:DEFIne \"CH1\"") #Defines MATH function. CH1 is copied
+                                        #to MATH1, because output format of
+                                        #MATH1 is easier to handle
+    DSO.write("SELECT:MATH1 ON") #Turns MATH1 display on
+    DSO.write("TRIGger:A:EDGE:SOUrce CH1") #This command sets or queries the 
+                                           #source for the A edge trigger.
+    DSO.write("TRIGger:A:EDGE:SLOpe FALL") #This command sets or queries the 
+                                           #slope for the A edge trigger.
+                                           
+    DSO.write("HORizontal:MAIn:SCAle " + str(horizontalScalePerDiv)) #Sets the 
+    #time per division for the time base
     # Here 1,5 periods are on screen. Necessary since Osci has only discrete
     # values for horizontal scale and it needs to be ensured that at least
-    # one full period is in the screen
+    # one full period is in the screen        
     horizontalScalePerDiv = DSO.query("HORizontal:MAIn:SCAle?")
-    horizontalScalePerDiv = [float(s) for s
-                             in horizontalScalePerDiv.split(',')]
+    horizontalScalePerDiv = [float(s) for s 
+                             in horizontalScalePerDiv.split(',')] 
     horizontalScalePerDiv = horizontalScalePerDiv[0]
-    recordLength = horizontalScalePerDiv * 10 * samplerateOszi
+    recordLength = horizontalScalePerDiv*10*samplerateOszi
     ind = np.argmin(np.abs(recordLength - possibleRecordLength))
     if possibleRecordLength[ind] < recordLength and \
-            (ind + 1) < possibleRecordLength.size:
-        recordLength = possibleRecordLength[ind + 1]
+    (ind+1)<possibleRecordLength.size:
+        recordLength = possibleRecordLength[ind+1]
     else:
         recordLength = possibleRecordLength[ind]
-    DSO.write("HORIZONTAL:RECOrdlength " + str(recordLength))  # 1e5
-    DSO.write("CH1:SCAle " + str(awg_volt / 6))  # Sets the vertical scale
-    DSO.write("MATH1:SCAle " + str(awg_volt / 6))  # Sets the vertical scale
-    DSO.write("CH2:SCAle 20.0E-3")  # Sets the vertical scale
-    DSO.write("CH3:SCAle " + str(awg_volt * 25))  # Sets the vertical scale
-    DSO.write("CH4:SCAle " + str(awg_volt * 25))  # Sets the vertical scale
-    DSO.write("MATH3:SCAle " + str(awg_volt * 50))  # Sets the vertical scale
-
+    DSO.write("HORIZONTAL:RECOrdlength " + str(recordLength)) #1e5
+    DSO.write("CH1:SCAle " + str(awg_volt/3)) #Sets the vertical scale
+    DSO.write("MATH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+    DSO.write("CH2:SCAle 20.0E-3") #Sets the vertical scale 
+    DSO.write("CH3:SCAle " + str(awg_volt*2)) #Sets the vertical scale 
+    DSO.write("CH4:SCAle " + str(awg_volt*2)) #Sets the vertical scale
+    DSO.write("MATH3:SCAle " + str(awg_volt*50)) #Sets the vertical scale 
+    
     if modus:
-        DSO.write("CH3:SCAle " + str(awg_volt / 6))  # Sets the vertical scale
-        DSO.write("MATH3:SCAle " + str(awg_volt / 6))  # Sets the vertical scale
-
-    DSO.write("CH1:POSition 0")  # Sets the horizontal scale
-    DSO.write("MATH3:POSition 0")  # Sets the horizontal scale
-    DSO.write("MATH1:POSition 0")  # Sets the horizontal scale
-    DSO.write("CH1:TERmination 1.0E+6")  # Sets the termination of the channel
-    DSO.write("CH2:TERmination 1.0E+6")  # Sets the termination of the channel
-    DSO.write("CH3:TERmination 1.0E+6")  # Sets the termination of the channel
-    DSO.write("CH4:TERmination 1.0E+6")  # Sets the termination of the channel
-    DSO.write("CH1:COUPling DC")  # Sets the coupling of channel 1 to AC
+        DSO.write("CH3:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+        DSO.write("MATH3:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+             
+    
+    DSO.write("CH1:POSition 0") #Sets the horizontal scale
+    DSO.write("MATH3:POSition 0") #Sets the horizontal scale
+    DSO.write("MATH1:POSition 0") #Sets the horizontal scale
+    DSO.write("CH1:TERmination 1.0E+6") #Sets the termination of the channel
+    DSO.write("CH2:TERmination 1.0E+6") #Sets the termination of the channel
+    DSO.write("CH3:TERmination 1.0E+6") #Sets the termination of the channel
+    DSO.write("CH4:TERmination 1.0E+6") #Sets the termination of the channel
+    DSO.write("CH1:COUPling DC")  #Sets the coupling of channel 1 to AC
     # Coupling to AC since the input signal has no DC component.
     # No DC expected at the output. Use AC coupling to reduce influence
     # from outside.
-    DSO.write("DATa:SOUrce MATH1")  # This command sets the location of
-    # waveform data that is transferred from the
-    # instrument by the CURVe? Query
-    DSO.write("DATa:ENCdg ASCIi")  # This command sets the format of outgoing
-    # waveform data to ASCII
-    DSO.write("ACQUIRE:MODE SAMPLE")  # This command sets the acquisition mode
-    # of the instrument to sample mode
-    DSO.write("ACQUIRE:STOPAFTER SEQUENCE")  # Specifies that the next
-    # acquisition will be a
-    # single-sequence acquisition.
-    DSO.write("HORizontal:MAIn:SAMPLERate " + str(samplerateOszi))  # Sets the
-    # sample rate of the device.
-    # Here: 10 times maximum expected
-    # frequency to reduce aliasing
-    DSO.write("ACQUIRE:STATE ON")  # This command starts acquisitions
-    DSO.write("DATa:STARt 1")  # This command sets the starting data point
-    # for waveform transfer. This command allows for the
-    # transfer of partial waveforms to and from the instrument.
-    DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?"))  # Sets the
-    # last data point that will be transferred when using the CURVe? query
-
-    time_attempt = 1  # chooses version to wait for finishing commands
-    if time_attempt == 1:
-        time.sleep(5)  # enough time to finish every Process
-    elif time_attempt == 2:
-        DSO.query("*OPC?")  # new attempt 1 to reduce time to wait
-        # -> does not proceed until *OPC? is set to 1 by internal queue.
-        # so, finishing this line in the program will last until the device is ready
-        # In case this is not working, try DSO.write("*OPC?") instead, just as a guess
-        # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
-    elif time_attempt == 3:
-        busy = DSO.query("BUSY?")  # new attempt 2 to reduce time to wait -> runs until OPC? is set to 1
-        while busy:  # loop until not busy any more
-            time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
-            busy = DSO.query("BUSY?")
-            print(a)  # just to have a control option -> not necessary, it an attempt work
-            # In case this is not working, try DSO.write("BUSY") instead, just as a guess
-    else:
-        DSO.write("*WAI")  # new attempt 3 to reduce time to wait -> DSO will wait till commands above are finished.
-        # python will go on and write the commands in the input buffer
-        # they will be executed after WAI has finished
-    # new attempt 3 and another not named attempt are possible, but 1 and 2 are faster and more stable
-
+    DSO.write("DATa:SOUrce MATH1")   #This command sets the location of
+                                   #waveform data that is transferred from the
+                                   #instrument by the CURVe? Query
+    DSO.write("DATa:ENCdg ASCIi") #This command sets the format of outgoing
+                                  #waveform data to ASCII 
+    DSO.write("ACQUIRE:MODE SAMPLE") #This command sets the acquisition mode
+                                     #of the instrument to sample mode 
+    DSO.write("ACQUIRE:STOPAFTER SEQUENCE") #Specifies that the next
+                                            #acquisition will be a 
+                                            #single-sequence acquisition.
+    DSO.write("HORizontal:MAIn:SAMPLERate " + str(samplerateOszi)) # Sets the 
+                                            # sample rate of the device.
+                                            # Here: 10 times maximum expected 
+                                            # frequency to reduce aliasing                               
+    DSO.write("ACQUIRE:STATE ON") #This command starts acquisitions
+    DSO.write("DATa:STARt 1") #This command sets the starting data point 
+                    #for waveform transfer. This command allows for the 
+                    #transfer of partial waveforms to and from the instrument.
+    DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
+       #last data point that will be transferred when using the CURVe? query
+    time.sleep(5)
     dataUin = DSO.query("CURVe?")
-    DSO.write("DATa:SOUrce MATH3")  # This command sets the location of
-    # waveform data that is transferred from the
-    # instrument by the CURVe? Query
-    DSO.write("DATa:ENCdg ASCIi")  # This command sets the format of outgoing
-    # waveform data to ASCII
-    DSO.write("DATa:STARt 1")  # This command sets the starting data point
-    # for waveform transfer. This command allows for the
-    # transfer of partial waveforms to and from the instrument.
-    DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?"))  # Sets the
-    # last data point that will be transferred when using the CURVe? query
-
-    time_attempt = 1  # chooses version to wait for finishing commands
-    if time_attempt == 1:
-        time.sleep(5)  # enough time to finish every Process
-    elif time_attempt == 2:
-        DSO.query("*OPC?")  # new attempt 1 to reduce time to wait
-        # -> does not proceed until *OPC? is set to 1 by internal queue.
-        # so, finishing this line in the program will last until the device is ready
-        # In case this is not working, try DSO.write("*OPC?") instead, just as a guess
-        # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
-    elif time_attempt == 3:
-        busy = DSO.query("BUSY?")  # new attempt 2 to reduce time to wait -> runs until OPC? is set to 1
-        while busy:  # loop until not busy any more
-            time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
-            busy = DSO.query("BUSY?")
-            print(a)  # just to have a control option -> not necessary, it an attempt work
-            # In case this is not working, try DSO.write("BUSY") instead, just as a guess
-    else:
-        DSO.write("*WAI")  # new attempt 3 to reduce time to wait -> DSO will wait till commands above are finished.
-        # python will go on and write the commands in the input buffer
-        # they will be executed after WAI has finished
-    # new attempt 3 and another not named attempt are possible, but 1 and 2 are faster and more stable
-
+    DSO.write("DATa:SOUrce MATH3")   #This command sets the location of
+                                   #waveform data that is transferred from the
+                                   #instrument by the CURVe? Query
+    DSO.write("DATa:ENCdg ASCIi") #This command sets the format of outgoing 
+                                  #waveform data to ASCII 
+    DSO.write("DATa:STARt 1") #This command sets the starting data point 
+                    #for waveform transfer. This command allows for the
+                    #transfer of partial waveforms to and from the instrument.
+    DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
+         #last data point that will be transferred when using the CURVe? query
+    time.sleep(5)
     dataUout = DSO.query("CURVe?")
-
+    
     recordLength = DSO.query("HORIZONTAL:RECOrdlength?")
     horizontalScalePerDiv = DSO.query("HORizontal:MAIn:SCAle?")
     YScalePerDivUin = DSO.query("MATH1:SCAle?")

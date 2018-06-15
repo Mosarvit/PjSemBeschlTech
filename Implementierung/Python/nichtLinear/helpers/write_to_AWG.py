@@ -29,8 +29,8 @@ def send(signal, samplerateAWG, awg_volt):
         awg_id = rs[index]
         AWG = rm.open_resource(awg_id)
         AWG.write("*RST")
-        AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
-        AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
+#        AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
+#        AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
         # time.sleep(5)
         AWG.write("DATA:VOLatile:CLEar")
         # time.sleep(5)
@@ -44,6 +44,7 @@ def send(signal, samplerateAWG, awg_volt):
         #         writer.writerow([str(data_conv[i])])
         data_conv = ",".join(str(e) for e in data_conv)
         AWG.write("SOURce1:DATA:ARBitrary:DAC myarb ," + data_conv)
+        time.sleep(10)
         AWG.write("SOURce1:FUNCtion:ARBitrary 'myarb'")
 
         time_attempt = 1  # chooses version to wait for finishing commands

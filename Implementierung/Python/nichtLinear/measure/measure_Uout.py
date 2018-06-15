@@ -12,7 +12,7 @@ from helpers import csvHelper
 from numpy import genfromtxt
 
 
-def measure(Uin, id, loadCSV, saveCSV, verbosity):
+def measure(Uin, Vpp, id, loadCSV, saveCSV, verbosity):
 
     if loadCSV :
         Uout_measured = genfromtxt('data/current_data/Uout_'+id+'.csv', delimiter=',')
@@ -20,19 +20,17 @@ def measure(Uin, id, loadCSV, saveCSV, verbosity):
     else:
 
         T = max(Uin[:, 0]) - min(Uin[:, 0])
-        sampleRateAWG = Uin.shape[0] / T
+        sampleRateAWG = int(np.floor(Uin.shape[0] / T))
 
         def sendUinToAWG(Uin):
-            vpp = max(Uin[1,:])-min(Uin[1,:])
-            UinNormalized = Uin[1,:]/vpp
-            write_to_AWG.send(UinNormalized, sampleRateAWG, vpp)  # Rückbage wird nicht benötigt
+            UinNormalized = Uin[:,1]/(max(Uin[:,1])-min(Uin[:,1])) # todo : is it necessary to normalize Uin ?
+            write_to_AWG.send(UinNormalized, sampleRateAWG, Vpp)  # Rückbage wird nicht benötigt
 
         def receiveFromDSO(Uin):
-            vpp = max(Uin[:,1]) - min(Uin[:,1])
             fmax = 80e6
-            samplerateOszi = 100 * sampleRateAWG
+            samplerateOszi = 1 * sampleRateAWG
 
-            [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin[:, 1])
+            [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, Vpp/10, fmax, Uin[:, 1])
 
             if saveCSV:
                 csvHelper.save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)

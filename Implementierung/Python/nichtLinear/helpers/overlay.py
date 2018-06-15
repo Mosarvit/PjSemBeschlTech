@@ -6,12 +6,13 @@ from scipy.interpolate import interp1d
 
 def overlay(Uin, Uout):
 
-    l_in = len(Uin)
-    l_out = len(Uout)
+    l_in = Uin.shape[0]
+    l_out = Uout.shape[0]
     # Signallängen anpassen und interpolieren
     x_in = np.linspace(1, l_out, l_in)
     x_out = np.linspace(1, l_out, l_out)
-    f = interp1d(x_in, Uin)
+    b = Uin[:,1]
+    f = interp1d(x_in, b)
     # g=interp1d(x_out, Uquest)
     Uin = f(x_out)
     # Uquest=g(x_out)
@@ -19,6 +20,7 @@ def overlay(Uin, Uout):
 
     l_out = len(Uout)
     # print("Kreuzkorrelation")
+    Uout = Uout[:,1]
     xc = np.correlate(Uin, Uout, 'full')
 
 
