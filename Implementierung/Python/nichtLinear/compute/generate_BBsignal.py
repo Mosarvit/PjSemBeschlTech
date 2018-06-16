@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 import csv
 from helpers import csvHelper
 
-def generate(fq1=5e6, fq2=900e3, vpp=3, samplerate2= 55556, saveCSV=True, verbosity=False):
+def generate(f_rep=900e3, f_BB=5e6, vpp=3, samplerate2= 55556, saveCSV=True, verbosity=False):
 
 
     if samplerate2 % 2 == 1 :
         samplerate2 += 1
 
-    T1 = 1/fq1
-    T2 = 1/fq2
+    T1 = 1 / f_BB
+    T2 = 1 / f_rep
     samplerate1 = samplerate2/T2*T1
 
     if np.round(samplerate1)>samplerate1 :
@@ -30,7 +30,7 @@ def generate(fq1=5e6, fq2=900e3, vpp=3, samplerate2= 55556, saveCSV=True, verbos
     t1 = np.linspace(0, T1 , samplerate1+1)
     t2 = np.linspace(0, T2 , samplerate2+1)
 
-    U1 = np.sin(2 * np.pi * fq1 * t1)
+    U1 = np.sin(2 * np.pi * f_BB * t1)
 
     U2 = np.zeros([2,samplerate2+1])
     U2[0,:] = t2;

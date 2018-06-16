@@ -66,13 +66,13 @@ class test_unit(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_compute_a_from_Uin_Uquet(self):
-        Uquest_300_matlab = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')[:,1]
-        Uin = np.transpose(genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')[:, 1])
+        Uquest_300_matlab = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')
+        Uin = genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')
         a_param2_300_matlab = genfromtxt(fixPath + 'data/test_data/a_param2_300.csv', delimiter=',')
 
         vpp = 300e-3
         N = 3
-        Uin = (vpp) / (max(Uin) - min(Uin)) * Uin * 1000
+        Uin[:,1] = (vpp) / (max(Uin[:,1]) - min(Uin[:,1])) * Uin[:,1] * 1000
 
         a = compute_a_from_Uin_Uquet.compute(Uin, Uquest_300_matlab, N, False)
 
@@ -118,7 +118,7 @@ class test_unit(TestCase):
         # output is to be evaluated at same time steps as Uin_ideal
         Uin_computed_overlay = copy.copy(Uin_ideal)
         # overlay of voltages
-        Uin_computed_overlay[:, 1] = overlay.overlay(Uin_computed[:, 1], Uin_ideal[:, 1] ) #see little changes in overlay!!!
+        Uin_computed_overlay[:, 1] = overlay.overlay(Uin_computed, Uin_ideal ) #see little changes in overlay!!!
         #print("Time steps computed in Uin after overlay", len(Uin_computed_overlay[:, 0]))
 
         # verbosity = True
@@ -137,7 +137,6 @@ class test_unit(TestCase):
         #     plt.show()
 
         err = linalg.norm(Uin_computed_overlay - Uin_ideal) / linalg.norm(Uin_ideal)
-        print(err)
         self.assertTrue(err < 0.2)
 
     def test_compute_Uin_from_Uquest_sample_rate(self):
@@ -153,7 +152,7 @@ class test_unit(TestCase):
         T = max(Uquest_300_ideal[:, 0]) - min(Uquest_300_ideal[:, 0])
         lenght_new = int(np.floor(T * sampleRateAWG))
 
-        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, 1e9, verbosity=False)
+        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, sampleRateAWG, verbosity=False)
 
         self.assertTrue(Uin_computed.shape[0] == lenght_new)
 

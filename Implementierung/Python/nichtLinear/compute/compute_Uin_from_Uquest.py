@@ -64,7 +64,7 @@ def compute(Uquest, K, sampleRateAWG, verbosity=False):
 
     # passe die Lange von Uin an sampleRateAWG an
 
-    Uin = conform_to_sampleRateAWG.conform(Uin=Uin, sampleRateAWG=999900000)
+    Uin = conform_to_sampleRateAWG.conform(Uin=Uin, sampleRateAWG=sampleRateAWG)
 
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
 

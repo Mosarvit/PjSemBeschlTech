@@ -11,8 +11,7 @@ def overlay(Uin, Uout):
     # Signallängen anpassen und interpolieren
     x_in = np.linspace(1, l_out, l_in)
     x_out = np.linspace(1, l_out, l_out)
-    b = Uin[:,1]
-    f = interp1d(x_in, b)
+    f = interp1d(x_in, Uin[:,1])
     # g=interp1d(x_out, Uquest)
     Uin = f(x_out)
     # Uquest=g(x_out)
