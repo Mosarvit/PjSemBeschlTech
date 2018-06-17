@@ -28,7 +28,7 @@ def compute(Uin,  Uquest, N, verbosity):
     #%Spannungsmatrix erzeugen
     print("Spannungsmatrix")
     U=np.zeros((l_out,N))
-    for ind in [1,2,3]:
+    for ind in range(1,N+1):#[1,2,3]:
         U[:,(ind-1)] = [np.power(x,ind) for x in Uin]
 
     # print("LGS lösen")
