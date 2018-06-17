@@ -13,39 +13,34 @@
 \headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Zielsetzung}}
 \headcommand {\slideentry {1}{2}{1}{4/4}{Zielsetzung}{0}}
 \headcommand {\beamer@framepages {4}{4}}
+\headcommand {\beamer@sectionpages {3}{4}}
 \headcommand {\beamer@subsectionpages {4}{4}}
-\headcommand {\beamer@subsectionentry {0}{1}{3}{5}{Gegeben}}
-\headcommand {\slideentry {1}{3}{1}{5/9}{Gegeben}{0}}
-\headcommand {\beamer@framepages {5}{9}}
-\headcommand {\beamer@sectionpages {3}{9}}
-\headcommand {\beamer@subsectionpages {5}{9}}
-\headcommand {\sectionentry {2}{Erreichtes}{10}{Erreichtes}{0}}
-\headcommand {\beamer@subsectionpages {10}{9}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{10}{Ger\IeC {\"a}tekommunikation}}
-\headcommand {\slideentry {2}{1}{1}{10/10}{Ger\IeC {\"a}tekommunikation}{0}}
-\headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{11}{Code}}
-\headcommand {\slideentry {2}{2}{1}{11/28}{Code}{0}}
-\headcommand {\beamer@framepages {11}{28}}
-\headcommand {\beamer@sectionpages {10}{28}}
-\headcommand {\beamer@subsectionpages {11}{28}}
-\headcommand {\sectionentry {3}{Evaluierung}{29}{Evaluierung}{0}}
-\headcommand {\beamer@subsectionpages {29}{28}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{29}{Ger\IeC {\"a}tekommunikation}}
-\headcommand {\slideentry {3}{1}{1}{29/29}{Ger\IeC {\"a}tekommunikation}{0}}
-\headcommand {\beamer@framepages {29}{29}}
-\headcommand {\beamer@subsectionpages {29}{29}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{30}{Code}}
-\headcommand {\slideentry {3}{2}{1}{30/30}{Code}{0}}
-\headcommand {\beamer@framepages {30}{30}}
-\headcommand {\beamer@sectionpages {29}{30}}
-\headcommand {\beamer@subsectionpages {30}{30}}
-\headcommand {\sectionentry {4}{Ausblick}{31}{Ausblick}{0}}
-\headcommand {\slideentry {4}{0}{1}{31/31}{}{0}}
-\headcommand {\beamer@framepages {31}{31}}
-\headcommand {\beamer@partpages {1}{31}}
-\headcommand {\beamer@subsectionpages {31}{31}}
-\headcommand {\beamer@sectionpages {31}{31}}
-\headcommand {\beamer@documentpages {31}}
+\headcommand {\sectionentry {2}{Erreichtes}{5}{Erreichtes}{0}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{5}{Ger\IeC {\"a}tekommunikation}}
+\headcommand {\slideentry {2}{1}{1}{5/5}{Ger\IeC {\"a}tekommunikation}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Code : das Design}}
+\headcommand {\slideentry {2}{2}{1}{6/25}{Code : das Design}{0}}
+\headcommand {\beamer@framepages {6}{25}}
+\headcommand {\beamer@subsectionpages {6}{25}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{26}{Gegeben}}
+\headcommand {\slideentry {2}{3}{1}{26/35}{Gegeben}{0}}
+\headcommand {\beamer@framepages {26}{35}}
+\headcommand {\slideentry {2}{3}{2}{36/42}{Gegeben}{0}}
+\headcommand {\beamer@framepages {36}{42}}
+\headcommand {\beamer@subsectionpages {26}{42}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{43}{Code : Evaluierung}}
+\headcommand {\slideentry {2}{4}{1}{43/66}{Code : Evaluierung}{0}}
+\headcommand {\beamer@framepages {43}{66}}
+\headcommand {\beamer@sectionpages {5}{66}}
+\headcommand {\beamer@subsectionpages {43}{66}}
+\headcommand {\sectionentry {3}{Ausblick}{67}{Ausblick}{0}}
+\headcommand {\slideentry {3}{0}{1}{67/67}{}{0}}
+\headcommand {\beamer@framepages {67}{67}}
+\headcommand {\beamer@partpages {1}{67}}
+\headcommand {\beamer@subsectionpages {67}{67}}
+\headcommand {\beamer@sectionpages {67}{67}}
+\headcommand {\beamer@documentpages {67}}
 \headcommand {\def \inserttotalframenumber {10}}

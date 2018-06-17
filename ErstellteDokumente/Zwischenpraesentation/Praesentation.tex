@@ -73,6 +73,8 @@
 }
 
 \usepackage[absolute,overlay]{textpos}
+ 
+ 
   \setlength{\TPHorizModule}{1mm}
   \setlength{\TPVertModule}{1mm}
 
@@ -80,6 +82,10 @@
 \date{20. Juni, 2018}
 
 \newcount\WertA
+
+\newcounter{from}
+\newcounter{till}
+\newcounter{onlyAt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -120,8 +126,7 @@
 \subsection{Zielsetzung}
 \input{slides/Zielsetzung}
 
-\subsection{Gegeben}
-\input{slides/Gegeben}
+
 
 \section{Erreichtes}
 
@@ -133,9 +138,8 @@
 \subsection{Code : das Design}
 \input{slides/ResultCode}
 
-%\section{Evaluierung}
-%\subsection{Gerätekommunikation}
-%\input{slides/EvalGeraetekommunikation}
+\subsection{Gegeben}
+\input{slides/Gegeben}
 
 \WertA=2
 \subsection{Code : Evaluierung}

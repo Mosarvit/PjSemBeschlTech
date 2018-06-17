@@ -1,8 +1,9 @@
-function [ a ] = compute_a_from_Uin_Uquest( Uin, in_pp, Uout, N, verbosity )
+function [ a ] = compute_a_from_Uin_Uquest( Uin, Uout, N, verbosity )
 %formely computeParams
 
 l_in=length(Uin);
 l_out=length(Uout);
+
 
 [in] = overlay(Uin, Uout);
 
@@ -64,15 +65,18 @@ l_out=length(Uout);
 
 %NOrmierung: u_out wird in V gemessen--> mV; u_in aus arb-file:Normierung
 %händisch anhand in_pp
-Uout=1000*Uout;
-in=in_pp/(max(in)-min(in))*in;
+% Uout=1000*Uout;
+% in=in_pp/(max(in)-min(in))*in;
+ 
+ 
+
 
 %Spannungsmatrix erzeugen
 U=zeros(l_out,N);
 for ind=1:N
     U(:,ind)=in.^ind;
 end
-    
+
 a=U\Uout;
 
 if verbosity

@@ -1,4 +1,4 @@
-function [ Uquest ] = compute_Uquest_from_Uout( Uout, f_rep, H_, verbosity )
+function [ Uquest ] = compute_Uquest_from_Uout( Uout, f_rep, H )
 
 
 %Berechnet das Eingangssignal eines Spannugnssignals U_out (eine
@@ -10,7 +10,7 @@ function [ Uquest ] = compute_Uquest_from_Uout( Uout, f_rep, H_, verbosity )
 %�bertragungsfkt:
 %H_=csvread(Pfad);
 
-f_max=floor(max(H_(:,1))/f_rep)*f_rep;
+f_max=floor(max(H(:,1))/f_rep)*f_rep;
 
  %u_in,f_rep, f_grenz, Samplingrate)
 %�nderung zu U_out: Grenzfrequenz f_grenz variabel, nicht mehr fest bei 80
@@ -23,13 +23,46 @@ w=linspace(f_rep, f_max, f_max/f_rep);
 dt=1/f_rep/length(Uout);
 t=round(linspace(0,1/f_rep,1/f_rep/dt).* 10e18) ./ 10e18;
 
-Uquest(:,1)=t;
+% Uquest(:,1)=t;
+% 
+% %H=spline(H_(:,1), H_(:,2), w);
+% %arg=interp1(H_(:,1), H_(:,3), w, 'linear')/180*pi;
+% 
+% %     Hconv(:,2) = abs(H(:,2));
+% %     Hconv(:,3) = angle(H(:,2))/180*pi;
+% 
+% % Hamp=abs(H_neu);
+% 
+% % Hamp2=abs(H(:,2));
+% Hph=angle(H(:,2));
+% 
+% % Hamp2=interp1(H(:,1), Hamp2, w);
+% Hph=interp1(H(:,1), Hph, w);
+% 
+% hold on;
+% plot(Hph)
+% % plot(H_p)
+% plot(H_p(:,2))
+% 
+% 
+% 
+% 
+% H_neu=interp1(H(:,1), H(:,2), w);
+% Hamp=abs(H_neu);
+% Hph=angle(H_neu);%/180*pi;
+% 
+% % plot(Hph)
+% % plot(Hamp)
+% hold off;
 
-%H=spline(H_(:,1), H_(:,2), w);
-%arg=interp1(H_(:,1), H_(:,3), w, 'linear')/180*pi;
-H_neu=interp1(H_(:,1), H_(:,2), w);
-H=abs(H_neu);
-arg=angle(H_neu);%/180*pi;
+
+
+
+H_neu=interp1(H(:,1), H(:,2:3), w);
+Hamp=H_neu(:,1);
+Hph=H_neu(:,2);
+
+
 
 %Fehler, falls �ber die Grenze hinaus interpoliert werden soll -> Manuell
 %korrigieren
@@ -65,10 +98,10 @@ for ind=1:f_max/f_rep
     b_n=1i*(Y(ind+1,u_dim2)-Y(end+1-ind,u_dim2));
     
     omegat = 2*pi*ind*f_rep*t;
-    gamma = ones(1,length(t))*(arg(ind));
+    gamma = ones(1,length(t))*(Hph(ind));
     phi = omegat - gamma;
     
-    c = 1/abs(H(ind))*( a_n*cos(phi) + b_n*sin(phi) ); 
+    c = 1/abs(Hamp(ind))*( a_n*cos(phi) + b_n*sin(phi) ); 
     
     Uquest(:,2) = Uquest(:,2) + c';
     

@@ -2,7 +2,7 @@ from unittest import TestCase
 from numpy import genfromtxt
 from scipy import linalg
 
-from compute import compute_a_from_Uin_Uquet, compute_Uquest_from_Uout
+from blocks import compute_Uquest_from_Uout, compute_a_from_Uin_Uquet
 import numpy as np
 
 
