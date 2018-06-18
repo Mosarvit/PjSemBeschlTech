@@ -4,7 +4,7 @@
 \beamer@subsectionintoc {1}{2}{Zielsetzung}{6}{0}{1}
 \beamer@sectionintoc {2}{Ger\IeC {\"a}tekommunikation}{7}{0}{2}
 \beamer@sectionintoc {3}{Code}{10}{0}{3}
-\beamer@subsectionintoc {3}{1}{das Design}{10}{0}{3}
-\beamer@subsectionintoc {3}{2}{Gegeben}{30}{0}{3}
+\beamer@subsectionintoc {3}{1}{Design}{10}{0}{3}
+\beamer@subsectionintoc {3}{2}{Vorgehensweise}{30}{0}{3}
 \beamer@subsectionintoc {3}{3}{Evaluierung}{47}{0}{3}
 \beamer@sectionintoc {4}{Ausblick}{71}{0}{4}
