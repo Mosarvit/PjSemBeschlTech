@@ -2,42 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured_cut.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured_cut.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/compute_Uquest_from_Uout.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/compute_Uquest_from_Uout.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/tests/test_compute_Uin_from_Uquest_our.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/tests/test_compute_Uquest_from_Uout_300_jens.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/tests/test_compute_Uquest_from_Uout_300_jens.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/tests/test_compute_Uquest_from_Uout_300_our.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/tests/test_compute_Uquest_from_Uout_300_our.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/tests/test_compute_a_from_Uin_Uquest_300_jens.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Matlab/JensImplementierung_altered/tests/test_compute_a_from_Uin_Uquest_300_jens.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/adjust_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/adjust_a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/compute_K_from_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_K_from_a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blocks/generate_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/generate_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/get_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/get_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/measure_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/measure_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/current_data/BBsignal_ideal.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/current_data/BBsignal_ideal.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test_data/Uquest_300_jens.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/test_data/Uquest_300_jens.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test_data/Uquest_300_our.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/test_data/Uquest_300_our.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_with_MatlabData.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_MatlabData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/csvHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/csvHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/find_nearest.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/find_nearest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/globalVars.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/globalVars.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/overlay.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/overlay.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/read_from_DSO.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/read_from_DSO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/signalHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/signalHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/write_to_AWG.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/write_to_AWG.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_unit.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,8 +18,8 @@
       <file leaf-file-name="generate_BBsignal.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/generate_BBsignal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+            <state relative-caret-position="238">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -61,11 +27,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="measure_H.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="measure_H.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="csvHelper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -79,20 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="globalVars.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/globalVars.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="compute_Uquest_from_Uout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+            <state relative-caret-position="1683">
+              <caret line="99" column="26" lean-forward="true" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
               <folding>
                 <element signature="e#85#96#0" expanded="true" />
               </folding>
@@ -100,11 +66,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adjust_a.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="measure_Uout.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adjust_a.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -121,15 +96,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adjust_H.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/adjust_H.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="compute_a_from_Uin_Uquet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -142,7 +108,7 @@
       <file leaf-file-name="compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="391">
               <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
               <folding>
                 <element signature="e#74#102#0" expanded="true" />
@@ -205,7 +171,6 @@
         <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
         <option value="$PROJECT_DIR$/blocks/measure_Uout.py" />
         <option value="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" />
-        <option value="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" />
         <option value="$PROJECT_DIR$/blocks/compute_K_from_a.py" />
         <option value="$PROJECT_DIR$/blocks/measure_H.py" />
         <option value="$PROJECT_DIR$/helpers/find_nearest.py" />
@@ -219,6 +184,7 @@
         <option value="$PROJECT_DIR$/blocks/adjust_a.py" />
         <option value="$PROJECT_DIR$/blocks/adjust_H.py" />
         <option value="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" />
+        <option value="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" />
         <option value="$PROJECT_DIR$/blocks/generate_BBsignal.py" />
       </list>
     </option>
@@ -666,13 +632,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/report/plotting.py" />
-    <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/find_nearest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -701,13 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="18" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -752,24 +704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blocks/adjust_H.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -783,9 +721,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="391">
           <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
           <folding>
             <element signature="e#74#102#0" expanded="true" />
@@ -795,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        <state relative-caret-position="1683">
+          <caret line="99" column="26" lean-forward="true" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
           <folding>
             <element signature="e#85#96#0" expanded="true" />
           </folding>
@@ -805,18 +764,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/generate_BBsignal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+        <state relative-caret-position="238">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -824,6 +776,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

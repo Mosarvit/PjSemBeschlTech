@@ -10,10 +10,10 @@ def generate(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, saveCSV=True
 
     INPUT:
 
-        f_rep - positiver integer; Wiederhohlfrequenz
-        f_BB - positiver integer; Barrier-Bucket-Frequenz
-        Vpp - positiver integer; Spitze-zu-Spitze - Spannung
-        samplerateAWG - positiver integer; Abtastarte des AWG
+        f_rep - positive integer; Wiederhohlfrequenz
+        f_BB - positive integer; Barrier-Bucket-Frequenz
+        Vpp - positive integer; Spitze-zu-Spitze - Spannung
+        samplerateAWG - positive integer; Abtastarte des AWG
 
         saveCSV - boolean; ob Uout gespreichert werden soll
         verbosity - boolean; ob Uin gelplottet werden soll

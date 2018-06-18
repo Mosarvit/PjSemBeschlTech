@@ -79,8 +79,8 @@ def compute(Uout, H, verbosity):
     ufft = np.fft.fft(u, NFFT)
     Y = 2 * ufft / L
 
-    Uin = np.zeros([L, 2])
-    Uin[:,0] = Uout[:,0]
+    Uquest = np.zeros([L, 2])
+    Uquest[:,0] = Uout[:,0]
 
     for k in range(int(math.floor(f_max / f_rep))):
 
@@ -93,12 +93,12 @@ def compute(Uout, H, verbosity):
 
         c = 1 / abs(Ha[k]) * ( a_n *np.cos(phi) + b_n * np.sin(phi) )
 
-        Uin[:,1] = Uin[:,1] + c
+        Uquest[:,1] = Uquest[:,1] + c
 
 
     if verbosity:
         fig = plt.figure()
-        plt.plot(Uin[:,0],Uin[:,1])
+        plt.plot(Uquest[:,0],Uquest[:,1])
         plt.title('Uquest')
         # plt.grid(True)
         plt.ylabel('u')
@@ -107,4 +107,4 @@ def compute(Uout, H, verbosity):
             plt.show()
         fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf')
 
-    return (Uin)
+    return (Uquest)
