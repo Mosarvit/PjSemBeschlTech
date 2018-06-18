@@ -3,7 +3,7 @@ function passed = test_compute_a_from_Uin_Uquest_300_our()
     verbosity = 0;
  
     Uin_our = load('../../Python/nichtLinear/data/test_data/Uin_our.csv');
-    Uin_our(:,2) = setVpp_mV(Uin_our(:,2), 300);
+    Uin_our = setVpp(Uin_our, 300);
     
     Uquest_300 = load('../../Python/nichtLinear/data/test_data/Uquest_300_our.csv');
     Uquest_300_mV = Uquest_300*1000;
@@ -12,7 +12,7 @@ function passed = test_compute_a_from_Uin_Uquest_300_our()
     
     %
     
-    a_300_test = compute_a_from_Uin_Uquest( Uin_our(:,2), Uquest_300_mV(:,2), 3, verbosity );    
+    a_300_test = compute_a_from_Uin_Uquest( Uin_our, Uquest_300_mV, 3, verbosity );    
     
 %     csvwrite('../../Python/nichtLinear/data/test_data/a_300_our.csv',a_300_test);  
     

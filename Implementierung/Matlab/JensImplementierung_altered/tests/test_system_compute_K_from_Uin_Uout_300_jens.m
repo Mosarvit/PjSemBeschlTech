@@ -4,7 +4,7 @@ function passed = test_system_compute_K_from_Uin_Uout_300_jens()
     
     load('data/matlab_Workspace_nichtlin_VV_AR.mat');
     
-    Uin_mV(:,2) = setVpp_mV(U_in(:,2), 300);
+    Uin_mV = setVpp(U_in, 300);
     Uout_300_mV = out_300*1000;
     
     H_a = load('../../Python/nichtLinear/data/test_data/H_a_jens.csv');
@@ -17,7 +17,7 @@ function passed = test_system_compute_K_from_Uin_Uout_300_jens()
     %
     
     Uquest_300_mV=compute_Uquest_from_Uout(Uout_300_mV, 900000, Hconv);
-    a_300_test = compute_a_from_Uin_Uquest( Uin_mV(:,2), Uquest_300_mV(:,2), 3, verbosity );    
+    a_300_test = compute_a_from_Uin_Uquest( Uin_mV, Uquest_300_mV, 3, verbosity );    
     K_300_test = compute_K_from_a( a_300_test, verbosity);
     
     err = norm(K_300_test - K_300_ideal) / norm(K_300_ideal);  

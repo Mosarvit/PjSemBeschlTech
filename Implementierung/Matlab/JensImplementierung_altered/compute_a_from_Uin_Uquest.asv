@@ -8,8 +8,7 @@ l_in=length(Uin);
 l_out=length(Uout);
 
 
-[~,in1,~] = overlay(Uin1, Uout1);
-in = in1(:,2);
+[in1] = overlay(Uin, Uout);
 
 % l_in=length(Uin);
 % l_out=length(Uout);

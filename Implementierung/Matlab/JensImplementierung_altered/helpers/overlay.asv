@@ -1,10 +1,9 @@
-function [in1, in2, out1] = overlay (Uin1, Uout1)
+function [in, out] = overlay (Uin, Uout)
 
-Uin = Uin1(:,2);
-Uout = Uout1(:,2);
 
-l_in=length(Uin);
-l_out=length(Uout);
+
+l_in=size(Uin,2);
+l_out=size(Uout,2);
 %Signale übereinanderlegen --> Interpolation und Signale übereinander
 %legen: 
 %Interpolation
@@ -46,10 +45,8 @@ if shift<0
    in(1:l_out+shift)=Uin(-shift+1:end);
 end
 
-in1=Uin1;
-in2=Uout1;
-in1(:,2)=interp1(x_out', in, x_in');
-in2(:,2)=in;
-out1 = interp1(x_out', Uout1, x_in');
+in=interp1(x_out', in, x_in');
+
+out = interp1(x_out', Uout, x_in');
 
 end

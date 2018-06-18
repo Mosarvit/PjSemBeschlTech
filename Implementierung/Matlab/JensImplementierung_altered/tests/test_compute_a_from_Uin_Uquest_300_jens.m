@@ -7,10 +7,10 @@ function passed = test_compute_a_from_Uin_Uquest_300_jens()
     Uquest_300 = load('../../Python/nichtLinear/data/test_data/Uquest_300_jens.csv');        
     load('data/matlab_Workspace_nichtlin_VV_AR.mat');
     
-    U_in(:,2) = setVpp_mV(U_in(:,2), 300);
+    U_in = setVpp(U_in, 300);
     Uquest_300(:,2) = Uquest_300(:,2)*1000;
     
-    a_300_computed = compute_a_from_Uin_Uquest( U_in(:,2), Uquest_300(:,2), 3, verbosity );
+    a_300_computed = compute_a_from_Uin_Uquest( U_in, Uquest_300, 3, verbosity );
     
 %     csvwrite('../../Python/nichtLinear/data/test_data/a_300_jens.csv',a_300_test);  
     

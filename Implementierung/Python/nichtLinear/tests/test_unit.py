@@ -6,7 +6,7 @@ from blocks import compute_Uquest_from_Uout, compute_K_from_a, compute_Uin_from_
 from helpers import overlay, signalHelper
 import numpy as np
 import copy
-
+import matplotlib.pyplot as plt
 
 class test_unit(TestCase):
 
@@ -144,11 +144,11 @@ class test_unit(TestCase):
         self.assertTrue(err < 1e-3)
 
     # @unittest.skip("reason for skipping")
-    def test_compute_Uin_from_Uquest(self):
+    def test_compute_Uin_from_Uquest_jens(self):
 
         Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin_jens.csv', delimiter=',')
         Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_jens.csv', delimiter=',' )
-        K_param2_300_ideal = genfromtxt(fixPath + 'data/test_data/K_param2_300.csv', delimiter=',')
+        K_param2_300_ideal = genfromtxt(fixPath + 'data/test_data/K_300_jens.csv', delimiter=',')
         # why has Uin_ideal more time steps than Uquest_ideal???
         #  - because they come from different places. Uin is the input of the AWG nad Uquest is computed form the measured Uout
         # Uin_computed has same number of time steps as Uquest_ideal
@@ -193,18 +193,40 @@ class test_unit(TestCase):
         err = linalg.norm(Uin_computed_overlay - Uin_ideal) / linalg.norm(Uin_ideal)
         self.assertTrue(err < 0.2)
 
-    def test_compute_Uin_from_Uquest_sample_rate(self):
+    def test_compute_Uin_from_Uquest_our(self):
 
-        Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')
-        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300.csv', delimiter=',')
-        K_param2_300_ideal = genfromtxt(fixPath + 'data/test_data/K_param2_300.csv', delimiter=',')
+        Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin_our.csv', delimiter=',')
+        Uin_ideal_mV = signalHelper.setVpp(Uin_ideal, 300);
 
-        sampleRateAWG = 1e9
+        Uquest_300 = genfromtxt(fixPath + 'data/test_data/Uquest_300_our.csv', delimiter=',' )
+        Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
 
-        T = max(Uquest_300_ideal[:, 0]) - min(Uquest_300_ideal[:, 0])
-        lenght_new = int(np.floor(T * sampleRateAWG))
+        K_300 = genfromtxt(fixPath + 'data/test_data/K_300_our.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, sampleRateAWG, verbosity=False)
+        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_mV, K_300, verbosity=False)
+        Uin_computed_overlay = copy.copy(Uin_ideal_mV)
+        Uin_computed_overlay[:, 1] = overlay.overlay(Uin_computed, Uin_ideal_mV ) #todo : see little changes in overlay
+
+        plt.figure()
+        plt.plot(Uin_ideal_mV[:, 0], Uin_ideal_mV[:, 1])
+        plt.plot(Uin_ideal_mV[:, 0], Uin_computed_overlay[:, 1])
+        plt.title('Das ideale U_BB')
+        plt.ylabel('u in mV')
+        plt.show()
+
+        err = linalg.norm(Uin_computed_overlay - Uin_ideal_mV) / linalg.norm(Uin_ideal_mV)
+        self.assertTrue(err < 0.2)
+
+    def test_setSampleRate(self):
+
+        Uin = genfromtxt(fixPath + 'data/test_data/Uin_jens.csv', delimiter=',')
+
+        sampleRate = 1e9
+
+        T = max(Uin[:, 0]) - min(Uin[:, 0])
+        lenght_new = int(np.floor(T * sampleRate))
+
+        Uin_computed = signalHelper.setSampleRate(Uin, sampleRate);
 
         self.assertTrue(Uin_computed.shape[0] == lenght_new)
 
