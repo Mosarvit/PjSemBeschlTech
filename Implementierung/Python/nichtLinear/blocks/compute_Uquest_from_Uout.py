@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Jul 13 11:22:44 2017
-
 @author: denys
 """
 
@@ -14,31 +13,25 @@ import numpy as np
 #from scipy import interpolate
 from scipy.interpolate import interp1d
 from helpers import globalVars
+import warnings
 
 def compute(Uout, H, verbosity):
 
     """
     compute_Uquest_from_Uout berechten Uquest aus Uout mithilfe der Invertierung der Übetragungsfunktion H
-
     INPUT:
-
         Uout - nx2 array; Ausgangssignal (n - Länge des Signals)
             Uout[:,0] - Zeitvektor
             Uout[:,1] - Signalvektor
-
         H - nx3 array; Übertragungsfunktion (n - Anzahl der Frequenzen)
             H[:,0] - Frequenz f
             H[:,1] - Amplitudenverstärkung
             H[:,2] - Phasenverschiebung
-
         verbosity - boolean; ob Uin gelplottet werden soll
-
     OUTPUT:
-
         Uquest - nx2 array; U_? (n - Länge des Signals)
             Uquest[:,0] - Zeitvektor
             Uquest[:,1] - Signalvektor
-
     """
 
 
@@ -84,14 +77,21 @@ def compute(Uout, H, verbosity):
 
     for k in range(int(math.floor(f_max / f_rep))):
 
-        a_n = Y[k + 1] + Y[len(Y) - 1 - k]
-        b_n = 1j * (Y[k + 1] - Y[len(Y) - 1 - k])
+        rnd = 12 # round by , since fft is only this precise and would otherwise leave a negligable imaginary part which would throuw a warning
+
+        a_n = round(Y[k + 1], rnd) + round(Y[len(Y) - 1 - k], rnd)
+        b_n = 1j * (round(Y[k + 1], rnd) - round(Y[len(Y) - 1 - k], rnd))
 
         omegat = 2 * math.pi * (k+1) * f_rep * t
         gamma =  Hph[k] * np.ones(len(t))
         phi = omegat - gamma
 
-        c = 1 / abs(Ha[k]) * ( a_n *np.cos(phi) + b_n * np.sin(phi) )
+        c_ = 1 / abs(Ha[k]) * ( a_n *np.cos(phi) + b_n * np.sin(phi) )
+
+        if any(c_.imag!= 0.0):
+            warnings.warn("c is not purely real")
+
+        c = c_.real
 
         Uquest[:,1] = Uquest[:,1] + c
 

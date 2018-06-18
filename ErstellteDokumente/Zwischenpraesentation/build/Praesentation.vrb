@@ -288,8 +288,8 @@
 	\lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt}
 }
 	
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
+\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
+\only<\value{from} - \value{till}>
 {
 	\begin{picture}(100,70)
 		\put(15,0)
@@ -300,17 +300,28 @@
 	\lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt}
 }
 
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide13-01.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=10]{slides/ResultCode/file.txt}
-}
+\ifnum\WertA=2
+	\setcounter{onlyAt}{\value{from} + 1}
+	\only<\value{onlyAt}>
+	{
+		\begin{textblock}{20}(80,50)
+    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/U_in.pdf}
+		\end{textblock}	
+	}
+\fi	
+\setcounter{onlyAt}{\value{till}}
+
+%\setcounter{onlyAt}{\value{onlyAt}+1}
+%\only<\value{onlyAt}>
+%{
+%	\begin{picture}(100,70)
+%		\put(15,0)
+%		{
+%			\includegraphics[scale=1.0]{slides/ResultCode/Slide13-01.eps}
+%		}
+%	\end{picture}
+%	\lstinputlisting[firstline=1,lastline=10]{slides/ResultCode/file.txt}
+%}
 	
 \setcounter{onlyAt}{\value{onlyAt}+1}
 \only<\value{onlyAt}>
@@ -321,7 +332,7 @@
 			\includegraphics[scale=1.0]{slides/ResultCode/Slide13.eps}
 		}
 	\end{picture}
-	\lstinputlisting[firstline=1,lastline=11]{slides/ResultCode/file.txt}
+	\lstinputlisting[firstline=1,lastline=10]{slides/ResultCode/file.txt}
 }
 
 

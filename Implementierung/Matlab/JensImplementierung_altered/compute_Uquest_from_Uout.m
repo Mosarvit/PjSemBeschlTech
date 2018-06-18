@@ -95,6 +95,12 @@ u_dim2 = size(Y,2);
  
 for ind=1:f_max/f_rep
     %Achtung: U_out NX2 Matrix (Zeit und Spannung): Dieser Block
+    a1 = Y(ind+1,u_dim2);
+    a2 = Y(end+1-ind,u_dim2);
+    
+    b1 = Y(ind+1,u_dim2);
+    b2 = Y(end+1-ind,u_dim2);
+    
     a_n=Y(ind+1,u_dim2)+Y(end+1-ind,u_dim2);
     b_n=1i*(Y(ind+1,u_dim2)-Y(end+1-ind,u_dim2));
     

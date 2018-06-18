@@ -4,6 +4,7 @@ import numpy as np
 from helpers import find_nearest
 import matplotlib.pyplot as plt
 from helpers import signalHelper, globalVars
+from scipy import linalg
 
 
 def evaluate() :
@@ -14,16 +15,17 @@ def evaluate() :
     f_BB = 5e6
     Vpp = 0.3
 
-    Uout_ideal = generate_BBsignal.generate(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=1)
+    Uout_ideal = generate_BBsignal.generate(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
 
 
-    H = measure_H.measure(loadCSV=True, saveCSV=True, verbosity=1)
-    Uquest_ideal = compute_Uquest_from_Uout.compute(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
-    Uin_mV = signalHelper.setVpp(Uquest_ideal, Vpp)
+    H = measure_H.measure(loadCSV=True, saveCSV=True, verbosity=0)
+    Uquest_ideal = compute_Uquest_from_Uout.compute(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
+
+    Uin = signalHelper.setVpp(Uquest_ideal, Vpp)
 
     # csvHelper.save_2cols('data/test_data/Uin_our.csv', Uin[:,0], Uin[:,1])
 
-    Uout_measured = measure_Uout.measure(Uin=Uin_mV, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=True, id='1', verbosity=1)
+    Uout_measured = measure_Uout.measure(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=True, id='1', verbosity=0)
 
     # begin cut just one period out of Uout_measured
 
@@ -45,15 +47,18 @@ def evaluate() :
 
     # end
 
-    Uquest_measured= compute_Uquest_from_Uout.compute(Uout=Uout_measured, H=H, verbosity=1)
+    Uquest_measured = compute_Uquest_from_Uout.compute(Uout=Uout_measured, H=H, verbosity=0)
     Uquest_measured_mV = signalHelper.convert_V_to_mV(Uquest_measured)
 
-    # Uin_mV = signalHelper.convert_V_to_mV(Uin_mV)
+
+    Uin_mV = signalHelper.convert_V_to_mV(Uin)
 
     a = compute_a_from_Uin_Uquet.compute(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3, verbosity=0)
-    K = compute_K_from_a.compute(a=a, verbosity=True)
+    K = compute_K_from_a.compute(a=a, verbosity=0)
 
-    Uin_mV = compute_Uin_from_Uquest.compute(Uquest=Uquest_ideal, K=K, verbosity=0)
+    Uquest_ideal_mV = signalHelper.convert_V_to_mV(Uquest_ideal)
+
+    Uin_mV = compute_Uin_from_Uquest.compute(Uquest=Uquest_ideal_mV, K=K, verbosity=1)
 
     Uin = signalHelper.convert_mV_to_V(Uin_mV)
 

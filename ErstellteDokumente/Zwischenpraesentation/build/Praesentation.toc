@@ -5,7 +5,7 @@
 \beamer@sectionintoc {2}{Ger\IeC {\"a}tekommunikation}{10}{0}{2}
 \beamer@sectionintoc {3}{Code}{17}{0}{3}
 \beamer@subsectionintoc {3}{1}{Design}{17}{0}{3}
-\beamer@subsectionintoc {3}{2}{Vorgehensweise}{37}{0}{3}
-\beamer@subsectionintoc {3}{3}{Evaluierung}{54}{0}{3}
-\beamer@sectionintoc {4}{Ausblick}{78}{0}{4}
-\beamer@sectionintoc {5}{Quellen}{81}{0}{5}
+\beamer@subsectionintoc {3}{2}{Vorgehensweise}{36}{0}{3}
+\beamer@subsectionintoc {3}{3}{Evaluierung}{53}{0}{3}
+\beamer@sectionintoc {4}{Ausblick}{77}{0}{4}
+\beamer@sectionintoc {5}{Quellen}{80}{0}{5}

@@ -8,6 +8,7 @@ import numpy as np
 from scipy.interpolate import interp1d
 import copy
 import matplotlib.pyplot as plt
+from helpers import globalVars
 
 
 def compute(Uquest, K, verbosity=False):
@@ -90,11 +91,15 @@ def compute(Uquest, K, verbosity=False):
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
 
     if verbosity:
-        plt.figure()
+        fig = plt.figure()
         plt.plot(Uin[:,0],Uin[:,1])
         plt.title('Uin')
         plt.ylabel('u')
         plt.ylabel('t')
-        plt.show()
+        if globalVars.showPlots :
+            plt.show()
+        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
+
+    Uin[:,1] = Uin[:,1];
 
     return (Uin)
