@@ -1,5 +1,8 @@
-\frametitle{Erreichtes: Code}
-
+\ifnum\WertA=1
+\frametitle{Code: Das Design}
+\else
+\frametitle{Code: Evaluierung}
+\fi
 
 %\only<1>
 %	{
