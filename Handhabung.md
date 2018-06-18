@@ -47,3 +47,4 @@ PC:
 ## Bekannte Fehlerquellen & Lösungen
 - Treiber nicht installiert -> siehe oben
 - Programmteile im Debug-Modus immer wieder ausführen führt zu Problemen bei der Visa-Erkennung der Geräte. Neustarten von Oszi & AWG hilft
+- Dämpfungsglied z.B. am Verstärker-Eingang am Kabel angeschlossen
