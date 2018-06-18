@@ -74,6 +74,7 @@ Hph=H_neu(:,2);
 
 %u=u_in(1:length(u_in)/2);
 u=Uout;
+Uquest = Uout;
 
 L=length(u);
 NFFT=L;

@@ -9,9 +9,21 @@ import numpy as np
 from helpers import csvHelper, globalVars
 
 def compute(a, verbosity):
-        
+    """
+    compute_K_a berechten die Lookup-Tabelle K aus den Vorfaktoren a
 
+    INPUT:
 
+        a - Nx1 vektor; die Vorfaktoren; (N - Polynomgrad der Approximierugnsmatrix)
+        verbosity - boolean, ob Uin gelplottet werden soll
+
+    OUTPUT:
+
+        K - nx2 array; Lookuptabelle (n - Anzahl der Werte der Lookuptabelle)
+            K[:,0] - Werte von Uin
+            K[:,1] - Werte von Uquest
+
+    """
 
 
     b = a;

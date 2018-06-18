@@ -4,7 +4,24 @@
 """
 
 
-def send(signal, samplerateAWG, awg_volt):
+def write(signal, samplerateAWG, awg_volt):
+
+    """
+
+    write_to_AWG sendet ein Singal an den AWG
+
+    INPUT:
+
+        awg_volt : skalar; Output peak-peak voltage of AWG
+        samplerateAWG: positiver integer; Abtastrate des AWG
+        signal : nx1 vector; Signalvektor
+
+    OUTPUT:
+
+        (no output)
+
+    """
+
     import visa
     from helpers import MLBS
     import time

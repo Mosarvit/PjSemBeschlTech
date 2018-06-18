@@ -1,14 +1,30 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Dec 20 10:43:54 2017
 
-@author: denys
-"""
+
 def read(samplerateOszi, awg_volt, fmax, signal):
+
+    """
+
+    read_from_DSO liest das Eingagns- und Ausgangssignal aus DSO ein
+
+    INPUT:
+
+        awg_volt : skalar; Output peak-peak voltage of the signal
+        samplerateOszi: positiver integer; Abtastrate des DSO
+        fmax : positiver skalar; max frequency of interest
+        signal : nx1 vector; Signalvektor
+
+    OUTPUT:
+
+        time : nx1 vector; Zeitvektor
+        dataUin : nx1 vector; Signalvektor des Eingangssignals (Vorausgesetzt richtig angeschlossen ans DSO)
+        dataUout : nx1 vector; Signalvektor des Eingangssignals (Vorausgesetzt richtig angeschlossen ans DSO)
+
+    """
+
     import visa
     import numpy as np
     import time
-    
 
     dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
     DSO = visa.ResourceManager().get_instrument(dso_ip)

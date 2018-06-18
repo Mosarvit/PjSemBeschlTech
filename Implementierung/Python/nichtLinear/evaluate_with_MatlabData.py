@@ -52,7 +52,7 @@ def readIn_Uout_ideal():
     return tout_ideal, Uout_ideal
 
 def sendUinToAWG():
-    write_to_AWG.send(Uin, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
+    write_to_AWG.write(Uin, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
 
 def receiveFromDSO():
     fmax = 80e6

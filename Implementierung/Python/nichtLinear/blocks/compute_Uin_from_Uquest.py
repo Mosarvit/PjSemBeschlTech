@@ -11,6 +11,29 @@ import matplotlib.pyplot as plt
 
 
 def compute(Uquest, K, verbosity=False):
+
+    """
+    compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
+
+    INPUT:
+
+        Uquest - nx2 array; U_? (n - Länge des Signals)
+            Uquest[:,0] - Zeitvektor
+            Uquest[:,1] - Signalvektor
+
+        K - nx2 array Lookuptabelle (n - Anzahl der Werte der Lookuptabelle)
+            K[:,0] - Werte von Uin
+            K[:,1] - Werte von Uquest
+
+        verbosity - boolean, ob Uin gelplottet werden soll
+
+    OUTPUT:
+
+        Uin : nx2 array; (n - Länge des Signals)
+            Uin[:,0] - Zeitvektor
+            Uin[:,1] - Signalvektor
+
+    """
     #VAS fuer Funktionalitaet ist Verhalten einer Potenzreihe in K -> keine Spruenge zw zwei Werten
 
     # dummy value, damit der unit test kompeliert:
@@ -35,7 +58,7 @@ def compute(Uquest, K, verbosity=False):
     K_ind_high = int(np.argmax(K[:, 0]))
     K_ind_low = int(np.argmin(K[:, 0]))
     K = K[K_ind_low:K_ind_high, :]
-    K = K / 1000 #Umrechnung in Volt
+    # K = K / 1000 #Umrechnung in Volt
 
     # - skaliere Kennlinie / Uebertragung bzw Ausgang fuer gewuenschte Amplitude max( norm(Uquest(:, 1)))
     # - pruefe auf Einhalten der Bijektivitaet durch Amplitude von Uquest,
@@ -59,7 +82,7 @@ def compute(Uquest, K, verbosity=False):
     K_function = interp1d(K[:, 1], K[:, 0], kind='slinear')
 
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
-    Uin[:, 1] = K_function(Uquest[:, 1])/10     #### woher der Faktor 10 vorher????
+    Uin[:, 1] = K_function(Uquest[:, 1])     #### woher der Faktor 10 vorher????
 
     # passe die Lange von Uin an sampleRateAWG an
 

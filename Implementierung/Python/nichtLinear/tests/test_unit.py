@@ -145,76 +145,31 @@ class test_unit(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_compute_Uin_from_Uquest_jens(self):
-
         Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin_jens.csv', delimiter=',')
-        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_jens.csv', delimiter=',' )
-        K_param2_300_ideal = genfromtxt(fixPath + 'data/test_data/K_300_jens.csv', delimiter=',')
-        # why has Uin_ideal more time steps than Uquest_ideal???
-        #  - because they come from different places. Uin is the input of the AWG nad Uquest is computed form the measured Uout
-        # Uin_computed has same number of time steps as Uquest_ideal
-        #  - corrent, since it was computed from Uquest
-        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_ideal, K_param2_300_ideal, verbosity=False)
+        Uin_mV_ideal = signalHelper.setVpp(signal=Uin_ideal, Vpp=300)
+        Uquest_300 = genfromtxt(fixPath + 'data/test_data/Uquest_300_jens.csv', delimiter=',')
+        Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
+        K_300 = genfromtxt(fixPath + 'data/test_data/K_300_jens.csv', delimiter=',')
 
-        # testing the test
-        # compare different time-steps:
-        # print("Time steps given in Uquest", len(Uquest_300_ideal[:, 0]))
-        # print("Time steps computed in Uin", len(Uin_computed[:, 0]))
-        # print("Time steps expected", len(Uin_ideal[:, 0]))
-        # # in1 = copy.copy(Uin_computed)
-        # in1[0:2] = Uin_computed[-2:]
-        # in1[2:] = Uin_computed[0:-2]
+        Uin_mV_computed = compute_Uin_from_Uquest.compute(Uquest_300_mV, K_300, verbosity=False)
 
-        # in1 = copy.copy(Uin_computed)
-        # in1[0:1] = Uin_computed[-1:]
-        # in1[1:] = Uin_computed[0:-1]
+        _, Uin_mV_computed_overlay = overlay.overlay(Uin_mV_computed, Uin_mV_ideal)
 
-        # end testing the test
-        # output is to be evaluated at same time steps as Uin_ideal
-        Uin_computed_overlay = copy.copy(Uin_ideal)
-        # overlay of voltages
-        Uin_computed_overlay[:, 1] = overlay.overlay(Uin_computed, Uin_ideal ) #see little changes in overlay!!!
-        #print("Time steps computed in Uin after overlay", len(Uin_computed_overlay[:, 0]))
-
-        # verbosity = True
-        # if verbosity:
-        #     plt.figure(1)
-        #     plt.plot(Uin_ideal[:, 0], Uin_ideal[:, 1])
-        #     # plt.figure(2)
-        #     # plt.plot(Uin_computed[:, 0], Uin_computed[:, 1])
-        #     plt.figure(3)
-        #     plt.plot(Uin_computed_overlay[:, 0], Uin_computed_overlay[:, 1])
-        #     # plt.figure(2)
-        #     # plt.plot(Uquest_300_ideal[:, 0], Uquest_300_ideal[:, 1])
-        #     # plt.title('Spannungssignale')
-        #     # plt.ylabel('u in mV')
-        #     # plt.legend('U_in', 'H^-1*U_out')
-        #     plt.show()
-
-        err = linalg.norm(Uin_computed_overlay - Uin_ideal) / linalg.norm(Uin_ideal)
+        err = linalg.norm(Uin_mV_computed_overlay[:, 1] - Uin_mV_ideal[:, 1]) / linalg.norm(Uin_mV_ideal[:, 1])
         self.assertTrue(err < 0.2)
 
     def test_compute_Uin_from_Uquest_our(self):
-
         Uin_ideal = genfromtxt(fixPath + 'data/test_data/Uin_our.csv', delimiter=',')
-        Uin_ideal_mV = signalHelper.setVpp(Uin_ideal, 300);
-
-        Uquest_300 = genfromtxt(fixPath + 'data/test_data/Uquest_300_our.csv', delimiter=',' )
+        Uin_mV_ideal = signalHelper.setVpp(signal=Uin_ideal, Vpp=300)
+        Uquest_300 = genfromtxt(fixPath + 'data/test_data/Uquest_300_our.csv', delimiter=',')
         Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
-
         K_300 = genfromtxt(fixPath + 'data/test_data/K_300_our.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest.compute(Uquest_300_mV, K_300, verbosity=False)
-        Uin_computed_overlay = copy.copy(Uin_ideal_mV)
-        Uin_computed_overlay[:, 1] = overlay.overlay(Uin_computed, Uin_ideal_mV ) #todo : see little changes in overlay
+        Uin_mV_computed = compute_Uin_from_Uquest.compute(Uquest_300_mV, K_300, verbosity=False)
 
-        plt.figure()
-        plt.plot(Uin_ideal_mV[:, 0], Uin_ideal_mV[:, 1])
-        plt.plot(Uin_ideal_mV[:, 0], Uin_computed_overlay[:, 1])
-        plt.title('Das ideale U_BB')
-        plt.ylabel('u in mV')
-        plt.show()
+        _, Uin_mV_computed_overlay = overlay.overlay(Uin_mV_computed, Uin_mV_ideal)
 
-        err = linalg.norm(Uin_computed_overlay - Uin_ideal_mV) / linalg.norm(Uin_ideal_mV)
+        err = linalg.norm(Uin_mV_computed_overlay[:, 1] - Uin_mV_ideal[:, 1]) / linalg.norm(Uin_mV_ideal[:, 1])
         self.assertTrue(err < 0.2)
 
     def test_setSampleRate(self):

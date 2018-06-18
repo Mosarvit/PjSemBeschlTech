@@ -1,25 +1,30 @@
-\begin{frame}{Evaluierung: Dokumentation und Gerätekommunikation}
+\begin{frame}{Dokumentation und Gerätekommunikation - Evaluierung}
 
 %Stand letzter Test
-Unvollständige Dokumentation:
 \begin{itemize}
-	\item Ausführliche Beschreibung von In- und Output-Formaten von Methoden
-	\item Begründung von nicht-trivialen Umformungsschritten in Methoden
+\uncover<2->{
+\item Unvollständige Dokumentation:
+\begin{itemize}
+	\item Parameter und Return-Variablen dokumentieren
 \end{itemize}
-
-Getestet und funktionsfähige Aspekte der Gerätekommunikation:
+}
+\uncover<3->{
+\item Getestete Teile der Gerätekommunikation:
 \begin{itemize}
 	\item VISA-Protokoll und PyVisa Package Installation 
 	\item Kommunikation mit AWG von anderem Laptop aus über USB
 \end{itemize}
-
-Noch nicht erfolgreich getestete Aspekte der Gerätekommunikation:
+}
+\uncover<4->{
+\item Ausstehende Teile der Gerätekommunikation:
 \begin{itemize}
-	\item Kommunikation mit Oszilloskop von anderem Laptop aus über LAN
-	\item Laufzeit: Status-Abfrage der Geräte mit \lstinline{BUSY?} oder \lstinline{*WAI}
-	\item Anpassung der Auflösung [\textit{noch nicht implementiert}]
+	\item Kommunikation mit Oszilloskop von anderem Laptop
+	\item Laufzeit: Status-Abfrage der Geräte mit \texttt{BUSY?} oder \texttt{*WAI}
+	\item Anpassung der Auflösung des DSO
 \end{itemize}
+}
 
+\end{itemize}
 \end{frame}
 
 

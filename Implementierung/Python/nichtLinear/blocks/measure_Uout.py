@@ -14,10 +14,37 @@ from helpers import globalVars
 
 def measure(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
+    """
+    compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
+
+    INPUT:
+
+        Uin - nx2 array; Eingangssignal in Volt
+            Uquest[:,0] - Zeitvektor
+            Uquest[:,1] - Signalvektor
+
+        samplerateAWG - skalar; Abtastarte des AWG
+
+        saveCSV - boolean; ob Uout gespreichert werden soll
+        loadCSV - boolean; ob Uout aus vorhandenen CSV-Datei ausgelesen werden soll
+        verbosity - boolean; ob Uout gelplottet werden soll
+
+    OUTPUT:
+
+        Uout - nx2 array; das gemessene Uout :
+            Uout[:,0] - Zeitvektor
+            Uout[:,1] - Signalvektor
+
+    """
+
+    ####################################################################################################################
+    # Local functions
+    ####################################################################################################################
+
     def sendUinToAWG(Uin):
         Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
         UinNormalized = Uin[:,1]/Vpp # todo : is it necessary to normalize Uin ?
-        write_to_AWG.send(UinNormalized, sampleRateAWG, Vpp)  # Rückbage wird nicht benötigt
+        write_to_AWG.write(UinNormalized, sampleRateAWG, Vpp)  # Rückbage wird nicht benötigt
 
     def receiveFromDSO(Uin):
         fmax = 80e6
@@ -30,6 +57,10 @@ def measure(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
             csvHelper.save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)
 
         return(time, dataUin, dataUout)
+
+    ####################################################################################################################
+    # Here the actual function starts.
+    ####################################################################################################################
 
     if loadCSV :
         Uout_measured = genfromtxt('data/current_data/Uout_'+id+'.csv', delimiter=',')

@@ -12,6 +12,6 @@ function passed = test_compute_Uquest_from_Uout_300_our()
     
 %     csvwrite('../../Python/nichtLinear/data/test_data/Uquest_300_our.csv',Uquest_300_test);  
     
-    err = norm(Uquest_300_test - Uquest_300_ideal) / norm(Uquest_300_ideal);
+    err = norm(Uquest_300_test(:,2) - Uquest_300_ideal(:,2)) / norm(Uquest_300_ideal(:,2));
     passed = err<10e-3; 
 end

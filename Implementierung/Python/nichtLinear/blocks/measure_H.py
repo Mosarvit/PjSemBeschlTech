@@ -6,6 +6,24 @@ from helpers import csvHelper, globalVars
 
 def measure(loadCSV, saveCSV, verbosity):
 
+    """
+    measure_H misst die Übertragungsfunktion
+
+    INPUT:
+
+        saveCSV - boolean; ob H gespreichert werden soll
+        loadCSV - boolean; ob H aus vorhandenen CSV-Datei ausgelesen werden soll
+        verbosity - boolean; ob H gelplottet werden soll
+
+    OUTPUT:
+
+        H - nx3 array; Übertragungsfunktion :
+            H[:,0] - Frequenz f
+            H[:,1] - Amplitudenverstärkung
+            H[:,2] - Phasenverschiebung
+
+    """
+
     if loadCSV :
         Ha = genfromtxt('data/current_data/H_a.csv', delimiter=',')
         Hph = genfromtxt('data/current_data/H_p.csv', delimiter=',')[:,1]

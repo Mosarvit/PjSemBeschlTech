@@ -77,7 +77,7 @@ def get(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
     ##################################################
     if writeAWG:
 
-        write_to_AWG.send(signal, samplerateAWG, awg_volt)
+        write_to_AWG.write(signal, samplerateAWG, awg_volt)
 #        write_to_AWG.send(signal=signal, samplerateAWG=samplerateAWG, awg_volt=awg_volt)
 
     ##################################################
