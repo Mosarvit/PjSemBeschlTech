@@ -20,14 +20,14 @@ class TestComputeParam(TestCase):
     def test_System(self):
         Uout = genfromtxt(fixPath + 'data/test_data/Uout_300.csv', delimiter=',')[:, 1]
         Uin = np.transpose(genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')[:, 1])
-        Uquest = compute_Uquest_from_Uout.compute(Uout, self.H, self.freqA, False)
+        Uquest = compute_Uquest_from_Uout.compute_Uquest_from_Uout(Uout, self.H, self.freqA, False)
 
         a_param2_300_matlab = genfromtxt(fixPath + 'data/test_data/a_param2_300.csv', delimiter=',')
 
         N = 3
         vpp = 300e-3
 
-        [a, K] = compute_a_from_Uin_Uquet.compute(Uin, vpp, Uquest, N, False)
+        [a, K] = compute_a_from_Uin_Uquet.compute_a_from_Uin_Uquet(Uin, vpp, Uquest, N, False)
 
         err = linalg.norm(a - a_param2_300_matlab) / linalg.norm(a_param2_300_matlab)
         self.assertTrue(err < 1e-3)

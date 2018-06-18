@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from helpers import globalVars
 
 
-def compute(Uquest, K, verbosity=False):
+def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
 
     """
     compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K

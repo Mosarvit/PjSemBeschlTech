@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.interpolate import interp1d
 import copy
+from helpers.find_nearest import find_nearest
 
 def setVpp(signal, Vpp):
     """
@@ -79,3 +80,23 @@ def setSampleRate(signal, sampleRate):
     interpolator1 = interp1d(indices_old, np.transpose(signal))
     signal_SR = np.transpose(interpolator1(indices_new))
     return signal_SR
+
+def cun_one_period(signal, f):
+    """
+    cun_one_period schneidet eine Periode des Signals raus
+
+    INPUT:
+        f - positive integer; Frequenz
+        signal - n1x2 array; das Signal (n1 - Länge des Signals)
+             signal[:,0] - Zeitvektor
+             signal[:,1] - Signalvektor
+    OUTPUT:
+        signal_cut - n2x2 array; eine Periode des Signals (n2 - Länge des Signals)
+             signal_cut[:,0] - Zeitvektor
+             signal_cut[:,1] - Signalvektor
+    """
+    T = 1 / f
+    indT = find_nearest(signal[:, 0], T + signal[0, 0])
+    signal_cut = signal[0:indT, :]
+
+    return signal_cut

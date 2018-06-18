@@ -1,12 +1,14 @@
 from unittest import TestCase
 from numpy import genfromtxt
 from scipy import linalg
-from blocks import compute_Uquest_from_Uout, compute_K_from_a, compute_Uin_from_Uquest, compute_a_from_Uin_Uquet
+from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
+from blocks.compute_K_from_a import compute_K_from_a
+from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
+from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 
 from helpers import overlay, signalHelper
 import numpy as np
-import copy
-import matplotlib.pyplot as plt
+
 
 class test_unit(TestCase):
 
@@ -36,6 +38,9 @@ class test_unit(TestCase):
     #         self.freqA[k] = float(str_H[k, 0])
 
     def test_compute_Uquest_from_Uout_300_jens(self):
+
+
+
        Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300_jens.csv', delimiter=',')
        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_jens.csv', delimiter=',')
 
@@ -45,7 +50,8 @@ class test_unit(TestCase):
        H[:, 0:2] = Ha
        H[:, 2] = Hph[:, 1]
 
-       Uquest_300_computed = compute_Uquest_from_Uout.compute(Uout=Uout_300, H=H, verbosity=False)
+       Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
+       a = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
        err = linalg.norm(Uquest_300_computed[:,1] - Uquest_300_ideal[:,1]) / linalg.norm( Uquest_300_ideal[:,1])
        self.assertTrue(err < 0.03)
@@ -60,7 +66,7 @@ class test_unit(TestCase):
         H[:, 0:2] = Ha
         H[:, 2] = Hph[:, 1]
 
-        Uquest_300_computed = compute_Uquest_from_Uout.compute(Uout=Uout_300, H=H, verbosity=False)
+        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
         err = linalg.norm(Uquest_300_computed[:, 1] - Uquest_300_ideal[:, 1]) / linalg.norm(Uquest_300_ideal[:, 1])
         self.assertTrue(err < 0.03)
@@ -76,7 +82,7 @@ class test_unit(TestCase):
         H[:, 0:2] = Ha
         H[:, 2] = Hph[:, 1]
 
-        Uquest_from_BBsignal_computed = compute_Uquest_from_Uout.compute(Uout=BBsignal_ideal, H=H, verbosity=False)
+        Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
         err = linalg.norm(Uquest_from_BBsignal_computed[:,1] - Uquest_from_BBsignal_ideal[:,1]) / linalg.norm(Uquest_from_BBsignal_ideal[:,1])
         self.assertTrue(err<0.04)
@@ -92,7 +98,7 @@ class test_unit(TestCase):
         H[:, 0:2] = Ha
         H[:, 2] = Hph[:, 1]
 
-        Uquest_from_BBsignal_computed = compute_Uquest_from_Uout.compute(Uout=BBsignal_ideal, H=H, verbosity=False)
+        Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
         self.assertFalse(np.iscomplex(Uquest_from_BBsignal_computed.any()))
 
@@ -105,7 +111,7 @@ class test_unit(TestCase):
         Uin_mV = signalHelper.setVpp(signal=Uin, Vpp=300)
         Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
 
-        a_300_computed = compute_a_from_Uin_Uquet.compute(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3, verbosity=False)
+        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3, verbosity=False)
 
         err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
         self.assertTrue(err < 1e-3)
@@ -118,7 +124,7 @@ class test_unit(TestCase):
         Uin_mV = signalHelper.setVpp(signal=Uin, Vpp=300)
         Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
 
-        a_300_computed = compute_a_from_Uin_Uquet.compute(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3, verbosity=False)
+        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3, verbosity=False)
 
         err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
         self.assertTrue(err < 1e-3)
@@ -128,7 +134,7 @@ class test_unit(TestCase):
 
         a_300 = genfromtxt(fixPath + 'data/test_data/a_300_jens.csv', delimiter=',')
 
-        K_computed = compute_K_from_a.compute(a_300, verbosity=False)
+        K_computed = compute_K_from_a(a_300, verbosity=False)
 
         err = linalg.norm(K_computed - K_300_ideal) / linalg.norm(K_300_ideal)
         self.assertTrue(err < 1e-3)
@@ -138,7 +144,7 @@ class test_unit(TestCase):
 
         a_300 = genfromtxt(fixPath + 'data/test_data/a_300_our.csv', delimiter=',')
 
-        K_computed = compute_K_from_a.compute(a_300, verbosity=False)
+        K_computed = compute_K_from_a(a_300, verbosity=False)
 
         err = linalg.norm(K_computed - K_300_ideal) / linalg.norm(K_300_ideal)
         self.assertTrue(err < 1e-3)
@@ -151,7 +157,7 @@ class test_unit(TestCase):
         Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
         K_300 = genfromtxt(fixPath + 'data/test_data/K_300_jens.csv', delimiter=',')
 
-        Uin_mV_computed = compute_Uin_from_Uquest.compute(Uquest_300_mV, K_300, verbosity=False)
+        Uin_mV_computed = compute_Uin_from_Uquest(Uquest_300_mV, K_300, verbosity=False)
 
         _, Uin_mV_computed_overlay = overlay.overlay(Uin_mV_computed, Uin_mV_ideal)
 
@@ -165,7 +171,7 @@ class test_unit(TestCase):
         Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
         K_300 = genfromtxt(fixPath + 'data/test_data/K_300_our.csv', delimiter=',')
 
-        Uin_mV_computed = compute_Uin_from_Uquest.compute(Uquest_300_mV, K_300, verbosity=False)
+        Uin_mV_computed = compute_Uin_from_Uquest(Uquest_300_mV, K_300, verbosity=False)
 
         _, Uin_mV_computed_overlay = overlay.overlay(Uin_mV_computed, Uin_mV_ideal)
 

@@ -9,7 +9,7 @@ from helpers import overlay
 #from scipy import interpolate
 #import csv
 
-def compute(Uin,  Uquest, N, verbosity):
+def compute_a_from_Uin_Uquet(Uin, Uquest, N, verbosity):
 
     """
     compute_a_from_Uin_Uquest berechten die Vorfaktoren a aus gegebenen Uin und Uquest
@@ -48,7 +48,7 @@ def compute(Uin,  Uquest, N, verbosity):
 
 
     #%Spannungsmatrix erzeugen
-    print("Spannungsmatrix")
+    # print("Spannungsmatrix")
     U=np.zeros((l_out,N))
     for ind in range(1,N+1):#[1,2,3]:
         U[:,(ind-1)] = [np.power(x,ind) for x in Uin]

@@ -12,7 +12,7 @@ from numpy import genfromtxt
 from helpers import globalVars
 
 
-def measure(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
+def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
     """
     compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K

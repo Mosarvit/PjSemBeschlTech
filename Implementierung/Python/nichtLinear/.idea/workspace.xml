@@ -2,25 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/Praesentation.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/Praesentation.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.nav" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.nav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.vrb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.vrb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Gegeben.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Gegeben.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/compute_K_from_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_K_from_a.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/generate_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/generate_BBsignal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/measure_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_H.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/measure_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_Uout.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/globalVars.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/globalVars.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate_with_adjustment.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_adjustment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/find_nearest.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/find_nearest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/signalHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/signalHelper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_system.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_unit.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
@@ -36,10 +34,19 @@
       <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="153">
+              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signalHelper.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="89" column="44" lean-forward="true" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
               <folding>
-                <element signature="e#0#162#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,20 +55,52 @@
       <file leaf-file-name="test_unit.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="37" column="53" lean-forward="true" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="68" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compute_Uquest_from_Uout.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="npyio.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/npyio.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="34" column="7" selection-start-line="34" selection-end-line="34" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blocks/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="51" selection-start-column="51" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpers/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="compute_Uquest_from_Uout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+            <state relative-caret-position="143">
+              <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+              <folding>
+                <element signature="e#84#95#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,29 +120,8 @@
       <file leaf-file-name="compute_a_from_Uin_Uquet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="measure_Uout.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signalHelper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="392">
+              <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -126,6 +144,7 @@
       <find>test_compute_Uin_from_Uquest_jens</find>
       <find>fm</find>
       <find>copy</find>
+      <find>genfrom</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,16 +186,19 @@
         <option value="$PROJECT_DIR$/helpers/read_from_DSO.py" />
         <option value="$PROJECT_DIR$/helpers/write_to_AWG.py" />
         <option value="$PROJECT_DIR$/helpers/csvHelper.py" />
-        <option value="$PROJECT_DIR$/helpers/signalHelper.py" />
         <option value="$PROJECT_DIR$/blocks/adjust_a.py" />
         <option value="$PROJECT_DIR$/blocks/adjust_H.py" />
-        <option value="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" />
         <option value="$PROJECT_DIR$/blocks/generate_BBsignal.py" />
         <option value="$PROJECT_DIR$/helpers/globalVars.py" />
         <option value="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" />
-        <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
-        <option value="$PROJECT_DIR$/tests/test_unit.py" />
+        <option value="$PROJECT_DIR$/helpers/__init__.py" />
+        <option value="$PROJECT_DIR$/blocks/__init__.py" />
+        <option value="$PROJECT_DIR$/tests/__init__.py" />
         <option value="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" />
+        <option value="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" />
+        <option value="$PROJECT_DIR$/tests/test_unit.py" />
+        <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
+        <option value="$PROJECT_DIR$/helpers/signalHelper.py" />
       </list>
     </option>
   </component>
@@ -228,18 +250,18 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks1" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\get" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\measure" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\data\test_data" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\adjust" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\data\currentdata" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\get" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\measure" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\compute" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -254,7 +276,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens">
+  <component name="RunManager" selected="Python.evaluate_with_BBsignal">
     <configuration name="evaluate_with_BBsignal" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -363,11 +385,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.evaluate_with_BBsignal" />
+        <item itemvalue="Python tests.Unittests for test_unit.test_unit" />
         <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" />
         <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal" />
-        <item itemvalue="Python tests.Unittests for test_unit.test_unit" />
         <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_a_from_Uin_Uquest_300_jens" />
-        <item itemvalue="Python.evaluate_with_BBsignal" />
       </list>
     </recent_temporary>
   </component>
@@ -385,42 +407,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_with_BBsignal_ideal - 2018.06.19 at 00h 01m 49s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 51m 31s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_with_BBsignal_ideal - 2018.06.19 at 00h 02m 13s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 51m 44s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_with_BBsignal_ideal - 2018.06.19 at 00h 02m 48s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 52m 57s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_jens - 2018.06.19 at 00h 02m 58s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 54m 21s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_jens - 2018.06.19 at 00h 04m 06s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 54m 31s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_jens - 2018.06.19 at 00h 05m 33s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 55m 25s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_jens - 2018.06.19 at 00h 05m 41s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 55m 45s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_jens - 2018.06.19 at 00h 06m 23s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 56m 01s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_jens - 2018.06.19 at 00h 06m 40s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 00h 58m 25s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_jens - 2018.06.19 at 00h 06m 52s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_jens" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.19 at 01h 03m 29s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
@@ -430,7 +452,7 @@
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4244984" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.312566" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -451,7 +473,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="268" />
+      <option name="time" value="269" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -464,21 +486,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1876382111/numpy/core/umath.py" />
-    <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/overlay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -624,13 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24888">
-          <caret line="1488" column="4" selection-start-line="1488" selection-start-column="4" selection-end-line="1488" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/report/plotting.py" />
     <entry file="file://$PROJECT_DIR$/helpers/find_nearest.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -732,37 +732,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/globalVars.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-          <folding>
-            <element signature="e#0#162#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -776,20 +749,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
+    <entry file="file://$PROJECT_DIR$/helpers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="37" column="53" lean-forward="true" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="51" selection-start-column="51" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        <state relative-caret-position="143">
+          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+          <folding>
+            <element signature="e#84#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/npyio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="34" column="7" selection-start-line="34" selection-end-line="34" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="89" column="44" lean-forward="true" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

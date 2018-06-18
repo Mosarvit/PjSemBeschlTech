@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import csv
 from helpers import csvHelper, globalVars
 
-def generate(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, saveCSV=True, verbosity=False):
+def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, saveCSV=True, verbosity=False):
 
     """
     generate_BBsignal generiert ein ideales Barrie-Bucket-Signal nach den Vorgaben f_rep, f_BB, Vpp

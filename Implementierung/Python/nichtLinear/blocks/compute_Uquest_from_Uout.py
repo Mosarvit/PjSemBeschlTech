@@ -15,7 +15,7 @@ from scipy.interpolate import interp1d
 from helpers import globalVars
 import warnings
 
-def compute(Uout, H, verbosity):
+def compute_Uquest_from_Uout(Uout, H, verbosity):
 
     """
     compute_Uquest_from_Uout berechten Uquest aus Uout mithilfe der Invertierung der Übetragungsfunktion H
@@ -77,7 +77,7 @@ def compute(Uout, H, verbosity):
 
     for k in range(int(math.floor(f_max / f_rep))):
 
-        rnd = 12 # round by , since fft is only this precise and would otherwise leave a negligable imaginary part which would throuw a warning
+        rnd = 11 # round by , since fft is only this precise and would otherwise leave a negligable imaginary part which would throuw a warning
 
         a_n = round(Y[k + 1], rnd) + round(Y[len(Y) - 1 - k], rnd)
         b_n = 1j * (round(Y[k + 1], rnd) - round(Y[len(Y) - 1 - k], rnd))

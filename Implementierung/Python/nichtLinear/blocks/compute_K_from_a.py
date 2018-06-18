@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from helpers import csvHelper, globalVars
 
-def compute(a, verbosity):
+def compute_K_from_a(a, verbosity):
     """
     compute_K_a berechten die Lookup-Tabelle K aus den Vorfaktoren a
 

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from numpy import genfromtxt
 from helpers import csvHelper, globalVars
 
-def measure(loadCSV, saveCSV, verbosity):
+def measure_H(loadCSV, saveCSV, verbosity):
 
     """
     measure_H misst die Übertragungsfunktion
