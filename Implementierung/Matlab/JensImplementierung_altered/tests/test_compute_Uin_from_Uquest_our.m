@@ -1,12 +1,12 @@
-function [ passed ] = test_compute_Uin_from_Uquest_jens( )
+function [ passed ] = test_compute_Uin_from_Uquest_our( )
 
     verbosity = 0;
 
-    Uin = load('../../Python/nichtLinear/data/test_data/Uin_jens.csv');
+    Uin = load('../../Python/nichtLinear/data/test_data/Uin_our.csv');
     Uin_300_ideal = setVpp( Uin, 300);
     
-    K_300 = load('../../Python/nichtLinear/data/test_data/K_300_jens.csv');
-    Uquest_300 = load('../../Python/nichtLinear/data/test_data/Uquest_300_jens.csv');
+    K_300 = load('../../Python/nichtLinear/data/test_data/K_300_our.csv');
+    Uquest_300 = load('../../Python/nichtLinear/data/test_data/Uquest_300_our.csv');
     Uquest_300_mV = Uquest_300;
     Uquest_300_mV(:,2) = Uquest_300(:,2)*1000;
     
