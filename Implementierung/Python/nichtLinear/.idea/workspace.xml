@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Gegeben.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Gegeben.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.nav" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.nav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/build/Praesentation.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Aufbau.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Aufbau.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Ausblick.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Ausblick.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Fragen.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Fragen.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Problemstellung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Problemstellung.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/measure_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_Uout.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +27,8 @@
       <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+            <state relative-caret-position="482">
+              <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -32,8 +39,8 @@
       <file leaf-file-name="signalHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+            <state relative-caret-position="2006">
+              <caret line="119" selection-start-line="119" selection-end-line="119" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -44,8 +51,8 @@
       <file leaf-file-name="measure_Uout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
+            <state relative-caret-position="1785">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
                 <element signature="e#84#131#0" expanded="true" />
               </folding>
@@ -57,46 +64,21 @@
         <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="npyio.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/npyio.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="34" column="7" selection-start-line="34" selection-end-line="34" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="68" />
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="51" selection-start-column="51" selection-end-column="51" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="compute_Uquest_from_Uout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
-              <folding>
-                <element signature="e#84#95#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1683">
+              <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -104,8 +86,8 @@
       <file leaf-file-name="compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1649">
-              <caret line="102" column="23" selection-start-line="102" selection-start-column="23" selection-end-line="102" selection-end-column="23" />
+            <state relative-caret-position="1445">
+              <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
               <folding>
                 <element signature="e#74#102#0" expanded="true" />
               </folding>
@@ -116,8 +98,8 @@
       <file leaf-file-name="compute_a_from_Uin_Uquet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+            <state relative-caret-position="629">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
             </state>
           </provider>
         </entry>
@@ -198,7 +180,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -212,6 +194,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,7 +232,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -446,9 +428,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1669107" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -457,7 +440,7 @@
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.312566" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.312566" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -475,7 +458,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/evaluate_with_BBsignal.py</url>
-          <line>58</line>
+          <line>65</line>
           <option name="timeStamp" value="269" />
         </line-breakpoint>
       </breakpoints>
@@ -607,24 +590,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="681" selection-start-line="681" selection-end-line="681" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py" />
     <entry file="file://$PROJECT_DIR$/evaluation/evaluateWithWithBB.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1876382111/numpy/core/umath.py" />
     <entry file="file://$PROJECT_DIR$/evaluation/evaluate_with_MatlabData.py" />
     <entry file="file://$PROJECT_DIR$/Helpers/writeAWG.py" />
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/core/numeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="491" selection-start-line="491" selection-end-line="491" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/core/numeric.py" />
     <entry file="file://$PROJECT_DIR$/data/test_data/BBsignal_ideal.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="582">
@@ -633,20 +604,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluation/evaluate_with_BBsignal.py" />
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/matplotlib/axes/_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3451">
-          <caret line="241" selection-start-line="241" selection-end-line="241" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/_datasource.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="613" selection-start-line="613" selection-end-line="613" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/venv/Lib/site-packages/matplotlib/axes/_base.py" />
+    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/_datasource.py" />
     <entry file="file://$PROJECT_DIR$/data/current_data/BBsignal_ideal.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -669,13 +628,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/scipy/interpolate/polyint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/venv/Lib/site-packages/scipy/interpolate/polyint.py" />
     <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -755,8 +708,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1649">
-          <caret line="102" column="23" selection-start-line="102" selection-start-column="23" selection-end-line="102" selection-end-column="23" />
+        <state relative-caret-position="1445">
+          <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
           <folding>
             <element signature="e#74#102#0" expanded="true" />
           </folding>
@@ -764,54 +717,35 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="51" selection-start-column="51" selection-end-column="51" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
-          <folding>
-            <element signature="e#84#95#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1683">
+          <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+        <state relative-caret-position="629">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="34" column="7" selection-start-line="34" selection-end-line="34" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/npyio.py" />
+    <entry file="file://$PROJECT_DIR$/blocks/__init__.py" />
     <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="68" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+        <state relative-caret-position="2006">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -820,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
+        <state relative-caret-position="1785">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
           <folding>
             <element signature="e#84#131#0" expanded="true" />
           </folding>
@@ -830,8 +764,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+        <state relative-caret-position="482">
+          <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>

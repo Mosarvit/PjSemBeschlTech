@@ -12,26 +12,42 @@
 	
 	{
 	\begin{itemize}
-	\item Hammerstein Modell \uncover<2-> {: 
-		\begin{itemize}
-			\item System ist linear bis $\hat{U}_{BB} \approx 550V$
-			\item Ergänzung um eine nichtlineare Vorverzerrung
-			\item Potenzreihenansatz $U_?(t)=\sum_{n=1}^N a_n \left[ U_{in}(t) \right]^n$
+	\uncover<2->{
+	\item Gegeben:
+		\begin{itemize} 
+			\item Lineare Übertragungsfunktion $H$ bestimmt durch Pseudorauschen
+			\item System linear bis $\hat{U}_{BB} \approx 550V$ genähert
 		\end{itemize}
 		}
-	\item Zielsetzung \uncover<3-> {:
+		\uncover<3->{
+	\item Hammerstein Modell : 
+		\begin{itemize}
+			\item Ergänzung um eine nichtlineare Vorverzerrung mit einem Potenzreihenansatz 
+		\end{itemize}
+		\begin{center}
+		%\begin{align*}
+		$	U_?(t)=\sum_{n=1}^N \, a_n \, \left[ U_{in}(t) \right]^n
+			\; \; \; \; \; 
+			\underline{U}_{out} \left( \omega \right) = H \left( \omega \right) \cdot \underline{U}_{?} \left( \omega \right)
+		$\\		
+		%\end{align*}
+		}
+		\end{center}
+		\uncover<4->{
+	\item Zielsetzung :
 		\begin{itemize}
 			\item Parameter $a_n$ der Kennlinie zubestimmen
 		\end{itemize}
-		}
+		}	
 	 \end{itemize}
-	}
+	
 	\centering
 	\begin{picture}(100,70)
 		\put(15,5){
 			\includegraphics[scale=1.0]{slides/ResultCode/Slide1.eps} 
 		}
 	\end{picture}
+	}
 %\begin{picture}(100,70)
 %		\put(15,0){
 %			\includegraphics[scale=1.0]{slides/ResultCode/Slide2.eps} 
