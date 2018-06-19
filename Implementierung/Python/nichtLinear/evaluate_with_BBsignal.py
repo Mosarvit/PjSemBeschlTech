@@ -28,7 +28,7 @@ def evaluate() :
 
     Uin = setVpp(Uquest_ideal, Vpp)
 
-    Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=True, id='1', verbosity=0)
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=True, id='1', verbosity=0)
 
     # begin cut just one period out of Uout_measured
 
@@ -62,7 +62,7 @@ def evaluate() :
 
     Uin = convert_mV_to_V(Uin_mV)
 
-    Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=True, id='2', verbosity=0)
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=True, id='2', verbosity=0)
 
 
 

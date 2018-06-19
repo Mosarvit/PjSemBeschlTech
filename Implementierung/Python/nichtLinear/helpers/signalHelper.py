@@ -100,3 +100,20 @@ def cun_one_period(signal, f):
     signal_cut = signal[0:indT, :]
 
     return signal_cut
+
+def assemble_signal(time_vector, signal_vector):
+    """
+    cun_one_period schneidet eine Periode des Signals raus
+
+    INPUT:
+        signal_vector - n1x1 vector; das Signalvektor (n1 - Länge des Signals)
+        time_vector - n1x1 vector; der Zeitvektor (n1 - Länge des Signals)
+    OUTPUT:
+        signal - n1x2 array; das Signal (n1 - Länge des Signals)
+             signal[:,0] - Zeitvektor
+             signal[:,1] - Signalvektor
+    """
+    signal = np.zeros((len(time_vector), 2));
+    signal[:, 0] = time_vector
+    signal[:, 1] = signal_vector
+    return signal

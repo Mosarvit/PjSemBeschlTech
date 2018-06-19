@@ -10,6 +10,9 @@ import matplotlib.pyplot as plt
 from helpers import csvHelper, signalHelper
 from numpy import genfromtxt
 from helpers import globalVars
+from helpers.signalHelper import assemble_signal
+from helpers.signalHelper import setSampleRate
+from helpers.overlay import overlay
 
 
 def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
@@ -19,7 +22,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
     INPUT:
 
-        Uin - nx2 array; Eingangssignal in Volt
+        Uin - n1x2 array; Eingangssignal in Volt
             Uquest[:,0] - Zeitvektor
             Uquest[:,1] - Signalvektor
 
@@ -31,9 +34,13 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
     OUTPUT:
 
-        Uout - nx2 array; das gemessene Uout :
-            Uout[:,0] - Zeitvektor
-            Uout[:,1] - Signalvektor
+        Uout_measured - n2x2 array; das gemessene Uout :
+            Uout_measured[:,0] - Zeitvektor
+            Uout_measured[:,1] - Signalvektor
+
+        Uin_measured - n2x2 array; das gemessene Uin :
+            Uin_measured[:,0] - Zeitvektor
+            Uin_measured[:,1] - Signalvektor
 
     """
 
@@ -55,6 +62,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
         if saveCSV:
             csvHelper.save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)
+            csvHelper.save_2cols('data/current_data/Uin_' + id + '.csv', time, dataUin)
 
         return(time, dataUin, dataUout)
 
@@ -64,16 +72,16 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
     if loadCSV :
         Uout_measured = genfromtxt('data/current_data/Uout_'+id+'.csv', delimiter=',')
-
+        Uin_measured = genfromtxt('data/current_data/Uin_' + id + '.csv', delimiter=',')
     else:
 
-        Uin = signalHelper.setSampleRate(Uin, sampleRateAWG)
+        Uin = setSampleRate(Uin, sampleRateAWG)
 
         sendUinToAWG(Uin)
         [time, dataUin, dataUout] = receiveFromDSO(Uin)
-        Uout_measured = np.zeros((len(time),2));
-        Uout_measured[:,0] = time
-        Uout_measured[:,1] = dataUout
+
+        Uout_measured = assemble_signal(time, dataUout)
+        Uin_measured = assemble_signal(time, dataUin)
 
     if verbosity:
         fig = plt.figure()
@@ -85,8 +93,21 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
             plt.show()
         fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf')
 
+        _, Uin_measured_overlay = overlay(Uin_measured, Uin)
+
+        fig = plt.figure()
+        plt.plot(Uin[:, 0], Uin[:, 1])
+        plt.plot(Uin_measured[:, 0], Uin_measured[:, 1])
+        plt.title('Uin vs. Uin_measured')
+        plt.xlabel('t')
+        plt.ylabel('U')
+        if globalVars.showPlots:
+            plt.show()
+        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/UinVsUin_measured.pdf')
 
 
-    return(Uout_measured)
+    return(Uin_measured, Uout_measured)
+
+
 
 
