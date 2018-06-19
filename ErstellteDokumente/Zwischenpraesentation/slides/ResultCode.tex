@@ -219,8 +219,8 @@
 \fi
 \setcounter{onlyAt}{\value{till}} 
 	
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
+\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
+\only<\value{from} - \value{till}> 
 {
 	\begin{picture}(100,70)
 		\put(15,0){
@@ -230,6 +230,16 @@
 	\lstinputlisting[firstline=1,lastline=7]{slides/ResultCode/file.txt} 
 }
 
+\ifnum\WertA=2
+	\setcounter{onlyAt}{\value{from} + 1}
+	\only<\value{onlyAt}>
+	{
+		\begin{textblock}{20}(65,72)
+    		\includegraphics[scale=0.6 ]{slides/ResultCode/plots/a.JPG} 
+		\end{textblock}	
+	} 
+\fi	
+\setcounter{onlyAt}{\value{till}}	
 
 
 \ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
@@ -279,25 +289,13 @@
 	\lstinputlisting[firstline=1,lastline=8]{slides/ResultCode/file.txt} 
 }
 	
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide12.eps} 
-		}  
-	\end{picture} 
-	\lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt} 
-}
-	
 \ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
 \only<\value{from} - \value{till}> 
 {
 	\begin{picture}(100,70)
 		\put(15,0)
 		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide13-0.eps} 
+			\includegraphics[scale=1.0]{slides/ResultCode/Slide12.eps} 
 		}  
 	\end{picture} 
 	\lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt} 
@@ -313,6 +311,20 @@
 	} 
 \fi	
 \setcounter{onlyAt}{\value{till}}
+	
+\setcounter{onlyAt}{\value{onlyAt}+1}
+\only<\value{onlyAt}>
+{
+	\begin{picture}(100,70)
+		\put(15,0)
+		{
+			\includegraphics[scale=1.0]{slides/ResultCode/Slide13-0.eps} 
+		}  
+	\end{picture} 
+	\lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt} 
+}
+
+
 
 %\setcounter{onlyAt}{\value{onlyAt}+1}
 %\only<\value{onlyAt}>

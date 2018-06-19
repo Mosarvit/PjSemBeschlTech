@@ -7,5 +7,5 @@
 \beamer@subsectionintoc {3}{1}{Design}{17}{0}{3}
 \beamer@subsectionintoc {3}{2}{Vorgehensweise}{36}{0}{3}
 \beamer@subsectionintoc {3}{3}{Evaluierung}{53}{0}{3}
-\beamer@sectionintoc {4}{Ausblick}{77}{0}{4}
-\beamer@sectionintoc {5}{Quellen}{80}{0}{5}
+\beamer@sectionintoc {4}{Ausblick}{78}{0}{4}
+\beamer@sectionintoc {5}{Quellen}{81}{0}{5}

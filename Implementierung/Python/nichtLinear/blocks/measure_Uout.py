@@ -7,7 +7,7 @@ Created on Thu Jul 13 11:22:44 2017
 from helpers import read_from_DSO, write_to_AWG
 import numpy as np
 import matplotlib.pyplot as plt
-from helpers import csvHelper, signalHelper
+from helpers.csvHelper import save_2cols
 from numpy import genfromtxt
 from helpers import globalVars
 from helpers.signalHelper import assemble_signal
@@ -22,11 +22,11 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
     INPUT:
 
-        Uin - n1x2 array; Eingangssignal in Volt
+        Uin - n1x2 array; Eingangssignal in Volt :
             Uquest[:,0] - Zeitvektor
             Uquest[:,1] - Signalvektor
 
-        samplerateAWG - skalar; Abtastarte des AWG
+        sampleRateAWG - skalar; Abtastarte des AWG
 
         saveCSV - boolean; ob Uout gespreichert werden soll
         loadCSV - boolean; ob Uout aus vorhandenen CSV-Datei ausgelesen werden soll
@@ -61,13 +61,13 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, Vpp/10, fmax, Uin[:, 1])
 
         if saveCSV:
-            csvHelper.save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)
-            csvHelper.save_2cols('data/current_data/Uin_' + id + '.csv', time, dataUin)
+            save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)
+            save_2cols('data/current_data/Uin_' + id + '.csv', time, dataUin)
 
         return(time, dataUin, dataUout)
 
     ####################################################################################################################
-    # Here the actual function starts.
+    # Here the actual function begins.
     ####################################################################################################################
 
     if loadCSV :
