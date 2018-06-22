@@ -32,7 +32,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
     else :
         fmax = 80e6
         vpp = 40e-3
-        f, Ha, Hph = get_H.get(fmax, vpp)
+        f, Ha, Hph = get_H.get(fmax, vpp, bits=10)
 
         if saveCSV:
             csvHelper.save_2cols('data/current_data/H_a.csv', f, Ha)
@@ -68,7 +68,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
 
         if globalVars.showPlots :
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf')
+        #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf')
 
         fig = plt.figure()
         plt.plot(f, Hph)
@@ -77,7 +77,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
 
         if globalVars.showPlots:
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf')
+       # fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf')
 
 
     return H

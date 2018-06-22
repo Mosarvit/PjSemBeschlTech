@@ -105,6 +105,6 @@ def compute_Uquest_from_Uout(Uout, H, verbosity):
         plt.xlabel('t')
         if globalVars.showPlots :
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf')
+        #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf')
 
     return (Uquest)

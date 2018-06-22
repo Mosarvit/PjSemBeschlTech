@@ -84,18 +84,18 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         Uin_measured = assemble_signal(time, dataUin)
 
     if verbosity:
-        fig = plt.figure()
+        fig = plt.figure(1)
         plt.plot(Uout_measured[:,0], Uout_measured[:,1])
         plt.title('Uout_measured')
         plt.xlabel('t')
         plt.ylabel('U')
         if globalVars.showPlots :
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf')
+        #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf')
 
         _, Uin_measured_overlay = overlay(Uin_measured, Uin)
 
-        fig = plt.figure()
+        plt.figure(2)
         plt.plot(Uin[:, 0], Uin[:, 1])
         plt.plot(Uin_measured[:, 0], Uin_measured[:, 1])
         plt.title('Uin vs. Uin_measured')
@@ -103,7 +103,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         plt.ylabel('U')
         if globalVars.showPlots:
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/UinVsUin_measured.pdf')
+ #       fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/UinVsUin_measured.pdf')
 
 
     return(Uin_measured, Uout_measured)

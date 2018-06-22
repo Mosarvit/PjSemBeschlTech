@@ -48,7 +48,7 @@ def compute_K_from_a(a, verbosity):
         plt.ylabel('U_out in mV')
         if globalVars.showPlots :
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf')
+        #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf')
     
     return(K)
 

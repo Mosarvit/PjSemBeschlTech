@@ -98,7 +98,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         plt.ylabel('t')
         if globalVars.showPlots :
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
+        #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
 
     Uin[:,1] = Uin[:,1];
 

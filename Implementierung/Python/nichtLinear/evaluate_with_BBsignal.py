@@ -27,13 +27,13 @@ def evaluate() :
     Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
 
     Uin = setVpp(Uquest_ideal, Vpp)
-
+    
     Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=True, id='1', verbosity=0)
-
+    
     # begin cut just one period out of Uout_measured
 
     Uout_measured = cun_one_period(Uout_measured, f_rep)
-
+    
     # end
     # begin plot cut Uout
 
@@ -50,20 +50,20 @@ def evaluate() :
 
     Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
     Uquest_measured_mV = convert_V_to_mV(Uquest_measured)
-
+    
     Uin_mV = convert_V_to_mV(Uin)
 
     a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3, verbosity=0)
-    K = compute_K_from_a(a=a, verbosity=0)
-
+    K = compute_K_from_a(a=a, verbosity=1)
+    
     Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)
 
     Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=0)
 
     Uin = convert_mV_to_V(Uin_mV)
 
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=True, id='2', verbosity=0)
-
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=True, id='2', verbosity=1)
+    return
 
 
 
