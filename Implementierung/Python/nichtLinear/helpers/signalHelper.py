@@ -117,3 +117,12 @@ def assemble_signal(time_vector, signal_vector):
     signal[:, 0] = time_vector
     signal[:, 1] = signal_vector
     return signal
+
+def generateSinSum(fqAmp, t):
+
+    rg = range(fqAmp.shape[0])
+    signal = np.zeros([len(t),2])
+    signal[:,0] = t
+    for ind in rg:
+        signal[:,1] += fqAmp[ind, 1] * np.sin(fqAmp[ind, 0] * t)
+    return signal

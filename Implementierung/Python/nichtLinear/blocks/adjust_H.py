@@ -1,4 +1,4 @@
-def adjust(Halt, Uout_ideal, Uout_measured, sigma_H):
+def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
     """
     adjust_H optimiert die Übertragungsfunktion H
 

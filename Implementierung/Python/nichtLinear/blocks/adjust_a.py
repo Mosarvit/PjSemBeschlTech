@@ -1,4 +1,4 @@
-def adjust(aalt, Uout_ideal, Uout_measured, sigma_a):
+def adjust_a(aalt, Uout_ideal, Uout_measured, sigma_a):
     """
     adjust_a optimiert die Vorfaktoren a
 

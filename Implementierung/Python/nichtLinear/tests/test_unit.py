@@ -5,8 +5,15 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
+from blocks.adjust_H import adjust_H
+import matplotlib.pyplot as plt
 
 from helpers import overlay, signalHelper
+from helpers.signalHelper import generateSinSum
+from helpers.csvHelper import read_in_H, read_in_transfer_function
+from adts.transfer_function import transfer_function
+
+
 import numpy as np
 
 
@@ -39,16 +46,10 @@ class test_unit(TestCase):
 
     def test_compute_Uquest_from_Uout_300_jens(self):
 
-
-
        Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300_jens.csv', delimiter=',')
        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_jens.csv', delimiter=',')
 
-       Ha = genfromtxt(fixPath + 'data/test_data/H_a_jens.csv', delimiter=',')
-       Hph = genfromtxt(fixPath + 'data/test_data/H_p_jens.csv', delimiter=',')
-       H = np.zeros(((Ha.shape[0]),3))
-       H[:, 0:2] = Ha
-       H[:, 2] = Hph[:, 1]
+       H = read_in_H(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
 
        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
        a = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
@@ -56,15 +57,13 @@ class test_unit(TestCase):
        err = linalg.norm(Uquest_300_computed[:,1] - Uquest_300_ideal[:,1]) / linalg.norm( Uquest_300_ideal[:,1])
        self.assertTrue(err < 0.03)
 
+
+
     def test_compute_Uquest_from_Uout_300_our(self):
         Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300_our.csv', delimiter=',')
         Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_our.csv', delimiter=',')
 
-        Ha = genfromtxt(fixPath + 'data/test_data/H_a_our.csv', delimiter=',')
-        Hph = genfromtxt(fixPath + 'data/test_data/H_p_our.csv', delimiter=',')
-        H = np.zeros(((Ha.shape[0]), 3))
-        H[:, 0:2] = Ha
-        H[:, 2] = Hph[:, 1]
+        H = self.read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
@@ -76,11 +75,7 @@ class test_unit(TestCase):
         BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',')
         Uquest_from_BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_from_BBsignal_our.csv', delimiter=',')
 
-        Ha = genfromtxt(fixPath + 'data/test_data/H_a_our.csv', delimiter=',')
-        Hph = genfromtxt(fixPath + 'data/test_data/H_p_our.csv', delimiter=',')
-        H = np.zeros(((Ha.shape[0]), 3))
-        H[:, 0:2] = Ha
-        H[:, 2] = Hph[:, 1]
+        H = read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
@@ -92,11 +87,7 @@ class test_unit(TestCase):
 
         BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',')
 
-        Ha = genfromtxt(fixPath + 'data/test_data/H_a_our.csv', delimiter=',')
-        Hph = genfromtxt(fixPath + 'data/test_data/H_p_our.csv', delimiter=',')
-        H = np.zeros(((Ha.shape[0]), 3))
-        H[:, 0:2] = Ha
-        H[:, 2] = Hph[:, 1]
+        H = read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
@@ -192,4 +183,79 @@ class test_unit(TestCase):
         Uin_computed = signalHelper.setSampleRate(Uin, sampleRate);
 
         self.assertTrue(Uin_computed.shape[0] == lenght_new)
+
+    def test_adjust_H_a_trivial(self):
+
+        Halt = read_in_H(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
+
+        Hneu_ideal = Halt
+
+        t = np.linspace(0, 10, 100)
+        Uout_ideal = generateSinSum(np.array([[1, 4], [2, 6], [3, 10]], np.int32), t)
+        Uout_measured = Uout_ideal
+
+        sigma_H = 0.5
+
+        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
+
+        err = linalg.norm(Hneu[:,1] - Hneu_ideal[:,1]) / linalg.norm(Hneu_ideal[:,1])
+        self.assertTrue(err < 0.001)
+
+    def test_adjust_H_p_trivial(self):
+
+        """
+        trivial test:
+        if
+          Uout_measured = Uout_ideal
+        than
+          Hneu = Halt
+        """
+
+        Halt = read_in_transfer_function(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
+        Hneu_ideal = Halt
+
+        t = np.linspace(0, 10, 100)
+        Uout_ideal = generateSinSum(np.array([[1, 4], [2, 6], [3, 10]], np.int32), t)
+        Uout_measured = Uout_ideal
+
+        sigma_H = 0.5
+
+        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
+
+        err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
+        self.assertTrue(err < 0.001)
+
+    def test_adjust_H(self):
+
+        """
+        if
+          Uout_ideal is a sum of three sin functions
+          Uout_measured = 2 * Uout_ideal
+          sigma_H = 0.5,
+        than
+          Hneu.a = Halt.a * 1.5
+        """
+
+        Halt = read_in_transfer_function(fixPath + 'data/test_data/H_a_jens.csv',
+                                         fixPath + 'data/test_data/H_p_jens.csv')
+        Hneu_ideal = transfer_function(Halt.f)
+
+        sigma_H = 0.5
+        factor = 2
+        Hneu_ideal.a_p = Halt.a * ( 1 + ( ( factor - 1 ) * sigma_H ) ) , Halt.p
+
+        t = np.linspace(0, 10, 100)
+        Uout_ideal = generateSinSum(np.array([[1, 4 ],  [2, 6 ],  [3, 10 ]]), t)
+        Uout_measured = Uout_ideal
+        Uout_measured[:,1] = Uout_ideal[:,1] * 2
+
+        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
+
+        err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
+
+        self.assertTrue(err < 0.001) # we allow an error of 0.1% for the start, but it should be better
+
+
+
+
 
