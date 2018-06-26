@@ -1,0 +1,18 @@
+Fehlermeldung 1 bei dso simple
+
+Traceback (most recent call last):
+Verbindung fehlgeschlagen
+'LeCroyWaveRunner' object has no attribute 'instrument'
+  File "C:/Git/PJSem_S/Implementierung/Python/nichtLinear/new_DSO/dso_get_simple.py", line 25, in <module>
+ERROR in rftools_remote.LeCroyWaveRunner.read(): Failed reading data from the scope, retrying.
+Sending self-test command to scope.
+    scope.read(channel_number=1)
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\new_DSO\lib\rftools_remote_lecroy_waverunner.py", line 389, in read
+    self.write('*TST?')					
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\new_DSO\lib\rftools_remote_lecroy_waverunner.py", line 116, in write
+    self.wait()
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\new_DSO\lib\rftools_remote_lecroy_waverunner.py", line 107, in wait
+    self.instrument.write('*OPC?')
+AttributeError: 'LeCroyWaveRunner' object has no attribute 'instrument'
+
+Process finished with exit code 1

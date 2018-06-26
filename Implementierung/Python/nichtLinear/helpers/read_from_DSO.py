@@ -72,8 +72,10 @@ def read(samplerateOszi, awg_volt, fmax, signal):
     else:
         recordLength = possibleRecordLength[ind]
     DSO.write("HORIZONTAL:RECOrdlength " + str(recordLength)) #1e5
-    DSO.write("CH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
-    DSO.write("MATH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+#    DSO.write("CH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+#    DSO.write("MATH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+    DSO.write("CH1:SCAle " + str(awg_volt/6*10)) #Sets the vertical scale
+    DSO.write("MATH1:SCAle " + str(awg_volt/6*10)) #Sets the vertical scale
     DSO.write("CH2:SCAle 20.0E-3") #Sets the vertical scale 
     DSO.write("CH3:SCAle " + str(awg_volt*10)) #Sets the vertical scale 
     DSO.write("CH4:SCAle " + str(awg_volt*10)) #Sets the vertical scale
@@ -111,7 +113,7 @@ def read(samplerateOszi, awg_volt, fmax, signal):
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
        #last data point that will be transferred when using the CURVe? query
 
-    time_attempt = 1        #chooses version to wait for finishing commands
+    time_attempt = 2        #chooses version to wait for finishing commands
     if time_attempt == 1:
         time.sleep(5)       #enough time to finish every Process
     elif time_attempt == 2:
@@ -121,10 +123,10 @@ def read(samplerateOszi, awg_volt, fmax, signal):
                         # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
     elif time_attempt == 3:
         busy = DSO.query("BUSY?")          #new attempt 2 to reduce time to wait -> runs until OPC? is set to 1
-        while busy:                        #loop until not busy any more
+        while busy=="1":                        #loop until not busy any more
                time.sleep(0.01)         #just to pose less requests to DSO, 10 msec waiting time -> not necessary
                busy = DSO.query("BUSY?")
-               print(a)                 #just to have a control option -> not necessary, it an attempt work
+               print(busy)                 #just to have a control option -> not necessary, it an attempt work
                                         # In case this is not working, try DSO.write("BUSY") instead, just as a guess
     else :
         DSO.write("*WAI")   #new attempt 3 to reduce time to wait -> DSO will wait till commands above are finished.
@@ -144,7 +146,7 @@ def read(samplerateOszi, awg_volt, fmax, signal):
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
          #last data point that will be transferred when using the CURVe? query
 
-    time_attempt = 1  # chooses version to wait for finishing commands
+    time_attempt = 3  # chooses version to wait for finishing commands
     if time_attempt == 1:
         time.sleep(5)  # enough time to finish every Process -> original implementation
     elif time_attempt == 2:
@@ -154,10 +156,10 @@ def read(samplerateOszi, awg_volt, fmax, signal):
         # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
     elif time_attempt == 3:
         busy = DSO.query("BUSY?")  # new attempt 2 to reduce time to wait -> runs until OPC? is set to 1
-        while busy:  # loop until not busy any more
+        while busy=='1':  # loop until not busy any more
             time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
             busy = DSO.query("BUSY?")
-            print(a)  # just to have a control option -> not necessary, it an attempt work
+            print(busy)  # just to have a control option -> not necessary, it an attempt work
             # In case this is not working, try DSO.write("BUSY") instead, just as a guess
     else:
         DSO.write("*WAI")  # new attempt 3 to reduce time to wait -> DSO will wait till commands above are finished.

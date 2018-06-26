@@ -61,10 +61,28 @@ def write(signal, samplerateAWG, awg_volt):
         #         writer.writerow([str(data_conv[i])])
         data_conv = ",".join(str(e) for e in data_conv)
         AWG.write("SOURce1:DATA:ARBitrary:DAC myarb ," + data_conv)
-        time.sleep(10)
+        
+        time_attempt = 3  # chooses version to wait for finishing commands
+        if time_attempt == 1:
+            time.sleep(10)  # enough time to finish every Process -> original implementation
+        elif time_attempt == 2:
+            AWG.write("*OPC?")  # new attempt 1 to reduce time to wait
+            # -> does not proceed until *OPC? is set to 1 by internal queue.
+            # so, finishing this line in the program will last until the device is ready
+            # In case this is not working, try AWG.write("*OPC?") instead, just as a guess
+            # can used as a boolean variable, finished = AWG.query("*OPC?"), if necessary for a loop
+        elif time_attempt == 3:
+            AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
+            # python will go on and write the commands in the input buffer
+            # they will be executed after WAI has finished
+        # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
+        else :
+            time.sleep(1.3)  #attempt 3 to reduce time to wait
+            # -> see data sheet: maximum time needed to write is given by 1.25 sec
+            
         AWG.write("SOURce1:FUNCtion:ARBitrary 'myarb'")
 
-        time_attempt = 1  # chooses version to wait for finishing commands
+        time_attempt = 3  # chooses version to wait for finishing commands
         if time_attempt == 1:
             time.sleep(10)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
@@ -86,10 +104,60 @@ def write(signal, samplerateAWG, awg_volt):
         AWG.write("DISPlay:FOCus CH1")
         AWG.write("DISPlay:UNIT:ARBRate FREQuency")
         AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(samplerateAWG))
+        
+        time_attempt = 1  # chooses version to wait for finishing commands
+        if time_attempt == 1:
+            time.sleep(10)  # enough time to finish every Process -> original implementation
+        elif time_attempt == 2:
+            AWG.write("*OPC?")  # new attempt 1 to reduce time to wait
+            # -> does not proceed until *OPC? is set to 1 by internal queue.
+            # so, finishing this line in the program will last until the device is ready
+            # In case this is not working, try AWG.write("*OPC?") instead, just as a guess
+            # can used as a boolean variable, finished = AWG.query("*OPC?"), if necessary for a loop
+        elif time_attempt == 3:
+            AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
+            # python will go on and write the commands in the input buffer
+            # they will be executed after WAI has finished
+        # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
+        elif time_attempt == 4:
+            busy = AWG.write("BUSY?")  # new attempt 2 to reduce time to wait -> runs until OPC? is set to 1
+            print("busy:")    
+            print(busy)
+            print("busy ready")
+            while busy=='1':  # loop until not busy any more
+                time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
+                busy = AWG.query("BUSY?")
+                print(busy)  # just to have a control option -> not necessary, it an attempt work
+                # In case this is not working, try DSO.write("BUSY") instead, just as a guess
+        
+        
+        else:
+            time.sleep(1.3)  # attempt 3 to reduce time to wait
+            # -> see data sheet: maximum time needed to write is given by 1.25 sec
+
         AWG.write("SOURce2:DATA:ARBitrary:DAC myarb ," + data_conv)
+        
+        time_attempt = 3  # chooses version to wait for finishing commands
+        if time_attempt == 1:
+            time.sleep(10)  # enough time to finish every Process -> original implementation
+        elif time_attempt == 2:
+            AWG.query("*OPC?")  # new attempt 1 to reduce time to wait
+            # -> does not proceed until *OPC? is set to 1 by internal queue.
+            # so, finishing this line in the program will last until the device is ready
+            # In case this is not working, try AWG.write("*OPC?") instead, just as a guess
+            # can used as a boolean variable, finished = AWG.query("*OPC?"), if necessary for a loop
+        elif time_attempt == 3:
+            AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
+            # python will go on and write the commands in the input buffer
+            # they will be executed after WAI has finished
+        # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
+        else:
+            time.sleep(1.3)  # attempt 3 to reduce time to wait
+            # -> see data sheet: maximum time needed to write is given by 1.25 sec
+
         AWG.write("SOURce2:FUNCtion:ARBitrary 'myarb'")
 
-        time_attempt = 1  # chooses version to wait for finishing commands
+        time_attempt = 3  # chooses version to wait for finishing commands
         if time_attempt == 1:
             time.sleep(10)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
@@ -115,7 +183,7 @@ def write(signal, samplerateAWG, awg_volt):
         AWG.write("SOURce1:VOLTage " + str(awg_volt))
         AWG.write("SOURce2:VOLTage " + str(awg_volt))
 
-        time_attempt = 1  # chooses version to wait for finishing commands
+        time_attempt = 3  # chooses version to wait for finishing commands
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:

@@ -51,7 +51,6 @@ class test_unit(TestCase):
        H = read_in_H(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
 
        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
-       a = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
        err = linalg.norm(Uquest_300_computed[:,1] - Uquest_300_ideal[:,1]) / linalg.norm( Uquest_300_ideal[:,1])
        self.assertTrue(err < 0.03)

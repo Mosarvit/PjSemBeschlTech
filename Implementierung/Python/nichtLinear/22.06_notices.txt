@@ -1,0 +1,47 @@
+﻿
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  Notizen 22.06. 
+
+Fehlermeldungen:
+
+
+  File "C:\Users\localadmin_mifrey\Desktop\PJSem_S\New folder\nichtLinear\blocks\measure_H.py", line 35, in measure_H
+    f, Ha, Hph = get_H.get(fmax, vpp)
+
+  File "C:\Users\localadmin_mifrey\Desktop\PJSem_S\New folder\nichtLinear\blocks\get_H.py", line 80, in get
+    write_to_AWG.write(signal, samplerateAWG, awg_volt)
+
+  File "C:\Users\localadmin_mifrey\Desktop\PJSem_S\New folder\nichtLinear\helpers\write_to_AWG.py", line 69, in write
+    AWG.query("*OPC?")  # new attempt 1 to reduce time to wait
+
+  File "D:\Programme\WinPython-64bit-3.4.4.4Qt5\python-3.4.4.amd64\lib\site-packages\pyvisa\resources\messagebased.py", line 407, in query
+    return self.read()
+
+  File "D:\Programme\WinPython-64bit-3.4.4.4Qt5\python-3.4.4.amd64\lib\site-packages\pyvisa\resources\messagebased.py", line 332, in read
+    message = self.read_raw().decode(enco)
+
+  File "D:\Programme\WinPython-64bit-3.4.4.4Qt5\python-3.4.4.amd64\lib\site-packages\pyvisa\resources\messagebased.py", line 306, in read_raw
+    chunk, status = self.visalib.read(self.session, size)
+
+  File "D:\Programme\WinPython-64bit-3.4.4.4Qt5\python-3.4.4.amd64\lib\site-packages\pyvisa\ctwrapper\functions.py", line 1582, in read
+    ret = library.viRead(session, buffer, count, byref(return_count))
+
+  File "D:\Programme\WinPython-64bit-3.4.4.4Qt5\python-3.4.4.amd64\lib\site-packages\pyvisa\ctwrapper\highlevel.py", line 188, in _return_handler
+    raise errors.VisaIOError(ret_value)
+
+VisaIOError: VI_ERROR_TMO (-1073807339): Timeout expired before operation completed.
+
+unterschied write und query -> beides läuft durch, aber 
+gibt es befehl zum klären, ob Warteschleife leer? -> kontrolle, ob warten überhaupt funktioniert
+wai scheint prinzipiell zu funktionieren (läuft jedenfalls durch), aber kontrolle steht aus -> was tut Wait genau? Was hält es auf oder worauf genau wird gewartet? wie funktioniert query / write bei opc? 
+wie lässt sich überprüfen, dass bei z 108 nicht einfach die ganze warteschleife mit allen befehlen von vorher geleert wird und die anderen befehle keinen Einfluss hatten?
+alle verwendeten befehle laufen durch! auch in kombination write und query opc
+
+ist busy als int oder string? entsprechend muss die schleife in dso angepasst werden
+ausgabe busy:
+busy:
+(7, <StatusCode.success: 0>)
+busy ready als tuple
+
+bei 11 bit wird timeout error bei erstem Schreib-Aufruf am AWG geworfen -> zu viele bits?
+ERFOLG -> evaluate läuft komplett durch und liefert sinnvolles Ausgangssignal mit erster Kennlinie
