@@ -39,5 +39,6 @@ def read_in_transfer_function(pathA, pathPh):
     Ha = genfromtxt(pathA, delimiter=',')
     Hph = genfromtxt(pathPh, delimiter=',')
     H = transfer_function(Ha[:,0])
-    H.a_p = Ha[:, 1], Hph[:,1]
+    H.a = Ha[:, 1]
+    H.p = Hph[:, 1]
     return H

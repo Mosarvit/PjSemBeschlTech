@@ -4,6 +4,7 @@ class transfer_function :
 
     """
     transfer_function is a class, that describes a transfer function
+
     Initialization :
         pass the frequency vector:
         H = transfer_function(frequency)
@@ -12,16 +13,33 @@ class transfer_function :
         H.a - get amplitude
         H.p - get phase shift
         H.c - get complex amplification
-    Setter:
+    Setters:
         H.a_p - set amplitude and phase shift, can only be set together
         H.c -   set complex amplification
         frequency cannot be set
+
+    Example of initializing a transfer_function with amplitude and phaseshift:
+        f = np.array([1,2,3,4,5])
+        H = transfer_function(f)
+        H.a = 2*np.ones([5])
+        H.p = 3*np.ones([5])
+
+    Example of initializing a transfer_function with amplitude and phaseshift:
+        f = np.array([1,2,3,4,5])
+        H = transfer_function(f)
+        H.a = 2*np.ones([5])
+        H.p = 3*np.ones([5])
+
+    Example of initializing a transfer_function as complex transfer function:
+        f = np.array([1,2,3,4,5])
+        H = transfer_function(f)
+        H.c = 2 * np.ones(5) + 3j * np.ones(5)
     """
     def __init__(self, frequency):
         self.__frequency = frequency
-        self.__amplitude = None
-        self.__phaseshift = None
-        self.__complex = None
+        self.__amplitude = np.ones(len(frequency), dtype=float)
+        self.__phaseshift = np.zeros(len(frequency), dtype=float)
+        self.__complex = np.ones(len(frequency), dtype=complex) # 1 + j*0
 
     @property
     def f(self):
@@ -39,12 +57,15 @@ class transfer_function :
     def c(self):
         return self.__complex
 
+    @a.setter
+    def a(self, amplitude):
+        self.__amplitude = amplitude
+        self.update_complex()
+
     @p.setter
-    def a_p(self, vals):
-        apm, ph = vals
-        self.__amplitude = apm
-        self.__phaseshift = ph
-        self.__complex = self.__amplitude * (np.cos(self.__phaseshift) + 1j * np.sin(self.__phaseshift))
+    def p(self, phase):
+        self.__phaseshift = phase
+        self.update_complex()
 
     @c.setter
     def c(self, value):
@@ -52,7 +73,5 @@ class transfer_function :
         self.__amplitude = np.abs(self.__complex)
         self.__phaseshift = np.angle(self.__complex)
 
-
-Ha = np.zeros([5,1])
-H = transfer_function(Ha)
-# H.a_p = Ha[:, 1], Hph[:,0]
+    def update_complex(self):
+        self.__complex = self.__amplitude * (np.cos(self.__phaseshift) + 1j * np.sin(self.__phaseshift))

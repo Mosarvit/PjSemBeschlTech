@@ -13,7 +13,6 @@ from helpers.signalHelper import generateSinSum
 from helpers.csvHelper import read_in_H, read_in_transfer_function
 from adts.transfer_function import transfer_function
 
-
 import numpy as np
 
 
@@ -63,7 +62,7 @@ class test_unit(TestCase):
         Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300_our.csv', delimiter=',')
         Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_our.csv', delimiter=',')
 
-        H = self.read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
+        H = read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
@@ -242,7 +241,8 @@ class test_unit(TestCase):
 
         sigma_H = 0.5
         factor = 2
-        Hneu_ideal.a_p = Halt.a * ( 1 + ( ( factor - 1 ) * sigma_H ) ) , Halt.p
+        Hneu_ideal.a = Halt.a * ( 1 + ( ( factor - 1 ) * sigma_H ) )
+        Hneu_ideal.p = Halt.p
 
         t = np.linspace(0, 10, 100)
         Uout_ideal = generateSinSum(np.array([[1, 4 ],  [2, 6 ],  [3, 10 ]]), t)

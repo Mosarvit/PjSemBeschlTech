@@ -9,6 +9,7 @@ from scipy.interpolate import interp1d
 import copy
 import matplotlib.pyplot as plt
 from helpers import globalVars
+from helpers.find_nearest import find_nearest
 
 
 def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
@@ -68,11 +69,11 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
 
     # - ggf. Anpassen des Ausgangsbereiches und Ausgeben einer Meldung
     if uQuest_max > K[-1, 1]:
-        uQuest_max_ind = Uquest[:, 1].find(uQuest_max)
+        uQuest_max_ind = find_nearest(Uquest[:, 1], uQuest_max)
         Uquest = Uquest [0:uQuest_max_ind, :]
         print("Uquest adapted to range of K: max Uquest too high for bijectiv curve")
     if uQuest_min < K[0, 1]:
-        uQuest_min_ind = Uquest[:, 1].find(uQuest_min)
+        uQuest_min_ind = find_nearest(Uquest[:, 1], uQuest_min)
         Uquest = Uquest [uQuest_min_ind:-1, :]
         print("Uquest adapted to range of K: min Uquest too low for bijectiv curve")
 
