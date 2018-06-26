@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/evaluate_adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evaluate_adjust_a.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adts/transfer_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/adts/transfer_function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/csvHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/csvHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_unit.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,11 +18,20 @@
       <file leaf-file-name="test_unit.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
+            <state relative-caret-position="498">
+              <caret line="260" selection-start-line="260" selection-end-line="260" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluate_adjust_a.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-start-column="2" selection-end-line="2" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -48,7 +51,7 @@
       <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="-136">
               <caret line="22" column="108" selection-start-line="22" selection-start-column="108" selection-end-line="22" selection-end-column="108" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
@@ -75,7 +78,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compute_K_from_a.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="compute_K_from_a.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_K_from_a.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -109,7 +112,7 @@
         <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1513">
-              <caret line="98" selection-start-line="98" selection-end-line="107" selection-end-column="117" />
+              <caret line="98" selection-start-line="98" selection-end-line="107" selection-end-column="118" />
               <folding>
                 <element signature="e#84#95#0" expanded="true" />
               </folding>
@@ -149,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/helpers/overlay1.py" />
         <option value="$PROJECT_DIR$/evaluation/evaluateWithMatlabData.py" />
         <option value="$PROJECT_DIR$/venv/measure_H.py" />
         <option value="$PROJECT_DIR$/evaluation/evaluateWithWithBB.py" />
@@ -200,6 +202,7 @@
         <option value="$PROJECT_DIR$/tests/test_unit.py" />
         <option value="$PROJECT_DIR$/helpers/csvHelper.py" />
         <option value="$PROJECT_DIR$/blocks/compute_K_from_a.py" />
+        <option value="$PROJECT_DIR$/evaluate_adjust_a.py" />
       </list>
     </option>
   </component>
@@ -251,19 +254,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\test_versions" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\data\test_data" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\adjust" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\data\currentdata" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks1" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\get" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\measure" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\test_versions" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\data\test_data" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\adjust" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\data\currentdata" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -449,23 +452,33 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.38542765" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" weight="0.38542765" />
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.312566" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.312566" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
+      <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.38542765" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.312566" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="8" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -493,13 +506,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -676,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        <state relative-caret-position="310">
+          <caret line="86" column="43" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -726,7 +732,7 @@
     <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1513">
-          <caret line="98" selection-start-line="98" selection-end-line="107" selection-end-column="117" />
+          <caret line="98" selection-start-line="98" selection-end-line="107" selection-end-column="118" />
           <folding>
             <element signature="e#84#95#0" expanded="true" />
           </folding>
@@ -764,23 +770,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_versions/compute_a_from_Uin_Uquet_test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="59" column="30" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="30" />
-          <folding>
-            <element signature="e#24#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_versions/compute_K_from_a_test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="46" column="82" selection-start-line="46" selection-start-column="82" selection-end-line="46" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_versions/compute_a_from_Uin_Uquet_test1.py" />
+    <entry file="file://$PROJECT_DIR$/test_versions/compute_K_from_a_test1.py" />
     <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -790,7 +781,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="-136">
           <caret line="22" column="108" selection-start-line="22" selection-start-column="108" selection-end-line="22" selection-end-column="108" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
@@ -817,8 +808,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
+        <state relative-caret-position="498">
+          <caret line="260" selection-start-line="260" selection-end-line="260" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -829,6 +820,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-start-column="2" selection-end-line="2" selection-end-column="43" />
         </state>
       </provider>
     </entry>
