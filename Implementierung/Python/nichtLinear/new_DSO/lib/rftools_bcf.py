@@ -2,11 +2,9 @@
 ## @package RFTOOLS_BCF
 # Python package with routines for RF data analysis.
 # GSI, RRF, D. Lens (2016-2018)
-version_string = '0.2.14, 14.05.2018'
+version_string = '0.2.13, 24.01.2018'
 
 ## History
-# Rev 0.2.14:
-# - Flag added for ReadBCF to switch on print messages while reading (large) files.
 # Rev 0.2.13:
 # - Removed matplotlib from the imported libraries
 # Rev. 0.2.12:
@@ -29,7 +27,7 @@ class ReadBCF:
 	#  @param self The object pointer.
 	#  @param filename The name of the file to read
 	#  @param flag_read_all If this flag is True (this is the default), the complete data of the file is loaded into memory.
-	def __init__(self,filename,flag_read_all=True,flag_print_output=False):
+	def __init__(self,filename,flag_read_all=True):
 		self.filename = filename
 		self.x_full = []
 		self.x_part = []
@@ -39,7 +37,6 @@ class ReadBCF:
 		self.flag_empty_file = True
 		self.endianness_string = '<'	# Little endian
 		self.read_header()
-		self.flag_print_output = flag_print_output
 		self.flag_read_all = flag_read_all
 		if flag_read_all:
 			self.read_complete_data()
@@ -187,15 +184,9 @@ class ReadBCF:
 		# skip unwanted rows:
 		for skip_cnt in range(0, start_row):
 			np.fromfile(self.fin, dtype=np.dtype(self.record_dtype), count=1) # read one row
-		
-		if self.flag_print_output:
-			print("Segment: " + str(segment_nr+1))
-			print("Column: " + str(column_nr+1))
-			
+
 		# read the data column by column:
 		for row_cnt in range(0,number_of_rows):
-			if self.flag_print_output and row_cnt%1000==0:
-				print("Row " + str(row_cnt+1) + " of " + str(number_of_rows),end='\r')
 			row_data = np.fromfile(self.fin, dtype=np.dtype(self.record_dtype), count=1) # read one row
 			self.x_part[row_cnt] = row_data['c'+str(column_nr)]
 			# skip stepsize-1 rows:
@@ -417,8 +408,7 @@ class WriteBCF:
 			if not self.column_information[col_cnt][2] == self.column_information[0][2]:
 				flag_all_have_equal_representation = False
 				break
-		flag_write_memory_efficient = True
-		if flag_all_have_equal_representation and flag_write_memory_efficient:
+		if flag_all_have_equal_representation:
 			if self.column_information[0][2] == 0: # float
 				self.fout.write(x.astype('f').tostring())
 			if self.column_information[0][2] == 1: # double

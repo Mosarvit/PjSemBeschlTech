@@ -22,8 +22,7 @@ revision_string = '0.3.2, 19.06.2018'
 import numpy as np
 import lib.rftools_misc as rftools_misc
 import lib.rftools_bcf as rftools_bcf
-import lib.rftools_remote_lecroy_waverunner as rftools_remote_wr
-import lib.rftools_remote_lecroy_wavejet as rftools_remote_wj
+import lib.rftools_remote as rftools_remote
 import lib.rftools_csv as rftools_csv
 import sys, glob, argparse, colorama, configparser
 import matplotlib.pyplot as plt
@@ -39,10 +38,10 @@ parser.add_argument('-t', action="store", dest="dso_type", default='1', help="Ty
 parser.add_argument('-o', action="store", dest="output_file_name", default='dso.bcf', help="Output file name. Default: dso.bcf.")
 parser.add_argument('-d', action="store", dest="data_type", default='0', help='Specifies the data type that is used to save the data: 0 (float), 1 (double). Default is 0.')
 parser.add_argument('-c', action="store", dest="channels", default='1-4', help="Specifies the channels of the scope that will be read out. Examples: '-c 1,2,4', '-c 2-4'. Default is 1-4.")
-parser.add_argument('-s', action="store", dest="number_of_segments", default='-1', help="Specifies the number of segments.  Default: No changes to the DSO settings.")
-parser.add_argument('-n', action="store", dest="number_of_samples", default='-1', help="Number of samples per segment. Default: No changes to the DSO settings.")
-parser.add_argument('-vr', action="store", dest="vertical_range", default='-1', help="Vertical range: Volt per division. Default: No changes to the DSO settings.")
-parser.add_argument('-hr', action="store", dest="horizontal_range", default='-1', help="Horizontal range: Seconds per division. Default: No changes to the DSO settings.")
+parser.add_argument('-s', action="store", dest="number_of_segments", default='1', help="Specifies the number of segments. Default: 1.")
+parser.add_argument('-n', action="store", dest="number_of_samples", default='1e3', help="Number of samples per segment. Default: 1e3.")
+parser.add_argument('-vr', action="store", dest="vertical_range", default='1', help="Vertical range: Volt per division. Default: 1.")
+parser.add_argument('-hr', action="store", dest="horizontal_range", default='1', help="Horizontal range: Seconds per division. Default: 1e-6.")
 parser.add_argument('-tr', action="store_true", dest="trigger", default=False, help="Triggers before reading the scope data. Default: No triggering (direct readout of channel data).")
 parser.add_argument('-tc', action="store", dest="trigger_channel", default='1', help="Specifies the trigger channel. Default: 1.")
 parser.add_argument('-i', action="store", dest="ini_file", default='', help="INI-file with settings. This option overwrites the other options.")
@@ -51,13 +50,13 @@ parse_result = parser.parse_args(sys.argv[1:])
 print(colorama.Back.GREEN + colorama.Style.BRIGHT + "DSO_GET: Start." + colorama.Style.NORMAL + colorama.Back.RESET)
 
 # Default values:
-dso_id = '' #''USB0::0x05ff::0x1023::3808N60406::INSTR'
+dso_id = ''
 dso_type = 'wavejet'
 channels = [1,2,3,4]
-number_of_segments = -1
-maximum_number_of_samples_per_segment = -1
-scope_vertical_range_volt_per_div = -1
-scope_horizontal_range_time_per_div = -1
+number_of_segments = 1
+maximum_number_of_samples_per_segment = 1e3
+scope_vertical_range_volt_per_div = 1
+scope_horizontal_range_time_per_div = 1e-6
 trigger = 'no'
 trigger_channel = 1
 output_file_name = 'dso.bcf'
@@ -179,22 +178,10 @@ print("The following settings will be used:")
 print(" DSO ID: " + dso_id)
 print(" DSO type: " + dso_type)
 print(" Channels: " + str(channels))
-if number_of_segments == -1:
-	print(" Number of segments: No changes to the DSO settings")
-else:
-	print(" Number of segments: " + str(number_of_segments))
-if maximum_number_of_samples_per_segment == -1:
-	print(" Max. number of samples per segment: No changes to the DSO settings")
-else:
-	print(" Max. number of samples per segment: " + str(maximum_number_of_samples_per_segment))
-if scopescope_vertical_range_volt_per_div == -1:
-	print(" Vertical range (V/div): No changes to the DSO settings")
-else:
-	print(" Vertical range (V/div): " + str(scope_vertical_range_volt_per_div))
-if scope_horizontal_range_time_per_div == -1:
-	print(" Horizontal range (s/div): No changes to the DSO settings")
-else:
-	print(" Horizontal range (s/div): " + str(scope_horizontal_range_time_per_div))
+print(" Number of segments: " + str(number_of_segments))
+print(" Max. number of samples per segment: " + str(maximum_number_of_samples_per_segment))
+print(" Vertical range (V/div): " + str(scope_vertical_range_volt_per_div))
+print(" Horizontal range (s/div): " + str(scope_horizontal_range_time_per_div))
 print(" Trigger: " + trigger)
 print(" Trigger channel: " + str(trigger_channel))
 print(" Output file name: " + output_file_name)
@@ -203,10 +190,10 @@ print(" File type: " + file_type)
 
 ## Open connection to DSO:
 if dso_type == 'wavejet':
-	dso = rftools_remote_wj.LeCroyWaveJet(dso_id)
+	dso = rftools_remote.LeCroyWaveJet(dso_id)
 	dso.connect(0)
 elif dso_type == 'waverunner':
-	dso = rftools_remote_wr.LeCroyWaveRunner(dso_id)
+	dso = rftools_remote.LeCroyWaveRunner(dso_id)
 	dso.connect(0)
 if not dso.valid_connection:
 	print(colorama.Back.RED + colorama.Style.BRIGHT + "Connection to DSO failed, exit."+ colorama.Style.NORMAL + colorama.Back.RESET)
@@ -215,15 +202,7 @@ if not dso.valid_connection:
 	
 ## Setup the scope:
 #dso.setup(maximum_number_of_samples_per_segment, scope_horizontal_range_time_per_div, scope_vertical_range_volt_per_div, number_of_segments)
-if maximum_number_of_samples_per_segment > 0:
-	if number_of_segments > 0:
-		dso.set_sequential_mode(number_of_segments, maximum_number_of_samples_per_segment)
-	else:
-		dso.set_maximum_number_of_samples(maximum_number_of_samples_per_segment)
-if scope_horizontal_range_time_per_div > 0:
-	dso.set_horizontal_range(scope_horizontal_range_time_per_div)	
-if scope_vertical_range_volt_per_div > 0:
-	dso.set_vertical_range(scope_vertical_range_volt_per_div)
+
 
 ## Trigger if necessary:
 if trigger == 'yes':
@@ -233,41 +212,8 @@ if trigger == 'yes':
 		print(colorama.Back.RED + colorama.Style.BRIGHT + "Triggering failed, exit."+ colorama.Style.NORMAL + colorama.Back.RESET)
 		raise SystemExit
 	print("Trigger done.")
-		
 	
-## Read the data of all specified channels
-x = []
-for cnt_ch in range(0,number_of_channels):
-	dso.read(channels[cnt_ch])
-	if not dso.flag_valid_data:
-		print(colorama.Back.RED + colorama.Style.BRIGHT + "DSO_GET ERROR: reading data from DSO for channel " + str(channels[cnt_ch]) + " failed, exit."+ colorama.Style.NORMAL + colorama.Back.RESET)
-		raise SystemExit
 	
-	data_shape = dso.t.shape
-	if len(data_shape) == 1:
-		number_of_segments_dso = 1
-		number_of_samples_per_segment_dso = data_shape[0]
-	else:
-		number_of_segments_dso = data_shape[0] 
-		number_of_samples_per_segment_dso = data_shape[1]
-	
-	if cnt_ch == 0:
-		# Determine actual number of samples per segment
-		#number_of_samples_per_segment = dso.get_number_of_samples_per_segment()
-		x = np.zeros((number_of_segments_dso, number_of_samples_per_segment_dso, number_of_channels+1))
-		
-	if dso_type == 'wavejet':
-		x[0,:,cnt_ch+1] = dso.y
-		if cnt_ch == 0:
-			x[0,:,0] = dso.t
-		
-	elif dso_type == 'waverunner':
-		for cnt_seg in range(0,number_of_segments_dso):
-			x[cnt_seg,:,cnt_ch+1] = dso.y[cnt_seg,:]
-			if cnt_ch == 0:
-				x[cnt_seg,:,0] = dso.t[cnt_seg,:]
-			
-				
 ## Prepare output file
 if file_type == 'bcf':
 	if parse_result.data_type == '1':
@@ -279,10 +225,36 @@ if file_type == 'bcf':
 			ci.append((103, 3, 1, 'Voltage channel ' + str(channel) + '/V'))
 		else:		
 			ci.append((103, 3, 0, 'Voltage channel ' + str(channel) + '/V'))
-	fout = rftools_bcf.WriteBCF(output_file_name, time_stamp = time.time()*1e7, header_description_string='Created by DSO_GET', keys_string='device=' + str(dso.idn), column_information=ci,number_of_segments=number_of_segments_dso)
+	fout = rftools_bcf.WriteBCF(output_file_name, time_stamp = time.time()*1e7, header_description_string='Created by DSO_GET', keys_string='device=' + str(dso.idn), column_information=ci,number_of_segments=number_of_segments)
 
 elif file_type == 'csv':
 	fout = rftools_csv.WriteCSV(output_file_name)
+	
+	
+## Read the data of all specified channels
+x = []
+for cnt_ch in range(0,number_of_channels):
+	dso.read(channels[cnt_ch])
+	if not dso.flag_valid_data:
+		print(colorama.Back.RED + colorama.Style.BRIGHT + "DSO_GET ERROR: reading data from DSO for channel " + str(channels[cnt_ch]) + " failed, exit."+ colorama.Style.NORMAL + colorama.Back.RESET)
+		raise SystemExit
+		
+	if cnt_ch == 0:
+		# Determine actual number of samples per segment
+		number_of_samples_per_segment = dso.get_number_of_samples_per_segment()
+		x = np.zeros((number_of_segments, number_of_samples_per_segment, number_of_channels+1))
+		
+	if dso_type == 'wavejet':
+		x[0,:,cnt_ch+1] = dso.y
+		if cnt_ch == 0:
+			x[0,:,0] = dso.t
+		
+	elif dso_type == 'waverunner':
+		for cnt_seg in range(0,number_of_segments):
+			x[cnt_seg,:,cnt_ch+1] = dso.y[cnt_seg,:]
+			if cnt_ch == 0:
+				x[cnt_seg,:,0] = dso.t[cnt_seg,:]
+				
 				
 # Write the data for each segment:
 if file_type == 'bcf':
@@ -290,7 +262,7 @@ if file_type == 'bcf':
 		fout.write_segment(0, x[0,:,:])
 		
 	elif dso_type == 'waverunner':
-		for cnt_seg in range(0,number_of_segments_dso):
+		for cnt_seg in range(0,number_of_segments):
 			fout.write_segment(dso.trigger_time[cnt_seg]*1e7, x[cnt_seg,:,:])
 			
 	fout.write_keys()

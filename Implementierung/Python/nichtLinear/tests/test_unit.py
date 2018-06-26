@@ -52,7 +52,6 @@ class test_unit(TestCase):
        H = read_in_H(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
 
        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
-       a = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
        err = linalg.norm(Uquest_300_computed[:,1] - Uquest_300_ideal[:,1]) / linalg.norm( Uquest_300_ideal[:,1])
        self.assertTrue(err < 0.03)
@@ -63,7 +62,7 @@ class test_unit(TestCase):
         Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300_our.csv', delimiter=',')
         Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_our.csv', delimiter=',')
 
-        H = self.read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
+        H = read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
