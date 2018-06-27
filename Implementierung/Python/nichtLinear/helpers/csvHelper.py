@@ -27,13 +27,13 @@ def save_2cols(filename, col1, col2):
         for i in range(0, col1.shape[0]):
             writer.writerow([str(col1[i]), str(col2[i])])
 
-def read_in_H(pathA, pathPh):
-    Ha = genfromtxt(pathA, delimiter=',')
-    Hph = genfromtxt(pathPh, delimiter=',')
-    H = np.zeros(((Ha.shape[0]), 3))
-    H[:, 0:2] = Ha
-    H[:, 2] = Hph[:, 1]
-    return H
+# def read_in_H(pathA, pathPh):
+#     Ha = genfromtxt(pathA, delimiter=',')
+#     Hph = genfromtxt(pathPh, delimiter=',')
+#     H = np.zeros(((Ha.shape[0]), 3))
+#     H[:, 0:2] = Ha
+#     H[:, 2] = Hph[:, 1]
+#     return H
 
 def read_in_transfer_function(path):
     Ha = genfromtxt(path, delimiter=',')

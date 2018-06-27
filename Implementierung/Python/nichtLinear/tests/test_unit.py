@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 from helpers import overlay, signalHelper
 from helpers.signalHelper import generateSinSum
-from helpers.csvHelper import read_in_transfer_function, read_in_transfer_function_old, read_in_H
+from helpers.csvHelper import read_in_transfer_function
 from adts.transfer_function import transfer_function
 
 import numpy as np
