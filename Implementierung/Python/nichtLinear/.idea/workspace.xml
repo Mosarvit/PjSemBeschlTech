@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/evaluate_adjust_a.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adts/transfer_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/adts/transfer_function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/measure_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_H.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/test_data/H.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/csvHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/csvHelper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch_paper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_paper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_unit.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +24,8 @@
       <file leaf-file-name="test_unit.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="260" selection-start-line="260" selection-end-line="260" />
+            <state relative-caret-position="348">
+              <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -27,11 +33,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate_adjust_a.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+      <file leaf-file-name="compute_Uquest_from_Uout.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-start-column="2" selection-end-line="2" selection-end-column="43" />
+            <state relative-caret-position="119">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding>
+                <element signature="e#84#95#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="H_our.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/test_data/H_our.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="H_a_our.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/test_data/H_a_our.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="H_p_our.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/test_data/H_p_our.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="case.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="681" selection-start-line="681" selection-end-line="681" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scratch_paper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scratch_paper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,8 +84,8 @@
       <file leaf-file-name="csvHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="38" column="25" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="25" />
+            <state relative-caret-position="73">
+              <caret line="29" selection-start-line="29" selection-end-line="35" selection-end-column="12" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -48,74 +93,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="22" column="108" selection-start-line="22" selection-start-column="108" selection-end-line="22" selection-end-column="108" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evaluate_adjust_H.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-            </state>
-          </provider>
+      <file leaf-file-name="H_jens.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/test_data/H_jens.csv">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="transfer_function.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adts/transfer_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="compute_K_from_a.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/compute_K_from_a.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signalHelper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="83" column="18" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="find_nearest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/find_nearest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="compute_Uquest_from_Uout.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1513">
-              <caret line="98" selection-start-line="98" selection-end-line="107" selection-end-column="118" />
-              <folding>
-                <element signature="e#84#95#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="447">
+              <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -176,7 +163,6 @@
         <option value="$PROJECT_DIR$/measure/measure_H.py" />
         <option value="$PROJECT_DIR$/measure/measure_Uout.py" />
         <option value="$PROJECT_DIR$/compute/compute_K_from_a.py" />
-        <option value="$PROJECT_DIR$/blocks/measure_H.py" />
         <option value="$PROJECT_DIR$/helpers/find_nearest.py" />
         <option value="$PROJECT_DIR$/helpers/overlay.py" />
         <option value="$PROJECT_DIR$/helpers/read_from_DSO.py" />
@@ -186,23 +172,24 @@
         <option value="$PROJECT_DIR$/helpers/__init__.py" />
         <option value="$PROJECT_DIR$/blocks/__init__.py" />
         <option value="$PROJECT_DIR$/tests/__init__.py" />
-        <option value="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" />
         <option value="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" />
         <option value="$PROJECT_DIR$/blocks/measure_Uout.py" />
         <option value="$PROJECT_DIR$/blocks/adjust_a.py" />
         <option value="$PROJECT_DIR$/blocks/adjust_H.py" />
-        <option value="$PROJECT_DIR$/scratch_paper.py" />
         <option value="$PROJECT_DIR$/helpers/signalHelper.py" />
         <option value="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" />
         <option value="$PROJECT_DIR$/test_versions/compute_a_from_Uin_Uquet_test1.py" />
         <option value="$PROJECT_DIR$/test_versions/compute_K_from_a_test1.py" />
         <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
         <option value="$PROJECT_DIR$/evaluate_adjust_H.py" />
-        <option value="$PROJECT_DIR$/adts/transfer_function.py" />
-        <option value="$PROJECT_DIR$/tests/test_unit.py" />
-        <option value="$PROJECT_DIR$/helpers/csvHelper.py" />
         <option value="$PROJECT_DIR$/blocks/compute_K_from_a.py" />
         <option value="$PROJECT_DIR$/evaluate_adjust_a.py" />
+        <option value="$PROJECT_DIR$/blocks/measure_H.py" />
+        <option value="$PROJECT_DIR$/adts/transfer_function.py" />
+        <option value="$PROJECT_DIR$/scratch_paper.py" />
+        <option value="$PROJECT_DIR$/helpers/csvHelper.py" />
+        <option value="$PROJECT_DIR$/tests/test_unit.py" />
+        <option value="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" />
       </list>
     </option>
   </component>
@@ -220,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,13 +228,28 @@
             <path>
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,7 +285,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python tests.Unittests for test_unit.test_unit">
-    <configuration name="evaluate_with_BBsignal" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="scratch_paper" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -294,25 +297,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="transfer_function" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="nichtLinear" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/adts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/adts/transfer_function.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scratch_paper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -344,19 +329,6 @@
       <option name="_new_target" value="&quot;test_unit.test_unit.test_adjust_H&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for test_unit.test_unit.test_adjust_H_p_trivial" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="nichtLinear" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_unit.test_unit.test_adjust_H_p_trivial&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
     <configuration name="Unittests for test_unit.test_unit.test_compute_Uin_from_Uquest" type="tests" factoryName="Unittests" nameIsGenerated="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -368,6 +340,32 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_unit.test_unit.test_compute_Uin_from_Uquest&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="nichtLinear" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_unit.test_unit.test_compute_Uquest_from_Uout_300_our&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="nichtLinear" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests in test_unit.py" type="tests" factoryName="Unittests" nameIsGenerated="true">
@@ -387,19 +385,19 @@
     <list>
       <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uin_from_Uquest" />
       <item itemvalue="Python tests.Unittests in test_unit.py" />
-      <item itemvalue="Python.evaluate_with_BBsignal" />
-      <item itemvalue="Python.transfer_function" />
       <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_adjust_H" />
-      <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_adjust_H_p_trivial" />
       <item itemvalue="Python tests.Unittests for test_unit.test_unit" />
+      <item itemvalue="Python.scratch_paper" />
+      <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal" />
+      <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests for test_unit.test_unit" />
+        <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" />
+        <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_with_BBsignal_ideal" />
+        <item itemvalue="Python.scratch_paper" />
         <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_adjust_H" />
-        <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_adjust_H_p_trivial" />
-        <item itemvalue="Python.transfer_function" />
-        <item itemvalue="Python.evaluate_with_BBsignal" />
       </list>
     </recent_temporary>
   </component>
@@ -417,68 +415,58 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uin_from_Uquest_jens_test1 - 2018.06.22 at 22h 24m 40s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uin_from_Uquest_jens_test1" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit - 2018.06.27 at 12h 51m 18s.xml">
+      <configuration name="Unittests for test_unit.test_unit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uin_from_Uquest_jens_test1 - 2018.06.22 at 22h 25m 31s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uin_from_Uquest_jens_test1" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 55m 04s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uin_from_Uquest_jens_test1 - 2018.06.22 at 22h 25m 42s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uin_from_Uquest_jens_test1" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 56m 33s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uin_from_Uquest_jens_test1 - 2018.06.22 at 22h 39m 16s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_compute_Uin_from_Uquest_jens_test1" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 57m 16s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_adjust_H - 2018.06.26 at 12h 13m 27s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_adjust_H" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 58m 04s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_adjust_H - 2018.06.26 at 12h 13m 57s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_adjust_H" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 58m 37s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_adjust_H_p_trivial - 2018.06.26 at 12h 14m 03s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_adjust_H_p_trivial" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 58m 59s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_adjust_H - 2018.06.26 at 12h 18m 41s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_adjust_H" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 59m 28s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_unit_test_unit_test_adjust_H - 2018.06.26 at 12h 20m 56s.xml">
-      <configuration name="Unittests for test_unit.test_unit.test_adjust_H" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 59m 50s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_unit_py - 2018.06.26 at 12h 22m 19s.xml">
-      <configuration name="Unittests in test_unit.py" configurationId="tests" />
+    <history-entry file="Unittests_for_test_unit_test_unit_test_compute_Uquest_from_Uout_300_our - 2018.06.27 at 12h 59m 57s.xml">
+      <configuration name="Unittests for test_unit.test_unit.test_compute_Uquest_from_Uout_300_our" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" weight="0.38542765" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.4340021" />
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.312566" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.312566" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.1671875" />
-      <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.38542765" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.312566" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Python Console" order="8" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -493,7 +481,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="296" />
+      <option name="time" value="302" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -506,48 +494,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="56" column="81" selection-start-line="56" selection-start-column="81" selection-end-line="56" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="15" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="681" selection-start-line="681" selection-end-line="681" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/evaluation/evaluateWithWithBB.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1876382111/numpy/core/umath.py" />
     <entry file="file://$PROJECT_DIR$/evaluation/evaluate_with_MatlabData.py" />
@@ -624,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/globalVars.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -687,20 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scratch_paper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/venv/Lib/site-packages/matplotlib/cbook/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -719,23 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="2577" selection-start-line="2577" selection-end-line="2577" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="98" selection-start-line="98" selection-end-line="107" selection-end-column="118" />
-          <folding>
-            <element signature="e#84#95#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,7 +689,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
+        <state relative-caret-position="170">
           <caret line="22" column="108" selection-start-line="22" selection-start-column="108" selection-end-line="22" selection-end-column="108" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
@@ -789,17 +697,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adts/transfer_function.py">
+    <entry file="file://$PROJECT_DIR$/blocks/compute_K_from_a.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+        <state relative-caret-position="493">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adts/transfer_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test_data/H_jens.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scratch_paper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="681" selection-start-line="681" selection-end-line="681" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test_data/H_a_jens.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test_data/H_a_our.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test_data/H_p_our.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test_data/H_our.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="38" column="25" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="25" />
+        <state relative-caret-position="73">
+          <caret line="29" selection-start-line="29" selection-end-line="35" selection-end-column="12" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -808,25 +786,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="260" selection-start-line="260" selection-end-line="260" />
+        <state relative-caret-position="348">
+          <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_K_from_a.py">
+    <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-start-column="2" selection-end-line="2" selection-end-column="43" />
+        <state relative-caret-position="119">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding>
+            <element signature="e#84#95#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

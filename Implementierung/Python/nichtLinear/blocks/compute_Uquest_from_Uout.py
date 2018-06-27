@@ -40,7 +40,8 @@ def compute_Uquest_from_Uout(Uout, H, verbosity):
 
     # Ampl = [float(i) for i in Hampl]
     # Phase = [float(i) for i in Hphase]
-    freq = H[:, 0]
+    # freq = H[:, 0]
+    freq = H.f
 
 
     f_max=math.floor(max(freq)/f_rep)*f_rep
@@ -57,13 +58,24 @@ def compute_Uquest_from_Uout(Uout, H, verbosity):
     # H_neu = int_H(w)
     # Ha = abs(H_neu)
 
-    int_Ha = interp1d(H[:, 0], H[:, 1])
-    Ha = int_Ha(w)
+    ####################################################################################################################
+
+    # int_Ha = interp1d(H[:, 0], H[:, 1])
+    # Ha = int_Ha(w)
 
     # Hph = np.angle(H_neu)
 
-    int_Hph = interp1d(H[:, 0], H[:, 2])
+    # int_Hph = interp1d(H[:, 0], H[:, 2])
+    # Hph1 = int_Hph(w)
+
+    int_Ha = interp1d(H.f, H.a)
+    Ha = int_Ha(w)
+    #
+    # # Hph = np.angle(H_neu)
+    #
+    int_Hph = interp1d(H.f, H.p)
     Hph = int_Hph(w)
+
 
     u=copy.copy(Uout[:,1])
 #fft

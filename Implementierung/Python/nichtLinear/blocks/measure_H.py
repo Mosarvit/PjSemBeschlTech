@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
 from helpers import csvHelper, globalVars
+from adts import transfer_function
 
 def measure_H(loadCSV, saveCSV, verbosity):
 
@@ -40,10 +41,14 @@ def measure_H(loadCSV, saveCSV, verbosity):
 
     # assemble H
 
-    H = np.zeros((len(f), 3));
-    H[:,0] = f
-    H[:,1] = Ha
-    H[:,2] = Hph
+    # H = np.zeros((len(f), 3));
+    # H[:,0] = f
+    # H[:,1] = Ha
+    # H[:,2] = Hph
+
+    H = transfer_function(f)
+    H.a = Ha
+    H.p = Hph
 
     if verbosity:
         # fig = plt.figure()

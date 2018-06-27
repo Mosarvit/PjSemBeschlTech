@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 from helpers import overlay, signalHelper
 from helpers.signalHelper import generateSinSum
-from helpers.csvHelper import read_in_H, read_in_transfer_function
+from helpers.csvHelper import read_in_transfer_function, read_in_transfer_function_old, read_in_H
 from adts.transfer_function import transfer_function
 
 import numpy as np
@@ -48,7 +48,7 @@ class test_unit(TestCase):
        Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300_jens.csv', delimiter=',')
        Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_jens.csv', delimiter=',')
 
-       H = read_in_H(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
+       H = read_in_transfer_function(fixPath + 'data/test_data/H_jens.csv')
 
        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
@@ -61,7 +61,7 @@ class test_unit(TestCase):
         Uout_300 = genfromtxt(fixPath + 'data/test_data/Uout_300_our.csv', delimiter=',')
         Uquest_300_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_300_our.csv', delimiter=',')
 
-        H = read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
+        H = read_in_transfer_function(fixPath + 'data/test_data/H_our.csv')
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
@@ -73,7 +73,7 @@ class test_unit(TestCase):
         BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',')
         Uquest_from_BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/Uquest_from_BBsignal_our.csv', delimiter=',')
 
-        H = read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
+        H = read_in_transfer_function(fixPath + 'data/test_data/H_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
@@ -85,7 +85,7 @@ class test_unit(TestCase):
 
         BBsignal_ideal = genfromtxt(fixPath + 'data/test_data/BBsignal_ideal.csv', delimiter=',')
 
-        H = read_in_H(fixPath + 'data/test_data/H_a_our.csv', fixPath + 'data/test_data/H_p_our.csv')
+        H = read_in_transfer_function(fixPath + 'data/test_data/H_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
@@ -184,7 +184,7 @@ class test_unit(TestCase):
 
     def test_adjust_H_a_trivial(self):
 
-        Halt = read_in_H(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
+        Halt = read_in_transfer_function(fixPath + 'data/test_data/H_jens.csv')
 
         Hneu_ideal = Halt
 
@@ -196,7 +196,7 @@ class test_unit(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-        err = linalg.norm(Hneu[:,1] - Hneu_ideal[:,1]) / linalg.norm(Hneu_ideal[:,1])
+        err = linalg.norm(Hneu.a - Hneu_ideal.a) / linalg.norm(Hneu_ideal.a)
         self.assertTrue(err < 0.001)
 
     def test_adjust_H_p_trivial(self):
@@ -209,7 +209,7 @@ class test_unit(TestCase):
           Hneu = Halt
         """
 
-        Halt = read_in_transfer_function(fixPath + 'data/test_data/H_a_jens.csv', fixPath + 'data/test_data/H_p_jens.csv')
+        Halt = read_in_transfer_function(fixPath + 'data/test_data/H_jens.csv')
         Hneu_ideal = Halt
 
         t = np.linspace(0, 10, 100)
@@ -234,8 +234,7 @@ class test_unit(TestCase):
           Hneu.a = Halt.a * 1.5
         """
 
-        Halt = read_in_transfer_function(fixPath + 'data/test_data/H_a_jens.csv',
-                                         fixPath + 'data/test_data/H_p_jens.csv')
+        Halt = read_in_transfer_function(fixPath + 'data/test_data/H_jens.csv')
         Hneu_ideal = transfer_function(Halt.f)
 
         sigma_H = 0.5
@@ -253,8 +252,3 @@ class test_unit(TestCase):
         err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
 
         self.assertTrue(err < 0.001) # we allow an error of 0.1% for the start, but it should be better
-
-
-
-
-

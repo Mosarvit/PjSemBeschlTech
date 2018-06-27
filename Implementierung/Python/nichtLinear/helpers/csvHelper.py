@@ -35,10 +35,40 @@ def read_in_H(pathA, pathPh):
     H[:, 2] = Hph[:, 1]
     return H
 
-def read_in_transfer_function(pathA, pathPh):
+def read_in_transfer_function(path):
+    Ha = genfromtxt(path, delimiter=',')
+    H = transfer_function(Ha[:,0])
+    H.a = Ha[:, 1]
+    H.p = Ha[:, 2]
+    return H
+
+def read_in_transfer_function_old(pathA, pathPh):
     Ha = genfromtxt(pathA, delimiter=',')
     Hph = genfromtxt(pathPh, delimiter=',')
     H = transfer_function(Ha[:,0])
     H.a = Ha[:, 1]
     H.p = Hph[:, 1]
     return H
+
+def save_transfer_function(H, filename):
+
+    """
+
+    save_transfer_function save an inctance of class transfer_function as CSV
+
+    INPUT:
+
+        filename : string; Dateipfad, wo abgespeichert werden soll
+        H: an inctance of class transfer_function
+
+    OUTPUT:
+
+        (no output)
+
+    """
+
+    with open(filename, 'w+', newline="") as csvfile:
+        writer = csv.writer(csvfile, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        for i in range(0, H.f.shape[0]):
+            writer.writerow([str(H.f[i]), str(H.a[i]), str(H.p[i]), str(H.c[i])])
