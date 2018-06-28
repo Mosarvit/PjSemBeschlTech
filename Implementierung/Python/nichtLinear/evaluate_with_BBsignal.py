@@ -53,7 +53,7 @@ def evaluate() :
     
     Uin_mV = convert_V_to_mV(Uin)
 
-    a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3, verbosity=0)
+    a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3)
     K = compute_K_from_a(a=a, verbosity=1)
     
     Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)

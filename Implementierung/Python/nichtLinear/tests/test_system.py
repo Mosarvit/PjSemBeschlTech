@@ -27,7 +27,7 @@ class TestComputeParam(TestCase):
         N = 3
         vpp = 300e-3
 
-        [a, K] = compute_a_from_Uin_Uquet.compute_a_from_Uin_Uquet(Uin, vpp, Uquest, N, False)
+        [a, K] = compute_a_from_Uin_Uquet.compute_a_from_Uin_Uquet(Uin, vpp, Uquest, N)
 
         err = linalg.norm(a - a_param2_300_matlab) / linalg.norm(a_param2_300_matlab)
         self.assertTrue(err < 1e-3)

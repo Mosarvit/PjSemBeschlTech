@@ -9,53 +9,49 @@ from helpers import overlay
 #from scipy import interpolate
 #import csv
 
-def compute_a_from_Uin_Uquet(Uin, Uquest, N, verbosity):
+def compute_a_from_Uin_Uquet(Uin, Uquest, N):
 
     """
-    compute_a_from_Uin_Uquest berechten die Vorfaktoren a aus gegebenen Uin und Uquest
+    compute_a_from_Uin_Uquest calculates coefficients a from given U_in and U_quest
 
     INPUT:
 
-        Uquest - n1x2 array; U_? (n1 - Länge des Signals)
-            Uquest[:,0] - Zeitvektor
-            Uquest[:,1] - Signalvektor
+        Uquest - n1x2 array; U_? (n1 - signal length)
+            Uquest[:,0] - time vector
+            Uquest[:,1] - signal vector
 
-        Uin - n2x2 array; Eingangsspannung (n2 - Länge des Signals)
-            Uin[:,0] - Zeitvektor
-            Uin[:,1] - Signalvektor
+        Uin - n2x2 array; input voltage (n2 - signal length)
+            Uin[:,0] - time vector
+            Uin[:,1] - signal vector
 
-        N - positiver integer; Polynomgrad der Approximierugnsmatrix
-
-        verbosity - boolean, ob Uin gelplottet werden soll
+        N - positive integer; polynomial degree
 
     OUTPUT:
 
-        a - Nx1 vektor; die Vorfaktoren
+        a - Nx1 vector; coefficients
 
     """
 
-    l_out = len(Uquest)
+    l_out = Uquest.shape[0]
 
     np.sin(Uin)
     _, Uin = overlay.overlay(Uin, Uquest)
     Uin = Uin[:,1]
+    Uquest = Uquest[:, 1]
 
-    #Normierung: u_out wird in V gemessen--> mV
+    #normalization: u_out wird in V gemessen--> mV
     #u_in Normierung händisch anhand in_pp
-    Uquest=Uquest[:,1]                                         #STIMMT DAS IMMER?
-    # Uin = (Uin_pp) / (max(Uin) - min(Uin)) * Uin * 1000                    #Wo kommt der Faktor 1000 her??
+                                             #STIMMT DAS IMMER?
+    # Uin = (Uin_pp) / (max(Uin) - min(Uin)) * Uin * 1000
 
 
 
-    #%Spannungsmatrix erzeugen
-    # print("Spannungsmatrix")
-    U=np.zeros((l_out,N))
-    for ind in range(1,N+1):#[1,2,3]:
-        U[:,(ind-1)] = [np.power(x,ind) for x in Uin]
+    # voltage matrix for linear equation system
+    U = np.zeros((l_out, N))
+    for ind in range(1, N+1):
+        U[:, (ind-1)] = [np.power(x, ind) for x in Uin]
 
-    # print("LGS lösen")
-    a=np.linalg.lstsq(U,np.transpose(Uquest),rcond=-1)
-    lsg=a[0]
-    # print(lsg)
+    a = np.linalg.lstsq(U, np.transpose(Uquest), rcond=-1)
+    lsg = a[0]
 
     return (lsg)
