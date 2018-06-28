@@ -6,6 +6,7 @@ from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from blocks.adjust_H import adjust_H
+from blocks.adjust_a import adjust_a
 import matplotlib.pyplot as plt
 
 from helpers import overlay, signalHelper
@@ -100,7 +101,7 @@ class test_unit(TestCase):
         Uin_mV = signalHelper.setVpp(signal=Uin, Vpp=300)
         Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
 
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3, verbosity=False)
+        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3)
 
         err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
         self.assertTrue(err < 1e-3)
@@ -113,7 +114,7 @@ class test_unit(TestCase):
         Uin_mV = signalHelper.setVpp(signal=Uin, Vpp=300)
         Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
 
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3, verbosity=False)
+        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3)
 
         err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
         self.assertTrue(err < 1e-3)
@@ -250,5 +251,25 @@ class test_unit(TestCase):
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
         err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
+
+        self.assertTrue(err < 0.001) # we allow an error of 0.1% for the start, but it should be better
+
+
+    def test_adjust_a(self):
+        # erster Logik Test
+        x = np.linspace(0,10)
+        a_old = [0, 1, 0]
+
+        u_ideal1 = np.zeros((len(x), 2))
+        u_ideal2 = np.zeros((len(x), 2))
+        u_ideal1[:, 0] = x
+        u_ideal2[:, 0] = x
+        u_ideal1[:, 1] = [np.power(xi, 2) for xi in x]
+        u_ideal2[:, 1] = u_ideal1[:,1] + [2*np.power(xi, 3) for xi in x]
+        a_new = adjust_a(a_old, x, u_ideal1, u_ideal2, 1)
+        print(a_new)
+
+
+        err = linalg.norm(0)
 
         self.assertTrue(err < 0.001) # we allow an error of 0.1% for the start, but it should be better
