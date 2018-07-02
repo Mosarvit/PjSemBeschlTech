@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+from helpers import overlay
 
 def adjust_a(a_old, Uin, Uquest_ideal, Uquest_measured, sigma_a):
     """
@@ -25,9 +26,12 @@ def adjust_a(a_old, Uin, Uquest_ideal, Uquest_measured, sigma_a):
 
     """
 
-    # Uin = Uin[:, 1]
+    _, Uquest_measured = overlay.overlay(Uquest_measured, Uquest_ideal)
+
+
     Uquest_ideal = Uquest_ideal[:, 1]
     Uquest_measured = Uquest_measured[:, 1]
+    Uin = Uin[:, 1]
     l_out = len(Uquest_measured)
     N = len(a_old)
 
@@ -39,6 +43,7 @@ def adjust_a(a_old, Uin, Uquest_ideal, Uquest_measured, sigma_a):
 
     lsg = np.linalg.lstsq(U, np.transpose(delta), rcond=-1)
     a_delta = lsg[0]
-
+    print(a_old)
+    print(a_delta)
     a_new = a_old + sigma_a * a_delta
     return(a_new)
