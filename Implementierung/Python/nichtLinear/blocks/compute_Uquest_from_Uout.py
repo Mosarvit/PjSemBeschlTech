@@ -8,7 +8,6 @@ import math
 import copy
 import matplotlib.pyplot as plt
 #import time
-#import matplotlib.pyplot as plt
 import numpy as np
 #from scipy import interpolate
 from scipy.interpolate import interp1d

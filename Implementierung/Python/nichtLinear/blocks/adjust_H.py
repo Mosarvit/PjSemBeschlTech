@@ -1,7 +1,6 @@
 from adts.transfer_function import transfer_function
 import numpy as np
 from scipy.interpolate import interp1d
-import copy
 
 def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
     """
@@ -77,7 +76,6 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
         frequencies_Id = np.append(frequencies_Id, newFrequencies)
         Ideal_fft = np.append(Ideal_fft, np.ones(numberOfNewPoints))
 
-
     # interpolate magnitude and phase seperately
     magnitude_Ideal = interp1d(frequencies_Id, np.abs(Ideal_fft) )
     angle_Ideal = interp1d(frequencies_Id, np.angle(Ideal_fft) )
@@ -87,10 +85,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
     # initialize Hneu
     Hneu = transfer_function(Halt.f)
 
-
     # calculate Hneu in complex representation
     Umeas_div_Uid = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp( 1j * (angle_Meas(Halt.f) - angle_Ideal(Halt.f) ) )
-    print(Umeas_div_Uid)
     Hneu.c = Halt.c * (1 + sigma_H * (Umeas_div_Uid - 1))
 
 

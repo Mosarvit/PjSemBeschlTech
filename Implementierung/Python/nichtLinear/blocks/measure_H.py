@@ -18,10 +18,16 @@ def measure_H(loadCSV, saveCSV, verbosity):
 
     OUTPUT:
 
-        H - nx3 array; Übertragungsfunktion :
+        H - nx3 array; Übertragungsfunktion (old Version) :
             H[:,0] - Frequenz f
             H[:,1] - Amplitudenverstärkung
             H[:,2] - Phasenverschiebung
+
+        Instance of transfer_funtion:
+            Halt.f - Frequences f
+            Halt.a - Amplitude a
+            Halt.p - Phaseshift p
+            Halt.c - Complex Value c = a*exp(jp)
 
     """
 
