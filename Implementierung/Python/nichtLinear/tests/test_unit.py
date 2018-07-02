@@ -189,7 +189,7 @@ class test_unit(TestCase):
 
         Hneu_ideal = Halt
 
-        t = np.linspace(0, 10, 100)
+        t = np.linspace(0, .0001, 1000)
         Uout_ideal = generateSinSum(np.array([[1, 4], [2, 6], [3, 10]], np.int32), t)
         Uout_measured = Uout_ideal
 
@@ -213,7 +213,7 @@ class test_unit(TestCase):
         Halt = read_in_transfer_function(fixPath + 'data/test_data/H_jens.csv')
         Hneu_ideal = Halt
 
-        t = np.linspace(0, 10, 100)
+        t = np.linspace(0, 1e-5, 1000)
         Uout_ideal = generateSinSum(np.array([[1, 4], [2, 6], [3, 10]], np.int32), t)
         Uout_measured = Uout_ideal
 
@@ -243,10 +243,12 @@ class test_unit(TestCase):
         Hneu_ideal.a = Halt.a * ( 1 + ( ( factor - 1 ) * sigma_H ) )
         Hneu_ideal.p = Halt.p
 
-        t = np.linspace(0, 10, 100)
+        t = np.linspace(0, 1e-5, 1000)
+        # Do not change Signal because for about used formular signal has to contain every frequency possible
         Uout_ideal = generateSinSum(np.array([[1, 4 ],  [2, 6 ],  [3, 10 ]]), t)
-        Uout_measured = Uout_ideal
-        Uout_measured[:,1] = Uout_ideal[:,1] * 2
+        Uout_measured = np.zeros((Uout_ideal.shape[0], 2))
+        Uout_measured[:, 0] = Uout_ideal[:, 0]
+        Uout_measured[:,1] = [x*factor for x in Uout_ideal[:, 1]]
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
