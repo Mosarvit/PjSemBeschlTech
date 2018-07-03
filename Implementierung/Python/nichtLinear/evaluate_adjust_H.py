@@ -34,7 +34,6 @@ def evaluate():
     Vpp = 0.3
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
-
     H = measure_H(loadCSV=True, saveCSV=True, verbosity=0)
     Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
 
@@ -55,8 +54,8 @@ def evaluate():
 
         # adjust H after round 1 because of the nonlinear element - we should test which effect this has
         if i > 0:
-            sigma_H = 1
-            H = adjust_H(H, Uout_measured, Uout_ideal,sigma_H=sigma_H)
+            sigma_H = 0.5
+            H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H) # transponiertes Uout???
             save_2cols('data/optimizer/adjust_H/H_a_' + id + '.csv', H.f, H.a)
             save_2cols('data/optimizer/adjust_H/H_p_' + id + '.csv', H.f, H.p)
 
