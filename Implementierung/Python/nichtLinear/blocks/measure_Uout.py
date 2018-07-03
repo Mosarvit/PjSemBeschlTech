@@ -4,7 +4,7 @@ Created on Thu Jul 13 11:22:44 2017
 
 @author: denys
 """
-from helpers import read_from_DSO, write_to_AWG
+from helpers import read_from_DSO_alt, write_to_AWG
 import numpy as np
 import matplotlib.pyplot as plt
 from helpers.csvHelper import save_2cols
@@ -58,7 +58,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         samplerateOszi = 1 * sampleRateAWG
         Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
 
-        [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, Vpp, fmax, Uin[:, 1])
+        [time, dataUin, dataUout] = read_from_DSO_alt.read(samplerateOszi, Vpp, fmax, Uin[:, 1])
 
         if saveCSV:
             save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)

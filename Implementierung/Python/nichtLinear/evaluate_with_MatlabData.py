@@ -3,7 +3,7 @@ from numpy import genfromtxt
 import numpy as np
 
 
-from helpers import write_to_AWG, read_from_DSO
+from helpers import write_to_AWG, read_from_DSO_alt
 
 samplerateAWG = 999900000  # Samplerate des AWG Signals
 vpp = 300e-3  # Vpp die das awg ausgeben soll
@@ -57,7 +57,7 @@ def sendUinToAWG():
 def receiveFromDSO():
     fmax = 80e6
     samplerateOszi = 100 * samplerateAWG
-    [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin)
+    [time, dataUin, dataUout] = read_from_DSO_alt.read(samplerateOszi, vpp, fmax, Uin)
     return time, dataUin, dataUout
 
 

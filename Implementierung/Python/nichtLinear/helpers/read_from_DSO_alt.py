@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
+def read(samplerateOszi, awg_volt, fmax, signal):
 
     """
 
@@ -71,17 +71,17 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
         recordLength = possibleRecordLength[ind+1]
     else:
         recordLength = possibleRecordLength[ind]
+    awg_volt = awg_volt*0.1
 
     DSO.write("HORIZONTAL:RECOrdlength " + str(recordLength)) #1e5
-    # MN: Meine Vermutung: Skalierung pro Division.
-    # MN: Eigentlich sind 8 Divisionen vorhaden; Vpp wird durch 6 geteilt -> Sicherheitsabstand
-    DSO.write("CH1:SCAle " + str(vpp_ch1 / 6)) #Sets the vertical scale
-    DSO.write("MATH1:SCAle " + str(vpp_ch1 / 6)) #Sets the vertical scale
-    DSO.write("CH2:SCAle 20.0E-3") #Sets the vertical scale
-    DSO.write("CH3:SCAle " + str(vpp_out / 6)) #Sets the vertical scale
-    DSO.write("CH4:SCAle " + str(vpp_out / 6)) #Sets the vertical scale
-    # MN: Hier muss glaube ich der Faktor 1/2 hin, weil die Amplitude gemeint ist
-    DSO.write("MATH3:SCAle " + str(vpp_out / 2)) #Sets the vertical scale
+#    DSO.write("CH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+#    DSO.write("MATH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
+    DSO.write("CH1:SCAle " + str(awg_volt/6*10)) #Sets the vertical scale
+    DSO.write("MATH1:SCAle " + str(awg_volt/6*10)) #Sets the vertical scale
+    DSO.write("CH2:SCAle 20.0E-3") #Sets the vertical scale 
+    DSO.write("CH3:SCAle " + str(awg_volt*10)) #Sets the vertical scale 
+    DSO.write("CH4:SCAle " + str(awg_volt*10)) #Sets the vertical scale
+    DSO.write("MATH3:SCAle " + str(awg_volt*50)) #Sets the vertical scale       
     
     DSO.write("CH1:POSition 0") #Sets the horizontal scale
     DSO.write("MATH3:POSition 0") #Sets the horizontal scale
@@ -143,7 +143,7 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
     DSO.write("DATa:ENCdg ASCIi") #This command sets the format of outgoing 
                                   #waveform data to ASCII 
     DSO.write("DATa:STARt 1") #This command sets the starting data point 
-                    #for wavefosrm transfer. This command allows for the
+                    #for waveform transfer. This command allows for the
                     #transfer of partial waveforms to and from the instrument.
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
          #last data point that will be transferred when using the CURVe? query

@@ -32,7 +32,7 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=0, \
     import time
     import matplotlib.pyplot as plt
     import numpy as np
-    from helpers import FFT, write_to_AWG, read_from_DSO
+    from helpers import FFT, write_to_AWG, read_from_DSO_alt, read_from_DSO_resolution
     import csv
     import os
 
@@ -75,16 +75,25 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=0, \
     ##################################################
     ################## Write to AWG ##################
     ##################################################
+
     if writeAWG:
 
         write_to_AWG.write(signal, samplerateAWG, awg_volt)
+
 #        write_to_AWG.send(signal=signal, samplerateAWG=samplerateAWG, awg_volt=awg_volt)
 
     ##################################################
     ################## Write to DSO ##################
     ##################################################
-    
-    time, dataUin, dataUout = read_from_DSO.read(samplerateOszi, awg_volt, fmax, signal)
+    # Einzige Änderung wären noch die Filter in write to AWG
+    version = 1
+    if version == 1:
+        # Alte schlechte Auflösung Version 3.7.
+        time, dataUin, dataUout = read_from_DSO_alt.read(samplerateOszi, awg_volt, fmax, signal)
+    elif version == 2:
+        vpp_ch1 = awg_volt  # CH1 measures Output Signal from AWG
+        time, dataUin, dataUout = read_from_DSO_resolution.read(samplerateOszi, vpp_ch1, fmax, signal)
+
 
 #    DSO.write("*RST") #Restores the state of the instrument from a copy of 
 #                      #the settings stored in memory
