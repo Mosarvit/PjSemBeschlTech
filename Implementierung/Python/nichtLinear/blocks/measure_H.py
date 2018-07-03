@@ -39,7 +39,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
     else :
         fmax = 80e6
         vpp = 40e-3
-        f, Ha, Hph = get_H.get(fmax, vpp, bits=10)
+        f, Ha, Hph = get_H.compute(fmax, vpp, bits=9)
 
         if saveCSV:
             csvHelper.save_2cols('data/current_data/H_a.csv', f, Ha)

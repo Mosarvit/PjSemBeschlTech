@@ -25,7 +25,7 @@ Input:  fmax          ------  max frequency of interest
 """
 
 
-def get(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=True, \
+def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=0, \
         formatOutput=1, modus=False):
     import visa
     from helpers import MLBS

@@ -69,7 +69,7 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, sav
         plt.ylabel('u in mV')
         if globalVars.showPlots :
             plt.show()
-        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf')
+#        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf')
 
     if saveCSV :
 

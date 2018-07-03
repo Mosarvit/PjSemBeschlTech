@@ -71,6 +71,8 @@ def read(samplerateOszi, awg_volt, fmax, signal):
         recordLength = possibleRecordLength[ind+1]
     else:
         recordLength = possibleRecordLength[ind]
+    awg_volt = awg_volt*0.1
+
     DSO.write("HORIZONTAL:RECOrdlength " + str(recordLength)) #1e5
 #    DSO.write("CH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
 #    DSO.write("MATH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale

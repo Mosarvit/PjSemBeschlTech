@@ -33,58 +33,69 @@ def evaluate():
     f_BB = 5e6
     Vpp = 0.3
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
-    H = measure_H(loadCSV=True, saveCSV=True, verbosity=0)
-    Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=1)
 
+
+    H = measure_H(loadCSV=1, saveCSV=True, verbosity=1)
+    
+    
+    Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
+    
     Uin = setVpp(Uquest_ideal, Vpp)
+    
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=True, id='1', verbosity=0)
+    
+    # begin cut just one period out of Uout_measured
 
-    for i in range(0,11):
+    Uout_measured = cun_one_period(Uout_measured, f_rep)
+
+    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=1)
+    Uquest_measured_mV = convert_V_to_mV(Uquest_measured)
+    
+    Uin_mV = convert_V_to_mV(Uin)
+
+    a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3)
+    K = compute_K_from_a(a=a, verbosity=1)
+    
+    
+    for i in range(0,4):
         id = str(i)
+        # compute new Uin
+        Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
+        Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)
+
+        Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=1)
+
+        Uin = convert_mV_to_V(Uin_mV)
+        
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=False, id=id, verbosity=1)
         # Uin_measured = genfromtxt('data/current_data/Uin_2.csv', delimiter=',')
         # Uout_measured = genfromtxt('data/current_data/Uout_2.csv', delimiter=',')
 
         # begin cut just one period out of Uout_measured
+        
         Uout_measured = cun_one_period(Uout_measured, f_rep)
+        Uin_measured = cun_one_period(Uin_measured, f_rep)
 
         # save Uin and Uout
         save_2cols('data/optimizer/adjust_H/Uin_' + id + '.csv', Uin_measured[:, 0], Uin_measured[:, 1])
         save_2cols('data/optimizer/adjust_H/Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
 
         # adjust H after round 1 because of the nonlinear element - we should test which effect this has
-        if i > 0:
-            sigma_H = 0.5
-            H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H) # transponiertes Uout???
-            save_2cols('data/optimizer/adjust_H/H_a_' + id + '.csv', H.f, H.a)
-            save_2cols('data/optimizer/adjust_H/H_p_' + id + '.csv', H.f, H.p)
-
-        # compute new Uin
-        Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
-        Uquest_measured_mV = convert_V_to_mV(Uquest_measured)
-        Uin_mV = convert_V_to_mV(Uin)
-
-        a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3)
-        K = compute_K_from_a(a=a, verbosity=0)
-
-        Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)
-        Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=0)
-        Uin = convert_mV_to_V(Uin_mV)
-
-        # save a and K
-        with open('data/optimizer/adjust_H/a_' + id + '.csv', 'w+', newline="") as csvfile:
-            writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            for k in range(0, len(a)):
-                writer.writerow([a[k]])
-        save_2cols('data/optimizer/adjust_H/K_' + id + '.csv', K[:, 0], K[:, 1])
+        sigma_H = 0.1
+            
+        H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H) # transponiertes Uout???
+        save_2cols('data/optimizer/adjust_H/H_a_' + id + '.csv', H.f, H.a)
+        save_2cols('data/optimizer/adjust_H/H_p_' + id + '.csv', H.f, H.p)
+    
 
     verbosity = True
     if verbosity:
         Uout_measured1 = genfromtxt('data/optimizer/adjust_H/Uout_1.csv', delimiter=',')
-        Uout_measured10 = genfromtxt('data/optimizer/adjust_H/Uout_10.csv', delimiter=',')
+        Uout_measured10 = genfromtxt('data/optimizer/adjust_H/Uout_3.csv', delimiter=',')
         fig = plt.figure(1)
         plt.plot(Uout_measured1[:,0], Uout_measured1[:,1],'r',Uout_measured10[:,0], Uout_measured10[:,1], 'b')
-        plt.title('Runde 1 - rot, Runde 10 - blau')
+        plt.title('Runde 1 - rot, Runde 3 - blau')
         plt.xlabel('t')
         plt.ylabel('U')
         plt.show()

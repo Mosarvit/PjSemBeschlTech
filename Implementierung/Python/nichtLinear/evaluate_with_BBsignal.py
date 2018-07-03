@@ -23,12 +23,14 @@ def evaluate() :
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=1)
 
 
-    H = measure_H(loadCSV=True, saveCSV=True, verbosity=0)
-    Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
-
+    H = measure_H(loadCSV=0, saveCSV=True, verbosity=1)
+    
+    
+    Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
+    
     Uin = setVpp(Uquest_ideal, Vpp)
     
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=True, id='1', verbosity=0)
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=True, id='1', verbosity=0)
     
     # begin cut just one period out of Uout_measured
 
@@ -48,7 +50,7 @@ def evaluate() :
 
     # end
 
-    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
+    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=1)
     Uquest_measured_mV = convert_V_to_mV(Uquest_measured)
     
     Uin_mV = convert_V_to_mV(Uin)
@@ -58,7 +60,7 @@ def evaluate() :
     
     Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)
 
-    Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=0)
+    Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=1)
 
     Uin = convert_mV_to_V(Uin_mV)
 

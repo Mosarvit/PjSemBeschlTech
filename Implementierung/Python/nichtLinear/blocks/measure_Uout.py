@@ -58,7 +58,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         samplerateOszi = 1 * sampleRateAWG
         Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
 
-        [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, Vpp/10, fmax, Uin[:, 1])
+        [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, Vpp, fmax, Uin[:, 1])
 
         if saveCSV:
             save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)
