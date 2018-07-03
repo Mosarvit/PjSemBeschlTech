@@ -42,7 +42,9 @@ def evaluate():
 
     for i in range(0,11):
         id = str(i)
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=False, id=i, verbosity=1)
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=False, id=id, verbosity=1)
+        # Uin_measured = genfromtxt('data/current_data/Uin_2.csv', delimiter=',')
+        # Uout_measured = genfromtxt('data/current_data/Uout_2.csv', delimiter=',')
 
         # begin cut just one period out of Uout_measured
         Uout_measured = cun_one_period(Uout_measured, f_rep)
