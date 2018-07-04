@@ -1,4 +1,6 @@
 import numpy as np
+import copy
+from scipy import linalg
 
 class transfer_function :
 
@@ -65,7 +67,25 @@ class transfer_function :
     def c(self, value):
         self.__complex = value
         self.__amplitude = np.abs(self.__complex)
-        self.__phaseshift = np.angle(self.__complex)
+
+        # phaseshift = np.angle(self.__complex)
+
+        PhaseH = np.asarray([float(i) for i in np.angle(self.__complex)])
+        PhaseVGL = np.asarray([float(i) for i in np.angle(self.__complex)])
+
+        for ind in range(0, (len(PhaseH) - 1)):
+            if PhaseVGL[ind] * PhaseVGL[ind + 1] < 0:
+                if PhaseVGL[ind] > np.pi / 2 and PhaseVGL[ind + 1] < -np.pi / 2:
+                    PhaseH[ind + 1:] = PhaseH[ind + 1:] + 2 * np.pi
+                elif PhaseVGL[ind] < -np.pi / 2 and PhaseVGL[ind + 1] > np.pi / 2:
+                    PhaseH[ind + 1:] = PhaseH[ind + 1:] - 2 * np.pi
+
+        self.__phaseshift = PhaseH
 
     def update_complex(self):
         self.__complex = self.__amplitude * (np.cos(self.__phaseshift) + 1j * np.sin(self.__phaseshift))
+
+    def get_inverse(self):
+        Hinv = transfer_function(self.f)
+        Hinv.c = 1/self.c
+        return Hinv

@@ -3,13 +3,13 @@
 Created on Sun June 3 2018
 @author: Jonas
 """
-from numpy import genfromtxt
 import numpy as np
 from scipy.interpolate import interp1d
 import copy
 import matplotlib.pyplot as plt
-from helpers import globalVars
+import global_data
 from helpers.find_nearest import find_nearest
+
 
 
 def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
@@ -36,6 +36,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
             Uin[:,1] - Signalvektor
 
     """
+
     #VAS fuer Funktionalitaet ist Verhalten einer Potenzreihe in K -> keine Spruenge zw zwei Werten
 
     # dummy value, damit der unit test kompeliert:
@@ -97,7 +98,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         plt.title('Uin')
         plt.ylabel('u')
         plt.ylabel('t')
-        if globalVars.showPlots :
+        if global_data.showPlots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
 

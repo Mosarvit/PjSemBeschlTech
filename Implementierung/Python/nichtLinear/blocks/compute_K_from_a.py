@@ -6,7 +6,8 @@ Created on Wed Aug 23 12:09:14 2017
 """
 import matplotlib.pyplot as plt
 import numpy as np
-from helpers import csvHelper, globalVars
+import global_data
+
 
 def compute_K_from_a(a, verbosity):
     """
@@ -46,7 +47,7 @@ def compute_K_from_a(a, verbosity):
         plt.title('Kennlinie K')
         plt.xlabel('U_in in mV')
         plt.ylabel('U_out in mV')
-        if globalVars.showPlots :
+        if global_data.showPlots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf')
     

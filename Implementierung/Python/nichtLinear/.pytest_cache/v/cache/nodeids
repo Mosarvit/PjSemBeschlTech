@@ -1,0 +1,21 @@
+[
+  "test_unit22.py::test_unit22::test_adjust_H",
+  "test_unit22.py::test_unit22::test_adjust_H_a_trivial",
+  "test_unit22.py::test_unit22::test_adjust_H_p_trivial",
+  "test_unit22.py::test_unit22::test_adjust_a",
+  "test_unit22.py::test_unit22::test_apply_transfer_function",
+  "test_unit22.py::test_unit22::test_compute_K_from_a_jens",
+  "test_unit22.py::test_unit22::test_compute_K_from_a_our",
+  "test_unit22.py::test_unit22::test_compute_Uin_from_Uquest_jens",
+  "test_unit22.py::test_unit22::test_compute_Uin_from_Uquest_our",
+  "test_unit22.py::test_unit22::test_compute_Uquest_from_Uout_300_jens",
+  "test_unit22.py::test_unit22::test_compute_Uquest_from_Uout_300_our",
+  "test_unit22.py::test_unit22::test_compute_Uquest_from_Uout_catch_imaginary",
+  "test_unit22.py::test_unit22::test_compute_Uquest_from_Uout_with_BBsignal_ideal",
+  "test_unit22.py::test_unit22::test_compute_a_from_Uin_Uquest_300_jens",
+  "test_unit22.py::test_unit22::test_compute_a_from_Uin_Uquest_300_our",
+  "test_unit22.py::test_unit22::test_evaluate_with_BBsignal_low_amplitude",
+  "test_unit22.py::test_unit22::test_get_H",
+  "test_unit22.py::test_unit22::test_mock_system",
+  "test_unit22.py::test_unit22::test_setSampleRate"
+]

@@ -13,7 +13,7 @@ from blocks.measure_Uout import measure_Uout
 from helpers.signalHelper import convert_V_to_mV
 from helpers.signalHelper import convert_mV_to_V
 from helpers.signalHelper import setVpp
-from helpers.signalHelper import cun_one_period
+from helpers.signalHelper import cut_one_period
 from helpers.csvHelper import save_2cols
 from helpers.csvHelper import read_in_transfer_function
 from adts.transfer_function import transfer_function
@@ -44,7 +44,7 @@ def evaluate():
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=False, id=i, verbosity=1)
 
         # begin cut just one period out of Uout_measured
-        Uout_measured = cun_one_period(Uout_measured, f_rep)
+        Uout_measured = cut_one_period(Uout_measured, f_rep)
 
         # save Uin and Uout
         save_2cols('data/optimizer/adjust_a/Uin_' + id + '.csv', Uin_measured[:, 0], Uin_measured[:, 1])

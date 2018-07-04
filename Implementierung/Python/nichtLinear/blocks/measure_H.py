@@ -1,9 +1,9 @@
 from blocks import get_H
-import numpy as np
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
-from helpers import csvHelper, globalVars
-from adts.transfer_function import transfer_function
+from helpers import csvHelper
+import global_data
+from classes.transfer_function import transfer_function
 
 def measure_H(loadCSV, saveCSV, verbosity):
 
@@ -77,7 +77,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
         plt.title('Amplitude')
         plt.xlabel('f')
 
-        if globalVars.showPlots :
+        if global_data.showPlots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf')
 
@@ -86,7 +86,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
         plt.title('Phase in rad')
         plt.xlabel('f')
 
-        if globalVars.showPlots:
+        if global_data.showPlots:
             plt.show()
        # fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf')
 

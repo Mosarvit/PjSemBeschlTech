@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import csv
-from helpers import csvHelper, globalVars
+from helpers import csvHelper
+import global_data
+
 
 def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, saveCSV=True, verbosity=False):
 
@@ -49,31 +50,33 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, sav
 
     T1 = T2 / numSamples * samplerate1
 
-    t1 = np.linspace(0, T1 , samplerate1+1)
-    t2 = np.linspace(0, T2, numSamples + 1)
+    t1 = np.linspace(0, T1 , samplerate1-1)
+    t2 = np.linspace(0, T2, numSamples - 1)
 
     U1 = np.sin(2 * np.pi * f_BB * t1)
 
-    Uout = np.zeros([2, numSamples + 1])
+    Uout = np.zeros([2, numSamples - 1])
     Uout[0,:] = t2;
 
-    half1 = int(samplerate1/2)
-    mid2 = int((numSamples + 1) / 2)
+    half1 = int(samplerate1/2)-1
+    mid2 = int((numSamples - 1) / 2)
 
-    Uout[1,mid2-half1:mid2+half1+1] = Vpp * U1
+    Uout[1,mid2-half1:mid2+half1+1] = Vpp / 2 * U1
+
+    Uout = np.transpose(Uout)
 
     if verbosity :
         fig = plt.figure()
-        plt.plot(t2, Uout[1,:])
+        plt.plot(t2, Uout[:,1])
         plt.title('Das ideale U_BB')
         plt.ylabel('u in mV')
-        if globalVars.showPlots :
+        if global_data.showPlots :
             plt.show()
 #        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf')
 
     if saveCSV :
 
-        csvHelper.save_2cols('data/current_data/BBsignal_ideal.csv', Uout[0,:], Uout[1,:])
+        csvHelper.save_2cols(global_data.project_path + '/data/current_data/BBsignal_ideal.csv', Uout[0, :], Uout[1, :])
 
     return(Uout)
 

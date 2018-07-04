@@ -1,7 +1,9 @@
-from numpy import genfromtxt
 from helpers.csvHelper import read_in_transfer_function
+from helpers.apply_transfer_function import apply_transfer_function
+import global_data
 
-class mock_system :
+
+class mock_system_class :
 
     """
     mock_system is a class, that describes a mock system for unit and system tests
@@ -32,24 +34,22 @@ class mock_system :
     """
     def __init__(self):
         self.__Uin = None
-        self.__Uout = None
-        self.__H = read_in_transfer_function('mock_data/H_jens.csv')
-        self.__K = genfromtxt('mock_data/a_300_jens.csv', delimiter=',')
-
-    @property
-    def Uin(self):
-        return self.__Uin
-
-    @property
-    def Uout(self):
-        return self.__Uout
-
-    @Uin.setter
-    def Uin(self, Uin):
-        self.__Uin = Uin
+        self.__Uin_measured = None
+        self.__Uout_measured = None
+        a = global_data.project_path
+        self.__H = read_in_transfer_function(global_data.project_path + '/tests/mock_data/H_jens.csv')
 
     def get_Uout_from_Uin(self, Uin):
         self.__Uin = Uin
+        self.__Uout_measured = 0.5 * apply_transfer_function(self.__Uin, self.__H)
+        return self.__Uout_measured
 
+    def write_to_AWG(self, Uin):
+        self.__Uin = Uin
+
+    def read_from_DSO(self):
+        self.__Uin_measured = self.__Uin * 0.5
+        self.__Uout_measured = apply_transfer_function(self.__Uin, self.__H) * 0.5
+        return (self.__Uin_measured, self.__Uout_measured)
 
 

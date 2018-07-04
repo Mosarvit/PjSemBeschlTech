@@ -5,17 +5,16 @@ Created on Thu Jul 13 11:22:44 2017
 @author: denys
 """
 from helpers import read_from_DSO, write_to_AWG
-import numpy as np
+import global_data
 import matplotlib.pyplot as plt
 from helpers.csvHelper import save_2cols
 from numpy import genfromtxt
-from helpers import globalVars
 from helpers.signalHelper import assemble_signal
-from helpers.signalHelper import setSampleRate
+from helpers.signalHelper import set_sample_rate
 from helpers.overlay import overlay
 
 
-def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
+def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity, use_mock_system=0):
 
     """
     compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
@@ -75,13 +74,16 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         Uin_measured = genfromtxt('data/current_data/Uin_' + id + '.csv', delimiter=',')
     else:
 
-        Uin = setSampleRate(Uin, sampleRateAWG)
+        Uin = set_sample_rate(Uin, sampleRateAWG)
 
-        sendUinToAWG(Uin)
-        [time, dataUin, dataUout] = receiveFromDSO(Uin)
-
-        Uout_measured = assemble_signal(time, dataUout)
-        Uin_measured = assemble_signal(time, dataUin)
+        if use_mock_system:
+            global_data.mock_system.write_to_AWG(Uin)
+            Uin_measured, Uout_measured = global_data.mock_system.read_from_DSO()
+        else:
+            sendUinToAWG(Uin)
+            [time, dataUin, dataUout] = receiveFromDSO(Uin)
+            Uout_measured = assemble_signal(time, dataUout)
+            Uin_measured = assemble_signal(time, dataUin)
 
     if verbosity:
         fig = plt.figure(1)
@@ -89,7 +91,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         plt.title('Uout_measured')
         plt.xlabel('t')
         plt.ylabel('U')
-        if globalVars.showPlots :
+        if global_data.showPlots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf')
 
@@ -101,7 +103,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         plt.title('Uin vs. Uin_measured')
         plt.xlabel('t')
         plt.ylabel('U')
-        if globalVars.showPlots:
+        if global_data.showPlots:
             plt.show()
  #       fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/UinVsUin_measured.pdf')
 

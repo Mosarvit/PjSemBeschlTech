@@ -57,7 +57,7 @@ def convert_mV_to_V(signal_mV):
     return signal
 
 
-def setSampleRate(signal, sampleRate):
+def set_sample_rate(signal, sampleRate):
 
     """
     setSampleRate setzt die Abtastrate eines Signals
@@ -81,7 +81,7 @@ def setSampleRate(signal, sampleRate):
     signal_SR = np.transpose(interpolator1(indices_new))
     return signal_SR
 
-def cun_one_period(signal, f):
+def cut_one_period(signal, f):
     """
     cun_one_period schneidet eine Periode des Signals raus
 

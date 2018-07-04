@@ -1,5 +1,2 @@
-from adts import transfer_function
-from helpers.csvHelper import read_in_transfer_function, save_transfer_function, read_in_transfer_function_old
-
-H = read_in_transfer_function_old('data/mock_data/H_a_our.csv', 'data/mock_data/H_p_our.csv' )
-save_transfer_function(H, 'data/mock_data/H_our.csv')
+import nose
+# result = nose.run()
