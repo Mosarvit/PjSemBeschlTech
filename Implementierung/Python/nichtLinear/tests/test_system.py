@@ -18,11 +18,11 @@ class TestComputeParam(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_System(self):
-        Uout = genfromtxt(fixPath + 'data/test_data/Uout_300.csv', delimiter=',')[:, 1]
-        Uin = np.transpose(genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')[:, 1])
+        Uout = genfromtxt(fixPath + 'data/mock_data/Uout_300.csv', delimiter=',')[:, 1]
+        Uin = np.transpose(genfromtxt(fixPath + 'data/mock_data/Uin.csv', delimiter=',')[:, 1])
         Uquest = compute_Uquest_from_Uout.compute_Uquest_from_Uout(Uout, self.H, self.freqA, False)
 
-        a_param2_300_matlab = genfromtxt(fixPath + 'data/test_data/a_param2_300.csv', delimiter=',')
+        a_param2_300_matlab = genfromtxt(fixPath + 'data/mock_data/a_param2_300.csv', delimiter=',')
 
         N = 3
         vpp = 300e-3
@@ -34,7 +34,7 @@ class TestComputeParam(TestCase):
         print(err)
 
     def getHFromCSV(self):
-        str_H = np.genfromtxt(fixPath + 'data/test_data/H.csv', dtype=str, delimiter=',')
+        str_H = np.genfromtxt(fixPath + 'data/mock_data/H.csv', dtype=str, delimiter=',')
         self.H = np.zeros((len(str_H)), dtype=complex)
         self.freqA = np.zeros((len(str_H)))
         for k in range(0, len(str_H)):

@@ -1,4 +1,4 @@
-from adts.transfer_function import transfer_function
+from classes.transfer_function import transfer_function
 import numpy as np
 from scipy.interpolate import interp1d
 

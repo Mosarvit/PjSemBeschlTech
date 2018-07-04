@@ -47,7 +47,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
     # global fixPath    # wenn er Uin.csv nicht finden kann
     # fixPath = '../'   # entweder dies
     # # fixPath = ''    # oder das waehlen
-    # Uin = genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')[:, 1]
+    # Uin = genfromtxt(fixPath + 'data/mock_data/Uin.csv', delimiter=',')[:, 1]
 
     # Pseudo-Code in Comments:
 

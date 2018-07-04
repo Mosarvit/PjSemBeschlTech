@@ -1,7 +1,7 @@
 import csv
 from numpy import genfromtxt
 import numpy as np
-from adts.transfer_function import transfer_function
+from classes.transfer_function import transfer_function
 
 def save_2cols(filename, col1, col2):
 

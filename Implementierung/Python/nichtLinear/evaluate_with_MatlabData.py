@@ -40,13 +40,13 @@ def plot_Results():
     plt.show()
 
 def readIn_Uin():
-    Uin = genfromtxt('data/test_data/Uin.csv', delimiter=',')
+    Uin = genfromtxt('data/mock_data/Uin.csv', delimiter=',')
     t_in = Uin[:, 0]
     Uin = Uin[:, 1]
     return Uin, t_in
 
 def readIn_Uout_ideal():
-    Uout_and_t_ideal = genfromtxt('data/test_data/Uout_300.csv', delimiter=',')
+    Uout_and_t_ideal = genfromtxt('data/mock_data/Uout_300.csv', delimiter=',')
     tout_ideal = Uout_and_t_ideal[:, 0]
     Uout_ideal = Uout_and_t_ideal[:, 1]
     return tout_ideal, Uout_ideal

@@ -14,9 +14,9 @@ class transfer_function :
         H.p - get phase shift
         H.c - get complex amplification
     Setters:
-        H.a_p - set amplitude and phase shift, can only be set together
-        H.c -   set complex amplification
-        frequency cannot be set
+        H.a(amplitude)  - set amplitude
+        H.p(phase)      - set phase shift
+        H.c(complex)    - set complex amplification
 
     Example of initializing a transfer_function with amplitude and phaseshift:
         f = np.array([1,2,3,4,5])
