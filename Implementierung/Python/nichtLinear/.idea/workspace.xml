@@ -2,17 +2,152 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/helpers/read_from_DSO_alt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers/read_from_DSO_resolution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helpers/evaluate_signal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/csvDateien_K/Uout_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_060_TD_y_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/test_evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/get_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/get_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/get_H_denys.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/get_H_denys.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/measure_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/measure_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/current_data/BBsignal_ideal.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/current_data/BBsignal_ideal.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_with_MatlabData.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_MatlabData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/read_from_DSO.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/read_from_DSO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_a_9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/H_p_9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/K_9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uin_9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/Uout_9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/optimizer/adjust_H/a_9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate_adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_adjust_H.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/read_from_DSO_alt.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/read_from_DSO_alt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_DSO/tools/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/new_DSO/tools/test.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Messung_060_TD_y_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Messung_060_TD_y_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungFBereich_Uout_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Messung_060_TD_y_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Messung_060_TD_y_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_1P_Uout_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Messung_060_TD_y_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Messung_060_TD_y_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Bilder/AbbildungTD_Uout_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Signal_output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Signal_output.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/SineRef_output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/SineRef_output.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_060_TD_y_1.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_060_TD_y_1.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_060_TD_y_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_060_TD_y_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_061_TD_y_1.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_061_TD_y_1.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_061_TD_y_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_061_TD_y_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_065_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_065_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_065_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_065_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_066_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_066_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_066_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_066_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_067_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_067_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_067_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_067_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_29.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_29.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_29.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_3.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_3.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungFBereich_Messung_077_TD_y_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_060_TD_y_1.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_060_TD_y_1.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_060_TD_y_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_060_TD_y_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_061_TD_y_1.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_061_TD_y_1.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_061_TD_y_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_061_TD_y_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_065_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_065_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_065_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_065_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_066_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_066_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_066_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_066_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_067_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_067_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_067_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_067_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_29.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_29.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_29.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_3.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_3.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_1P_Messung_077_TD_y_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_060_TD_y_1.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_060_TD_y_1.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_060_TD_y_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_060_TD_y_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_061_TD_y_1.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_061_TD_y_1.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_061_TD_y_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_061_TD_y_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_065_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_065_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_065_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_065_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_066_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_066_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_066_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_066_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_067_TD_y_0.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_067_TD_y_0.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_067_TD_y_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_067_TD_y_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_29.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_29.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_29.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_3.fig" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_3.fig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Bilder/AbbildungTD_Messung_077_TD_y_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Ergebnisse/Ergebnisse.xls" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Ergebnisse/Ergebnisse.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Messung_061_TD_y_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_061_TD_y_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Messung_065_TD_y_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_065_TD_y_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Messung_066_TD_y_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_066_TD_y_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Messung_067_TD_y_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_067_TD_y_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Messung_068_TD_y_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_068_TD_y_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Messung_077_TD_y_29.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_077_TD_y_29.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Messung_077_TD_y_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/alt/Messung_077_TD_y_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Uout_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/Uout_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/csvDateien_K/Uout_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/csvDateien_K/Uout_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/verzerrungszahlen_output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/verzerrungszahlen_output.csv" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,76 +158,89 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4972973">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="get_H.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="580">
-                  <caret line="87" column="60" selection-start-line="87" selection-start-column="60" selection-end-line="87" selection-end-column="60" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="22" column="108" selection-start-line="22" selection-start-column="108" selection-end-line="22" selection-end-column="108" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="measure_H.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="186">
-                  <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#0#24#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="read_from_DSO_resolution.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_resolution.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-                  <folding>
-                    <element signature="e#24#42#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="get_H_denys.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/blocks/get_H_denys.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1548">
-                  <caret line="153" column="8" lean-forward="true" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="read_from_DSO_alt.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_alt.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="416">
-                  <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="evaluate_adjust_H.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
+              <folding>
+                <element signature="e#289#343#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluate_signal.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpers/evaluate_signal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-223">
+              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_evaluation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/test_evaluation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adjustH.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/adjustH.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="52" column="159" selection-start-line="52" selection-start-column="159" selection-end-line="52" selection-end-column="159" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="singlesine_Signal.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/singlesine_Signal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="singlesine_SineRef.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/singlesine_SineRef.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="singlesine_Verzerrungszahlen.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/singlesine_Verzerrungszahlen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/test.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -125,15 +273,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Helpers/send_to_AWG.py" />
-        <option value="$PROJECT_DIR$/measure_Uout.py" />
-        <option value="$PROJECT_DIR$/measure_H.py" />
-        <option value="$PROJECT_DIR$/evaluation/evaluate_with_BBsignal.py" />
-        <option value="$PROJECT_DIR$/adjust/adjust_H.py" />
-        <option value="$PROJECT_DIR$/evaluate_with_Adjustment.py" />
-        <option value="$PROJECT_DIR$/get/get_H.py" />
-        <option value="$PROJECT_DIR$/helpers/setVpp_mV.py" />
-        <option value="$PROJECT_DIR$/compute/compute_a_from_Uin_Uquet.py" />
         <option value="$PROJECT_DIR$/helpers/conform_to_sampleRateAWG.py" />
         <option value="$PROJECT_DIR$/compute/compute_Uin_from_Uquest.py" />
         <option value="$PROJECT_DIR$/compute/generate_BBsignal.py" />
@@ -165,17 +304,26 @@
         <option value="$PROJECT_DIR$/tests/test_unit.py" />
         <option value="$PROJECT_DIR$/adjustH.sh" />
         <option value="$PROJECT_DIR$/blocks/adjust_a.py" />
-        <option value="$PROJECT_DIR$/tools/adjustH.sh" />
         <option value="$PROJECT_DIR$/evaluate_adjust_a.py" />
         <option value="$PROJECT_DIR$/blocks/adjust_H.py" />
-        <option value="$PROJECT_DIR$/evaluate_adjust_H.py" />
         <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
         <option value="$PROJECT_DIR$/blocks/measure_H.py" />
         <option value="$PROJECT_DIR$/blocks/get_H_denys.py" />
         <option value="$PROJECT_DIR$/helpers/read_from_DSO.py" />
         <option value="$PROJECT_DIR$/helpers/read_from_DSO_resolution.py" />
-        <option value="$PROJECT_DIR$/helpers/read_from_DSO_alt.py" />
         <option value="$PROJECT_DIR$/blocks/get_H.py" />
+        <option value="$PROJECT_DIR$/helpers/read_from_DSO_alt.py" />
+        <option value="$PROJECT_DIR$/tools/evaluate_adjust_H_test.py" />
+        <option value="$PROJECT_DIR$/tools/evaluate_signal.py" />
+        <option value="$PROJECT_DIR$/tools/evaluate_signal_tools.py" />
+        <option value="$PROJECT_DIR$/helpers/evaluate_signal.py" />
+        <option value="$PROJECT_DIR$/tools/test_evaluation.py" />
+        <option value="$PROJECT_DIR$/tools/singlesine_Signal.py" />
+        <option value="$PROJECT_DIR$/tools/singlesine_SineRef.py" />
+        <option value="$PROJECT_DIR$/tools/singlesine_Verzerrungszahlen.py" />
+        <option value="$PROJECT_DIR$/tools/test.sh" />
+        <option value="$PROJECT_DIR$/tools/adjustH.sh" />
+        <option value="$PROJECT_DIR$/evaluate_adjust_H.py" />
       </list>
     </option>
   </component>
@@ -208,12 +356,47 @@
             <path>
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="current_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
               <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="csvDateien_K" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="csvDateien_K" type="462c0819:PsiDirectoryNode" />
+              <item name="alt" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
@@ -230,19 +413,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tools/csvDateien_K" />
+      <recent name="$PROJECT_DIR$/tools" />
+      <recent name="$PROJECT_DIR$/helpers" />
+      <recent name="$PROJECT_DIR$/data/current_data" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tools/csvDateien_K/alt" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks1" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\get" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\measure" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/helpers" />
-      <recent name="$PROJECT_DIR$/tools/csvDateien_K" />
-      <recent name="$PROJECT_DIR$/data/current_data" />
-      <recent name="$PROJECT_DIR$/tools" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -257,7 +440,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.evaluate_with_BBsignal">
+  <component name="RunManager" selected="Bash.adjustH.sh">
     <configuration name="adjustH.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,6 +448,15 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/adjustH.sh" />
+      <option name="PARAMETERS" value="" />
+    </configuration>
+    <configuration name="test.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <module name="nichtLinear" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/test.sh" />
       <option name="PARAMETERS" value="" />
     </configuration>
     <configuration name="evaluate_adjust_H" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -285,7 +477,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="evaluate_adjust_a" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="evaluate_adjust_H_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -293,17 +485,17 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluate_adjust_a.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/evaluate_adjust_H_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="evaluate_with_BBsignal" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -311,29 +503,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="get_H" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="nichtLinear" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/blocks" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/blocks/get_H.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/test_evaluation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -370,18 +544,18 @@
       <item itemvalue="Python tests.Unittests for test_unit.test_unit.test_compute_Uin_from_Uquest" />
       <item itemvalue="Python tests.Unittests in test_unit.py" />
       <item itemvalue="Python.evaluate_adjust_H" />
+      <item itemvalue="Python.evaluate_adjust_H_test" />
+      <item itemvalue="Python.test_evaluation" />
+      <item itemvalue="Bash.test.sh" />
       <item itemvalue="Bash.adjustH.sh" />
-      <item itemvalue="Python.evaluate_adjust_a" />
-      <item itemvalue="Python.get_H" />
-      <item itemvalue="Python.evaluate_with_BBsignal" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.evaluate_with_BBsignal" />
-        <item itemvalue="Python.get_H" />
-        <item itemvalue="Python.evaluate_adjust_H" />
         <item itemvalue="Bash.adjustH.sh" />
-        <item itemvalue="Python.evaluate_adjust_a" />
+        <item itemvalue="Bash.test.sh" />
+        <item itemvalue="Python.evaluate_adjust_H" />
+        <item itemvalue="Python.test_evaluation" />
+        <item itemvalue="Python.evaluate_adjust_H_test" />
       </list>
     </recent_temporary>
   </component>
@@ -443,23 +617,23 @@
     <frame x="0" y="23" width="1680" height="965" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.21940929" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.24593128" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.45737326" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.23156682" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" weight="0.23156682" />
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.328341" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.312212" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.45737326" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -487,251 +661,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/helpers/globalVars.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="51" selection-start-column="51" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/lib/npyio.py" />
-    <entry file="file://$PROJECT_DIR$/blocks/__init__.py" />
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/matplotlib/cbook/__init__.py" />
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/scipy/interpolate/interpolate.py" />
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/matplotlib/backends/backend_pdf.py" />
-    <entry file="file://$PROJECT_DIR$/helpers/find_nearest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/venv/Lib/site-packages/numpy/linalg/linalg.py" />
-    <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_versions/compute_a_from_Uin_Uquet_test1.py" />
-    <entry file="file://$PROJECT_DIR$/test_versions/compute_K_from_a_test1.py" />
-    <entry file="file://$PROJECT_DIR$/scratch_paper.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py" />
-    <entry file="file://$PROJECT_DIR$/evaluate_with_MatlabData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-192" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_system.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/numpy/core/function_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1135">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/singlesine_SineRef.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-376" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adjustH.sh" />
-    <entry file="file://$PROJECT_DIR$/adts/transfer_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_K_from_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.1/python_stubs/1211785933/numpy/core/umath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="4380" column="4" selection-start-line="4380" selection-start-column="4" selection-end-line="4380" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_with_adjustment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/adjustH/results.csv" />
-    <entry file="file://$PROJECT_DIR$/tools/singlesine_Verzerrungszahlen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/adjustH.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_unit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3671">
-          <caret column="29" selection-start-column="29" selection-end-line="1" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/overlay.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="33" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/adjust_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="51" column="128" selection-start-line="51" selection-start-column="128" selection-end-line="51" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="86" />
-          <folding>
-            <element signature="e#84#131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="84" column="61" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/MLBS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/generate_BBsignal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/write_to_AWG.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2670">
-          <caret line="178" column="28" lean-forward="true" selection-start-line="178" selection-start-column="28" selection-end-line="178" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/visa.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-          <folding>
-            <element signature="e#24#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_alt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-650">
-          <caret line="3" column="29" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+        <state relative-caret-position="555">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
@@ -740,11 +673,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_resolution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
+        <state relative-caret-position="375">
           <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
           <folding>
             <element signature="e#24#42#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="87" column="60" selection-start-line="87" selection-start-column="60" selection-end-line="87" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -755,24 +695,300 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_alt.py">
+    <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
+        <state relative-caret-position="555">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_resolution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/get_H_denys.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1548">
+        <state relative-caret-position="2295">
           <caret line="153" column="8" lean-forward="true" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_alt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
+        <state relative-caret-position="1305">
           <caret line="87" column="60" selection-start-line="87" selection-start-column="60" selection-end-line="87" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/singlesine_save_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="26" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="48" column="28" lean-forward="true" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="80" column="40" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/get_H_denys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="165" column="35" lean-forward="true" selection-start-line="165" selection-start-column="24" selection-end-line="165" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_alt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="82" column="44" selection-start-line="82" selection-start-column="44" selection-end-line="83" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_resolution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="34" />
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/generate_BBsignal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/evaluate_adjust_H_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="97" column="38" lean-forward="true" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
+          <folding>
+            <element signature="e#289#343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/csvDateien_K/Uin_0.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/csvDateien_K/Uout_0.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/Uout_1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10537" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/Uout_0.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7900" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/current_data/Uin_2.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14991" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/Uin_0.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2227" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/Uin_4.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/Uin_3.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5342" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/Uin_2.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20286" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/current_data/Uin_1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27513" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/Uin_1.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/csvDateien_K/Uin_2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/K_6.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8456" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/K_8.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/K_2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/K_1.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/csvDateien_K/K_0.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-146">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/csvDateien_K/Uout_2.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47283" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/current_data/Uout_3.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-325" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/current_data/Uout_1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3701" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/current_data/Uout_2.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="882" column="12" selection-start-line="882" selection-start-column="12" selection-end-line="882" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/evaluate_signal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-223">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/test_evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/singlesine_Signal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/singlesine_SineRef.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/singlesine_Verzerrungszahlen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/adjustH/results.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="53" lean-forward="true" selection-start-line="2" selection-start-column="53" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/adjustH.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="159" selection-start-line="52" selection-start-column="159" selection-end-line="52" selection-end-column="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
+          <folding>
+            <element signature="e#289#343#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

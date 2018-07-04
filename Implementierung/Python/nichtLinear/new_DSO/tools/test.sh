@@ -2,7 +2,7 @@
 
 #dateiName='singleSineTest_mod.csv'
 #dateiName='singleSineTest_Orginal.csv'
-dateiName='csvDateien_K/Messung_060_TD_y_1.csv'
+dateiName='adjust_H/Messung_060_TD_y_1.csv'
 #dateiName='csvDateien_J3dB/rs_u_out_020mvpp_3dB.csv'
 #dateiName='csvDateien_M/Uefkt_Exp120_4000kHz_5Mhz_mth1.csv'
 #dateiName='output_test.csv'

@@ -7,6 +7,7 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
+from helpers.evaluate_signal import evaluate_signal
 from blocks.measure_H import measure_H
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
@@ -16,6 +17,7 @@ from helpers.signalHelper import convert_mV_to_V
 from helpers.signalHelper import setVpp
 from helpers.signalHelper import cun_one_period
 from helpers.csvHelper import save_2cols
+from tools.test_evaluation import test_evaluate
 from helpers.csvHelper import read_in_transfer_function
 from adts.transfer_function import transfer_function
 
@@ -33,61 +35,74 @@ def evaluate():
     f_BB = 5e6
     Vpp = 0.3
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=1)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
 
 
-    H = measure_H(loadCSV=1, saveCSV=True, verbosity=1)
-    
-    
-    Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
-    
+    H = measure_H(loadCSV=False, saveCSV=True, verbosity=0)
+
+    # save initial H
+    save_2cols('tools/adjust_H/Ha_0.csv', H.f, H.a)
+    save_2cols('tools/adjust_H/Hp_0.csv', H.f, H.a)
+
+    Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
+
     Uin = setVpp(Uquest_ideal, Vpp)
-    
+
     Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=True, id='1', verbosity=0)
-    
+    # Uin_measured = genfromtxt('data/current_data/Uin_2.csv', delimiter=',')
+    # Uout_measured = genfromtxt('data/current_data/Uout_2.csv', delimiter=',')
+
     # begin cut just one period out of Uout_measured
-
     Uout_measured = cun_one_period(Uout_measured, f_rep)
+    Uin_measured = cun_one_period(Uout_measured, f_rep)
 
-    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=1)
+    # save initial Data
+    save_2cols('tools/adjust_H/Uin_0.csv', Uin_measured[:, 0], Uin_measured[:, 1])
+    save_2cols('tools/adjust_H/Uout_0.csv', Uout_measured[:, 0], Uout_measured[:, 1])
+
+    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
     Uquest_measured_mV = convert_V_to_mV(Uquest_measured)
-    
+
     Uin_mV = convert_V_to_mV(Uin)
 
     a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3)
-    K = compute_K_from_a(a=a, verbosity=1)
-    
-    
-    for i in range(0,4):
+    K = compute_K_from_a(a=a, verbosity=0)
+
+    # save K
+    save_2cols('tools/adjust_H/K_0.csv', K[:, 0], K[:, 1])
+
+
+    for i in range(1,4):
         id = str(i)
         # compute new Uin
-        Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
+        Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
         Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)
 
-        Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=1)
+        Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=0)
 
         Uin = convert_mV_to_V(Uin_mV)
-        
+
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=False, id=id, verbosity=1)
         # Uin_measured = genfromtxt('data/current_data/Uin_2.csv', delimiter=',')
         # Uout_measured = genfromtxt('data/current_data/Uout_2.csv', delimiter=',')
 
         # begin cut just one period out of Uout_measured
-        
         Uout_measured = cun_one_period(Uout_measured, f_rep)
         Uin_measured = cun_one_period(Uin_measured, f_rep)
 
         # save Uin and Uout
-        save_2cols('data/optimizer/adjust_H/Uin_' + id + '.csv', Uin_measured[:, 0], Uin_measured[:, 1])
-        save_2cols('data/optimizer/adjust_H/Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
+        save_2cols('tools/adjust_H/Uin_' + id + '.csv', Uin_measured[:, 0], Uin_measured[:, 1])
+        save_2cols('tools/adjust_H/Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
+        save_2cols('tools/csvDateien_K/Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
 
-        # adjust H after round 1 because of the nonlinear element - we should test which effect this has
-        sigma_H = 0.1
-            
-        H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H) # transponiertes Uout???
+        # quality = evaluate_signal('tools/csvDateien_K/Uout_' + id + '.csv', 'csvDateien_K/results_adjust_H.csv')
+        sigma_H = 0.5
+
+        H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H) # transponiertes Uout_ideal???
         save_2cols('data/optimizer/adjust_H/H_a_' + id + '.csv', H.f, H.a)
         save_2cols('data/optimizer/adjust_H/H_p_' + id + '.csv', H.f, H.p)
-    
+
+    quality = test_evaluate()
 
     verbosity = True
     if verbosity:
