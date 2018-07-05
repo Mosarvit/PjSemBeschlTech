@@ -46,8 +46,8 @@ def write(signal, samplerateAWG, awg_volt):
         awg_id = rs[index]
         AWG = rm.open_resource(awg_id)
         AWG.write("*RST")
-#        AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
-#        AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
+        AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
+        AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
         # time.sleep(5)
         AWG.write("DATA:VOLatile:CLEar")
         # time.sleep(5)

@@ -2,7 +2,7 @@ from blocks import get_H
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
-from helpers import csvHelper, globalVars
+from helpers import csvHelper
 from adts.transfer_function import transfer_function
 
 def measure_H(loadCSV, saveCSV, verbosity):

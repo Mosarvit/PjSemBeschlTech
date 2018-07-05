@@ -13,9 +13,10 @@ from helpers import globalVars
 from helpers.signalHelper import assemble_signal
 from helpers.signalHelper import setSampleRate
 from helpers.overlay import overlay
+from helpers.read_from_DSO_resolution import read
 
 
-def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
+def measure_Uout(Uin, sampleRateAWG, sampleRateDSO, id, loadCSV, saveCSV, verbosity):
 
     """
     compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
@@ -55,10 +56,9 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
     def receiveFromDSO(Uin):
         fmax = 80e6
-        samplerateOszi = 1 * sampleRateAWG
         Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
 
-        [time, dataUin, dataUout] = read_from_DSO_alt.read(samplerateOszi, Vpp, fmax, Uin[:, 1])
+        [time, dataUin, dataUout] = read(sampleRateDSO, Vpp, fmax, Uin[:, 1])
 
         if saveCSV:
             save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)
