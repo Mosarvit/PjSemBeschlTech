@@ -53,17 +53,17 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
         raise TypeError('Uncorrect function call of adjust_H with Halt no instance of class transfer_funtion')
 
 
-    if verbosity:
-        delta_t_meas = (Uout_measured[1,0] - Uout_measured[0,0])
-        delta_t_id = (Uout_ideal[1,0] - Uout_ideal[0,0])
-        print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
-        fig = plt.figure()
-        # Plot Spannungen
-        plt.plot(Uout_ideal[:, 0], Uout_ideal[:, 1], 'r', Uout_measured[:, 0], Uout_measured[:, 1], 'b')
-        plt.title('Uout_ideal - rot, Uout_meas - blau')
-        plt.xlabel('t')
-        plt.ylabel('U')
-        plt.show()
+    # if verbosity:
+    #     delta_t_meas = (Uout_measured[1,0] - Uout_measured[0,0])
+    #     delta_t_id = (Uout_ideal[1,0] - Uout_ideal[0,0])
+    #     print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+    #     fig = plt.figure()
+    #     # Plot Spannungen
+    #     plt.plot(Uout_ideal[:, 0], Uout_ideal[:, 1], 'r', Uout_measured[:, 0], Uout_measured[:, 1], 'b')
+    #     plt.title('Uout_ideal - rot, Uout_meas - blau')
+    #     plt.xlabel('t')
+    #     plt.ylabel('U')
+    #     plt.show()
 
     # FFT (normalized) -> complex values divided by Number of Values
     frequencies_Id, Ideal_fft = spectrum_from_TimeSignal(Uout_ideal[:, 0], Uout_ideal[:, 1])
