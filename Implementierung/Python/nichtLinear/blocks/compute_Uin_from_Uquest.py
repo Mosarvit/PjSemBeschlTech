@@ -38,17 +38,6 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
     """
     #VAS fuer Funktionalitaet ist Verhalten einer Potenzreihe in K -> keine Spruenge zw zwei Werten
 
-    # dummy value, damit der unit test kompeliert:
-    #Uin = np.zeros(len(Uquest))
-
-    # # ideal output, damit der unit test bestanden wird:
-    #
-    # Comments von Beginn an implementiert
-    # global fixPath    # wenn er Uin.csv nicht finden kann
-    # fixPath = '../'   # entweder dies
-    # # fixPath = ''    # oder das waehlen
-    # Uin = genfromtxt(fixPath + 'data/test_data/Uin.csv', delimiter=',')[:, 1]
-
     # Pseudo-Code in Comments:
 
     # Uquest i d Form (Time, Voltage) -> Uquest(:, 0) = Time, Uquest(:, 1) = Voltage [V]
@@ -84,7 +73,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
     K_function = interp1d(K[:, 1], K[:, 0], kind='slinear')
 
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
-    Uin[:, 1] = K_function(Uquest[:, 1])     #### woher der Faktor 10 vorher????
+    Uin[:, 1] = K_function(Uquest[:, 1])
 
     # passe die Lange von Uin an sampleRateAWG an
 

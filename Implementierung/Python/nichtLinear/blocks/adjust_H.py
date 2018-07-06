@@ -52,40 +52,27 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
     if not isinstance(Halt, transfer_function):
         raise TypeError('Uncorrect function call of adjust_H with Halt no instance of class transfer_funtion')
 
-    # create functions of amplitude and phaseshift as interpolations of voltage signals fft
-    # frequency distance as inverse time signal length, number of data points, evenly spaced frequency vector as axis of the fft
-    delta_f_Meas = 1 / (Uout_measured[-1, 0] - Uout_measured[0, 0])
-    N_Meas = len(Uout_measured[:, 0])
-    frequencies_Meas = np.linspace(0, N_Meas*delta_f_Meas, N_Meas)
-    delta_f_Id = 1 /(Uout_ideal[-1, 0] - Uout_ideal[0, 0])
-    N_Id = len(Uout_ideal[:, 0])
-    frequencies_Id = np.linspace(0, N_Id*delta_f_Id, N_Id)
+
+    if verbosity:
+        delta_t_meas = (Uout_measured[1,0] - Uout_measured[0,0])
+        delta_t_id = (Uout_ideal[1,0] - Uout_ideal[0,0])
+        print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+        fig = plt.figure()
+        # Plot Spannungen
+        plt.plot(Uout_ideal[:, 0], Uout_ideal[:, 1], 'r', Uout_measured[:, 0], Uout_measured[:, 1], 'b')
+        plt.title('Uout_ideal - rot, Uout_meas - blau')
+        plt.xlabel('t')
+        plt.ylabel('U')
+        plt.show()
 
     # FFT (normalized) -> complex values divided by Number of Values
-    Ideal_fft = np.fft.fft( Uout_ideal[:,1] ) / N_Id
-    Meas_fft = np.fft.fft( Uout_measured[:, 1]) / N_Meas
+    frequencies_Id, Ideal_fft = spectrum_from_TimeSignal(Uout_ideal[:, 0], Uout_ideal[:, 1])
+    frequencies_Meas, Meas_fft = spectrum_from_TimeSignal(Uout_measured[:, 0], Uout_measured[:, 1])
 
-    # if verbosity:
-    #     delta_t_meas = (Uout_measured[1,0] - Uout_measured[0,0])
-    #     delta_t_id = (Uout_ideal[1,0] - Uout_ideal[0,0])
-    #     print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
-    #     fig = plt.figure()
-    #     # Plot Spannungen
-    #     plt.plot(Uout_ideal[:, 0], Uout_ideal[:, 1], 'r', Uout_measured[:, 0], Uout_measured[:, 1], 'b')
-    #     plt.title('Uout_ideal - rot, Uout_meas - blau')
-    #     plt.xlabel('t')
-    #     plt.ylabel('U')
-    #     plt.show()
-
-    # find max Frequencies (Nyquists theorem):
-    idx_half_Id = int(np.floor(len(Ideal_fft)/2))
-    idx_half_Meas = int(np.floor(len(Meas_fft) / 2))
-    f_max_Id = frequencies_Id[idx_half_Id]
-    f_max_Meas = frequencies_Meas[idx_half_Meas]
-    fmax_to_use = np.minimum(f_max_Id, f_max_Meas)
+    # reduce to lower describable frequency:
+    fmax_to_use = np.minimum(frequencies_Meas[-1], frequencies_Id[-1])
     idx_max_Id = np.array(np.where(frequencies_Id <= fmax_to_use))[0, -1]
     idx_max_Meas = np.array(np.where(frequencies_Meas <= fmax_to_use))[0, -1]
-    # cut frequencies and FFTs to new Range -> only relevant frequencies ocurring
     frequencies_Id = frequencies_Id[0:idx_max_Id]
     frequencies_Meas = frequencies_Meas[0:idx_max_Meas]
     Ideal_fft = Ideal_fft[0:idx_max_Id]
@@ -93,9 +80,11 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
     
     # check frequency range of signal. If less frequencies than in H,
     # add frequency in signal with amplitude 1 s.t. signal has frequencies >= H
-    # (factor is just what you like, calculated to enable Plots showing senseful scale)
-    #factor = np.minimum(np.minimum(abs(Ideal_fft)), np.minimum(abs(Meas_fft)))
-    factor = 1e-4
+    # (factor is just what you like to have as default value, calculated to enable Plots showing senseful scale)
+    factor = np.minimum(np.min(abs(Ideal_fft)), np.min(abs(Meas_fft)))
+    #factor = 1e-4
+    delta_f_Id = frequencies_Id[1] - frequencies_Id[0]
+    delta_f_Meas = frequencies_Meas[1] - frequencies_Meas[0]
     if np.amax(Halt.f) > frequencies_Meas[-1]:
         numberOfNewPoints = np.int(np.ceil((np.max(Halt.f) - frequencies_Meas[-1]) / delta_f_Meas ))
         newFrequencies = np.linspace(frequencies_Meas[-1]+delta_f_Meas,
@@ -110,7 +99,21 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
         frequencies_Id = np.append(frequencies_Id, newFrequencies)
         Ideal_fft = np.append(Ideal_fft, np.ones(numberOfNewPoints)*factor)
 
-
+    # to reduce white noise: clear lowest percentage of signal amplitudes
+    # set ratio to any desired value
+    ratio_ideal = 0 #3e-3
+    ratio_meas = 0 #3e-3
+    # find indices to set to default:
+    idx_clear_Id = np.array(np.where(abs(Ideal_fft) <= ratio_ideal * np.max(abs(Ideal_fft))))
+    idx_clear_Meas = np.array(np.where(abs(Meas_fft) <= ratio_meas * np.max(abs(Meas_fft))))
+    # cross-referencing frequencies s.t. default values are at same frequencies
+    clearFreq_crossref_Id = np.array(np.round(frequencies_Meas[idx_clear_Meas]/delta_f_Id)).astype(int)
+    clearFreq_crossref_Meas = np.array(np.round(frequencies_Id[idx_clear_Id] / delta_f_Meas)).astype(int)
+    # set values to default
+    Ideal_fft[idx_clear_Id] = factor * np.ones(len(idx_clear_Id))
+    Meas_fft[idx_clear_Meas] = factor * np.ones(len(idx_clear_Meas))
+    Ideal_fft[clearFreq_crossref_Id] = factor * np.ones(len(clearFreq_crossref_Id))
+    Meas_fft[clearFreq_crossref_Meas] = factor * np.ones(len(clearFreq_crossref_Meas))
 
     # interpolate magnitude and phase seperately
     magnitude_Ideal = interp1d(frequencies_Id, np.abs(Ideal_fft), kind = 'linear' )
@@ -126,7 +129,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
 #    Umeas_div_Uid = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp( 1j * (angle_Meas(Halt.f) - angle_Ideal(Halt.f) ) )
     #Hneu.c = Halt.c * (1 + sigma_H * (Umeas_div_Uid - 1))
 
-    # attempt 6.7. : calculate for amplitude and angle with similar formula:
+    # better Attempt: calculate separately for amplitude and angle
     Ratio_ABS = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
     Diff_angle = angle_Meas(Halt.f) - angle_Ideal(Halt.f)
     Hneu.a = Halt.a * (1 + sigma_H * Ratio_ABS)
@@ -145,7 +148,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
 
         plt.subplot(2, 3, 4)
         plt.plot(Halt.f, abs(Ratio_ABS))
-        plt.title('Absratio Umeas / Uideal')
+        plt.title('Absratio Umeas / Uideal -1')
         plt.xlabel('f')
         plt.ylabel('ratio')
         plt.xlim((0, np.max(Halt.f)))
@@ -183,3 +186,47 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
         #fig.savefig('../../data/adjustH/plots/adjust_Plots' + time.strftime("%H%M_%d%m")+ '.pdf')
 
     return(Hneu)
+
+
+def spectrum_From_FFT(frequencies, fft_norm):
+    """
+    calculates the frequency axis and the spectrum usable for a real signal by applying Nyquists Theorem
+    :param frequencies: the frequency axis
+    :param fft_norm: the fft of a time signal generated by numpy.fft(...)
+    :return: the spectrum and frequencies reduced to the describable frequency-range (Nyquist)
+    """
+
+    # check length
+    if len(frequencies) != len(fft_norm):
+        raise TypeError('Frequency and FFT have to contain same number of values')
+
+    # find max Frequencies (Nyquists theorem):
+    idx_half = int(np.floor(len(fft_norm) / 2))
+    # cut frequencies and FFTs to new Range -> only relevant frequencies ocurring
+    frequencies = frequencies[0:idx_half]
+    spectrum = fft_norm[0:idx_half] / len(fft_norm)
+
+
+    return (frequencies, spectrum)
+
+def spectrum_from_TimeSignal(time, values):
+    """
+
+    :param time: evenly spaced time array
+    :param values: real values raised at points in time
+    :return: real
+    """
+    # check length
+    if len(time) != len(values):
+        raise TypeError('Time-Array and Values have to contain same number of values')
+
+    # check if values not complex
+    # check if time evenly spaced
+
+    delta_f = 1 / (time[-1] - time[0])
+    N = len(time)
+    frequencies = np.linspace(0, N * delta_f, N)
+    frequencies, spectrum = spectrum_From_FFT(frequencies, np.fft.fft(values))
+
+
+    return (frequencies, spectrum)
