@@ -5,6 +5,7 @@ class transfer_function :
     """
 
     test1
+    test2
 
     transfer_function is a class, that describes a transfer function
 
