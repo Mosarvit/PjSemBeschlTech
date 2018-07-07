@@ -286,18 +286,23 @@ class test_unit(TestCase):
         Vpp = 0.3
         Uout_ideal = np.transpose(
             generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, saveCSV=False, verbosity=0))
-        Uout_measured = np.zeros((Uout_ideal.shape[0], 2))
-        Uout_measured[:, 0] = Uout_ideal[:, 0]
-        Uout_measured[:, 1] = [x * factor for x in Uout_ideal[:, 1]]
 
         Halt = read_in_transfer_function_old(fixPath + 'data/adjustH/Messung2/Ha_0.csv', fixPath + 'data/adjustH/Messung2/Hp_0.csv')
         Hneu_ideal = transfer_function(Halt.f)
         Hneu_ideal.a = Halt.a * (1 + sigma_H*(factor - 1))
         Hneu_ideal.p = Halt.p
-        ## to show pictures of first step of adjust_H in real application instead of testing
-        #Uout_measured = genfromtxt(fixPath + 'data/adjustH/Messung2/Uout_1.csv', delimiter=',')
 
-        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=False)
+        # to illustrate function of adjust_H: testcase 1 to run (and finish) test, 2 to show plots of adjusting calculated H
+        testcase = 2
+        if testcase == 1:
+            Uout_measured = np.zeros((Uout_ideal.shape[0], 2))
+            Uout_measured[:, 0] = Uout_ideal[:, 0]
+            Uout_measured[:, 1] = [x * 2 for x in Uout_ideal[:, 1]]
+        else:
+            ## to show pictures of first step of adjust_H in real application instead of testing
+            Uout_measured = genfromtxt(fixPath + 'data/adjustH/Messung2/Uout_1.csv', delimiter=',')
+
+        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=True)
 
         err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
         self.assertTrue(err < 0.00001)  # we allow an error of 0.1% for the start, but it should be better

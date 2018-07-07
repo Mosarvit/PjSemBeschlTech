@@ -65,9 +65,9 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
     #     plt.ylabel('U')
     #     plt.show()
 
-    # FFT (normalized) -> complex values divided by Number of Values
-    frequencies_Id, Ideal_fft = spectrum_from_TimeSignal(Uout_ideal[:, 0], Uout_ideal[:, 1])
-    frequencies_Meas, Meas_fft = spectrum_from_TimeSignal(Uout_measured[:, 0], Uout_measured[:, 1])
+    # calculate Spectrum:
+    frequencies_Id, spectrum_Id = spectrum_from_TimeSignal(Uout_ideal[:, 0], Uout_ideal[:, 1])
+    frequencies_Meas, spectrum_Meas = spectrum_from_TimeSignal(Uout_measured[:, 0], Uout_measured[:, 1])
 
     # reduce to lower describable frequency:
     fmax_to_use = np.minimum(frequencies_Meas[-1], frequencies_Id[-1])
@@ -75,14 +75,15 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
     idx_max_Meas = np.array(np.where(frequencies_Meas <= fmax_to_use))[0, -1]
     frequencies_Id = frequencies_Id[0:idx_max_Id]
     frequencies_Meas = frequencies_Meas[0:idx_max_Meas]
-    Ideal_fft = Ideal_fft[0:idx_max_Id]
-    Meas_fft = Meas_fft[0:idx_max_Meas]
+    spectrum_Id = spectrum_Id[0:idx_max_Id]
+    spectrum_Meas = spectrum_Meas[0:idx_max_Meas]
     
     # check frequency range of signal. If less frequencies than in H,
     # add frequency in signal with amplitude 1 s.t. signal has frequencies >= H
-    # (factor is just what you like to have as default value, calculated to enable Plots showing senseful scale)
-    factor = np.minimum(np.min(abs(Ideal_fft)), np.min(abs(Meas_fft)))
-    #factor = 1e-4
+    # (default_value is just what you like to have as default value, calculated to enable Plots showing senseful scale)
+    default_value = np.minimum(np.min(abs(spectrum_Id)), np.min(abs(spectrum_Meas)))
+    if default_value == 0:
+        default_value = 1e-4
     delta_f_Id = frequencies_Id[1] - frequencies_Id[0]
     delta_f_Meas = frequencies_Meas[1] - frequencies_Meas[0]
     if np.amax(Halt.f) > frequencies_Meas[-1]:
@@ -90,56 +91,72 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
         newFrequencies = np.linspace(frequencies_Meas[-1]+delta_f_Meas,
                                      frequencies_Meas[-1] + numberOfNewPoints*delta_f_Meas, numberOfNewPoints)
         frequencies_Meas = np.append(frequencies_Meas, newFrequencies)
-        Meas_fft = np.append(Meas_fft, np.ones(numberOfNewPoints)*factor)
+        spectrum_Meas = np.append(spectrum_Meas, np.ones(numberOfNewPoints)*default_value)
 
     if (np.amax(Halt.f) > frequencies_Id[-1]):
         numberOfNewPoints = np.int(np.ceil((np.max(Halt.f) - frequencies_Id[-1]) / delta_f_Id))
         newFrequencies = np.linspace(frequencies_Id[-1] + delta_f_Id,
                                            frequencies_Id[-1] + numberOfNewPoints * delta_f_Id, numberOfNewPoints)
         frequencies_Id = np.append(frequencies_Id, newFrequencies)
-        Ideal_fft = np.append(Ideal_fft, np.ones(numberOfNewPoints)*factor)
+        spectrum_Id = np.append(spectrum_Id, np.ones(numberOfNewPoints)*default_value)
 
-    # to reduce white noise: clear lowest percentage of signal amplitudes
-    # set ratio to any desired value
-    ratio_ideal = 0 #3e-3
-    ratio_meas = 0 #3e-3
+    # to reduce WHITE NOISE: clear lowest percentage of signal amplitudes
+    # set ratio (percentage) to any desired value
+    ratio_ideal = 3e-3
+    ratio_meas = 3e-3
     # find indices to set to default:
-    idx_clear_Id = np.array(np.where(abs(Ideal_fft) <= ratio_ideal * np.max(abs(Ideal_fft))))
-    idx_clear_Meas = np.array(np.where(abs(Meas_fft) <= ratio_meas * np.max(abs(Meas_fft))))
+    idx_clear_Id = np.array(np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id))))
+    idx_clear_Meas = np.array(np.where(abs(spectrum_Meas) <= ratio_meas * np.max(abs(spectrum_Meas))))
     # cross-referencing frequencies s.t. default values are at same frequencies
-    clearFreq_crossref_Id = np.array(np.round(frequencies_Meas[idx_clear_Meas]/delta_f_Id)).astype(int)
-    clearFreq_crossref_Meas = np.array(np.round(frequencies_Id[idx_clear_Id] / delta_f_Meas)).astype(int)
+    idx_clear_crossref_Id = np.array(np.round(frequencies_Meas[idx_clear_Meas]/delta_f_Id)).astype(int)
+    idx_clear_crossref_Meas = np.array(np.round(frequencies_Id[idx_clear_Id] / delta_f_Meas)).astype(int)
     # set values to default
-    Ideal_fft[idx_clear_Id] = factor * np.ones(len(idx_clear_Id))
-    Meas_fft[idx_clear_Meas] = factor * np.ones(len(idx_clear_Meas))
-    Ideal_fft[clearFreq_crossref_Id] = factor * np.ones(len(clearFreq_crossref_Id))
-    Meas_fft[clearFreq_crossref_Meas] = factor * np.ones(len(clearFreq_crossref_Meas))
+    spectrum_Id[idx_clear_Id] = default_value * np.ones(len(idx_clear_Id))
+    spectrum_Meas[idx_clear_Meas] = default_value * np.ones(len(idx_clear_Meas))
+    spectrum_Id[idx_clear_crossref_Id] = default_value * np.ones(len(idx_clear_crossref_Id))
+    spectrum_Meas[idx_clear_crossref_Meas] = default_value * np.ones(len(idx_clear_crossref_Meas))
 
     # interpolate magnitude and phase seperately
-    magnitude_Ideal = interp1d(frequencies_Id, np.abs(Ideal_fft), kind = 'linear' )
-    angle_Ideal = interp1d(frequencies_Id, np.angle(Ideal_fft), kind = 'linear' )
-    magnitude_Meas = interp1d(frequencies_Meas, np.abs(Meas_fft), kind = 'linear')
-    angle_Meas = interp1d(frequencies_Meas, np.angle(Meas_fft), kind = 'linear')
+    magnitude_Ideal = interp1d(frequencies_Id, np.abs(spectrum_Id), kind = 'linear' )
+    angle_ideal = interp1d(frequencies_Id, np.angle(spectrum_Id), kind = 'linear' )
+    magnitude_Meas = interp1d(frequencies_Meas, np.abs(spectrum_Meas), kind = 'linear')
+    angle_meas = interp1d(frequencies_Meas, np.angle(spectrum_Meas), kind = 'linear')
 
     # initialize Hneu
     Hneu = transfer_function(Halt.f)
 
     # old - malfunctioning:
     # calculate Hneu in complex representation
-#    Umeas_div_Uid = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp( 1j * (angle_Meas(Halt.f) - angle_Ideal(Halt.f) ) )
+#    Umeas_div_Uid = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp( 1j * (angle_meas(Halt.f) - angle_ideal(Halt.f) ) )
     #Hneu.c = Halt.c * (1 + sigma_H * (Umeas_div_Uid - 1))
 
     # better Attempt: calculate separately for amplitude and angle
-    Ratio_ABS = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
-    Diff_angle = angle_Meas(Halt.f) - angle_Ideal(Halt.f)
-    Hneu.a = Halt.a * (1 + sigma_H * Ratio_ABS)
-    Hneu.p = Halt.p + sigma_H * Diff_angle
+    ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
+    diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
+
+    # to reduce WHITE NOISE attempt 2:
+    # cut high amplifying ratios (over RMS)
+    use_rms = True
+    # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
+    # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
+    rms = np.sqrt(np.mean(np.square(ratio_abs)))
+    values = ratio_abs[np.array(np.where(abs(ratio_abs) >= 0.02 * rms))] # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
+    rms = np.sqrt(np.mean(np.square(values)))
+    if use_rms:
+        # find indices to set to 1:
+        idx_clear = np.array(np.where(abs(ratio_abs) > rms))
+        if not (len(idx_clear) == len(ratio_abs)):  # check for simple signals with Uout_Id = multiple Uout_Meas
+            ratio_abs[idx_clear] = np.zeros(len(idx_clear))
+            diff_angle[idx_clear] = np.zeros(len(idx_clear))
+
+    Hneu.a = Halt.a * (1 + sigma_H * ratio_abs)
+    Hneu.p = Halt.p + sigma_H * diff_angle
 
     if verbosity:
         fig = plt.figure(1)
         # Plot Magnitudes:
         plt.subplot(2, 3, 1)
-        plt.plot(frequencies_Id, abs(Ideal_fft),'r', frequencies_Meas, abs(Meas_fft), 'b')
+        plt.plot(frequencies_Id, abs(spectrum_Id),'r', frequencies_Meas, abs(spectrum_Meas), 'b')
         plt.title('ABS(FFT): Ideal rot, Meas blau')
         plt.xlabel('f')
         plt.ylabel('Ampl')
@@ -147,11 +164,18 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
         plt.ylim((0, 1e-3))
 
         plt.subplot(2, 3, 4)
-        plt.plot(Halt.f, abs(Ratio_ABS))
+        plt.plot(Halt.f, ratio_abs, 'b')
         plt.title('Absratio Umeas / Uideal -1')
         plt.xlabel('f')
         plt.ylabel('ratio')
         plt.xlim((0, np.max(Halt.f)))
+        plt.subplot(2, 3, 4)
+        plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
+        plt.xlim((0, np.max(Halt.f)))
+        # if use_rms:
+        #     plt.subplot(2, 3, 4)
+        #     plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
+        #     plt.xlim((0, np.max(Halt.f)))
 
         plt.subplot(2, 3, 2)
         plt.plot(Halt.f, Halt.a, 'r', Hneu.f, Hneu.a, 'b')
@@ -161,14 +185,14 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
         plt.xlim((0, np.max(Halt.f)))
 
         plt.subplot(2, 3, 3)
-        plt.plot(frequencies_Id, np.angle(Ideal_fft), 'r', frequencies_Meas, np.angle(Meas_fft), 'b')
+        plt.plot(frequencies_Id, np.angle(spectrum_Id), 'r', frequencies_Meas, np.angle(spectrum_Meas), 'b')
         plt.title('ANGLE(FFT): Ideal rot - Meas blau')
         plt.xlabel('f')
         plt.ylabel('Angle')
         plt.xlim((0, np.max(Halt.f)))
 
         plt.subplot(2, 3, 6)
-        plt.plot(Halt.f, Diff_angle)
+        plt.plot(Halt.f, diff_angle)
         plt.title('Anglediff Umeas/Uideal')
         plt.xlabel('f')
         plt.ylabel('ratio')
@@ -191,7 +215,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
 def spectrum_From_FFT(frequencies, fft_norm):
     """
     calculates the frequency axis and the spectrum usable for a real signal by applying Nyquists Theorem
-    :param frequencies: the frequency axis
+    :param frequencies: the frequency axis, evenly spaced, increasing orderd
     :param fft_norm: the fft of a time signal generated by numpy.fft(...)
     :return: the spectrum and frequencies reduced to the describable frequency-range (Nyquist)
     """
@@ -214,7 +238,7 @@ def spectrum_from_TimeSignal(time, values):
 
     :param time: evenly spaced time array
     :param values: real values raised at points in time
-    :return: real
+    :return: frequency axis, complex spectrum of phaseshift and amplifier(c = abs(c) * exp(1j * np.angle(c)) )
     """
     # check length
     if len(time) != len(values):
