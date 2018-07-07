@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 #from scipy import interpolate
 import global_data
 from helpers.apply_transfer_function import apply_transfer_function
+from classes.signal_class import signal_class
 
 def compute_Uquest_from_Uout(Uout, H, verbosity):
 
@@ -29,12 +30,12 @@ def compute_Uquest_from_Uout(Uout, H, verbosity):
             Uquest[:,1] - Signalvektor
     """
 
-    Uquest = apply_transfer_function(Uout, H.get_inverse())
-    Uquest[:,1] = Uquest[:,1] * 2
+    Uquest = apply_transfer_function(Uout = Uout, H = H.get_inverse())
+    Uquest_doubled = signal_class(Uquest.in_V * 2 , Uquest.sample_rate)
 
     if verbosity:
         fig = plt.figure()
-        plt.plot(Uquest[:,0],Uquest[:,1])
+        plt.plot(Uquest_doubled.time,Uquest_doubled.in_V)
         plt.title('Uquest')
         # plt.grid(True)
         plt.ylabel('u')
@@ -43,4 +44,4 @@ def compute_Uquest_from_Uout(Uout, H, verbosity):
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf')
 
-    return Uquest
+    return Uquest_doubled

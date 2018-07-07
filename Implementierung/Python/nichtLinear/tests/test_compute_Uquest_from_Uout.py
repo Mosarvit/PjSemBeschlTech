@@ -9,9 +9,10 @@ from evaluate_with_BBsignal import evaluate_with_BBsignal
 
 from helpers import overlay, signalHelper
 from helpers.signalHelper import generateSinSum
-from helpers.csvHelper import read_in_transfer_function
-from classes.transfer_function import transfer_function
+from helpers.csvHelper import read_in_transfer_function, read_in_signal, save_signale
+from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
+from classes.signal_class import signal_class
 
 
 from blocks.generate_BBsignal import generate_BBsignal
@@ -36,48 +37,48 @@ class test_compute_Uquest_from_Uout(TestCase):
 
     def test_compute_Uquest_from_Uout_300_jens(self):
 
-       Uout_300 = genfromtxt(mock_data_directory + 'Uout_300_jens.csv', delimiter=',')
-       Uquest_300_ideal = genfromtxt(mock_data_directory + 'Uquest_300_jens.csv', delimiter=',')
+       Uout_300 = read_in_signal(mock_data_directory + 'Uout_300_jens.csv')
+       Uquest_300_ideal = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
 
-       H = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
+       H = read_in_transfer_function( mock_data_directory + 'H_jens.csv' )
 
        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
-       err = linalg.norm(Uquest_300_computed[:,1] - Uquest_300_ideal[:,1]) / linalg.norm( Uquest_300_ideal[:,1])
+       err = linalg.norm(Uquest_300_computed.in_V - Uquest_300_ideal.in_V) / linalg.norm( Uquest_300_ideal.in_V)
        self.assertTrue(err < 0.03)
 
-
-
     def test_compute_Uquest_from_Uout_300_our(self):
-        Uout_300 = genfromtxt(mock_data_directory + 'Uout_300_our.csv', delimiter=',')
-        Uquest_300_ideal = genfromtxt(mock_data_directory + 'Uquest_300_our.csv', delimiter=',')
+        Uout_300 = read_in_signal(mock_data_directory + 'Uout_300_our.csv')
+        Uquest_300_ideal = read_in_signal(mock_data_directory + 'Uquest_300_our.csv')
 
         H = read_in_transfer_function(mock_data_directory + 'H_our.csv')
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
-        err = linalg.norm(Uquest_300_computed[:, 1] - Uquest_300_ideal[:, 1]) / linalg.norm(Uquest_300_ideal[:, 1])
+        err = linalg.norm(Uquest_300_computed.in_V - Uquest_300_ideal.in_V) / linalg.norm(Uquest_300_ideal.in_V)
         self.assertTrue(err < 0.03)
 
     def test_compute_Uquest_from_Uout_with_BBsignal_ideal(self):
 
-        BBsignal_ideal = genfromtxt(mock_data_directory + 'BBsignal_ideal.csv', delimiter=',')
-        Uquest_from_BBsignal_ideal = genfromtxt(mock_data_directory + 'Uquest_from_BBsignal_our.csv', delimiter=',')
+        BBsignal_ideal = read_in_signal(mock_data_directory + 'BBsignal_our.csv')
+        Uquest_from_BBsignal_ideal = read_in_signal(mock_data_directory + 'Uquest_from_BBsignal_our.csv')
 
         H = read_in_transfer_function(mock_data_directory + 'H_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
-        err = linalg.norm(Uquest_from_BBsignal_computed[:,1] - Uquest_from_BBsignal_ideal[:,1]) / linalg.norm(Uquest_from_BBsignal_ideal[:,1])
+        err = linalg.norm(Uquest_from_BBsignal_computed.in_V - Uquest_from_BBsignal_ideal.in_V) / linalg.norm(Uquest_from_BBsignal_ideal.in_V)
         self.assertTrue(err<0.04)
+
+
 
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_catch_imaginary(self):
 
-        BBsignal_ideal = genfromtxt(mock_data_directory + 'BBsignal_ideal.csv', delimiter=',')
+        BBsignal_ideal = read_in_signal(mock_data_directory + 'BBsignal_our.csv')
 
         H = read_in_transfer_function(mock_data_directory + 'H_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
-        self.assertFalse(np.iscomplex(Uquest_from_BBsignal_computed.any()))
+        self.assertFalse(np.iscomplex(Uquest_from_BBsignal_computed.in_V.any()))

@@ -1,5 +1,6 @@
 from helpers.csvHelper import read_in_transfer_function
 from helpers.apply_transfer_function import apply_transfer_function
+from classes.signal_class import signal_class
 import global_data
 
 
@@ -36,20 +37,24 @@ class mock_system_class :
         self.__Uin = None
         self.__Uin_measured = None
         self.__Uout_measured = None
-        a = global_data.project_path
+        self.__Uin_real = None
+        self.__Uout_real = None
         self.__H = read_in_transfer_function(global_data.project_path + '/tests/mock_data/H_jens.csv')
 
-    def get_Uout_from_Uin(self, Uin):
-        self.__Uin = Uin
-        self.__Uout_measured = 0.5 * apply_transfer_function(self.__Uin, self.__H)
-        return self.__Uout_measured
+    # def get_Uout_from_Uin(self, Uin):
+    #     self.__Uin = Uin
+    #     self.__Uout_real = apply_transfer_function(self.__Uin, self.__H)
+    #     self.__Uout_measured = signal_class(self.__Uout_real.in_V*0.5, self.__Uout_real.sample_rate)
+    #     return self.__Uout_measured
 
     def write_to_AWG(self, Uin):
         self.__Uin = Uin
 
     def read_from_DSO(self):
-        self.__Uin_measured = self.__Uin * 0.5
-        self.__Uout_measured = apply_transfer_function(self.__Uin, self.__H) * 0.5
+        self.__Uin_real = self.__Uin
+        self.__Uin_measured = signal_class(self.__Uin_real.in_V * 0.5, self.__Uin_real.sample_rate)
+        self.__Uout_real = apply_transfer_function(self.__Uin, self.__H)
+        self.__Uout_measured = signal_class(self.__Uout_real.in_V * 0.5, self.__Uout_real.sample_rate)
         return (self.__Uin_measured, self.__Uout_measured)
 
 

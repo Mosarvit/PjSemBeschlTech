@@ -2,7 +2,7 @@ import numpy as np
 import copy
 from scipy import linalg
 
-class transfer_function :
+class transfer_function_class :
 
     """
     transfer_function is a class, that describes a transfer function
@@ -86,6 +86,6 @@ class transfer_function :
         self.__complex = self.__amplitude * (np.cos(self.__phaseshift) + 1j * np.sin(self.__phaseshift))
 
     def get_inverse(self):
-        Hinv = transfer_function(self.f)
+        Hinv = transfer_function_class(self.f)
         Hinv.c = 1/self.c
         return Hinv

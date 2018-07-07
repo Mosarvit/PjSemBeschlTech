@@ -10,7 +10,7 @@ from evaluate_with_BBsignal import evaluate_with_BBsignal
 from helpers import overlay, signalHelper
 from helpers.signalHelper import generateSinSum
 from helpers.csvHelper import read_in_transfer_function
-from classes.transfer_function import transfer_function
+from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 
 
@@ -21,6 +21,7 @@ from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from global_data import project_path, mock_data_directory
 from global_data import mock_system
+from helpers.csvHelper import read_in_signal
 from blocks import get_H
 import os
 
@@ -38,13 +39,13 @@ class test_mock_system(TestCase):
 
     def test_mock_system(self):
 
-        Uout_ideal = genfromtxt(mock_data_directory + 'Uout_300_jens.csv', delimiter=',')
-        Uquest_ideal = genfromtxt(mock_data_directory + 'Uquest_300_jens.csv', delimiter=',')
+        Uout_ideal = read_in_signal(mock_data_directory + 'Uout_300_jens.csv')
+        Uquest_ideal = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
 
         mock_system.write_to_AWG(Uin=Uquest_ideal)
         _, Uout_computed = mock_system.read_from_DSO()
 
-        err = linalg.norm(Uout_computed[:, 1] - Uout_ideal[:, 1]) / linalg.norm(Uout_ideal[:, 1])
+        err = linalg.norm(Uout_computed.in_V - Uout_ideal.in_V) / linalg.norm(Uout_ideal.in_V)
 
         self.assertTrue(err < 0.04)
 

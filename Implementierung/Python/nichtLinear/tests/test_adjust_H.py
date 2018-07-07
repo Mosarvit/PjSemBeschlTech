@@ -10,7 +10,7 @@ from evaluate_with_BBsignal import evaluate_with_BBsignal
 from helpers import overlay, signalHelper
 from helpers.signalHelper import generateSinSum
 from helpers.csvHelper import read_in_transfer_function
-from classes.transfer_function import transfer_function
+from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 
 
@@ -87,7 +87,7 @@ class test_adjust_H(TestCase):
         """
 
         Halt = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
-        Hneu_ideal = transfer_function(Halt.f)
+        Hneu_ideal = transfer_function_class(Halt.f)
 
         sigma_H = 0.5
         factor = 2

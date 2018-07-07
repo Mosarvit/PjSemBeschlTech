@@ -8,9 +8,10 @@ from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
 
 from helpers import overlay, signalHelper
+from helpers.csvHelper import read_in_signal
 from helpers.signalHelper import generateSinSum
 from helpers.csvHelper import read_in_transfer_function
-from classes.transfer_function import transfer_function
+from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 
 
@@ -36,27 +37,25 @@ class test_compute_a_from_Uin_Uquest(TestCase):
 
     # @unittest.skip("reason for skipping")
     def test_compute_a_from_Uin_Uquest_300_jens(self):
-        Uquest_300 = genfromtxt(mock_data_directory + 'Uquest_300_jens.csv', delimiter=',')
-        Uin = genfromtxt(mock_data_directory + 'Uin_jens.csv', delimiter=',')
+        Uquest_300 = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
+        Uin = read_in_signal(mock_data_directory + 'Uin_jens.csv')
+        Uin.Vpp = 0.3
+
         a_300_ideal = genfromtxt(mock_data_directory + 'a_300_jens.csv', delimiter=',')
 
-        Uin_mV = signalHelper.setVpp(signal=Uin, Vpp=300)
-        Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
-
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3)
+        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
 
         err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
         self.assertTrue(err < 1e-3)
 
     def test_compute_a_from_Uin_Uquest_300_our(self):
-        Uquest_300 = genfromtxt(mock_data_directory + 'Uquest_300_our.csv', delimiter=',')
-        Uin = genfromtxt(mock_data_directory + 'Uin_our.csv', delimiter=',')
+        Uquest_300 = read_in_signal(mock_data_directory + 'Uquest_300_our.csv')
+        Uin = read_in_signal(mock_data_directory + 'Uin_our.csv')
+        Uin.Vpp = 0.3
+
         a_300_ideal = genfromtxt(mock_data_directory + 'a_300_our.csv', delimiter=',')
 
-        Uin_mV = signalHelper.setVpp(signal=Uin, Vpp=300)
-        Uquest_300_mV = signalHelper.convert_V_to_mV(Uquest_300)
-
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_300_mV, N=3)
+        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
 
         err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
         self.assertTrue(err < 1e-3)

@@ -12,9 +12,10 @@ from numpy import genfromtxt
 from helpers.signalHelper import assemble_signal
 from helpers.signalHelper import set_sample_rate
 from helpers.overlay import overlay
+from global_data import use_mock_system
 
 
-def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity, use_mock_system=0):
+def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
 
     """
     compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
@@ -74,12 +75,12 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity, use_mock_s
         Uin_measured = genfromtxt('data/current_data/Uin_' + id + '.csv', delimiter=',')
     else:
 
-        Uin = set_sample_rate(Uin, sampleRateAWG)
-
         if use_mock_system:
             global_data.mock_system.write_to_AWG(Uin)
             Uin_measured, Uout_measured = global_data.mock_system.read_from_DSO()
         else:
+            Uin = set_sample_rate(Uin, sampleRateAWG)
+
             sendUinToAWG(Uin)
             [time, dataUin, dataUout] = receiveFromDSO(Uin)
             Uout_measured = assemble_signal(time, dataUout)

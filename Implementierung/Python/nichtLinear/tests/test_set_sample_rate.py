@@ -10,7 +10,7 @@ from evaluate_with_BBsignal import evaluate_with_BBsignal
 from helpers import overlay, signalHelper
 from helpers.signalHelper import generateSinSum
 from helpers.csvHelper import read_in_transfer_function
-from classes.transfer_function import transfer_function
+from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 
 

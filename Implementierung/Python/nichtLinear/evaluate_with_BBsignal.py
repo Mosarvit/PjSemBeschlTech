@@ -8,9 +8,10 @@ from blocks.measure_Uout import measure_Uout
 from helpers.signalHelper import convert_V_to_mV
 from helpers.signalHelper import convert_mV_to_V
 from helpers.signalHelper import setVpp
-from helpers.signalHelper import cut_one_period
 from helpers.csvHelper import read_in_transfer_function
 from global_data import project_path
+from classes.signal_class import signal_class
+from copy import copy
 
 import numpy as np
 
@@ -24,50 +25,27 @@ def evaluate_with_BBsignal(use_mock_system=0) :
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
 
-    if use_mock_system :
-        H = read_in_transfer_function(project_path + '/tests/mock_data/H_jens.csv')
-    else :
-        H = measure_H(loadCSV=0, saveCSV=True, verbosity=1)
-    
-    
-    Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
-    
-    Uin = setVpp(Uquest_ideal, Vpp)
-    
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=True, id='1', verbosity=0, use_mock_system=use_mock_system)
-    
-    # begin cut just one period out of Uout_measured
+    H = measure_H(loadCSV=0, saveCSV=True, verbosity=1)
+    a = determine_a(H, Uout_ideal, f_rep, sampleRateAWG)
 
-    Uout_measured = cut_one_period(Uout_measured, f_rep)
-    
-    # end
-    # begin plot cut Uout
-
-    # fig = plt.figure()
-    # plt.plot(Uout_measured[:,0], Uout_measured[:,1])
-    # plt.title('Uout_measured')
-    # plt.xlabel('t')
-    # plt.ylabel('U')
-    # if globalVars.showPlots :
-    #     plt.show()
-    # fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured_cut.pdf')
-
-    # end
-
-    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
-    Uquest_measured_mV = convert_V_to_mV(Uquest_measured)
-    
-    Uin_mV = convert_V_to_mV(Uin)
-
-    a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3)
     K = compute_K_from_a(a=a, verbosity=0)
-    
-    Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)
 
-    Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=0)
+    Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
 
-    Uin = convert_mV_to_V(Uin_mV)
+    Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K, verbosity=0)
 
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=True, id='2', verbosity=0, use_mock_system=use_mock_system)
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=True, id='2', verbosity=0)
 
     return Uout_ideal, Uout_measured
+
+
+def determine_a(H, Uout_ideal, f_rep, sampleRateAWG):
+    Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
+    Uin = copy(Uquest_ideal)
+    Uin.Vpp = 0.3
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=True, id='1',
+                                               verbosity=0)
+    Uout_measured = Uout_measured.cut_one_period(f_rep)
+    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
+    a = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_measured, N=3)
+    return a

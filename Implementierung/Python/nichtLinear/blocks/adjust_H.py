@@ -1,4 +1,4 @@
-from classes.transfer_function import transfer_function
+from classes.transfer_function_class import transfer_function_class
 import numpy as np
 from scipy.interpolate import interp1d
 
@@ -45,7 +45,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
     """
 
     #validate Halt as instance of transfer_function
-    if not isinstance(Halt, transfer_function):
+    if not isinstance(Halt, transfer_function_class):
         raise TypeError('Uncorrect function call of adjust_H with Halt no instance of class transfer_funtion')
 
     # create functions of amplitude and phaseshift as interpolations of voltage signals fft
@@ -83,7 +83,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
     angle_Meas = interp1d(frequencies_Meas, np.angle(Meas_fft))
 
     # initialize Hneu
-    Hneu = transfer_function(Halt.f)
+    Hneu = transfer_function_class(Halt.f)
 
     # calculate Hneu in complex representation
     Umeas_div_Uid = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp( 1j * (angle_Meas(Halt.f) - angle_Ideal(Halt.f) ) )

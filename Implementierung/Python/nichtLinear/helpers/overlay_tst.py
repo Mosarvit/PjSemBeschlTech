@@ -32,34 +32,36 @@ def overlay(U1, U2):
 
      """
 
-    U1 = U1.get_signal_in_V_old_convention()
-    U2 = U2.get_signal_in_V_old_convention()
+    # U1 = U1.get_signal_in_V_old_convention()
+    # U2 = U2.get_signal_in_V_old_convention()
     #
     # ###########
     #
-    l_in = U1.shape[0]
-    l_out = U2.shape[0]
-    # Signallängen anpassen und interpolieren
-    x_in = np.linspace(1, l_out, l_in)
-    x_out = np.linspace(1, l_out, l_out)
-    f = interp1d(x_in, U1[:, 1])
-    # g=interp1d(x_out, Uquest)
-
-    # Uquest=g(x_out)
-    # Signale übereinanderschieben -> über Kreuzkorrelation
+    # l_in = U1.shape[0]
+    # l_out = U2.shape[0]
+    # # Signallängen anpassen und interpolieren
+    # x_in = np.linspace(1, l_out, l_in)
+    # x_out = np.linspace(1, l_out, l_out)
+    # f = interp1d(x_in, U1[:, 1])
+    # # g=interp1d(x_out, Uquest)
+    #
+    # # Uquest=g(x_out)
+    # # Signale übereinanderschieben -> über Kreuzkorrelation
 
 
     # print("Kreuzkorrelation")
 
-    U1_vector = f(x_out)
+    U1.t_end = U2.t_end
+    U1.sample_rate = U2.sample_rate
 
-    #
+    # U1 = U1.get_signal_in_V_old_convention()
+    # U2 = U2.get_signal_in_V_old_convention()
 
-    # U1_vector = U1.in_V
-    # U2_signal = U2.in_V
+    U1_vector = U1.in_V
+    U2_signal = U2.in_V
 
 
-    U2_signal = U2[:, 1]
+    # U2_signal = U2[:, 1]
 
     l_out = len(U2_signal)
 
@@ -88,17 +90,17 @@ def overlay(U1, U2):
         U1_shifted_tmp[l_out + shift - 1:] = U1_vector[:-shift + 1]
         U1_shifted_tmp[:l_out + shift-1] = U1_vector[-shift + 1:]
 
-    f2 = interp1d(x_out, U1_shifted_tmp)
+    # f2 = interp1d(x_out, U1_shifted_tmp)
     # g=interp1d(x_out, Uquest)
-    U1_shifted_n1 = copy.copy(U1)
-    U1_shifted_n1[:,1] = f2(x_in)
+    # U1_shifted_n1 = copy.copy(U1)
+    # U1_shifted_n1[:,1] = f2(x_in)
 
-    U1_shifted_n2 = copy.copy(U2)
-    U1_shifted_n2[:, 1] = U1_shifted_tmp
+    # U1_shifted_n2 = copy.copy(U2)
+    # U1_shifted_n2[:, 1] = U1_shifted_tmp
 
     #######
 
-    U1_shifted_n1 = signal_class.gen_signal_from_old_convention(U1_shifted_n1)
-    U1_shifted_n2 = signal_class.gen_signal_from_old_convention(U1_shifted_n2)
+    U1_shifted = signal_class(U1_shifted_tmp, U2.sample_rate)
 
-    return U1_shifted_n2
+
+    return U1_shifted

@@ -2,8 +2,9 @@ from blocks import get_H
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
 from helpers import csvHelper
-import global_data
-from classes.transfer_function import transfer_function
+from global_data import mock_system, use_mock_system, project_path
+from helpers.csvHelper import read_in_transfer_function
+from classes.transfer_function_class import transfer_function_class
 
 def measure_H(loadCSV, saveCSV, verbosity):
 
@@ -31,6 +32,10 @@ def measure_H(loadCSV, saveCSV, verbosity):
 
     """
 
+    if use_mock_system :
+        H = read_in_transfer_function(project_path + '/tests/mock_data/H_jens.csv')
+        return H
+
     if loadCSV :
         Ha = genfromtxt('data/current_data/H_a.csv', delimiter=',')
         Hph = genfromtxt('data/current_data/H_p.csv', delimiter=',')[:,1]
@@ -45,6 +50,8 @@ def measure_H(loadCSV, saveCSV, verbosity):
             csvHelper.save_2cols('data/current_data/H_a.csv', f, Ha)
             csvHelper.save_2cols('data/current_data/H_p.csv', f, Hph)
 
+
+
     # assemble H
 
     # H = np.zeros((len(f), 3));
@@ -52,7 +59,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
     # H[:,1] = Ha
     # H[:,2] = Hph
 
-    H = transfer_function(f)
+    H = transfer_function_class(f)
     H.a = Ha
     H.p = Hph
 

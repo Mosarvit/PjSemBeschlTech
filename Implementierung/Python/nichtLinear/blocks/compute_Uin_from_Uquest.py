@@ -9,6 +9,7 @@ import copy
 import matplotlib.pyplot as plt
 import global_data
 from helpers.find_nearest import find_nearest
+from classes.signal_class import signal_class
 
 
 
@@ -65,8 +66,8 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
 
     # - skaliere Kennlinie / Uebertragung bzw Ausgang fuer gewuenschte Amplitude max( norm(Uquest(:, 1)))
     # - pruefe auf Einhalten der Bijektivitaet durch Amplitude von Uquest,
-    uQuest_max = max(Uquest [:, 1])
-    uQuest_min = min(Uquest[:, 1])
+    uQuest_max = max(Uquest.in_mV)
+    uQuest_min = min(Uquest.in_mV)
 
     # - ggf. Anpassen des Ausgangsbereiches und Ausgeben einer Meldung
     if uQuest_max > K[-1, 1]:
@@ -79,13 +80,14 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         print("Uquest adapted to range of K: min Uquest too low for bijectiv curve")
 
     #setze Uin auf gleiche Groesse und gleiche Zeitwerte wie Uquest
-    Uin = copy.copy(Uquest)
+    # Uin = copy.copy(Uquest)
 
     # - interpoliere Kennlinie
     K_function = interp1d(K[:, 1], K[:, 0], kind='slinear')
 
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
-    Uin[:, 1] = K_function(Uquest[:, 1])     #### woher der Faktor 10 vorher????
+    Uin_in_mV = K_function(Uquest.in_mV)
+    Uin = signal_class(Uin_in_mV/1000, Uquest.sample_rate)     #### woher der Faktor 10 vorher????
 
     # passe die Lange von Uin an sampleRateAWG an
 
@@ -102,6 +104,8 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
 
-    Uin[:,1] = Uin[:,1];
+    # Uin[:,1] = Uin[:,1];
+
+    # Uin_obj = signal_class.gen_signal_from_old_convention(Uin)
 
     return (Uin)
