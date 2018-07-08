@@ -15,6 +15,7 @@ Jonas:
 	- adjustH korrigieren (Priorität hoch)
 	- mit Jonas wegen Einführung neues Oszi Rücksprache halten
 	- Zeitverhalten nochmal anschauen (Priorität: mittel)
+	- remember nächster Termin: Test der Verbindungen mit NIMax, ggf. Nutzung dokumente?
 
 
 Max:
