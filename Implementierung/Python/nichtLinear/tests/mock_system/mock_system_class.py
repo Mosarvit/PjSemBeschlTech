@@ -54,6 +54,10 @@ class mock_system_class :
     def H(self):
         return self.__H
 
+    @H.setter
+    def H(self, H):
+        self.__H = H
+
     def write_to_AWG(self, Uin):
         self.__Uin = Uin
 

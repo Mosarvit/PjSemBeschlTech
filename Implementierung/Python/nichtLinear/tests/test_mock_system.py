@@ -42,6 +42,8 @@ class test_mock_system(TestCase):
         Uout_ideal = read_in_signal(mock_data_directory + 'Uout_300_jens.csv')
         Uquest_ideal = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
 
+        mock_system.H = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
+
         mock_system.write_to_AWG(Uin=Uquest_ideal)
         _, Uout_computed = mock_system.read_from_DSO()
 
