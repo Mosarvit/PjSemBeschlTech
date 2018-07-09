@@ -2,10 +2,13 @@ from blocks import get_H
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
-from helpers import csvHelper
-from adts.transfer_function import transfer_function
+from helpers import csv_helper
+from classes.transfer_function_class import transfer_function_class
+from global_data import use_mock_system, project_path, show_plots, mock_system
+from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention, save_transfer_function
+from helpers.plot_helper import plot_transfer_function
 
-def measure_H(loadCSV, saveCSV, verbosity):
+def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
 
     """
     measure_H misst die Übertragungsfunktion
@@ -23,7 +26,7 @@ def measure_H(loadCSV, saveCSV, verbosity):
             H[:,1] - Amplitudenverstärkung
             H[:,2] - Phasenverschiebung
 
-        Instance of transfer_funtion:
+        Instance of transfer_funtion_class:
             Halt.f - Frequences f
             Halt.a - Amplitude a
             Halt.p - Phaseshift p
@@ -32,63 +35,30 @@ def measure_H(loadCSV, saveCSV, verbosity):
     """
 
     if loadCSV :
-        Ha = genfromtxt('data/current_data/H_a.csv', delimiter=',')
-        Hph = genfromtxt('data/current_data/H_p.csv', delimiter=',')[:,1]
-        f = Ha[:,0]
-        Ha = Ha[:,1]
+
+        H = read_in_transfer_function('data/current_data/H.csv')
+
     else :
-        fmax = 80e6
-        vpp = 40e-3
-        f, Ha, Hph = get_H.compute(fmax, vpp, bits=9)
 
-        if saveCSV:
-            csvHelper.save_2cols('data/current_data/H_a.csv', f, Ha)
-            csvHelper.save_2cols('data/current_data/H_p.csv', f, Hph)
+        if use_mock_system :
 
-    # assemble H
+            H = mock_system.H
 
-    # H = np.zeros((len(f), 3));
-    # H[:,0] = f
-    # H[:,1] = Ha
-    # H[:,2] = Hph
+        else :
 
-    H = transfer_function(f)
-    H.a = Ha
-    H.p = Hph
+            fmax = 80e6
+            vpp = 40e-3
+            f, Ha, Hph = get_H.compute(fmax, vpp, bits=9)
+
+            H = transfer_function_class(f)
+            H.a = Ha
+            H.p = Hph
+
+            if saveCSV:
+                save_transfer_function(H, 'data/current_data/H.csv')
 
     if verbosity:
-        # fig = plt.figure()
-        # plt.subplot(1, 2, 1)
-        # plt.plot(f, Ha)
-        # plt.title('Amplitude')
-        # plt.xlabel('f')
-        #
-        # plt.subplot(1, 2, 2)
-        # plt.plot(f, Hph)
-        # plt.title('Phase in rad')
-        # plt.xlabel('f')
-        #
-        # if globalVars.showPlots :
-        #     plt.show()
-        # fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H.pdf')
 
-        fig = plt.figure()
-        plt.plot(f, Ha)
-        plt.title('Amplitude')
-        plt.xlabel('f')
-
-        if globalVars.showPlots :
-            plt.show()
-        #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_a.pdf')
-
-        fig = plt.figure()
-        plt.plot(f, Hph)
-        plt.title('Phase in rad')
-        plt.xlabel('f')
-
-        if globalVars.showPlots:
-            plt.show()
-       # fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_p.pdf')
-
+        plot_transfer_function(H, 'H')
 
     return H

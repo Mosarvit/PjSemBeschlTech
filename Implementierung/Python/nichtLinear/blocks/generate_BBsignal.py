@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import csv
-from helpers import csvHelper, globalVars
+from helpers import csv_helper
+import global_data
+from classes.signal_class import signal_class
 
-def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, saveCSV=True, verbosity=False):
+
+def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=999900000, saveCSV=0, verbosity=0):
 
     """
     generate_BBsignal generiert ein ideales Barrie-Bucket-Signal nach den Vorgaben f_rep, f_BB, Vpp
@@ -26,55 +28,63 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG=999900000, sav
 
     """
 
-    numSamples = int(np.floor(sampleRateAWG / f_rep));
+    a = sample_rate_AWG_max / f_rep
 
-    if numSamples % 2 == 1 :
-        numSamples += 1
+    num_points_rep = int(np.floor(sample_rate_AWG_max / f_rep))
 
-    T1 = 1 / f_BB
-    T2 = 1 / f_rep
-    samplerate1 = numSamples / T2 * T1
+    if num_points_rep % 2 == 0 :
+        num_points_rep -= 1
 
-    if np.round(samplerate1)>samplerate1 :
-        number = -1
-    else :
-        number = 1
+    # T_BB = 1 / f_BB
+    # T_rep = 1 / f_rep
+    num_points_BB = num_points_rep / f_BB * f_rep
 
-    samplerate1rd = int(np.round(samplerate1))
+    num_points_BB = int(np.floor(num_points_BB))
+    if num_points_BB % 2 == 0 :
+        num_points_BB += 1
 
-    if samplerate1rd % 2 == 1 :
-        samplerate1rd = samplerate1rd + number
 
-    samplerate1 = samplerate1rd
 
-    T1 = T2 / numSamples * samplerate1
+    sr = ( (num_points_rep - 1 ) * f_rep )
+    t0 = 1 / sr
 
-    t1 = np.linspace(0, T1 , samplerate1+1)
-    t2 = np.linspace(0, T2, numSamples + 1)
+    T_rep = ( num_points_rep - 1 ) * t0
 
-    U1 = np.sin(2 * np.pi * f_BB * t1)
+    T_BB = 1 / f_BB
+    # t0 = (T_rep/(num_points_rep - 1))
+    num_points_BB = np.floor(T_BB / t0)
+    T_BB = t0 * (num_points_BB - 1 )
 
-    Uout = np.zeros([2, numSamples + 1])
-    Uout[0,:] = t2;
+    t_BB = np.linspace(0, T_BB, num_points_BB)
+    t_rep = np.linspace(0, T_rep, num_points_rep)
 
-    half1 = int(samplerate1/2)
-    mid2 = int((numSamples + 1) / 2)
+    U1 = np.sin(2 * np.pi * f_BB * t_BB)
 
-    Uout[1,mid2-half1:mid2+half1+1] = Vpp * U1
+    Uout = np.zeros([2, num_points_rep ])
+    Uout[0,:] = t_rep;
+
+    half1 = int(num_points_BB/2)
+    mid2 = int((num_points_rep - 1) / 2)
+
+    Uout[1,mid2-half1:mid2+half1+1] = Vpp / 2 * U1
+
+    Uout = np.transpose(Uout)
 
     if verbosity :
         fig = plt.figure()
-        plt.plot(t2, Uout[1,:])
+        plt.plot(t_rep, Uout[:,1])
         plt.title('Das ideale U_BB')
         plt.ylabel('u in mV')
-        if globalVars.showPlots :
+        if global_data.show_plots :
             plt.show()
 #        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf')
 
     if saveCSV :
 
-        csvHelper.save_2cols('data/current_data/BBsignal_ideal.csv', Uout[0,:], Uout[1,:])
+        csv_helper.save_2cols(global_data.project_path + '/data/current_data/BBsignal_ideal.csv', Uout[0, :], Uout[1, :])
 
-    return(Uout)
+    Uout = signal_class.gen_signal_from_old_convention(Uout[:,0], Uout[:,1])
+
+    return Uout
 
 

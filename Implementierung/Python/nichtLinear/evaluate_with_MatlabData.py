@@ -3,7 +3,7 @@ from numpy import genfromtxt
 import numpy as np
 
 
-from helpers import write_to_AWG, read_from_DSO_alt
+from helpers import write_to_AWG, read_from_DSO
 
 samplerateAWG = 999900000  # Samplerate des AWG Signals
 vpp = 300e-3  # Vpp die das awg ausgeben soll
@@ -40,24 +40,24 @@ def plot_Results():
     plt.show()
 
 def readIn_Uin():
-    Uin = genfromtxt('data/test_data/Uin.csv', delimiter=',')
+    Uin = genfromtxt('data/mock_data/Uin.csv', delimiter=',')
     t_in = Uin[:, 0]
     Uin = Uin[:, 1]
     return Uin, t_in
 
 def readIn_Uout_ideal():
-    Uout_and_t_ideal = genfromtxt('data/test_data/Uout_300.csv', delimiter=',')
+    Uout_and_t_ideal = genfromtxt('data/mock_data/Uout_300.csv', delimiter=',')
     tout_ideal = Uout_and_t_ideal[:, 0]
     Uout_ideal = Uout_and_t_ideal[:, 1]
     return tout_ideal, Uout_ideal
 
 def sendUinToAWG():
-    write_to_AWG.write(Uin, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
+    write_to_AWG.write_to_AWG(Uin, samplerateAWG, vpp)  # Rückbage wird nicht benötigt
 
 def receiveFromDSO():
     fmax = 80e6
     samplerateOszi = 100 * samplerateAWG
-    [time, dataUin, dataUout] = read_from_DSO_alt.read(samplerateOszi, vpp, fmax, Uin)
+    [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin)
     return time, dataUin, dataUout
 
 

@@ -2,7 +2,7 @@
 import numpy as np
 from helpers import read_from_DSO
 
-def read(samplerateOszi, vpp_ch1, fmax, signal):
+def read_from_DSO_resolution(samplerateOszi, vpp_ch1, fmax, signal):
 
     """
 

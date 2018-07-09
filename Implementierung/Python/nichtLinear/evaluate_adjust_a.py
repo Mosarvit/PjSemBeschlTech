@@ -10,12 +10,12 @@ from blocks.measure_H import measure_H
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from blocks.measure_Uout import measure_Uout
-from helpers.signalHelper import convert_V_to_mV
-from helpers.signalHelper import convert_mV_to_V
-from helpers.signalHelper import setVpp
-from helpers.signalHelper import cun_one_period
-from helpers.csvHelper import save_2cols
-from helpers.csvHelper import read_in_transfer_function
+from helpers.signal_helper import convert_V_to_mV
+from helpers.signal_helper import convert_mV_to_V
+from helpers.signal_helper import setVpp
+from helpers.signal_helper import cut_one_period
+from helpers.csv_helper import save_2cols
+from helpers.csv_helper import read_in_transfer_function
 from adts.transfer_function import transfer_function
 
 import csv
@@ -32,7 +32,7 @@ def evaluate():
     f_BB = 5e6
     Vpp = 0.3
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sampleRateAWG, verbosity=0)
 
     H = measure_H(loadCSV=True, saveCSV=True, verbosity=0)
     Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
@@ -41,10 +41,10 @@ def evaluate():
 
     for i in range(0, 11):
         id = str(i)
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=False, id=i, verbosity=1)
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sampleRateAWG, loadCSV=True, saveCSV=False, id=i, verbosity=1)
 
         # begin cut just one period out of Uout_measured
-        Uout_measured = cun_one_period(Uout_measured, f_rep)
+        Uout_measured = cut_one_period(Uout_measured, f_rep)
 
         # save Uin and Uout
         save_2cols('data/optimizer/adjust_a/Uin_' + id + '.csv', Uin_measured[:, 0], Uin_measured[:, 1])

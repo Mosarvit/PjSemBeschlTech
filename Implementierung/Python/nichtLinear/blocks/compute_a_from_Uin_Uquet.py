@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 #import FFT
-from helpers import overlay
+from helpers.overlay import overlay
 #import csv
 #import os
 #import time
@@ -32,12 +32,13 @@ def compute_a_from_Uin_Uquet(Uin, Uquest, N):
 
     """
 
-    l_out = Uquest.shape[0]
+    l_out = len(Uquest.in_mV)
 
-    np.sin(Uin)
-    _, Uin = overlay.overlay(Uin, Uquest)
-    Uin = Uin[:,1]
-    Uquest = Uquest[:, 1]
+    # np.sin(Uin)
+    Uin = overlay(Uin, Uquest)
+
+    Uin = Uin.in_mV
+    Uquest = Uquest.in_mV
 
     #normalization: u_out wird in V gemessen--> mV
     #u_in Normierung händisch anhand in_pp

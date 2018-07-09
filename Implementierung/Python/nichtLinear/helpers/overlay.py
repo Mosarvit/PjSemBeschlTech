@@ -2,9 +2,11 @@ import numpy as np
 import math
 import copy
 from scipy.interpolate import interp1d
+from classes.signal_class import signal_class
+from scipy import linalg
 
 
-def overlay(U1, U2):
+def overlay(U1obj, U2obj):
 
     """
      overlay verschiebt Uin so, dass es maximal auf U2 aufliegt
@@ -31,20 +33,46 @@ def overlay(U1, U2):
 
      """
 
+
+######### this is obviously a crutch, but this iliminates the cases, when U1 and U2 dont have the same t_end, which normally should not , since frequency1 == frequency2
+    # its a dangerous crutch, since it allowes to overlay any signal over another
+    # fortunately, this method will throw an error, if the time vectors are way too different, which should be a clear warning, that something being implemented cannot be right.
+    # todo: decide on what to do in these cases
+    time = np.linspace(0, U2obj.time[-1], num=len(U1obj.in_V), endpoint=True)
+    U1obj = signal_class(time, U1obj.in_V)
+######### end
+
+    U1 = U1obj.get_signal_in_V_old_convention()
+    U2 = U2obj.get_signal_in_V_old_convention()
+    #
+    # ###########
+    #
     l_in = U1.shape[0]
     l_out = U2.shape[0]
     # Signallängen anpassen und interpolieren
     x_in = np.linspace(1, l_out, l_in)
     x_out = np.linspace(1, l_out, l_out)
     f = interp1d(x_in, U1[:, 1])
-    # g=interp1d(x_out, Uquest)
-    U1_vector = f(x_out)
-    # Uquest=g(x_out)
+
     # Signale übereinanderschieben -> über Kreuzkorrelation
 
-    l_out = len(U2)
+
     # print("Kreuzkorrelation")
+
+    U1_vector1 = f(x_out)
+
+
+
+    U1obj.sample_rate = U2obj.sample_rate
+
+    U1_vector = U1obj.in_V
+
+    d = U1_vector1 - U1_vector
+
     U2_signal = U2[:, 1]
+
+    l_out = len(U2_signal)
+
     xc = np.correlate(U1_vector, U2_signal, 'full')
 
 
@@ -78,4 +106,11 @@ def overlay(U1, U2):
     U1_shifted_n2 = copy.copy(U2)
     U1_shifted_n2[:, 1] = U1_shifted_tmp
 
-    return U1_shifted_n1, U1_shifted_n2
+    #######
+
+    # U1_shifted_n1 = signal_class.gen_signal_from_old_convention(U1_shifted_n1[:,0], U1_shifted_n1[:,1])
+    U1_shifted_n2 = signal_class.gen_signal_from_old_convention(U1_shifted_n2[:,0], U1_shifted_n2[:,1])
+
+    U1_shifted_n2 = signal_class(U2obj.time, U1_shifted_tmp)
+
+    return U1_shifted_n2
