@@ -42,7 +42,7 @@ class mock_system_class :
         self.__Uout_measured = None
         self.__Uin_real = None
         self.__Uout_real = None
-        self.__H = read_in_transfer_function_old_convention(mock_data_directory + '/adjustH/Messung3/Ha_0.csv', mock_data_directory + '/adjustH/Messung3/Ha_1.csv')
+        self.__H = read_in_transfer_function_old_convention(mock_data_directory + '/adjustH/Messung3/Ha_0.csv', mock_data_directory + '/adjustH/Messung3/Hp_1.csv')
 
     # def get_Uout_from_Uin(self, Uin):
     #     self.__Uin = Uin
@@ -60,7 +60,7 @@ class mock_system_class :
         frequency = self.__Uin.sample_rate / (self.__Uin.length - 1)
 
         print('==================================================')
-        print('Sending to AWG')
+        print('Sending to mock AWG')
         # print('signal length : ' + str(len(self.__Uin.time) ))
         print('sample rate : ' + str(self.__Uin.sample_rate))
         print('frequency : ' + str(frequency))

@@ -5,6 +5,31 @@ from scipy.interpolate import interp1d
 from helpers.signalHelper import find_nearest
 
 class signal_class :
+    """
+        transfer_function is a class, that describes a transfer function
+
+        Initialization :
+            pass the time and signal (in V) vectors :
+            U = transfer_function( time, u_in_V )
+        Getters:
+            U.time          - get time vector
+            U.in_V          - get signal vector in V
+            U.in_mV         - get signal vector in mV
+            U.sample_rate   - get sample rate
+            U.Vpp           - get Vpp
+            U.length        - get length of the signal
+        Setters:
+            U.sample_rate   - set sample rate
+            U.Vpp           - set Vpp
+
+        * Setting a different time vector or a different signal vector is technically not meaningful, therefore such
+        setters were not implemented.
+
+        Example of initializing a transfer_function with amplitude and phaseshift:
+            t = np.array([1,2,3,4,5])
+            u_vector_inV = np.array([1,0,-1,-2,3])
+            U = signal_class(t, u_vector_inV)
+        """
 
     def __init__(self, time, signal_in_V):
 
@@ -24,7 +49,6 @@ class signal_class :
 
     def update_time(self):
 
-        # lngth = int(np.round(((len(self.__time) - 1)  / (self.__original_sample_rate ) * (self.__sample_rate ) ) + 1))
         lngth = int(np.round(((len(self.__time) - 1) / (self.__original_sample_rate ) * (self.__sample_rate )))) + 1
         self.__time = np.linspace(0, self.__orginal_time[-1], num=lngth, endpoint=True)
 
@@ -78,11 +102,6 @@ class signal_class :
     @property
     def normalized(self):
         return self.__signal_in_V / (max(self.__signal_in_V) - min(self.__signal_in_V) )
-
-    @t_end.setter
-    def t_end(self, t_end):
-        self.__t_end = t_end
-        self.update_time()  # todo : the signal should also be adjusted by interpolating
 
     @sample_rate.setter
     def sample_rate(self, new_sr):
