@@ -2,7 +2,7 @@ import numpy as np
 import copy
 from scipy import linalg
 from scipy.interpolate import interp1d
-from helpers.signalHelper import find_nearest
+from helpers.signal_helper import find_nearest
 
 class signal_class :
     """
@@ -39,11 +39,13 @@ class signal_class :
         sr = self.__original_sample_rate
         self.__orginial_Vpp = max(self.__orginal_signal_in_V) - min(self.__orginal_signal_in_V)
         self.__orginial_signal_normalized = self.__orginal_signal_in_V / self.__orginial_Vpp
+        self.__original_f_rep = 1 / self.__orginal_time[-1]
 
         self.__sample_rate = self.__original_sample_rate
         self.__signal_in_V = self.__orginal_signal_in_V
         self.__Vpp = self.__orginial_Vpp
         self.__time = self.__orginal_time
+
 
         self.update_signal_in_mV()
 
@@ -94,6 +96,10 @@ class signal_class :
     @property
     def Vpp(self):
         return self.__Vpp
+
+    @property
+    def f_rep(self):
+        return self.__original_f_rep
 
     @property
     def length(self):

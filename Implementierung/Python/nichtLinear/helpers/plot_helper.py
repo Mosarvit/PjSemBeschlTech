@@ -33,11 +33,25 @@ def plot_transfer_function(H, legend='H'):
     if show_plots:
         plt.show()
 
-def plot_2_transfer_function_amplitudes(H1, H2,  legend1 = 'H1', legend2 = 'H2'):
-    plt.figure()
-    plt.plot(H1.f, H1.a, H2.f, H2.a)
-    plt.legend([legend1, legend2])
-    plt.xlabel('f')
-    plt.ylabel('Amplitude')
+def plot_2_transfer_functions(H1, H2,  legend1 = 'H1', legend2 = 'H2'):
+    f, axarr = plt.subplots(2, sharex=True)
+    axarr[0].plot(H1.f, H1.a, H2.f, H2.a, )
+    axarr[0].legend([legend1, legend2])
+
+    axarr[1].plot(H1.f, H1.p, H2.f, H2.p)
+    axarr[1].legend([legend1, legend2])
+
+    if show_plots:
+        plt.show()
+
+def plot_transfer_function(H, legend1 = 'H'):
+
+    f, axarr = plt.subplots(2, sharex=True)
+    axarr[0].plot(H.f, H.a)
+    axarr[0].legend([legend1])
+
+    axarr[1].plot(H.f, H.p)
+    axarr[1].legend([legend1])
+
     if show_plots:
         plt.show()

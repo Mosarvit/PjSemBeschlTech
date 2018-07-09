@@ -75,10 +75,11 @@ def save_transfer_function(H, filename):
         for i in range(0, H.f.shape[0]):
             writer.writerow([str(H.f[i]), str(H.a[i]), str(H.p[i]), str(H.c[i])])
 
-def save_transfer_function_old_convention(H, filename_a, filename_p ):
+def save_transfer_function_old_convention(H, directory, id ):
 
-    save_2cols(filename_a, H.f, H.a)
-    save_2cols(filename_p, H.p, H.a)
+    save_2cols(directory + '/Ha_' + str(id) + '.csv', H.f, H.a)
+    save_2cols(directory + '/Hp_' + str(id) + '.csv', H.f, H.p)
+    save_transfer_function(H, directory + '/H_' + str(id) + '.csv')
 
 def read_in_signal(file):
 

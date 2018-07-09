@@ -10,12 +10,12 @@ from blocks.measure_H import measure_H
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from blocks.measure_Uout import measure_Uout
-from helpers.signalHelper import convert_V_to_mV
-from helpers.signalHelper import convert_mV_to_V
-from helpers.signalHelper import setVpp
-from helpers.signalHelper import cut_one_period
-from helpers.csvHelper import save_2cols
-from helpers.csvHelper import read_in_transfer_function
+from helpers.signal_helper import convert_V_to_mV
+from helpers.signal_helper import convert_mV_to_V
+from helpers.signal_helper import setVpp
+from helpers.signal_helper import cut_one_period
+from helpers.csv_helper import save_2cols
+from helpers.csv_helper import read_in_transfer_function
 from adts.transfer_function import transfer_function
 
 import csv

@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
-from evaluate_with_BBsignal_adjust_H import evaluate_with_BBsignal_adjust_H
-from helpers.plot_helper import plot_2_signals, plot_2_transfer_function_amplitudes
+from evaluate_adjust_H import evaluate_adjust_H
+from helpers.plot_helper import plot_2_signals, plot_2_transfer_functions
 
 
-from helpers import overlay, signalHelper
-from helpers.signalHelper import generateSinSum
-from helpers.csvHelper import read_in_transfer_function
+from helpers.overlay import overlay
+from helpers.signal_helper import generateSinSum
+from helpers.csv_helper import read_in_transfer_function
 from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 
@@ -32,16 +32,18 @@ import os
 import numpy as np
 
 
-class test_evaluate_with_BBsignal(TestCase):
+class test_evaluate_adjust_H(TestCase):
 
 
     def __init__(self, *args, **kwargs):
-        super(test_evaluate_with_BBsignal, self).__init__(*args, **kwargs)
+        super(test_evaluate_adjust_H, self).__init__(*args, **kwargs)
 
     # @unittest.skip("currently not relevant")
     def test_evaluate_adjust_H_0_steps(self):
 
-        Uout_ideal, Uout_measured = evaluate_with_BBsignal_adjust_H(num_iters=1)
+        Uout_ideal, Uout_measured, _, _ = evaluate_adjust_H(num_iters=1)
+
+        Uout_measured = overlay(Uout_measured, Uout_ideal)
 
         err = linalg.norm(Uout_measured.in_V - Uout_ideal.in_V) / linalg.norm(Uout_ideal.in_V)
 
@@ -49,19 +51,19 @@ class test_evaluate_with_BBsignal(TestCase):
         if verbosity :
             plot_2_signals(Uout_ideal, Uout_measured, 'Uout_measured', 'Uout_ideal')
 
-        self.assertTrue(err < 0.15)
+        self.assertTrue(err < 0.068)
 
 
     def test_evaluate_adjust_H_1_step(self):
 
-        Uout_ideal, Uout_measured, H_0, H_last = evaluate_with_BBsignal_adjust_H(num_iters=5)
+        Uout_ideal, Uout_measured, H_0, H_last = evaluate_adjust_H(num_iters=5)
 
         err = linalg.norm(H_0.a - H_last.a) / linalg.norm(H_last.a)
 
-        verbosity = 1
+        verbosity = 0
         if verbosity :
-            plot_2_transfer_function_amplitudes(H_0, H_last, 'H_0', 'H_last')
+            plot_2_transfer_functions(H_0, H_last, 'H_0', 'H_last')
 
-        self.assertTrue(err < 0.015)
+        self.assertTrue(err < 0.02)
 
 

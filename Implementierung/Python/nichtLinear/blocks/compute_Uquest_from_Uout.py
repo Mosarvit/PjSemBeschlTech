@@ -11,7 +11,7 @@ import global_data
 from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class
 
-def compute_Uquest_from_Uout(Uout, H, verbosity):
+def compute_Uquest_from_Uout(Uout, H, verbosity=0):
 
     """
     compute_Uquest_from_Uout berechten Uquest aus Uout mithilfe der Invertierung der Übetragungsfunktion H

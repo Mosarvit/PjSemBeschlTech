@@ -7,9 +7,9 @@ from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
 
-from helpers import overlay, signalHelper
-from helpers.signalHelper import generateSinSum
-from helpers.csvHelper import read_in_transfer_function
+from helpers import overlay, signal_helper
+from helpers.signal_helper import generateSinSum
+from helpers.csv_helper import read_in_transfer_function
 from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 
@@ -43,6 +43,6 @@ class test_set_sample_rate(TestCase):
         T = max(Uin[:, 0]) - min(Uin[:, 0])
         lenght_new = int(np.floor(T * sampleRate))
 
-        Uin_computed = signalHelper.set_sample_rate(Uin, sampleRate);
+        Uin_computed = signal_helper.set_sample_rate(Uin, sampleRate);
 
         self.assertTrue(Uin_computed.shape[0] == lenght_new)

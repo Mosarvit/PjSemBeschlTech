@@ -7,15 +7,15 @@ Created on Thu Jul 13 11:22:44 2017
 from helpers.write_to_AWG import write_to_AWG
 import numpy as np
 import matplotlib.pyplot as plt
-from helpers.csvHelper import save_2cols
+from helpers.csv_helper import save_2cols
 from numpy import genfromtxt
-from helpers.signalHelper import assemble_signal
+from helpers.signal_helper import assemble_signal
 from helpers.overlay import overlay
 from helpers.read_from_DSO_resolution import read_from_DSO_resolution
 from classes.signal_class import signal_class
 from global_data import show_plots, use_mock_system, mock_system
 from helpers.plot_helper import plot_2_signals
-from helpers.csvHelper import save_signale
+from helpers.csv_helper import save_signale
 
 def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0):
 

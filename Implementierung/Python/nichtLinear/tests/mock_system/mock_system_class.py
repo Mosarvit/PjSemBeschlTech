@@ -1,4 +1,4 @@
-from helpers.csvHelper import read_in_transfer_function, read_in_transfer_function_old_convention
+from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
 from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class
 
@@ -42,7 +42,8 @@ class mock_system_class :
         self.__Uout_measured = None
         self.__Uin_real = None
         self.__Uout_real = None
-        self.__H = read_in_transfer_function_old_convention(mock_data_directory + '/adjustH/Messung3/Ha_0.csv', mock_data_directory + '/adjustH/Messung3/Hp_1.csv')
+        self.__H = read_in_transfer_function_old_convention(mock_data_directory + '/adjustH/Messung3/Ha_0.csv', mock_data_directory + '/adjustH/Messung3/Hp_0.csv')
+        # self.__H = read_in_transfer_function(mock_data_directory + '/H_jens.csv')
 
     # def get_Uout_from_Uin(self, Uin):
     #     self.__Uin = Uin

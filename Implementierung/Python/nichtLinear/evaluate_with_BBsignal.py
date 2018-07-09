@@ -5,10 +5,10 @@ from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from blocks.measure_H import measure_H
 from blocks.measure_Uout import measure_Uout
-from helpers.signalHelper import convert_V_to_mV
-from helpers.signalHelper import convert_mV_to_V
-from helpers.signalHelper import setVpp
-from helpers.csvHelper import read_in_transfer_function
+from helpers.signal_helper import convert_V_to_mV
+from helpers.signal_helper import convert_mV_to_V
+from helpers.signal_helper import setVpp
+from helpers.csv_helper import read_in_transfer_function
 from global_data import project_path
 from classes.signal_class import signal_class
 from copy import copy

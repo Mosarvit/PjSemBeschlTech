@@ -7,9 +7,9 @@ from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
 
-from helpers import overlay, signalHelper
-from helpers.signalHelper import generateSinSum
-from helpers.csvHelper import read_in_transfer_function
+from helpers import overlay, signal_helper
+from helpers.signal_helper import generateSinSum
+from helpers.csv_helper import read_in_transfer_function
 from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 
@@ -21,7 +21,7 @@ from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from global_data import project_path, mock_data_directory
 from global_data import mock_system
-from helpers.csvHelper import read_in_signal
+from helpers.csv_helper import read_in_signal
 from blocks import get_H
 import os
 

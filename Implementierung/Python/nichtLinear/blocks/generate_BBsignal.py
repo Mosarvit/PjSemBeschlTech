@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from helpers import csvHelper
+from helpers import csv_helper
 import global_data
 from classes.signal_class import signal_class
 
@@ -81,7 +81,7 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=99990000
 
     if saveCSV :
 
-        csvHelper.save_2cols(global_data.project_path + '/data/current_data/BBsignal_ideal.csv', Uout[0, :], Uout[1, :])
+        csv_helper.save_2cols(global_data.project_path + '/data/current_data/BBsignal_ideal.csv', Uout[0, :], Uout[1, :])
 
     Uout = signal_class.gen_signal_from_old_convention(Uout[:,0], Uout[:,1])
 

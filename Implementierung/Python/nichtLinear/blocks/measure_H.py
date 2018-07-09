@@ -2,10 +2,10 @@ from blocks import get_H
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
-from helpers import csvHelper
+from helpers import csv_helper
 from classes.transfer_function_class import transfer_function_class
 from global_data import use_mock_system, project_path, show_plots, mock_system
-from helpers.csvHelper import read_in_transfer_function, read_in_transfer_function_old_convention, save_transfer_function
+from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention, save_transfer_function
 from helpers.plot_helper import plot_transfer_function
 
 def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
