@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/signal_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/signal_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal_adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal_adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/csvHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/csvHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/signalHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/signalHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_evaluate_with_BBsignal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/global_data.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,23 +18,20 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="evaluate_adjust_H.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="evaluate_adjust_H.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="476">
-                    <caret line="28" selection-start-line="28" selection-end-line="28" selection-end-column="31" />
+                    <caret line="28" selection-start-line="28" selection-end-line="28" />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="evaluate_with_BBsignal.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="561">
+                  <state relative-caret-position="272">
                     <caret line="33" selection-start-line="33" selection-end-line="33" />
-                    <folding>
-                      <element signature="e#0#54#0" expanded="true" />
-                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -52,13 +43,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="evaluate_with_BBsignal_adjust_H.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="adjust_H.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blocks/adjust_H.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-510">
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluate_with_BBsignal_adjust_H.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal_adjust_H.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="160">
+              <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="measure_Uout.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-691">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+              <folding>
+                <element signature="e#84#131#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="global_data.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/global_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#65#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,81 +100,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adjust_H.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/adjust_H.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_adjust_H.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_adjust_H.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="209" column="36" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_tezts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/all_tezts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="19" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="determine_a.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/determine_a.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="signalHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1802">
-              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+            <state relative-caret-position="1819">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mock_system_class.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/mock_system/mock_system_class.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,11 +115,8 @@
       <file leaf-file-name="csvHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="194">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
         </entry>
@@ -240,7 +193,6 @@
         <option value="$PROJECT_DIR$/tests/test_compute_Uquest_from_Uout.py" />
         <option value="$PROJECT_DIR$/tests/test_apply_transfer_function.py" />
         <option value="$PROJECT_DIR$/tests/test_mock_system.py" />
-        <option value="$PROJECT_DIR$/global_data.py" />
         <option value="$PROJECT_DIR$/blocks/measure_H.py" />
         <option value="$PROJECT_DIR$/blocks/measure_Uout.py" />
         <option value="$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py" />
@@ -264,6 +216,7 @@
         <option value="$PROJECT_DIR$/blocks/adjust_H.py" />
         <option value="$PROJECT_DIR$/tests/test_adjust_H.py" />
         <option value="$PROJECT_DIR$/tests/test_evaluate_with_BBsignal.py" />
+        <option value="$PROJECT_DIR$/global_data.py" />
         <option value="$PROJECT_DIR$/evaluate_with_BBsignal_adjust_H.py" />
       </list>
     </option>
@@ -290,6 +243,11 @@
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -301,19 +259,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\helpers" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\classes" />
-      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\tests" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\tests" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\helpers" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\tests\data" />
       <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks1" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\helpers" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\blocks" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\classes" />
+      <recent name="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\tests" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -485,24 +443,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_adjust_H_test_adjust_H_test_adjust_H_sinus - 2018.07.09 at 17h 56m 17s.xml">
-      <configuration name="Unittests for test_adjust_H.test_adjust_H.test_adjust_H_sinus" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_adjust_H_test_adjust_H_test_adjust_H_sinus - 2018.07.09 at 17h 56m 29s.xml">
-      <configuration name="Unittests for test_adjust_H.test_adjust_H.test_adjust_H_sinus" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_adjust_H_test_adjust_H_test_adjust_H_sinus - 2018.07.09 at 17h 56m 42s.xml">
-      <configuration name="Unittests for test_adjust_H.test_adjust_H.test_adjust_H_sinus" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_adjust_H_test_adjust_H_test_adjust_H_sinus - 2018.07.09 at 18h 00m 06s.xml">
-      <configuration name="Unittests for test_adjust_H.test_adjust_H.test_adjust_H_sinus" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_adjust_H_test_adjust_H_test_adjust_H_sinus - 2018.07.09 at 18h 01m 27s.xml">
-      <configuration name="Unittests for test_adjust_H.test_adjust_H.test_adjust_H_sinus" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_adjust_H_test_adjust_H - 2018.07.09 at 18h 03m 09s.xml">
-      <configuration name="Unittests for test_adjust_H.test_adjust_H" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_test_adjust_H_test_adjust_H - 2018.07.09 at 18h 04m 16s.xml">
       <configuration name="Unittests for test_adjust_H.test_adjust_H" configurationId="tests" />
     </history-entry>
@@ -513,6 +453,24 @@
       <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_for_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_low_amplitude - 2018.07.09 at 18h 31m 15s.xml">
+      <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_low_amplitude - 2018.07.09 at 18h 37m 41s.xml">
+      <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_low_amplitude - 2018.07.09 at 18h 38m 07s.xml">
+      <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_low_amplitude - 2018.07.09 at 18h 39m 51s.xml">
+      <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_low_amplitude - 2018.07.09 at 18h 40m 44s.xml">
+      <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_low_amplitude - 2018.07.09 at 18h 41m 10s.xml">
+      <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_test_evaluate_with_BBsignal_low_amplitude - 2018.07.09 at 18h 41m 39s.xml">
       <configuration name="Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal.test_evaluate_with_BBsignal_low_amplitude" configurationId="tests" />
     </history-entry>
   </component>
@@ -527,17 +485,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.171875" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.171875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.38965154" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" weight="0.38965154" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.328341" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.32946146" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.32946146" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -553,6 +512,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.328341" />
       <window_info anchor="bottom" id="Python Console" order="8" />
     </layout>
@@ -589,6 +549,13 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/transfer_function_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -624,16 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/venv/Lib/site-packages/pyvisa/highlevel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1445">
@@ -659,9 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#84#115#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -758,13 +712,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/overlay_tst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/overlay_tst.py" />
     <entry file="file://$PROJECT_DIR$/helpers/overlay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-34">
@@ -776,16 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
-          <folding>
-            <element signature="e#84#131#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -834,24 +772,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" selection-start-line="28" selection-end-line="28" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/TEMP/New folder (2)/New folder/adjust_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/signal_class.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -865,11 +787,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_adjust_a.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-409">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-409" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
@@ -881,8 +799,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/signalHelper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+        <state relative-caret-position="1819">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -902,9 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
           <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -912,9 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
           <caret line="209" column="36" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,19 +841,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/adjust_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-510">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -957,30 +877,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/csvHelper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="194">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#65#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal_adjust_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="160">
+          <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
+    <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="-691">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
           <folding>
-            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#84#131#0" expanded="true" />
           </folding>
         </state>
       </provider>

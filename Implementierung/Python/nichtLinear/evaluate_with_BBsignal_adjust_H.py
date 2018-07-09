@@ -19,6 +19,7 @@ from helpers.csvHelper import save_signale, save_transfer_function, save_transfe
 from blocks import adjust_H
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
+from global_data import project_path
 
 
 import numpy as np
@@ -27,7 +28,7 @@ import numpy as np
 def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
 
     if use_mock_system :
-        data_directory = 'tools/adjustH/'
+        data_directory = project_path + 'tools/adjustH'
     else :
         data_directory = 'tests/mock_data/mock_results/'
 
@@ -142,8 +143,8 @@ def determine_a(H, Uout_ideal, data_directory, f_rep):
     Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=Uquest_ideal.sample_rate, loadCSV=0, saveCSV=0, id='1',
                                                verbosity=0)
     # save initial Data
-    save_2cols(data_directory + 'Uin_0.csv', Uin_measured[:, 0], Uin_measured[:, 1])
-    save_2cols(data_directory + 'Uout_0.csv', Uout_measured[:, 0], Uout_measured[:, 1])
+    save_2cols(data_directory + 'Uin_0.csv', Uin_measured.time, Uin_measured.in_V)
+    save_2cols(data_directory + 'Uout_0.csv', Uout_measured.time, Uout_measured.in_V)
 
     Uout_measured = Uout_measured.cut_one_period(f_rep)
     Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
