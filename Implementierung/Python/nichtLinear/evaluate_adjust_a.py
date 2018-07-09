@@ -41,7 +41,7 @@ def evaluate():
 
     for i in range(0, 11):
         id = str(i)
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=True, saveCSV=False, id=i, verbosity=1)
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sampleRateAWG, loadCSV=True, saveCSV=False, id=i, verbosity=1)
 
         # begin cut just one period out of Uout_measured
         Uout_measured = cut_one_period(Uout_measured, f_rep)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def read(samplerateOszi, awg_volt, fmax, signal):
+def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
 
     """
 
@@ -28,11 +28,15 @@ def read(samplerateOszi, awg_volt, fmax, signal):
 
     dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
     DSO = visa.ResourceManager().get_instrument(dso_ip)
-    
-    Tns = 0.4/fmax
-    periodTime = signal.size*Tns
-    horizontalScalePerDiv = 1.5*periodTime/10 #At least one period needs to be
-                                              #shown on the DSO 
+    version = 1
+    if version == 1:
+        Tns = 0.4/fmax
+        periodTime = signal.size*Tns
+        horizontalScalePerDiv = 1.5*periodTime/10 #At least one period needs to be
+                                                  #shown on the DSO 
+    elif version == 2:
+        periodTime = 1/900e3
+        horizontalScalePerDiv = periodTime/10
     
     possibleRecordLength = [500,2500,5000,10e3,25e3,50e3,100e3,250e3,500e3]
     possibleRecordLength = np.array(possibleRecordLength)
@@ -71,17 +75,24 @@ def read(samplerateOszi, awg_volt, fmax, signal):
         recordLength = possibleRecordLength[ind+1]
     else:
         recordLength = possibleRecordLength[ind]
-    awg_volt = awg_volt*0.1
 
     DSO.write("HORIZONTAL:RECOrdlength " + str(recordLength)) #1e5
-#    DSO.write("CH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
-#    DSO.write("MATH1:SCAle " + str(awg_volt/6)) #Sets the vertical scale
-    DSO.write("CH1:SCAle " + str(awg_volt/6*10)) #Sets the vertical scale
-    DSO.write("MATH1:SCAle " + str(awg_volt/6*10)) #Sets the vertical scale
-    DSO.write("CH2:SCAle 20.0E-3") #Sets the vertical scale 
-    DSO.write("CH3:SCAle " + str(awg_volt*10)) #Sets the vertical scale 
-    DSO.write("CH4:SCAle " + str(awg_volt*10)) #Sets the vertical scale
-    DSO.write("MATH3:SCAle " + str(awg_volt*50)) #Sets the vertical scale       
+    # MN: Meine Vermutung: Skalierung pro Division.
+    # MN: Eigentlich sind 8 Divisionen vorhaden; Vpp wird durch 6 geteilt -> Sicherheitsabstand
+    DSO.write("CH1:SCAle " + str(vpp_ch1 / 6)) #Sets the vertical scale
+    DSO.write("MATH1:SCAle " + str(vpp_ch1 / 6)) #Sets the vertical scale
+    version = 2
+    if version == 1:
+        DSO.write("CH2:SCAle 20.0E-3") #Sets the vertical scale 
+        DSO.write("CH3:SCAle 50.0E-3") #Sets the vertical scale 
+        DSO.write("CH4:SCAle 50.0E-3") #Sets the vertical scale
+        DSO.write("MATH3:SCAle 200.0E-3") #Sets the vertical scale
+    elif version == 2:
+        DSO.write("CH2:SCAle 20.0E-3") #Sets the vertical scale
+        DSO.write("CH3:SCAle " + str(vpp_out / 4)) #Sets the vertical scale
+        DSO.write("CH4:SCAle " + str(vpp_out / 4)) #Sets the vertical scale
+        # MN: Hier muss glaube ich der Faktor 1/2 hin, weil die Amplitude gemeint ist
+        DSO.write("MATH3:SCAle " + str(vpp_out / 2)) #Sets the vertical scale
     
     DSO.write("CH1:POSition 0") #Sets the horizontal scale
     DSO.write("MATH3:POSition 0") #Sets the horizontal scale
@@ -115,7 +126,7 @@ def read(samplerateOszi, awg_volt, fmax, signal):
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
        #last data point that will be transferred when using the CURVe? query
 
-    time_attempt = 2        #chooses version to wait for finishing commands
+    time_attempt = 1        #chooses version to wait for finishing commands
     if time_attempt == 1:
         time.sleep(5)       #enough time to finish every Process
     elif time_attempt == 2:
@@ -143,7 +154,7 @@ def read(samplerateOszi, awg_volt, fmax, signal):
     DSO.write("DATa:ENCdg ASCIi") #This command sets the format of outgoing 
                                   #waveform data to ASCII 
     DSO.write("DATa:STARt 1") #This command sets the starting data point 
-                    #for waveform transfer. This command allows for the
+                    #for wavefosrm transfer. This command allows for the
                     #transfer of partial waveforms to and from the instrument.
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
          #last data point that will be transferred when using the CURVe? query

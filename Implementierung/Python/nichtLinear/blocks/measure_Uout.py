@@ -15,7 +15,7 @@ from helpers.overlay import overlay
 from global_data import use_mock_system
 
 
-def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
+def measure_Uout(Uin, sample_rate_AWG_max, id, loadCSV, saveCSV, verbosity):
 
     """
     compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
@@ -51,11 +51,11 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
     def sendUinToAWG(Uin):
         Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
         UinNormalized = Uin[:,1]/Vpp # todo : is it necessary to normalize Uin ?
-        write_to_AWG.write(UinNormalized, sampleRateAWG, Vpp)  # Rückbage wird nicht benötigt
+        write_to_AWG.write(UinNormalized, sample_rate_AWG_max, Vpp)  # Rückbage wird nicht benötigt
 
     def receiveFromDSO(Uin):
         fmax = 80e6
-        samplerateOszi = 1 * sampleRateAWG
+        samplerateOszi = 1 * sample_rate_AWG_max
         Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
 
         [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, Vpp, fmax, Uin[:, 1])
@@ -79,7 +79,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
             global_data.mock_system.write_to_AWG(Uin)
             Uin_measured, Uout_measured = global_data.mock_system.read_from_DSO()
         else:
-            Uin = set_sample_rate(Uin, sampleRateAWG)
+            Uin = set_sample_rate(Uin, sample_rate_AWG_max)
 
             sendUinToAWG(Uin)
             [time, dataUin, dataUout] = receiveFromDSO(Uin)

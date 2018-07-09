@@ -26,17 +26,15 @@ Input:  fmax          ------  max frequency of interest
 
 
 def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=0, \
-        formatOutput=1, modus=False, use_mock_system=0):
+        formatOutput=1, modus=False):
     import visa
     from helpers import MLBS
     import time
     import matplotlib.pyplot as plt
     import numpy as np
-    from helpers import FFT, write_to_AWG, read_from_DSO
+    from helpers import FFT, write_to_AWG, read_from_DSO_resolution, read_from_DSO
     import csv
     import os
-    from global_data import mock_system
-    from helpers.signalHelper import assemble_signal, set_sample_rate
 
     # Create folder for results
     directory = time.strftime("%d.%m.%Y_%H_%M_%S")
@@ -65,7 +63,8 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=0, \
     # am Desktop PC
     # dso_ip = rs[1]
     # am Gruppenlaptop BTNBG006
-
+    dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
+    DSO = visa.ResourceManager().get_instrument(dso_ip)
 
     [signal, seed] = MLBS.get(bits)
     Tns = 0.4 / fmax
@@ -77,38 +76,27 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=0, \
     ################## Write to AWG ##################
     ##################################################
 
+    if writeAWG:
 
-    if use_mock_system :
+        write_to_AWG.write(signal, samplerateAWG, awg_volt)
 
-        T0 = 1/samplerateAWG
-        T1 = T0 * len(signal)
-        time_vector = np.linspace(0, T1, len(signal) )
+#        write_to_AWG.send(signal=signal, samplerateAWG=samplerateAWG, awg_volt=awg_volt)
 
-        Uin_mock = assemble_signal(time_vector, signal)
+    ##################################################
+    ################## Write to DSO ##################
+    ##################################################
+    # Einzige Änderung wären noch die Filter in write to AWG
+    version = 2
+    if version == 1:
+        # Alte schlechte Auflösung Version 3.7.
+        time, dataUin, dataUout = read_from_DSO_alt.read(samplerateOszi, awg_volt, fmax, signal)
+    elif version == 2:
+        vpp_ch1 = awg_volt  # CH1 measures Output Signal from AWG
+        time, dataUin, dataUout = read_from_DSO_resolution.read(samplerateOszi, vpp_ch1, fmax, signal)
+    elif version == 3:
+        vpp_ch1 = awg_volt  # CH1 measures Output Signal from AWG
+        time, dataUin, dataUout = read_from_DSO.read(samplerateOszi=samplerateOszi, vpp_ch1=vpp_ch1, vpp_out=vpp_ch1, fmax=fmax, signal=signal)
 
-        mock_system.write_to_AWG(Uin_mock)
-        Uin_measured, Uout_measured = mock_system.read_from_DSO()
-
-        Uin_measured = set_sample_rate(Uin_measured, samplerateOszi)
-        Uout_measured = set_sample_rate(Uout_measured, samplerateOszi)
-
-        time = Uin_measured[:,0]
-        dataUin = Uin_measured[:,1]
-        dataUout = Uout_measured[:,1]
-
-    else :
-
-        if writeAWG:
-
-            write_to_AWG.write(signal, samplerateAWG, awg_volt)
-    #        write_to_AWG.send(signal=signal, samplerateAWG=samplerateAWG, awg_volt=awg_volt)
-
-        ##################################################
-        ################## Write to DSO ##################
-        ##################################################
-        dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
-        DSO = visa.ResourceManager().get_instrument(dso_ip)
-        time, dataUin, dataUout = read_from_DSO.read(samplerateOszi, awg_volt, fmax, signal)
 
 #    DSO.write("*RST") #Restores the state of the instrument from a copy of 
 #                      #the settings stored in memory

@@ -74,6 +74,11 @@ def save_transfer_function(H, filename):
         for i in range(0, H.f.shape[0]):
             writer.writerow([str(H.f[i]), str(H.a[i]), str(H.p[i]), str(H.c[i])])
 
+def save_transfer_function_old_convention(H, filename_a, filename_p ):
+
+    save_2cols(filename_a, H.f, H.a)
+    save_2cols(filename_p, H.p, H.a)
+
 def read_in_signal(file):
     U_old_convention = genfromtxt(file, delimiter=',')
     # sample_rate = int(np.round(1 / (U_old_convention[1, 0] - U_old_convention[0, 0])))
@@ -83,5 +88,5 @@ def read_in_signal(file):
 
     return U
 
-def save_signale(Uquest_from_BBsignal_computed, filename):
-    save_2cols(filename, Uquest_from_BBsignal_computed.time, Uquest_from_BBsignal_computed.in_V)
+def save_signale(signal, filename):
+    save_2cols(filename, signal.time, signal.in_V)

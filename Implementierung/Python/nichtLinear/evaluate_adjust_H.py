@@ -7,6 +7,7 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
+# from helpers.evaluate_signal import evaluate_signal
 from blocks.measure_H import measure_H
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
@@ -14,85 +15,133 @@ from blocks.measure_Uout import measure_Uout
 from helpers.signalHelper import convert_V_to_mV
 from helpers.signalHelper import convert_mV_to_V
 from helpers.signalHelper import setVpp
-from helpers.signalHelper import cut_one_period
+# from helpers.signalHelper import cut_one_period
 from helpers.csvHelper import save_2cols
+# from tools.test_evaluation import test_evaluate
 from helpers.csvHelper import read_in_transfer_function
-from adts.transfer_function import transfer_function
+from classes.transfer_function_class import transfer_function_class
+from global_data import use_mock_system
+
 
 import csv
 import numpy as np
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
 from scipy import linalg
+from global_data import project_path
 
 
 def evaluate():
+
+    if use_mock_system :
+        data_directory = 'tools/adjustH/'
+    else :
+        data_directory = 'tests/mock_data/mock_results/'
+
     # Initialization
-    sampleRateAWG = 999900000
-    f_rep = 900e3
+    f_rep = 9e5
     f_BB = 5e6
     Vpp = 0.3
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG_max=sampleRateAWG, verbosity=1)
+    sample_rate_AWG_max = 2e8
+    sample_rate_DSO = 9999e5
 
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG_max=sample_rate_AWG_max, verbosity=0)
 
-    H = measure_H(loadCSV=1, saveCSV=True, verbosity=1)
-    
-    
+    H = measure_H(loadCSV=1, saveCSV=True, verbosity=0)
+
+    # save initial H
+    save_2cols(data_directory + 'Ha_0.csv', H.f, H.a)
+    save_2cols(data_directory + 'Hp_0.csv', H.f, H.p)
+
     Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
-    
+
     Uin = setVpp(Uquest_ideal, Vpp)
     
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=True, id='1', verbosity=0)
-    
-    # begin cut just one period out of Uout_measured
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sample_rate_AWG_max, sample_rate_DSO=sample_rate_DSO, loadCSV=0, saveCSV=0, id='1', verbosity=0)
 
-    Uout_measured = cut_one_period(Uout_measured, f_rep)
+    Uout_measured = cun_one_period(Uout_measured, f_rep)
+    Uin_measured = cun_one_period(Uout_measured, f_rep)
+    #return
 
-    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=1)
+    # save initial Data
+    save_2cols(data_directory + 'Uin_0.csv', Uin_measured[:, 0], Uin_measured[:, 1])
+    save_2cols(data_directory + 'Uout_0.csv', Uout_measured[:, 0], Uout_measured[:, 1])
+
+    Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
     Uquest_measured_mV = convert_V_to_mV(Uquest_measured)
-    
+
     Uin_mV = convert_V_to_mV(Uin)
 
     a = compute_a_from_Uin_Uquet(Uin=Uin_mV, Uquest=Uquest_measured_mV, N=3)
-    K = compute_K_from_a(a=a, verbosity=1)
-    
-    
-    for i in range(0,4):
+    K = compute_K_from_a(a=a, verbosity=0)
+
+    # save K
+    save_2cols(data_directory + 'K_0.csv', K[:, 0], K[:, 1])
+
+
+
+
+
+    return
+
+    for i in range(1,2):
         id = str(i)
         # compute new Uin
-        Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=1)
+        Uquest_ideal = compute_Uquest_from_Uout(Uout=np.transpose(Uout_ideal), H=H, verbosity=0)
         Uquest_ideal_mV = convert_V_to_mV(Uquest_ideal)
 
-        Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=1)
+        Uin_mV = compute_Uin_from_Uquest(Uquest=Uquest_ideal_mV, K=K, verbosity=0)
 
         Uin = convert_mV_to_V(Uin_mV)
-        
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=False, id=id, verbosity=1)
+
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sampleRateAWG, sampleRateDSO=sampleRateDSO, loadCSV=False, saveCSV=False, id=id, verbosity=1)
         # Uin_measured = genfromtxt('data/current_data/Uin_2.csv', delimiter=',')
         # Uout_measured = genfromtxt('data/current_data/Uout_2.csv', delimiter=',')
-
+        smlrt = 1 / ( Uout_measured[11,0] - Uout_measured[10,0] )
         # begin cut just one period out of Uout_measured
-        
-        Uout_measured = cut_one_period(Uout_measured, f_rep)
-        Uin_measured = cut_one_period(Uin_measured, f_rep)
-
+        Uout_measured = cun_one_period(Uout_measured, f_rep)
+        Uin_measured = cun_one_period(Uin_measured, f_rep)
+        return
         # save Uin and Uout
-        save_2cols('data/optimizer/adjust_H/Uin_' + id + '.csv', Uin_measured[:, 0], Uin_measured[:, 1])
-        save_2cols('data/optimizer/adjust_H/Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
+        save_2cols(data_directory + 'Uin_' + id + '.csv', Uin_measured[:, 0], Uin_measured[:, 1])
+        save_2cols(data_directory + 'Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
+        if use_mock_system != 1:
+            save_2cols('tools/csvDateien_K/Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
 
-        # adjust H after round 1 because of the nonlinear element - we should test which effect this has
-        sigma_H = 0.1
-            
-        H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H) # transponiertes Uout???
-        save_2cols('data/optimizer/adjust_H/H_a_' + id + '.csv', H.f, H.a)
-        save_2cols('data/optimizer/adjust_H/H_p_' + id + '.csv', H.f, H.p)
-    
+        # quality = evaluate_signal('tools/csvDateien_K/Uout_' + id + '.csv', 'csvDateien_K/results_adjust_H.csv')
+        sigma_H = 0.5
+#        sampleRateAWG = Uout_measured.shape[0]
+#        print(sampleRateAWG)
+#        Uout_ideal_compute = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
+        H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H, verbosity=True) # transponiertes Uout_ideal???
+        save_2cols(data_directory + 'Ha_' + id + '.csv', H.f, H.a)
+        save_2cols(data_directory + 'Hp_' + id + '.csv', H.f, H.p)
+        
+        Ha_0 = genfromtxt(data_directory + 'Ha_0.csv', delimiter=',')
+        # Ha_1 = genfromtxt('tools/adjustH/H_a_1.csv', delimiter=',')
+        fig = plt.figure(1)
+        plt.plot(Ha_0[:,0], Ha_0[:,1],'r',H.f, H.a, 'b')
+        plt.title('Runde 0 - rot, Runde ' + id + ' - blau')
+        plt.xlabel('f')
+        plt.ylabel('Ha')
+        plt.show()
+    # quality = test_evaluate()
 
-    verbosity = True
+    verbosity = False
     if verbosity:
-        Uout_measured1 = genfromtxt('data/optimizer/adjust_H/Uout_1.csv', delimiter=',')
-        Uout_measured10 = genfromtxt('data/optimizer/adjust_H/Uout_3.csv', delimiter=',')
+        Ha_0 = genfromtxt(data_directory + 'Ha_0.csv', delimiter=',')
+        Ha_1 = genfromtxt(data_directory + 'Ha_1.csv', delimiter=',')
+        fig = plt.figure(1)
+        plt.plot(Ha_0[:,0], Ha_0[:,1],'r',Ha_1[:,0], Ha_1[:,1], 'b')
+        plt.title('Runde 1 - rot, Runde 3 - blau')
+        plt.xlabel('f')
+        plt.ylabel('Ha')
+        plt.show()
+
+        if use_mock_system != 1:
+            Uout_measured1 = genfromtxt('tools/csvDateien_K/Uout_1.csv', delimiter=',')
+            Uout_measured10 = genfromtxt('tools/csvDateien_K/Uout_3.csv', delimiter=',')
         fig = plt.figure(1)
         plt.plot(Uout_measured1[:,0], Uout_measured1[:,1],'r',Uout_measured10[:,0], Uout_measured10[:,1], 'b')
         plt.title('Runde 1 - rot, Runde 3 - blau')

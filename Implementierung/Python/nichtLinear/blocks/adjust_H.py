@@ -1,8 +1,9 @@
 from classes.transfer_function_class import transfer_function_class
 import numpy as np
 from scipy.interpolate import interp1d
+import matplotlib.pyplot as plt
 
-def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
+def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False):
     """
     adjust_H optimiert die Übertragungsfunktion H
 
@@ -61,6 +62,18 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
     Ideal_fft = np.fft.fft( Uout_ideal[:,1] ) / N_Id
     Meas_fft = np.fft.fft( Uout_measured[:, 1]) / N_Meas
 
+    if verbosity:
+        delta_t_meas = (Uout_measured[1,0] - Uout_measured[0,0])
+        delta_t_id = (Uout_ideal[1,0] - Uout_ideal[0,0])
+        print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+        fig = plt.figure(1)
+        plt.plot(frequencies_Id, abs(Ideal_fft),'r', frequencies_Meas, abs(Meas_fft), 'b')
+        plt.title('Abs Ideal - rot, Abs Meas - blau')
+        plt.xlabel('f')
+        plt.ylabel('Ha')
+        plt.show()
+        
+    
     # check frequency range of signal. If less frequencies than in H, add frequency in signal with amplitude 1 s.t. signal has frequencies >= H
     if np.amax(Halt.f) > frequencies_Meas[-1]:
         numberOfNewPoints = np.int(np.ceil((np.max(Halt.f) - frequencies_Meas[-1]) / delta_f_Meas ))
@@ -77,10 +90,10 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
         Ideal_fft = np.append(Ideal_fft, np.ones(numberOfNewPoints))
 
     # interpolate magnitude and phase seperately
-    magnitude_Ideal = interp1d(frequencies_Id, np.abs(Ideal_fft) )
-    angle_Ideal = interp1d(frequencies_Id, np.angle(Ideal_fft) )
-    magnitude_Meas = interp1d(frequencies_Meas, np.abs(Meas_fft))
-    angle_Meas = interp1d(frequencies_Meas, np.angle(Meas_fft))
+    magnitude_Ideal = interp1d(frequencies_Id, np.abs(Ideal_fft), kind = 'linear' )
+    angle_Ideal = interp1d(frequencies_Id, np.angle(Ideal_fft), kind = 'linear' )
+    magnitude_Meas = interp1d(frequencies_Meas, np.abs(Meas_fft), kind = 'linear')
+    angle_Meas = interp1d(frequencies_Meas, np.angle(Meas_fft), kind = 'linear')
 
     # initialize Hneu
     Hneu = transfer_function_class(Halt.f)
