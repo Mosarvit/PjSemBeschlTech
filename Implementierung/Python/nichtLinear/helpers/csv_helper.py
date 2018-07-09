@@ -77,11 +77,8 @@ def save_transfer_function(H, filename):
 
 def save_transfer_function_old_convention(H, directory, id ):
 
-<<<<<<< HEAD:Implementierung/Python/nichtLinear/helpers/csv_helper.py
+
     save_2cols(directory + '/Ha_' + str(id) + '.csv', H.f, H.a)
-=======
-    save_2cols(directory + 'Ha_' + str(id) + '.csv', H.f, H.a)
->>>>>>> branch_mock_system_1:Implementierung/Python/nichtLinear/helpers/csv_helper.py
     save_2cols(directory + '/Hp_' + str(id) + '.csv', H.f, H.p)
     save_transfer_function(H, directory + '/H_' + str(id) + '.csv')
 

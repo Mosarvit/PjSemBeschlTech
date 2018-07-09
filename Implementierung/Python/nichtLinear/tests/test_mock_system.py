@@ -7,11 +7,7 @@ from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
 
-<<<<<<< HEAD
-from helpers import overlay, signal_helper
-=======
 from helpers.overlay import overlay
->>>>>>> branch_mock_system_1
 from helpers.signal_helper import generateSinSum
 from helpers.csv_helper import read_in_transfer_function
 from classes.transfer_function_class import transfer_function_class
@@ -43,15 +39,6 @@ class test_mock_system(TestCase):
 
     def test_mock_system(self):
 
-<<<<<<< HEAD
-        Uout_ideal = read_in_signal(mock_data_directory + 'Uout_300_jens.csv')
-        Uquest_ideal = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
-
-        mock_system.H = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
-
-        mock_system.write_to_AWG(Uin=Uquest_ideal)
-        _, Uout_computed = mock_system.read_from_DSO()
-=======
         sample_rate_DSO = 9999e5
 
         Uout_ideal = read_in_signal(mock_data_directory + 'Uout_300_our.csv')
@@ -63,7 +50,6 @@ class test_mock_system(TestCase):
         _, Uout_computed = mock_system.read_from_DSO(sample_rate_DSO=sample_rate_DSO)
 
         Uout_computed = overlay(Uout_computed, Uout_ideal)
->>>>>>> branch_mock_system_1
 
         err = linalg.norm(Uout_computed.in_V - Uout_ideal.in_V) / linalg.norm(Uout_ideal.in_V)
 
