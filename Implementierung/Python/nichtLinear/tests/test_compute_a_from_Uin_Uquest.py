@@ -35,7 +35,7 @@ class test_compute_a_from_Uin_Uquest(TestCase):
     def __init__(self, *args, **kwargs):
         super(test_compute_a_from_Uin_Uquest, self).__init__(*args, **kwargs)
 
-    # @unittest.skip("reason for skipping")
+    @unittest.skip("The mock data cannot be correct, since the timeperiod of Uquest_300_jens.csv and Uin_jens.csv are too different")
     def test_compute_a_from_Uin_Uquest_300_jens(self):
         Uquest_300 = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
         Uin = read_in_signal(mock_data_directory + 'Uin_jens.csv')

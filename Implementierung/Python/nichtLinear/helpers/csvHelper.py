@@ -76,9 +76,11 @@ def save_transfer_function(H, filename):
 
 def read_in_signal(file):
     U_old_convention = genfromtxt(file, delimiter=',')
-    sample_rate = int(np.round(1 / (U_old_convention[1, 0] - U_old_convention[0, 0])))
-    sample_rate = int(np.round((U_old_convention.shape[0] - 1) / (U_old_convention[-1, 0] - U_old_convention[0, 0])))
-    U = signal_class(signal_in_V=U_old_convention[:, 1], sample_rate=sample_rate)
+    # sample_rate = int(np.round(1 / (U_old_convention[1, 0] - U_old_convention[0, 0])))
+    # sample_rate = int(np.round((U_old_convention.shape[0] - 1) / (U_old_convention[-1, 0] - U_old_convention[0, 0])))
+    # U = signal_class(signal_in_V=U_old_convention[:, 1], sample_rate=sample_rate)
+    U = signal_class.gen_signal_from_old_convention(U_old_convention[:,0], U_old_convention[:,1])
+
     return U
 
 def save_signale(Uquest_from_BBsignal_computed, filename):

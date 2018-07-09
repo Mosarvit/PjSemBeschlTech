@@ -7,6 +7,8 @@ from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
 
+import global_data
+
 from helpers import overlay, signalHelper
 from classes.signal_class import signal_class
 from helpers.csvHelper import read_in_signal
@@ -51,6 +53,16 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_computed = compute_Uin_from_Uquest(Uquest_300, K_300, verbosity=False)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_ideal)
+
+
+        # plt.figure()
+        # plt.plot(Uin_computed_overlay_obj.time, Uin_computed_overlay_obj.in_V)
+        # plt.plot(Uin_ideal.time, Uin_ideal.in_V)
+        # plt.legend(['Uin_computed_overlay_obj', 'Uin_ideal'])
+        # plt.xlabel('t')
+        # plt.ylabel('U')
+        # if global_data.showPlots:
+        #     plt.show()
 
         err = linalg.norm(Uin_computed_overlay_obj.in_V - Uin_ideal.in_V) / linalg.norm(Uin_ideal.in_V)
         self.assertTrue(err < 0.2)

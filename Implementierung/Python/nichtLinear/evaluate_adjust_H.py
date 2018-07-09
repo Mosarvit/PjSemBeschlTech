@@ -33,7 +33,7 @@ def evaluate():
     f_BB = 5e6
     Vpp = 0.3
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=1)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG_max=sampleRateAWG, verbosity=1)
 
 
     H = measure_H(loadCSV=1, saveCSV=True, verbosity=1)

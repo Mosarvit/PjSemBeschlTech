@@ -47,7 +47,7 @@ def compute_K_from_a(a, verbosity):
         plt.title('Kennlinie K')
         plt.xlabel('U_in in mV')
         plt.ylabel('U_out in mV')
-        if global_data.showPlots :
+        if global_data.show_plots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K.pdf')
     

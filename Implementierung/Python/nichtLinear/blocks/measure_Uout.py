@@ -92,7 +92,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         plt.title('Uout_measured')
         plt.xlabel('t')
         plt.ylabel('U')
-        if global_data.showPlots :
+        if global_data.show_plots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf')
 
@@ -104,7 +104,7 @@ def measure_Uout(Uin, sampleRateAWG, id, loadCSV, saveCSV, verbosity):
         plt.title('Uin vs. Uin_measured')
         plt.xlabel('t')
         plt.ylabel('U')
-        if global_data.showPlots:
+        if global_data.show_plots:
             plt.show()
  #       fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/UinVsUin_measured.pdf')
 

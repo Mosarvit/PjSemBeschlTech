@@ -31,7 +31,7 @@ def compute_Uquest_from_Uout(Uout, H, verbosity):
     """
 
     Uquest = apply_transfer_function(Uout = Uout, H = H.get_inverse())
-    Uquest_doubled = signal_class(Uquest.in_V * 2 , Uquest.sample_rate)
+    Uquest_doubled = signal_class(Uquest.time, Uquest.in_V * 2 )
 
     if verbosity:
         fig = plt.figure()
@@ -40,7 +40,7 @@ def compute_Uquest_from_Uout(Uout, H, verbosity):
         # plt.grid(True)
         plt.ylabel('u')
         plt.xlabel('t')
-        if global_data.showPlots :
+        if global_data.show_plots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf')
 

@@ -100,7 +100,7 @@ def overlay(U1, U2):
 
     #######
 
-    U1_shifted = signal_class(U1_shifted_tmp, U2.sample_rate)
+    U1_shifted = signal_class(U2.time, U1_shifted_tmp )
 
 
     return U1_shifted

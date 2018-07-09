@@ -50,11 +50,17 @@ class mock_system_class :
     def write_to_AWG(self, Uin):
         self.__Uin = Uin
 
+        frequency = self.__Uin.sample_rate / len(self.__Uin.time)
+        print('Sending to AWG')
+        print('signal length : ' + str(len(self.__Uin.time) ))
+        print('sample rate : ' + str(self.__Uin.sample_rate))
+        print('frequency : ' + str(frequency))
+
     def read_from_DSO(self):
         self.__Uin_real = self.__Uin
-        self.__Uin_measured = signal_class(self.__Uin_real.in_V * 0.5, self.__Uin_real.sample_rate)
+        self.__Uin_measured = signal_class(self.__Uin_real.time , self.__Uin_real.in_V * 0.5, )
         self.__Uout_real = apply_transfer_function(self.__Uin, self.__H)
-        self.__Uout_measured = signal_class(self.__Uout_real.in_V * 0.5, self.__Uout_real.sample_rate)
+        self.__Uout_measured = signal_class(self.__Uout_real.time, self.__Uout_real.in_V * 0.5 )
         return (self.__Uin_measured, self.__Uout_measured)
 
 

@@ -18,15 +18,25 @@ import numpy as np
 
 def evaluate_with_BBsignal(use_mock_system=0) :
 
-    sampleRateAWG = 999900000
+
     f_rep = 900e3
     f_BB = 5e6
     Vpp = 0.3
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
+    sample_rate_AWG_max = 6
 
-    H = measure_H(loadCSV=0, saveCSV=True, verbosity=1)
-    a = determine_a(H, Uout_ideal, f_rep, sampleRateAWG)
+    d =  np.floor( sample_rate_AWG_max / f_rep )
+
+    # sample_rate_AWG = f_rep * np.floor( sample_rate_AWG_max / f_rep )
+
+    sample_rate_AWG_max = 2e8
+
+    sample_rate_DSO = 999900000
+
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG_max=sample_rate_AWG_max, verbosity=1)
+
+    H = measure_H(loadCSV=0, saveCSV=0, verbosity=1)
+    a = determine_a(H, Uout_ideal, f_rep, Uout_ideal.sample_rate)
 
     K = compute_K_from_a(a=a, verbosity=0)
 
@@ -34,7 +44,7 @@ def evaluate_with_BBsignal(use_mock_system=0) :
 
     Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K, verbosity=0)
 
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=False, saveCSV=True, id='2', verbosity=0)
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sample_rate_AWG_max, loadCSV=0, saveCSV=0, id='2', verbosity=0)
 
     return Uout_ideal, Uout_measured
 
@@ -43,7 +53,7 @@ def determine_a(H, Uout_ideal, f_rep, sampleRateAWG):
     Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
     Uin = copy(Uquest_ideal)
     Uin.Vpp = 0.3
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=True, id='1',
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sampleRateAWG=sampleRateAWG, loadCSV=0, saveCSV=0, id='1',
                                                verbosity=0)
     Uout_measured = Uout_measured.cut_one_period(f_rep)
     Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)

@@ -87,7 +87,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
 
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
     Uin_in_mV = K_function(Uquest.in_mV)
-    Uin = signal_class(Uin_in_mV/1000, Uquest.sample_rate)     #### woher der Faktor 10 vorher????
+    Uin = signal_class(Uquest.time, Uin_in_mV/1000)     #### woher der Faktor 10 vorher????
 
     # passe die Lange von Uin an sampleRateAWG an
 
@@ -100,7 +100,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         plt.title('Uin')
         plt.ylabel('u')
         plt.ylabel('t')
-        if global_data.showPlots :
+        if global_data.show_plots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
 

@@ -75,7 +75,7 @@ def apply_transfer_function(Uout, H):
     Hph = int_Hph(w)
 
 
-    u=copy.copy(Uout.in_V) #Uout_old[:,1])
+    u=copy.copy(Uout.in_V)
 #fft
     L=len(u)
     NFFT = L
@@ -83,7 +83,7 @@ def apply_transfer_function(Uout, H):
     Y =  ufft / L
 
     Uquest = np.zeros([L, 2])
-    Uquest[:,0] =  Uout.time #Uout_old[:,0]
+    Uquest[:,0] =  Uout.time
 
     for k in range(int(math.floor(f_max / f_rep))):
 
@@ -105,6 +105,6 @@ def apply_transfer_function(Uout, H):
 
         Uquest[:,1] = Uquest[:,1] + c
 
-    Uquest_obj = signal_class(Uquest[:,1], Uout.sample_rate)
+    Uquest_obj = signal_class( Uout.time, Uquest[:,1] )
 
     return Uquest_obj

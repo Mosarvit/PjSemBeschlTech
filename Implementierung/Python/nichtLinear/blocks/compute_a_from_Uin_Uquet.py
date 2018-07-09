@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 #import FFT
-from helpers import overlay
+from helpers.overlay import overlay
 #import csv
 #import os
 #import time
@@ -35,7 +35,8 @@ def compute_a_from_Uin_Uquet(Uin, Uquest, N):
     l_out = len(Uquest.in_mV)
 
     # np.sin(Uin)
-    Uin = overlay.overlay(Uin, Uquest)
+    Uin = overlay(Uin, Uquest)
+
     Uin = Uin.in_mV
     Uquest = Uquest.in_mV
 
