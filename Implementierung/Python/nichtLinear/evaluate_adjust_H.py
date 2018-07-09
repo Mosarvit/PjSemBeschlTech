@@ -30,7 +30,11 @@ import numpy as np
 def evaluate_adjust_H(num_iters = 1) :
 
     if use_mock_system :
+<<<<<<< HEAD
         data_directory = 'tests/mock_data/mock_results/adjust_H/'
+=======
+        data_directory = project_path + 'tests/mock_data/mock_results/adjust_H/'
+>>>>>>> branch_mock_system_1
     else :
         data_directory = project_path + 'tools/adjustH/'
 

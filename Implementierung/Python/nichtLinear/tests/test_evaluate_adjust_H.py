@@ -51,7 +51,11 @@ class test_evaluate_adjust_H(TestCase):
         if verbosity :
             plot_2_signals(Uout_ideal, Uout_measured, 'Uout_measured', 'Uout_ideal')
 
+<<<<<<< HEAD
         self.assertTrue(err < 0.068)
+=======
+        self.assertTrue(err < 0.07)
+>>>>>>> branch_mock_system_1
 
 
     def test_evaluate_adjust_H_1_step(self):
@@ -60,7 +64,11 @@ class test_evaluate_adjust_H(TestCase):
 
         err = linalg.norm(H_0.a - H_last.a) / linalg.norm(H_last.a)
 
+<<<<<<< HEAD
         verbosity = 0
+=======
+        verbosity = 1
+>>>>>>> branch_mock_system_1
         if verbosity :
             plot_2_transfer_functions(H_0, H_last, 'H_0', 'H_last')
 
