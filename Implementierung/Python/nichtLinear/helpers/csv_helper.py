@@ -77,7 +77,7 @@ def save_transfer_function(H, filename):
 
 def save_transfer_function_old_convention(H, directory, id ):
 
-    save_2cols(directory + '/Ha_' + str(id) + '.csv', H.f, H.a)
+    save_2cols(directory + 'Ha_' + str(id) + '.csv', H.f, H.a)
     save_2cols(directory + '/Hp_' + str(id) + '.csv', H.f, H.p)
     save_transfer_function(H, directory + '/H_' + str(id) + '.csv')
 

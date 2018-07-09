@@ -75,7 +75,7 @@ def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0)
         if use_mock_system:
 
             mock_system.write_to_AWG(Uin)
-            Uin_measured, Uout_measured = mock_system.read_from_DSO()
+            Uin_measured, Uout_measured = mock_system.read_from_DSO(sample_rate_DSO=sample_rate_DSO)
 
         else:
 
