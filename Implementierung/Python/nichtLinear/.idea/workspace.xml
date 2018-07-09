@@ -312,7 +312,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal">
+  <component name="RunManager" selected="Python.all_tezts">
     <configuration name="all_tezts" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -452,8 +452,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal" />
         <item itemvalue="Python.all_tezts" />
+        <item itemvalue="Python tests.Unittests for test_evaluate_with_BBsignal.test_evaluate_with_BBsignal" />
         <item itemvalue="Python.overlay" />
         <item itemvalue="Python tests.Unittests for test_compute_a_from_Uin_Uquest.test_compute_a_from_Uin_Uquest.test_compute_a_from_Uin_Uquest_300_jens" />
         <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our" />
