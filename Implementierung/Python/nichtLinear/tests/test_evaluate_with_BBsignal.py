@@ -7,7 +7,7 @@ from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
 from evaluate_with_BBsignal_adjust_H import evaluate_with_BBsignal_adjust_H
-from helpers.plot_helper import plot_two_signals
+from helpers.plot_helper import plot_2_signals, plot_2_transfer_function_amplitudes
 
 
 from helpers import overlay, signalHelper
@@ -34,20 +34,34 @@ import numpy as np
 
 class test_evaluate_with_BBsignal(TestCase):
 
+
     def __init__(self, *args, **kwargs):
         super(test_evaluate_with_BBsignal, self).__init__(*args, **kwargs)
 
-    def test_evaluate_with_BBsignal_low_amplitude(self):
+    # @unittest.skip("currently not relevant")
+    def test_evaluate_adjust_H_0_steps(self):
 
         Uout_ideal, Uout_measured = evaluate_with_BBsignal_adjust_H(num_iters=1)
 
-        # diff = linalg.norm(Uout_measured.in_V - Uout_ideal.in_V)
-        # nrm = linalg.norm(Uout_ideal.in_V)
-
         err = linalg.norm(Uout_measured.in_V - Uout_ideal.in_V) / linalg.norm(Uout_ideal.in_V)
 
-        plot_two_signals(Uout_ideal, Uout_measured, 'Uout_measured', 'Uout_ideal')
+        verbosity = 0
+        if verbosity :
+            plot_2_signals(Uout_ideal, Uout_measured, 'Uout_measured', 'Uout_ideal')
 
         self.assertTrue(err < 0.15)
+
+
+    def test_evaluate_adjust_H_1_step(self):
+
+        Uout_ideal, Uout_measured, H_0, H_last = evaluate_with_BBsignal_adjust_H(num_iters=5)
+
+        err = linalg.norm(H_0.a - H_last.a) / linalg.norm(H_last.a)
+
+        verbosity = 1
+        if verbosity :
+            plot_2_transfer_function_amplitudes(H_0, H_last, 'H_0', 'H_last')
+
+        self.assertTrue(err < 0.015)
 
 

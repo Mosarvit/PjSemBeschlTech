@@ -46,7 +46,7 @@ def evaluate():
     sample_rate_AWG_max = 2e8
     sample_rate_DSO = 9999e5
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG_max=sample_rate_AWG_max, verbosity=0)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
 
     H = measure_H(loadCSV=1, saveCSV=True, verbosity=0)
 
@@ -95,7 +95,7 @@ def evaluate():
 
         Uin = convert_mV_to_V(Uin_mV)
 
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sampleRateAWG, sampleRateDSO=sampleRateDSO, loadCSV=False, saveCSV=False, id=id, verbosity=1)
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sampleRateAWG, sample_rate_DSO=sampleRateDSO, loadCSV=False, saveCSV=False, id=id, verbosity=1)
         # Uin_measured = genfromtxt('data/current_data/Uin_2.csv', delimiter=',')
         # Uout_measured = genfromtxt('data/current_data/Uout_2.csv', delimiter=',')
         smlrt = 1 / ( Uout_measured[11,0] - Uout_measured[10,0] )

@@ -4,7 +4,7 @@
 """
 
 
-def write(signal, samplerateAWG, awg_volt):
+def write_to_AWG(signal, samplerateAWG, awg_volt):
 
     """
 

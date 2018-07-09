@@ -6,8 +6,6 @@ from helpers.signalHelper import find_nearest
 
 class signal_class :
 
-
-
     def __init__(self, time, signal_in_V):
 
         self.__orginal_signal_in_V = signal_in_V
@@ -77,6 +75,10 @@ class signal_class :
     def length(self):
         return len(self.time)
 
+    @property
+    def normalized(self):
+        return self.__signal_in_V / (max(self.__signal_in_V) - min(self.__signal_in_V) )
+
     @t_end.setter
     def t_end(self, t_end):
         self.__t_end = t_end
@@ -125,15 +127,6 @@ class signal_class :
 
         T = 1 / f
         indT = find_nearest(self.time, T + self.time[0])
-        signal_cut = signal_class( self.time[0:indT], self.in_V[0:indT])
+        signal_cut = signal_class( self.time[0:indT+1], self.in_V[0:indT+1])
 
         return signal_cut
-
-# U = np.array([ 0  ,  -2.25,  1.5 , 2 , 2   ])
-# sample_rate = 4
-# signal = signal_class(U, sample_rate)
-#
-# signal.sample_rate = 8
-# signal.sample_rate = 4
-#
-# a=1

@@ -5,7 +5,7 @@ import global_data
 from classes.signal_class import signal_class
 
 
-def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG_max=999900000, saveCSV=True, verbosity=False):
+def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=999900000, saveCSV=0, verbosity=0):
 
     """
     generate_BBsignal generiert ein ideales Barrie-Bucket-Signal nach den Vorgaben f_rep, f_BB, Vpp
@@ -28,7 +28,9 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG_max=999900000,
 
     """
 
-    num_points_rep = int(np.floor(sampleRateAWG_max / f_rep))
+    a = sample_rate_AWG_max / f_rep
+
+    num_points_rep = int(np.floor(sample_rate_AWG_max / f_rep))
 
     if num_points_rep % 2 == 0 :
         num_points_rep -= 1
@@ -43,10 +45,10 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sampleRateAWG_max=999900000,
 
 
 
-    sr = num_points_rep * f_rep
+    sr = ( (num_points_rep - 1 ) * f_rep )
     t0 = 1 / sr
 
-    T_rep = (num_points_rep - 1) * t0
+    T_rep = ( num_points_rep - 1 ) * t0
 
     T_BB = 1 / f_BB
     # t0 = (T_rep/(num_points_rep - 1))

@@ -71,12 +71,12 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
 
     # - ggf. Anpassen des Ausgangsbereiches und Ausgeben einer Meldung
     if uQuest_max > K[-1, 1]:
-        uQuest_max_ind = find_nearest(Uquest[:, 1], uQuest_max)
-        Uquest = Uquest [0:uQuest_max_ind, :]
+        uQuest_max_ind = find_nearest(Uquest.in_mV, uQuest_max)
+        Uquest = signal_class( Uquest.time[0:uQuest_max_ind],  Uquest.in_mV [0:uQuest_max_ind] )
         print("Uquest adapted to range of K: max Uquest too high for bijectiv curve")
     if uQuest_min < K[0, 1]:
-        uQuest_min_ind = find_nearest(Uquest[:, 1], uQuest_min)
-        Uquest = Uquest [uQuest_min_ind:-1, :]
+        uQuest_min_ind = find_nearest(Uquest.in_mV, uQuest_min)
+        Uquest = signal_class(Uquest.time[uQuest_min_ind:-1], Uquest.in_mV[uQuest_min_ind:-1])
         print("Uquest adapted to range of K: min Uquest too low for bijectiv curve")
 
     #setze Uin auf gleiche Groesse und gleiche Zeitwerte wie Uquest

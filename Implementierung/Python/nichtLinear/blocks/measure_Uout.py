@@ -4,18 +4,20 @@ Created on Thu Jul 13 11:22:44 2017
 
 @author: denys
 """
-from helpers import read_from_DSO, write_to_AWG
-import global_data
+from helpers.write_to_AWG import write_to_AWG
+import numpy as np
 import matplotlib.pyplot as plt
 from helpers.csvHelper import save_2cols
 from numpy import genfromtxt
 from helpers.signalHelper import assemble_signal
-from helpers.signalHelper import set_sample_rate
 from helpers.overlay import overlay
-from global_data import use_mock_system
+from helpers.read_from_DSO_resolution import read_from_DSO_resolution
+from classes.signal_class import signal_class
+from global_data import show_plots, use_mock_system, mock_system
+from helpers.plot_helper import plot_2_signals
+from helpers.csvHelper import save_signale
 
-
-def measure_Uout(Uin, sample_rate_AWG_max, id, loadCSV, saveCSV, verbosity):
+def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0):
 
     """
     compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
@@ -48,66 +50,45 @@ def measure_Uout(Uin, sample_rate_AWG_max, id, loadCSV, saveCSV, verbosity):
     # Local functions
     ####################################################################################################################
 
-    def sendUinToAWG(Uin):
-        Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
-        UinNormalized = Uin[:,1]/Vpp # todo : is it necessary to normalize Uin ?
-        write_to_AWG.write(UinNormalized, sample_rate_AWG_max, Vpp)  # Rückbage wird nicht benötigt
+    def send_Uin_to_AWG(Uin):
+        write_to_AWG(Uin.normalized, Uin.sample_rate, Uin.Vpp)  # Rückbage wird nicht benötigt
 
-    def receiveFromDSO(Uin):
+    def receive_from_DSO(Uin):
         fmax = 80e6
-        samplerateOszi = 1 * sample_rate_AWG_max
-        Vpp = max(Uin[:, 1]) - min(Uin[:, 1])
 
-        [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, Vpp, fmax, Uin[:, 1])
+        [time, dataUin, dataUout] = read_from_DSO_resolution(sample_rate_DSO, Uin.Vpp, fmax, Uin.in_V)
 
-        if saveCSV:
-            save_2cols('data/current_data/Uout_'+id+'.csv', time, dataUout)
-            save_2cols('data/current_data/Uin_' + id + '.csv', time, dataUin)
+        Uout_measured = signal_class(time, dataUout)
+        Uin_measured = signal_class(time, dataUin)
 
-        return(time, dataUin, dataUout)
+        return(Uin_measured, Uout_measured)
 
     ####################################################################################################################
     # Here the actual function begins.
     ####################################################################################################################
 
     if loadCSV :
-        Uout_measured = genfromtxt('data/current_data/Uout_'+id+'.csv', delimiter=',')
+        Uout_measured = genfromtxt('data/current_data/Uout_' +id+ '.csv', delimiter=',')
         Uin_measured = genfromtxt('data/current_data/Uin_' + id + '.csv', delimiter=',')
     else:
 
         if use_mock_system:
-            global_data.mock_system.write_to_AWG(Uin)
-            Uin_measured, Uout_measured = global_data.mock_system.read_from_DSO()
-        else:
-            Uin = set_sample_rate(Uin, sample_rate_AWG_max)
 
-            sendUinToAWG(Uin)
-            [time, dataUin, dataUout] = receiveFromDSO(Uin)
-            Uout_measured = assemble_signal(time, dataUout)
-            Uin_measured = assemble_signal(time, dataUin)
+            mock_system.write_to_AWG(Uin)
+            Uin_measured, Uout_measured = mock_system.read_from_DSO()
+
+        else:
+
+            send_Uin_to_AWG( Uin )
+            Uin_measured, Uout_measured  = receive_from_DSO(Uin)
+
+    if saveCSV:
+
+        save_signale(signal=Uin_measured, filename='data/current_data/Uin_' + id + '.csv')
+        save_signale(signal=Uout_measured, filename='data/current_data/Uout_' + id + '.csv')
 
     if verbosity:
-        fig = plt.figure(1)
-        plt.plot(Uout_measured[:,0], Uout_measured[:,1])
-        plt.title('Uout_measured')
-        plt.xlabel('t')
-        plt.ylabel('U')
-        if global_data.show_plots :
-            plt.show()
-        #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_measured.pdf')
-
-        _, Uin_measured_overlay = overlay(Uin_measured, Uin)
-
-        plt.figure(2)
-        plt.plot(Uin[:, 0], Uin[:, 1])
-        plt.plot(Uin_measured[:, 0], Uin_measured[:, 1])
-        plt.title('Uin vs. Uin_measured')
-        plt.xlabel('t')
-        plt.ylabel('U')
-        if global_data.show_plots:
-            plt.show()
- #       fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/UinVsUin_measured.pdf')
-
+        plot_2_signals(U1=Uin_measured, U2=Uout_measured, legend1='Uin_measured', legend2='Uout_measured')
 
     return(Uin_measured, Uout_measured)
 

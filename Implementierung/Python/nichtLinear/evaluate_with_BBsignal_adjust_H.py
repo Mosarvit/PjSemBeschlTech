@@ -16,7 +16,7 @@ from helpers.csvHelper import save_2cols
 from global_data import use_mock_system
 from classes.signal_class import signal_class
 from helpers.csvHelper import save_signale, save_transfer_function, save_transfer_function_old_convention
-from blocks import adjust_H
+from blocks.adjust_H import adjust_H
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
 from global_data import project_path
@@ -28,7 +28,7 @@ import numpy as np
 def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
 
     if use_mock_system :
-        data_directory = project_path + 'tools/adjustH'
+        data_directory = project_path + 'tools/adjustH/'
     else :
         data_directory = 'tests/mock_data/mock_results/'
 
@@ -39,9 +39,13 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
     sample_rate_AWG_max = 2e8
     sample_rate_DSO = 9999e5
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG_max=sample_rate_AWG_max, verbosity=0)
+    # f_rep = 2
+    # f_BB = 4
+    # sample_rate_AWG_max = 20
 
-    H = measure_H(loadCSV=0, saveCSV=0, verbosity=1)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
+
+    H = measure_H()
 
     # save initial H
 
@@ -49,7 +53,7 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
 
     # a = determine_a(H, Uout_ideal, f_rep, Uout_ideal.sample_rate)
 
-    a = determine_a(H, Uout_ideal, data_directory, f_rep)
+    a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory, f_rep)
 
     K = compute_K_from_a(a=a, verbosity=0)
 
@@ -57,7 +61,7 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
 
     Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K, verbosity=0)
 
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sample_rate_AWG_max, loadCSV=0, saveCSV=0, id='2', verbosity=0)
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO )
 
     for i in range(1, num_iters+1):
         id = str(i)
@@ -66,13 +70,12 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
 
         Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K, verbosity=0)
 
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=Uin.sample_rate,
-                                                   sampleRateDSO=sample_rate_DSO, loadCSV=0, saveCSV=0, id=id,
-                                                   verbosity=1)
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO )
 
         # begin cut just one period out of Uout_measured
 
-        Uout_measured = Uout_measured.cut_one_period (f_rep )
+        Uout_ideal = Uout_ideal.cut_one_period(f_rep)
+        Uout_measured = Uout_measured.cut_one_period ( f_rep )
         Uin_measured = Uin_measured.cut_one_period( f_rep )
 
         # save Uin and Uout
@@ -85,31 +88,31 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
         # quality = evaluate_signal('tools/csvDateien_K/Uout_' + id + '.csv', 'csvDateien_K/results_adjust_H.csv')
         sigma_H = 0.5
 
-        #        sampleRateAWG = Uout_measured.shape[0]
-        #        print(sampleRateAWG)
-        #        Uout_ideal_compute = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
-
-        H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=True)
+        H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
 
         save_transfer_function_old_convention(H, data_directory + 'Ha_' + id + '.csv', data_directory + 'Hp_' + id + '.csv')
 
-        plot_H_0_H_current(H, id)
+        plot_H_0_H_current(H, id, data_directory)
 
     # quality = test_evaluate()
 
     plot_H_1_H_0(data_directory)
 
-    return Uout_ideal, Uout_measured
+    H_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
+
+    return Uout_ideal, Uout_measured, H_0, H
 
 
-def plot_H_0_H_current(H, id):
-    Ha_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
-    plt.figure(1)
-    plt.plot(Ha_0.f, Ha_0.a, 'r', H.f, H.a, 'b')
-    plt.title('Runde 0 - rot, Runde ' + id + ' - blau')
-    plt.xlabel('f')
-    plt.ylabel('Ha')
-    plt.show()
+def plot_H_0_H_current(H, id, data_directory):
+    verbosity = 0
+    if verbosity:
+        H_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
+        plt.figure(1)
+        plt.plot(H_0.f, H_0.a, 'r', H.f, H.a, 'b')
+        plt.title('Runde 0 - rot, Runde ' + id + ' - blau')
+        plt.xlabel('f')
+        plt.ylabel('Ha')
+        plt.show()
 
 
 def plot_H_1_H_0(data_directory):
@@ -136,11 +139,11 @@ def plot_H_1_H_0(data_directory):
         plt.show()
 
 
-def determine_a(H, Uout_ideal, data_directory, f_rep):
+def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory, f_rep):
     Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
     Uin = copy(Uquest_ideal)
     Uin.Vpp = 0.3
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=Uquest_ideal.sample_rate, loadCSV=0, saveCSV=0, id='1',
+    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, loadCSV=0, saveCSV=0, id='1',
                                                verbosity=0)
     # save initial Data
     save_2cols(data_directory + 'Uin_0.csv', Uin_measured.time, Uin_measured.in_V)

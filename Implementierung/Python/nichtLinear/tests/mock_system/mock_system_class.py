@@ -1,10 +1,11 @@
-from helpers.csvHelper import read_in_transfer_function
+from helpers.csvHelper import read_in_transfer_function, read_in_transfer_function_old_convention
 from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class
-import global_data
+
 
 
 class mock_system_class :
+
 
     """
     mock_system is a class, that describes a mock system for unit and system tests
@@ -34,12 +35,14 @@ class mock_system_class :
         H.c = 2 * np.ones(5) + 3j * np.ones(5)
     """
     def __init__(self):
+        from global_data import mock_data_directory
+
         self.__Uin = None
         self.__Uin_measured = None
         self.__Uout_measured = None
         self.__Uin_real = None
         self.__Uout_real = None
-        self.__H = read_in_transfer_function(global_data.project_path + '/tests/mock_data/H_jens.csv')
+        self.__H = read_in_transfer_function_old_convention(mock_data_directory + '/adjustH/Messung3/Ha_0.csv', mock_data_directory + '/adjustH/Messung3/Ha_1.csv')
 
     # def get_Uout_from_Uin(self, Uin):
     #     self.__Uin = Uin
@@ -47,14 +50,21 @@ class mock_system_class :
     #     self.__Uout_measured = signal_class(self.__Uout_real.in_V*0.5, self.__Uout_real.sample_rate)
     #     return self.__Uout_measured
 
+    @property
+    def H(self):
+        return self.__H
+
     def write_to_AWG(self, Uin):
         self.__Uin = Uin
 
-        frequency = self.__Uin.sample_rate / len(self.__Uin.time)
+        frequency = self.__Uin.sample_rate / (self.__Uin.length - 1)
+
+        print('==================================================')
         print('Sending to AWG')
-        print('signal length : ' + str(len(self.__Uin.time) ))
+        # print('signal length : ' + str(len(self.__Uin.time) ))
         print('sample rate : ' + str(self.__Uin.sample_rate))
         print('frequency : ' + str(frequency))
+
 
     def read_from_DSO(self):
         self.__Uin_real = self.__Uin

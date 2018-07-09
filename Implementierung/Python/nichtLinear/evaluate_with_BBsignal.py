@@ -28,7 +28,7 @@ def evaluate_with_BBsignal(num_iters = 1) :
     sample_rate_AWG_max = 2e8
     sample_rate_DSO = 9999e5
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG_max=sample_rate_AWG_max, verbosity=0)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
 
     H = measure_H(loadCSV=0, saveCSV=0, verbosity=1)
     a = determine_a(H, Uout_ideal, f_rep, Uout_ideal.sample_rate)
