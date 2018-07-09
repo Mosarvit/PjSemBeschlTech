@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 from evaluate_with_BBsignal import evaluate_with_BBsignal
+from evaluate_with_BBsignal_adjust_H import evaluate_with_BBsignal_adjust_H
 from helpers.plot_helper import plot_two_signals
 
 
@@ -38,7 +39,7 @@ class test_evaluate_with_BBsignal(TestCase):
 
     def test_evaluate_with_BBsignal_low_amplitude(self):
 
-        Uout_ideal, Uout_measured = evaluate_with_BBsignal(use_mock_system=1)
+        Uout_ideal, Uout_measured = evaluate_with_BBsignal_adjust_H(num_iters=1)
 
         # diff = linalg.norm(Uout_measured.in_V - Uout_ideal.in_V)
         # nrm = linalg.norm(Uout_ideal.in_V)

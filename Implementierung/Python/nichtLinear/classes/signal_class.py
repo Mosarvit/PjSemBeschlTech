@@ -6,6 +6,8 @@ from helpers.signalHelper import find_nearest
 
 class signal_class :
 
+
+
     def __init__(self, time, signal_in_V):
 
         self.__orginal_signal_in_V = signal_in_V
@@ -70,6 +72,10 @@ class signal_class :
     @property
     def Vpp(self):
         return self.__Vpp
+
+    @property
+    def length(self):
+        return len(self.time)
 
     @t_end.setter
     def t_end(self, t_end):

@@ -1,8 +1,9 @@
 import csv
 from numpy import genfromtxt
-import numpy as np
+
 from classes.transfer_function_class import transfer_function_class
 from classes.signal_class import signal_class
+
 
 def save_2cols(filename, col1, col2):
 
@@ -43,7 +44,7 @@ def read_in_transfer_function(path):
     H.p = Ha[:, 2]
     return H
 
-def read_in_transfer_function_old(pathA, pathPh):
+def read_in_transfer_function_old_convention(pathA, pathPh):
     Ha = genfromtxt(pathA, delimiter=',')
     Hph = genfromtxt(pathPh, delimiter=',')
     H = transfer_function_class(Ha[:, 0])
@@ -80,6 +81,9 @@ def save_transfer_function_old_convention(H, filename_a, filename_p ):
     save_2cols(filename_p, H.p, H.a)
 
 def read_in_signal(file):
+
+
+
     U_old_convention = genfromtxt(file, delimiter=',')
     # sample_rate = int(np.round(1 / (U_old_convention[1, 0] - U_old_convention[0, 0])))
     # sample_rate = int(np.round((U_old_convention.shape[0] - 1) / (U_old_convention[-1, 0] - U_old_convention[0, 0])))

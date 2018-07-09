@@ -8,7 +8,7 @@ from blocks.measure_Uout import measure_Uout
 from helpers.signalHelper import convert_V_to_mV
 from helpers.signalHelper import convert_mV_to_V
 from helpers.signalHelper import setVpp
-from helpers.csvHelper import read_in_transfer_function
+from helpers.csvHelper import read_in_transfer_function, read_in_transfer_function_old_convention
 from global_data import project_path
 from classes.signal_class import signal_class
 from copy import copy
@@ -65,10 +65,9 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
 
         Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K, verbosity=0)
 
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sampleRateAWG,
-                                                   sampleRateDSO=sampleRateDSO, loadCSV=False, saveCSV=False, id=id,
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=Uin.sample_rate,
+                                                   sampleRateDSO=sample_rate_DSO, loadCSV=0, saveCSV=0, id=id,
                                                    verbosity=1)
-
 
         # begin cut just one period out of Uout_measured
 
@@ -77,7 +76,7 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
 
         # save Uin and Uout
         save_signale(Uin_measured, data_directory + 'Uin_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uin_' + id + '.csv')
+        save_signale(Uout_measured, data_directory + 'Uout_' + id + '.csv')
 
         if use_mock_system != 1:
             save_2cols('tools/csvDateien_K/Uout_' + id + '.csv', Uout_measured[:, 0], Uout_measured[:, 1])
@@ -89,25 +88,36 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
         #        print(sampleRateAWG)
         #        Uout_ideal_compute = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, verbosity=0)
 
-        H = adjust_H(H, np.transpose(Uout_ideal), Uout_measured, sigma_H=sigma_H,
-                     verbosity=True)  # transponiertes Uout_ideal???
+        H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=True)
 
         save_transfer_function_old_convention(H, data_directory + 'Ha_' + id + '.csv', data_directory + 'Hp_' + id + '.csv')
 
-        Ha_0 = genfromtxt(data_directory + 'Ha_0.csv', delimiter=',')
-        # Ha_1 = genfromtxt('tools/adjustH/H_a_1.csv', delimiter=',')
-        fig = plt.figure(1)
-        plt.title('Runde 0 - rot, Runde ' + id + ' - blau')
-        plt.xlabel('f')
-        plt.ylabel('Ha')
-        plt.show()
+        plot_H_0_H_current(H, id)
+
     # quality = test_evaluate()
 
-    verbosity = False
+    plot_H_1_H_0(data_directory)
+
+    return Uout_ideal, Uout_measured
+
+
+def plot_H_0_H_current(H, id):
+    Ha_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
+    plt.figure(1)
+    plt.plot(Ha_0.f, Ha_0.a, 'r', H.f, H.a, 'b')
+    plt.title('Runde 0 - rot, Runde ' + id + ' - blau')
+    plt.xlabel('f')
+    plt.ylabel('Ha')
+    plt.show()
+
+
+def plot_H_1_H_0(data_directory):
+    verbosity = 0
     if verbosity:
         Ha_0 = genfromtxt(data_directory + 'Ha_0.csv', delimiter=',')
         Ha_1 = genfromtxt(data_directory + 'Ha_1.csv', delimiter=',')
-        fig = plt.figure(1)
+
+        plt.figure(1)
         plt.plot(Ha_0[:, 0], Ha_0[:, 1], 'r', Ha_1[:, 0], Ha_1[:, 1], 'b')
         plt.title('Runde 1 - rot, Runde 3 - blau')
         plt.xlabel('f')
@@ -117,21 +127,12 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
         if use_mock_system != 1:
             Uout_measured1 = genfromtxt('tools/csvDateien_K/Uout_1.csv', delimiter=',')
             Uout_measured10 = genfromtxt('tools/csvDateien_K/Uout_3.csv', delimiter=',')
-        fig = plt.figure(1)
+        plt.figure(1)
         plt.plot(Uout_measured1[:, 0], Uout_measured1[:, 1], 'r', Uout_measured10[:, 0], Uout_measured10[:, 1], 'b')
         plt.title('Runde 1 - rot, Runde 3 - blau')
         plt.xlabel('t')
         plt.ylabel('U')
         plt.show()
-
-    return Uout_ideal, Uout_measured
-
-
-
-
-
-
-
 
 
 def determine_a(H, Uout_ideal, data_directory, f_rep):

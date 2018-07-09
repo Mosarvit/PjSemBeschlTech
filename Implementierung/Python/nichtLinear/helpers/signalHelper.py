@@ -3,6 +3,7 @@ from scipy.interpolate import interp1d
 import copy
 from helpers.find_nearest import find_nearest
 
+
 def setVpp(signal, Vpp):
     """
     setVpp setzt die Spitze-zu-Spitze Amplitude eines Signals
@@ -102,9 +103,14 @@ def assemble_signal(time_vector, signal_vector):
 
 def generateSinSum(fqAmp, t):
 
+    from classes.signal_class import signal_class
+
     rg = range(fqAmp.shape[0])
     signal = np.zeros([len(t),2])
     signal[:,0] = t
     for ind in rg:
         signal[:,1] += fqAmp[ind, 1] * np.sin(fqAmp[ind, 0] * t)
-    return signal
+
+    signal_obj = signal_class.gen_signal_from_old_convention(signal[:,0], signal[:,1])
+
+    return signal_obj
