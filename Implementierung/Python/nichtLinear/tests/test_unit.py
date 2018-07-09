@@ -7,11 +7,12 @@ from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
+from blocks.generate_BBsignal import generate_BBsignal
 import matplotlib.pyplot as plt
 
 from helpers import overlay, signalHelper
 from helpers.signalHelper import generateSinSum
-from helpers.csvHelper import read_in_transfer_function
+from helpers.csvHelper import read_in_transfer_function, read_in_transfer_function_old
 from adts.transfer_function import transfer_function
 
 import numpy as np
@@ -224,7 +225,7 @@ class test_unit(TestCase):
         err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
         self.assertTrue(err < 0.001)
 
-    def test_adjust_H(self):
+    def test_adjust_H_sinus(self):
 
         """
         if
@@ -242,19 +243,69 @@ class test_unit(TestCase):
         factor = 2
         Hneu_ideal.a = Halt.a * ( 1 + ( ( factor - 1 ) * sigma_H ) )
         Hneu_ideal.p = Halt.p
-
-        t = np.linspace(0, 1e-5, 1000)
-        # Do not change Signal because for about used formular signal has to contain every frequency possible
+        #Tmax = 3e-6 # will not suceed: too little frequencies in spectrum of Uout_ideal
+        Tmax = 3e-7 # will suceed: wide frequencie range in spectrum of Uout_ideal
+        F_sample = 4*Halt.f[-1]
+        N = int(np.ceil(Tmax*F_sample))
+        print(N)
+        t = np.linspace(0, Tmax, N)
+        print('delta t' + str(t[1]-t[0]))
+        # Do not change Signal because for above used formula signal has to contain every frequency possible
         Uout_ideal = generateSinSum(np.array([[1, 4 ],  [2, 6 ],  [3, 10 ]]), t)
         Uout_measured = np.zeros((Uout_ideal.shape[0], 2))
         Uout_measured[:, 0] = Uout_ideal[:, 0]
         Uout_measured[:,1] = [x*factor for x in Uout_ideal[:, 1]]
 
-        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
+        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=True)
 
+
+        # this will never work: see plots, range of frequencies in signals is to low because of too little number of points
         err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
 
         self.assertTrue(err < 0.001) # we allow an error of 0.1% for the start, but it should be better
+
+    def test_adjust_H (self):
+
+        """
+                if
+                  Uout_ideal is a BB Signal
+                  Uout_measured = 2 * Uout_ideal
+                  sigma_H = 0.5,
+                than
+                  Hneu.a = Halt.a * 1.5
+                but:
+                """
+        # Initialization
+        factor = 2
+        sigma_H = 0.5
+        # initalize BB signal
+        sampleRateDSO = 999900000
+        f_rep = 900e3
+        sampleRateAWG = 223 * f_rep
+        f_BB = 5e6
+        Vpp = 0.3
+        Uout_ideal = np.transpose(
+            generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sampleRateAWG=sampleRateAWG, saveCSV=False, verbosity=0))
+
+        Halt = read_in_transfer_function_old(fixPath + 'data/adjustH/Messung2/Ha_0.csv', fixPath + 'data/adjustH/Messung2/Hp_0.csv')
+        Hneu_ideal = transfer_function(Halt.f)
+        Hneu_ideal.a = Halt.a * (1 + sigma_H*(factor - 1))
+        Hneu_ideal.p = Halt.p
+
+        # to illustrate function of adjust_H: testcase 1 to run (and finish) test, 2 to show plots of adjusting calculated H
+        testcase = 2
+        if testcase == 1:
+            Uout_measured = np.zeros((Uout_ideal.shape[0], 2))
+            Uout_measured[:, 0] = Uout_ideal[:, 0]
+            Uout_measured[:, 1] = [x * 2 for x in Uout_ideal[:, 1]]
+        else:
+            ## to show pictures of first step of adjust_H in real application instead of testing
+            Uout_measured = genfromtxt(fixPath + 'data/adjustH/Messung2/Uout_1.csv', delimiter=',')
+
+        Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=True)
+
+        err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
+        self.assertTrue(err < 0.00001)  # we allow an error of 0.1% for the start, but it should be better
 
 
     def test_adjust_a(self):
