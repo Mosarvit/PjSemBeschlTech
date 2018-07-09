@@ -43,8 +43,8 @@ def evaluate_with_BBsignal_adjust_H(num_iters = 1) :
     H = measure_H(loadCSV=0, saveCSV=0, verbosity=1)
 
     # save initial H
-    save_2cols(data_directory + 'Ha_0.csv', H.f, H.a)
-    save_2cols(data_directory + 'Hp_0.csv', H.f, H.p)
+
+    save_transfer_function_old_convention(H=H, filename_a=data_directory + 'Ha_0.csv', filename_p= data_directory + 'Hp_0.csv')
 
     # a = determine_a(H, Uout_ideal, f_rep, Uout_ideal.sample_rate)
 
