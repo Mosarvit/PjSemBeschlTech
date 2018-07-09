@@ -2,56 +2,137 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/blocks/loop_adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uquest_from_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/determine_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/determine_a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/generate_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/generate_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/measure_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/measure_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/measure_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/signal_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/signal_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_adjust_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_adjust_a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal_adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/csvHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/csv_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/plot_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/plot_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/signalHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/signal_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/mock_system/mock_system_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_system/mock_system_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_adjust_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_adjust_a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_apply_transfer_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_apply_transfer_function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_compute_K_from_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_compute_K_from_a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_compute_Uquest_from_Uout.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_compute_Uquest_from_Uout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_compute_a_from_Uin_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_compute_a_from_Uin_Uquest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_evaluate_adjust_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_get_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_get_H.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_mock_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_mock_system.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_set_sample_rate.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_set_sample_rate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/global_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/H_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/H_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/H_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/H_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/H_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/H_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Ha_0.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Ha_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Ha_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Ha_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Ha_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Ha_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_13.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_14.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_15.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_16.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_17.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_18.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_19.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_21.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_22.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_23.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_24.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_25.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_26.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_27.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_28.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_29.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_30.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Ha_9.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Hp_0.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Hp_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Hp_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Hp_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Hp_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Hp_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_13.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_14.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_15.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_16.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_17.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_18.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_19.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_21.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_22.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_23.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_24.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_25.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_26.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_27.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_28.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_29.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_30.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Hp_9.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uin_0.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uin_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uin_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uin_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uin_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uin_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_13.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_14.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_15.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_16.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_17.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_18.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_19.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_21.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_22.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_23.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_24.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_25.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_26.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_27.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_28.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_29.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_30.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uin_9.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uout_0.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uout_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uout_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uout_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uout_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tools/adjustH/Uout_5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/test_evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/test_evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_13.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_14.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_15.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_16.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_17.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_18.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_19.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_21.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_22.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_23.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_24.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_25.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_26.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_27.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_28.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_29.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_30.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/adjustH/Uout_9.csv" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,23 +175,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="matrices.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Anaconda3/pkgs/sympy-1.1.1-py36h96708e0_0/Lib/site-packages/sympy/matrices/matrices.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="3348" column="8" selection-start-line="3348" selection-start-column="8" selection-end-line="3348" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evaluate_adjust_H.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="evaluate_adjust_H.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="-51">
               <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="global_data.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/global_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -269,7 +350,6 @@
         <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
         <option value="$PROJECT_DIR$/helpers/csvHelper.py" />
         <option value="$PROJECT_DIR$/helpers/signalHelper.py" />
-        <option value="$PROJECT_DIR$/global_data.py" />
         <option value="$PROJECT_DIR$/blocks/measure_Uout.py" />
         <option value="$PROJECT_DIR$/blocks/measure_H.py" />
         <option value="$PROJECT_DIR$/helpers/find_nearest.py" />
@@ -290,6 +370,7 @@
         <option value="$PROJECT_DIR$/blocks/determine_a.py" />
         <option value="$PROJECT_DIR$/blocks/loop_adjust_H.py" />
         <option value="$PROJECT_DIR$/evaluate_adjust_H.py" />
+        <option value="$PROJECT_DIR$/global_data.py" />
       </list>
     </option>
   </component>
@@ -329,23 +410,6 @@
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
               <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="mock_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="mock_system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -591,7 +655,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.171875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.171875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
@@ -600,7 +664,7 @@
       <window_info anchor="bottom" id="Python Console" order="8" />
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.328341" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.46145722" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.46145722" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -907,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/mock_system/mock_system_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
@@ -1034,11 +1091,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="-51">
           <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
         </state>
       </provider>
     </entry>
