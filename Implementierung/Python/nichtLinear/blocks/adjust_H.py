@@ -149,7 +149,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # to reduce WHITE NOISE attempt 2:
     # cut high amplifying ratios (over RMS)
-    use_rms = False
+    use_rms = True
     # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
     rms = np.sqrt(np.mean(np.square(ratio_abs)))
@@ -179,13 +179,16 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
         plt.subplot(2, 3, 4)
         plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
+        plt.xlim((0, np.max(Halt.f)))
+        plt.ylim((-rms*3, 3*rms))
         plt.subplot(2, 3, 4)
         plt.plot(Halt.f, ratio_abs, 'b')
+        plt.xlim((0, np.max(Halt.f)))
+        plt.ylim((-rms*3, 3*rms))
         plt.title('Absratio Umeas / Uideal -1')
         plt.xlabel('f')
         plt.ylabel('ratio')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((-rms*3, 3*rms))
+
         # if use_rms:
         #     plt.subplot(2, 3, 4)
         #     plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
