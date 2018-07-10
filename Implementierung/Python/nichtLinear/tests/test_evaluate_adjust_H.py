@@ -5,7 +5,6 @@ from scipy import linalg
 import matplotlib.pyplot as plt
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
-from evaluate_with_BBsignal import evaluate_with_BBsignal
 from evaluate_adjust_H import evaluate_adjust_H
 from helpers.plot_helper import plot_2_signals, plot_2_transfer_functions
 
@@ -41,7 +40,7 @@ class test_evaluate_adjust_H(TestCase):
     # @unittest.skip("currently not relevant")
     def test_evaluate_adjust_H_0_steps(self):
 
-        Uout_ideal, Uout_measured, _, _ = evaluate_adjust_H(num_iters=1)
+        Uout_ideal, Uout_measured, _, _ = evaluate_adjust_H(num_iters=1, low_amplitude=1)
 
         Uout_measured = overlay(Uout_measured, Uout_ideal)
 
@@ -56,7 +55,7 @@ class test_evaluate_adjust_H(TestCase):
 
     def test_evaluate_adjust_H_1_step(self):
 
-        Uout_ideal, Uout_measured, H_0, H_last = evaluate_adjust_H(num_iters=5)
+        Uout_ideal, Uout_measured, H_0, H_last = evaluate_adjust_H(num_iters=15, low_amplitude=0)
 
         err = linalg.norm(H_0.a - H_last.a) / linalg.norm(H_last.a)
 

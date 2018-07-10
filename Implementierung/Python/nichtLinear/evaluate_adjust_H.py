@@ -27,7 +27,7 @@ from blocks.determine_a import determine_a
 import numpy as np
 
 
-def evaluate_adjust_H(num_iters = 1) :
+def evaluate_adjust_H(num_iters = 1, low_amplitude = 0) :
 
     if use_mock_system :
         data_directory = project_path + 'tests/mock_data/mock_results/adjust_H/'
@@ -49,9 +49,11 @@ def evaluate_adjust_H(num_iters = 1) :
     save_transfer_function_old_convention(H=H, directory=data_directory, id = '0' )
 
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
+
+
     K = compute_K_from_a(a=a, verbosity=0)
 
-    H, Uout_measured = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO)
+    H, Uout_measured = loop_adjust_H( H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO, low_amplitude )
 
     H_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
 
