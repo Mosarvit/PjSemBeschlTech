@@ -55,18 +55,19 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         raise TypeError('Uncorrect function call of adjust_H with Halt no instance of class transfer_funtion')
 
     # if verbosity:
-    #     delta_t_meas = (Uout_measured[1,0] - Uout_measured[0,0])
-    #     delta_t_id = (Uout_ideal[1,0] - Uout_ideal[0,0])
-    #     print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+    #     delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
+    #     delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
+    #     #print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
     #     fig = plt.figure()
     #     # Plot Spannungen
-    #     plt.scatter(Uout_ideal[:, 0], Uout_ideal[:, 1], c='r', marker=".")
-    #     plt.scatter(Uout_measured[:, 0], Uout_measured[:, 1], c='b', marker=".")
+    #     plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
+    #     plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
     #     plt.title('Uout_ideal - rot, Uout_meas - blau')
     #     plt.xlabel('t')
     #     plt.ylabel('U')
-    #     plt.suptitle('Number of points: ' + str(len(Uout_ideal[:, 0])) + ' ideal, ' + str(len(Uout_measured[:, 0])) + ' meas')
-    #     plt.xlim((Uout_ideal[0,0], Uout_ideal[-1, 0]))
+    #     plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
+    #     plt.suptitle('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+    #     plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
     #     plt.show()
 
     # calculate Spectrum:
@@ -106,8 +107,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # to reduce WHITE NOISE: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
-    ratio_ideal = 3e-3
-    ratio_meas = 3e-3
+    ratio_ideal = 0#3e-3
+    ratio_meas = 0#3e-3
     # find indices to set to default:
     idx_clear_Id = np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id)))[0]
     idx_clear_Meas = np.where(abs(spectrum_Meas) <= ratio_meas * np.max(abs(spectrum_Meas)))[0]
@@ -148,7 +149,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # to reduce WHITE NOISE attempt 2:
     # cut high amplifying ratios (over RMS)
-    use_rms = True
+    use_rms = False
     # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
     rms = np.sqrt(np.mean(np.square(ratio_abs)))
