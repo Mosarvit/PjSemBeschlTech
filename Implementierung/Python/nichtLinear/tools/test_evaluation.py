@@ -7,26 +7,6 @@ from tools.singlesine_SineRef import SineRef
 from tools.singlesine_Verzerrungszahlen import Verzerrungszahlen
 from tools.singlesine_save_results import save
 
-# dateiName='csvDateien_K/Messung_060_TD_y_1.csv'
-# signal_output='Signal_output.csv'
-# fBB='5e6'
-# frev='9e5'
-# csv='1'
-# #Testing singlesine_Signal
-# python singlesine_Signal.py -i $dateiName -o $signal_output -frev $frev -fBB $fBB --debug
-#
-# #Testing singlesine_SineRef
-# sineref_output='SineRef_output.csv'
-# python singlesine_SineRef.py -i $signal_output -o $sineref_output -frev $frev -fBB $fBB -csv $csv --debug
-#
-# #Testing singlesine_Verzerrungszahlen
-# verzerrungszahlen_output='verzerrungszahlen_output.csv'
-# python singlesine_Verzerrungszahlen.py -i $dateiName -signal $signal_output -ref $sineref_output -o $verzerrungszahlen_output -frev $frev -fBB $fBB -csv $csv --debug
-#
-#
-# # Testing singlesine_save_results
-# python singlesine_save_results.py -i $verzerrungszahlen_output -u '0' -o 'results.csv'
-
 
 
 def test_evaluate():
@@ -40,25 +20,32 @@ def test_evaluate():
 
     OUTPUT:
 
-        quality - skalar; results of the tool
+        quality - skalar; result of the tool
 
     """
-    fBB='5e6'
-    frev='9e5'
-    csv = '1'
+    fBB = 5e6
+    frev = 9e5
+    csv = 1
+
+    # Die Parameterübergabe ist noch nicht optimal
 
     for i in range(1,4):
         id = str(i)
         Uout_filename = 'csvDateien_K/Uout_' + id + '.csv'
         results_filename = 'csvDateien_K/results.csv'
-        print(1)
         signal_output = Signal(dateiName=Uout_filename, frev=frev, fBB=fBB)
 
-        sineref_output = SineRef(frev=frev, fBB=fBB, signal_output=signal_output, csv=csv)
+        dataPointsSignal, Vorzeichen, Startindex = signal_output[0:3]
+        sineref_output = SineRef(frev=frev, fBB=fBB, dataPointsSignal=dataPointsSignal, Vorzeichen=Vorzeichen, Startindex=Startindex)
 
-        verzerrungszahlen_output = Verzerrungszahlen(dataPointsRef=sineref_output, dataPointsSignal=signal_output)
-        # quality aus verzerrungszahlen_output raus lesen!!!
-        print(verzerrungszahlen_output)
-        save(Ueberschreiben='0', verzerrungszahlen_output=verzerrungszahlen_output, output_file=results_filename)
+        flag = 'csvDateien_K/Uout_' + id + '.csv'
+        dataPointsRef, PointsPulse, PulseOn, PulseA, PulseP = sineref_output[0:5]
+        verzerrungszahlen_output = Verzerrungszahlen(dataPointsRef=dataPointsRef, dataPointsSignal=dataPointsSignal, PulseOn=PulseOn, PointsPulse=PointsPulse,
+                                                     PulseA=PulseA, PulseP=PulseP, frev=frev, fBB=fBB, flag=flag)
+
+        # quality aus verzerrungszahlen_output raus lesen!
+        # print(verzerrungszahlen_output)
+        # save(Ueberschreiben=0, input_file =verzerrungszahlen_output, output_file=results_filename)
     quality = 0
     return (quality)
+test_evaluate()
