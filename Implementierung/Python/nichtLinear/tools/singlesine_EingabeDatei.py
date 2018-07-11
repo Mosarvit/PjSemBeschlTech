@@ -2,7 +2,7 @@
 #@author: Mohamed Ghanmi
 from __future__ import division
 import sys ,os, colorama, argparse
-from singlesine_Bewertung import Bewertung
+from tools.singlesine_Bewertung import Bewertung
 
 import pandas as pd
 version_string = 'Rev. 0.0.1, 06.06.2018'

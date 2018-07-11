@@ -3,7 +3,7 @@
 from __future__ import division
 
 version_string = 'Rev. 0.0.3, 15.06.2018'
-import rftools_bcf
+import tools.rftools_bcf
 import pandas as pd
 from pandas import read_csv
 import numpy as np
@@ -11,7 +11,7 @@ from numpy import fft
 import scipy.optimize
 import sys, os, glob, argparse, colorama, time
 import matplotlib.pyplot as plt
-from singlesine_Signal import pad
+from tools.singlesine_Signal import pad
 
 # Documentation data for Doxygen
 ## @package singlesine_SineRef.py

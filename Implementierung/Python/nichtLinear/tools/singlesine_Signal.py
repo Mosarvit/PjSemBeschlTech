@@ -4,7 +4,7 @@ from __future__ import division
 
 version_string = 'Rev. 0.0.4, 19.06.2018'
 
-import rftools_bcf
+import tools.rftools_bcf
 import pandas as pd
 from pandas import read_csv
 import numpy as np
@@ -81,6 +81,17 @@ def Einlesen (dateiName,folderName,SingleSine):
 			t_Sample = float(SingleSine.values[0,1])
 			TriggerPoint = float(SingleSine.values[1,1])
 			HOffset = float(SingleSine.values[4,1])
+			tShift = t - HOffset
+
+		if folderName != "csvDateien_K" or folderName != "csvDateien_M":
+
+			t = SingleSine.values[:,0]
+			t = np.insert(t, 0, key2float(np.array(SingleSine.keys())[0]), axis=0)
+			messignal = SingleSine.values[:,1]
+			messignal = np.insert(messignal, 0, key2float(np.array(SingleSine.keys())[1]), axis=0)
+			# Einlesen der Messinformationen
+			t_Sample = t[1] - t[0]
+			HOffset = t[0]
 			tShift = t - HOffset
 	else:
 		shape = SingleSine.shape

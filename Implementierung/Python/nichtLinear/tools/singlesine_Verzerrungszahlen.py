@@ -3,7 +3,7 @@
 from __future__ import division
 
 version_string = 'Rev. 0.0.4, 21.06.2018'
-import rftools_bcf
+import tools.rftools_bcf
 import pandas as pd
 from pandas import read_csv
 import numpy as np
@@ -11,7 +11,7 @@ import os, sys, glob, argparse, colorama, time
 from math import ceil,floor
 import matplotlib.pyplot as plt
 
-from singlesine_Signal import Einlesen
+from tools.singlesine_Signal import Einlesen
 
 
 # Documentation data for Doxygen
@@ -55,12 +55,16 @@ def Verzerrungszahlen(dataPointsRef,dataPointsSignal,PulseOn,PointsPulse,PulseA,
 	if not folder_exists:
 		os.makedirs("Bilder")
 
-
 	foldername = ""
 	if "/" in flag:
+		list = flag.split("/")
 		foldername = flag.split("/")[0]
-		flag = flag.split("/")[-1]
+		N = len(list)
+		if N > 2:
+			for i in range(1, N - 1):
+				foldername = foldername + '/' + list[i]
 
+		flag = flag.split("/")[-1]
 
 	nameBild ='Bilder/AbbildungTD_1P_' + str(flag)
 
