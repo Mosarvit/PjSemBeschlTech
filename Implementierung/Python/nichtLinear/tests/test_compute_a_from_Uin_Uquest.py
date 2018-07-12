@@ -5,7 +5,6 @@ from scipy import linalg
 import matplotlib.pyplot as plt
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
-from evaluate_with_BBsignal import evaluate_with_BBsignal
 
 from helpers import overlay, signal_helper
 from helpers.csv_helper import read_in_signal

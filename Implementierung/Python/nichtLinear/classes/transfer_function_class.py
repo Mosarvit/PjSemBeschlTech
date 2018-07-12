@@ -22,13 +22,13 @@ class transfer_function_class :
 
     Example of initializing a transfer_function with amplitude and phaseshift:
         f = np.array([1,2,3,4,5])
-        H = transfer_function(f)
+        H = transfer_function_class(f)
         H.a = 2*np.ones([5])
         H.p = 3*np.ones([5])
 
     Example of initializing a transfer_function as complex transfer function:
         f = np.array([1,2,3,4,5])
-        H = transfer_function(f)
+        H = transfer_function_class(f)
         H.c = 2 * np.ones(5) + 3j * np.ones(5)
     """
     def __init__(self, frequency):

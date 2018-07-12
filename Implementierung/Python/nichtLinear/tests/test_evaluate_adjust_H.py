@@ -5,7 +5,6 @@ from scipy import linalg
 import matplotlib.pyplot as plt
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
-from evaluate_with_BBsignal import evaluate_with_BBsignal
 from evaluate_adjust_H import evaluate_adjust_H
 from helpers.plot_helper import plot_2_signals, plot_2_transfer_functions
 
@@ -60,7 +59,7 @@ class test_evaluate_adjust_H(TestCase):
 
         err = linalg.norm(H_0.a - H_last.a) / linalg.norm(H_last.a)
 
-        verbosity = 0
+        verbosity = 1
 
         if verbosity :
             plot_2_transfer_functions(H_0, H_last, 'H_0', 'H_last')

@@ -5,7 +5,6 @@ from scipy import linalg
 import matplotlib.pyplot as plt
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
-from evaluate_with_BBsignal import evaluate_with_BBsignal
 
 from helpers.overlay import overlay
 from helpers.signal_helper import generateSinSum

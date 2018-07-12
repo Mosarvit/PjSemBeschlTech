@@ -148,10 +148,16 @@ class signal_class :
         signal = signal_class(time, signal)
         return signal
 
-    def cut_one_period(self, f):
+    def cut_one_period(self, f, shift=0):
 
         T = 1 / f
         indT = find_nearest(self.time, T + self.time[0])
-        signal_cut = signal_class( self.time[0:indT+1], self.in_V[0:indT+1])
+        b=indT
+        signal_cut = signal_class( self.time[0:indT+1], self.in_V[shift:shift+indT+1])
+        a0 = len(signal_cut.in_V)
+        c0 = len(signal_cut.time)
+        a1 = len(self.in_V)
+        c1 = len(self.time)
+#        signal_cut = signal_class( self.time[0:indT+1], self.in_V[0:indT+1])
 
         return signal_cut

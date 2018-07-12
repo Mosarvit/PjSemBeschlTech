@@ -54,21 +54,22 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     if not isinstance(Halt, transfer_function_class):
         raise TypeError('Uncorrect function call of adjust_H with Halt no instance of class transfer_funtion')
 
-    # if verbosity:
-    #     delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
-    #     delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
-    #     #print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
-    #     fig = plt.figure()
-    #     # Plot Spannungen
-    #     plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
-    #     plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
-    #     plt.title('Uout_ideal - rot, Uout_meas - blau')
-    #     plt.xlabel('t')
-    #     plt.ylabel('U')
-    #     plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
-    #     plt.suptitle('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
-    #     plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
-    #     plt.show()
+    if verbosity:
+        delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
+        delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
+        #print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+        fig = plt.figure()
+        # Plot Spannungen
+        plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
+        plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
+        plt.title('Uout_ideal - rot, Uout_meas - blau')
+        plt.xlabel('t')
+        plt.ylabel('U')
+        plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
+        plt.suptitle('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+        plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
+        plt.show()
+     
 
     # calculate Spectrum:
     frequencies_Id, spectrum_Id = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
@@ -107,8 +108,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # to reduce WHITE NOISE: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
-    ratio_ideal = 0#3e-3
-    ratio_meas = 0#3e-3
+    ratio_ideal = 0#5e-3
+    ratio_meas = 0#5e-3
     # find indices to set to default:
     idx_clear_Id = np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id)))[0]
     idx_clear_Meas = np.where(abs(spectrum_Meas) <= ratio_meas * np.max(abs(spectrum_Meas)))[0]
@@ -146,10 +147,12 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # better Attempt: calculate separately for amplitude and angle
     ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
     diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
+    
+    
 
     # to reduce WHITE NOISE attempt 2:
     # cut high amplifying ratios (over RMS)
-    use_rms = False
+    use_rms = True
     # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
     rms = np.sqrt(np.mean(np.square(ratio_abs)))
@@ -162,62 +165,80 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         if not (len(idx_clear) == len(ratio_abs)):  # check for simple signals with Uout_Id = multiple Uout_Meas
             ratio_abs[idx_clear] = np.zeros(len(idx_clear))
             diff_angle[idx_clear] = np.zeros(len(idx_clear))
+            
+    H = transfer_function_class(Halt.f)
+    H.a = ratio_abs
+    H.p = diff_angle
+    H_id = transfer_function_class(frequencies_Id)
+    H_id.c = spectrum_Id
+    H_Meas = transfer_function_class(frequencies_Meas)
+    H_Meas.c = spectrum_Meas
 
-    Hneu.a = Halt.a * (1 + sigma_H * ratio_abs)
-    Hneu.p = Halt.p + sigma_H * diff_angle
+    Hneu.a = Halt.a * (1 - sigma_H * H.a)
+    Hneu.p = Halt.p #- sigma_H * H.p
+  
 
     if verbosity:
         fig = plt.figure(1)
         # Plot Magnitudes:
-        plt.subplot(2, 3, 1)
-        plt.plot(frequencies_Id, abs(spectrum_Id), 'r', frequencies_Meas, abs(spectrum_Meas), 'b')
-        plt.title('ABS(FFT): Ideal rot, Meas blau')
-        plt.xlabel('f')
-        plt.ylabel('Ampl')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((0, 1e-3))
-
-        plt.subplot(2, 3, 4)
-        plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms * np.ones(len(Halt.f)), 'r')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((-rms * 3, 3 * rms))
-        plt.subplot(2, 3, 4)
-        plt.plot(Halt.f, ratio_abs, 'b')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((-rms * 3, 3 * rms))
-        plt.title('Absratio Umeas / Uideal -1')
-        plt.xlabel('f')
-        plt.ylabel('ratio')
+            
+            #plot gsi
+        #plt.subplot(2, 3, 1)
+#        plt.plot(frequencies_Id, abs(spectrum_Id), 'r', frequencies_Meas, abs(spectrum_Meas), 'b')
+#        plt.title('ABS(FFT): Ideal rot, Meas blau')
+#        plt.xlabel('f')
+#        plt.ylabel('Ampl')
+#        plt.xlim((0, np.max(Halt.f)))
+#        plt.ylim((0, 1e-3))
+#        plt.show()
+#
+#       # plt.subplot(2, 3, 4)
+#        plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms * np.ones(len(Halt.f)), 'r')
+#        #plt.xlim((0, np.max(Halt.f)))
+#        #plt.ylim((-rms * 3, 3 * rms))
+#        
+#        #plt.subplot(2, 3, 4)
+#        plt.plot(Halt.f, ratio_abs, 'b')
+#        plt.xlim((0, np.max(Halt.f)))
+#        plt.ylim((-rms * 3, 3 * rms))
+#        plt.title('Absratio Umeas / Uideal -1')
+#        plt.xlabel('f')
+#        plt.ylabel('ratio')
+#        plt.show()
 
         # if use_rms:
         #     plt.subplot(2, 3, 4)
         #     plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
         #     plt.xlim((0, np.max(Halt.f)))
 
-        plt.subplot(2, 3, 2)
+        #plt.subplot(2, 3, 2)
         plt.plot(Halt.f, Halt.a, 'r', Hneu.f, Hneu.a, 'b')
         plt.title('Abs(H): alt rot - neu blau')
         plt.xlabel('f')
         plt.ylabel('Magnitude')
         plt.xlim((0, np.max(Halt.f)))
+        plt.show()
 
-        plt.subplot(2, 3, 3)
-        plt.plot(frequencies_Id, np.angle(spectrum_Id), 'r', frequencies_Meas, np.angle(spectrum_Meas), 'b')
+#        plt.subplot(2, 3, 3)
+        plt.plot(frequencies_Id, H_id.p, 'r', frequencies_Meas, H_Meas.p, 'b')
         plt.title('ANGLE(FFT): Ideal rot - Meas blau')
         plt.xlabel('f')
         plt.ylabel('Angle')
         plt.xlim((0, np.max(Halt.f)))
+        plt.ylim((-50, 50))
+        plt.show()
 
-        plt.subplot(2, 3, 6)
-        plt.plot(Halt.f, diff_angle)
+#        plt.subplot(2, 3, 6)
+        plt.plot(Halt.f, H.p)
         plt.title('Anglediff Umeas/Uideal')
         plt.xlabel('f')
         plt.ylabel('ratio')
         plt.xlim((0, np.max(Halt.f)))
+        plt.show()
 
         # Plot H
-        plt.subplot(2, 3, 5)
-        plt.plot(Halt.f, np.angle(np.exp(1j * Halt.p)), 'r', Hneu.f, np.angle(np.exp(1j * Hneu.p)), 'b')
+#        plt.subplot(2, 3, 5)
+        plt.plot(Halt.f, Halt.p, 'r', Hneu.f, Hneu.p, 'b')
         plt.title('Angle(H): alt rot - neu blau')
         plt.xlabel('f')
         plt.ylabel('angle')

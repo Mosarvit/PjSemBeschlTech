@@ -30,6 +30,7 @@ def write_to_AWG(signal, samplerateAWG, awg_volt):
     from helpers import FFT
     import csv
     import os
+    
 
     if awg_volt > 0.8 :
         raise ValueError('The voltage is too high for the amplifier, should not be higher than 0.8 ! ')
@@ -62,9 +63,9 @@ def write_to_AWG(signal, samplerateAWG, awg_volt):
         data_conv = ",".join(str(e) for e in data_conv)
         AWG.write("SOURce1:DATA:ARBitrary:DAC myarb ," + data_conv)
         
-        time_attempt = 3  # chooses version to wait for finishing commands
+        time_attempt = 1  # chooses version to wait for finishing commands
         if time_attempt == 1:
-            time.sleep(10)  # enough time to finish every Process -> original implementation
+            time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
             AWG.write("*OPC?")  # new attempt 1 to reduce time to wait
             # -> does not proceed until *OPC? is set to 1 by internal queue.
@@ -82,9 +83,9 @@ def write_to_AWG(signal, samplerateAWG, awg_volt):
             
         AWG.write("SOURce1:FUNCtion:ARBitrary 'myarb'")
 
-        time_attempt = 3  # chooses version to wait for finishing commands
+        time_attempt = 1  # chooses version to wait for finishing commands
         if time_attempt == 1:
-            time.sleep(10)  # enough time to finish every Process -> original implementation
+            time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
             AWG.query("*OPC?")  # new attempt 1 to reduce time to wait
             # -> does not proceed until *OPC? is set to 1 by internal queue.
@@ -103,11 +104,14 @@ def write_to_AWG(signal, samplerateAWG, awg_volt):
         AWG.write("SOURce1:FUNCtion ARB")  # USER
         AWG.write("DISPlay:FOCus CH1")
         AWG.write("DISPlay:UNIT:ARBRate FREQuency")
-        AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(samplerateAWG))
+#        AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(samplerateAWG))
+#        AWG.query("SOURce1:FUNCtion:ARBitrary:SRATe? ")
+        AWG.write("SOURce1:FUNCtion:ARBitrary:FREQ " + str(900000))
+#        AWG.query("SOURce1:FUNCtion:ARBitrary:FREQ?")
         
         time_attempt = 1  # chooses version to wait for finishing commands
         if time_attempt == 1:
-            time.sleep(10)  # enough time to finish every Process -> original implementation
+            time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
             AWG.write("*OPC?")  # new attempt 1 to reduce time to wait
             # -> does not proceed until *OPC? is set to 1 by internal queue.
@@ -137,9 +141,9 @@ def write_to_AWG(signal, samplerateAWG, awg_volt):
 
         AWG.write("SOURce2:DATA:ARBitrary:DAC myarb ," + data_conv)
         
-        time_attempt = 3  # chooses version to wait for finishing commands
+        time_attempt = 1  # chooses version to wait for finishing commands
         if time_attempt == 1:
-            time.sleep(10)  # enough time to finish every Process -> original implementation
+            time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
             AWG.query("*OPC?")  # new attempt 1 to reduce time to wait
             # -> does not proceed until *OPC? is set to 1 by internal queue.
@@ -157,9 +161,9 @@ def write_to_AWG(signal, samplerateAWG, awg_volt):
 
         AWG.write("SOURce2:FUNCtion:ARBitrary 'myarb'")
 
-        time_attempt = 3  # chooses version to wait for finishing commands
+        time_attempt = 1  # chooses version to wait for finishing commands
         if time_attempt == 1:
-            time.sleep(10)  # enough time to finish every Process -> original implementation
+            time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
             AWG.query("*OPC?")  # new attempt 1 to reduce time to wait
             # -> does not proceed until *OPC? is set to 1 by internal queue.
@@ -178,12 +182,15 @@ def write_to_AWG(signal, samplerateAWG, awg_volt):
         AWG.write("SOURce2:FUNCtion ARB")  # USER
         AWG.write("DISPlay:FOCus CH2")
         AWG.write("DISPlay:UNIT:ARBRate FREQuency")
-        AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(samplerateAWG))
+#        AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(samplerateAWG))
+#        AWG.query("SOURce2:FUNCtion:ARBitrary:SRATe? ")
+        AWG.write("SOURce2:FUNCtion:ARBitrary:FREQ " + str(900000))
+#        AWG.write("SOURce2:FUNCtion:ARBitrary:FREQ?")
         AWG.write("FUNC:ARB:SYNC")
         AWG.write("SOURce1:VOLTage " + str(awg_volt))
         AWG.write("SOURce2:VOLTage " + str(awg_volt))
 
-        time_attempt = 3  # chooses version to wait for finishing commands
+        time_attempt = 1  # chooses version to wait for finishing commands
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:

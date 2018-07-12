@@ -52,7 +52,7 @@ def read_in_transfer_function_old_convention(pathA, pathPh):
     H.p = Hph[:, 1]
     return H
 
-def save_transfer_function(H, filename):
+def save_transfer_function(H, directory, id ):
 
     """
 
@@ -68,7 +68,7 @@ def save_transfer_function(H, filename):
         (no output)
 
     """
-
+    filename = directory + '/H_' + str(id) + '.csv'
     with open(filename, 'w+', newline="") as csvfile:
         writer = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
