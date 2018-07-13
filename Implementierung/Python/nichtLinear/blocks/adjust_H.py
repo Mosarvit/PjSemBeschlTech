@@ -1,4 +1,5 @@
 from classes.transfer_function_class import transfer_function_class
+from classes.signal_class import signal_class
 import numpy as np
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
@@ -12,12 +13,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     INPUT:
 
-        Halt - nx3 array; old transferfuntion (n - number of frequencies)
-            Halt[:,0] - frequencies f
-            Halt[:,1] - amplifying factors
-            Halt[:,2] - phase shifts
-
-            Instance of transfer_funtion:
+        Halt - Instance of transfer_funtion:
             Halt.f - frequencies f
             Halt.a - amplifying factors a
             Halt.p - phase shifts p
@@ -27,22 +23,23 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             Uout_ideal[:,0] - time-axis
             Uout_ideal[:,1] - voltage
 
-        Uout_measured - nx2 array; (n - length of signal)
-            Uout_measured[:,0] - time-axis
-            Uout_measured[:,1] - voltage
+            Instance of signal_class:
+            U.time          - get time vector
+            U.in_V          - get signal vector in V
+            U.in_mV         - get signal vector in mV
+            U.sample_rate   - get sample rate
+            U.Vpp           - get Vpp
+            U.length        - get length of the signal
 
-        sigma_H - scalar; step to iterate
+        Uout_measured - like Uout_ideal, instance of signal_class
 
-        verbosity - if True, plots are shown (slows down program,  enabling debugging and results on the road)
+        sigma_H - scalar; step to iterate (positive)
+
+        verbosity - if True, plots are shown (slows down program, enabling debugging and results on the road)
 
     OUTPUT:
 
-        Heu - nx3 array; new transferfuntion (n - number of frequencies)
-            Hneu[:,0] - frequencies f
-            Hneu[:,1] - amplifying factors
-            Hneu[:,2] - phase shifts
-
-            Instance of transfer_funtion:
+        Heu - Instance of transfer_funtion:
             Hneu.f - frequencies f
             Hneu.a - amplifying factors a
             Hneu.p - phase shifts p
@@ -50,9 +47,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     """
 
-    # validate Halt as instance of transfer_function
-    if not isinstance(Halt, transfer_function_class):
-        raise TypeError('Uncorrect function call of adjust_H with Halt no instance of class transfer_funtion')
+    type_check_adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
     if verbosity:
         delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
@@ -89,7 +84,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # (default_value is just what you like to have as default value, calculated to enable Plots showing senseful scale)
     default_value = np.minimum(np.min(abs(spectrum_Id)), np.min(abs(spectrum_Meas)))
     if default_value == 0:
-        default_value = 1e-4
+        default_value = 1e-4 # avoids problems by dividing through 0
     delta_f_Id = frequencies_Id[1] - frequencies_Id[0]
     delta_f_Meas = frequencies_Meas[1] - frequencies_Meas[0]
     if np.amax(Halt.f) > frequencies_Meas[-1]:
@@ -136,19 +131,9 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     magnitude_Meas = interp1d(frequencies_Meas, np.abs(spectrum_Meas), kind='linear')
     angle_meas = interp1d(frequencies_Meas, np.angle(spectrum_Meas), kind='linear')
 
-    # initialize Hneu
-    Hneu = transfer_function_class(Halt.f)
-
-    # old - malfunctioning:
-    # calculate Hneu in complex representation
-    #    Umeas_div_Uid = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp( 1j * (angle_meas(Halt.f) - angle_ideal(Halt.f) ) )
-    # Hneu.c = Halt.c * (1 + sigma_H * (Umeas_div_Uid - 1))
-
-    # better Attempt: calculate separately for amplitude and angle
+    # calculate separately for amplitude and angle
     ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
     diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
-    
-    
 
     # to reduce WHITE NOISE attempt 2:
     # cut high amplifying ratios (over RMS)
@@ -165,16 +150,20 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         if not (len(idx_clear) == len(ratio_abs)):  # check for simple signals with Uout_Id = multiple Uout_Meas
             ratio_abs[idx_clear] = np.zeros(len(idx_clear))
             diff_angle[idx_clear] = np.zeros(len(idx_clear))
-            
-    H = transfer_function_class(Halt.f)
-    H.a = ratio_abs
-    H.p = diff_angle
-    H_id = transfer_function_class(frequencies_Id)
-    H_id.c = spectrum_Id
-    H_Meas = transfer_function_class(frequencies_Meas)
-    H_Meas.c = spectrum_Meas
 
-    Hneu.a = Halt.a * (1 - sigma_H * H.a)
+
+    # now using new convention with classes transfer_function for frequency and complex-values connecting variables
+    complex_ratio = transfer_function_class(Halt.f)
+    complex_ratio.a = ratio_abs
+    complex_ratio.p = diff_angle
+    complex_spectrum_Id = transfer_function_class(frequencies_Id) # complex spectrum
+    complex_spectrum_Id.c = spectrum_Id
+    complex_spectrum_Meas = transfer_function_class(frequencies_Meas)
+    complex_spectrum_Meas.c = spectrum_Meas
+
+    # initialize Hneu
+    Hneu = transfer_function_class(Halt.f)
+    Hneu.a = Halt.a * (1 - sigma_H * complex_ratio.a)
     Hneu.p = Halt.p #- sigma_H * H.p
   
 
@@ -220,7 +209,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         plt.show()
 
 #        plt.subplot(2, 3, 3)
-        plt.plot(frequencies_Id, H_id.p, 'r', frequencies_Meas, H_Meas.p, 'b')
+        plt.plot(frequencies_Id, complex_spectrum_Id.p, 'r', frequencies_Meas, complex_spectrum_Meas.p, 'b')
         plt.title('ANGLE(FFT): Ideal rot - Meas blau')
         plt.xlabel('f')
         plt.ylabel('Angle')
@@ -229,7 +218,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         plt.show()
 
 #        plt.subplot(2, 3, 6)
-        plt.plot(Halt.f, H.p)
+        plt.plot(Halt.f, complex_ratio.p)
         plt.title('Anglediff Umeas/Uideal')
         plt.xlabel('f')
         plt.ylabel('ratio')
@@ -292,3 +281,26 @@ def spectrum_from_TimeSignal(time, values):
     frequencies, spectrum = spectrum_From_FFT(frequencies, np.fft.fft(values))
 
     return (frequencies, spectrum)
+
+
+def type_check_adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
+
+    """
+    does the type-checking of input values in adjust_H.
+    :param Halt: instance of transfer_cuntion
+    :param Uout_ideal: instance of signal
+    :param Uout_measured: instance of signal
+    :param sigma_H: scalar vector - no type-check by now
+    :return: no output
+    """
+    if not isinstance(Halt, transfer_function_class):
+        raise ValueError('old transfer-function has to be instance of class transfer_function_class.'
+                         'See documentation of class for information about creating an instance.')
+    if not isinstance(Uout_measured, signal_class):
+        raise ValueError('measured signal has to be instance of class signal_class.'
+                         'See documentaion of class for information about creating an instance.')
+    if not isinstance(Uout_ideal, signal_class):
+        raise ValueError('ideal signal has to be instance of class signal_class.'
+                         'See documentaion of class for information about creating an instance.')
+
+    return
