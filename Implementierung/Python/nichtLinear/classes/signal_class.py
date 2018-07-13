@@ -9,8 +9,9 @@ class signal_class :
         transfer_function is a class, that describes a transfer function
 
         Initialization :
+            from classes.signal_class import signal_class
             pass the time and signal (in V) vectors :
-            U = transfer_function( time, u_in_V )
+            U = signal_class( time, u_in_V )
         Getters:
             U.time          - get time vector
             U.in_V          - get signal vector in V

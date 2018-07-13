@@ -20,7 +20,7 @@ from helpers.csv_helper import save_signale
 def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0):
 
     """
-    compute_Uin_from_Uquest berechten Uin aus Uquest mithilfe der Lookuptabelle K
+    compute_Uin_from_Uquest berechnet Uin aus Uquest mithilfe der Lookuptabelle K
 
     INPUT:
 
@@ -28,7 +28,7 @@ def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0)
             Uquest[:,0] - Zeitvektor
             Uquest[:,1] - Signalvektor
 
-        sampleRateAWG - skalar; Abtastarte des AWG
+        sampleRateDSO - skalar; Abtastrate des DSO
 
         saveCSV - boolean; ob Uout gespreichert werden soll
         loadCSV - boolean; ob Uout aus vorhandenen CSV-Datei ausgelesen werden soll
@@ -51,7 +51,8 @@ def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0)
     ####################################################################################################################
 
     def send_Uin_to_AWG(Uin):
-        write_to_AWG(Uin.normalized, Uin.sample_rate, Uin.Vpp)  # Rückbage wird nicht benötigt
+        write_to_AWG(Uin.normalized, Uin.Vpp, frequency=900e3)
+        # TODO: change frequency-value to global-data (enable different repetition rate here)
 
     def receive_from_DSO(Uin):
         fmax = 80e6
