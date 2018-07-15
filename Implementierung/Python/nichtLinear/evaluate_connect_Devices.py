@@ -20,7 +20,6 @@ from blocks.generate_BBsignal import generate_BBsignal
 
 
 # TODO: wait for AWG / DSO after each (nontrivial) command if possible with *OPC? after checking time-attempts
-# TODO: check for erros (see evaluate connect devices) and throw exceptions
 
 
 def check_AWG():
@@ -61,6 +60,7 @@ def check_AWG():
     # optionally output with position enabling connection between output and code-function:
     # print("Laufzeit von time_attempt in milli Sec: " + str(t*1e3) + " at position XY")
     t = 0
+    error_nr = 0    # Counter for number of errors
 
     # check for correct minimum duration of operating by using time_attempt_1
     # check for correct work of "OPC" with use of time_attempt_2
@@ -87,7 +87,15 @@ def check_AWG():
             index = i
     awg_id = rs[index]
     AWG = rm.open_resource(awg_id)
+
+    #Reset Instrument
     AWG.write("*RST")
+    error = AWG.query("SYSTem:ERRor?")# reads and deletes one error - NEW
+    while error.find('0') != -1:       # will this work, format of error should be string
+        error_nr = error_nr +1
+        print("Error Number " + str(error_nr) + " at beginning of code with error: " + str(error))
+        error = AWG.query("SYSTem:ERRor?")
+
     AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
     AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
 
@@ -117,8 +125,9 @@ def check_AWG():
 
     AWG.write("SOURce1:FUNCtion ARB")  # USER
     AWG.write("DISPlay:FOCus CH1")
-    AWG.write("DISPlay:UNIT:ARBRate FREQuency")
-    AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+    AWG.write("DISPlay:UNIT:ARBRate SRATe") # because frequency is given, sample rate is of more interest
+    #AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+    AWG.write("SOURce1:FUNCtion:ARBitrary:FREQ " + str(f_rep))
 
     # time analysis Position 4
     t = timeit.timeit(time_attempt_0, number=1)
@@ -132,6 +141,12 @@ def check_AWG():
     print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position 5")
     t = 0
 
+    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
+    while error.find('0') != -1:       # will this work, format of error should be string
+        error_nr = error_nr +1
+        print("Error Number " + str(error_nr) + " after writing signal with error: " + str(error))
+        error = AWG.query("SYSTem:ERRor?")
+
     AWG.write("SOURce2:FUNCtion:ARBitrary 'myarb'")
 
     # time analysis Position 6
@@ -142,7 +157,8 @@ def check_AWG():
     AWG.write("SOURce2:FUNCtion ARB")  # USER
     AWG.write("DISPlay:FOCus CH2")
     AWG.write("DISPlay:UNIT:ARBRate FREQuency")
-    AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+    AWG.write("SOURce2:FUNCtion:ARBitrary:FREQ " + str(f_rep))
+    # AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
     AWG.write("FUNC:ARB:SYNC")
     AWG.write("SOURce1:VOLTage " + str(Vpp))
     AWG.write("SOURce2:VOLTage " + str(Vpp))
@@ -155,6 +171,12 @@ def check_AWG():
     AWG.write("OUTPut1 OFF")
     AWG.write("OUTPut2 OFF")
     AWG.write("DISPlay:FOCus CH1")
+
+    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
+    while error.find('0') != -1:       # will this work, format of error should be string
+        error_nr = error_nr +1
+        print("Error Number " + str(error_nr) + " at end of code with error: " + str(error))
+        error = AWG.query("SYSTem:ERRor?")
 
     return
 
@@ -329,7 +351,10 @@ def wait_for_AWG(AWG, attempt=0):
         # they will be executed after WAI has finished
         # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
     elif attempt == 4:
+        busy = 1 # initialize
         busy = AWG.write("BUSY?")  # new attempt to reduce time to wait -> runs until OPC? is set to 1
+        # try additionally:
+        # busy = AWG.read() # comnined with write-command above should be same as query
         print("busy:")
         print(busy)
         print("busy ready")
