@@ -6,7 +6,7 @@ from helpers.signal_helper import find_nearest
 
 class signal_class :
     """
-        transfer_function is a class, that describes a transfer function
+        signal_class is a class, that describes a signal in time-domain.
 
         Initialization :
             from classes.signal_class import signal_class
@@ -19,6 +19,8 @@ class signal_class :
             U.sample_rate   - get sample rate
             U.Vpp           - get Vpp
             U.length        - get length of the signal
+            U.timestep      - get the timestep between the first two values
+            U.f_rep         - get the repetition frequency of the signal
         Setters:
             U.sample_rate   - set sample rate
             U.Vpp           - set Vpp
@@ -26,21 +28,30 @@ class signal_class :
         * Setting a different time vector or a different signal vector is technically not meaningful, therefore such
         setters were not implemented.
 
+
         Example of initializing a transfer_function with amplitude and phaseshift:
             t = np.array([1,2,3,4,5])
             u_vector_inV = np.array([1,0,-1,-2,3])
             U = signal_class(t, u_vector_inV)
+
+            The sample rate, repetition frequency and timestep of the signal are only useful
+        if the time axis is evenly spaced. Then, the named values are given by
+            - timestep = time[1] - time[0]
+            - f_rep = 1 / ( N * timestep) with N = Number of points
+            - sample rate = N * f_rep = 1 / timestep
+        (comment: this includes, that the highest value in the time axis is given by (N-1)*timestep)
         """
 
     def __init__(self, time, signal_in_V):
 
         self.__orginal_signal_in_V = signal_in_V
         self.__orginal_time = time
-        self.__original_sample_rate = (len(signal_in_V) - 1) / (time[-1] - time[0])
+        self.__timestep = time[1] - time[0]
+        self.__original_f_rep = 1 / (time[-1] - time[0] + self.__timestep)
+        self.__original_sample_rate = len(signal_in_V)* self.__original_f_rep
         sr = self.__original_sample_rate
         self.__orginial_Vpp = max(self.__orginal_signal_in_V) - min(self.__orginal_signal_in_V)
         self.__orginial_signal_normalized = self.__orginal_signal_in_V / self.__orginial_Vpp
-        self.__original_f_rep = 1 / self.__orginal_time[-1]
 
         self.__sample_rate = self.__original_sample_rate
         self.__signal_in_V = self.__orginal_signal_in_V
@@ -54,6 +65,10 @@ class signal_class :
 
         lngth = int(np.round(((len(self.__time) - 1) / (self.__original_sample_rate ) * (self.__sample_rate )))) + 1
         self.__time = np.linspace(0, self.__orginal_time[-1], num=lngth, endpoint=True)
+        self.update_timestep()
+
+    def update_timestep(self):
+        self.__timestep = self.__time[1] - self.__time[0]
 
     def update_signal_in_mV(self):
         self.__signal_in_mV = self.__signal_in_V * 1000
@@ -87,8 +102,8 @@ class signal_class :
         return self.__time[-1]
 
     @property
-    def sample_rate(self):
-        return self.__sample_rate
+    def timestep(self):
+        return self.__timestep
 
     @property
     def sample_rate(self):
