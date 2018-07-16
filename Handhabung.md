@@ -21,6 +21,8 @@ PC:
 			https://www.keysight.com/main/software.jspx?ckey=1937336&lc=ger&cc=DE&nid=-11143.0.00&id=1937336
 	- PyVISA in Python installieren, z.B. Version 1.9.0
 	- Oszi Ansteuerung: ---- Beschreibung ausstehend ---- 
+		-- ggf. hilfreich: Download Treiber unter
+			https://de.tek.com/oscilloscope/tds5052-software/labview-and-labwindows-cvi-driver-tds5000
 		
 		
 ###Getting started:
