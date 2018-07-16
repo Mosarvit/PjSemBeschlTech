@@ -1,0 +1,80 @@
+\begin{tikzpicture}[scale = 0.6]
+%
+%\pgfdeclarelayer{bg}    % declare background layer
+%\pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
+%Koordinaten & Knoten
+
+	
+\def \t {1}  
+
+\def \dx {3*\t} 
+\def \dy {2*\t} 
+
+
+\coordinate (origin) at (0,0);
+
+\newcounter{cA} 
+\newcounter{cB}  
+\newcounter{cD} 
+\newcounter{cC}  
+
+\setcounter{cA}{1}
+
+\def \nx {4} 
+\def \ny {3} 
+
+\foreach \j in {0,...,\ny}{	
+	\foreach \i in {0,...,\nx}{
+	
+		\def \dfd {1.2} 		
+		\pgfmathtruncatemacro\ii{\dx*\i}	
+		\pgfmathtruncatemacro\jj{\dy*\j}	
+    	\coordinate (c\thecA) at (\ii,\jj);
+    	\addtocounter{cA}{1}
+    }
+}
+    
+
+%Primäres Gitter
+	%horizontal
+	
+
+	\foreach \i in {0,...,\ny}{
+		\setcounter{cA}{1+(\nx+1)*\i}	
+		\setcounter{cB}{1+(\nx+1)*\i+\nx}	
+    	\draw [-]  (c\thecA)-- (c\thecB);	
+ 	}
+ 	
+ 	\foreach \i in {0,...,\nx}{
+		\setcounter{cA}{1+\i}	
+		\setcounter{cB}{1+(\nx+1)*\ny+\i}	
+    	\draw [-] (c\thecA) -- (c\thecB);	
+	}
+
+%Knoten
+
+%Achsen
+	\draw [->] (origin) -- ++(\nx*\dx*1.1,0) node [below] {$x$};
+	\draw [->] (origin) -- ++(0,\ny*\dy*1.1) node [left] {$y$};
+	
+	\node [below left] at (origin) {{\scriptsize O}}; 
+	\setcounter{cA}{1+\nx}
+	\node [below] at (c\thecA) {{\scriptsize 1.2}}; 
+	\setcounter{cA}{1+(\nx+1)*\ny}
+	\node [left] at (c\thecA) {{\scriptsize 0.6}}; 
+
+	\foreach \i in {1,...,20}{
+    	\draw[mark=*] plot coordinates {(c\i)} ; 
+    }
+ 
+	\draw[mark=*, blue] plot coordinates {(0.3*\t*10,0.2*\t*10)} node [below right] {$q_1$};
+	\draw[mark=*, blue] plot coordinates {(0.6*\t*10,0.4*\t*10)} node [below right] {$q_2$};
+	\draw[mark=*, blue] plot coordinates {(0.9*\t*10,0.2*\t*10)} node [below right] {$q_3$}; 
+ 
+ 	\draw[mark=*] plot coordinates {(0.471*\t*10,0.257*\t*10)} node [right] {$q_n$};
+ 
+ 
+ 
+
+
+\end{tikzpicture}
