@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from helpers import csv_helper
-import global_data
+import settings
 from classes.signal_class import signal_class
 
 
@@ -75,13 +75,13 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=99990000
         plt.plot(t_rep, Uout[:,1])
         plt.title('Das ideale U_BB')
         plt.ylabel('u in mV')
-        if global_data.show_plots :
+        if settings.show_plots :
             plt.show()
 #        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf')
 
     if saveCSV :
 
-        csv_helper.save_2cols(global_data.project_path + '/data/current_data/BBsignal_ideal.csv', Uout[0, :], Uout[1, :])
+        csv_helper.save_2cols(settings.project_path + '/data/current_data/BBsignal_ideal.csv', Uout[0, :], Uout[1, :])
 
     Uout = signal_class.gen_signal_from_old_convention(Uout[:,0], Uout[:,1])
 

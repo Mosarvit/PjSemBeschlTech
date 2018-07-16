@@ -9,7 +9,7 @@ from helpers.signal_helper import convert_V_to_mV
 from helpers.signal_helper import convert_mV_to_V
 from helpers.signal_helper import setVpp
 from helpers.csv_helper import read_in_transfer_function
-from global_data import project_path
+from settings import project_path
 from classes.signal_class import signal_class
 from copy import copy
 from helpers.csv_helper import save_2cols

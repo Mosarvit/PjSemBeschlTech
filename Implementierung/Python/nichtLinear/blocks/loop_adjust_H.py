@@ -9,17 +9,17 @@ from helpers.signal_helper import convert_V_to_mV
 from helpers.signal_helper import convert_mV_to_V
 from helpers.signal_helper import setVpp
 from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
-from global_data import project_path
+from settings import project_path
 from classes.signal_class import signal_class
 from copy import copy
 from helpers.csv_helper import save_2cols
-from global_data import use_mock_system
+from settings import use_mock_system
 from classes.signal_class import signal_class
 from helpers.csv_helper import save_signale, save_transfer_function
 from blocks.adjust_H import adjust_H
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
-from global_data import project_path
+from settings import project_path
 from blocks.determine_a import determine_a
 from helpers.plot_helper import plot_2_transfer_functions
 from blocks.generate_BBsignal import generate_BBsignal

@@ -35,7 +35,7 @@ class mock_system_class :
         H.c = 2 * np.ones(5) + 3j * np.ones(5)
     """
     def __init__(self):
-        from global_data import mock_data_directory
+        from settings import mock_data_directory
 
         self.__Uin = None
         self.__Uin_measured = None
@@ -62,7 +62,7 @@ class mock_system_class :
     def write_to_AWG(self, Uin):
         self.__Uin = Uin
 
-        frequency = self.__Uin.sample_rate / (self.__Uin.length - 1)
+        frequency = self.__Uin.sample_rate / (self.__Uin.length )
 
         print('==================================================')
         print('Sending to mock AWG')

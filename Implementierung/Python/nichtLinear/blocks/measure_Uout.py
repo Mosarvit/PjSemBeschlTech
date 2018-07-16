@@ -13,7 +13,7 @@ from helpers.signal_helper import assemble_signal
 from helpers.overlay import overlay
 from helpers.read_from_DSO_resolution import read_from_DSO_resolution
 from classes.signal_class import signal_class
-from global_data import show_plots, use_mock_system, mock_system
+from settings import show_plots, use_mock_system, mock_system
 from helpers.plot_helper import plot_2_signals
 from helpers.csv_helper import save_signale
 

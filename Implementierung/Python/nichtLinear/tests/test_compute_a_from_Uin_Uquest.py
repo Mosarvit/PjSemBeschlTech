@@ -19,8 +19,8 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from global_data import project_path, mock_data_directory
-from global_data import mock_system
+from settings import project_path, mock_data_directory
+from settings import mock_system
 from blocks import get_H
 import os
 
