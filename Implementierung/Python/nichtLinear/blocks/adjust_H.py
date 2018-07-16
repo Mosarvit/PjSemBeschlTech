@@ -1,9 +1,11 @@
 from classes.transfer_function_class import transfer_function_class
+from classes.signal_class import signal_class
 import numpy as np
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 import time
-import copy
+
+from helpers.FFT import spectrum_from_TimeSignal
 
 
 def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT=False):
@@ -12,12 +14,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     INPUT:
 
-        Halt - nx3 array; old transferfuntion (n - number of frequencies)
-            Halt[:,0] - frequencies f
-            Halt[:,1] - amplifying factors
-            Halt[:,2] - phase shifts
-
-            Instance of transfer_funtion:
+        Halt - Instance of transfer_funtion:
             Halt.f - frequencies f
             Halt.a - amplifying factors a
             Halt.p - phase shifts p
@@ -27,22 +24,23 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             Uout_ideal[:,0] - time-axis
             Uout_ideal[:,1] - voltage
 
-        Uout_measured - nx2 array; (n - length of signal)
-            Uout_measured[:,0] - time-axis
-            Uout_measured[:,1] - voltage
+            Instance of signal_class:
+            U.time          - get time vector
+            U.in_V          - get signal vector in V
+            U.in_mV         - get signal vector in mV
+            U.sample_rate   - get sample rate
+            U.Vpp           - get Vpp
+            U.length        - get length of the signal
 
-        sigma_H - scalar; step to iterate
+        Uout_measured - like Uout_ideal, instance of signal_class
 
-        verbosity - if True, plots are shown (slows down program,  enabling debugging and results on the road)
+        sigma_H - scalar; step to iterate (positive)
+
+        verbosity - if True, plots are shown (slows down program, enabling debugging and results on the road)
 
     OUTPUT:
 
-        Heu - nx3 array; new transferfuntion (n - number of frequencies)
-            Hneu[:,0] - frequencies f
-            Hneu[:,1] - amplifying factors
-            Hneu[:,2] - phase shifts
-
-            Instance of transfer_funtion:
+        Heu - Instance of transfer_funtion:
             Hneu.f - frequencies f
             Hneu.a - amplifying factors a
             Hneu.p - phase shifts p
@@ -50,25 +48,24 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     """
 
-    # validate Halt as instance of transfer_function
-    if not isinstance(Halt, transfer_function_class):
-        raise TypeError('Uncorrect function call of adjust_H with Halt no instance of class transfer_funtion')
+    type_check_adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-    # if verbosity:
-    #     delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
-    #     delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
-    #     #print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
-    #     fig = plt.figure()
-    #     # Plot Spannungen
-    #     plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
-    #     plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
-    #     plt.title('Uout_ideal - rot, Uout_meas - blau')
-    #     plt.xlabel('t')
-    #     plt.ylabel('U')
-    #     plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
-    #     plt.suptitle('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
-    #     plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
-    #     plt.show()
+    if verbosity:
+        delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
+        delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
+        #print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+        fig = plt.figure()
+        # Plot Spannungen
+        plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
+        plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
+        plt.title('Uout_ideal - rot, Uout_meas - blau')
+        plt.xlabel('t')
+        plt.ylabel('U')
+        plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
+        plt.suptitle('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+        plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
+        plt.show()
+     
 
     # calculate Spectrum:
     frequencies_Id, spectrum_Id = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
@@ -88,7 +85,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # (default_value is just what you like to have as default value, calculated to enable Plots showing senseful scale)
     default_value = np.minimum(np.min(abs(spectrum_Id)), np.min(abs(spectrum_Meas)))
     if default_value == 0:
-        default_value = 1e-4
+        default_value = 1e-4 # avoids problems by dividing through 0
     delta_f_Id = frequencies_Id[1] - frequencies_Id[0]
     delta_f_Meas = frequencies_Meas[1] - frequencies_Meas[0]
     if np.amax(Halt.f) > frequencies_Meas[-1]:
@@ -107,8 +104,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # to reduce WHITE NOISE: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
-    ratio_ideal = 0#3e-3
-    ratio_meas = 0#3e-3
+    ratio_ideal = 0#5e-3
+    ratio_meas = 0#5e-3
     # find indices to set to default:
     idx_clear_Id = np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id)))[0]
     idx_clear_Meas = np.where(abs(spectrum_Meas) <= ratio_meas * np.max(abs(spectrum_Meas)))[0]
@@ -135,21 +132,13 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     magnitude_Meas = interp1d(frequencies_Meas, np.abs(spectrum_Meas), kind='linear')
     angle_meas = interp1d(frequencies_Meas, np.angle(spectrum_Meas), kind='linear')
 
-    # initialize Hneu
-    Hneu = transfer_function_class(Halt.f)
-
-    # old - malfunctioning:
-    # calculate Hneu in complex representation
-    #    Umeas_div_Uid = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp( 1j * (angle_meas(Halt.f) - angle_ideal(Halt.f) ) )
-    # Hneu.c = Halt.c * (1 + sigma_H * (Umeas_div_Uid - 1))
-
-    # better Attempt: calculate separately for amplitude and angle
+    # calculate separately for amplitude and angle
     ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
     diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
 
     # to reduce WHITE NOISE attempt 2:
     # cut high amplifying ratios (over RMS)
-    use_rms = False
+    use_rms = True
     # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
     rms = np.sqrt(np.mean(np.square(ratio_abs)))
@@ -163,61 +152,83 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             ratio_abs[idx_clear] = np.zeros(len(idx_clear))
             diff_angle[idx_clear] = np.zeros(len(idx_clear))
 
-    Hneu.a = Halt.a * (1 + sigma_H * ratio_abs)
-    Hneu.p = Halt.p + sigma_H * diff_angle
+
+    # now using new convention with classes transfer_function for frequency and complex-values connecting variables
+    complex_ratio = transfer_function_class(Halt.f)
+    complex_ratio.a = ratio_abs
+    complex_ratio.p = diff_angle
+    complex_spectrum_Id = transfer_function_class(frequencies_Id) # complex spectrum
+    complex_spectrum_Id.c = spectrum_Id
+    complex_spectrum_Meas = transfer_function_class(frequencies_Meas)
+    complex_spectrum_Meas.c = spectrum_Meas
+
+    # initialize Hneu
+    Hneu = transfer_function_class(Halt.f)
+    Hneu.a = Halt.a * (1 - sigma_H * complex_ratio.a)
+    Hneu.p = Halt.p #- sigma_H * H.p
+  
 
     if verbosity:
         fig = plt.figure(1)
         # Plot Magnitudes:
-        plt.subplot(2, 3, 1)
-        plt.plot(frequencies_Id, abs(spectrum_Id), 'r', frequencies_Meas, abs(spectrum_Meas), 'b')
-        plt.title('ABS(FFT): Ideal rot, Meas blau')
-        plt.xlabel('f')
-        plt.ylabel('Ampl')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((0, 1e-3))
-
-        plt.subplot(2, 3, 4)
-        plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms * np.ones(len(Halt.f)), 'r')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((-rms * 3, 3 * rms))
-        plt.subplot(2, 3, 4)
-        plt.plot(Halt.f, ratio_abs, 'b')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((-rms * 3, 3 * rms))
-        plt.title('Absratio Umeas / Uideal -1')
-        plt.xlabel('f')
-        plt.ylabel('ratio')
+            
+            #plot gsi
+        #plt.subplot(2, 3, 1)
+#        plt.plot(frequencies_Id, abs(spectrum_Id), 'r', frequencies_Meas, abs(spectrum_Meas), 'b')
+#        plt.title('ABS(FFT): Ideal rot, Meas blau')
+#        plt.xlabel('f')
+#        plt.ylabel('Ampl')
+#        plt.xlim((0, np.max(Halt.f)))
+#        plt.ylim((0, 1e-3))
+#        plt.show()
+#
+#       # plt.subplot(2, 3, 4)
+#        plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms * np.ones(len(Halt.f)), 'r')
+#        #plt.xlim((0, np.max(Halt.f)))
+#        #plt.ylim((-rms * 3, 3 * rms))
+#        
+#        #plt.subplot(2, 3, 4)
+#        plt.plot(Halt.f, ratio_abs, 'b')
+#        plt.xlim((0, np.max(Halt.f)))
+#        plt.ylim((-rms * 3, 3 * rms))
+#        plt.title('Absratio Umeas / Uideal -1')
+#        plt.xlabel('f')
+#        plt.ylabel('ratio')
+#        plt.show()
 
         # if use_rms:
         #     plt.subplot(2, 3, 4)
         #     plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
         #     plt.xlim((0, np.max(Halt.f)))
 
-        plt.subplot(2, 3, 2)
+        #plt.subplot(2, 3, 2)
         plt.plot(Halt.f, Halt.a, 'r', Hneu.f, Hneu.a, 'b')
         plt.title('Abs(H): alt rot - neu blau')
         plt.xlabel('f')
         plt.ylabel('Magnitude')
         plt.xlim((0, np.max(Halt.f)))
+        plt.show()
 
-        plt.subplot(2, 3, 3)
-        plt.plot(frequencies_Id, np.angle(spectrum_Id), 'r', frequencies_Meas, np.angle(spectrum_Meas), 'b')
+#        plt.subplot(2, 3, 3)
+        plt.plot(frequencies_Id, complex_spectrum_Id.p, 'r', frequencies_Meas, complex_spectrum_Meas.p, 'b')
         plt.title('ANGLE(FFT): Ideal rot - Meas blau')
         plt.xlabel('f')
         plt.ylabel('Angle')
         plt.xlim((0, np.max(Halt.f)))
+        plt.ylim((-50, 50))
+        plt.show()
 
-        plt.subplot(2, 3, 6)
-        plt.plot(Halt.f, diff_angle)
+#        plt.subplot(2, 3, 6)
+        plt.plot(Halt.f, complex_ratio.p)
         plt.title('Anglediff Umeas/Uideal')
         plt.xlabel('f')
         plt.ylabel('ratio')
         plt.xlim((0, np.max(Halt.f)))
+        plt.show()
 
         # Plot H
-        plt.subplot(2, 3, 5)
-        plt.plot(Halt.f, np.angle(np.exp(1j * Halt.p)), 'r', Hneu.f, np.angle(np.exp(1j * Hneu.p)), 'b')
+#        plt.subplot(2, 3, 5)
+        plt.plot(Halt.f, Halt.p, 'r', Hneu.f, Hneu.p, 'b')
         plt.title('Angle(H): alt rot - neu blau')
         plt.xlabel('f')
         plt.ylabel('angle')
@@ -230,44 +241,24 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     return (Hneu)
 
 
-def spectrum_From_FFT(frequencies, fft_norm):
+def type_check_adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):
+
     """
-    calculates the frequency axis and the spectrum usable for a real signal by applying Nyquists Theorem
-    :param frequencies: the frequency axis, evenly spaced, increasing orderd
-    :param fft_norm: the fft of a time signal generated by numpy.fft(...)
-    :return: the spectrum and frequencies reduced to the describable frequency-range (Nyquist)
+    does the type-checking of input values in adjust_H.
+    :param Halt: instance of transfer_cuntion
+    :param Uout_ideal: instance of signal
+    :param Uout_measured: instance of signal
+    :param sigma_H: scalar vector - no type-check by now
+    :return: no output
     """
+    if not isinstance(Halt, transfer_function_class):
+        raise ValueError('old transfer-function has to be instance of class transfer_function_class.'
+                         'See documentation of class for information about creating an instance.')
+    if not isinstance(Uout_measured, signal_class):
+        raise ValueError('measured signal has to be instance of class signal_class.'
+                         'See documentaion of class for information about creating an instance.')
+    if not isinstance(Uout_ideal, signal_class):
+        raise ValueError('ideal signal has to be instance of class signal_class.'
+                         'See documentaion of class for information about creating an instance.')
 
-    # check length
-    if len(frequencies) != len(fft_norm):
-        raise TypeError('Frequency and FFT have to contain same number of values')
-
-    # find max Frequencies (Nyquists theorem):
-    idx_half = int(np.floor(len(fft_norm) / 2))
-    # cut frequencies and FFTs to new Range -> only relevant frequencies ocurring
-    frequencies = frequencies[0:idx_half]
-    spectrum = fft_norm[0:idx_half] / len(fft_norm)
-
-    return (frequencies, spectrum)
-
-
-def spectrum_from_TimeSignal(time, values):
-    """
-
-    :param time: evenly spaced time array
-    :param values: real values raised at points in time
-    :return: frequency axis, complex spectrum of phaseshift and amplifier(c = abs(c) * exp(1j * np.angle(c)) )
-    """
-    # check length
-    if len(time) != len(values):
-        raise TypeError('Time-Array and Values have to contain same number of values')
-
-    # check if values not complex
-    # check if time evenly spaced
-
-    delta_f = 1 / (time[-1] - time[0])
-    N = len(time)
-    frequencies = np.linspace(0, N * delta_f, N)
-    frequencies, spectrum = spectrum_From_FFT(frequencies, np.fft.fft(values))
-
-    return (frequencies, spectrum)
+    return

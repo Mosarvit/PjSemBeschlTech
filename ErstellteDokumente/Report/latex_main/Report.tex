@@ -1,0 +1,97 @@
+\documentclass[scrreprt,colorback,accentcolor=tud9b, 11pt]{tudreport}
+
+%additional packages
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{units}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{patterns}
+\usepackage{multicol}
+\usepackage{xfrac}
+\usepackage{nicefrac}
+\usepackage[siunitx,americaninductors]{circuitikz}
+%additional packages
+
+\usepackage[utf8]{inputenc}                     % sets the input encryption to UTF8 which is always preferable
+\usepackage[T1]{fontenc}                        % standard package for selecting font encodings
+\usepackage{subfiles}                           % allows to handle multi-file projects more comfortably
+\usepackage{ngerman}                            % support for new German orthography (neue deutsche Rechtschreibung)
+\usepackage{framed}                             % supports framed or shaded regions that can break across pages
+\usepackage{amsmath}                            % highly recommended for serious mathematical typesetting in LaTeX
+\usepackage{graphicx}                           % enhanced support for graphics
+    \DeclareGraphicsExtensions{.pdf,.jpg,.png}  % defines the standard extensions of graphics
+    \graphicspath{{versuch1/}{versuch2/}{versuch3/}{versuch4/}{versuch5/}{versuch6/}{versuch7/}{versuch8/}}
+\usepackage{siunitx}                            % properly typeset numbers and units
+\usepackage{algorithmic}                        % to include e.g. pseudocodes
+\usepackage{listings}                           % to insert code fragments
+\usepackage{subcaption}                         % allows usage of subfigures
+\usepackage{tikz}                               % to make drawings directly with LaTeX
+\usepackage{enumitem}                           % allows more flexible enumerate environments
+\usepackage{gensymb}							% for generic symbols like \degree
+
+% use temf macros
+\let\Laplace\zz % workaround since clash with trfsigns
+\usepackage{temf-names}
+\let\zz\Laplace		%Ausgeklammert 17.4. f V1
+\usepackage{temf-finite}
+\usepackage{temf-fields}
+\usepackage{temf-matrixvector}
+\usepackage{notInTemfMacros}
+\usepackage{mathtools}
+\usepackage{csvsimple}
+
+
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric }
+\pgfdeclarelayer{b1}
+\pgfdeclarelayer{b2}
+\pgfsetlayers{b1,main,b2}   %% some additional layers for demo
+
+
+
+\definecolor{lightred}{rgb}{1,0.7,0.7}
+
+\def \mepsyp {\mathbf{m}_{\eps,y}} 
+
+\def \meps#1{\mathbf{m}_{\eps,#1}}
+\def \mepsy#1{\mathbf{m}_{\eps,y,#1}}
+\def \mepsxi#1{\mathbf{m}_{\eps,\xi,#1}}
+ 
+% \pgfdeclarelayer{main}    % declare background layer
+% \pgfdeclarelayer{bg}    % declare background layer
+%  \pgfdeclarelayer{bg2}    % declare background layer
+%\pgfsetlayers{main,bg2,bg}  % set the order of the layers (main is the standard layer)
+
+
+\let\stdcaption\caption
+\usepackage{float}
+\let\caption\stdcaption
+
+
+\tikzset{
+  edgenumber/.style={color=blue, font=\tiny },
+  nodenumber/.style={color=black, above right, font=\tiny}
+}
+
+\usepackage{caption}
+\raggedbottom
+
+\let\zz\ifnumbered{}                            % BEGIN fixes a problem of compatibility of mcode with \chapter command from koma script
+\usepackage[framed, numbered]{mcode}            % to properly format matlab code when using a listing (there is a problem with the \chapter command)
+\let\ifnumbered\zz{}                            % END fixes a problem of compatibility of mcode with \chapter command from koma script
+\usepackage[pdftex,bookmarks=true]{hyperref}    % enables hyperlinks inside the document (e.g. for the table of contents to jump to chapters directly)
+
+
+\begin{document}
+
+    \title{-------------------------------------}
+    \subtitle{Artem Moskalew \\ Jonas Christ \\ Max Nolte}
+    \maketitle
+
+    \tableofcontents
+
+%    \subfile{./Ordner/tex-name}
+
+
+\listoffigures
+\end{document}

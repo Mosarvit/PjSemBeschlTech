@@ -5,7 +5,6 @@ from scipy import linalg
 import matplotlib.pyplot as plt
 from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
-from evaluate_with_BBsignal import evaluate_with_BBsignal
 
 from helpers import overlay, signal_helper
 from helpers.signal_helper import generateSinSum
@@ -19,12 +18,12 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from global_data import project_path, mock_data_directory
-from global_data import mock_system
+from settings import mock_system
 from blocks import get_H
 import os
-from global_data import mock_data_directory, project_path
+from settings import mock_data_directory, project_path
 from classes.signal_class import signal_class
+import timeit
 
 
 
@@ -166,10 +165,16 @@ class test_adjust_H(TestCase):
             ## to show pictures of first step of adjust_H in real application instead of testing
             Uout_measured = read_in_signal( mock_data_directory + 'adjustH/Messung2/Uout_1.csv' )
 
+        def to_test():
+            Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
+            return
+        t = timeit.timeit(to_test, number=1)
+        print("Laufzeit adjust_H in milli Sec: " + str(t*1e3))
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
 
         err = linalg.norm(Hneu.c - Hneu_ideal.c) / linalg.norm(Hneu_ideal.c)
         self.assertTrue(err < 0.00001)  # we allow an error of 0.1% for the start, but it should be better
+
 
     def test_adjust_H_p_trivial(self):
 

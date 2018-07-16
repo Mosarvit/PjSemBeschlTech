@@ -7,7 +7,7 @@ import numpy as np
 from scipy.interpolate import interp1d
 import copy
 import matplotlib.pyplot as plt
-import global_data
+import settings
 from helpers.find_nearest import find_nearest
 from classes.signal_class import signal_class
 
@@ -100,7 +100,7 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         plt.title('Uin')
         plt.ylabel('u')
         plt.ylabel('t')
-        if global_data.show_plots :
+        if settings.show_plots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
 

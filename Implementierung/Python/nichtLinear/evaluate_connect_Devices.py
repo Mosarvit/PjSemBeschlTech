@@ -4,8 +4,9 @@
     - AWG Keysight via USB
     - Tektronix DSO via Lan
 
-    The advantage of this module is that it is not necessary to start the main routine and be surprised by errors thrown there.
-    This is like a developer mode before enabling changes in the main routine, especially in
+    The advantage of this module is that it is not necessary to start the main routine
+    and be surprised by errors thrown there.
+    This is like a developer mode for new ideas before doing changes in the main routine, especially in
     - write_to_AWG.write
     - read_from_DSO.read
 """
@@ -16,6 +17,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import timeit
 from blocks.generate_BBsignal import generate_BBsignal
+
+
+# TODO: wait for AWG / DSO after each (nontrivial) command if possible with *OPC? after checking time-attempts
 
 
 def check_AWG():
@@ -30,7 +34,7 @@ def check_AWG():
     """
 
     # Define functions to use time-analysis by timeit.timeit
-    # TODO: find clever solution instead of following, ugly implementation for measuring run-time
+    # TODO: find clever solution instead of the following, ugly implementation for measuring the run-time of functions
     def time_attempt_0():
         wait_for_AWG(AWG, 0)
         return
@@ -56,6 +60,7 @@ def check_AWG():
     # optionally output with position enabling connection between output and code-function:
     # print("Laufzeit von time_attempt in milli Sec: " + str(t*1e3) + " at position XY")
     t = 0
+    error_nr = 0    # Counter for number of errors
 
     # check for correct minimum duration of operating by using time_attempt_1
     # check for correct work of "OPC" with use of time_attempt_2
@@ -82,13 +87,22 @@ def check_AWG():
             index = i
     awg_id = rs[index]
     AWG = rm.open_resource(awg_id)
+
+    #Reset Instrument
     AWG.write("*RST")
+    error = AWG.query("SYSTem:ERRor?")# reads and deletes one error - NEW
+    while error.find('0') != -1:       # will this work, format of error should be string
+        error_nr = error_nr +1
+        print("Error Number " + str(error_nr) + " at beginning of code with error: " + str(error))
+        error = AWG.query("SYSTem:ERRor?")
+
     AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
     AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
 
     # time analysis Position 1
     t = timeit.timeit(time_attempt_1, number=1)
     print("Laufzeit von time_attempt_1 in milli Sec: " + str(t*1e3) + " at Position 1")
+    t = 0
 
     AWG.write("DATA:VOLatile:CLEar")
     myrange = max(abs(max(signal.in_V)), abs(min(signal.in_V)))
@@ -100,38 +114,51 @@ def check_AWG():
     # time analysis Position 2
     t = timeit.timeit(time_attempt_3, number=1)
     print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 2")
+    t = 0
 
     AWG.write("SOURce1:FUNCtion:ARBitrary 'myarb'")
 
     # time analysis Position 3
     t = timeit.timeit(time_attempt_3, number=1)
     print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 3")
+    t = 0
 
     AWG.write("SOURce1:FUNCtion ARB")  # USER
     AWG.write("DISPlay:FOCus CH1")
-    AWG.write("DISPlay:UNIT:ARBRate FREQuency")
-    AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+    AWG.write("DISPlay:UNIT:ARBRate SRATe") # because frequency is given, sample rate is of more interest
+    #AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+    AWG.write("SOURce1:FUNCtion:ARBitrary:FREQ " + str(f_rep))
 
     # time analysis Position 4
     t = timeit.timeit(time_attempt_0, number=1)
     print("Laufzeit von time_attempt_0 in milli Sec: " + str(t * 1e3) + " at Position 4")
+    t = 0
 
     AWG.write("SOURce2:DATA:ARBitrary:DAC myarb ," + data_conv)
 
     # time analysis Position 5
     t = timeit.timeit(time_attempt_2, number=1)
     print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position 5")
+    t = 0
+
+    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
+    while error.find('0') != -1:       # will this work, format of error should be string
+        error_nr = error_nr +1
+        print("Error Number " + str(error_nr) + " after writing signal with error: " + str(error))
+        error = AWG.query("SYSTem:ERRor?")
 
     AWG.write("SOURce2:FUNCtion:ARBitrary 'myarb'")
 
     # time analysis Position 6
     t = timeit.timeit(time_attempt_2, number=1)
     print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position 6")
+    t = 0
 
     AWG.write("SOURce2:FUNCtion ARB")  # USER
     AWG.write("DISPlay:FOCus CH2")
     AWG.write("DISPlay:UNIT:ARBRate FREQuency")
-    AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+    AWG.write("SOURce2:FUNCtion:ARBitrary:FREQ " + str(f_rep))
+    # AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
     AWG.write("FUNC:ARB:SYNC")
     AWG.write("SOURce1:VOLTage " + str(Vpp))
     AWG.write("SOURce2:VOLTage " + str(Vpp))
@@ -139,10 +166,17 @@ def check_AWG():
     # time analysis Position 3
     t = timeit.timeit(time_attempt_3, number=1)
     print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 3")
+    t = 0
 
     AWG.write("OUTPut1 OFF")
     AWG.write("OUTPut2 OFF")
     AWG.write("DISPlay:FOCus CH1")
+
+    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
+    while error.find('0') != -1:       # will this work, format of error should be string
+        error_nr = error_nr +1
+        print("Error Number " + str(error_nr) + " at end of code with error: " + str(error))
+        error = AWG.query("SYSTem:ERRor?")
 
     return
 
@@ -154,6 +188,17 @@ def check_DSO():
     checks whether the DSO is connected correctly before starting the program to avoid program mistakes in functionality running.
     Especially enables to check code to communicate with the DSO like the run-time optimization.
     This implementation only uses channel 1 to check which therefor needs to be connected to a signal.
+
+    check for correct work of "WAI" with use of time_attempt_1
+    check for correct work of "OPC" with use of time_attempt_2
+    check for correct work of "Busy" with use of time_attempt_3
+    old: wait 5 sec with time_attempt_0
+
+    use t as ouput for showing running time in form of:
+    t = timeit.timeit(time_attempt_X, number=1)
+    optionally output with position enabling connection between output and code-function:
+    print("Laufzeit von time_attempt in milli Sec: " + str(t*1e3) + " at position XY")
+    reset t = 0
 
     :return: nothing
     """
@@ -176,16 +221,8 @@ def check_DSO():
         wait_for_DSO(DSO, 3)
         return
 
-    # use t as ouput for showing running time of wait_for_AWG in form of:
-    # t = timeit.timeit(time_attempt_X, number=1)
-    # optionally output with position enabling connection between output and code-function:
-    # print("Laufzeit von time_attempt in milli Sec: " + str(t*1e3) + " at position XY")
     t = 0
 
-    # check for correct work of "WAI" with use of time_attempt_1
-    # check for correct work of "OPC" with use of time_attempt_2
-    # check for correct work of "Busy" with use of time_attempt_3
-    # old: wait 5 sec with time_attempt_0
 
     # initialization
     sample_rate_DSO = 9999e5
@@ -197,13 +234,7 @@ def check_DSO():
 
     dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
     DSO = visa.ResourceManager().get_instrument(dso_ip)
-    version = 2
-    # if version == 1:
-    #     Tns = 0.4 / fmax
-    #     periodTime = signal.size * Tns
-    #     horizontalScalePerDiv = 1.5 * periodTime / 10  # At least one period needs to be
-    #     # shown on the DSO
-    # elif version == 2:
+
     periodTime = 1 / fmax
     horizontalScalePerDiv = 1.5 * periodTime / 10 # try with 1.5 periods on screen
 
@@ -275,6 +306,7 @@ def check_DSO():
     # time analysis Position 1
     t = timeit.timeit(time_attempt_0, number=1)
     print("Laufzeit von time_attempt_0 in milli Sec: " + str(t * 1e3) + " at Position 1")
+    t = 0
 
     dataUin = DSO.query("CURVe?")
     #DSO.write("DATa:SOUrce MATH3")  # This command sets the location of
@@ -291,6 +323,7 @@ def check_DSO():
     # time analysis Position 2
     t = timeit.timeit(time_attempt_3, number=1)
     print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 2")
+    t = 0
 
     # end copy from read_from_DSO.read
 
@@ -318,7 +351,10 @@ def wait_for_AWG(AWG, attempt=0):
         # they will be executed after WAI has finished
         # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
     elif attempt == 4:
+        busy = 1 # initialize
         busy = AWG.write("BUSY?")  # new attempt to reduce time to wait -> runs until OPC? is set to 1
+        # try additionally:
+        # busy = AWG.read() # comnined with write-command above should be same as query
         print("busy:")
         print(busy)
         print("busy ready")

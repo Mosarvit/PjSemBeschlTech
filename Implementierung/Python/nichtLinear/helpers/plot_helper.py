@@ -3,7 +3,7 @@ from scipy.interpolate import interp1d
 import copy
 from helpers.find_nearest import find_nearest
 import matplotlib.pyplot as plt
-from global_data import show_plots
+from settings import show_plots
 
 
 def plot_2_signals(U1, U2, legend1='U1', legend2='U2'):

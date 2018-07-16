@@ -8,7 +8,7 @@ from tools.singlesine_save_results import save
 
 
 
-def signal_evaluate(Uout_filename, results_filename):
+def signal_evaluate(Uout_filename):
     """
     evaluates the given Uout with RF TOOL
 
