@@ -24,12 +24,17 @@ from blocks.determine_a import determine_a
 from helpers.plot_helper import plot_2_transfer_functions
 from blocks.generate_BBsignal import generate_BBsignal
 
-def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
+def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO, low_amplitude=0):
+
     for i in range(1, num_iters + 1):
         id = str(i)
         # compute new Uin
         Uquest = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
-        Uin = compute_Uin_from_Uquest(Uquest=Uquest, K=K)
+
+        if low_amplitude :
+            Uin = Uquest
+        else :
+            Uin = compute_Uin_from_Uquest(Uquest=Uquest, K=K)
 
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
