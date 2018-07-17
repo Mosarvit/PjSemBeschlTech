@@ -9,4 +9,5 @@ project_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 mock_data_directory = project_path + '/tests/mock_data/'
 show_plots = 1 # ob die Plots angenzeigt werden sollen
 mock_system = mock_system_class()
-use_mock_system = 0
+use_mock_system = 1
+verbosity = 0

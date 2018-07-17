@@ -40,7 +40,7 @@ class test_evaluate_adjust_H(TestCase):
     # @unittest.skip("currently not relevant")
     def test_evaluate_adjust_H_0_steps(self):
 
-        Uout_ideal, Uout_measured, _, _ = evaluate_adjust_H(num_iters=1, low_amplitude=1)
+        Uout_ideal, Uout_measured, _, _ = evaluate_adjust_H(num_iters=1, verbosity=0)
 
         Uout_measured = overlay(Uout_measured, Uout_ideal)
 
@@ -55,11 +55,11 @@ class test_evaluate_adjust_H(TestCase):
 
     def test_evaluate_adjust_H_1_step(self):
 
-        Uout_ideal, Uout_measured, H_0, H_last = evaluate_adjust_H(num_iters=15, low_amplitude=0)
+        Uout_ideal, Uout_measured, H_0, H_last = evaluate_adjust_H(num_iters=5, verbosity=0)
 
         err = linalg.norm(H_0.a - H_last.a) / linalg.norm(H_last.a)
 
-        verbosity = 1
+        verbosity = 0
 
         if verbosity :
             plot_2_transfer_functions(H_0, H_last, 'H_0', 'H_last')
