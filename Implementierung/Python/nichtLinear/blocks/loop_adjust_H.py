@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 from global_data import project_path
 from blocks.determine_a import determine_a
 from helpers.plot_helper import plot_2_transfer_functions
+from helpers.signal_evaluation import signal_evaluate
 
 def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
     for i in range(1, num_iters + 1):
@@ -42,7 +43,7 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
         if use_mock_system != 1:
             save_2cols('tools/csvDateien_K/Uout_' + id + '.csv', Uout_measured.time, Uout_measured.in_mV)
 
-        # quality = evaluate_signal('tools/csvDateien_K/Uout_' + id + '.csv', 'csvDateien_K/results_adjust_H.csv')
+        #quality = signal_evaluate(data_directory + 'Uout_' + id + '.csv', data_directory + 'quality_results.csv')
         sigma_H = 0.5
 
         H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)

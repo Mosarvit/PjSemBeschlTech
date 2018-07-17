@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 from global_data import project_path
 from blocks.loop_adjust_H import loop_adjust_H
 from blocks.determine_a import determine_a
+from save_results import save, save_text
 
 
 import numpy as np
@@ -34,7 +35,10 @@ def evaluate_adjust_H(num_iters = 1) :
         data_directory = project_path + 'tests/mock_data/mock_results/adjust_H/'
 
     else :
-        data_directory = project_path + 'tools/adjustH/'
+        data_directory = project_path + save(path='data/optimizer', name='adjust_H') + '/'
+
+    data_directory = project_path + save(path='data/optimizer', name='adjust_H') + '/'
+
 
 
     f_rep = 900e3
@@ -57,4 +61,6 @@ def evaluate_adjust_H(num_iters = 1) :
 
     H_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
 
+    save_text(data_directory)
     return Uout_ideal, Uout_measured, H_0, H
+evaluate_adjust_H(num_iters = 2)
