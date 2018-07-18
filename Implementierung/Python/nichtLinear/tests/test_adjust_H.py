@@ -97,7 +97,7 @@ class test_adjust_H(TestCase):
 
         sigma_H = 0.5
         factor = 2
-        Hneu_ideal.a = Halt.a * (1 + ((factor - 1) * sigma_H))
+        Hneu_ideal.a = Halt.a * (1 - ((factor - 1) * sigma_H))
         Hneu_ideal.p = Halt.p
         # Tmax = 3e-6 # will not suceed: too little frequencies in spectrum of Uout_ideal
         Tmax = 3e-7  # will suceed: wide frequencie range in spectrum of Uout_ideal
@@ -151,11 +151,11 @@ class test_adjust_H(TestCase):
         Halt = read_in_transfer_function_old_convention(mock_data_path + 'adjustH/Messung2/Ha_0.csv',
                                                         mock_data_path + 'adjustH/Messung2/Hp_0.csv')
         Hneu_ideal = transfer_function_class(Halt.f)
-        Hneu_ideal.a = Halt.a * (1 + sigma_H * (factor - 1))
+        Hneu_ideal.a = Halt.a * (1 - sigma_H * (factor - 1))
         Hneu_ideal.p = Halt.p
 
         # to illustrate function of adjust_H: testcase 1 to run (and finish) test, 2 to show plots of adjusting calculated H
-        testcase = 2
+        testcase = 1
         if testcase == 1:
             Uout_measured = signal_class(Uout_ideal.time, Uout_ideal.in_V * 2)
             # Uout_measured = np.zeros((Uout_ideal.shape[0], 2))

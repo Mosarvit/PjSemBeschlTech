@@ -47,10 +47,13 @@ class signal_class :
         self.__orginal_signal_in_V = signal_in_V
         self.__orginal_time = time
         self.__timestep = time[1] - time[0]
+<<<<<<< HEAD
         self.__original_sample_rate = 1 / (time[1] - time[0])
         self.__original_f_rep = self.__original_sample_rate / len(self.__orginal_signal_in_V)
+=======
+        self.__original_f_rep = 1 / (len(self.__orginal_time) * self.__timestep)
+>>>>>>> 7e86cc36d7795b2099cd6051944d25f5b77a0836
         self.__original_sample_rate = len(signal_in_V)* self.__original_f_rep
-        sr = self.__original_sample_rate
         self.__orginial_Vpp = max(self.__orginal_signal_in_V) - min(self.__orginal_signal_in_V)
         self.__orginial_signal_normalized = self.__orginal_signal_in_V / self.__orginial_Vpp
 
