@@ -97,7 +97,7 @@ class test_adjust_H(TestCase):
 
         sigma_H = 0.5
         factor = 2
-        Hneu_ideal.a = Halt.a * (1 + ((factor - 1) * sigma_H))
+        Hneu_ideal.a = Halt.a * (1 - ((factor - 1) * sigma_H))
         Hneu_ideal.p = Halt.p
         # Tmax = 3e-6 # will not suceed: too little frequencies in spectrum of Uout_ideal
         Tmax = 3e-7  # will suceed: wide frequencie range in spectrum of Uout_ideal
