@@ -109,7 +109,7 @@ def overlay(U1obj, U2obj):
     #######
 
     # U1_shifted_n1 = signal_class.gen_signal_from_old_convention(U1_shifted_n1[:,0], U1_shifted_n1[:,1])
-    U1_shifted_n2 = signal_class.gen_signal_from_old_convention(U1_shifted_n2[:,0], U1_shifted_n2[:,1])
+    # U1_shifted_n2 = signal_class.gen_signal_from_sample_rate(U1_shifted_n2[:, 0], U1_shifted_n2[:, 1])
 
     U1_shifted_n2 = signal_class(U2obj.time, U1_shifted_tmp)
 

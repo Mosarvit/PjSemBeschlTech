@@ -79,15 +79,20 @@ def apply_transfer_function(Uout, H):
 #fft
     L=len(u)
     NFFT = L
+
+
+
+
     ufft = np.fft.fft(u, NFFT)
     Y =  ufft / L
+
 
     Uquest = np.zeros([L, 2])
     Uquest[:,0] =  Uout.time
 
     for k in range(int(math.floor(f_max / f_rep))):
 
-        rnd = 11 # round by , since fft is only this precise and would otherwise leave a negligable imaginary part which would throuw a warning
+        rnd = 11 # round by , since fft is only this precise and would otherwise leave a negligable imaginary part which would throw a warning
 
         a_n = round(Y[k + 1], rnd) + round(Y[len(Y) - 1 - k], rnd)
         b_n = 1j * (round(Y[k + 1], rnd) - round(Y[len(Y) - 1 - k], rnd))

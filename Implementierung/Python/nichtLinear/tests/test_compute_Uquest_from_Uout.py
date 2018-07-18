@@ -19,7 +19,7 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from settings import project_path, mock_data_directory
+from settings import project_path, mock_data_path
 from settings import mock_system
 from blocks import get_H
 import os
@@ -36,10 +36,10 @@ class test_compute_Uquest_from_Uout(TestCase):
 
     def test_compute_Uquest_from_Uout_300_jens(self):
 
-       Uout_300 = read_in_signal(mock_data_directory + 'Uout_300_jens.csv')
-       Uquest_300_ideal = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
+       Uout_300 = read_in_signal(mock_data_path + 'Uout_300_jens.csv')
+       Uquest_300_ideal = read_in_signal(mock_data_path + 'Uquest_300_jens.csv')
 
-       H = read_in_transfer_function( mock_data_directory + 'H_jens.csv' )
+       H = read_in_transfer_function(mock_data_path + 'H_jens.csv')
 
        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
@@ -47,10 +47,10 @@ class test_compute_Uquest_from_Uout(TestCase):
        self.assertTrue(err < 0.03)
 
     def test_compute_Uquest_from_Uout_300_our(self):
-        Uout_300 = read_in_signal(mock_data_directory + 'Uout_300_our.csv')
-        Uquest_300_ideal = read_in_signal(mock_data_directory + 'Uquest_300_our.csv')
+        Uout_300 = read_in_signal(mock_data_path + 'Uout_300_our.csv')
+        Uquest_300_ideal = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
 
-        H = read_in_transfer_function(mock_data_directory + 'H_our.csv')
+        H = read_in_transfer_function(mock_data_path + 'H_our.csv')
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
@@ -59,10 +59,10 @@ class test_compute_Uquest_from_Uout(TestCase):
 
     def test_compute_Uquest_from_Uout_with_BBsignal_ideal(self):
 
-        BBsignal_ideal = read_in_signal(mock_data_directory + 'BBsignal_our.csv')
-        Uquest_from_BBsignal_ideal = read_in_signal(mock_data_directory + 'Uquest_from_BBsignal_our.csv')
+        BBsignal_ideal = read_in_signal(mock_data_path + 'BBsignal_our.csv')
+        Uquest_from_BBsignal_ideal = read_in_signal(mock_data_path + 'Uquest_from_BBsignal_our.csv')
 
-        H = read_in_transfer_function(mock_data_directory + 'H_our.csv')
+        H = read_in_transfer_function(mock_data_path + 'H_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
@@ -74,9 +74,9 @@ class test_compute_Uquest_from_Uout(TestCase):
     # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_catch_imaginary(self):
 
-        BBsignal_ideal = read_in_signal(mock_data_directory + 'BBsignal_our.csv')
+        BBsignal_ideal = read_in_signal(mock_data_path + 'BBsignal_our.csv')
 
-        H = read_in_transfer_function(mock_data_directory + 'H_our.csv')
+        H = read_in_transfer_function(mock_data_path + 'H_our.csv')
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 

@@ -47,13 +47,16 @@ class signal_class :
         self.__orginal_signal_in_V = signal_in_V
         self.__orginal_time = time
         self.__timestep = time[1] - time[0]
-        self.__original_f_rep = 1 / (time[-1] - time[0] + self.__timestep)
+        self.__original_sample_rate = 1 / (time[1] - time[0])
+        self.__original_f_rep = self.__original_sample_rate / len(self.__orginal_signal_in_V)
         self.__original_sample_rate = len(signal_in_V)* self.__original_f_rep
         sr = self.__original_sample_rate
         self.__orginial_Vpp = max(self.__orginal_signal_in_V) - min(self.__orginal_signal_in_V)
         self.__orginial_signal_normalized = self.__orginal_signal_in_V / self.__orginial_Vpp
 
+
         self.__sample_rate = self.__original_sample_rate
+        self.__f_rep = self.__original_f_rep
         self.__signal_in_V = self.__orginal_signal_in_V
         self.__Vpp = self.__orginial_Vpp
         self.__time = self.__orginal_time
@@ -115,7 +118,7 @@ class signal_class :
 
     @property
     def f_rep(self):
-        return self.__original_f_rep
+        return self.__f_rep
 
     @property
     def length(self):
@@ -131,6 +134,7 @@ class signal_class :
         self.__sample_rate = new_sr
         self.update_time()
         self.update_signal()
+        self.__f_rep = self.__sample_rate / len(self.__signal_in_V)
 
     @Vpp.setter
     def Vpp(self, Vpp):
@@ -160,9 +164,18 @@ class signal_class :
         return U
 
     @staticmethod
-    def gen_signal_from_old_convention(time, signal):
+    def gen_signal_from_sample_rate(signal, sample_rate):
+        dt = 1/sample_rate
+        time = np.linspace(0, dt*(len(signal)-1), len(signal), endpoint=True)
+
         signal = signal_class(time, signal)
         return signal
+
+    @staticmethod
+    def gen_signal_from_f_rep(signal_class_instance, f_rep):
+        sample_rate = len(signal_class_instance) * f_rep
+        signal_class_instance = signal_class.gen_signal_from_sample_rate(signal_class_instance, sample_rate)
+        return signal_class_instance
 
     def cut_one_period(self, f, shift=0):
 

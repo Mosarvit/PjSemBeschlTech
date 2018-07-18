@@ -19,7 +19,7 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from settings import project_path, mock_data_directory
+from settings import project_path, mock_data_path
 from helpers.plot_helper import plot_transfer_function
 from settings import mock_system
 from blocks import get_H
@@ -38,7 +38,7 @@ class test_apply_transfer_function(TestCase):
 
     def test_apply_transfer_function_BBsignal(self):
 
-        H = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
+        H = read_in_transfer_function(mock_data_path + 'H_jens.csv')
 
         Uout_300_ideal = generate_BBsignal()
         Uquest_300 = apply_transfer_function(Uout_300_ideal, H.get_inverse())
@@ -51,9 +51,9 @@ class test_apply_transfer_function(TestCase):
 
     def test_apply_transfer_function(self):
 
-        H = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
+        H = read_in_transfer_function(mock_data_path + 'H_jens.csv')
 
-        Uout_300_ideal = read_in_signal(mock_data_directory + 'Uout_300_jens.csv')
+        Uout_300_ideal = read_in_signal(mock_data_path + 'Uout_300_jens.csv')
         # Uout_300_ideal = Uout_300_ideal.get_signal_in_V_old_convention()
         Uquest_300 = apply_transfer_function(Uout_300_ideal, H.get_inverse())
         Uout_computed = apply_transfer_function(Uquest_300, H)
@@ -64,10 +64,10 @@ class test_apply_transfer_function(TestCase):
 
     def test_apply_transfer_function_2(self):
 
-        H = read_in_transfer_function_old_convention(mock_data_directory + 'adjustH/Messung3/Ha_0.csv',
-                                      mock_data_directory + 'adjustH/Messung3/Hp_0.csv')
+        H = read_in_transfer_function_old_convention(mock_data_path + 'adjustH/Messung3/Ha_0.csv',
+                                                     mock_data_path + 'adjustH/Messung3/Hp_0.csv')
 
-        Uout_300_ideal = read_in_signal(mock_data_directory + 'Uout_300_jens.csv')
+        Uout_300_ideal = read_in_signal(mock_data_path + 'Uout_300_jens.csv')
         # Uout_300_ideal = Uout_300_ideal.get_signal_in_V_old_convention()
         Uquest_300 = apply_transfer_function(Uout_300_ideal, H.get_inverse())
         Uout_computed = apply_transfer_function(Uquest_300, H)

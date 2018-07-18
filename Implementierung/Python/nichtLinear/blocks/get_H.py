@@ -26,7 +26,7 @@ Input:  fmax          ------  max frequency of interest
 
 
 def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=1, \
-        formatOutput=1, modus=False):
+        formatOutput=1):
     import visa
     from helpers import MLBS
     import time
@@ -36,14 +36,28 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=1, \
     import csv
     import os
 
+    from settings import use_mock_system, mock_system, last_directory_used, get_H_data_path_measuraments, get_H_data_path_mock
+    import  settings
+
     # Create folder for results
-    directory = time.strftime("%d.%m.%Y_%H_%M_%S")
+    if use_mock_system:
+        get_H_data_path = get_H_data_path_mock
+    else :
+        get_H_data_path = get_H_data_path_measuraments
+
+
+    directory = get_H_data_path + time.strftime("%d.%m.%Y_%H_%M_%S") + '/'
     if not os.path.exists(directory):
         os.makedirs(directory)
     if not os.path.exists(directory + "/Plots"):
         os.makedirs(directory + "/Plots")
     if not os.path.exists(directory + "/csv"):
         os.makedirs(directory + "/csv")
+
+    ### save directory name
+
+    settings.set_last_directory_used(directory + "csv/")
+
     # Parameter
     awg_volt = Vpp
     samplerateAWG = 2.5 * fmax
@@ -59,42 +73,39 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=1, \
 
     plt.rc('font', **font)
 
-
-    # am Desktop PC
-    # dso_ip = rs[1]
-    # am Gruppenlaptop BTNBG006
-    dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
-    DSO = visa.ResourceManager().get_instrument(dso_ip)
-
     [signal, seed] = MLBS.get(bits)
     Tns = 0.4 / fmax
     periodTime = signal.size * Tns
     horizontalScalePerDiv = 1.5 * periodTime / 10  # At least one period needs to be
     # shown on the DSO
 
-    ##################################################
-    ################## Write to AWG ##################
-    ##################################################
+    ########################
+    original_signal = signal
+    ########################
 
-    if writeAWG:
+    if use_mock_system :
+        mock_system.write_to_AWG(signal=signal, awg_Vpp=awg_volt, samplerateAWG=samplerateAWG)
+
+        time, dataUin, dataUout = mock_system.read_from_DSO_resolution(samplerateOszi=samplerateOszi,
+                                                                        vpp_ch1=awg_volt, fmax=fmax,
+                                                                        signal=signal)
+    else :
+
+        # am Desktop PC
+        # dso_ip = rs[1]
+        # am Gruppenlaptop BTNBG006
+        dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
+        DSO = visa.ResourceManager().get_instrument(dso_ip)
+
         write_to_AWG.write_to_AWG(signal=signal, awg_Vpp=awg_volt, samplerateAWG=samplerateAWG)
 
-#        write_to_AWG.send(signal=signal, samplerateAWG=samplerateAWG, awg_volt=awg_volt)
+        time, dataUin, dataUout = read_from_DSO_resolution.read_from_DSO_resolution(samplerateOszi=samplerateOszi,
+                                                                                    vpp_ch1=awg_volt, fmax=fmax,
+                                                                                    signal=signal)
 
-    ##################################################
-    ################## Write to DSO ##################
-    ##################################################
-    # Einzige Änderung wären noch die Filter in write to AWG
-    version = 2
-    if version == 1:
-        # Alte schlechte Auflösung Version 3.7.
-        time, dataUin, dataUout = read_from_DSO_alt.read(samplerateOszi, awg_volt, fmax, signal)
-    elif version == 2:
-        vpp_ch1 = awg_volt  # CH1 measures Output Signal from AWG
-        time, dataUin, dataUout = read_from_DSO_resolution.read_from_DSO_resolution(samplerateOszi, vpp_ch1, fmax, signal)
-    elif version == 3:
-        vpp_ch1 = awg_volt  # CH1 measures Output Signal from AWG
-        time, dataUin, dataUout = read_from_DSO.read(samplerateOszi=samplerateOszi, vpp_ch1=vpp_ch1, vpp_out=vpp_ch1, fmax=fmax, signal=signal)
+
+
+
 
 
     # Compute FFT of signals in time domain
@@ -315,6 +326,33 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=1, \
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
             for i in range(0, Uout.size):
                 writer.writerow([str(frq[i]), str(Uout[i])])
+
+        PhaseUin_save = PhaseUin[1:]
+        PhaseUout_save = PhaseUout[1:]
+
+        with open(directory + '/csv/UinPhase.csv', 'w', newline="") as csvfile:
+            writer = csv.writer(csvfile, delimiter=';',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for i in range(0, PhaseUin_save.size):
+                writer.writerow([str(frq[i]), str(PhaseUin_save[i])])
+
+        with open(directory + '/csv/UoutPhase.csv', 'w', newline="") as csvfile:
+            writer = csv.writer(csvfile, delimiter=';',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for i in range(0, PhaseUout_save.size):
+                writer.writerow([str(frq[i]), str(PhaseUout_save[i])])
+
+        with open(directory + '/csv/OriginalSignal.csv', 'w', newline="") as csvfile:
+            writer = csv.writer(csvfile, delimiter=';',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for i in range(0, original_signal.size):
+                writer.writerow([str(original_signal[i])])
+
+        with open(directory + '/csv/Samplerates.csv', 'w', newline="") as csvfile:
+            writer = csv.writer(csvfile, delimiter=';',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            writer.writerow([ 'samplerateOszi' , str(samplerateOszi)])
+            writer.writerow([ 'samplerateAWG', str(samplerateAWG)])
 
     return (frq, H, PhaseH)
 

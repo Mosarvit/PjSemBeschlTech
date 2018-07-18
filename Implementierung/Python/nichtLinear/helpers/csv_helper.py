@@ -44,12 +44,19 @@ def read_in_transfer_function(path):
     H.p = Ha[:, 2]
     return H
 
-def read_in_transfer_function_old_convention(pathA, pathPh):
-    Ha = genfromtxt(pathA, delimiter=',')
-    Hph = genfromtxt(pathPh, delimiter=',')
-    H = transfer_function_class(Ha[:, 0])
+def read_in_transfer_function_old_convention(pathA, pathPh, delimiter=','):
+    Ha = genfromtxt(pathA, delimiter=delimiter)
+    Hph = genfromtxt(pathPh, delimiter=delimiter)
+    f = Ha[:, 0]
+    H = transfer_function_class(f)
     H.a = Ha[:, 1]
     H.p = Hph[:, 1]
+    return H
+
+def read_in_transfer_function_complex(path, delimiter=','):
+    H_compl = genfromtxt(path, delimiter=delimiter)
+    H = transfer_function_class(H_compl[:, 0])
+    H.c = H_compl[:, 1]
     return H
 
 def save_transfer_function(H, directory, id ):
@@ -82,15 +89,12 @@ def save_transfer_function_old_convention(H, directory, id ):
     save_2cols(directory + '/Hp_' + str(id) + '.csv', H.f, H.p)
     save_transfer_function(H, directory + '/H_' + str(id) + '.csv')
 
-def read_in_signal(file):
 
 
+def read_in_signal(path, delimiter=','):
 
-    U_old_convention = genfromtxt(file, delimiter=',')
-    # sample_rate = int(np.round(1 / (U_old_convention[1, 0] - U_old_convention[0, 0])))
-    # sample_rate = int(np.round((U_old_convention.shape[0] - 1) / (U_old_convention[-1, 0] - U_old_convention[0, 0])))
-    # U = signal_class(signal_in_V=U_old_convention[:, 1], sample_rate=sample_rate)
-    U = signal_class.gen_signal_from_old_convention(U_old_convention[:,0], U_old_convention[:,1])
+    U_old_convention = genfromtxt(path, delimiter=delimiter)
+    U = signal_class(U_old_convention[:, 0], U_old_convention[:, 1])
 
     return U
 

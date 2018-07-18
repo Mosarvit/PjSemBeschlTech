@@ -7,7 +7,7 @@ Created on Thu Jul 13 11:22:44 2017
 import matplotlib.pyplot as plt
 #import time
 #from scipy import interpolate
-import settings
+from settings import show_plots
 from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class
 
@@ -40,7 +40,7 @@ def compute_Uquest_from_Uout(Uout, H, verbosity=0):
         # plt.grid(True)
         plt.ylabel('u')
         plt.xlabel('t')
-        if settings.show_plots :
+        if show_plots :
             plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_quest_measured.pdf')
 

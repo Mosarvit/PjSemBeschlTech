@@ -77,7 +77,7 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=99990000
 
         csv_helper.save_2cols(settings.project_path + '/data/current_data/BBsignal_ideal.csv', Uout[0, :], Uout[1, :])
 
-    Uout = signal_class.gen_signal_from_old_convention(Uout[:, 0], Uout[:, 1])
+    Uout = signal_class.gen_signal_from_sample_rate(Uout[:, 0], Uout[:, 1])
 
     return Uout
 
@@ -135,6 +135,6 @@ def generate_BBsignal_new(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=9999
     if saveCSV:
         csv_helper.save_2cols(settings.project_path + '/data/current_data/BBsignal_new.csv', Uout[0, :], Uout[1, :])
 
-    Uout = signal_class.gen_signal_from_old_convention(Uout[:, 0], Uout[:, 1])
+    Uout = signal_class.gen_signal_from_sample_rate(Uout[:, 0], Uout[:, 1])
 
     return Uout

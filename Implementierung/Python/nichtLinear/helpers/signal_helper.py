@@ -111,6 +111,6 @@ def generateSinSum(fqAmp, t):
     for ind in rg:
         signal[:,1] += fqAmp[ind, 1] * np.sin(fqAmp[ind, 0] * t)
 
-    signal_obj = signal_class.gen_signal_from_old_convention(signal[:,0], signal[:,1])
+    signal_obj = signal_class.gen_signal_from_sample_rate(signal[:, 0], signal[:, 1])
 
     return signal_obj

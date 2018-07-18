@@ -21,7 +21,7 @@ from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from settings import mock_system
 from blocks import get_H
 import os
-from settings import mock_data_directory, project_path
+from settings import mock_data_path, project_path
 from classes.signal_class import signal_class
 import timeit
 
@@ -39,7 +39,7 @@ class test_adjust_H(TestCase):
 
     def test_adjust_H_a_trivial(self):
 
-        Halt = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
+        Halt = read_in_transfer_function(mock_data_path + 'H_jens.csv')
 
         Hneu_ideal = Halt
 
@@ -64,7 +64,7 @@ class test_adjust_H(TestCase):
           Hneu = Halt
         """
 
-        Halt = read_in_transfer_function(mock_data_directory + '/H_jens.csv')
+        Halt = read_in_transfer_function(mock_data_path + '/H_jens.csv')
         Hneu_ideal = Halt
 
         t = np.linspace(0, 1e-5, 1000)
@@ -92,7 +92,7 @@ class test_adjust_H(TestCase):
 
         verbosity = 0
 
-        Halt = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
+        Halt = read_in_transfer_function(mock_data_path + 'H_jens.csv')
         Hneu_ideal = transfer_function_class(Halt.f)
 
         sigma_H = 0.5
@@ -148,8 +148,8 @@ class test_adjust_H(TestCase):
 
         Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max)
 
-        Halt = read_in_transfer_function_old_convention(mock_data_directory + 'adjustH/Messung2/Ha_0.csv',
-                                             mock_data_directory + 'adjustH/Messung2/Hp_0.csv')
+        Halt = read_in_transfer_function_old_convention(mock_data_path + 'adjustH/Messung2/Ha_0.csv',
+                                                        mock_data_path + 'adjustH/Messung2/Hp_0.csv')
         Hneu_ideal = transfer_function_class(Halt.f)
         Hneu_ideal.a = Halt.a * (1 + sigma_H * (factor - 1))
         Hneu_ideal.p = Halt.p
@@ -163,7 +163,7 @@ class test_adjust_H(TestCase):
             # Uout_measured[:, 1] = [x * 2 for x in Uout_ideal[:, 1]]
         else:
             ## to show pictures of first step of adjust_H in real application instead of testing
-            Uout_measured = read_in_signal( mock_data_directory + 'adjustH/Messung2/Uout_1.csv' )
+            Uout_measured = read_in_signal(mock_data_path + 'adjustH/Messung2/Uout_1.csv')
 
         def to_test():
             Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
@@ -186,7 +186,7 @@ class test_adjust_H(TestCase):
           Hneu = Halt
         """
 
-        Halt = read_in_transfer_function(mock_data_directory + 'H_jens.csv')
+        Halt = read_in_transfer_function(mock_data_path + 'H_jens.csv')
         Hneu_ideal = Halt
 
         t = np.linspace(0, 1e-5, 1000)
@@ -224,8 +224,8 @@ class test_adjust_H(TestCase):
         Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, saveCSV=False, verbosity=0)
         Uout_ideal = Uout_ideal.get_signal_in_V_old_convention()
 
-        Halt = read_in_transfer_function_old_convention (mock_data_directory + 'adjustH/Messung2/Ha_0.csv',
-                                             mock_data_directory + 'adjustH/Messung2/Hp_0.csv')
+        Halt = read_in_transfer_function_old_convention (mock_data_path + 'adjustH/Messung2/Ha_0.csv',
+                                                         mock_data_path + 'adjustH/Messung2/Hp_0.csv')
         Hneu_ideal = transfer_function_class(Halt.f)
         Hneu_ideal.a = Halt.a * (1 + sigma_H * (factor - 1))
         Hneu_ideal.p = Halt.p
@@ -238,7 +238,7 @@ class test_adjust_H(TestCase):
             Uout_measured[:, 1] = [x * 2 for x in Uout_ideal[:, 1]]
         else:
             ## to show pictures of first step of adjust_H in real application instead of testing
-            Uout_measured = genfromtxt(mock_data_directory + 'adjustH/Messung2/Uout_1.csv', delimiter=',')
+            Uout_measured = genfromtxt(mock_data_path + 'adjustH/Messung2/Uout_1.csv', delimiter=',')
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=True)
 

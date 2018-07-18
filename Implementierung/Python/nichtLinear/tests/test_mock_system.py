@@ -3,7 +3,6 @@ import unittest
 from numpy import genfromtxt
 from scipy import linalg
 import matplotlib.pyplot as plt
-from blocks.adjust_H import adjust_H
 from blocks.adjust_a import adjust_a
 
 from helpers.overlay import overlay
@@ -18,11 +17,13 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from settings import project_path, mock_data_directory
+from settings import project_path, mock_data_path
 from settings import mock_system
 from helpers.csv_helper import read_in_signal
 from blocks import get_H
 import os
+from classes.signal_class import signal_class
+from helpers.plot_helper import plot_2_signals
 
 
 
@@ -40,15 +41,21 @@ class test_mock_system(TestCase):
 
         sample_rate_DSO = 9999e5
 
-        Uout_ideal = read_in_signal(mock_data_directory + 'Uout_300_our.csv')
-        Uquest_ideal = read_in_signal(mock_data_directory + 'Uquest_300_our.csv')
+        Uout_ideal = read_in_signal(mock_data_path + 'Uout_300_our.csv')
+        Uquest_ideal = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
 
-        mock_system.H = read_in_transfer_function(mock_data_directory + 'H_our.csv')
+        # sample_rate_DSO = Uquest_ideal.sample_rate
 
-        mock_system.write_to_AWG(Uin=Uquest_ideal)
-        _, Uout_computed = mock_system.read_from_DSO(sample_rate_DSO=sample_rate_DSO)
+        mock_system.H = read_in_transfer_function(mock_data_path + 'H_our.csv')
+
+        mock_system.write_to_AWG(signal=Uquest_ideal.in_V, awg_Vpp= Uquest_ideal.Vpp, samplerateAWG=Uout_ideal.sample_rate)
+        time, dataUin, dataUout = mock_system.read_from_DSO(samplerateOszi=sample_rate_DSO, signal=Uquest_ideal, fmax=8e7, vpp_ch1=Uquest_ideal.Vpp)
+
+        Uout_computed = signal_class(time, dataUout)
 
         Uout_computed = overlay(Uout_computed, Uout_ideal)
+
+        # plot_2_signals(Uout_ideal, Uout_computed)
 
         err = linalg.norm(Uout_computed.in_V - Uout_ideal.in_V) / linalg.norm(Uout_ideal.in_V)
 

@@ -23,7 +23,7 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from settings import project_path, mock_data_directory
+from settings import project_path, mock_data_path
 from settings import mock_system
 from blocks import get_H
 import os
@@ -42,12 +42,12 @@ class test_compute_Uin_from_Uquest(TestCase):
     # @unittest.skip("reason for skipping")
     def test_compute_Uin_from_Uquest_jens(self):
 
-        Uin_ideal = read_in_signal(mock_data_directory + 'Uin_jens.csv')
+        Uin_ideal = read_in_signal(mock_data_path + 'Uin_jens.csv')
         Uin_ideal.Vpp = 0.3
 
-        Uquest_300 = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
+        Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_jens.csv')
 
-        K_300 = genfromtxt(mock_data_directory + 'K_300_jens.csv', delimiter=',')
+        K_300 = genfromtxt(mock_data_path + 'K_300_jens.csv', delimiter=',')
 
         Uin_computed = compute_Uin_from_Uquest(Uquest_300, K_300, verbosity=False)
 
@@ -68,12 +68,12 @@ class test_compute_Uin_from_Uquest(TestCase):
 
     def test_compute_Uin_from_Uquest_our(self):
 
-        Uin_ideal = read_in_signal(mock_data_directory + 'Uin_our.csv')
+        Uin_ideal = read_in_signal(mock_data_path + 'Uin_our.csv')
         Uin_ideal.Vpp = 0.3
 
-        Uquest_300 = read_in_signal(mock_data_directory + 'Uquest_300_our.csv')
+        Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
 
-        K_300 = genfromtxt(mock_data_directory + 'K_300_jens.csv', delimiter=',')
+        K_300 = genfromtxt(mock_data_path + 'K_300_jens.csv', delimiter=',')
 
         Uin_computed = compute_Uin_from_Uquest(Uquest_300, K_300, verbosity=False)
 

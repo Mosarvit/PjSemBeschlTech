@@ -19,7 +19,7 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from settings import project_path, mock_data_directory
+from settings import project_path, mock_data_path
 from settings import mock_system
 from blocks import get_H
 import os
@@ -36,11 +36,11 @@ class test_compute_a_from_Uin_Uquest(TestCase):
 
     @unittest.skip("The mock data cannot be correct, since the timeperiod of Uquest_300_jens.csv and Uin_jens.csv are too different")
     def test_compute_a_from_Uin_Uquest_300_jens(self):
-        Uquest_300 = read_in_signal(mock_data_directory + 'Uquest_300_jens.csv')
-        Uin = read_in_signal(mock_data_directory + 'Uin_jens.csv')
+        Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_jens.csv')
+        Uin = read_in_signal(mock_data_path + 'Uin_jens.csv')
         Uin.Vpp = 0.3
 
-        a_300_ideal = genfromtxt(mock_data_directory + 'a_300_jens.csv', delimiter=',')
+        a_300_ideal = genfromtxt(mock_data_path + 'a_300_jens.csv', delimiter=',')
 
         a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
 
@@ -48,11 +48,11 @@ class test_compute_a_from_Uin_Uquest(TestCase):
         self.assertTrue(err < 1e-3)
 
     def test_compute_a_from_Uin_Uquest_300_our(self):
-        Uquest_300 = read_in_signal(mock_data_directory + 'Uquest_300_our.csv')
-        Uin = read_in_signal(mock_data_directory + 'Uin_our.csv')
+        Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
+        Uin = read_in_signal(mock_data_path + 'Uin_our.csv')
         Uin.Vpp = 0.3
 
-        a_300_ideal = genfromtxt(mock_data_directory + 'a_300_our.csv', delimiter=',')
+        a_300_ideal = genfromtxt(mock_data_path + 'a_300_our.csv', delimiter=',')
 
         a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
 
