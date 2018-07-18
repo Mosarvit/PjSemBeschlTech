@@ -65,18 +65,19 @@ class mock_system_class :
     def H(self, H):
         self.__H = H
 
-    def write_to_AWG(self, signal, awg_Vpp, samplerateAWG ):
+    def write_to_AWG(self, signal, awg_Vpp, samplerateAWG=0, frequency=0 ):
 
-        self.__Uin = signal_class.gen_signal_from_sample_rate(signal=signal, sample_rate=samplerateAWG)
+        if samplerateAWG!=0 :
+            self.__Uin = signal_class.gen_signal_from_sample_rate(signal=signal, sample_rate=samplerateAWG)
+        elif frequency!=0 :
+            self.__Uin = signal_class.gen_signal_from_f_rep(signal=signal, f_rep=frequency)
+
         self.__Uin.Vpp = awg_Vpp
-
-        frequency = self.__Uin.sample_rate / (self.__Uin.length )
 
         print('==================================================')
         print('Sending to mock AWG')
-        # print('signal length : ' + str(len(self.__Uin.time) ))
         print('sample rate : ' + str(self.__Uin.sample_rate))
-        print('frequency : ' + str(frequency))
+        print('frequency : ' + str(self.__Uin.f_rep))
 
 
     def read_from_DSO_resolution(self, samplerateOszi,  vpp_ch1, fmax, signal):

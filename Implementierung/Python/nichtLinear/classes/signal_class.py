@@ -47,13 +47,8 @@ class signal_class :
         self.__orginal_signal_in_V = signal_in_V
         self.__orginal_time = time
         self.__timestep = time[1] - time[0]
-<<<<<<< HEAD
         self.__original_sample_rate = 1 / (time[1] - time[0])
         self.__original_f_rep = self.__original_sample_rate / len(self.__orginal_signal_in_V)
-=======
-        self.__original_f_rep = 1 / (len(self.__orginal_time) * self.__timestep)
->>>>>>> 7e86cc36d7795b2099cd6051944d25f5b77a0836
-        self.__original_sample_rate = len(signal_in_V)* self.__original_f_rep
         self.__orginial_Vpp = max(self.__orginal_signal_in_V) - min(self.__orginal_signal_in_V)
         self.__orginial_signal_normalized = self.__orginal_signal_in_V / self.__orginial_Vpp
 
@@ -175,9 +170,9 @@ class signal_class :
         return signal
 
     @staticmethod
-    def gen_signal_from_f_rep(signal_class_instance, f_rep):
-        sample_rate = len(signal_class_instance) * f_rep
-        signal_class_instance = signal_class.gen_signal_from_sample_rate(signal_class_instance, sample_rate)
+    def gen_signal_from_f_rep(signal, f_rep):
+        sample_rate = len(signal) * f_rep
+        signal_class_instance = signal_class.gen_signal_from_sample_rate(signal, sample_rate)
         return signal_class_instance
 
     def cut_one_period(self, f, shift=0):

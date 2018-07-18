@@ -51,13 +51,19 @@ def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0)
     ####################################################################################################################
 
     def send_Uin_to_AWG(Uin):
-        write_to_AWG(Uin.normalized, Uin.Vpp, frequency=900e3)
+        if use_mock_system:
+            mock_system.write_to_AWG(Uin.normalized, Uin.Vpp, frequency=900e3)
+        else:
+            write_to_AWG(Uin.normalized, Uin.Vpp, frequency=900e3)
         # TODO: change frequency-value to global-data (enable different repetition rate here)
 
     def receive_from_DSO(Uin):
         fmax = 80e6
 
-        [time, dataUin, dataUout] = read_from_DSO_resolution(sample_rate_DSO, Uin.Vpp, fmax, Uin.in_V)
+        if use_mock_system:
+            [time, dataUin, dataUout] = mock_system.read_from_DSO_resolution(sample_rate_DSO, Uin.Vpp, fmax, Uin.in_V)
+        else:
+            [time, dataUin, dataUout] = read_from_DSO_resolution(sample_rate_DSO, Uin.Vpp, fmax, Uin.in_V)
 
         Uout_measured = signal_class(time, dataUout)
         Uin_measured = signal_class(time, dataUin)
@@ -72,17 +78,8 @@ def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0)
         Uout_measured = genfromtxt('data/current_data/Uout_' +id+ '.csv', delimiter=',')
         Uin_measured = genfromtxt('data/current_data/Uin_' + id + '.csv', delimiter=',')
     else:
-
-        if use_mock_system:
-
-            mock_system.write_to_AWG(Uin)
-
-            Uin_measured, Uout_measured = mock_system.read_from_DSO(sample_rate_DSO=sample_rate_DSO)
-
-        else:
-
-            send_Uin_to_AWG( Uin )
-            Uin_measured, Uout_measured  = receive_from_DSO(Uin)
+        send_Uin_to_AWG( Uin )
+        Uin_measured, Uout_measured  = receive_from_DSO(Uin)
 
     if saveCSV:
 
