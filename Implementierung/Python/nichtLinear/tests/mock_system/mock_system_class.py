@@ -81,7 +81,7 @@ class mock_system_class :
     def read_from_DSO(self, sample_rate_DSO):
         self.__Uin_real = self.__Uin
         self.__Uin_real.sample_rate = sample_rate_DSO
-        self.__Uin_measured = signal_class(self.__Uin_real.time , self.__Uin_real.in_V * 0.5, )
+        self.__Uin_measured = signal_class(self.__Uin_real.time , self.__Uin_real.in_V * 0.5 )
 
         self.__Uout_real = apply_transfer_function(self.__Uin, self.__H)
         self.__Uout_real.sample_rate = sample_rate_DSO

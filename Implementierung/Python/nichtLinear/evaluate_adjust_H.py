@@ -27,7 +27,7 @@ from helpers.signal_evaluation import signal_evaluate
 import numpy as np
 
 
-def evaluate_adjust_H(num_iters = 1) :
+def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
 
     if use_mock_system :
 
@@ -51,11 +51,13 @@ def evaluate_adjust_H(num_iters = 1) :
     save_transfer_function(H=H, directory=data_directory, id = '0' )
 
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
-    K = compute_K_from_a(a=a, verbosity=1)
+
+    K = compute_K_from_a(a=a, verbosity=0)
     save_2cols(project_path + 'data/optimizer/adjust_H/K_0.csv', K[:, 0], K[:, 1])
 
     
-    H, Uout_measured = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO)
+    H, Uout_measured = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO, verbosity=0)
+
 
     H_0 = read_in_transfer_function(project_path + 'data/current_data/' + 'H.csv')
     

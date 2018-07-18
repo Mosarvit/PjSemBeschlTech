@@ -23,13 +23,19 @@ from settings import project_path
 from blocks.determine_a import determine_a
 from helpers.plot_helper import plot_2_transfer_functions
 from blocks.generate_BBsignal import generate_BBsignal
+from settings import verbosity
 
-def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
+def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO, low_amplitude=0, verbosity=0):
+
     for i in range(1, num_iters + 1):
         id = str(i)
         # compute new Uin
         Uquest = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
-        Uin = compute_Uin_from_Uquest(Uquest=Uquest, K=K)
+
+        if low_amplitude :
+            Uin = Uquest
+        else :
+            Uin = compute_Uin_from_Uquest(Uquest=Uquest, K=K)
 
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
@@ -55,7 +61,7 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
         Vpp = 0.6
         Uout_ideal_for_FFT = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_DSO)
 
-        H = adjust_H(H, Uout_ideal_for_FFT, Uout_measured, sigma_H=sigma_H, verbosity=1)
+        H = adjust_H(H, Uout_ideal_for_FFT, Uout_measured, sigma_H=sigma_H, verbosity=verbosity)
 
         save_transfer_function(H, directory=data_directory, id=id)
         
