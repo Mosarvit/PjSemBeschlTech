@@ -5,7 +5,7 @@ from tools.singlesine_Signal import Signal
 from tools.singlesine_SineRef import SineRef
 from tools.singlesine_Verzerrungszahlen import Verzerrungszahlen
 from tools.singlesine_save_results import save
-
+import csv
 
 
 def signal_evaluate(Uout_filename):
@@ -24,9 +24,9 @@ def signal_evaluate(Uout_filename):
     """
     fBB = 5e6
     frev = 9e5
-    csv = 1
 
     # Die Parameterübergabe ist noch nicht optimal
+    print(Uout_filename)
     signal_output = Signal(dateiName=Uout_filename, frev=frev, fBB=fBB)
 
     dataPointsSignal, Vorzeichen, Startindex = signal_output[0:3]
@@ -40,7 +40,11 @@ def signal_evaluate(Uout_filename):
                                                  PulseA=PulseA, PulseP=PulseP, frev=frev, fBB=fBB, flag=flag)
 
     # quality aus verzerrungszahlen_output raus lesen!
-    print(verzerrungszahlen_output)
+    # print(verzerrungszahlen_output)
+    with open(results_filename, 'w') as f:
+        [f.write('{0},{1}\n'.format(key, value)) for key, value in verzerrungszahlen_output.items()]
+
     # save(Ueberschreiben=0, input_file =verzerrungszahlen_output, output_file=results_filename)
-    quality = verzerrungszahlen_output
+    quality = verzerrungszahlen_output['QGesamt1']
+    print(quality)
     return (quality)

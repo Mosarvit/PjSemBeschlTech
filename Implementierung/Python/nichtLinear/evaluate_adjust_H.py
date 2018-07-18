@@ -21,7 +21,11 @@ import matplotlib.pyplot as plt
 from settings import project_path
 from blocks.loop_adjust_H import loop_adjust_H
 from blocks.determine_a import determine_a
+<<<<<<< HEAD
 from helpers.signal_evaluation import signal_evaluate
+=======
+from save_results import save, save_text
+>>>>>>> origin/auto_speichern-Oszi_horizontal
 
 
 import numpy as np
@@ -34,7 +38,15 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
         data_directory = project_path + 'tests/mock_data/mock_results/adjust_H/'
 
     else :
+<<<<<<< HEAD
         data_directory = project_path + 'data/optimizer/adjust_H/'
+=======
+        data_directory = project_path + save(path='data/optimizer', name='adjust_H') + '/'
+
+    data_directory = project_path + save(path='data/optimizer', name='adjust_H') + '/'
+
+
+>>>>>>> origin/auto_speichern-Oszi_horizontal
 
 
     f_rep = 900e3
@@ -58,6 +70,10 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     
     H, Uout_measured = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO, verbosity=0)
 
+<<<<<<< HEAD
+=======
+    H, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO)
+>>>>>>> origin/auto_speichern-Oszi_horizontal
 
     H_0 = read_in_transfer_function(project_path + 'data/current_data/' + 'H.csv')
     
@@ -66,4 +82,10 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     signal_evaluate(data_directory + 'Uout_2.csv')
     signal_evaluate(data_directory + 'Uout_3.csv')
 
+<<<<<<< HEAD
     return Uout_ideal, Uout_measured, H_0, H 
+=======
+    save_text(data_directory)
+    return Uout_ideal, Uout_measured, H_0, H
+evaluate_adjust_H(num_iters = 2)
+>>>>>>> origin/auto_speichern-Oszi_horizontal
