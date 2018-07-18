@@ -41,6 +41,7 @@ def evaluate_adjust_H(num_iters = 1) :
 
 
 
+
     f_rep = 900e3
     f_BB = 5e6
     Vpp = 0.3
@@ -57,7 +58,7 @@ def evaluate_adjust_H(num_iters = 1) :
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
     K = compute_K_from_a(a=a, verbosity=0)
 
-    H, Uout_measured = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO)
+    H, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO)
 
     H_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
 

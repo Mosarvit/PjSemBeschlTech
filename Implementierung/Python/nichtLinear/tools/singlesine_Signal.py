@@ -139,6 +139,9 @@ def Signal(dateiName,frev,fBB):
 	folderName = "";
 	if "/" in dateiName:
 		folderName = dateiName.split("/")[0]
+		# Problem mit / als erstes
+		if folderName == "":
+			folderName = dateiName.split("/")[1]
 
 	print('Processing the file %s' %dateiName)
 	filetype = dateiName.split(".")[1]

@@ -25,6 +25,7 @@ from helpers.plot_helper import plot_2_transfer_functions
 from helpers.signal_evaluation import signal_evaluate
 
 def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
+    quality_development = []
     for i in range(1, num_iters + 1):
         id = str(i)
         # compute new Uin
@@ -40,11 +41,12 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
         save_signale(Uin_measured, data_directory + 'Uin_' + id + '.csv')
         save_signale(Uout_measured, data_directory + 'Uout_' + id + '.csv')
 
-        if use_mock_system != 1:
-            save_2cols('tools/csvDateien_K/Uout_' + id + '.csv', Uout_measured.time, Uout_measured.in_mV)
+        # if use_mock_system != 1:
+        #     save_2cols('tools/csvDateien_K/Uout_' + id + '.csv', Uout_measured.time, Uout_measured.in_mV)
 
-        #quality = signal_evaluate(data_directory + 'Uout_' + id + '.csv', data_directory + 'quality_results.csv')
+        quality = signal_evaluate(data_directory + 'Uout_' + id + '.csv', data_directory + 'quality_' + id + '.csv')
         sigma_H = 0.5
+        quality_development.append(quality)
 
         H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
 
@@ -52,7 +54,8 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
 
         plot_H_0_H_current(H, id, data_directory)
 
-    return H, Uout_measured
+    print(quality_development)
+    return H, Uout_measured, quality_development
 
 def plot_H_0_H_current(H, id, data_directory):
     verbosity = 0
