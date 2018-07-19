@@ -28,7 +28,7 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
 
     dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
     DSO = visa.ResourceManager().get_instrument(dso_ip)
-    version = 1
+    version = 2
     if version == 1:
         Tns = 0.4/fmax
         periodTime = signal.size*Tns
@@ -36,7 +36,11 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
                                                   #shown on the DSO 
     elif version == 2:
         periodTime = 1/900e3
-        horizontalScalePerDiv = periodTime/10
+        horizontalScalePerDiv = 1.5*periodTime/10
+    
+    # random samplerate versuch max
+    samplerateAWG = 2.5*fmax
+    samplerateOszi = 100*samplerateAWG
     
     possibleRecordLength = [500,2500,5000,10e3,25e3,50e3,100e3,250e3,500e3]
     possibleRecordLength = np.array(possibleRecordLength)
@@ -115,10 +119,12 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
     DSO.write("ACQUIRE:STOPAFTER SEQUENCE") #Specifies that the next
                                             #acquisition will be a 
                                             #single-sequence acquisition.
+    samplerate_initial = DSO.query("HORizontal:MAIn:SAMPLERate?")
     DSO.write("HORizontal:MAIn:SAMPLERate " + str(samplerateOszi)) # Sets the 
                                             # sample rate of the device.
                                             # Here: 10 times maximum expected 
-                                            # frequency to reduce aliasing                               
+                                            # frequency to reduce aliasing 
+    samplerate_new = DSO.query("HORizontal:MAIn:SAMPLERate?")
     DSO.write("ACQUIRE:STATE ON") #This command starts acquisitions
     DSO.write("DATa:STARt 1") #This command sets the starting data point 
                     #for waveform transfer. This command allows for the 
@@ -126,7 +132,7 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
        #last data point that will be transferred when using the CURVe? query
 
-    time_attempt = 1        #chooses version to wait for finishing commands
+    time_attempt = 2        #chooses version to wait for finishing commands
     if time_attempt == 1:
         time.sleep(5)       #enough time to finish every Process
     elif time_attempt == 2:
@@ -159,7 +165,7 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
          #last data point that will be transferred when using the CURVe? query
 
-    time_attempt = 3  # chooses version to wait for finishing commands
+    time_attempt = 2  # chooses version to wait for finishing commands
     if time_attempt == 1:
         time.sleep(5)  # enough time to finish every Process -> original implementation
     elif time_attempt == 2:
@@ -210,8 +216,10 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
     # Reduce time vector and signal to one period, this only holds for the MLBS Signal
     tmpTime = periodTime - time[0]
     ind = np.argmin(abs(time - tmpTime)) #find next index
+    ind = ind + 1
+    offset = 12500
     time = time[0:ind]
-    dataUin = dataUin[0:ind]
-    dataUout = dataUout[0:ind]
+    dataUin = dataUin[offset + 0:offset + ind]
+    dataUout = dataUout[offset + 0:offset + ind]
     
     return (time, dataUin, dataUout)

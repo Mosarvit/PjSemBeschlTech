@@ -1,0 +1,1 @@
+samplerate auf 2GSa/s

@@ -46,5 +46,5 @@ def signal_evaluate(Uout_filename, results_filename):
 
     # save(Ueberschreiben=0, input_file =verzerrungszahlen_output, output_file=results_filename)
     quality = verzerrungszahlen_output['QGesamt1']
-    print(quality)
+    print('QGesamt1: '+ str(quality))
     return (quality)

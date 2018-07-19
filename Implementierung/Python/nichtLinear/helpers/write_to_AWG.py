@@ -84,7 +84,7 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
         AWG.write("SOURce1:DATA:ARBitrary:DAC myarb ," + data_conv)
         
         time_attempt = 1  # chooses version to wait for finishing commands
-        wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
+        #wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
@@ -105,7 +105,7 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
         AWG.write("SOURce1:FUNCtion:ARBitrary 'myarb'")
 
         time_attempt = 1  # chooses version to wait for finishing commands
-        wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
+        #wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
@@ -132,7 +132,7 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
             AWG.write("SOURce1:FUNCtion:ARBitrary:FREQ " + str(frequency))
 
         time_attempt = 1  # chooses version to wait for finishing commands
-        wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
+       # wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
@@ -163,7 +163,7 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
         AWG.write("SOURce2:DATA:ARBitrary:DAC myarb ," + data_conv)
         
         time_attempt = 1  # chooses version to wait for finishing commands
-        wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
+        #wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
@@ -184,7 +184,7 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
         AWG.write("SOURce2:FUNCtion:ARBitrary 'myarb'")
 
         time_attempt = 1  # chooses version to wait for finishing commands
-        wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
+        #wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:
@@ -206,16 +206,16 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
         AWG.write("DISPlay:FOCus CH2")
         AWG.write("DISPlay:UNIT:ARBRate FREQuency")
         if samplerateAWG != 0:
-            AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(samplerateAWG))
+            AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(samplerateAWG))
         else:
-            AWG.write("SOURce1:FUNCtion:ARBitrary:FREQ " + str(frequency))
+            AWG.write("SOURce2:FUNCtion:ARBitrary:FREQ " + str(frequency))
 
         AWG.write("FUNC:ARB:SYNC")
         AWG.write("SOURce1:VOLTage " + str(awg_Vpp))
         AWG.write("SOURce2:VOLTage " + str(awg_Vpp))
 
         time_attempt = 1  # chooses version to wait for finishing commands
-        wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
+        #wait_for_AWG(AWG, 0) # TODO check, then delete the following and replace 0 with time_attempt
         if time_attempt == 1:
             time.sleep(5)  # enough time to finish every Process -> original implementation
         elif time_attempt == 2:

@@ -21,7 +21,7 @@ from numpy import genfromtxt
 import matplotlib.pyplot as plt
 from settings import project_path
 from blocks.determine_a import determine_a
-from helpers.plot_helper import plot_2_transfer_functions
+from helpers.plot_helper import plot_2_transfer_functions, plot_2_signals
 
 from helpers.signal_evaluation import signal_evaluate
 
@@ -37,30 +37,34 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
 
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
-        f_rep_fix = 9e5     
+        save_signale(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
+        save_signale(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
+
+        # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured_uncut', 'Uout_measured_uncut')
+
+        f_rep_fix = 9e5
         Uout_measured = Uout_measured.cut_one_period(f_rep_fix)
         Uin_measured = Uin_measured.cut_one_period(f_rep_fix)
-#        Uout_measured = Uout_measured.cut_one_period(Uin.f_rep)
-#        Uin_measured = Uin_measured.cut_one_period(Uin.f_rep)
 
         # save Uin and Uout
-        save_signale(Uin_measured, data_directory + 'Uin_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uout_' + id + '.csv')
+        save_signale(Uin, data_directory + 'Uin_awg_' + id + '.csv')
+        save_signale(Uquest, data_directory + 'Uquest_' + id + '.csv')
+        save_signale(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
+        save_signale(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
 
-        # if use_mock_system != 1:
-        #     save_2cols('tools/csvDateien_K/Uout_' + id + '.csv', Uout_measured.time, Uout_measured.in_mV)
+        # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured', 'Uout_measured')
 
-        quality = signal_evaluate(data_directory + 'Uout_' + id + '.csv', data_directory + 'quality_' + id + '.csv')
+        quality = signal_evaluate(data_directory + 'Uout_measured_' + id + '.csv', data_directory + 'quality_' + id + '.csv')
         sigma_H = 0.5
         quality_development.append(quality)
 
         H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
 
         save_transfer_function(H, directory=data_directory, id=id)
-        
+
         plot_H_0_H_current(H, id, data_directory)
 
-    print(quality_development)
+    print('quality_development' + str(quality_development))
     return H, Uout_measured, quality_development
 
 def plot_H_0_H_current(H, id, data_directory):

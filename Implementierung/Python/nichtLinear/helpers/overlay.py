@@ -8,30 +8,6 @@ from scipy import linalg
 
 def overlay(U1obj, U2obj):
 
-    """
-     overlay verschiebt Uin so, dass es maximal auf U2 aufliegt
-
-     INPUT:
-
-         U1 - n1x2 array; U_? (n1 - Länge des Signals)
-             U1[:,0] - Zeitvektor
-             U1[:,1] - Signalvektor
-
-         U2 - n2x2 array; (n2 - Länge des Signals)
-             U2[:,0] - Zeitvektor
-             U2[:,1] - Signalvektor
-
-     OUTPUT:
-
-         U1_shifted_n1 - n1x2 array; das verschoben U1 (n1 - Länge des Signals U1)
-             U1_shifted_n1[:,0] - Zeitvektor
-             U1_shifted_n1[:,1] - Signalvektor
-
-         U1_shifted_n2 - n2x2 array; das verschoben U1 der Länge m (n2 - Länge des Signals U2)
-             U1_shifted_n2[:,0] - Zeitvektor
-             U1_shifted_n2[:,1] - Signalvektor
-
-     """
 
 
 ######### this is obviously a crutch, but this iliminates the cases, when U1 and U2 dont have the same t_end, which normally should not , since frequency1 == frequency2

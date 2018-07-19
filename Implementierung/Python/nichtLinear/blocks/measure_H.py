@@ -36,7 +36,7 @@ def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
 
     if loadCSV :
 
-        H = read_in_transfer_function(project_path + 'data/current_data/H.csv')
+        H = read_in_transfer_function(project_path + 'data/current_data/H_0.csv')
 
     else :
 
@@ -55,7 +55,7 @@ def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
             H.p = Hph
 
             if saveCSV:
-                save_transfer_function(H, 'data/current_data/H.csv')
+                save_transfer_function(H, project_path + 'data/current_data/', '0')
 
     if verbosity:
 

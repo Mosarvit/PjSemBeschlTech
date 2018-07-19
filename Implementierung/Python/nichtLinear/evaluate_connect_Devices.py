@@ -18,9 +18,46 @@ import numpy as np
 import timeit
 from blocks.generate_BBsignal import generate_BBsignal
 
-
 # TODO: wait for AWG / DSO after each (nontrivial) command if possible with *OPC? after checking time-attempts
 
+
+def wait_for_AWG(AWG, attempt=0):
+    """
+
+    :param AWG: the Signal Generator to wait for, - designed by visa resourcemanager open (here: just Keysight)
+    :param attempt: choice of which wait-routine to run
+    :return: nothing
+    """
+
+    if attempt == 1:
+        time.sleep(1.3)  # simple to reduce time to wait
+        # -> see data sheet: maximum time needed to write is given by 1.25 sec
+    elif attempt == 2:
+        AWG.write("*OPC?")  # new attempt 1 to reduce time to wait
+        # -> does not proceed until *OPC? is set to 1 by internal queue.
+        # so, finishing this line in the program will last until the device is ready
+        # In case this is not working, try AWG.write("*OPC?") instead, just as a guess
+        # can used as a boolean variable, finished = AWG.query("*OPC?"), if necessary for a loop
+    elif attempt == 3:
+        AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
+        # python will go on and write the commands in the input buffer
+        # they will be executed after WAI has finished
+        # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
+    elif attempt == 4:
+        busy = 1 # initialize
+        busy = AWG.write("BUSY?")  # new attempt to reduce time to wait -> runs until OPC? is set to 1
+        # try additionally:
+        # busy = AWG.read() # comnined with write-command above should be same as query
+        print("busy:")
+        print(busy)
+        print("busy ready")
+        while int(busy[0]) != 0:  # loop until not busy any more
+            time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
+            busy = AWG.write("BUSY?")
+            print(busy)  # just to have a control option -> not necessary, it an attempt work
+    else:
+        time.sleep(10)  # enough time to finish every Process -> original implementation
+    return
 
 def check_AWG():
     """
@@ -32,6 +69,7 @@ def check_AWG():
         (no output)
 
     """
+    #from evaluate_connect_Devices import wait_for_AWG
 
     # Define functions to use time-analysis by timeit.timeit
     # TODO: find clever solution instead of the following, ugly implementation for measuring the run-time of functions
@@ -90,97 +128,150 @@ def check_AWG():
 
     #Reset Instrument
     AWG.write("*RST")
-    error = AWG.query("SYSTem:ERRor?")# reads and deletes one error - NEW
-    while error.find('0') != -1:       # will this work, format of error should be string
-        error_nr = error_nr +1
-        print("Error Number " + str(error_nr) + " at beginning of code with error: " + str(error))
-        error = AWG.query("SYSTem:ERRor?")
-
-    AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
-    AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
-
-    # time analysis Position 1
-    t = timeit.timeit(time_attempt_1, number=1)
-    print("Laufzeit von time_attempt_1 in milli Sec: " + str(t*1e3) + " at Position 1")
-    t = 0
-
-    AWG.write("DATA:VOLatile:CLEar")
-    myrange = max(abs(max(signal.in_V)), abs(min(signal.in_V)))
-    # Data Conversion from V to DAC levels
-    data_conv = np.round(signal.in_V * 32766 / myrange);
-    data_conv = ",".join(str(e) for e in data_conv)
-    AWG.write("SOURce1:DATA:ARBitrary:DAC myarb ," + data_conv)
-
-    # time analysis Position 2
-    t = timeit.timeit(time_attempt_3, number=1)
-    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 2")
-    t = 0
-
-    AWG.write("SOURce1:FUNCtion:ARBitrary 'myarb'")
-
-    # time analysis Position 3
-    t = timeit.timeit(time_attempt_3, number=1)
-    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 3")
-    t = 0
-
-    AWG.write("SOURce1:FUNCtion ARB")  # USER
-    AWG.write("DISPlay:FOCus CH1")
-    AWG.write("DISPlay:UNIT:ARBRate SRATe") # because frequency is given, sample rate is of more interest
-    #AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
-    AWG.write("SOURce1:FUNCtion:ARBitrary:FREQ " + str(f_rep))
-
-    # time analysis Position 4
-    t = timeit.timeit(time_attempt_0, number=1)
-    print("Laufzeit von time_attempt_0 in milli Sec: " + str(t * 1e3) + " at Position 4")
-    t = 0
-
-    AWG.write("SOURce2:DATA:ARBitrary:DAC myarb ," + data_conv)
-
-    # time analysis Position 5
+    
+    # time analysis Position zero
     t = timeit.timeit(time_attempt_2, number=1)
-    print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position 5")
+    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position zero")
     t = 0
+    AWG.write("SYSTem:ERRor?")
+    time.sleep(4)
+    b = AWG.read()
+    
+    print(str(b))
+    
+    return
+    
+#    error=AWG.write("SYSTem:ERRor?")
+#    #error = AWG.read()# reads and deletes one error - NEW
+#    while error.find('0') != -1:       # will this work, format of error should be string
+#        error_nr = error_nr +1
+#        print("Error Number " + str(error_nr) + " at beginning of code with error: " + str(error))
+#        error = AWG.query("SYSTem:ERRor?")
 
-    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
-    while error.find('0') != -1:       # will this work, format of error should be string
-        error_nr = error_nr +1
-        print("Error Number " + str(error_nr) + " after writing signal with error: " + str(error))
-        error = AWG.query("SYSTem:ERRor?")
+#    AWG.write("SOURce1:FUNCtion:ARBitrary:FILTer OFF")
+#    AWG.write("SOURce2:FUNCtion:ARBitrary:FILTer OFF")
+#
+#    # time analysis Position 1
+#    t = timeit.timeit(time_attempt_1, number=1)
+#    print("Laufzeit von time_attempt_1 in milli Sec: " + str(t*1e3) + " at Position 1")
+#    t = 0
+#    
+#    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW ### find -function in str funktioniert nicht, rest gut!
+#
+#    AWG.write("DATA:VOLatile:CLEar")
+#    myrange = max(abs(max(signal.in_V)), abs(min(signal.in_V)))
+#    # Data Conversion from V to DAC levels
+#    data_conv = np.round(signal.in_V * 32766 / myrange);
+#    data_conv = ",".join(str(e) for e in data_conv)
+#    AWG.write("SOURce1:DATA:ARBitrary:DAC myarb ," + data_conv)
+#
+#    # time analysis Position 2
+#    t = timeit.timeit(time_attempt_3, number=1)
+#    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 2")
+#    t = 0
+#
+#    AWG.write("SOURce1:FUNCtion:ARBitrary 'myarb'")
+#
+#    # time analysis Position 3
+#    t = timeit.timeit(time_attempt_3, number=1)
+#    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 3")
+#    t = 0
+#
+#    AWG.write("SOURce1:FUNCtion ARB")  # USER
+#    AWG.write("DISPlay:FOCus CH1")
+#    AWG.write("DISPlay:UNIT:ARBRate SRATe") # because frequency is given, sample rate is of more interest
+#    #AWG.write("SOURce1:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+#    AWG.write("SOURce1:FUNCtion:ARBitrary:FREQ " + str(f_rep))
+#
+#    # time analysis Position 4
+#    t = timeit.timeit(time_attempt_0, number=1)
+#    print("Laufzeit von time_attempt_0 in milli Sec: " + str(t * 1e3) + " at Position 4")
+#    t = 0
+#
+#    AWG.write("SOURce2:DATA:ARBitrary:DAC myarb ," + data_conv)
+#
+#    # time analysis Position 5
+#    t = timeit.timeit(time_attempt_2, number=1)
+#    print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position 5")
+#    t = 0
+#
+#    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
+#    while error.find('0') != -1:       # will this work, format of error should be string
+#        error_nr = error_nr +1
+#        print("Error Number " + str(error_nr) + " after writing signal with error: " + str(error))
+#        error = AWG.query("SYSTem:ERRor?")
+#
+#    AWG.write("SOURce2:FUNCtion:ARBitrary 'myarb'")
+#
+#    # time analysis Position 6
+#    t = timeit.timeit(time_attempt_2, number=1)
+#    print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position 6")
+#    t = 0
+#
+#    AWG.write("SOURce2:FUNCtion ARB")  # USER
+#    AWG.write("DISPlay:FOCus CH2")
+#    AWG.write("DISPlay:UNIT:ARBRate FREQuency")
+#    AWG.write("SOURce2:FUNCtion:ARBitrary:FREQ " + str(f_rep))
+#    # AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
+#    AWG.write("FUNC:ARB:SYNC")
+#    AWG.write("SOURce1:VOLTage " + str(Vpp))
+#    AWG.write("SOURce2:VOLTage " + str(Vpp))
+#
+#    # time analysis Position 3
+#    t = timeit.timeit(time_attempt_3, number=1)
+#    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 3")
+#    t = 0
+#
+#    AWG.write("OUTPut1 OFF")
+#    AWG.write("OUTPut2 OFF")
+#    AWG.write("DISPlay:FOCus CH1")
+#
+#    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
+#    while error.find('0') != -1:       # will this work, format of error should be string
+#        error_nr = error_nr +1
+#        print("Error Number " + str(error_nr) + " at end of code with error: " + str(error))
+#        error = AWG.query("SYSTem:ERRor?")
+#
+#    return
 
-    AWG.write("SOURce2:FUNCtion:ARBitrary 'myarb'")
+check_AWG()
 
-    # time analysis Position 6
-    t = timeit.timeit(time_attempt_2, number=1)
-    print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position 6")
-    t = 0
 
-    AWG.write("SOURce2:FUNCtion ARB")  # USER
-    AWG.write("DISPlay:FOCus CH2")
-    AWG.write("DISPlay:UNIT:ARBRate FREQuency")
-    AWG.write("SOURce2:FUNCtion:ARBitrary:FREQ " + str(f_rep))
-    # AWG.write("SOURce2:FUNCtion:ARBitrary:SRATe " + str(sample_rate_AWG_max))
-    AWG.write("FUNC:ARB:SYNC")
-    AWG.write("SOURce1:VOLTage " + str(Vpp))
-    AWG.write("SOURce2:VOLTage " + str(Vpp))
+def wait_for_DSO(DSO, attempt=0):
+    """
 
-    # time analysis Position 3
-    t = timeit.timeit(time_attempt_3, number=1)
-    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 3")
-    t = 0
+    :param DSO: the DSO to wait for - designed by visa resourcemanager open (here: just DSO Tektronix)
+    :param attempt: choice of which wait-routine to run
+    :return: nothing
+    """
+    if attempt == 1:
+        DSO.write("*WAI")   #new attempt 1 to reduce time to wait -> DSO will wait till commands above are finished.
+                            # python will go on and write the commands in the input buffer
+                            # they will be executed after WAI has finished
 
-    AWG.write("OUTPut1 OFF")
-    AWG.write("OUTPut2 OFF")
-    AWG.write("DISPlay:FOCus CH1")
 
-    error = AWG.query("SYSTem:ERRor?")# reads and deletes one erro - NEW
-    while error.find('0') != -1:       # will this work, format of error should be string
-        error_nr = error_nr +1
-        print("Error Number " + str(error_nr) + " at end of code with error: " + str(error))
-        error = AWG.query("SYSTem:ERRor?")
+    elif attempt == 2:
+        print(DSO.query("BUSY?"))
+        DSO.query("*OPC?")  #new attempt 2 to reduce time to wait -> does not proceed until *OPC? is set to 1 by internal queue.
+                        # so, finishing this line in the program will last until the device is ready
+                        # In case this is not working, try DSO.write("*OPC?") instead, just as a guess
+                        # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
+        print(DSO.query("BUSY?"))
+    elif attempt == 3:
+        busy = DSO.query("BUSY?")          #new attempt 3 to reduce time to wait -> runs until OPC? is set to 1
+        print(busy)
+        while int(busy)==1:                        #loop until not busy any more
+               time.sleep(0.01)         #just to pose less requests to DSO, 10 msec waiting time -> not necessary
+               busy = DSO.query("BUSY?")
+               print("in schleife" + busy)                 #just to have a control option -> not necessary, it an attempt work
+                                        # In case this is not working, try DSO.write("BUSY") instead, just as a guess
+    else :
+        time.sleep(5)  # enough time to finish every Process
+
+        # new attempt 1 and another not named attempt are possible, but 2 and 3 are faster and more stable following the description
 
     return
-
-
+    
 def check_DSO():
     """
     # !!! apply a SIGNAL with Frequency fmax = 900 kHz and Vpp = 0.3 V to the DSO channel 1 before starting!
@@ -220,6 +311,9 @@ def check_DSO():
     def time_attempt_3():
         wait_for_DSO(DSO, 3)
         return
+    def busy_DSO():
+        print(DSO.query("BUSY?"))
+        return
 
     t = 0
 
@@ -244,6 +338,9 @@ def check_DSO():
     ##WRITE DSO
     DSO.write("*RST")  # Restores the state of the instrument from a copy of
     # the settings stored in memory
+    t = timeit.timeit(time_attempt_3, number=1)
+    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 2")
+    t = 0
     DSO.write("ACQUIRE:STATE OFF")  # This command stops acquisitions
     DSO.write("SELECT:CH1 ON")  # Turns the channel 1 waveform display on, and
     # selects channel 1.
@@ -303,12 +400,15 @@ def check_DSO():
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?"))  # Sets the
     # last data point that will be transferred when using the CURVe? query
 
+    
     # time analysis Position 1
-    t = timeit.timeit(time_attempt_0, number=1)
+    t = timeit.timeit(time_attempt_3, number=1)
     print("Laufzeit von time_attempt_0 in milli Sec: " + str(t * 1e3) + " at Position 1")
     t = 0
+#    print(DSO.query("SYSTem:ERRor?"))
+#    time.sleep(10) 
 
-    dataUin = DSO.query("CURVe?")
+#    dataUin = DSO.query("CURVe?")
     #DSO.write("DATa:SOUrce MATH3")  # This command sets the location of
     # waveform data that is transferred from the
     # instrument by the CURVe? Query
@@ -321,82 +421,25 @@ def check_DSO():
     # last data point that will be transferred when using the CURVe? query
 
     # time analysis Position 2
-    t = timeit.timeit(time_attempt_3, number=1)
+    t = timeit.timeit(time_attempt_2, number=1)
     print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position 2")
     t = 0
+    
+    t = timeit.timeit(busy_DSO, number=1)
+    print("Laufzeit von print in milli Sec: " + str(t * 1e3) + " at Position 2")
+    t = 0
+
 
     # end copy from read_from_DSO.read
-
-
-def wait_for_AWG(AWG, attempt=0):
-    """
-
-    :param AWG: the Signal Generator to wait for, - designed by visa resourcemanager open (here: just Keysight)
-    :param attempt: choice of which wait-routine to run
-    :return: nothing
-    """
-
-    if attempt == 1:
-        time.sleep(1.3)  # simple to reduce time to wait
-        # -> see data sheet: maximum time needed to write is given by 1.25 sec
-    elif attempt == 2:
-        AWG.query("*OPC?")  # new attempt 1 to reduce time to wait
-        # -> does not proceed until *OPC? is set to 1 by internal queue.
-        # so, finishing this line in the program will last until the device is ready
-        # In case this is not working, try AWG.write("*OPC?") instead, just as a guess
-        # can used as a boolean variable, finished = AWG.query("*OPC?"), if necessary for a loop
-    elif attempt == 3:
-        AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
-        # python will go on and write the commands in the input buffer
-        # they will be executed after WAI has finished
-        # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
-    elif attempt == 4:
-        busy = 1 # initialize
-        busy = AWG.write("BUSY?")  # new attempt to reduce time to wait -> runs until OPC? is set to 1
-        # try additionally:
-        # busy = AWG.read() # comnined with write-command above should be same as query
-        print("busy:")
-        print(busy)
-        print("busy ready")
-        while busy == '1':  # loop until not busy any more
-            time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
-            busy = AWG.query("BUSY?")
-            print(busy)  # just to have a control option -> not necessary, it an attempt work
-    else:
-        time.sleep(10)  # enough time to finish every Process -> original implementation
+    
     return
-
-def wait_for_DSO(DSO, attempt=0):
-    """
-
-    :param DSO: the DSO to wait for - designed by visa resourcemanager open (here: just DSO Tektronix)
-    :param attempt: choice of which wait-routine to run
-    :return: nothing
-    """
-    if attempt == 1:
-        DSO.write("*WAI")   #new attempt 1 to reduce time to wait -> DSO will wait till commands above are finished.
-                            # python will go on and write the commands in the input buffer
-                            # they will be executed after WAI has finished
+    
+#check_DSO()
 
 
-    elif attempt == 2:
-        DSO.query("*OPC?")  #new attempt 2 to reduce time to wait -> does not proceed until *OPC? is set to 1 by internal queue.
-                        # so, finishing this line in the program will last until the device is ready
-                        # In case this is not working, try DSO.write("*OPC?") instead, just as a guess
-                        # can used as a boolean variable, finished = DSO.query("*OPC?"), if necessary for a loop
-    elif attempt == 3:
-        busy = DSO.query("BUSY?")          #new attempt 3 to reduce time to wait -> runs until OPC? is set to 1
-        while busy=="1":                        #loop until not busy any more
-               time.sleep(0.01)         #just to pose less requests to DSO, 10 msec waiting time -> not necessary
-               busy = DSO.query("BUSY?")
-               print(busy)                 #just to have a control option -> not necessary, it an attempt work
-                                        # In case this is not working, try DSO.write("BUSY") instead, just as a guess
-    else :
-        time.sleep(5)  # enough time to finish every Process
 
-        # new attempt 1 and another not named attempt are possible, but 2 and 3 are faster and more stable following the description
 
-    return
+
 
 
 

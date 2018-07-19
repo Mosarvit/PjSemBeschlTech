@@ -51,21 +51,18 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max)
 
-    H = measure_H(loadCSV=1, saveCSV=0)
+    H = measure_H(loadCSV=1, saveCSV=1)
 
     save_transfer_function(H=H, directory=data_directory, id = '0' )
 
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
 
     K = compute_K_from_a(a=a, verbosity=0)
-    save_2cols(project_path + 'data/optimizer/adjust_H/K_0.csv', K[:, 0], K[:, 1])
+    save_2cols(data_directory + '/K_initial.csv', K[:, 0], K[:, 1])
 
     H, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
 
-    H_0 = read_in_transfer_function(project_path + 'data/current_data/' + 'H.csv')
-
-    for i in range(num_iters) :
-        signal_evaluate(data_directory + 'Uout_' + str(i) + '.csv', data_directory + 'quality_' + str(i) + '.csv')
+    H_0 = read_in_transfer_function(data_directory + 'H_0.csv')
 
     if not use_mock_system :
         save_text(data_directory)
