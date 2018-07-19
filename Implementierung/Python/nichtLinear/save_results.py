@@ -1,6 +1,6 @@
 import time
 import os
-from global_data import project_path
+from settings import project_path
 def save(path='data', name='', savetime=True):
     """
     

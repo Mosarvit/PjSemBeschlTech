@@ -21,11 +21,11 @@ import matplotlib.pyplot as plt
 from settings import project_path
 from blocks.loop_adjust_H import loop_adjust_H
 from blocks.determine_a import determine_a
-<<<<<<< HEAD
+
 from helpers.signal_evaluation import signal_evaluate
-=======
+
 from save_results import save, save_text
->>>>>>> origin/auto_speichern-Oszi_horizontal
+
 
 
 import numpy as np
@@ -38,15 +38,8 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
         data_directory = project_path + 'tests/mock_data/mock_results/adjust_H/'
 
     else :
-<<<<<<< HEAD
-        data_directory = project_path + 'data/optimizer/adjust_H/'
-=======
+
         data_directory = project_path + save(path='data/optimizer', name='adjust_H') + '/'
-
-    data_directory = project_path + save(path='data/optimizer', name='adjust_H') + '/'
-
-
->>>>>>> origin/auto_speichern-Oszi_horizontal
 
 
     f_rep = 900e3
@@ -67,25 +60,16 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     K = compute_K_from_a(a=a, verbosity=0)
     save_2cols(project_path + 'data/optimizer/adjust_H/K_0.csv', K[:, 0], K[:, 1])
 
-    
-    H, Uout_measured = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO, verbosity=0)
-
-<<<<<<< HEAD
-=======
-    H, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO)
->>>>>>> origin/auto_speichern-Oszi_horizontal
+    H, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
 
     H_0 = read_in_transfer_function(project_path + 'data/current_data/' + 'H.csv')
-    
-    signal_evaluate(data_directory + 'Uout_0.csv')
-    signal_evaluate(data_directory + 'Uout_1.csv')
-    signal_evaluate(data_directory + 'Uout_2.csv')
-    signal_evaluate(data_directory + 'Uout_3.csv')
 
-<<<<<<< HEAD
-    return Uout_ideal, Uout_measured, H_0, H 
-=======
-    save_text(data_directory)
+    for i in range(num_iters) :
+        signal_evaluate(data_directory + 'Uout_' + str(i) + '.csv', data_directory + 'quality_' + str(i) + '.csv')
+
+    if not use_mock_system :
+        save_text(data_directory)
+
     return Uout_ideal, Uout_measured, H_0, H
-evaluate_adjust_H(num_iters = 2)
->>>>>>> origin/auto_speichern-Oszi_horizontal
+
+
