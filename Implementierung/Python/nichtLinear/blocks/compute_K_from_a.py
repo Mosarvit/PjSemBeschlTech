@@ -42,7 +42,7 @@ def compute_K_from_a(a, verbosity):
             K[i,1]=K[i,1]+b[ind]*K[i,0]**(ind+1)
 
     # #TODO ab hier Anpassung an bijektiven Teil
-    bijectiv = False
+    bijectiv = True
     # nur für plots
     K_old = K
     if bijectiv:

@@ -51,5 +51,6 @@ class test_compute_K_from_a(TestCase):
 
         K_computed = compute_K_from_a(a_300, verbosity=False)
 
+        # durch das Abschneiden sind die Vektoren nicht mehr gleich gross
         err = linalg.norm(K_computed - K_300_ideal) / linalg.norm(K_300_ideal)
         self.assertTrue(err < 1e-3)

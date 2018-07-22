@@ -90,7 +90,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=True)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=False)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_awg)
 
@@ -106,7 +106,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=True)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=False)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_awg)
 
@@ -123,7 +123,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=True)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=False)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_initial)
 
@@ -139,7 +139,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=True)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=False)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_awg)
 
@@ -156,7 +156,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=True)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=False)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_initial)
 
