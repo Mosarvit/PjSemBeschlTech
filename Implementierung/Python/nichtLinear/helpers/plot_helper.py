@@ -3,12 +3,15 @@ from scipy.interpolate import interp1d
 import copy
 from helpers.find_nearest import find_nearest
 import matplotlib.pyplot as plt
-from settings import show_plots
+from matplotlib2tikz import save as save_tikz
+from settings import show_plots, save_as_tikz, project_path
 
 def plot_vector(vector, legend='vektor'):
     plt.figure()
     plt.plot(vector)
     plt.legend([legend])
+    if save_as_tikz:
+        save_tikz(legend + '.tikz', figureheight = '\\figureheight', figurewidth = '\\figurewidth')
     if show_plots:
         plt.show()
 
@@ -19,6 +22,8 @@ def plot_2_signals(U1, U2, legend1='U1', legend2='U2'):
     plt.legend([legend1, legend2])
     plt.xlabel('t')
     plt.ylabel('U')
+    if save_as_tikz:
+        save_tikz(project_path + 'data/' + legend1 + '_' + legend2 + '.tikz', figureheight = '\\figureheight', figurewidth = '\\figurewidth')
     if show_plots:
         plt.show()
 
@@ -64,3 +69,4 @@ def plot_transfer_function(H, legend1 = 'H'):
 
     if show_plots:
         plt.show()
+

@@ -10,6 +10,7 @@ mock_data_path = project_path + '/tests/mock_data/'
 get_H_data_path_measuraments = project_path + '/data/get_H/'
 get_H_data_path_mock = mock_data_path + '/mock_data/get_H/'
 show_plots = 1 # ob die Plots angenzeigt werden sollen
+save_as_tikz = 1 # speichert plots
 mock_system = mock_system_class()
 use_mock_system = 1
 verbosity = 0
