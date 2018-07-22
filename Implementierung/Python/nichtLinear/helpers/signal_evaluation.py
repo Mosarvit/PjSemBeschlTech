@@ -26,7 +26,6 @@ def signal_evaluate(Uout_filename, results_filename):
     frev = 9e5
 
     # Die Parameterübergabe ist noch nicht optimal
-    print(Uout_filename)
     signal_output = Signal(dateiName=Uout_filename, frev=frev, fBB=fBB)
 
     dataPointsSignal, Vorzeichen, Startindex = signal_output[0:3]

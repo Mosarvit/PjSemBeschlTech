@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import settings
 from helpers.find_nearest import find_nearest
 from classes.signal_class import signal_class
+from helpers.plot_helper import plot_2_signals
 
 
 
@@ -57,46 +58,92 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
     # K i d Form (Uin, Uquest) -> K(:, 0) = Uin Werte der Kennlinie in [mV], K(:, 1) = Uquest-Werte der Standard-Kennlinie in [mV]
     # Notwendig:
 
-    # schraenke K auf surjektiven Bereich ein ---- ggf spaeter als helper auslagern!
-    # erste Maxima und Minima fuer N != 3
-    K_ind_high = int(np.argmax(K[:, 0]))
-    K_ind_low = int(np.argmin(K[:, 0]))
-    K = K[K_ind_low:K_ind_high, :]
+
+
     # K = K / 1000 #Umrechnung in Volt
 
+    #TODO der Teil hatte nicht das gemacht, was er sollte
     # - skaliere Kennlinie / Uebertragung bzw Ausgang fuer gewuenschte Amplitude max( norm(Uquest(:, 1)))
     # - pruefe auf Einhalten der Bijektivitaet durch Amplitude von Uquest,
-    uQuest_max = max(Uquest.in_mV)
-    uQuest_min = min(Uquest.in_mV)
-
-    # - ggf. Anpassen des Ausgangsbereiches und Ausgeben einer Meldung
-    if uQuest_max > K[-1, 1]:
-        uQuest_max_ind = find_nearest(Uquest.in_mV, uQuest_max)
-        Uquest = signal_class( Uquest.time[0:uQuest_max_ind],  Uquest.in_mV [0:uQuest_max_ind] )
-        print("Uquest adapted to range of K: max Uquest too high for bijectiv curve")
-    if uQuest_min < K[0, 1]:
-        uQuest_min_ind = find_nearest(Uquest.in_mV, uQuest_min)
-        Uquest = signal_class(Uquest.time[uQuest_min_ind:-1], Uquest.in_mV[uQuest_min_ind:-1])
-        print("Uquest adapted to range of K: min Uquest too low for bijectiv curve")
-
+    # uQuest_max = max(Uquest.in_mV)
+    # uQuest_min = min(Uquest.in_mV)
+    #
+    # # - ggf. Anpassen des Ausgangsbereiches und Ausgeben einer Meldung
+    # if uQuest_max > K[-1, 1]:
+    #     uQuest_max_ind = find_nearest(Uquest.in_mV, uQuest_max)
+    #     Uquest = signal_class( Uquest.time[0:uQuest_max_ind],  Uquest.in_mV [0:uQuest_max_ind] )
+    #     print("Uquest adapted to range of K: max Uquest too high for bijectiv curve")
+    # if uQuest_min < K[0, 1]:
+    #     uQuest_min_ind = find_nearest(Uquest.in_mV, uQuest_min)
+    #     Uquest = signal_class(Uquest.time[uQuest_min_ind:-1], Uquest.in_mV[uQuest_min_ind:-1])
+    #     print("Uquest adapted to range of K: min Uquest too low for bijectiv curve")
     #setze Uin auf gleiche Groesse und gleiche Zeitwerte wie Uquest
     # Uin = copy.copy(Uquest)
 
+    # indices for maximum and minimum initial
+    imax = K.shape[0]
+    imin = 0
+
+    # find index of local maximum and minimum
+    for i in range(1, K.shape[0] - 1):
+        if K[i, 1] > K[i - 1, 1] and K[i, 1] > K[i + 1, 1]:
+            imax = i
+        elif K[i, 1] < K[i - 1, 1] and K[i, 1] < K[i + 1, 1]:
+            imin = i
+
+    # limit K to its bijectiv part
+    # exclusive or inclusive?
+    K_old = K
+    K = K[imin:imax, :]
+
     # - interpoliere Kennlinie
     K_function = interp1d(K[:, 1], K[:, 0], kind='slinear')
+    vpp_max = K[-1, 1] - K[0, 1]
+
+    if verbosity:
+        plt.figure()
+        plt.subplot(2, 2, 1)
+        plt.plot(Uquest.time, Uquest.in_mV)
+        plt.title('vor Anpassung')
+        plt.xlabel('t')
+        plt.ylabel('Uquest')
+
+    # adapt Uquest to max allowed vpp in mV
+    if Uquest.Vpp*1000 > vpp_max*0.9:
+        # der Wert 0.9 ist random gewählt, weil 1 nicht geklappt hat.. müssen wir herausfinden was geht
+        Uquest.Vpp = 0.90*vpp_max/1000
+        print('Uquest adapted to K maximum, new Vpp: ' + str(Uquest.Vpp))
+
 
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
     Uin_in_mV = K_function(Uquest.in_mV)
     Uin = signal_class(Uquest.time, Uin_in_mV/1000)     #### woher der Faktor 10 vorher????
 
-    # passe die Lange von Uin an sampleRateAWG an
+    if verbosity:
+        plt.subplot(2, 2, 2)
+        plt.plot(Uquest.time, Uquest.in_mV)
+        plt.title('nach Anpassung')
+        plt.xlabel('t')
+        plt.ylabel('Uquest neu')
 
+        plt.subplot(2, 2, 3)
+        plt.plot(K_old[:, 0], K_old[:, 1])
+        plt.title('K vor bijektiver Anpassung')
+        plt.xlabel('Uin')
+        plt.ylabel('Uquest')
+
+        plt.subplot(2, 2, 4)
+        plt.plot(K[:, 0], K[:, 1])
+        plt.title('K nach bijektiver Anpassung')
+        plt.xlabel('Uin')
+        plt.ylabel('Uquest')
+        plt.show()
 
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
 
     if verbosity:
         fig = plt.figure()
-        plt.plot(Uin[:,0],Uin[:,1])
+        plt.plot(Uin.time,Uin.in_mV)
         plt.title('Uin')
         plt.ylabel('u')
         plt.ylabel('t')
