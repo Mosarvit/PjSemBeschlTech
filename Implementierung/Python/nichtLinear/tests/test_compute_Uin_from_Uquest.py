@@ -34,9 +34,6 @@ class test_compute_Uin_from_Uquest(TestCase):
     def __init__(self, *args, **kwargs):
         super(test_compute_Uin_from_Uquest, self).__init__(*args, **kwargs)
 
-    def __init__(self, *args, **kwargs):
-        super(test_compute_Uin_from_Uquest, self).__init__(*args, **kwargs)
-
     @unittest.skip("reason for skipping")
     def test_compute_Uin_from_Uquest_jens(self):
         Uin_ideal = read_in_signal(mock_data_path + 'Uin_jens.csv')
@@ -63,7 +60,6 @@ class test_compute_Uin_from_Uquest(TestCase):
         self.assertTrue(err < 0.2)
 
     def test_compute_Uin_from_Uquest_our(self):
-
         Uin_ideal = read_in_signal(mock_data_path + 'Uin_our.csv')
         Uin_ideal.Vpp = 0.3
 
@@ -79,7 +75,6 @@ class test_compute_Uin_from_Uquest(TestCase):
         self.assertTrue(err < 0.2)
 
     def test_compute_Uin_from_Uquest_air(self):
-
         path = mock_data_path + 'adjust_a_19_07_2018-14_02_41/'
 
         Uin_awg = read_in_signal(path + 'Uin_initial.csv')
@@ -93,9 +88,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         err = linalg.norm(Uin_computed_overlay_obj.in_V - Uin_awg.in_V) / linalg.norm(Uin_awg.in_V)
         self.assertTrue(err < 0.2)
 
-
     def test_compute_Uin_from_Uquest_air(self):
-
         path = mock_data_path + 'adjust_a_19_07_2018-14_02_41/'
 
         Uin_awg = read_in_signal(path + 'Uin_initial.csv')
@@ -110,7 +103,6 @@ class test_compute_Uin_from_Uquest(TestCase):
         self.assertTrue(1)
 
     def test_compute_Uin_from_Uquest_air_new_K(self):
-
         path = mock_data_path + 'adjust_a_19_07_2018-14_02_41/'
 
         Uin_initial = read_in_signal(path + 'Uin_initial.csv')
@@ -126,9 +118,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         err = linalg.norm(Uin_computed_overlay_obj.in_V - Uin_initial.in_V) / linalg.norm(Uin_initial.in_V)
         self.assertTrue(err < 0.2)
 
-
     def test_compute_Uin_from_Uquest_from_adjust_a(self):
-
         path = mock_data_path + 'adjust_a_19_07_2018-13_53_38/'
 
         Uin_awg = read_in_signal(path + 'Uin_initial.csv')
@@ -143,7 +133,6 @@ class test_compute_Uin_from_Uquest(TestCase):
         self.assertTrue(err < 0.2)
 
     def test_compute_Uin_from_Uquest_from_adjust_a_new_K(self):
-
         path = mock_data_path + 'adjust_a_19_07_2018-13_53_38/'
 
         Uin_initial = read_in_signal(path + 'Uin_initial.csv')
@@ -168,8 +157,8 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=False)
 
-        Uin_computed.Vpp = Uin_computed.Vpp*1.5
-        Uin_awg.Vpp = Uin_awg.Vpp*1.5
+        Uin_computed.Vpp = Uin_computed.Vpp * 1.5
+        Uin_awg.Vpp = Uin_awg.Vpp * 1.5
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_awg)
 
