@@ -4,20 +4,70 @@
 \begin{document}
 
 
-\chapter{Optimierung}
+\chapter{Iterative Optimierung des Hammerstein-Modells}
 \label{chap:opt}
----- In diesem Kapitel werden die Aspekte der durchgeführten Optimierungs-Algorithmen erläutert --- 
-
-\section{---- Theorie ----}
-\label{sec:opt.theo}
---- in dieser section werden die von Jens vorgeschlagenen Ideen ausgeführt, rein theoretischer Natur also. Ebenso unsere Anpassungen.  ---
+---- In diesem Kapitel werden die Aspekte der durchgeführten Optimierungs-Algorithmen erläutert --- \\
 %TODO: überprüfe Referenz zu Jens, da Ideen nicht publiziert wurden! Wie wird das eingebunden?
+Ziel der Optimierung von Übertragungsfunktion $\Hcompl$ und Kennlinie $K$ mit ihren Parametern $a$ ist die Minimierung des Fehlers zwischen idealem und gemessenem Ausgangssignal, $\Uout_{, \mathrm{id}}$ und $\Uout_{, \mathrm{meas}}$ . Die Minimierung des relativen Fehlers ist also gegeben durch
+\begin{align}
+\label{eq:opt.relFehler}
+	\min \; \mathit{f} \oft = \min \left( \frac{\Uout_{, \mathrm{meas}}  - \Uout_{, \mathrm{id}} }{ \Uout_{, \mathrm{id}} } \right) 
+	= \min \left( \frac{ \Uout_{, \mathrm{meas}}}{ \Uout_{, \mathrm{id}}} -1 \right) 
+	\; .
+\end{align}
+Für das verwendete Hammerstein-Modell liegt die in \cite{----Jens---} %TODO: Referenz Idee iterative Optimierung Jens
+vorgeschlagene getrennte, iterative Optimierung von $\Hcompl$ und $K$ nahe. 
 
-\section{ --- Opti Übertragungsfkt --}
+
+
+
+\section{Optimierung der linearen Übertragungsfunktion $H$}
 \label{sec:opt.H}
---- evaluate-Aufruf, Schleife, Speicher? Laufzeit? . insbesondere gemessene Daten, ohne jedwede Anpassung /Limitierung der Faktoren, Erfahrungen mit Phase, mit RMS-Cutting, mit Prozentualem Ausschnitt aus FFTs Hier (oder in \ref{sec:opt.theo} ) kann auf die Einbindung des neuen Qualitäts-Tools eingegangen werden --- 
+--- evaluate-Aufruf, Schleife, Speicher? Laufzeit? . insbesondere gemessene Daten, ohne jedwede Anpassung /Limitierung der Faktoren, Erfahrungen mit Phase, mit RMS-Cutting, mit Prozentualem Ausschnitt aus FFTs, kann auf die Einbindung des neuen Qualitäts-Tools eingegangen werden --- \\
 
-\section{--- Opti Kennlinie --}
+Die Optimierung von $\Hcompl \ofomega$ beruht auf der Annahme, dass sich \eqref{eq:opt.relFehler} auf die Betragsspektren des berechneten und des gemessenen Ausgangssignals, $\Uoutc_{, \mathrm{id}} \ofomega $ und $\Uoutc_{, \mathrm{meas}} \ofomega $ fortsetzen lässt mit 
+
+\begin{align}
+\label{eq:opt.ratio}
+	\fabs \ofomega :=  
+				\frac{\mathrm{abs} \left( \Uoutc_{, \mathrm{meas}} \ofomega \right)}{\mathrm{abs} \left(\Uoutc_{, \mathrm{id}} \ofomega \right)} -1
+				\; .
+\end{align} 
+
+Ist im Betragsspektrum des gemessenen Signals eine Frequenz mit halbem Betrag verglichen mit dem idealen Signal vertreten, wird dies entsprechend der Linearität der Übertragunsfunktion dahingehend gedeutet, dass die Verstärkung von $\Hcompl$ bei dieser Frequenz um einen Faktor $2$ zu gering ist.
+Iterativ mit einer Schrittweite $\sigma_H$ ausgeführt, folgt für den $i$-ten Schritt
+
+\begin{align}
+\label{eq:opt.Hnew}
+	\mathrm{abs} \left( \Hcompl^{i+1} \right)
+		=\mathrm{abs} \left( \Hcompl^{i}  \right) \cdot
+		\left( 1 - \sigma_H^i \: \fabs^{i}	\right)					 
+\end{align}
+
+für $\sigma_H^i \in \left[ 0 , 1 \right]$ und $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt}. 
+Würde allerdings \eqref{eq:opt.Hnew} mit komplexen Zahlen und nicht allein den Beträgen ausgeführt, würde auch die Phase der $-1$ beachtet und folglich die durch $\sigma_H$ skalierte komplexe Zahl wesentlich verändert. Also muss für das Phasenspektrum eine andere Optimierung erfolgen.
+Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \left( \Hcompl \right) = \varphi_H$ mit 
+\begin{align}
+\label{eq:opt.HnewPhase}
+	\varphi_H^{i+1} = \varphi_H^{i} - \sigma_{\varphi}^{i} 
+			\left( \: \mathrm{arg} \left( \Uoutc_{, \mathrm{meas}} \right)
+					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
+\end{align}
+mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
+liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. Dies ist in Abbildung \ref{ TODO: ---- Einbindung Grafik ----!!! } für gemessenes und ideales Ausgangssignal ohne Durchführung einer Optimierung illustriert. 
+\\
+\\
+Eine Aufstellung der rein auf \eqref{eq:opt.Hnew} beruhenden Anpassung der Übertragungsfunktion über mehrere Zeitschritte findet sich in \ref{ TODO: --- Einbindung Grafik ---- !!!!}. 
+Neben den für kontinuierliche Funktionen problemlos definierbaren iterativen Zuweisungen ergeben sich in Messung und diskreter Ausführung jedoch Fehlerquellen. Problematisch sind insbesondere solche, die in \eqref{eq:opt.Hnew} durch das Betragsverhältnis der Ausgangssignale verstärkt werden. 
+Unterscheiden sich die Spektren hier um einen großen Faktor, resultiert dies in einer großen Anpassung der Übertragungsfunktion für die betreffende Frequenz. Dies ist folglich insbesondere bei kleinen Beträgen der Spektren problematisch, wenn Ungenauigkeiten und Störeinflüsse betrachtet werden. 
+\\
+
+
+
+
+
+
+\section{Optimierung der nicht-linearen Kennlinie $K$}
 \label{sec:opt.K}
 %Sofern Erfahrungen vorhanden!
 
