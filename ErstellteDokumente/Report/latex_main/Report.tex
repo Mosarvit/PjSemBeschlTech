@@ -1,16 +1,6 @@
 \documentclass[scrreprt,colorback,accentcolor=tud9b, 11pt]{tudreport}
 
-%additional packages
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-\usepgfplotslibrary{units}
-\usetikzlibrary{plotmarks}
-\usetikzlibrary{patterns}
-\usepackage{multicol}
-\usepackage{xfrac}
-\usepackage{nicefrac}
-\usepackage[siunitx,americaninductors]{circuitikz}
-%additional packages
+%most of packages just copy&paste, not checked whether all are necessary!
 
 \usepackage[utf8]{inputenc}                     % sets the input encryption to UTF8 which is always preferable
 \usepackage[T1]{fontenc}                        % standard package for selecting font encodings
@@ -20,7 +10,7 @@
 \usepackage{amsmath}                            % highly recommended for serious mathematical typesetting in LaTeX
 \usepackage{graphicx}                           % enhanced support for graphics
     \DeclareGraphicsExtensions{.pdf,.jpg,.png}  % defines the standard extensions of graphics
-    \graphicspath{{versuch1/}{versuch2/}{versuch3/}{versuch4/}{versuch5/}{versuch6/}{versuch7/}{versuch8/}}
+    \graphicspath{{images/}{../images/}}		% necessary when using the subfile-package to express the path to images
 \usepackage{siunitx}                            % properly typeset numbers and units
 \usepackage{algorithmic}                        % to include e.g. pseudocodes
 \usepackage{listings}                           % to insert code fragments
@@ -29,33 +19,50 @@
 \usepackage{enumitem}                           % allows more flexible enumerate environments
 \usepackage{gensymb}							% for generic symbols like \degree
 
+\usepackage{mathtools}
+\usepackage{csvsimple}							% enables relatively simple import of csv-data and especially printing them to tables (for plotting, prefer pgfplotstable)
+\usepackage{nameref}							% allows to reference to the name (not number) of a labelled entry
+
+
 % use temf macros
 \let\Laplace\zz % workaround since clash with trfsigns
 \usepackage{temf-names}
-\let\zz\Laplace		%Ausgeklammert 17.4. f V1
+\let\zz\Laplace
 \usepackage{temf-finite}
 \usepackage{temf-fields}
 \usepackage{temf-matrixvector}
 \usepackage{notInTemfMacros}
-\usepackage{mathtools}
-\usepackage{csvsimple}
 
 
+%additional packages
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+	\pgfplotsset{
+        table/search path={../csv, ./csv}, 
+    }		% adds the paths to search for data when pgfplots-commands import / use files (compare graphicx-package)
+\usepgfplotslibrary{units}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{patterns}
+\usepackage{multicol}
+\usepackage{xfrac}
+\usepackage{nicefrac}							% allows fractions showing the / slash and numbers next to it
+\usepackage[siunitx,americaninductors]{circuitikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{shapes.geometric }
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{intersections}
+\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{patterns}
 \pgfdeclarelayer{b1}
 \pgfdeclarelayer{b2}
 \pgfsetlayers{b1,main,b2}   %% some additional layers for demo
+\pgfplotsset{compat=newest}
 
 
 
 \definecolor{lightred}{rgb}{1,0.7,0.7}
-
-\def \mepsyp {\mathbf{m}_{\eps,y}} 
-
-\def \meps#1{\mathbf{m}_{\eps,#1}}
-\def \mepsy#1{\mathbf{m}_{\eps,y,#1}}
-\def \mepsxi#1{\mathbf{m}_{\eps,\xi,#1}}
  
 % \pgfdeclarelayer{main}    % declare background layer
 % \pgfdeclarelayer{bg}    % declare background layer
@@ -79,7 +86,9 @@
 \let\zz\ifnumbered{}                            % BEGIN fixes a problem of compatibility of mcode with \chapter command from koma script
 \usepackage[framed, numbered]{mcode}            % to properly format matlab code when using a listing (there is a problem with the \chapter command)
 \let\ifnumbered\zz{}                            % END fixes a problem of compatibility of mcode with \chapter command from koma script
+
 \usepackage[pdftex,bookmarks=true]{hyperref}    % enables hyperlinks inside the document (e.g. for the table of contents to jump to chapters directly)
+
 
 
 \begin{document}
@@ -89,9 +98,30 @@
     \maketitle
 
     \tableofcontents
+    
+    
+	\subfile{./chapter/test}
+	
+	\subfile{./chapter/Abstract}
+	\subfile{./chapter/Einfuehrung}
+	\subfile{./chapter/Vorgehen}
+	\subfile{./chapter/Code-Design}
+	\subfile{./chapter/Optimierung}
+	\subfile{./chapter/Fazit}
+	\subfile{./chapter/Ausblick}
+	\subfile{./chapter/Anhang}
+		
+%
+%%	\subfile{./00_Abstract/Abstract}
+%    \subfile{./01_Einfuehrung/Einfuehrung}
+%%    \subfile{./03_Vorgehen/Vorgehen}
+%%    \subfile{./05_Design/Code-Design}
+%%    \subfile{./07_Optimierung/Optimierung}
+%%    \subfile{./09_Fazit/Fazit}
+%%    \subfile{./11_Ausblick/Ausblick}
+%%    \subfile{./13_Anhang/Anhang}
 
-%    \subfile{./Ordner/tex-name}
 
+%\listoffigures
 
-\listoffigures
 \end{document}

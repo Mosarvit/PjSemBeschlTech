@@ -1,0 +1,38 @@
+\documentclass[../Report.tex]{subfiles}
+
+
+\begin{document}
+
+
+\chapter{Ausblick}
+\label{chap:ausb}
+---- In diesem Kapitel wird auf offene Fragen / neue Probleme / Anstöße für weitere Arbeiten eingegangen. Dabei sollte es um eher inhaltliche Aspekte gehen (u. U. wenig to dos für Code-Design) gegebenenfalls darf hier bei vielem auf die Erfahrungen aus den vorigen Kapiteln verwiesen werden und damit einen Übersichts-Charakter haben (erleichtert nachfolgenden Projekten die Arbeit) --- 
+
+\section{---- Optimierung ----}
+\label{sec:ausb.opti}
+--- in dieser section werden die offenen Fragen / Anregungen in Bezug auf den Optimierungs-algorithmus dargelegt, etwa: \\
+- Iterations-Reihenfolge mit Messungen: abwechselnd K / H optimieren und dann messen oder zwischen zwei Messungen beide optimieren? Oder erst das eine mit mehreren Messungen optimieren und dann das andere ?
+\\
+- sinnhaftigkeit / Grenzen des genutzten Algorithmus (Idee Jens) erfragen?
+\\
+- Problem / Frage nach Phasen-Optimierung des H-Optimierers
+\\
+- Umgang mit Rauschen, Null-Durchgängen o. ä. im H-Optimierer
+\\
+- Möglichkeiten der Optimierung: Durchlaufen lassen mit direkter Anpassung an steigende Amplituden? 
+\\
+- (offene Punkte K-Optimierung?)
+
+\section{--- Gerätekomm---}
+\label{sec:ausb.geraete}
+--- in dieser Section werden weitere Punkte der Geräte-Komm aufgegriffen, etwa - die (geringe) Auflösung des AWG im Kontext der Optimierung (ggf. in \ref{sec:ausb.opti} besser?) , die Einbindung des neuen Oszis oder die Idee der Klassen-Implementierung 
+%TODO: prüfe Redundanz mit Abschnitt Gerätekommunikation! nur eine Einbindung, wo ist sie sinnvoller? 
+
+%TODO: Überlegung ausführen, ob RF-Tools einbinden hier sinnvoller ist als in "Offenen Fragen" im Abschnitt Code-Design?
+
+
+
+
+
+
+\end{document}
