@@ -90,6 +90,25 @@
 \usepackage[pdftex,bookmarks=true]{hyperref}    % enables hyperlinks inside the document (e.g. for the table of contents to jump to chapters directly)
 
 
+%new commands to make coding shorter and make styling more simple 
+
+% makes it possible to create new commands with subscripts witout throwing errors when using them as normal character
+\makeatletter %see internet :) 
+\newcommand\newsubcommand[3]{\newcommand#1{#2\sc@sub{#3}}}
+\def\sc@sub#1{\def\sc@thesub{#1}\@ifnextchar_{\sc@mergesubs}{_{\sc@thesub}}}
+\def\sc@mergesubs_#1{_{\sc@thesub#1}}
+\makeatother
+
+\newcommand{\ofomega}{ \left( \omega \right) }
+\newcommand{\oft}{ \left( t \right) }
+\newcommand{\Hcompl}{\underline{H}}			%because \H is already a defined command
+\newsubcommand{\Uout}{U}{out}				% see above definition
+\newsubcommand{\Uoutc}{\underline{U}}{out}
+\newsubcommand{\Uin}{U}{in}
+\newsubcommand{\Uinc}{\underline{U}}{in}
+\newsubcommand{\Uquest}{U}{?}
+\newsubcommand{\Uquestc}{\underline{U}}{?}
+
 
 \begin{document}
 
