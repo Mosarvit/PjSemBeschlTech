@@ -54,13 +54,101 @@ Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \
 					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
 \end{align}
 mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
-liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. Dies ist in Abbildung \ref{ TODO: ---- Einbindung Grafik ----!!! } für gemessenes und ideales Ausgangssignal ohne Durchführung einer Optimierung illustriert. 
+liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{fig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
 \\
-\\
+
+\pgfplotstableread[col sep = comma] {opt_spect_ideal_abs.csv} \absSpectIdeal 
+\pgfplotstableread[col sep = comma] {opt_spect_meas_abs.csv} \absSpectMeas
+\pgfplotstableread[col sep = comma] {opt_spect_ideal_angle.csv} \angleSpectIdeal 
+\pgfplotstableread[col sep = comma] {opt_spect_meas_angle.csv} \angleSpectMeas 
+
+\begin{figure}[htb]
+\caption{Spektrum des Einzelsinus-Signals, berechnet und gemessen mit je 109 Punkten}
+\label{fig:opt.spektrum_BB_signal}
+\begin{subfigure}{0.5 \textwidth}
+    \begin{tikzpicture}
+\begin{axis}[
+		legend entries = {Ideales Signal, Gemessenes Signal},
+		legend pos = north east,
+		xlabel={Frequenz},
+		ylabel={Spektraldichte },
+		%xtick distance = 10000000,
+		xminorgrids,
+		xmajorgrids,
+		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={\si{\MHz}},
+		xmin = -5000000,
+		xmax = 85000000,
+		ymin = 0,
+		ymax = 0.03,
+		]
+		
+		\addplot[blue, mark size=3pt] table [ x index =0, y index=1] {\absSpectIdeal};	% plot des Idealen Betragsspektrums
+		\addplot[green, mark size=3pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
+\end{axis}
+\end{tikzpicture}
+\subcaption{Betragsspektren}
+	\label{fig:opt.abs_spektrum}
+\end{subfigure}
+\begin{subfigure}{0.5 \textwidth}
+    \begin{tikzpicture}
+\begin{axis}[
+		legend entries = {Ideales Signal, Gemessenes Signal},
+		legend pos = north east,
+		xlabel={Frequenz},
+		ylabel={Phase},
+%		%xtick distance = 10000000,
+%		xminorgrids,
+		xmajorgrids,
+		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={\si{\MHz}},
+		xmin = -5000000,
+		xmax = 85000000,
+		scaled y ticks={real:3.1415},
+		ytick scale label code/.code={$\si{\radian}$},
+%		ymin = 0,
+%		ymax = 0.03,
+		]
+		
+		\addplot[blue, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectIdeal};	% plot des Idealen Betragsspektrums
+		\addplot[green, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
+\end{axis}
+\end{tikzpicture}
+\subcaption{Phasenspektren}
+	\label{fig:opt.angle_spektrum}
+\end{subfigure}
+\end{figure}
+
 Eine Aufstellung der rein auf \eqref{eq:opt.Hnew} beruhenden Anpassung der Übertragungsfunktion über mehrere Zeitschritte findet sich in \ref{ TODO: --- Einbindung Grafik ---- !!!!}. 
 Neben den für kontinuierliche Funktionen problemlos definierbaren iterativen Zuweisungen ergeben sich in Messung und diskreter Ausführung jedoch Fehlerquellen. Problematisch sind insbesondere solche, die in \eqref{eq:opt.Hnew} durch das Betragsverhältnis der Ausgangssignale verstärkt werden. 
 Unterscheiden sich die Spektren hier um einen großen Faktor, resultiert dies in einer großen Anpassung der Übertragungsfunktion für die betreffende Frequenz. Dies ist folglich insbesondere bei kleinen Beträgen der Spektren problematisch, wenn Ungenauigkeiten und Störeinflüsse betrachtet werden. 
 \\
+Besondere Störeinflüsse ergeben sich also durch
+\begin{itemize}
+	\item Rauschen: Weißes Rauschen macht sich in allen Frequenzen bemerkbar mit kritischem Einfluss bei geringer Spektraldichte des Signals.
+	\item Diskretisierungsfehler: Die FFT bedingt eine begrenzte Auflösung, in den Spektren von $\Hcompl$ und den gemessenen Signalen und liegt insbesondere im Allgemeinen an unterschiedlichen Frequenzen und mit unterschiedlich vielen Punkten vor.
+	\item Interpolationsfehler: Die (hier lineare) Interpolation der Spektren zur Auswertung von $\fabs$ an den Frequenzen von $\Hcompl$ kann insbesondere den Einfluss oben genannter Punkte verstärken.
+\end{itemize}
+
+\subsubsection*{Ignorieren kleiner Beträge im Spektrum}
+\label{subsubsec:opt.H.prom}
+
+Um Rauscheinflüsse und Probleme durch Nulldurchgänge zu dämpfen, wurde einer erster intuitiver Ansatz vorgenommen: Bei den Betragsspektren der in $\fabs$ eingehenden Signale, des gemessenen und idealisierten Spannungssignals, wurden alle Anteile, die verglichen mit dem Maximalwert des betreffenden Spektrums besonders klein sind, auf einen vorgegebenen Wert, im Folgenden Default-Wert genannt, gesetzt. Dies führt an den betroffenen Frequenzen zu $\fabs = 0$ und damit keiner Änderung von $\Hcompl$.
+Dies bedeutet also, dass alle Einträge des Betragsspektrums von $\Uout_{,\mathrm{ideal}}$ mit weniger als zum Beispiel $5 \textperthousand $ der maximalen Amplitude auf den Default-Wert gesetzt werden. Insbesondere werden auch die Einträge an den Frequenzen zurückgesetzt, die im Spektrum von $\Uout_{,\mathrm{meas}}$ klein gegen das zugehörige Maximum sind.
+
+
+\subsubsection*{Ignorieren großer Korrektur-Terme}
+\label{subsubsec:opt.H.RMS}
 
 
 
