@@ -98,5 +98,13 @@ def read_in_signal(path, delimiter=','):
 
     return U
 
+def read_in_signal_with_sample_rate(path_signal, path_sample_rate, delimiter=','):
+
+    U_vector = genfromtxt(path_signal, delimiter=delimiter)
+    sample_rate = genfromtxt(path_sample_rate, delimiter=delimiter)
+    U = signal_class.gen_signal_from_sample_rate(U_vector, sample_rate[1,1])
+
+    return U
+
 def save_signale(signal, filename):
     save_2cols(filename, signal.time, signal.in_V)

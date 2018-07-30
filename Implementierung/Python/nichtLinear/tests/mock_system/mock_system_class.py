@@ -1,4 +1,4 @@
-from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
+from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention, read_in_signal, read_in_signal_with_sample_rate
 from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class
 from numpy.fft import fft, ifft
@@ -10,35 +10,7 @@ from numpy import concatenate
 
 
 class mock_system_class :
-
-
-
     """
-    mock_system is a class, that describes a mock system for unit and system tests
-
-    Initialization :
-        pass the frequency vector:
-        H = transfer_function(frequency)
-    Getters:
-        H.f - get frequency
-        H.a - get amplitude
-        H.p - get phase shift
-        H.c - get complex amplification
-    Setters:
-        H.a(amplitude)  - set amplitude
-        H.p(phase)      - set phase shift
-        H.c(complex)    - set complex amplification
-
-    Example of initializing a transfer_function with amplitude and phaseshift:
-        f = np.array([1,2,3,4,5])
-        H = transfer_function(f)
-        H.a = 2*np.ones([5])
-        H.p = 3*np.ones([5])
-
-    Example of initializing a transfer_function as complex transfer function:
-        f = np.array([1,2,3,4,5])
-        H = transfer_function(f)
-        H.c = 2 * np.ones(5) + 3j * np.ones(5)
     """
     def __init__(self):
         from settings import mock_data_path
@@ -49,6 +21,15 @@ class mock_system_class :
         self.__Uin_real = None
         self.__Uout_real = None
         self.__H = read_in_transfer_function_old_convention(mock_data_path + '/adjustH/Messung3/Ha_0.csv', mock_data_path + '/adjustH/Messung3/Hp_0.csv')
+
+        ############
+        folder_transfer_function = mock_data_path + 'get_H/30.07.2018_09_09_52/csv/'
+
+        path_transfer_funciton_ampl = folder_transfer_function + 'HAmpl_linear.csv'
+        path_transfer_funciton_phase = folder_transfer_function + 'PhaseH.csv'
+
+        self.__H = read_in_transfer_function_old_convention(path_transfer_funciton_ampl, path_transfer_funciton_phase, delimiter=';')
+        ############
         # self.__H = read_in_transfer_function(mock_data_directory + '/H_jens.csv')
 
     # def get_Uout_from_Uin(self, Uin):
@@ -67,12 +48,25 @@ class mock_system_class :
 
     def write_to_AWG(self, signal, awg_Vpp, samplerateAWG=0, frequency=0 ):
 
+        from settings import mock_data_path
+
         if samplerateAWG!=0 :
             self.__Uin = signal_class.gen_signal_from_sample_rate(signal=signal, sample_rate=samplerateAWG)
         elif frequency!=0 :
             self.__Uin = signal_class.gen_signal_from_f_rep(signal=signal, f_rep=frequency)
 
         self.__Uin.Vpp = awg_Vpp
+
+        ############
+        folder_signal_ideal = mock_data_path + 'get_H/30.07.2018_09_09_52/csv/'
+
+        path_Uin_vector = folder_signal_ideal + 'OriginalSignal.csv'
+        path_Uin_sample_rate = folder_signal_ideal + 'Samplerates.csv'
+
+        self.__Uin = read_in_signal_with_sample_rate(path_Uin_vector, path_Uin_sample_rate, delimiter=';')
+
+        self.__Uin.Vpp = 40e-3
+        ############
 
         print('==================================================')
         print('Sending to mock AWG')

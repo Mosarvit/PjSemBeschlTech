@@ -12,9 +12,12 @@ import numpy as np
 from scipy.interpolate import interp1d
 import warnings
 from classes.signal_class import signal_class
+from classes.transfer_function_class import transfer_function_class
+from helpers import FFT
+
 
 def apply_transfer_function(Uout, H):
-
+    from helpers.plot_helper import plot_2_transfer_functions
     """
     compute_Uquest_from_Uout berechten Uquest aus Uout mithilfe der Invertierung der Übetragungsfunktion H
     INPUT:
@@ -111,5 +114,40 @@ def apply_transfer_function(Uout, H):
         Uquest[:,1] = Uquest[:,1] + c
 
     Uquest_obj = signal_class( Uout.time, Uquest[:,1] )
+
+    #######################################################
+
+    [frq, UoutAmpl, Phase, _] = FFT.get(Uout.in_V, 1 / (Uout.time[-1] - Uout.time[-2]))
+
+    PhaseH = np.asarray([float(i) for i in Phase])
+    PhaseVGL = [float(i) for i in Phase]
+
+
+    for ind in range(0, (len(Phase) - 1)):
+        if PhaseVGL[ind] * PhaseVGL[ind + 1] < 0:
+            if PhaseVGL[ind] > np.pi / 2 and PhaseVGL[ind + 1] < -np.pi / 2:
+                PhaseH[ind + 1:] = PhaseH[ind + 1:] + 2 * np.pi
+            elif PhaseVGL[ind] < -np.pi / 2 and PhaseVGL[ind + 1] > np.pi / 2:
+                PhaseH[ind + 1:] = PhaseH[ind + 1:] - 2 * np.pi
+
+    
+
+    UoutAmpl = UoutAmpl[1:w+1]
+    frq = frq[1:w+1]
+    UquestAmpl = UoutAmpl/H.a
+
+
+    [frq, UoutAmpl, PhaseUout, _] = FFT.get(Uout.in_V, 1 / (Uout.time[-1] - Uout.time[-2]))
+
+    # Uquest_freq = transfer_function_class(frq)
+    # Uquest_freq.a = UquestAmpl
+
+    Ha_computed = UoutAmpl / UquestAmpl
+    H_computed = transfer_function_class(frq[1:88])
+    H_computed.a = Ha_computed[1:88]
+
+    plot_2_transfer_functions(H1=H, H2=H_computed, legend1='H',legend2='H_computed')
+
+
 
     return Uquest_obj
