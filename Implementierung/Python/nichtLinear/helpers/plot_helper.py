@@ -5,8 +5,8 @@ from helpers.find_nearest import find_nearest
 import matplotlib.pyplot as plt
 from settings import show_plots
 
-def plot_vector(vector, legend='vektor'):
-    plt.figure()
+def plot_vector(vector,  legend='vektor'):
+    fig = plt.figure()
     plt.plot(vector)
     plt.legend([legend])
     if show_plots:
