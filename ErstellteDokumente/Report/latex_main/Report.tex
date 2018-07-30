@@ -15,9 +15,11 @@
 \usepackage{algorithmic}                        % to include e.g. pseudocodes
 \usepackage{listings}                           % to insert code fragments
 \usepackage{subcaption}                         % allows usage of subfigures
+\usepackage{xcolor}								% allows advanced colors
 \usepackage{tikz}                               % to make drawings directly with LaTeX
 \usepackage{enumitem}                           % allows more flexible enumerate environments
 \usepackage{gensymb}							% for generic symbols like \degree
+
 
 \usepackage{mathtools}
 \usepackage{csvsimple}							% enables relatively simple import of csv-data and especially printing them to tables (for plotting, prefer pgfplotstable)
@@ -99,6 +101,8 @@
 \def\sc@mergesubs_#1{_{\sc@thesub#1}}
 \makeatother
 
+
+\def\promille{\ensuremath{{}^\text{o}\mkern-5mu/\mkern-3mu_\text{oo}}}
 \newcommand{\figref}[1]{Abb.~(\ref{#1})}
 \newcommand{\ofomega}{ \left( \omega \right) }
 \newcommand{\oft}{ \left( t \right) }

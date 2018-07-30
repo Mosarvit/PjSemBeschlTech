@@ -110,24 +110,30 @@ Dies hier soll zu \ref{fig:opt.abs_spektrum} dem Betragsspektrum referenzieren.\
 Dies hier soll zu \ref{fig:opt.angle_spektrum} dem Phasen referenzieren.\\
 
 
-\pgfplotstableread[col sep = comma] {opt_spect_ideal_abs.csv} \absSpectIdeal 
-\pgfplotstableread[col sep = comma] {opt_spect_meas_abs.csv} \absSpectMeas
-\pgfplotstableread[col sep = comma] {opt_spect_ideal_angle.csv} \angleSpectIdeal 
-\pgfplotstableread[col sep = comma] {opt_spect_meas_angle.csv} \angleSpectMeas 
+\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
+\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
+\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
+\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
+\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
+\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
+\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
+\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
+ 
+
 \begin{figure}[htb]
-\caption[Spektrum BB-Signal]{Spektrum des Einzelsinus-Signals mit n=109 Punkten}
+\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$}
 \label{fig:opt.spektrum_BB_signal}
 \begin{subfigure}{0.5 \textwidth}
     \begin{tikzpicture}
 \begin{axis}[
-		legend entries = {Ideales Signal, Gemessenes Signal},
+		legend entries = {original, Step 1, Step 2, Step 3},
 		legend pos = north east,
 		xlabel={Frequenz},
-		ylabel={Spektraldichte },
+		ylabel={Betrag Übertragung $\Hcompl$},
 		%xtick distance = 10000000,
-		xminorgrids,
-		xmajorgrids,
-		minor x tick num =3,
+%		xminorgrids,
+%		xmajorgrids,
+%		minor x tick num =3,
 		xtick pos = lower,
 		ytick pos = left,
 		xtick align = outside,
@@ -137,27 +143,28 @@ Dies hier soll zu \ref{fig:opt.angle_spektrum} dem Phasen referenzieren.\\
 		xmin = -5000000,
 		xmax = 85000000,
 %		ymin = 0,
-		ymax = 0.03,
+		%ymax = 0.03,
 		]
-		
-		\addplot[blue, mark size=3pt] table [ x index =0, y index=1] {\absSpectIdeal};	% plot des Idealen Betragsspektrums
-		\addplot[green, mark size=3pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
+		\addplot table [x index = 0, y index = 1] {\Horig};
+		\addplot table [x index = 0, y index = 1] {\HrmsOne};
+		\addplot table [x index = 0, y index = 1] {\HrmsTwo};
+		\addplot table [x index = 0, y index = 1] {\HrmsThree};
 \end{axis}
 \end{tikzpicture}
-\subcaption{Betragsspektren}
+\subcaption{ -- name ---}
 	\label{fig:opt.abs_spektrum}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
     \begin{tikzpicture}
 \begin{axis}[
-		legend entries = {Ideales Signal, Gemessenes Signal},
+		legend entries = {original, Step 1, Step 2, Step 3},
 		legend pos = north east,
 		xlabel={Frequenz},
-		ylabel={Phase},
+		ylabel={Korrekturterm $\fabs$},
 		%xtick distance = 10000000,
-		xminorgrids,
-		xmajorgrids,
-		minor x tick num =3,
+%		xminorgrids,
+%%		xmajorgrids,
+%		minor x tick num =3,
 		xtick pos = lower,
 		ytick pos = left,
 		xtick align = outside,
@@ -170,12 +177,13 @@ Dies hier soll zu \ref{fig:opt.angle_spektrum} dem Phasen referenzieren.\\
 %		ymax = 0.03,
 		]
 		
-		\addplot[blue, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectIdeal};	% plot des Idealen Betragsspektrums
-		\addplot[green, only marks, mark size=3pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
+		\addplot table [x index = 0, y index = 1] {\fabsOrig};
+		\addplot table [x index = 0, y index = 1] {\fabsRMSone};
+		\addplot table [x index = 0, y index = 1] {\fabsRMStwo};
+		\addplot table [x index = 0, y index = 1] {\fabsRMSthree};
 \end{axis}
 \end{tikzpicture}
-\subcaption{Phasenspektrum}
-	\label{fig:opt.angle_spektrum}
+\subcaption{--- name --}
 \end{subfigure}
 \end{figure}
 
