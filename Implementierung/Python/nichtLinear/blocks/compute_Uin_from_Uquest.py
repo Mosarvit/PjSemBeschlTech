@@ -109,9 +109,9 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         plt.ylabel('Uquest')
 
     # adapt Uquest to max allowed vpp in mV
-    if Uquest.Vpp*1000 > vpp_max*0.9:
+    if Uquest.Vpp*1000 > vpp_max*0.95:
         # der Wert 0.9 ist random gewählt, weil 1 nicht geklappt hat.. müssen wir herausfinden was geht
-        Uquest.Vpp = 0.90*vpp_max/1000
+        Uquest.Vpp = 0.95*vpp_max/1000
         print('Uquest adapted to K maximum, new Vpp: ' + str(Uquest.Vpp))
 
 

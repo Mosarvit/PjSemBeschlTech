@@ -112,7 +112,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=1)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_initial)
 
@@ -142,7 +142,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=1)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_initial)
         plot_2_signals(Uin_computed_overlay_obj, Uin_initial)
@@ -156,7 +156,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=False)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=True)
 
         Uin_computed.Vpp = Uin_computed.Vpp * 1.5
         Uin_awg.Vpp = Uin_awg.Vpp * 1.5
