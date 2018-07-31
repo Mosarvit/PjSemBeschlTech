@@ -44,27 +44,28 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 ------------------ Topics Report -------------
 # Gliederung analog zu Zwischenpraesentation:
 
-## Einleitung:
+## Einleitung: (Max)
 	- Modell BB
 	- Motivation PJSem
 	- Problem-/Aufgabenstellung PJSem
 	
 ## Bericht ueber Vorgehen:
-	- Was war vorgegeben / womit wurde angefangen? (Matlab zu Python)
-	- Aufraeumen von Code:
+	- Was war vorgegeben / womit wurde angefangen? (Matlab zu Python) (Max)
+	- Aufraeumen von Code: (Infos von Artem)(Max)
 		. Motivation fuer Code-Design und warum ausgewaehlt fuer Setting einer Messsituation
 		. Refactoring
 		. TDD implementieren
 		. Klassen und ``helpers``-System
 		. (Mock-System)
-	- Geraetekommunikation
-	- Dokumentation, Konventionen, Konzept hinter Konvention und Dokumentation
-	- Optimierung:
+	- Geraetekommunikation (Jonas)
+	- Dokumentation, Konventionen, Konzept hinter Konvention und Dokumentation (Jonas)
+	- Optimierung: (Jonas)
 		. Idee
 		. Implementierung
 		. Daten und Versuche
 		. (Einbindung Tool zur Bewertung)
 		. (ggf. Problematik mit Samplerate des AWG)
+	- Optimierung a/K (Max)
 
 ## Evaluierung / Erkenntnisse (erste Meta-Ebene)
 	- Erfuellung von Problem-/Aufgabenstellung ?
