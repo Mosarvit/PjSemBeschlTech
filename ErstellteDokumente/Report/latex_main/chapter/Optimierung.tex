@@ -3,7 +3,6 @@
 
 \begin{document}
 
-
 \chapter{Iterative Optimierung des Hammerstein-Modells}
 \label{chap:opt}
 ---- In diesem Kapitel werden die Aspekte der durchgeführten Optimierungs-Algorithmen erläutert --- \\
@@ -17,13 +16,15 @@ Ziel der Optimierung von Übertragungsfunktion $\Hcompl$ und Kennlinie $K$ mit i
 \end{align}
 Für das verwendete Hammerstein-Modell liegt die in \cite{----Jens---} %TODO: Referenz Idee iterative Optimierung Jens
 vorgeschlagene getrennte, iterative Optimierung von $\Hcompl$ und $K$ nahe. 
+Die Auswertung der Qualität des Einzelsinus erfolgt dabei durch das RF-Tool von --- Zitat RF-Tool --- mit Entwicklungsstand vom --- --- unter Verwendung des als \lstinline{QGesamt1} geführten Qualitätswerts \footnote{\label{foot:opt.H.quality}Hierauf beziehen sich alle weiteren Angaben zur Qualität des Signals. Eine intensivere Befassung mit dem Tool hat nicht stattgefunden.}.
+%TODO: Auffüllen Daten!
 
 
 
 
 \section{Optimierung der linearen Übertragungsfunktion $H$}
 \label{sec:opt.H}
---- evaluate-Aufruf, Schleife, Speicher? Laufzeit? . insbesondere gemessene Daten, ohne jedwede Anpassung /Limitierung der Faktoren, Erfahrungen mit Phase, mit RMS-Cutting, mit Prozentualem Ausschnitt aus FFTs, kann auf die Einbindung des neuen Qualitäts-Tools eingegangen werden --- \\
+--- evaluate-Aufruf, Schleife, Speicher? Laufzeit? . insbesondere gemessene Daten, ohne jedwede Anpassung /Limitierung der Faktoren,kann auf die Einbindung des neuen Qualitäts-Tools eingegangen werden --- \\
 
 Die Optimierung von $\Hcompl \ofomega$ beruht auf der Annahme, dass sich \eqref{eq:opt.relFehler} auf die Betragsspektren des berechneten und des gemessenen Ausgangssignals, $\Uoutc_{, \mathrm{id}} \ofomega $ und $\Uoutc_{, \mathrm{meas}} \ofomega $ fortsetzen lässt mit 
 
@@ -44,7 +45,7 @@ Iterativ mit einer Schrittweite $\sigma_H$ ausgeführt, folgt für den $i$-ten S
 		\left( 1 - \sigma_H^i \: \fabs^{i}	\right)					 
 \end{align}
 
-für $\sigma_H^i \in \left[ 0 , 1 \right]$ und $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt}. 
+für $\sigma_H^i \in \left[ 0 , 1 \right]$ und $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt}.
 Würde allerdings \eqref{eq:opt.Hnew} mit komplexen Zahlen und nicht allein den Beträgen ausgeführt, würde auch die Phase der $-1$ beachtet und folglich die durch $\sigma_H$ skalierte komplexe Zahl wesentlich verändert. Also muss für das Phasenspektrum eine andere Optimierung erfolgen.
 Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \left( \Hcompl \right) = \varphi_H$ mit 
 \begin{align}
@@ -54,16 +55,230 @@ Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \
 					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
 \end{align}
 mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
-liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. Dies ist in Abbildung \ref{ TODO: ---- Einbindung Grafik ----!!! } für gemessenes und ideales Ausgangssignal ohne Durchführung einer Optimierung illustriert. 
+liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{fig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
 \\
-\\
-Eine Aufstellung der rein auf \eqref{eq:opt.Hnew} beruhenden Anpassung der Übertragungsfunktion über mehrere Zeitschritte findet sich in \ref{ TODO: --- Einbindung Grafik ---- !!!!}. 
+
+\pgfplotstableread[col sep = comma] {opt_spect_ideal_abs.csv} \absSpectIdeal 
+\pgfplotstableread[col sep = comma] {opt_spect_meas_abs.csv} \absSpectMeas
+\pgfplotstableread[col sep = comma] {opt_spect_ideal_angle.csv} \angleSpectIdeal 
+\pgfplotstableread[col sep = comma] {opt_spect_meas_angle.csv} \angleSpectMeas 
+
+\begin{figure}[htb]
+\caption{Spektrum des Einzelsinus-Signals, berechnet und gemessen mit je $109$ Punkten}
+\label{fig:opt.spektrum_BB_signal}
+\begin{subfigure}{0.5 \textwidth}
+    \begin{tikzpicture}
+\begin{axis}[
+		legend entries = {Ideales Signal, Gemessenes Signal},
+		legend pos = north east,
+		xlabel={Frequenz},
+		ylabel={Spektraldichte },
+		%xtick distance = 10000000,
+%		xminorgrids,
+%		xmajorgrids,
+		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={\si{\MHz}},
+		xmin = -5000000,
+		xmax = 85000000,
+		ymin = 0,
+		ymax = 0.03,
+		]
+		
+		\addplot[blue, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectIdeal};	% plot des Idealen Betragsspektrums
+		\addplot[green, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
+\end{axis}
+\end{tikzpicture}
+\subcaption{Betragsspektren}
+	\label{fig:opt.abs_spektrum}
+\end{subfigure}
+\begin{subfigure}{0.5 \textwidth}
+    \begin{tikzpicture}
+\begin{axis}[
+		legend entries = {Ideales Signal, Gemessenes Signal},
+		legend pos = north east,
+		xlabel={Frequenz},
+		ylabel={Phase},
+%		%xtick distance = 10000000,
+%		xminorgrids,
+%		xmajorgrids,
+		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={\si{\MHz}},
+		xmin = -5000000,
+		xmax = 85000000,
+		scaled y ticks={real:3.1415},
+		ytick scale label code/.code={$\si{\radian}$},
+%		ymin = 0,
+%		ymax = 0.03,
+		]
+		
+		\addplot[blue, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectIdeal};	% plot des Idealen Betragsspektrums
+		\addplot[green, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
+\end{axis}
+\end{tikzpicture}
+\subcaption{Phasenspektren}
+	\label{fig:opt.angle_spektrum}
+\end{subfigure}
+\end{figure}
+
+Eine Aufstellung der rein auf \eqref{eq:opt.Hnew} beruhenden Anpassung der Übertragungsfunktion über mehrere Iterationsschritte findet sich in --- Abb ---. 
 Neben den für kontinuierliche Funktionen problemlos definierbaren iterativen Zuweisungen ergeben sich in Messung und diskreter Ausführung jedoch Fehlerquellen. Problematisch sind insbesondere solche, die in \eqref{eq:opt.Hnew} durch das Betragsverhältnis der Ausgangssignale verstärkt werden. 
 Unterscheiden sich die Spektren hier um einen großen Faktor, resultiert dies in einer großen Anpassung der Übertragungsfunktion für die betreffende Frequenz. Dies ist folglich insbesondere bei kleinen Beträgen der Spektren problematisch, wenn Ungenauigkeiten und Störeinflüsse betrachtet werden. 
 \\
+Besondere Störeinflüsse ergeben sich also durch
+\begin{itemize}
+	\item Rauschen: Weißes Rauschen macht sich in allen Frequenzen bemerkbar mit kritischem Einfluss bei geringer Spektraldichte des Signals.
+	
+	\item Diskretisierungsfehler: Die FFT bedingt eine begrenzte Auflösung, in den Spektren von $\Hcompl$ und den gemessenen Signalen und liegt insbesondere im Allgemeinen an unterschiedlichen Frequenzen und mit unterschiedlich vielen Punkten vor.
+	
+	\item Interpolationsfehler: Die (hier lineare) Interpolation der Spektren zur Auswertung von $\fabs$ an den Frequenzen von $\Hcompl$ kann insbesondere den Einfluss oben genannter Punkte verstärken.
+\end{itemize}
+
+\subsubsection*{Ignorieren kleiner Beträge im Spektrum}
+\label{subsubsec:opt.H.prom}
+
+Um Rauscheinflüsse und Probleme durch Nulldurchgänge zu dämpfen, wurde einer erster intuitiver Ansatz vorgenommen: Bei den Betragsspektren der in $\fabs$ eingehenden Signale, des gemessenen und idealisierten Spannungssignals, wurden alle Anteile, die verglichen mit dem Maximalwert des betreffenden Spektrums besonders klein sind, auf einen vorgegebenen Wert, im Folgenden Default-Wert genannt, gesetzt. Dies führt an den betroffenen Frequenzen zu $\fabs = 0$ und damit keiner Änderung von $\Hcompl$.
+Dies bedeutet also, dass alle Einträge des Betragsspektrums von $\Uout_{,\mathrm{ideal}}$ mit weniger als zum Beispiel $5 \, \promille $ der maximalen Amplitude auf den Default-Wert gesetzt werden. Insbesondere werden auch die Einträge an den Frequenzen zurückgesetzt, die im Spektrum von $\Uout_{,\mathrm{meas}}$ klein gegen das zugehörige Maximum sind.
+\\
+Zu beachten bei letzterem Punkt ist die notwendige Rundung, wenn die Einträge der FFT an unterschiedlichen Frequenzen vorliegen. 
+\\
+\\
+\indent
+Mit Beschränkung auf $5 \, \promille$ und dem globalen Minimum beider Spektren als Default-Wert ergeben sich die angepassten Betragsspektren wie in ---- ABB --- zu sehen, der Übersichtlichkeit halber mit kleinem vertikalen Ausschnitt.
+Mit diesem Schritt ergibt sich über drei Iterationen ein Verlauf des Korrekturterms $\fabs$ und der Übertragungsfunktion für eine Schrittweite $\sigma_H = \nicefrac{1}{2}$ wie in ---- ABB --- dargestellt. 
 
 
+\subsubsection*{Ignorieren großer Korrektur-Terme}
+\label{subsubsec:opt.H.RMS}
 
+Ein zweiter, sehr grober Ansatz liegt in der Beschränkung von $\fabs$ auf Werte unterhalb einer vorgegebenen Schwelle. Zugrunde liegt die Annahme, dass die gerade an Nulldurchgängen des Spektrums sowie bei vielen hohen Frequenzen auftretenden großen Werte durch die in obiger Aufzählung genannten Fehlerquellen entstehen. Hier bedeutet dies insbesondere, dass die Diskretisierung die Nulldurchgänge nicht korrekt darstellen kann. Die Interpolation auf Frequenzen von $\Hcompl$ ist dann aufgrund der großen Sprünge von Werten in direkter Umgebung der problematischen Frequenzen mit großer Ungenauickgeit behaftet. Dies kann zu den beschriebenen, großen Korrektur-Termen in $\fabs$ führen.
+\\
+\\
+Vereinfacht bedeutet der verfolgte Ansatz, ausnehmend große Werte von $\fabs$ als unrealistisch abzutun. In der vorgenommenen Implementierung wurde $\fabs$ an den entsprechenden Frequenzen auf $0$ gesetzt. Als Grenze genutzt wurde ein modifizierter Effektivwert, nachfolgend mit RMS (Root Main Square) bezeichnet. 
+Der reine RMS von $\fabs$ unterliegt der Problematik eine unproportional große Gewichtung von kleinen Einträgen zu enthalten. 
+Idealerweise enthält $\fabs$ mit jeder Iteration kleinere Einträge als zuvor. Es würden also bei Nutzung des reinen RMS unter Umständen mit zunehmender Schrittzahl zunehmend mehr Werte in $\fabs$ ignoriert - was der Optimierung entsprechende Grenzen setzt. 
+In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die Problematik unumgänglich, da Frequenzen, die explizit nicht bei der Anpassung berücksichtig werden sollen, den reinen RMS-Wert beeinflussen.
+Folglich muss der RMS modifiziert werden. Hier wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich also bei der vorgenommenen Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
+ 
+\lstset{language=Python}
+\begin{lstlisting}
+rms_orig = root_mean_square( f_abs )
+f_abs_to_use = f_abs[ where( abs(f_abs) >= 0.02 * rms_orig ] 
+rms_mod = root_mean_square( f_abs_to_use )
+idx_to_clear = f_abs[ where( abs(f_abs) >= rms_mod ] 
+f_abs[ ix_to_clear ] = 0
+\end{lstlisting}
+
+In \figref{fig:opt.H.iteration} ist die Entwicklung von Übertragungsfunktion und $\fabs$ über mehrere Iterationen aufgetragen. Der Einfluss des RMS-Cutters macht sich dabei verglichen mit ---- ABB oben, rein iteriert --- bemerkbar, es treten weniger starke Änderungen auf. 
+Es zeigt sich, dass die vorgenommene Anpassung keinen großartigen Einfluss auf die Qualität des Signals hat.
+Dies ist insofern beachtenswert, als dass die Übertragungsfunktion auch an einigen Stellen mit massiver Verstärkung stark angepasst wird, vergleiche hierzu \figref{fig:opt.H.RMS_H} bei etwa $\SI{25}{\MHz}$.
+Die Qualität des Signals \footnotemark[\ref{foot:opt.H.quality}] bewegt sich zwischen einem Wert von ---- ---- und ---- ---- und zeigt vor allem rauschbedingte Schwankungen.
+%TODO: check!!! Mehr Durchläufe ausprobieren, unbedingt!
+
+\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
+\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
+\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
+\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
+\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
+\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
+\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
+\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
+ 
+
+\begin{figure}[htb]
+\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
+\label{fig:opt.H.iteration}
+\begin{center}
+\begin{subfigure}{ 0.7 \textwidth}
+	\begin{center}
+    \begin{tikzpicture}
+\begin{axis}[
+		width = \textwidth,
+		height = 0.25 \textheight,
+		legend entries = {original, Step 1, Step 2, Step 3},
+		legend pos = north east,
+		legend columns = 3,
+		xlabel={Frequenz},
+		ylabel={Betrag Übertragung $\Hcompl$},
+		%xtick distance = 10000000,
+%		xminorgrids,
+%		xmajorgrids,
+%		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={[MHz]},
+		xmin = 0,
+		xmax = 80000000,
+%		ymin = 0,
+		%ymax = 0.03,
+		]
+		\addplot [black, sharp plot, mark size = 3pt] table [x index = 0, y index = 1] {\Horig};
+		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsOne};
+		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsTwo};
+%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsThree};
+\end{axis}
+\end{tikzpicture}
+\subcaption{Entwicklung des Betrags der Übertragungsfunktion über mehrere Iterationen und im Anfangszustand}
+	\label{fig:opt.H.RMS_H}
+	\end{center}
+\end{subfigure}
+\\
+\begin{subfigure}{ 0.7 \textwidth}
+\begin{center}
+
+    \begin{tikzpicture}
+\begin{axis}[
+		width = \textwidth,
+		height = 0.25 \textheight,
+		legend entries = {original, Step 1, Step 2, Step 3},
+		legend pos = south west,
+		legend columns = 3,
+		xlabel={Frequenz},
+		ylabel={Korrekturterm $\fabs$},
+		%xtick distance = 10000000,
+%		xminorgrids,
+%%		xmajorgrids,
+%		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={[MHz]},
+		extra y ticks={0.5697153886590458, -0.5697153886590458
+						},
+			extra y tick labels={+RMS, -RMS},
+		extra y tick style={grid=major, ytick pos=right, ytick align=outside, ticklabel pos=right},		
+		xmin = 0,
+		xmax = 80000000,
+		ymin = -0.75,
+		ymax = 0.75,
+		]
+		
+		\addplot [black, sharp plot, mark size = 3pt] table [x index = 0, y index = 1] {\fabsOrig};
+		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSone};
+		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMStwo};
+%		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSthree};
+\end{axis}
+\end{tikzpicture}
+\subcaption{Entwicklung des Korrekturterms in angepasster Form über mehrere Iterationen und in initialer, nicht angepasster Form - RMS aus Step 1 zum Vergleich}
+\label{fig:opt.H.RMS_fabs}
+\end{center}
+\end{subfigure}
+\end{center}
+\end{figure}
 
 
 
