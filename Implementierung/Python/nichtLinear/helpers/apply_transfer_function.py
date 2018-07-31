@@ -41,12 +41,23 @@ def apply_transfer_function(Uout, H):
     # freq = H[:, 0]
     freq = H.f
 
+    fn = Uout.sample_rate / 2
 
-    f_max=math.floor(max(freq)/f_rep)*f_rep
-    w=np.linspace(f_rep, f_max, int(np.floor(f_max/f_rep)))
+    df = Uout.f_rep
 
-    dt=1/f_rep/len(Uout.time) # Uout_old.shape[0]
-    t=np.linspace(0, 1/f_rep, round(1/f_rep/dt))
+    f_max = min( max(H.f), fn)
+    f_min = max( min(H.f), df)
+
+    ind_Y_min = int(np.ceil( ( f_min )  / df ) )
+    f_min = ind_Y_min * df
+
+    ind_w_max = int(np.floor((f_max - f_min) / df)) + 1
+    f_max = ind_w_max * df
+    # x = int(np.floor(f_max / f_rep))
+
+    w=np.linspace(f_min, f_max, ind_w_max)
+
+    t = Uout.time
 
 
 #projizieren auf gleiche Achse
@@ -90,25 +101,27 @@ def apply_transfer_function(Uout, H):
     Uquest = np.zeros([L, 2])
     Uquest[:,0] =  Uout.time
 
-    for k in range(int(math.floor(f_max / f_rep))):
+    for k in range(len(w) - 1):
 
-        rnd = 11 # round by , since fft is only this precise and would otherwise leave a negligable imaginary part which would throw a warning
+        rnd = 11  # round by , since fft is only this precise and would otherwise leave a negligable imaginary part which would throw a warning
 
-        a_n = round(Y[k + 1], rnd) + round(Y[len(Y) - 1 - k], rnd)
-        b_n = 1j * (round(Y[k + 1], rnd) - round(Y[len(Y) - 1 - k], rnd))
+        k_shifted = ind_Y_min + k - 1
 
-        omegat = 2 * math.pi * (k+1) * f_rep * t
-        gamma =  Hph[k] * np.ones(len(t))
+        a_n = round(Y[k_shifted + 1], rnd) + round(Y[len(Y) - 1 - k_shifted], rnd)
+        b_n = 1j * (round(Y[k_shifted + 1], rnd) - round(Y[len(Y) - 1 - k_shifted], rnd))
+
+        omegat = 2 * math.pi * ((k_shifted + 1) * df) * t
+        gamma = Hph[k] * np.ones(len(t))
         phi = omegat + gamma
 
-        c_ = 1 * abs(Ha[k]) * ( a_n *np.cos(phi) + b_n * np.sin(phi) )
+        c_ = 1 * abs(Ha[k]) * (a_n * np.cos(phi) + b_n * np.sin(phi))
 
-        if any(c_.imag!= 0.0):
+        if any(c_.imag != 0.0):
             warnings.warn("c is not purely real")
 
         c = c_.real
 
-        Uquest[:,1] = Uquest[:,1] + c
+        Uquest[:, 1] = Uquest[:, 1] + c
 
     Uquest_obj = signal_class( Uout.time, Uquest[:,1] )
 

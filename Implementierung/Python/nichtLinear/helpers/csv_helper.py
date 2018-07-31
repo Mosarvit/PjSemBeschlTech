@@ -104,3 +104,25 @@ def read_in_signal(path, delimiter=','):
 
 def save_signale(signal, filename):
     save_2cols(filename, signal.time, signal.in_V)
+
+def read_in_get_H_signal_data(self, get_H_csv_directory):
+    path_Uin_AWG_time = get_H_csv_directory + 'OriginalSignal.csv'
+    path_Uin_sample_rate = get_H_csv_directory + 'Samplerates.csv'
+    path_Uin_measured_time = get_H_csv_directory + 'UinTime.csv'
+    path_Uout_time = get_H_csv_directory + 'UoutTime.csv'
+    path_Uout_Ampl = get_H_csv_directory + 'UoutAmplFrq_linear.csv'
+    path_Uout_Phase = get_H_csv_directory + 'UoutPhase.csv'
+    path_Uin_Ampl = get_H_csv_directory + 'UinAmplFrq_linear.csv'
+    path_Uin_Phase = get_H_csv_directory + 'UinPhase.csv'
+    path_Ha = get_H_csv_directory + 'HAmpl_linear.csv'
+    path_Hp = get_H_csv_directory + 'PhaseH.csv'
+    Uin_AWG = read_in_signal_with_sample_rate(path_Uin_AWG_time, path_Uin_sample_rate, delimiter=';')
+    Uin_measured = read_in_signal(path_Uin_measured_time, delimiter=';')
+    Uout_time_measured = read_in_signal(path_Uout_time, delimiter=';')
+    Uout_freq_measured = read_in_transfer_function_old_convention(pathA=path_Uout_Ampl, pathPh=path_Uout_Phase,
+                                                                  delimiter=';')
+    Uin_freq_measured = read_in_transfer_function_old_convention(pathA=path_Uin_Ampl, pathPh=path_Uin_Phase,
+                                                                 delimiter=';')
+    H = read_in_transfer_function_old_convention(pathA=path_Ha, pathPh=path_Hp, delimiter=';')
+
+    return Uin_AWG, Uin_measured, Uout_time_measured, Uout_freq_measured, Uin_freq_measured, H
