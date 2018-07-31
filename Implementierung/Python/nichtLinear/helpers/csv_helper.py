@@ -106,7 +106,15 @@ def read_in_signal(path, delimiter=','):
 def save_signale(signal, filename):
     save_2cols(filename, signal.time, signal.in_V)
 
-def read_in_get_H_signal_data(self, get_H_csv_directory):
+def read_in_signal_with_sample_rate(path_signal, path_sample_rate, delimiter=','):
+
+    U_vector = genfromtxt(path_signal, delimiter=delimiter)
+    sample_rate = genfromtxt(path_sample_rate, delimiter=delimiter)
+    U = signal_class.gen_signal_from_sample_rate(U_vector, sample_rate[1,1])
+
+    return U
+
+def read_in_get_H_signal_data(get_H_csv_directory):
     path_Uin_AWG_time = get_H_csv_directory + 'OriginalSignal.csv'
     path_Uin_sample_rate = get_H_csv_directory + 'Samplerates.csv'
     path_Uin_measured_time = get_H_csv_directory + 'UinTime.csv'
