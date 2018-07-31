@@ -59,6 +59,10 @@ def read_in_transfer_function_complex(path, delimiter=','):
     H.c = H_compl[:, 1]
     return H
 
+def read_in_K(path, delimiter=','):
+    K = genfromtxt(path, delimiter=delimiter)
+    return K
+
 def save_transfer_function(H, directory, id ):
 
     """

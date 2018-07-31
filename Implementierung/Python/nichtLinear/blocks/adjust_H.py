@@ -4,13 +4,17 @@ import numpy as np
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 import time
+import copy
 
 from helpers.FFT import spectrum_from_TimeSignal
 
 
 def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT=False):
     """
-    adjust_H adopts transfer function H by comparing desired and received Output (Gain) Voltage
+    adjust_H adopts transfer function H by comparing desired and received Output (Gain) Voltage.
+    This implementation uses a simple first approach in adjusting abs(H).
+    It offers two ideas to reduce problems caused by noise, discretization and interpolation.
+    See report for information.
 
     INPUT:
 
@@ -20,9 +24,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             Halt.p - phase shifts p
             Halt.c - Complex Value c = a*exp(jp)
 
-        Uout_ideal - nx2 array; U_? (n - length of signal)
-            Uout_ideal[:,0] - time-axis
-            Uout_ideal[:,1] - voltage
+        Uout_ideal - the desired output Voltage (BB-Signal, normally single-sine), Instance of signal_class
 
             Instance of signal_class:
             U.time          - get time vector
@@ -32,7 +34,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             U.Vpp           - get Vpp
             U.length        - get length of the signal
 
-        Uout_measured - like Uout_ideal, instance of signal_class
+        Uout_measured - the measured output Voltage to be compared with Uout_ideal, instance of signal_class
 
         sigma_H - scalar; step to iterate (positive)
 
@@ -53,16 +55,15 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     if verbosity:
         delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
         delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
-        #print('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
         fig = plt.figure()
-        # Plot Spannungen
+        # Plot voltages
         plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
         plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
-        plt.title('Uout_ideal - rot, Uout_meas - blau')
+        plt.title('Uout_ideal - red, Uout_meas - blue')
         plt.xlabel('t')
         plt.ylabel('U')
         plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
-        plt.suptitle('Zeitstep Meas: ' + str(delta_t_meas) +  ' Zeitstep Ideal: ' + str(delta_t_id) )
+        plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
         plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
         plt.show()
      
@@ -102,8 +103,16 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         frequencies_Id = np.append(frequencies_Id, newFrequencies)
         spectrum_Id = np.append(spectrum_Id, np.ones(numberOfNewPoints) * default_value)
 
+
+    #####
+    Id_spectrum = signal_class(frequencies_Id, spectrum_Id)
+    Meas_spectrum = signal_class(frequencies_Meas, spectrum_Meas)
+    # just to enable return for report 2018!
+    ##### end
+
     # to reduce WHITE NOISE: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
+    # TODO: add input parameter with ratio to not define it here
     ratio_ideal = 0#5e-3
     ratio_meas = 0#5e-3
     # find indices to set to default:
@@ -136,11 +145,17 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
     diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
 
+    ###
+    # just to enable return for report 2018!
+    fabs_orig = copy.copy(ratio_abs)
+    ###
+
     # to reduce WHITE NOISE attempt 2:
     # cut high amplifying ratios (over RMS)
-    use_rms = True
+    # TODO: add input parameter use_rms to not define it here
     # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
+    use_rms = True
     rms = np.sqrt(np.mean(np.square(ratio_abs)))
     values = ratio_abs[np.where(abs(ratio_abs) >= 0.02 * rms)[
         0]]  # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
@@ -154,6 +169,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
 
     # now using new convention with classes transfer_function for frequency and complex-values connecting variables
+    ### just using convention here!
     complex_ratio = transfer_function_class(Halt.f)
     complex_ratio.a = ratio_abs
     complex_ratio.p = diff_angle
@@ -165,7 +181,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # initialize Hneu
     Hneu = transfer_function_class(Halt.f)
     Hneu.a = Halt.a * (1 - sigma_H * complex_ratio.a)
-    Hneu.p = Halt.p #- sigma_H * H.p
+    Hneu.p = Halt.p #- sigma_H * complex_ratio.p
   
 
     if verbosity:
@@ -174,27 +190,27 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             
             #plot gsi
         #plt.subplot(2, 3, 1)
-#        plt.plot(frequencies_Id, abs(spectrum_Id), 'r', frequencies_Meas, abs(spectrum_Meas), 'b')
-#        plt.title('ABS(FFT): Ideal rot, Meas blau')
-#        plt.xlabel('f')
-#        plt.ylabel('Ampl')
-#        plt.xlim((0, np.max(Halt.f)))
-#        plt.ylim((0, 1e-3))
-#        plt.show()
-#
+        plt.plot(frequencies_Id, abs(spectrum_Id), 'r', frequencies_Meas, abs(spectrum_Meas), 'b')
+        plt.title('ABS(FFT): Ideal rot, Meas blau')
+        plt.xlabel('f')
+        plt.ylabel('Ampl')
+        plt.xlim((0, np.max(Halt.f)))
+        plt.ylim((0, 1e-3))
+        plt.show()
+    #
 #       # plt.subplot(2, 3, 4)
-#        plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms * np.ones(len(Halt.f)), 'r')
-#        #plt.xlim((0, np.max(Halt.f)))
-#        #plt.ylim((-rms * 3, 3 * rms))
-#        
-#        #plt.subplot(2, 3, 4)
-#        plt.plot(Halt.f, ratio_abs, 'b')
-#        plt.xlim((0, np.max(Halt.f)))
-#        plt.ylim((-rms * 3, 3 * rms))
-#        plt.title('Absratio Umeas / Uideal -1')
-#        plt.xlabel('f')
-#        plt.ylabel('ratio')
-#        plt.show()
+        plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms * np.ones(len(Halt.f)), 'r')
+       #plt.xlim((0, np.max(Halt.f)))
+       #plt.ylim((-rms * 3, 3 * rms))
+
+       #plt.subplot(2, 3, 4)
+        plt.plot(Halt.f, ratio_abs, 'b')
+        plt.xlim((0, np.max(Halt.f)))
+        plt.ylim((-rms * 3, 3 * rms))
+        plt.title('Absratio Umeas / Uideal -1')
+        plt.xlabel('f')
+        plt.ylabel('ratio')
+        plt.show()
 
         # if use_rms:
         #     plt.subplot(2, 3, 4)
@@ -209,7 +225,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         plt.xlim((0, np.max(Halt.f)))
         plt.show()
 
-#        plt.subplot(2, 3, 3)
+# #        plt.subplot(2, 3, 3)
         plt.plot(frequencies_Id, complex_spectrum_Id.p, 'r', frequencies_Meas, complex_spectrum_Meas.p, 'b')
         plt.title('ANGLE(FFT): Ideal rot - Meas blau')
         plt.xlabel('f')
@@ -217,8 +233,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         plt.xlim((0, np.max(Halt.f)))
         plt.ylim((-50, 50))
         plt.show()
-
-#        plt.subplot(2, 3, 6)
+#
+# #        plt.subplot(2, 3, 6)
         plt.plot(Halt.f, complex_ratio.p)
         plt.title('Anglediff Umeas/Uideal')
         plt.xlabel('f')
@@ -226,17 +242,17 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         plt.xlim((0, np.max(Halt.f)))
         plt.show()
 
-        # Plot H
-#        plt.subplot(2, 3, 5)
-        plt.plot(Halt.f, Halt.p, 'r', Hneu.f, Hneu.p, 'b')
-        plt.title('Angle(H): alt rot - neu blau')
-        plt.xlabel('f')
-        plt.ylabel('angle')
-        plt.xlim((0, np.max(Halt.f)))
-        plt.show()
-        if savePLOT:
-            fig.savefig('../data/adjustH/plots/routine' + str(time.strftime("%d%m_%H%M")) + '.pdf')
-        # fig.savefig('../../data/adjustH/plots/adjust_Plots' + time.strftime("%H%M_%d%m")+ '.pdf')
+#         # Plot H
+# #        plt.subplot(2, 3, 5)
+#         plt.plot(Halt.f, Halt.p, 'r', Hneu.f, Hneu.p, 'b')
+#         plt.title('Angle(H): alt rot - neu blau')
+#         plt.xlabel('f')
+#         plt.ylabel('angle')
+#         plt.xlim((0, np.max(Halt.f)))
+#         plt.show()
+#         if savePLOT:
+#             fig.savefig('../data/adjustH/plots/routine' + str(time.strftime("%d%m_%H%M")) + '.pdf')
+#         # fig.savefig('../../data/adjustH/plots/adjust_Plots' + time.strftime("%H%M_%d%m")+ '.pdf')
 
     return (Hneu)
 
