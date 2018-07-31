@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/plot_tikz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Einfuehrung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Einfuehrung.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/nichtLinear.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nichtLinear.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,35 +21,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="plot_tikz.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plot_tikz.py">
+      <file leaf-file-name="all_tezts.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/all_tezts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="40" selection-start-line="40" selection-end-line="40" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="11" selection-start-column="11" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="first.tikz" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/tikz_files/first.tikz">
+      <file leaf-file-name="test_compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+            <state relative-caret-position="518">
+              <caret line="115" selection-start-line="115" selection-end-line="115" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plot_helper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/plot_helper.py">
+      <file leaf-file-name="compute_Uin_from_Uquest.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="19" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="20" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="326">
+              <caret line="83" selection-start-line="83" selection-end-line="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interpolate.py" pinned="false" current-in-tab="false">
+        <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/interpolate/interpolate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1193">
+              <caret line="426" column="8" selection-start-line="426" selection-start-column="8" selection-end-line="426" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="polyint.py" pinned="false" current-in-tab="false">
+        <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/interpolate/polyint.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_util.py" pinned="false" current-in-tab="false">
+        <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/_lib/_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="236" selection-start-line="236" selection-end-line="236" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.py" pinned="false" current-in-tab="false">
+        <entry file="file:///anaconda3/lib/python3.6/site-packages/numpy/ma/core.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="6246" selection-start-line="6246" selection-end-line="6246" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+        <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/sparse/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="1228" selection-start-line="1228" selection-end-line="1228" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signal_class.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/signal_class.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="103">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_evaluate_adjust_H.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_evaluate_adjust_H.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -175,7 +234,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,28 +244,18 @@
             <path>
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
-              <item name="blocks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="tikz_files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -375,8 +423,8 @@
     <list>
       <item itemvalue="Python tests.Unittests for unit_tests1.test_unit" />
       <item itemvalue="Python tests.Unittests in C:/GitHub/PjSemBeschlTech/Implementierung/Python/nichtLinear/unit_tests1.py" />
+      <item itemvalue="Python tests.Unittests for test_generate_BBsignal.test_generate_BBsignal" />
       <item itemvalue="Python.all_tezts" />
-      <item itemvalue="Python tests.Unittests for test_evaluate_adjust_H.test_evaluate_adjust_H.test_evaluate_adjust_H_0_steps" />
       <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our2" />
       <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_from_adjust_a" />
       <item itemvalue="Python.plot_tikz" />
@@ -387,7 +435,6 @@
         <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_from_adjust_a" />
         <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our2" />
         <item itemvalue="Python.all_tezts" />
-        <item itemvalue="Python tests.Unittests for test_evaluate_adjust_H.test_evaluate_adjust_H.test_evaluate_adjust_H_0_steps" />
       </list>
     </recent_temporary>
   </component>
@@ -446,26 +493,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="967" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1680" height="965" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.24713683" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.20192887" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293718" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.33103448" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" weight="0.33064517" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.328341" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3862069" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3859447" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.24713683" />
+      <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3293718" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.51193315" visible="true" weight="0.33103448" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3862069" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.328341" />
+      <window_info anchor="bottom" id="Python Console" order="8" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -514,9 +570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="100" column="40" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -647,8 +700,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/signal_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="174" column="79" selection-start-line="174" selection-start-column="79" selection-end-line="174" selection-end-column="79" />
+        <state relative-caret-position="103">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
         </state>
       </provider>
     </entry>
@@ -727,9 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -759,18 +809,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/all_tezts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="100" column="40" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="518">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
         </state>
       </provider>
     </entry>
@@ -785,9 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="19" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="20" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -809,9 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
           <caret line="40" selection-start-line="40" selection-end-line="40" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

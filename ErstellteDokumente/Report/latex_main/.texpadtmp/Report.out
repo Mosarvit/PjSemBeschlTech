@@ -2,9 +2,6 @@
 \BOOKMARK [1][-]{section.1.1}{\204- firstName \204-}{chapter.1}% 2
 \BOOKMARK [0][-]{chapter.2}{Einf\374hrung}{}% 3
 \BOOKMARK [1][-]{section.2.1}{Modell und Konvention}{chapter.2}% 4
-\BOOKMARK [2][-]{subsection.2.1.1}{ \204\205 whatever necessary \204-}{section.2.1}% 5
-\BOOKMARK [1][-]{section.2.2}{ \204 Motivation PJSem \204- }{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.3}{ \204 Problem / Aufgabenstellung PJSem \204- }{chapter.2}% 7
-\BOOKMARK [0][-]{chapter.3}{Iterative Optimierung des Hammerstein-Modells}{}% 8
-\BOOKMARK [1][-]{section.3.1}{Optimierung der linearen \334bertragungsfunktion H}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.2}{Optimierung der nicht-linearen Kennlinie K}{chapter.3}% 10
+\BOOKMARK [2][-]{subsection.2.1.1}{Hammerstein Modell}{section.2.1}% 5
+\BOOKMARK [1][-]{section.2.2}{Motivation}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.3}{Aufgabenstellung}{chapter.2}% 7
