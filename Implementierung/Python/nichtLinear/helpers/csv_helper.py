@@ -5,6 +5,7 @@ from classes.transfer_function_class import transfer_function_class
 from classes.signal_class import signal_class
 
 
+
 def save_2cols(filename, col1, col2):
 
     """
