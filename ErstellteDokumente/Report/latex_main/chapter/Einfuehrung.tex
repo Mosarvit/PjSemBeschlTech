@@ -6,13 +6,16 @@
 
 \chapter{Einführung}
 \label{chap:einfuehrung}
----- In diesem Kapitel werden die Rahmen / Start-Bedingungen des Seminars vorgestellt. --- 
-
-\section[--- name in inhaltsverzeichnis ---]{---- Modell BB ----}
+Mit den Barrier Bucket (BB) RF Systemen können am neu entstehenden Synchrotron SIS100 oder im Experimentier Speicherring (ESR) am GSI Helmholtzzentrum viele longitudinale Manipulationen am Teilchenstrahl vor genommen werden. Der dazu benutzte Spannungspuls hat die Form wie in \figref{BB_req} dargestellt. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so wird im Phasenraum eine stationäre Potential Barriere erstellt. Wenn die Wiederholfrequenz nicht gleich der Umlauffrequenz ist verschiebt sich die Potential Barriere im Phasenraum und es entstehen Bunches mit unterschiedlicher Länge. \\ Der Anspruch an diese Systeme liegt darin eine hohe Qualität des Impulses am Gap der Kavität zu erzeugen. Um sogenannte Microbunches zu verhindern müssen die Nachschwinger nach dem Einzelsinus kleiner als 2,5\% von $\hat{U}_{BB}$ sein. 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{images/eps/BB_req.pdf}
+  \caption{Ausgangssignal}
+  \label{fig:BB_req}
+\end{figure}
+\section[Modell und Konvention]{Modell}
 \label{sec:einf.modell_BB}
---- in dieser section wird das BB-Signal nochmals kurz erläutert und eine allgemeine Erläuterung gegeben ---
---- Ziel des Abschnitts: Leser hat grobe Vorstellung, in welchem Kontext unser Programm entstanden ist und eingesetzt wird ---
-
+Der Prototyp des ESR BB besteht aus einem Funktionsgenerator (Keysight 3600A series 2-channel AWG), einem Verstärker (AR1000A225) und der Breitband Ringkern Kavität.\\Dabei kann angenommen werden, dass sich das System bis $\hat{U}_{BB} = 550V$ annähernd linear verhält und durch die Übertragungsfunktion $\underline{H}(\omega)$ beschrieben werden kann. Das
 \subsection{ ----- whatever necessary ----}
 \label{subsec:einf.modell_BB.name}
 --- falls notwendig ---

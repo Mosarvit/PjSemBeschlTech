@@ -1,0 +1,102 @@
+% This file was created by matplotlib2tikz v0.6.17.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+
+\begin{groupplot}[group style={group size=1 by 2}]
+\nextgroupplot[
+title={\label{fig:Nolte} erster Plot},
+xmin=-0.1664, xmax=4.6384,
+ymin=-0.883551962332141, ymax=1.11571310281539,
+width=\figurewidth,
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+x grid style={white!69.01960784313725!black},
+y grid style={white!69.01960784313725!black}
+]
+\path [draw=color0, semithick] (axis cs:0.1,0.78483741803596)
+--(axis cs:0.1,1.02483741803596);
+
+\path [draw=color0, semithick] (axis cs:0.6,0.328811636094027)
+--(axis cs:0.6,0.768811636094026);
+
+\path [draw=color0, semithick] (axis cs:1.1,0.0128710836980795)
+--(axis cs:1.1,0.65287108369808);
+
+\path [draw=color0, semithick] (axis cs:1.6,-0.218103482005345)
+--(axis cs:1.6,0.621896517994655);
+
+\path [draw=color0, semithick] (axis cs:2.1,-0.397543571747018)
+--(axis cs:2.1,0.642456428252982);
+
+\path [draw=color0, semithick] (axis cs:2.6,-0.545726421785666)
+--(axis cs:2.6,0.694273578214334);
+
+\path [draw=color0, semithick] (axis cs:3.1,-0.674950797606442)
+--(axis cs:3.1,0.765049202393558);
+
+\path [draw=color0, semithick] (axis cs:3.6,-0.792676277552708)
+--(axis cs:3.6,0.847323722447293);
+
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, forget plot]
+table {%
+0.1 0.90483741803596
+0.6 0.548811636094027
+1.1 0.33287108369808
+1.6 0.201896517994655
+2.1 0.122456428252982
+2.6 0.0742735782143339
+3.1 0.0450492023935578
+3.6 0.0273237224472926
+};
+\nextgroupplot[
+title={variable, asymmetric error},
+xmin=-0.1664, xmax=4.6384,
+ymin=0.0229370906419289, ymax=1.07788415088463,
+ymode=log,
+width=\figurewidth,
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+x grid style={white!69.01960784313725!black},
+y grid style={white!69.01960784313725!black}
+]
+\path [draw=color0, semithick] (axis cs:0.052,0.90483741803596)
+--(axis cs:0.22,0.90483741803596);
+
+\path [draw=color0, semithick] (axis cs:0.512,0.548811636094027)
+--(axis cs:0.82,0.548811636094027);
+
+\path [draw=color0, semithick] (axis cs:0.972,0.33287108369808)
+--(axis cs:1.42,0.33287108369808);
+
+\path [draw=color0, semithick] (axis cs:1.432,0.201896517994655)
+--(axis cs:2.02,0.201896517994655);
+
+\path [draw=color0, semithick] (axis cs:1.892,0.122456428252982)
+--(axis cs:2.62,0.122456428252982);
+
+\path [draw=color0, semithick] (axis cs:2.352,0.0742735782143339)
+--(axis cs:3.22,0.0742735782143339);
+
+\path [draw=color0, semithick] (axis cs:2.812,0.0450492023935578)
+--(axis cs:3.82,0.0450492023935578);
+
+\path [draw=color0, semithick] (axis cs:3.272,0.0273237224472926)
+--(axis cs:4.42,0.0273237224472926);
+
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+0.1 0.90483741803596
+0.6 0.548811636094027
+1.1 0.33287108369808
+1.6 0.201896517994655
+2.1 0.122456428252982
+2.6 0.0742735782143339
+3.1 0.0450492023935578
+3.6 0.0273237224472926
+};
+\end{groupplot}
+
+\end{tikzpicture}

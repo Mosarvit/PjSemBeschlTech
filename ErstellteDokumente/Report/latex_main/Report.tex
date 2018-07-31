@@ -1,11 +1,11 @@
 \documentclass[scrreprt,colorback,accentcolor=tud9b, 11pt]{tudreport}
 
 %most of packages just copy&paste, not checked whether all are necessary!
-
-\usepackage[utf8]{inputenc}                     % sets the input encryption to UTF8 which is always preferable
+%\usepackage[utf8]{inputenc}                     % sets the input encryption to UTF8 which is always preferable
 \usepackage[T1]{fontenc}                        % standard package for selecting font encodings
+%\usepackage[latin1]{inputenc}
 \usepackage{subfiles}                           % allows to handle multi-file projects more comfortably
-\usepackage{ngerman}                            % support for new German orthography (neue deutsche Rechtschreibung)
+\usepackage[ngerman]{babel}                            % support for new German orthography (neue deutsche Rechtschreibung)							% Package für Deutsche Syntax
 \usepackage{framed}                             % supports framed or shaded regions that can break across pages
 \usepackage{amsmath}                            % highly recommended for serious mathematical typesetting in LaTeX
 \usepackage{graphicx}                           % enhanced support for graphics
@@ -37,6 +37,7 @@
 %additional packages
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
 \pgfplotsset{compat=newest}
 	\pgfplotsset{
         table/search path={../csv, ./csv}, 
@@ -114,7 +115,7 @@
 \begin{document}
 
     \title{-------------------------------------}
-    \subtitle{Artem Moskalew \\ Jonas Christ \\ Max Nolte}
+    \subtitle{Artem Moskalew \\ Jonas Christ \\ Maximilian Nolte}
     \maketitle
 
     \tableofcontents
@@ -122,14 +123,14 @@
     
 	\subfile{./chapter/test}
 	
-	\subfile{./chapter/Abstract}
+	%\subfile{./chapter/Abstract}
 	\subfile{./chapter/Einfuehrung}
-	\subfile{./chapter/Vorgehen}
-	\subfile{./chapter/Code-Design}
+	%\subfile{./chapter/Vorgehen}
+	%\subfile{./chapter/Code-Design}
 	\subfile{./chapter/Optimierung}
-	\subfile{./chapter/Fazit}
-	\subfile{./chapter/Ausblick}
-	\subfile{./chapter/Anhang}
+	%\subfile{./chapter/Fazit}
+	%\subfile{./chapter/Ausblick}
+	%\subfile{./chapter/Anhang}
 		
 %
 %%	\subfile{./00_Abstract/Abstract}
