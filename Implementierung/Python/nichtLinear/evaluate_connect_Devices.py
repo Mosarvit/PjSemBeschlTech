@@ -29,32 +29,50 @@ def wait_for_AWG(AWG, attempt=0):
     :return: nothing
     """
 
-    if attempt == 1:
-        time.sleep(1.3)  # simple to reduce time to wait
-        # -> see data sheet: maximum time needed to write is given by 1.25 sec
-    elif attempt == 2:
-        AWG.write("*OPC?")  # new attempt 1 to reduce time to wait
+    # if attempt == 1: # did not work when being tested in July 2018 -> timeout error. Seems like time's given is to short
+    #     time.sleep(1.3)  # simple to reduce time to wait
+    #     # -> see data sheet: maximum time needed to write is given by 1.25 sec
+    if attempt == 2:
+        # if not working without, try this line too:
+        # ese= AWG.write("*ESE?")
+        # print("Ereigniszustand handeln: " + str(ese))
+        # AWG.write("*ESE 0")
+        AWG.write("*OPC")
+        #sets the opc-bit (AWG has to finish every commands before it can be written with new commands)
+        while int(AWG.write("*ESR?")) & 1 != 1:
+            # asks for the standard-event-register: if bit 0 (operation complete) is set to 1, stop
+            time.sleep(0.01)    # any value possible, just desired input here
+    #
+    # elif attempt == 3: # did not work when being tested in July 2018 -> maybe too much input in the query afterwards?
+    #     AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
+    #     # python will go on and write the commands in the input buffer
+    #     # they will be executed after WAI has finished
+    # elif attempt == 4: # did not work when being tested in July 2018 -> busy not defined for AWG
+    #     busy = 1 # initialize
+    #     busy = AWG.write("BUSY?")  # new attempt to reduce time to wait -> runs until OPC? is set to 1
+    #     # try additionally:
+    #     # busy = AWG.read() # comnined with write-command above should be same as query
+    #     print("busy:")
+    #     print(busy)
+    #     print("busy ready")
+    #     while int(busy[0]) != 0:  # loop until not busy any more
+    #         time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
+    #         busy = AWG.write("BUSY?")
+    #         print(busy)  # just to have a control option -> not necessary, it an attempt work
+    elif attempt == 5:
         # -> does not proceed until *OPC? is set to 1 by internal queue.
-        # so, finishing this line in the program will last until the device is ready
-        # In case this is not working, try AWG.write("*OPC?") instead, just as a guess
+        # so, finishing this *OPC? in the program will last until the device is ready
         # can used as a boolean variable, finished = AWG.query("*OPC?"), if necessary for a loop
-    elif attempt == 3:
-        AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
-        # python will go on and write the commands in the input buffer
-        # they will be executed after WAI has finished
-        # new attempt 2 and another not named attempt are possible, but 1 is faster and more stable
-    elif attempt == 4:
-        busy = 1 # initialize
-        busy = AWG.write("BUSY?")  # new attempt to reduce time to wait -> runs until OPC? is set to 1
-        # try additionally:
-        # busy = AWG.read() # comnined with write-command above should be same as query
-        print("busy:")
-        print(busy)
-        print("busy ready")
-        while int(busy[0]) != 0:  # loop until not busy any more
-            time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
-            busy = AWG.write("BUSY?")
-            print(busy)  # just to have a control option -> not necessary, it an attempt work
+        # causes a timeout-error (not affecting AWG-processing) if python has to wait to long for
+        # its internal calculation -> catch it, start again, nothing harmful should happen by doing so
+        while True:
+            try:
+                AWG.write("*OPC?")
+                break
+            except TimeoutError:
+                print("This shows that a TimeoutError ocurred when *OPC? is called. ..."
+                      "Repeating and going on till OPC is finished")
+
     else:
         time.sleep(10)  # enough time to finish every Process -> original implementation
     return
@@ -93,6 +111,10 @@ def check_AWG():
         wait_for_AWG(AWG, 4)
         return
 
+    def time_attempt_5():
+        wait_for_AWG(AWG, 5)
+        return
+
     # use t as ouput for showing running time of wait_for_AWG in form of:
     # t = timeit.timeit(time_attempt_X, number=1)
     # optionally output with position enabling connection between output and code-function:
@@ -128,10 +150,11 @@ def check_AWG():
 
     #Reset Instrument
     AWG.write("*RST")
+    AWG.write("*CLS") #reset standard-event-register
     
     # time analysis Position zero
     t = timeit.timeit(time_attempt_2, number=1)
-    print("Laufzeit von time_attempt_3 in milli Sec: " + str(t * 1e3) + " at Position zero")
+    print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position zero")
     t = 0
     AWG.write("SYSTem:ERRor?")
     time.sleep(4)

@@ -161,27 +161,29 @@ Mit diesem Schritt ergibt sich über drei Iterationen ein Verlauf des Korrekturt
 \label{subsubsec:opt.H.RMS}
 
 Ein zweiter, sehr grober Ansatz liegt in der Beschränkung von $\fabs$ auf Werte unterhalb einer vorgegebenen Schwelle. Zugrunde liegt die Annahme, dass die gerade an Nulldurchgängen des Spektrums sowie bei vielen hohen Frequenzen auftretenden großen Werte durch die in obiger Aufzählung genannten Fehlerquellen entstehen. Hier bedeutet dies insbesondere, dass die Diskretisierung die Nulldurchgänge nicht korrekt darstellen kann. Die Interpolation auf Frequenzen von $\Hcompl$ ist dann aufgrund der großen Sprünge von Werten in direkter Umgebung der problematischen Frequenzen mit großer Ungenauickgeit behaftet. Dies kann zu den beschriebenen, großen Korrektur-Termen in $\fabs$ führen.
+
+\lstset{language=Python}
+\begin{lstlisting}[caption={Pseudocode zur Veranschaulichung der Anpassung des Korrekturterms}, label=code:opt.H.pseudoRMS, numbers=none]
+	rms_orig = root_mean_square( f_abs )
+	f_abs_to_use = f_abs[ where( abs(f_abs) >= 0.02 * rms_orig ] 
+	rms_mod = root_mean_square( f_abs_to_use )
+	idx_to_clear = f_abs[ where( abs(f_abs) >= rms_mod ] 
+	f_abs[ ix_to_clear ] = 0
+\end{lstlisting}
+
+Vereinfacht bedeutet der verfolgte Ansatz, ausnehmend große Werte von $\fabs$ als unrealistisch abzutun. Eine Pseudo-Implementierung findet sich in \ref{code:opt.H.pseudoRMS}, um die nachfolgende Erläuterung zu illustrieren. In der vorgenommenen Implementierung wurde $\fabs$ an den ausgewählten Frequenzen auf $0$ gesetzt. Als Grenze genutzt wurde ein modifizierter Effektivwert, nachfolgend mit RMS (Root Mean Square) bezeichnet. 
+Der reine RMS von $\fabs$ unterliegt der Problematik, eine unproportional große Gewichtung von kleinen Einträgen zu enthalten.
 \\
-\\
-Vereinfacht bedeutet der verfolgte Ansatz, ausnehmend große Werte von $\fabs$ als unrealistisch abzutun. In der vorgenommenen Implementierung wurde $\fabs$ an den entsprechenden Frequenzen auf $0$ gesetzt. Als Grenze genutzt wurde ein modifizierter Effektivwert, nachfolgend mit RMS (Root Main Square) bezeichnet. 
-Der reine RMS von $\fabs$ unterliegt der Problematik eine unproportional große Gewichtung von kleinen Einträgen zu enthalten. 
 Idealerweise enthält $\fabs$ mit jeder Iteration kleinere Einträge als zuvor. Es würden also bei Nutzung des reinen RMS unter Umständen mit zunehmender Schrittzahl zunehmend mehr Werte in $\fabs$ ignoriert - was der Optimierung entsprechende Grenzen setzt. 
 In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die Problematik unumgänglich, da Frequenzen, die explizit nicht bei der Anpassung berücksichtig werden sollen, den reinen RMS-Wert beeinflussen.
 Folglich muss der RMS modifiziert werden. Hier wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich also bei der vorgenommenen Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
  
-\lstset{language=Python}
-\begin{lstlisting}
-rms_orig = root_mean_square( f_abs )
-f_abs_to_use = f_abs[ where( abs(f_abs) >= 0.02 * rms_orig ] 
-rms_mod = root_mean_square( f_abs_to_use )
-idx_to_clear = f_abs[ where( abs(f_abs) >= rms_mod ] 
-f_abs[ ix_to_clear ] = 0
-\end{lstlisting}
+
 
 In \figref{fig:opt.H.iteration} ist die Entwicklung von Übertragungsfunktion und $\fabs$ über mehrere Iterationen aufgetragen. Der Einfluss des RMS-Cutters macht sich dabei verglichen mit ---- ABB oben, rein iteriert --- bemerkbar, es treten weniger starke Änderungen auf. 
 Es zeigt sich, dass die vorgenommene Anpassung keinen großartigen Einfluss auf die Qualität des Signals hat.
 Dies ist insofern beachtenswert, als dass die Übertragungsfunktion auch an einigen Stellen mit massiver Verstärkung stark angepasst wird, vergleiche hierzu \figref{fig:opt.H.RMS_H} bei etwa $\SI{25}{\MHz}$.
-Die Qualität des Signals \footnotemark[\ref{foot:opt.H.quality}] bewegt sich zwischen einem Wert von ---- ---- und ---- ---- und zeigt vor allem rauschbedingte Schwankungen.
+Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ---- ---- und zeigt vor allem rauschbedingte Schwankungen.
 %TODO: check!!! Mehr Durchläufe ausprobieren, unbedingt!
 
 \pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
