@@ -1,11 +1,8 @@
-\BOOKMARK [0][-]{chapter.1}{Test}{}% 1
-\BOOKMARK [1][-]{section.1.1}{\204- firstName \204-}{chapter.1}% 2
-\BOOKMARK [0][-]{chapter.2}{Einf\374hrung}{}% 3
-\BOOKMARK [1][-]{section.2.1}{Modell und Konvention}{chapter.2}% 4
-\BOOKMARK [2][-]{subsection.2.1.1}{Hammerstein Modell}{section.2.1}% 5
-\BOOKMARK [1][-]{section.2.2}{Motivation}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.3}{Aufgabenstellung}{chapter.2}% 7
-\BOOKMARK [0][-]{chapter.3}{Iterative Optimierung des Hammerstein-Modells}{}% 8
-\BOOKMARK [1][-]{section.3.1}{Optimierung der linearen \334bertragungsfunktion H}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.2}{Optimierung der nicht-linearen Kennlinie K}{chapter.3}% 10
-\BOOKMARK [0][-]{chapter.4}{\204 Anhang \204}{}% 11
+\BOOKMARK [0][-]{chapter.1}{Einf\374hrung}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Modell und Konvention}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Hammerstein Modell}{section.1.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Motivation}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Aufgabenstellung}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Iterative Optimierung des Hammerstein-Modells}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Optimierung der linearen \334bertragungsfunktion H}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Optimierung der nichtlinearen Kennlinie K}{chapter.2}% 8

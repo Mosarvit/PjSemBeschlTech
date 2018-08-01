@@ -284,8 +284,56 @@ Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ----
 
 
 
-\section{Optimierung der nicht-linearen Kennlinie $K$}
+\section{Optimierung der nichtlinearen Kennlinie $K$}
 \label{sec:opt.K}
-%Sofern Erfahrungen vorhanden!
+Der Unterschied zur Optimierung von $\Hcompl$ ist, dass diese Optimierung im Zeitbereich statt findet. Deshalb kann \ref{eq:opt.relFehler} zu
+\begin{align}
+	\label{eq:opt.deltaUquest}
+	\Delta \Uquest \oft = \Uquest_{, \mathrm{meas}} \oft - \Uquest_{, \mathrm{ideal}} \oft
+	\qquad
+	\Uquest_{, \mathrm{meas}} \oft = \mathscr{F}^{-1} \left\{ \Hcompl^{-1} \ofomega \, \Uoutc_{, \mathrm{meas}} \ofomega \right\}
+\end{align}
+geändert werden. Bei den Funktionen $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ handelt es sich um Polynome gleichen Grades deshalb lässt sich die Differenz ebenfalls als ein Polynom mit Grad $N$ darstellen
+\begin{align}
+	\Delta \Uquest \oft = \sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n	
+\end{align}
+Die Koeffizienten $\tilde{a}_n$ sind d
+\begin{align}
+	\left( 
+	 \begin{matrix}
+	  U_{in,1} & U_{in,1}^2 & \dots & U_{in,1}^N \\
+	  U_{in,2} & U_{in,2}^2 & \dots & U_{in,2}^N \\
+	  \vdots & \vdots & \ddots & \vdots \\
+	  U_{in,M} & U_{in,M}^2 & \dots & U_{in,M}^N \\
+	 \end{matrix}
+	\right)
+	\cdot
+	\left(
+	\begin{matrix}
+	 a_1 \\
+	 a_2 \\
+	 \vdots \\
+	 a_N \\	 
+	\end{matrix}
+	\right) 
+	= \left( 
+	\begin{matrix}
+	 U_{?,1} \\
+	 U_{?,2} \\
+	 \vdots \\
+	 U_{?,M} \\	 
+	\end{matrix}
+	\right).
+	\label{eq:lgs}
+\end{align}
+
+
+
+
+
+
+
+
+
 
 \end{document}

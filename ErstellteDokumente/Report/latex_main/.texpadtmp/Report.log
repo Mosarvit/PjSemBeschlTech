@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  1 AUG 2018 09:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  1 AUG 2018 20:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -588,7 +588,11 @@ Package: tudredef 2010/04/10 1.2 Clemens von Loewenich's and Joe Werner's TUD-De
 Package: tudreprt_title 2014/09/20 1.12 Clemens von Loewenich's and Joe Werner's TUD-Design package
 \TUD@sponsorlogo=\box31
 \TUD@titleskip=\skip110
-)) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+)) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/04/06 v1.3b Input encoding file
+\inpenc@prehook=\toks19
+\inpenc@posthook=\toks20
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
@@ -597,8 +601,8 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 Package: subfiles 2012/05/23 Federico Garcia
  (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks19
-\verbatim@line=\toks20
+\every@verbatim=\toks21
+\verbatim@line=\toks22
 \verbatim@in@stream=\read1
 )) (/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2018/02/14 3.18 The Babel package
@@ -632,7 +636,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2000/06/29 v2.01 AMS text
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks21
+\@emptytoks=\toks23
 \ex@=\dimen125
 )) (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -660,21 +664,21 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \dotsspace@=\muskip10
 \c@parentequation=\count109
 \dspbrk@lvl=\count110
-\tag@help=\toks22
+\tag@help=\toks24
 \row@=\count111
 \column@=\count112
 \maxfields@=\count113
-\andhelp@=\toks23
+\andhelp@=\toks25
 \eqnshift@=\dimen128
 \alignsep@=\dimen129
 \tagshift@=\dimen130
 \tagwidth@=\dimen131
 \totwidth@=\dimen132
 \lineht@=\dimen133
-\@envbody=\toks24
+\@envbody=\toks26
 \multlinegap=\skip113
 \multlinetaggap=\skip114
-\mathdisplay@stack=\toks25
+\mathdisplay@stack=\toks27
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -839,7 +843,7 @@ Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
 \col@sep=\dimen165
 \ar@mcellbox=\box49
 \extrarowheight=\dimen166
-\NC@list=\toks26
+\NC@list=\toks28
 \extratabsurround=\skip121
 \backup@length=\skip122
 \ar@cellbox=\box50
@@ -1015,7 +1019,7 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count290
 \lst@gtempboxa=\box58
-\lst@token=\toks27
+\lst@token=\toks29
 \lst@length=\count291
 \lst@currlwidth=\dimen179
 \lst@column=\count292
@@ -1056,7 +1060,7 @@ Package caption Info: listings package is loaded.
 \c@subfigure=\count299
 \c@subtable=\count300
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks28
+\pgfutil@everybye=\toks30
 \pgfutil@tempdima=\dimen190
 \pgfutil@tempdimb=\dimen191
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
@@ -1071,10 +1075,10 @@ Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks29
-\pgfkeys@temptoks=\toks30
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks31
+\pgfkeys@tmptoks=\toks33
 ))
 \pgf@x=\dimen192
 \pgf@y=\dimen193
@@ -1090,9 +1094,9 @@ Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 \c@pgf@countb=\count302
 \c@pgf@countc=\count303
 \c@pgf@countd=\count304
-\t@pgf@toka=\toks32
-\t@pgf@tokb=\toks33
-\t@pgf@tokc=\toks34
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
@@ -1113,9 +1117,9 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 \pgfmath@dimen=\dimen256
 \pgfmath@count=\count307
 \pgfmath@box=\box61
-\pgfmath@toks=\toks35
-\pgfmath@stack@operand=\toks36
-\pgfmath@stack@operation=\toks37
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
 ) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count308
 ))
@@ -1198,8 +1202,8 @@ Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen283
 \pgffor@skip=\dimen284
-\pgffor@stack=\toks38
-\pgffor@toks=\toks39
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
 )) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
@@ -1232,10 +1236,10 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 ))) (/usr/local/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\enitkv@toks@=\toks40
+\enitkv@toks@=\toks42
 \labelindent=\skip129
 \enit@outerparindent=\dimen292
-\enit@toks=\toks41
+\enit@toks=\toks43
 \enit@inbox=\box71
 \enitdp@description=\count320
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/was/gensymb.sty
@@ -1308,9 +1312,9 @@ LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2018/03/28 v1.16 Data Visualization (1.16)
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks42
-\t@pgfplots@tokb=\toks43
-\t@pgfplots@tokc=\toks44
+\t@pgfplots@toka=\toks44
+\t@pgfplots@tokb=\toks45
+\t@pgfplots@tokc=\toks46
 \pgfplots@tmpa=\dimen300
 \c@pgfplots@coordindex=\count327
 \c@pgfplots@scanlineindex=\count328
@@ -1322,7 +1326,7 @@ Package pgfplots: loading complementary arithmetics for your pgf version...
 \c@pgfplotsarray@tmp=\count330
 ) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
 \c@pgfplotstable@counta=\count331
-\t@pgfplotstable@a=\toks45
+\t@pgfplotstable@a=\toks47
 ) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
 \c@pgfplotslibrarysurf@no=\count332
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex)))
@@ -1476,7 +1480,7 @@ File: pgfmoduledatavisualization.code.tex 2015/05/18  (rcs-revision 1.50)
  (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/modules/pgfmoduleoo.code.tex
 \pgfoo@objectcount=\count350
 \pgfoothis@count=\count351
-\pgfoo@toks=\toks46
+\pgfoo@toks=\toks48
 )
 \pgf@lib@dv@cache@count=\count352
 \pgf@lib@dv@cache@count=\count353
@@ -1501,9 +1505,9 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
  (/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count357
-\float@exts=\toks47
+\float@exts=\toks49
 \float@box=\box107
-\@float@everytoks=\toks48
+\@float@everytoks=\toks50
 \@floatcapt=\box108
 ) (./mcode.sty
 -- Package: `mcode' 2.7 <2015/11/11> --
@@ -1607,17 +1611,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 LaTeX Warning: Unused global option(s):
     [scrreprt].
 
-(/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux
-
-LaTeX Warning: Label `fig:opt.spektrum_BB_signal' multiply defined.
-
-
-LaTeX Warning: Label `fig:opt.abs_spektrum' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:opt.abs_spektrum' multiply defined.
-
-)
+(/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux)
 \openout1 = `Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
@@ -1662,12 +1656,12 @@ LaTeX Font Warning: Font shape `T1/5ch/m/n' undefined
 \scratchbox=\box109
 \nofMPsegments=\count369
 \nofMParguments=\count370
-\everyMPshowfont=\toks49
+\everyMPshowfont=\toks51
 \MPscratchCnt=\count371
 \MPscratchDim=\dimen346
 \MPnumerator=\count372
 \makeMPintoPDFobject=\count373
-\everyMPtoPDFconversion=\toks50
+\everyMPtoPDFconversion=\toks52
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
  (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -1886,7 +1880,7 @@ LaTeX Font Warning: Font shape `T1/5fp/mb/n' undefined
 LaTeX Font Warning: Font shape `T1/5fp/m/n' undefined
 (Font)              using `T1/cmr/m/n' instead on input line 125.
 
-<tud_logo.pdf, id=51, 157.58875pt x 63.23625pt>
+<tud_logo.pdf, id=39, 157.58875pt x 63.23625pt>
 File: tud_logo.pdf Graphic file (type pdf)
 <use tud_logo.pdf>
 Package pdftex.def Info: tud_logo.pdf  used on input line 125.
@@ -1913,24 +1907,24 @@ Non-PDF special ignored!
 \tf@toc=\write7
 \openout7 = `Report.toc'.
 
- (./chapter/test.tex
+ (./chapter/Einfuehrung.tex
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
  [1
 
 
 ]
 chapter 1.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
 
 Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              Implementation of \float@addtolist became
@@ -1946,100 +1940,56 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              a package that still implements the
 (scrreprt)              deprecated \float@addtolist interface .
 
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 9.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 9.
-
-LaTeX Font Warning: Font shape `T1/5ch/b/n' undefined
-(Font)              using `T1/5ch/m/n' instead on input line 12.
-
-
-LaTeX Warning: Reference `pha:test.try' on page 2 undefined on input line 12.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 106--110
-
- []
-
-PGFPlots: reading {../csv/f_abs_orig.csv}
-PGFPlots: reading {../csv/f_abs_RMS_1.csv}
-PGFPlots: reading {../csv/f_abs_RMS_2.csv}
-PGFPlots: reading {../csv/f_abs_RMS_3.csv}
-PGFPlots: reading {../csv/H_RMS_orig.csv}
-PGFPlots: reading {../csv/H_RMS_1.csv}
-PGFPlots: reading {../csv/H_RMS_2.csv}
-PGFPlots: reading {../csv/H_RMS_3.csv}
-LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 11.04007pt on input line 123.
-LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 7.68005pt on input line 123.
-LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 6.62404pt on input line 123.
-
-Overfull \hbox (2.44385pt too wide) in paragraph at lines 125--187
-[]$[]$ $[]$ 
- []
-
-) (./chapter/Einfuehrung.tex
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
- [2
-
-]
-chapter 2.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-<images/eps/BB_req.pdf, id=96, 548.0475pt x 333.245pt>
+<images/eps/BB_req.pdf, id=69, 548.0475pt x 333.245pt>
 File: images/eps/BB_req.pdf Graphic file (type pdf)
 <use images/eps/BB_req.pdf>
 Package pdftex.def Info: images/eps/BB_req.pdf  used on input line 12.
 (pdftex.def)             Requested size: 348.54475pt x 211.93874pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 17.
+(babel)             in language  on input line 20.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 17.
-<images/eps/Aufbau.pdf, id=99, 690.58pt x 341.275pt>
+(babel)             in language  on input line 20.
+<images/eps/Aufbau.pdf, id=72, 690.58pt x 341.275pt>
 File: images/eps/Aufbau.pdf Graphic file (type pdf)
 <use images/eps/Aufbau.pdf>
-Package pdftex.def Info: images/eps/Aufbau.pdf  used on input line 22.
+Package pdftex.def Info: images/eps/Aufbau.pdf  used on input line 25.
 (pdftex.def)             Requested size: 348.54475pt x 172.24617pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 26.
-[3
+(babel)             in language  on input line 29.
+[2
 
  <./images/eps/BB_req.pdf>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 26.
-<images/eps/Hammerstein.pdf, id=113, 293.095pt x 78.2925pt>
+(babel)             in language  on input line 31.
+<images/eps/Hammerstein.pdf, id=87, 293.095pt x 78.2925pt>
 File: images/eps/Hammerstein.pdf Graphic file (type pdf)
 <use images/eps/Hammerstein.pdf>
-Package pdftex.def Info: images/eps/Hammerstein.pdf  used on input line 31.
+Package pdftex.def Info: images/eps/Hammerstein.pdf  used on input line 36.
 (pdftex.def)             Requested size: 248.96162pt x 66.50352pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 48.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 48.
+
+
+LaTeX Font Warning: Font shape `T1/5ch/b/n' undefined
+(Font)              using `T1/5ch/m/n' instead on input line 50.
+
+
+LaTeX Warning: Citation `PJS_Denys' on page 3 undefined on input line 50.
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 42.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 42.
+(babel)             in language  on input line 53.
 ) (./chapter/Optimierung.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
@@ -2049,14 +1999,20 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 6.
- [4 <./images/eps/Aufbau.pdf> <./images/eps/Hammerstein.pdf>]
-chapter 3.
+ [3 <./images/eps/Aufbau.pdf> <./images/eps/Hammerstein.pdf>]
+chapter 2.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 6.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 11.04007pt on input line 16.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 7.68005pt on input line 16.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 6.62404pt on input line 16.
 
-LaTeX Warning: Citation `----Jens---' on page 5 undefined on input line 17.
+LaTeX Warning: Citation `----Jens---' on page 4 undefined on input line 17.
 
 LaTeX Font Info:    Font shape `T1/pcr/m/n' will be
 (Font)              scaled to size 11.924pt on input line 19.
@@ -2232,7 +2188,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 60.
-[5
+[4
 
 ]
 PGFPlots: reading {../csv/opt_spect_ideal_abs.csv}
@@ -2262,7 +2218,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 158.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 158.
-[6] (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
+[5] (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 LaTeX Font Info:    Try loading font information for TS1+pcr on input line 168.
@@ -2277,7 +2233,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 188.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 188.
- [7]
+ [6]
 PGFPlots: reading {../csv/f_abs_orig.csv}
 PGFPlots: reading {../csv/f_abs_RMS_1.csv}
 PGFPlots: reading {../csv/f_abs_RMS_2.csv}
@@ -2308,53 +2264,29 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 287.
 
-) (./chapter/Anhang.tex
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 8.
+(babel)             in language  on input line 299.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 8.
+(babel)             in language  on input line 299.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 8.
+(babel)             in language  on input line 299.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 8.
+(babel)             in language  on input line 299.
+[7])
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 144.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 144.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 144.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 144.
  [8]
-
-LaTeX Font Warning: Font shape `T1/5ch/m/it' undefined
-(Font)              using `T1/5ch/m/n' instead on input line 15.
-
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 27.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 27.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 27.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 27.
-[9
-
-]
-chapter 4.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 27.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 27.
-)
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 153.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 153.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 153.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 153.
- [10
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 153.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 153.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 144.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 144.
  (/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 153.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 153.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 144.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 144.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
@@ -2368,23 +2300,20 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 60164 strings out of 492649
- 1449695 string characters out of 6129622
- 2425711 words of memory out of 5000000
- 63026 multiletter control sequences out of 15000+600000
+ 60122 strings out of 492649
+ 1448959 string characters out of 6129622
+ 2089460 words of memory out of 5000000
+ 62993 multiletter control sequences out of 15000+600000
  636631 words of font info for 198 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,21n,136p,10434b,2954s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.pdf (11 pages, 383454 bytes).
+ 78i,21n,136p,10434b,2955s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.pdf (9 pages, 269731 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 133 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 218 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
