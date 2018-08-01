@@ -91,7 +91,7 @@ class mock_system_class :
         self.__Uin_real = self.__Uin
         self.__Uin_real.sample_rate = samplerateOszi
 
-        Uin_vector = self.__Uin_real.in_V * 0.5
+        Uin_vector = self.__Uin_real.in_V
 
         self.__Uin_measured = signal_class(self.__Uin_real.time , Uin_vector  )
 
@@ -103,16 +103,16 @@ class mock_system_class :
 
         Uout_vector = self.__Uout_real.in_V
 
-        do_ifftfft = 0
-        if do_ifftfft:
-            Uout_vector_fft = fft(Uout_vector)
-            lngth = int(floor(len(Uout_vector_fft)/2/2))
-            faktor = len(Uout_vector_fft)/2 / lngth
-            shorten = int(floor(len(Uout_vector_fft)/2/2))
-            Uout_vector_fft_shorted = concatenate((Uout_vector_fft[0:shorten+1], Uout_vector_fft[-shorten:]))
-            Uout_vector = ifft(Uout_vector_fft_shorted, n=len(Uout_vector)) / faktor
+        # do_ifftfft = 0
+        # if do_ifftfft:
+        #     Uout_vector_fft = fft(Uout_vector)
+        #     lngth = int(floor(len(Uout_vector_fft)/2/2))
+        #     faktor = len(Uout_vector_fft)/2 / lngth
+        #     shorten = int(floor(len(Uout_vector_fft)/2/2))
+        #     Uout_vector_fft_shorted = concatenate((Uout_vector_fft[0:shorten+1], Uout_vector_fft[-shorten:]))
+        #     Uout_vector = ifft(Uout_vector_fft_shorted, n=len(Uout_vector)) / faktor
 
-        Uout_vector = Uout_vector * 0.5
+        # Uout_vector = Uout_vector * 0.5
 
         self.__Uout_measured = signal_class.gen_signal_from_f_rep( Uout_vector, self.__Uout_real.f_rep )
         self.__Uout_measured.sample_rate = samplerateOszi

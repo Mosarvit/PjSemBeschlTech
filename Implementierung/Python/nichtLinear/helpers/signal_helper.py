@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.interpolate import interp1d
 import copy
+from scipy import linalg
 from helpers.find_nearest import find_nearest
 
 
@@ -114,3 +115,23 @@ def generateSinSum(fqAmp, t):
     signal_obj = signal_class(signal[:, 0], signal[:, 1])
 
     return signal_obj
+
+def calculate_error(U_tested, U_ideal):
+    # cr_Uin = np.correlate(U_tested.in_V, U_ideal.in_V, 'full')
+    # err_Uin = np.median(abs(cr_Uin))
+    # err_Uin = np.mean(abs(cr_Uin))
+    # err_Uin = max(cr_Uin) / U_ideal.Vpp
+    #
+    # crs = np.correlate(U_ideal.in_V, U_ideal.in_V, 'full')
+    #
+    # diff = crs - cr_Uin
+    #
+    # a1 = np.median(abs(diff)) / U_ideal.Vpp
+    # a2 = np.mean(abs(diff)) / U_ideal.Vpp
+    #
+    # a1 = linalg.norm(U_tested.in_V - U_ideal.in_V) / linalg.norm(U_ideal.in_V)    #
+    # a1 = np.median(U_tested.in_V - U_ideal.in_V) / linalg.norm(U_ideal.in_V)
+
+    err = np.mean( U_tested.in_V - U_ideal.in_V  ) / linalg.norm(U_ideal.in_V)
+
+    return err

@@ -71,6 +71,8 @@ class test_get_H(TestCase):
         Uin_ideal = read_in_signal(path = mock_data_path + 'ideal_12_07_2018_12_03_47/csv/UinTime.csv', delimiter=';')
         Uin_computed = read_in_signal(path = last_directory_used + 'UinTime.csv', delimiter=';')
 
+
+
         # plot_2_signals(U1=Uin_ideal, U2=Uin_computed, legend1='Uin_ideal', legend2='Uin_computed')
 
         Uout_ideal = read_in_signal(path = mock_data_path + 'ideal_12_07_2018_12_03_47/csv/UoutTime.csv', delimiter=';')
