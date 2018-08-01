@@ -50,11 +50,19 @@ def compute_K_from_a(a, verbosity):
         imin = 0
         imax = K.shape[0]
         # find index of local maximum and minimum
-        for i in range(1,K.shape[0]-1):
-            if K[i,1] > K[i-1,1] and K[i,1] > K[i+1,1]:
-                imax = i
-            elif K[i,1] < K[i-1,1] and K[i,1] < K[i+1,1]:
+        k = np.where(K[:,0]==0)[0][0]
+        for i in range(k,1,-1):
+            if K[i, 1] < K[i - 1, 1] and K[i, 1] < K[i + 1, 1]:
                 imin = i
+        for i in range(k,K.shape[0]-1):
+            if K[i, 1] > K[i - 1, 1] and K[i, 1] > K[i + 1, 1]:
+                imax = i
+
+        # for i in range(1,K.shape[0]-1):
+        #     if K[i,1] > K[i-1,1] and K[i,1] > K[i+1,1]:
+        #         imax = i
+        #     elif K[i,1] < K[i-1,1] and K[i,1] < K[i+1,1]:
+        #         imin = i
 
 
         # limit K to its bijectiv part

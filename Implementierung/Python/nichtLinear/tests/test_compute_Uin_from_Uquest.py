@@ -112,7 +112,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=1)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
 
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_initial)
 
@@ -131,22 +131,22 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_awg)
 
         err = linalg.norm(Uin_computed_overlay_obj.in_V - Uin_awg.in_V) / linalg.norm(Uin_awg.in_V)
-        self.assertTrue(err < 0.2)
+        self.assertTrue(err < 0.33)
 
     def test_compute_Uin_from_Uquest_from_adjust_a_new_K(self):
         path = mock_data_path + 'adjust_a_19_07_2018-13_53_38/'
 
-        Uin_initial = read_in_signal(path + 'Uin_initial.csv')
-        Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
+        Uin_ideal = read_in_signal(path + 'Uin_initial.csv')
+        Uquest_measured = read_in_signal(path + 'Uquest_initial.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
+        a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_measured, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=1)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_measured, K_new, verbosity=0)
 
-        Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_initial)
-        plot_2_signals(Uin_computed_overlay_obj, Uin_initial)
-        err = linalg.norm(Uin_computed_overlay_obj.in_V - Uin_initial.in_V) / linalg.norm(Uin_initial.in_V)
+        Uin_computed_overlay_obj = overlay.overlay(Uin_computed, Uin_ideal)
+        # plot_2_signals(Uin_computed_overlay_obj, Uin_initial)
+        err = linalg.norm(Uin_computed_overlay_obj.in_V - Uin_ideal.in_V) / linalg.norm(Uin_ideal.in_V)
         self.assertTrue(err < 0.33)
 
     def test_compute_Uin_from_Uquest_with_higher_Uquest(self):
@@ -156,7 +156,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=True)
+        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
 
         Uin_computed.Vpp = Uin_computed.Vpp * 1.5
         Uin_awg.Vpp = Uin_awg.Vpp * 1.5

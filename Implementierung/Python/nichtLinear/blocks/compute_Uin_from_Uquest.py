@@ -95,10 +95,19 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
     # exclusive or inclusive?
     K_old = K
     K = K[imin:imax, :]
+    # maximal zugelassene Werte für Uquest
+    K_min_V = K[0,1]/1000
+    K_max_V = K[-1,1]/1000
 
+    Uquest_max_V = max(Uquest.in_V)
+    Uquest_min_V = min(Uquest.in_V)
+    vpp = Uquest.Vpp
+    # vpp_new = Uquest.Vpp
+    vpp_new1 = vpp
+    vpp_new2 = vpp
     # - interpoliere Kennlinie
     K_function = interp1d(K[:, 1], K[:, 0], kind='slinear')
-    vpp_max = K[-1, 1] - K[0, 1]
+    # vpp_max = K[-1, 1] - K[0, 1]
 
     if verbosity:
         plt.figure()
@@ -109,10 +118,35 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         plt.ylabel('Uquest')
 
     # adapt Uquest to max allowed vpp in mV
-    if Uquest.Vpp*1000 > vpp_max*0.95:
-        # der Wert 0.9 ist random gewählt, weil 1 nicht geklappt hat.. müssen wir herausfinden was geht
-        Uquest.Vpp = 0.95*vpp_max/1000
-        print('Uquest adapted to K maximum, new Vpp: ' + str(Uquest.Vpp))
+    # the task is to search für the biggest difference between the maximum of K and Uquest or minimum
+    # if K_max_V - Uquest_max_V < 0:
+    #     if K_min_V - Uquest_min_V > 0:
+    #         if abs(K_max_V - Uquest_max_V) < abs(K_min_V - Uquest_min_V):
+    #             vpp_new = abs(K_min_V/(Uquest_min_V/vpp))
+    #         else:
+    #             vpp_new = abs(K_max_V / (Uquest_max_V / vpp))
+    #     else:
+    #         vpp_new = abs(K_max_V / (Uquest_max_V / vpp))
+    # elif K_min_V - Uquest_min_V > 0:
+    #     vpp_new = abs(K_min_V / (Uquest_min_V / vpp))
+
+    # Uquest.Vpp = vpp_new
+
+    # berechnet unabhänig beide Vpp aus und setzt das kleinere
+    if K_max_V - Uquest_max_V < 0:
+        vpp_new1 = abs(K_max_V / (Uquest_max_V / vpp))
+    if K_min_V - Uquest_min_V > 0:
+        vpp_new2 = abs(K_min_V / (Uquest_min_V / vpp))
+
+    if vpp_new1 < vpp_new2:
+        Uquest.Vpp = vpp_new1
+    else:
+        Uquest.Vpp = vpp_new2
+
+    # if Uquest.Vpp*1000 > vpp_max*0.95:
+    #     # der Wert 0.9 ist random gewählt, weil 1 nicht geklappt hat.. müssen wir herausfinden was geht
+    #     Uquest.Vpp = 0.95*vpp_max/1000
+    #     print('Uquest adapted to K maximum, new Vpp: ' + str(Uquest.Vpp))
 
 
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
@@ -137,18 +171,19 @@ def compute_Uin_from_Uquest(Uquest, K, verbosity=False):
         plt.title('K nach bijektiver Anpassung')
         plt.xlabel('Uin')
         plt.ylabel('Uquest')
-        plt.show()
+        if settings.show_plots :
+            plt.show()
 
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
 
-    if verbosity:
-        fig = plt.figure()
-        plt.plot(Uin.time,Uin.in_mV)
-        plt.title('Uin')
-        plt.ylabel('u')
-        plt.ylabel('t')
-        if settings.show_plots :
-            plt.show()
+    # if verbosity:
+    #     fig = plt.figure()
+    #     plt.plot(Uin.time,Uin.in_mV)
+    #     plt.title('Uin')
+    #     plt.ylabel('u')
+    #     plt.ylabel('t')
+    #     if settings.show_plots :
+    #         plt.show()
         #fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_in.pdf')
 
     # Uin[:,1] = Uin[:,1];
