@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d78303e8-74a9-4735-86a8-268aeb8def16" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/compute_K_from_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_K_from_a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_compute_Uin_from_Uquest.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="132" column="97" selection-start-line="132" selection-start-column="97" selection-end-line="132" selection-end-column="97" />
+            <state relative-caret-position="301">
+              <caret line="139" column="69" lean-forward="true" selection-start-line="139" selection-start-column="69" selection-end-line="139" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all_tezts.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/all_tezts.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -29,8 +35,8 @@
       <file leaf-file-name="compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="781">
-              <caret line="178" column="4" lean-forward="true" selection-start-line="178" selection-start-column="6" selection-end-line="185" selection-end-column="24" />
+            <state relative-caret-position="1768">
+              <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -157,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -170,16 +175,11 @@
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="mock_data" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,7 +216,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in test_compute_Uin_from_Uquest.py">
+  <component name="RunManager" selected="Python.all_tezts">
+    <configuration name="all_tezts" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nichtLinear" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/all_tezts.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -280,19 +298,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_jens&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="nichtLinear" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for unit_tests1.test_unit" type="tests" factoryName="Unittests" nameIsGenerated="true">
@@ -369,18 +374,18 @@
       <item itemvalue="Python tests.Unittests in test_compute_K_from_a.py" />
       <item itemvalue="Python tests.Unittests in test_compute_Uin_from_Uquest.py" />
       <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" />
-      <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" />
       <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_from_adjust_a_new_K" />
       <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_air" />
       <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_jens" />
+      <item itemvalue="Python.all_tezts" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.all_tezts" />
         <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_jens" />
         <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" />
         <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_air" />
         <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_from_adjust_a_new_K" />
-        <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" />
       </list>
     </recent_temporary>
   </component>
@@ -439,19 +444,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="967" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.20192887" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7106653" visible="true" weight="0.2015625" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293718" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48806682" side_tool="true" weight="0.2935586" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" weight="0.32988507" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51193315" weight="0.32988507" />
       <window_info id="Structure" order="1" sideWeight="0.28933474" side_tool="true" weight="0.16770834" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.328341" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38505748" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38505748" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -474,13 +478,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/blocks/compute_K_from_a.py</url>
-          <line>53</line>
+          <line>95</line>
           <option name="timeStamp" value="655" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py</url>
-          <line>121</line>
-          <option name="timeStamp" value="659" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -503,6 +502,20 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="110" column="4" lean-forward="true" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blocks/measure_H.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -720,49 +733,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/sparse/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18285">
-          <caret line="1228" selection-start-line="1228" selection-end-line="1228" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/numpy/ma/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93600">
-          <caret line="6246" selection-start-line="6246" selection-end-line="6246" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/_lib/_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3390">
-          <caret line="236" selection-start-line="236" selection-end-line="236" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/sparse/base.py" />
+    <entry file="file:///anaconda3/lib/python3.6/site-packages/numpy/ma/core.py" />
+    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/_lib/_util.py" />
     <entry file="file://$PROJECT_DIR$/tests/test_compute_Uquest_from_Uout.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all_tezts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/optimizer/adjust_a_19_07_2018-13_54_54/K_2.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/optimizer/adjust_a_19_07_2018-13_54_54/K_initial.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/optimizer/adjust_a_19_07_2018-13_54_54/K_1.csv">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_a.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -771,13 +750,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/interpolate/polyint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/interpolate/polyint.py" />
     <entry file="file://$PROJECT_DIR$/blocks/compute_a_from_Uin_Uquet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -785,13 +758,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/interpolate/interpolate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="662" selection-start-line="662" selection-end-line="662" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///anaconda3/lib/python3.6/site-packages/scipy/interpolate/interpolate.py" />
     <entry file="file://$PROJECT_DIR$/blocks/compute_K_from_a.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
@@ -808,15 +775,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
-          <caret line="178" column="4" lean-forward="true" selection-start-line="178" selection-start-column="6" selection-end-line="185" selection-end-column="24" />
+        <state relative-caret-position="1768">
+          <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="132" column="97" selection-start-line="132" selection-start-column="97" selection-end-line="132" selection-end-column="97" />
+        <state relative-caret-position="301">
+          <caret line="139" column="69" lean-forward="true" selection-start-line="139" selection-start-column="69" selection-end-line="139" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all_tezts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>
