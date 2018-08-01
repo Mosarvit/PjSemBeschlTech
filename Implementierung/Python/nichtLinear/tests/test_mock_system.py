@@ -24,6 +24,7 @@ from blocks import get_H
 import os
 from classes.signal_class import signal_class
 from helpers.plot_helper import plot_2_signals
+from helpers.signal_helper import calculate_error
 
 
 
@@ -48,18 +49,26 @@ class test_mock_system(TestCase):
 
         mock_system.H = H_ideal
 
+        Uin_AWG_ideal.Vpp = 40e-3
+
         mock_system.write_to_AWG(signal=Uin_AWG_ideal.in_V, awg_Vpp= Uin_AWG_ideal.Vpp, samplerateAWG=Uin_AWG_ideal.sample_rate)
         time, dataUin, dataUout = mock_system.read_from_DSO(samplerateOszi=sample_rate_DSO, signal=Uin_AWG_ideal, fmax=8e7, vpp_ch1=Uin_AWG_ideal.Vpp)
 
         Uout_measured_computed = signal_class(time, dataUout)
         Uin_measured_computed = signal_class(time, dataUin)
-        # Uout_computed = overlay(Uout_computed, Uout_ideal)
 
-        plot_2_signals(Uin_measured_ideal, Uin_AWG_ideal)
+        Uin_measured_computed = overlay(Uin_measured_computed, Uin_measured_ideal)
+        Uout_measured_computed = overlay(Uout_measured_computed, Uout_time_measured_ideal)
 
-        # err = linalg.norm(Uout_computed.in_V - Uout_ideal.in_V) / linalg.norm(Uout_ideal.in_V)
-        a = 1
-        # self.assertTrue(err < 0.04)
+        err_Uin = calculate_error(Uin_measured_computed, Uin_measured_ideal)
+        err_Uout = calculate_error(Uout_measured_computed, Uout_time_measured_ideal)
+
+        # plot_2_signals(Uin_measured_computed, Uin_measured_ideal)
+        # plot_2_signals(Uout_measured_computed, Uout_time_measured_ideal)
+
+        self.assertTrue(err_Uin < 3e-5)
+        self.assertTrue(err_Uout < 3e-5)
+
 
     if __name__=='__main__':
         try:

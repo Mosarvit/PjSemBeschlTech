@@ -64,3 +64,13 @@ def plot_transfer_function(H, legend1 = 'H'):
 
     if show_plots:
         plt.show()
+
+def plot_K(K, legend = 'K'):
+
+    plt.figure()
+    plt.plot(K[:,0], K[:,1])
+    plt.legend([legend])
+    plt.xlabel('K[:,0]')
+    plt.ylabel('K[:,1]')
+    if show_plots:
+        plt.show()
