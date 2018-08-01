@@ -1,7 +1,7 @@
 # PjSemBeschlTech - Handhabung der Geräte
 
 Benutzte Geräte:
-- AWG		Keysight 33600A
+- AWG		Keysight 33600A (33622A)
 - Oszi		Tektronix TDS 5054 DOS
 - Verstärker	! Darf nicht mehr als ~1 V Vpp als Eingang bekommen! (hat noch etwas Puffer nach oben -> gute Sicherheit)
 - Kavität		

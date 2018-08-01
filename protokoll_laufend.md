@@ -1,4 +1,5 @@
 Besprechung 16.07. - Kurzprotokoll
+Update: 1.8.
 
 Termine -> siehe Gruppe
 
@@ -14,21 +15,66 @@ Termine -> siehe Gruppe
 ### 13.8. 10 Uhr: grosser Showdown
 ### 13.8. 11 Uhr: grosses Aufatmen
 
+------------------ Kommentare ----------------
+
+# Fehler Berechnen von Signalen als Abweichung
+	- Artem: neue Implementierung, etwa Median, Standardabweichung
+		-> Güte in einfach?
+
+# Kennlinie
+	- können wir sicherstellen, dass K bijektiv im Berechnungsbereich ist?
+		-> Max schaut sich Problematik an!!! Gaaanz grosses Kino!
+
 ------------------ TODOs ---------------------
 # alle: 
 beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert werden muessen, um Aussagen zu veranschaulichen
 
-# Aufgaben im Code:
+# bis nächstes Mal an GSI zu tun:
+
+# nächstes Mal an GSI zu tun:
+	- notieren, wieviele Samples in AWG genutzt werden
+	- Messdaten generieren:
+		- evaluate adjust_H:
+			- zweimal ganz ohne RMS oder Promille Anpassung laufen lassen (mind. 5 Iterationen)
+				zweimal, um Einfluss von Rauschen zu vergleichen
+			- einmal nur mit Promille Anpassung (ca. 3 Prom) laufen lassen (mind. 5 Iterationen)
+			- einmal nur mit RMS Anpassung laufen lassen (mehr als 5 Iterationen!)
+			- einmal mit beiden Anpassungen durchlaufen lassen (ca. 5 Iterationen)
+			(ideal: jeweils immer mitschreiben, wie groß der RMS wirklich ist)
+		- evaluate adjust_a:
+			- festes V_PP (von Anfang an f. Kennlinie schon)(mind 5 Iterationen)
+			- größeres V_PP (nichtlinearen Bereich ausfahren)
+	
+	- Geraetekommunikation: 
+		- evaluate_connect_devices mit neuem Versuch 2 für AWG testen und ggf. in write_to_AWG übernehmen
+		- evaluate_connect_devices mit neuem Versuch 5 für AWG testen und ggf. in write_to_AWG übernehmen
+			!!!! Fehler, falls auftreten, dokumentieren! Abhilfe u. U. vor Ort mit Programming tips möglich
+		- falls Zeit: Verbindung mit zweitem PC testen (just for fun! neues Oszi wird ja eh bald genutzt)
+			
+	- K kontrollieren: Bereiche für Berechnung von a checken & festhalten
+		-> Problem Bijektivität in initialem K gegeben????
+
+
+# Aufgaben:
 
 ## Artem:
 	- (siehe Issue) eine Klasse fuer Kennlinie ``K`` erstellen, insb. Einbinden der Grenzen, in denen ``K`` berechnet wurde
-	- (siehe Issue) Mock-System ausbauen und freundlich fuer weitere Anwender gestalten
-
+	- Dokumentation für Code und Design grob erstellen für Report (bis Sa Abend)
+		- warum evaluate/compute/determine .. als Namen gewählt?
+		- Ordnerstruktur
+		- TDD
+		- Mock-System
+		- (Refactoring)
+		- Vorgehen bei Implementierung aus Matlab
+		- Versionskontrolle, "Protokoll" Kommentare
+	
 ## Max 
-	- (siehe Issue) speichern von Messdaten eines Programm-Durchlaufs in eigenen Ordner 
-	- (siehe Issue) ``adjust_a`` und ``evaluate..`` fertig stellen fuer Test am Freitag
+	- (siehe Issue) ``adjust_a`` und ``evaluate..`` fertig stellen fuer Test -> V_PP anpassen in K
+	- Eintrag Latex ``adjust_a``
 	- ggf. Anpassung der Skalierung des Oszis an abgeaenderte Methode ``generate_BB_signal``
-
+	- Anpassen der Doku des Designs / Code
+	- Wie kann man Ausgang und Eingangssignal vergleichen (mit hinsicht auf Amplitude/Vpp)
+	
 ## Jonas
 	- (siehe Issue) ``generate_BB_signal`` und Verweise anpassen an (richtige) Definition von ``f_rep``, ``sample_rate`` und ``timestep``. Ggf. auch verwandte Aufrufe/Methoden gegenchecken
 	- ``runme`` und ``settings`` in Absprache mit Jens anpassen, s.d. Nutzbarkeit sichergestellt ist
@@ -39,7 +85,7 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 	- in Absprache mit Jens / anderen Nutzern des Programms die Dokumentation ueberpruefen
 	- ``type_check_...`` in Methoden einbinden
 	- sicherstellen, dass auf Variablen aus ``settings`` an allen notwendigen Stellen der Methoden zugegriffen wird
-	
+
 	
 ------------------ Topics Report -------------
 # Gliederung analog zu Zwischenpraesentation:
@@ -51,12 +97,6 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 	
 ## Bericht ueber Vorgehen:
 	- Was war vorgegeben / womit wurde angefangen? (Matlab zu Python) (Max)
-	- Aufraeumen von Code: (Infos von Artem)(Max)
-		. Motivation fuer Code-Design und warum ausgewaehlt fuer Setting einer Messsituation
-		. Refactoring
-		. TDD implementieren
-		. Klassen und ``helpers``-System
-		. (Mock-System)
 	- Geraetekommunikation (Jonas)
 	- Dokumentation, Konventionen, Konzept hinter Konvention und Dokumentation (Jonas)
 	- Optimierung: (Jonas)

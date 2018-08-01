@@ -1,7 +1,7 @@
 \documentclass[scrreprt,colorback,accentcolor=tud9b, 11pt]{tudreport}
 
 %most of packages just copy&paste, not checked whether all are necessary!
-%\usepackage[utf8]{inputenc}                     % sets the input encryption to UTF8 which is always preferable
+\usepackage[utf8]{inputenc}                     % sets the input encryption to UTF8 which is always preferable
 \usepackage[T1]{fontenc}                        % standard package for selecting font encodings
 %\usepackage[latin1]{inputenc}
 \usepackage{subfiles}                           % allows to handle multi-file projects more comfortably
@@ -126,26 +126,17 @@
     \tableofcontents
     
     
-	\subfile{./chapter/test}
+	%\subfile{./chapter/test}
 	
-	%\subfile{./chapter/Abstract}
+	\subfile{./chapter/Abstract}
 	\subfile{./chapter/Einfuehrung}
-	%\subfile{./chapter/Vorgehen}
-	%\subfile{./chapter/Code-Design}
+	\subfile{./chapter/Vorgehen}
+	\subfile{./chapter/Code-Design}
 	\subfile{./chapter/Optimierung}
-	%\subfile{./chapter/Fazit}
-	%\subfile{./chapter/Ausblick}
+	\subfile{./chapter/Fazit}
+	\subfile{./chapter/Ausblick}
 	\subfile{./chapter/Anhang}
-		
-%
-%%	\subfile{./00_Abstract/Abstract}
-%    \subfile{./01_Einfuehrung/Einfuehrung}
-%%    \subfile{./03_Vorgehen/Vorgehen}
-%%    \subfile{./05_Design/Code-Design}
-%%    \subfile{./07_Optimierung/Optimierung}
-%%    \subfile{./09_Fazit/Fazit}
-%%    \subfile{./11_Ausblick/Ausblick}
-%%    \subfile{./13_Anhang/Anhang}
+
 
 
 %\listoffigures
