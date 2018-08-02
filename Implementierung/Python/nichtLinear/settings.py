@@ -6,8 +6,9 @@ Hier sind globale Variablen gespreicher. Eine Zwischelösung.
 """
 
 project_path = os.path.dirname(os.path.abspath(__file__)) + '/'
-mock_data_path = project_path + '/tests/mock_data/'
-get_H_data_path_measuraments = project_path + '/data/get_H/'
+mock_data_path = project_path + 'tests/mock_data/'
+test_data_path = mock_data_path + 'unit_test_data/'
+get_H_data_path_real_system = project_path + '/data/get_H/'
 get_H_data_path_mock = mock_data_path + '/mock_data/get_H/'
 show_plots = 1 # ob die Plots angenzeigt werden sollen
 mock_system = mock_system_class()

@@ -9,7 +9,7 @@ from blocks.adjust_a import adjust_a
 
 from helpers import overlay, signal_helper
 from helpers.signal_helper import generateSinSum, calculate_error
-from helpers.csv_helper import read_in_transfer_function, read_in_signal, save_signale
+from helpers.csv_helper import read_in_transfer_function, read_in_signal, save_signal
 from classes.transfer_function_class import transfer_function_class
 from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class

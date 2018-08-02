@@ -80,8 +80,8 @@ def printCSV(saveCSV=False):
                                   np.angle(Id_spectrum.in_V))
             csv_helper.save_2cols(data_path + 'Spectrum_Meas_angle' + id + '.csv', Meas_spectrum.time,
                                   np.angle(Meas_spectrum.in_V))
-            csv_helper.save_signale(f_calc_sig, data_path+'f_abs_calc_'+id+'.csv')
-            csv_helper.save_signale(f_load_sig, data_path + 'f_abs_load_' + id + '.csv')
+            csv_helper.save_signal(f_calc_sig, data_path + 'f_abs_calc_' + id + '.csv')
+            csv_helper.save_signal(f_load_sig, data_path + 'f_abs_load_' + id + '.csv')
 
         err = linalg.norm(H_calc.a - H.a) / linalg.norm(H.a)
         print(err)

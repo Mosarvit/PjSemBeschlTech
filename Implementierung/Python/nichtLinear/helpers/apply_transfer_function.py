@@ -16,7 +16,6 @@ from classes.signal_class import signal_class
 def apply_transfer_function(Uout, H):
 
     f_rep = 900e3
-
     freq = H.f
 
     fn = Uout.sample_rate / 2
@@ -37,6 +36,7 @@ def apply_transfer_function(Uout, H):
 
 
     version = 1
+
     if version == 1 :
 
         t = Uout.time
@@ -104,17 +104,6 @@ def apply_transfer_function(Uout, H):
         n = Uout_vector.size
         Uout_fft = np.fft.fft(Uout_vector)
         #
-        # fn = Fns / 2
-        # df = max(Fns / n, min(H.f))
-        #
-        # f_H_max = max(H.f)
-        # f_max = min(f_H_max, fn)
-        # ind_max = int(np.floor(f_max / df))
-        # f_U_max = ind_max * df
-        #
-        # frq = np.arange(0, f_U_max, df)
-        #
-        # w = frq[1:]
 
         int_Hc = interp1d(H.f, H.c)
         Hc = int_Hc(w)

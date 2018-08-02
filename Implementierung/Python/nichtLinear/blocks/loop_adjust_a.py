@@ -15,7 +15,7 @@ from copy import copy
 from helpers.csv_helper import save_2cols
 from settings import use_mock_system
 from classes.signal_class import signal_class
-from helpers.csv_helper import save_signale, save_transfer_function
+from helpers.csv_helper import save_signal, save_transfer_function
 from blocks.adjust_a import adjust_a
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
@@ -38,12 +38,12 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         # compute new Uin
         Uout_ideal.Vpp = 1.5
         Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
-        save_signale(Uquest_ideal, data_directory + 'Uquest_ideal_' + id + '.csv')
+        save_signal(Uquest_ideal, data_directory + 'Uquest_ideal_' + id + '.csv')
         Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K)
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
         
-        save_signale(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
+        save_signal(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
+        save_signal(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
         
         plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured_uncut', 'Uout_measured_uncut')
         
@@ -52,10 +52,10 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         Uin_measured = Uin_measured.cut_one_period(f_rep_fix)
 
         # save Uin and Uout
-        save_signale(Uin, data_directory + 'Uin_awg_' + id + '.csv')
-        save_signale(Uquest_ideal, data_directory + 'Uquest_' + id + '.csv')
-        save_signale(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
+        save_signal(Uin, data_directory + 'Uin_awg_' + id + '.csv')
+        save_signal(Uquest_ideal, data_directory + 'Uquest_' + id + '.csv')
+        save_signal(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
+        save_signal(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
         
         plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured', 'Uout_measured')
         

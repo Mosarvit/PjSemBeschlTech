@@ -17,7 +17,7 @@ from copy import copy
 from helpers.csv_helper import save_2cols
 from settings import use_mock_system
 from classes.signal_class import signal_class
-from helpers.csv_helper import save_signale, save_transfer_function
+from helpers.csv_helper import save_signal, save_transfer_function
 from blocks.adjust_H import adjust_H
 from numpy import genfromtxt
 import matplotlib.pyplot as plt

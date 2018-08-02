@@ -25,7 +25,7 @@ Input:  fmax          ------  max frequency of interest
 """
 
 
-def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=1, \
+def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=0, createCSV=1, \
         formatOutput=1):
     import visa
     from helpers import MLBS
@@ -36,14 +36,14 @@ def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=True, createCSV=1, \
     import csv
     import os
 
-    from settings import use_mock_system, mock_system, last_directory_used, get_H_data_path_measuraments, get_H_data_path_mock
+    from settings import use_mock_system, mock_system, last_directory_used, get_H_data_path_real_system, get_H_data_path_mock
     import  settings
 
     # Create folder for results
     if use_mock_system:
         get_H_data_path = get_H_data_path_mock
     else :
-        get_H_data_path = get_H_data_path_measuraments
+        get_H_data_path = get_H_data_path_real_system
 
 
     directory = get_H_data_path + time.strftime("%d.%m.%Y_%H_%M_%S") + '/'

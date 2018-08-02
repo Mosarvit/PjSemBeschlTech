@@ -12,7 +12,7 @@ from helpers.csv_helper import read_in_transfer_function
 from settings import project_path
 from classes.signal_class import signal_class
 from copy import copy
-from helpers.csv_helper import save_2cols, save_signale
+from helpers.csv_helper import save_2cols, save_signal
 
 def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory):
     Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
@@ -31,6 +31,6 @@ def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory):
     Uout_measured = Uout_measured.cut_one_period(Uin.f_rep)      
     
     Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
-    save_signale(Uquest_measured, data_directory + 'Uquest_initial.csv')
+    save_signal(Uquest_measured, data_directory + 'Uquest_initial.csv')
     a = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_measured, N=3)
     return a

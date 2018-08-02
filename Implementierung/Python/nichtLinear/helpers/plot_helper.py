@@ -39,9 +39,9 @@ def plot_transfer_function(H, legend='H'):
     if show_plots:
         plt.show()
 
+
 def plot_2_transfer_functions(H1, H2,  legend1 = 'H1', legend2 = 'H2'):
 
-    plt.figure()
     f, axarr = plt.subplots(2, sharex=True)
     axarr[0].plot(H1.f, H1.a, H2.f, H2.a, )
     axarr[0].legend([legend1, legend2])
@@ -52,9 +52,8 @@ def plot_2_transfer_functions(H1, H2,  legend1 = 'H1', legend2 = 'H2'):
     if show_plots:
         plt.show()
 
-def plot_transfer_function(H, legend1 = 'H'):
 
-    plt.figure()
+def plot_transfer_function(H, legend1='H'):
     f, axarr = plt.subplots(2, sharex=True)
     axarr[0].plot(H.f, H.a)
     axarr[0].legend([legend1])
@@ -65,6 +64,7 @@ def plot_transfer_function(H, legend1 = 'H'):
     if show_plots:
         plt.show()
 
+
 def plot_K(K, legend = 'K'):
 
     plt.figure()
@@ -72,5 +72,15 @@ def plot_K(K, legend = 'K'):
     plt.legend([legend])
     plt.xlabel('K[:,0]')
     plt.ylabel('K[:,1]')
+    if show_plots:
+        plt.show()
+
+
+def plot_2_Ks(K1, K2,  legend1='K1', legend2='K2'):
+
+    f, axarr = plt.subplots(1, sharex=True)
+    axarr[0].plot(K1[:, 0], K1[:, 1], K2[:, 0], K2[:, 1])
+    axarr[0].legend([legend1, legend2])
+
     if show_plots:
         plt.show()

@@ -15,7 +15,7 @@ from copy import copy
 from helpers.csv_helper import save_2cols
 from settings import use_mock_system
 from classes.signal_class import signal_class
-from helpers.csv_helper import save_signale, save_transfer_function
+from helpers.csv_helper import save_signal, save_transfer_function
 from blocks.adjust_H import adjust_H
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
@@ -37,8 +37,8 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
 
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
-        save_signale(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
+        save_signal(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
+        save_signal(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
 
         # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured_uncut', 'Uout_measured_uncut')
 
@@ -47,10 +47,10 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
         Uin_measured = Uin_measured.cut_one_period(f_rep_fix)
 
         # save Uin and Uout
-        save_signale(Uin, data_directory + 'Uin_awg_' + id + '.csv')
-        save_signale(Uquest, data_directory + 'Uquest_' + id + '.csv')
-        save_signale(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
+        save_signal(Uin, data_directory + 'Uin_awg_' + id + '.csv')
+        save_signal(Uquest, data_directory + 'Uquest_' + id + '.csv')
+        save_signal(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
+        save_signal(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
 
         # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured', 'Uout_measured')
 

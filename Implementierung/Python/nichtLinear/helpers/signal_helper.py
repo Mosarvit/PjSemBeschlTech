@@ -135,3 +135,9 @@ def calculate_error(U_tested, U_ideal):
     err = np.mean( U_tested.in_V - U_ideal.in_V  ) / linalg.norm(U_ideal.in_V)
 
     return err
+
+def signals_are_equal(U1, U2):
+    return all(U1.in_V == U2.in_V)
+
+def arrays_are_equal(array1, array2):
+    return np.alltrue(array1 == array2)

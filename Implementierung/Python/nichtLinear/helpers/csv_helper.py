@@ -3,6 +3,8 @@ from numpy import genfromtxt
 
 from classes.transfer_function_class import transfer_function_class
 from classes.signal_class import signal_class
+from helpers.other_helpers import get_current_method_name
+import os
 
 
 
@@ -29,6 +31,29 @@ def save_2cols(filename, col1, col2):
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for i in range(0, col1.shape[0]):
             writer.writerow([str(col1[i]), str(col2[i])])
+
+def save_1_col(filename, col):
+
+    """
+
+    save_1_col speichert einen vektor als CSV ab
+
+    INPUT:
+
+        filename : string; Dateipfad, wo abgespeichert werden soll
+        col: nx1 vector; erste Spalte (n - länge des Vektors)
+
+    OUTPUT:
+
+        (no output)
+
+    """
+
+    with open(filename, 'w+', newline="") as csvfile:
+        writer = csv.writer(csvfile, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        for i in range(0, col.shape[0]):
+            writer.writerow([str(col[i])])
 
 # def read_in_H(pathA, pathPh):
 #     Ha = genfromtxt(pathA, delimiter=',')
@@ -103,8 +128,18 @@ def read_in_signal(path, delimiter=','):
 
     return U
 
-def save_signale(signal, filename):
+def read_in_array(path, delimiter=','):
+    array = genfromtxt(path, delimiter=delimiter)
+    return array
+
+def save_signal(signal, filename):
     save_2cols(filename, signal.time, signal.in_V)
+
+def save_a(a, filename):
+    save_1_col(filename, a)
+
+def save_K(K, filename):
+    save_2cols(filename, K[:,0], K[:,1])
 
 def read_in_signal_with_sample_rate(path_signal, path_sample_rate, delimiter=','):
 
@@ -135,3 +170,51 @@ def read_in_get_H_signal_data(get_H_csv_directory):
     H = read_in_transfer_function_old_convention(pathA=path_Ha, pathPh=path_Hp, delimiter=';')
 
     return Uin_AWG, Uin_time_measured, Uout_time_measured, Uout_freq_measured, Uin_freq_measured, H
+
+def load_ideal_signal(filename, datatype):
+    ideal_values_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
+    if not os.path.exists(ideal_values_data_path):
+        raise CustomValueError("No ideal signal found. You should first set the ideal signal by setting argument set_ideal_signal in method finilize_test_with_signal to True")
+    if datatype == 'signal':
+        Uout_ideal = read_in_signal(ideal_values_data_path)
+    elif datatype == 'a' or datatype == 'K':
+        Uout_ideal = read_in_array(ideal_values_data_path)
+
+    return Uout_ideal
+
+def save_ideal_signal(signal_ideal, filename, datatype):
+    ideal_values_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
+    if not os.path.exists(current_unit_test_data_path):
+        os.makedirs(current_unit_test_data_path)
+    if datatype == 'signal':
+        save_signal(signal_ideal, ideal_values_data_path)
+    elif datatype == 'a':
+        save_a(signal_ideal, ideal_values_data_path)
+    elif datatype == 'K':
+        save_K(signal_ideal, ideal_values_data_path)
+
+def load_ideal_a(filename):
+
+    ideal_values_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
+    if not os.path.exists(ideal_values_data_path):
+        raise CustomValueError("No ideal a found. You should first set the ideal signal by setting argument set_ideal_signal in method finilize_test_with_signal to True")
+    a_ideal = read_in_a(ideal_values_data_path)
+    return a_ideal
+
+def save_ideal_a(a_ideal, filename):
+    a_ideal_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
+    if not os.path.exists(current_unit_test_data_path):
+        os.makedirs(current_unit_test_data_path)
+    save_a(a_ideal, a_ideal_data_path)
+
+
+def generate_paths_for_ideal_values(filename):
+    from settings import test_data_path
+    current_unit_test_data_path = test_data_path + get_current_method_name(4) + '/'
+    Uout_ideal_data_path = current_unit_test_data_path + filename
+    return Uout_ideal_data_path, current_unit_test_data_path
+
+class CustomValueError(ValueError):
+ def __init__(self, arg):
+  self.strerror = arg
+  self.args = {arg}

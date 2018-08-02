@@ -11,26 +11,6 @@ from helpers.plot_helper import plot_transfer_function
 def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
 
     """
-    measure_H misst die Übertragungsfunktion
-
-    INPUT:
-
-        saveCSV - boolean; ob H gespreichert werden soll
-        loadCSV - boolean; ob H aus vorhandenen CSV-Datei ausgelesen werden soll
-        verbosity - boolean; ob H gelplottet werden soll
-
-    OUTPUT:
-
-        H - nx3 array; Übertragungsfunktion (old Version) :
-            H[:,0] - Frequenz f
-            H[:,1] - Amplitudenverstärkung
-            H[:,2] - Phasenverschiebung
-
-        Instance of transfer_funtion_class:
-            Halt.f - Frequences f
-            Halt.a - Amplitude a
-            Halt.p - Phaseshift p
-            Halt.c - Complex Value c = a*exp(jp)
 
     """
 
@@ -40,22 +20,22 @@ def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
 
     else :
 
-        if use_mock_system :
+        # if use_mock_system :
+        #
+        #     H = mock_system.H
+        #
+        # else :
 
-            H = mock_system.H
+        fmax = 80e6
+        vpp = 40e-3
+        f, Ha, Hph = get_H.compute(fmax, vpp, bits=9)
 
-        else :
+        H = transfer_function_class(f)
+        H.a = Ha
+        H.p = Hph
 
-            fmax = 80e6
-            vpp = 40e-3
-            f, Ha, Hph = get_H.compute(fmax, vpp, bits=9)
-
-            H = transfer_function_class(f)
-            H.a = Ha
-            H.p = Hph
-
-            if saveCSV:
-                save_transfer_function(H, project_path + 'data/current_data/', '0')
+        if saveCSV:
+            save_transfer_function(H, project_path + 'data/current_data/', '0')
 
     if verbosity:
 

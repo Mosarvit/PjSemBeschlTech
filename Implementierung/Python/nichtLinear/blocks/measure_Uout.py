@@ -15,7 +15,7 @@ from helpers.read_from_DSO_resolution import read_from_DSO_resolution
 from classes.signal_class import signal_class
 from settings import show_plots, use_mock_system, mock_system
 from helpers.plot_helper import plot_2_signals
-from helpers.csv_helper import save_signale
+from helpers.csv_helper import save_signal
 
 def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0):
 
@@ -83,8 +83,8 @@ def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0)
 
     if saveCSV:
 
-        save_signale(signal=Uin_measured, filename='data/current_data/Uin_' + id + '.csv')
-        save_signale(signal=Uout_measured, filename='data/current_data/Uout_' + id + '.csv')
+        save_signal(signal=Uin_measured, filename='data/current_data/Uin_' + id + '.csv')
+        save_signal(signal=Uout_measured, filename='data/current_data/Uout_' + id + '.csv')
 
     if verbosity:
         plot_2_signals(U1=Uin_measured, U2=Uout_measured, legend1='Uin_measured', legend2='Uout_measured')

@@ -14,7 +14,7 @@ from copy import copy
 from helpers.csv_helper import save_2cols
 from settings import use_mock_system
 from classes.signal_class import signal_class
-from helpers.csv_helper import save_signale, save_transfer_function, read_in_transfer_function
+from helpers.csv_helper import save_signal, save_transfer_function, read_in_transfer_function
 from blocks.adjust_H import adjust_H
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
@@ -62,7 +62,7 @@ def evaluate_K() :
     save_2cols(data_directory + '/K_initial.csv', K[:, 0], K[:, 1])
 
     Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
-    save_signale(Uquest_ideal, data_directory + 'Uquest_ideal.csv')
+    save_signal(Uquest_ideal, data_directory + 'Uquest_ideal.csv')
     Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K)
 
     quality_development = []
@@ -75,18 +75,18 @@ def evaluate_K() :
         Uin.Vpp = Vpp
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
-        save_signale(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
+        save_signal(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
+        save_signal(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
 
         f_rep_fix = 9e5
         Uout_measured = Uout_measured.cut_one_period(f_rep_fix)
         Uin_measured = Uin_measured.cut_one_period(f_rep_fix)
 
         # save Uin and Uout
-        save_signale(Uin, data_directory + 'Uin_awg_' + id + '.csv')
-        save_signale(Uquest_ideal, data_directory + 'Uquest_' + id + '.csv')
-        save_signale(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
-        save_signale(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
+        save_signal(Uin, data_directory + 'Uin_awg_' + id + '.csv')
+        save_signal(Uquest_ideal, data_directory + 'Uquest_' + id + '.csv')
+        save_signal(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
+        save_signal(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
 
         quality = signal_evaluate(data_directory + 'Uout_measured_' + id + '.csv',
                                   data_directory + 'quality_' + id + '.csv')

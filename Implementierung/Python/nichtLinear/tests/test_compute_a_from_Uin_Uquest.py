@@ -1,32 +1,13 @@
-from unittest import TestCase
 import unittest
+from unittest import TestCase
+
 from numpy import genfromtxt
 from scipy import linalg
-import matplotlib.pyplot as plt
-from blocks.adjust_H import adjust_H
-from blocks.adjust_a import adjust_a
 
-from helpers import overlay, signal_helper
-from helpers.csv_helper import read_in_signal
-from helpers.signal_helper import generateSinSum
-from helpers.csv_helper import read_in_transfer_function
-from classes.transfer_function_class import transfer_function_class
-from helpers.apply_transfer_function import apply_transfer_function
-
-
-from blocks.generate_BBsignal import generate_BBsignal
-from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
-from blocks.compute_K_from_a import compute_K_from_a
-from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from settings import project_path, mock_data_path
-from settings import mock_system
-from blocks import get_H
-import os
-
-
-
-import numpy as np
+from helpers.csv_helper import read_in_signal
+from helpers.tezt_helper import  finilize_tezt_with_signal
+from settings import mock_data_path
 
 
 class test_compute_a_from_Uin_Uquest(TestCase):
@@ -34,18 +15,18 @@ class test_compute_a_from_Uin_Uquest(TestCase):
     def __init__(self, *args, **kwargs):
         super(test_compute_a_from_Uin_Uquest, self).__init__(*args, **kwargs)
 
-    @unittest.skip("The mock data cannot be correct, since the timeperiod of Uquest_300_jens.csv and Uin_jens.csv are too different")
-    def test_compute_a_from_Uin_Uquest_300_jens(self):
-        Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_jens.csv')
-        Uin = read_in_signal(mock_data_path + 'Uin_jens.csv')
-        Uin.Vpp = 0.3
-
-        a_300_ideal = genfromtxt(mock_data_path + 'a_300_jens.csv', delimiter=',')
-
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
-
-        err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
-        self.assertTrue(err < 1e-3)
+    # @unittest.skip("The mock data cannot be correct, since the timeperiod of Uquest_300_jens.csv and Uin_jens.csv are too different")
+    # def test_compute_a_from_Uin_Uquest_300_jens(self):
+    #     Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_jens.csv')
+    #     Uin = read_in_signal(mock_data_path + 'Uin_jens.csv')
+    #     Uin.Vpp = 0.3
+    #
+    #     a_300_ideal = genfromtxt(mock_data_path + 'a_300_jens.csv', delimiter=',')
+    #
+    #     a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
+    #
+    #     test_succeeded = finilize_test_with_signal(U_computed=a_300_computed, set_ideal_signal=0, verbosity=0)
+    #     self.assertTrue(test_succeeded)
 
     def test_compute_a_from_Uin_Uquest_300_our(self):
         Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
@@ -56,5 +37,5 @@ class test_compute_a_from_Uin_Uquest(TestCase):
 
         a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
 
-        err = linalg.norm(a_300_computed - a_300_ideal) / linalg.norm(a_300_ideal)
-        self.assertTrue(err < 1e-3)
+        test_succeeded = finilize_tezt_with_signal(U_computed=a_300_computed, set_ideal_signal=0, verbosity=0)
+        self.assertTrue(test_succeeded)
