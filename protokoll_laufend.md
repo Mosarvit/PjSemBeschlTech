@@ -49,6 +49,8 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 		- evaluate_connect_devices mit neuem Versuch 2 für AWG testen und ggf. in write_to_AWG übernehmen
 		- evaluate_connect_devices mit neuem Versuch 5 für AWG testen und ggf. in write_to_AWG übernehmen
 			!!!! Fehler, falls auftreten, dokumentieren! Abhilfe u. U. vor Ort mit Programming tips möglich
+		- sobald Zeitverhalten funktionsfähig, Laufzeiten der unterschiedliche, zeitaufwendigen Befehle einzeln dokumentieren!
+		- zur Sicherheit: Test von Zeitversuch mit BUSY? am DSO! -> eher als Standard, da stabiler als OPC?
 		- falls Zeit: Verbindung mit zweitem PC testen (just for fun! neues Oszi wird ja eh bald genutzt)
 			
 	- K kontrollieren: Bereiche für Berechnung von a checken & festhalten
