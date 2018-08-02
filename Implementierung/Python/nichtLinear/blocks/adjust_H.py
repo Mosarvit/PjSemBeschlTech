@@ -24,7 +24,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             Halt.p - phase shifts p
             Halt.c - Complex Value c = a*exp(jp)
 
-        Uout_ideal - the desired output Voltage (BB-Signal, normally single-sine), Instance of signal_class
+        U_ideal.csv.csv.csv.csv - the desired output Voltage (BB-Signal, normally single-sine), Instance of signal_class
 
             Instance of signal_class:
             U.time          - get time vector
@@ -34,7 +34,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
             U.Vpp           - get Vpp
             U.length        - get length of the signal
 
-        Uout_measured - the measured output Voltage to be compared with Uout_ideal, instance of signal_class
+        Uout_measured - the measured output Voltage to be compared with U_ideal.csv.csv.csv.csv, instance of signal_class
 
         sigma_H - scalar; step to iterate (positive)
 
@@ -59,7 +59,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         # Plot voltages
         plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
         plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
-        plt.title('Uout_ideal - red, Uout_meas - blue')
+        plt.title('U_ideal.csv.csv.csv.csv - red, Uout_meas - blue')
         plt.xlabel('t')
         plt.ylabel('U')
         plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')

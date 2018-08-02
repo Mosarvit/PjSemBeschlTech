@@ -6,7 +6,7 @@ import numpy as np
 from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from helpers.csv_helper import read_in_signal
 from helpers.csv_helper import read_in_transfer_function
-from helpers.tezt_helper import finilize_tezt_with_signal
+from helpers.tezt_helper import finilize_tezt_with
 from settings import mock_data_path
 
 
@@ -25,7 +25,7 @@ class test_compute_Uquest_from_Uout(TestCase):
 
        Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
-       test_succeeded = finilize_tezt_with_signal(U_computed=Uquest_300_computed, set_ideal_signal=0, verbosity=0)
+       test_succeeded = finilize_tezt_with(values_computed=Uquest_300_computed, set_ideal_signal=0, verbosity=0)
        self.assertTrue(test_succeeded)
 
     def test_compute_Uquest_from_Uout_300_our(self):
@@ -36,7 +36,7 @@ class test_compute_Uquest_from_Uout(TestCase):
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=Uquest_300_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=Uquest_300_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_Uquest_from_Uout_with_BBsignal_ideal(self):
@@ -48,7 +48,7 @@ class test_compute_Uquest_from_Uout(TestCase):
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=Uquest_from_BBsignal_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=Uquest_from_BBsignal_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 

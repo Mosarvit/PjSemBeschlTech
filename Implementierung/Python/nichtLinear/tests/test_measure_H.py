@@ -47,6 +47,6 @@ class test_measure_H(TestCase):
 
         verbosity = 0
         if verbosity :
-            plot_2_transfer_functions(H1=H_ideal, H2=H_computed, legend1='H_ideal', legend2='H_computed')
+            plot_2_transfer_functions(H1=H_ideal, H2=H_computed, legend1='H_ideal.csv.csv.csv.csv', legend2='H_computed')
 
         self.assertTrue(err<0.04)

@@ -71,7 +71,7 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=99990000
         plt.ylabel('u in mV')
         if settings.show_plots :
             plt.show()
-#        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/Uout_ideal.pdf')
+#        fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/U_ideal.csv.csv.csv.csv.pdf')
 
     if saveCSV :
 

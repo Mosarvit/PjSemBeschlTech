@@ -4,7 +4,7 @@ from unittest import TestCase
 from classes.signal_class import signal_class
 from helpers.csv_helper import read_in_get_H_signal_data
 from helpers.overlay import overlay
-from helpers.tezt_helper import finilize_tezt_with_signal
+from helpers.tezt_helper import finilize_tezt_with
 from settings import mock_data_path
 from settings import mock_system
 
@@ -35,7 +35,7 @@ class test_mock_system(TestCase):
         Uin_measured_computed = signal_class(time, dataUin)
         Uin_measured_computed = overlay(Uin_measured_computed, Uin_measured_ideal)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=Uin_measured_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=Uin_measured_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_mock_system_Uout(self):
@@ -58,8 +58,8 @@ class test_mock_system(TestCase):
         Uout_measured_computed = signal_class(time, dataUin)
         Uout_measured_computed = overlay(Uout_measured_computed, Uout_time_measured_ideal)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=Uout_measured_computed, set_ideal_signal=0,
-                                                   verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=Uout_measured_computed, set_ideal_signal=0,
+                                            verbosity=0)
         self.assertTrue(test_succeeded)
 
 

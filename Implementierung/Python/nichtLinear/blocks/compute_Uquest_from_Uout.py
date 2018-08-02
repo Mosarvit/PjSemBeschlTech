@@ -31,7 +31,7 @@ def compute_Uquest_from_Uout(Uout, H, verbosity=0):
     """
 
     Uquest = apply_transfer_function(Uout = Uout, H = H.get_inverse())
-    Uquest_doubled = signal_class(Uquest.time, Uquest.in_V * 2 )
+    Uquest_doubled = signal_class(Uquest.time, Uquest.in_V * 2)
 
     if verbosity:
         fig = plt.figure()

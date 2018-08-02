@@ -1,21 +1,12 @@
 from unittest import TestCase
-from scipy import linalg
 
-from helpers.overlay import overlay
-from helpers.csv_helper import read_in_transfer_function, read_in_signal, read_in_transfer_function_old_convention
-from helpers.signal_helper import signals_are_equal
-from helpers.apply_transfer_function import apply_transfer_function
-from helpers.plot_helper import plot_2_signals
 from blocks.generate_BBsignal import generate_BBsignal
-from settings import mock_data_path, test_data_path
-from helpers.csv_helper import save_signal, read_in_signal
-from helpers.other_helpers import get_current_method_name
-import os
-from helpers.csv_helper import load_ideal_signal, save_ideal_signal
-from helpers.tezt_helper import finilize_tezt_with_signal
-
-
-import numpy as np
+from helpers.apply_transfer_function import apply_transfer_function
+from helpers.csv_helper import read_in_signal
+from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
+from helpers.overlay import overlay
+from helpers.tezt_helper import finilize_tezt_with
+from settings import mock_data_path
 
 
 class test_apply_transfer_function(TestCase):
@@ -33,7 +24,7 @@ class test_apply_transfer_function(TestCase):
         Uout_computed = apply_transfer_function(Uquest_300, H)
         Uout_computed = overlay(Uout_computed, U_BBsignal_generated)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=Uout_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=Uout_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -47,7 +38,7 @@ class test_apply_transfer_function(TestCase):
         Uout_computed = apply_transfer_function(Uquest_300, H)
         Uout_300_ideal = overlay(Uout_300_ideal, Uout_computed)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=Uout_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=Uout_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 

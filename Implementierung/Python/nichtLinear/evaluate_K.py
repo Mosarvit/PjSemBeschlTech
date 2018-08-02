@@ -63,7 +63,7 @@ def evaluate_K() :
 
     Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
     save_signal(Uquest_ideal, data_directory + 'Uquest_ideal.csv')
-    Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K=K)
+    Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K)
 
     quality_development = []
     Vpp_development = []

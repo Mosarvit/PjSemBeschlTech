@@ -4,7 +4,7 @@ from numpy import genfromtxt
 from scipy import linalg
 
 from blocks.compute_K_from_a import compute_K_from_a
-from helpers.tezt_helper import finilize_tezt_with_signal
+from helpers.tezt_helper import finilize_tezt_with
 from settings import mock_data_path
 
 
@@ -21,7 +21,7 @@ class test_compute_K_from_a(TestCase):
 
         K_computed = compute_K_from_a(a_300, verbosity=False)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=K_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=K_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_K_from_a_our(self):
@@ -31,5 +31,5 @@ class test_compute_K_from_a(TestCase):
 
         K_computed = compute_K_from_a(a_300, verbosity=False)
 
-        test_succeeded = finilize_tezt_with_signal(U_computed=K_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt_with(values_computed=K_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)

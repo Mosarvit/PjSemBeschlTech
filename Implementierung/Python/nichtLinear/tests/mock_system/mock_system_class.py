@@ -1,12 +1,7 @@
-from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
-from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class
-from numpy.fft import fft, ifft
-from numpy import floor
-from numpy import concatenate
-
-
-
+from helpers.apply_transfer_function import apply_transfer_function
+from helpers.apply_K import apply_K
+from helpers.csv_helper import read_in_transfer_function_old_convention
 
 
 class mock_system_class :
@@ -42,6 +37,7 @@ class mock_system_class :
     """
     def __init__(self):
         from settings import mock_data_path
+        from helpers.K_helper import create_mock_K
 
         self.__Uin = None
         self.__Uin_measured = None
@@ -49,7 +45,7 @@ class mock_system_class :
         self.__Uin_real = None
         self.__Uout_real = None
         self.__H = read_in_transfer_function_old_convention(mock_data_path + '/adjustH/Messung3/Ha_0.csv', mock_data_path + '/adjustH/Messung3/Hp_0.csv')
-        # self.__H = read_in_transfer_function(mock_data_directory + '/H_jens.csv')
+        self.__K = create_mock_K(points=999, linearVpp_in_mV=300, x_range_in_mV=1200, periods=1)
 
     # def get_Uout_from_Uin(self, Uin):
     #     self.__Uin = Uin
@@ -65,6 +61,14 @@ class mock_system_class :
     def H(self, H):
         self.__H = H
 
+    @property
+    def K(self):
+        return self.__K
+
+    @K.setter
+    def K(self, K):
+        self.__K = K
+
     def write_to_AWG(self, signal, awg_Vpp, samplerateAWG=0, frequency=0 ):
 
         if samplerateAWG!=0 :
@@ -74,10 +78,12 @@ class mock_system_class :
 
         self.__Uin.Vpp = awg_Vpp
 
-        print('==================================================')
-        print('Sending to mock AWG')
-        print('sample rate : ' + str(self.__Uin.sample_rate))
-        print('frequency : ' + str(self.__Uin.f_rep))
+        verbosity = 0
+        if verbosity:
+            print('==================================================')
+            print('Sending to mock AWG')
+            print('sample rate : ' + str(self.__Uin.sample_rate))
+            print('frequency : ' + str(self.__Uin.f_rep))
 
 
     def read_from_DSO_resolution(self, samplerateOszi,  vpp_ch1, fmax, signal):
@@ -86,33 +92,20 @@ class mock_system_class :
 
     def read_from_DSO(self, samplerateOszi,  vpp_ch1, fmax, signal):
 
-        from helpers.plot_helper import plot_2_signals, plot_vector
-
         self.__Uin_real = self.__Uin
         self.__Uin_real.sample_rate = samplerateOszi
 
         Uin_vector = self.__Uin_real.in_V
 
-        self.__Uin_measured = signal_class(self.__Uin_real.time , Uin_vector  )
+        self.__Uin_measured = signal_class(self.__Uin_real.time, Uin_vector)
 
-        self.__Uout_real = apply_transfer_function(self.__Uin, self.__H)
+        Uquest = apply_K(K_x_to_y=self.__K, Ux=self.__Uin, verbosity=0)
 
-
+        self.__Uout_real = apply_transfer_function(Uquest, self.__H)
 
         self.__Uout_real.sample_rate = samplerateOszi
 
         Uout_vector = self.__Uout_real.in_V
-
-        # do_ifftfft = 0
-        # if do_ifftfft:
-        #     Uout_vector_fft = fft(Uout_vector)
-        #     lngth = int(floor(len(Uout_vector_fft)/2/2))
-        #     faktor = len(Uout_vector_fft)/2 / lngth
-        #     shorten = int(floor(len(Uout_vector_fft)/2/2))
-        #     Uout_vector_fft_shorted = concatenate((Uout_vector_fft[0:shorten+1], Uout_vector_fft[-shorten:]))
-        #     Uout_vector = ifft(Uout_vector_fft_shorted, n=len(Uout_vector)) / faktor
-
-        # Uout_vector = Uout_vector * 0.5
 
         self.__Uout_measured = signal_class.gen_signal_from_f_rep( Uout_vector, self.__Uout_real.f_rep )
         self.__Uout_measured.sample_rate = samplerateOszi

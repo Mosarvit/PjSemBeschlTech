@@ -53,7 +53,7 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
 
     H = measure_H(loadCSV=1, saveCSV=1)
 
-    save_transfer_function(H=H, directory=data_directory, id = '0' )
+    save_transfer_function(H=H, filename=data_directory + 'H_0.csv')
 
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
 

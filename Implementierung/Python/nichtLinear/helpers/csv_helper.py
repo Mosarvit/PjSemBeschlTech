@@ -85,11 +85,13 @@ def read_in_transfer_function_complex(path, delimiter=','):
     H.c = H_compl[:, 1]
     return H
 
+
 def read_in_K(path, delimiter=','):
     K = genfromtxt(path, delimiter=delimiter)
     return K
 
-def save_transfer_function(H, directory, id ):
+
+def save_transfer_function(H, filename):
 
     """
 
@@ -105,7 +107,6 @@ def save_transfer_function(H, directory, id ):
         (no output)
 
     """
-    filename = directory + '/H_' + str(id) + '.csv'
     with open(filename, 'w+', newline="") as csvfile:
         writer = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
@@ -176,11 +177,15 @@ def load_ideal_signal(filename, datatype):
     if not os.path.exists(ideal_values_data_path):
         raise CustomValueError("No ideal signal found. You should first set the ideal signal by setting argument set_ideal_signal in method finilize_test_with_signal to True")
     if datatype == 'signal':
-        Uout_ideal = read_in_signal(ideal_values_data_path)
+        values_ideal = read_in_signal(ideal_values_data_path)
+    elif datatype == 'transfer_function':
+        values_ideal = read_in_transfer_function(ideal_values_data_path)
     elif datatype == 'a' or datatype == 'K':
-        Uout_ideal = read_in_array(ideal_values_data_path)
+        values_ideal = read_in_array(ideal_values_data_path)
+    else :
+        raise CustomValueError("Unknown datatype")
 
-    return Uout_ideal
+    return values_ideal
 
 def save_ideal_signal(signal_ideal, filename, datatype):
     ideal_values_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
@@ -188,10 +193,14 @@ def save_ideal_signal(signal_ideal, filename, datatype):
         os.makedirs(current_unit_test_data_path)
     if datatype == 'signal':
         save_signal(signal_ideal, ideal_values_data_path)
+    elif datatype == 'transfer_function':
+        save_transfer_function(signal_ideal, ideal_values_data_path)
     elif datatype == 'a':
         save_a(signal_ideal, ideal_values_data_path)
     elif datatype == 'K':
         save_K(signal_ideal, ideal_values_data_path)
+    else:
+        raise CustomValueError("Unknown datatype")
 
 def load_ideal_a(filename):
 

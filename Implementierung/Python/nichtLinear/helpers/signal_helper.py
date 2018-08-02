@@ -1,8 +1,10 @@
 import numpy as np
 from scipy.interpolate import interp1d
-import copy
+from  copy import copy
 from scipy import linalg
 from helpers.find_nearest import find_nearest
+from helpers.custom_value_error import custom_value_error
+from classes.transfer_function_class import transfer_function_class
 
 
 def setVpp(signal, Vpp):
@@ -20,7 +22,7 @@ def setVpp(signal, Vpp):
              signal_Vpp[:,1] - Signalvektor
     """
 
-    signal_Vpp = copy.copy(signal)
+    signal_Vpp = copy(signal)
     signal_Vpp[:, 1] = Vpp / (max(signal[:, 1]) - min(signal[:, 1])) * signal[:, 1]
     return signal_Vpp
 
@@ -37,7 +39,7 @@ def convert_V_to_mV(signal):
              signal_out[:,0] - Zeitvektor
              signal_out[:,1] - Signalvektor
     """
-    signal_mV = copy.copy(signal)
+    signal_mV = copy(signal)
     signal_mV[:, 1] = signal_mV[:, 1] * 1000;
     return signal_mV
 
@@ -54,7 +56,7 @@ def convert_mV_to_V(signal_mV):
              signal[:,0] - Zeitvektor
              signal[:,1] - Signalvektor
     """
-    signal = copy.copy(signal_mV)
+    signal = copy(signal_mV)
     signal[:, 1] = signal_mV[:, 1] / 1000;
     return signal
 
@@ -116,28 +118,69 @@ def generateSinSum(fqAmp, t):
 
     return signal_obj
 
-def calculate_error(U_tested, U_ideal):
-    # cr_Uin = np.correlate(U_tested.in_V, U_ideal.in_V, 'full')
-    # err_Uin = np.median(abs(cr_Uin))
-    # err_Uin = np.mean(abs(cr_Uin))
-    # err_Uin = max(cr_Uin) / U_ideal.Vpp
-    #
-    # crs = np.correlate(U_ideal.in_V, U_ideal.in_V, 'full')
-    #
-    # diff = crs - cr_Uin
-    #
-    # a1 = np.median(abs(diff)) / U_ideal.Vpp
-    # a2 = np.mean(abs(diff)) / U_ideal.Vpp
-    #
-    # a1 = linalg.norm(U_tested.in_V - U_ideal.in_V) / linalg.norm(U_ideal.in_V)    #
-    # a1 = np.median(U_tested.in_V - U_ideal.in_V) / linalg.norm(U_ideal.in_V)
+def calculate_error(values_computed, values_ideal):
 
-    err = np.mean( U_tested.in_V - U_ideal.in_V  ) / linalg.norm(U_ideal.in_V)
+    from classes.signal_class import signal_class
+
+    a = type(values_computed)
+    b = type(values_ideal)
+
+    if type(values_computed) is np.ndarray and type(values_ideal) is np.ndarray:
+
+        shape1 = values_computed.shape
+        shape2 = values_ideal.shape
+
+        a=1
+
+        if len(values_computed.shape) == 1 and len(values_ideal.shape) == 1 :
+            datatype = 'a'
+        elif len(values_computed.shape) == 2 and len(values_ideal.shape) == 2:
+            datatype = 'K'
+        else:
+            raise custom_value_error("The computed value is of an appropriate shape")
+
+    elif isinstance(values_computed, signal_class) and isinstance(values_ideal, signal_class) :
+        datatype = 'signal'
+    elif isinstance(values_computed, transfer_function_class) and isinstance(values_ideal, transfer_function_class):
+        datatype = 'transfer_function'
+    else:
+        raise custom_value_error("The computed value is of an appropriate type")
+
+    if datatype == 'signal':
+        values_tested_vector = values_computed.in_V
+        values_ideal_vector = values_ideal.in_V
+    elif datatype == 'transfer_function':
+        values_tested_vector = values_computed.c
+        values_ideal_vector = values_ideal.c
+    elif datatype == 'K':
+
+        if len(values_computed) < len(values_ideal):
+            fun = interp1d(values_ideal[:, 0], values_ideal[:, 1])
+            values_ideal = copy(values_computed)
+            values_ideal[:, 1] = fun(values_ideal[:, 0])
+        elif len(values_computed) > len(values_ideal):
+            fun = interp1d(values_computed[:, 0], values_computed[:, 1])
+            values_computed = copy(values_ideal)
+            values_computed[:, 1] = fun(values_computed[:, 0])
+
+
+        values_tested_vector = values_computed[:, 1]
+        values_ideal_vector = values_ideal[:, 1]
+    else:
+        raise custom_value_error("the datatype is unknown")
+
+
+    err = abs(np.mean(values_tested_vector - values_ideal_vector)) / linalg.norm(values_ideal_vector)
+
+    err = abs(np.mean(values_tested_vector - values_ideal_vector)) / linalg.norm(values_ideal_vector)
 
     return err
 
 def signals_are_equal(U1, U2):
     return all(U1.in_V == U2.in_V)
+
+def transfer_functions_are_equal(H1, H2):
+    return all(H1.c == H2.c)
 
 def arrays_are_equal(array1, array2):
     return np.alltrue(array1 == array2)
