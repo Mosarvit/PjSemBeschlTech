@@ -34,7 +34,7 @@ class test_evaluate_adjust_a(TestCase):
 
         K_ideal = mock_system.K
 
-        verbosity = 0
+        verbosity = 1
         if verbosity:
             plot_K_ideal_Ks(K_ideal, Ks)
 

@@ -22,7 +22,7 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         id = str(i)
 
         # compute new Uin
-        Uout_ideal.Vpp = 1.5
+        Uout_ideal.Vpp = 6
         Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
         save_signal(Uquest_ideal, data_directory + 'Uquest_ideal_' + id + '.csv')
         Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K)
