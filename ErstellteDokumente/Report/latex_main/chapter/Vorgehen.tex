@@ -16,11 +16,6 @@ Ggf. ist es sinnvoll, Teile davon in eigene Chapter auszulagern oder den Titel a
 --- Ziel des Abschnitts: Leser hat (gute) Vorstellung, mit welchen Voraussetzungen, welchen Daten- und Programmstrukturen wir gestartet sind und auf welchen wir aufbauen---
 
 
-\section{ --- Konventionen / Dokumentation ---- }
-\label{sec:vorg.doku}
---- in dieser section wird unser Konzept der Dokumentation in Code wie auch in Dokumenten erläutert und ggf. auf die Sammlung von Handbüchern eingegangen --- 
---- es könnte sinnvoll sein, diese section nach der folgenden erst zu setzen --- 
-
 \section{Gerätekommunikation}
 \label{sec:vorg.geraete}
 
@@ -85,9 +80,11 @@ Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-
 \\
 Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{SYSTem:ERRor?} möglich ist und durch das dabei erfolgte Löschen der Fehler aus dem internen Speicher nicht nur die Abfrage sondern auch das Rücksetzen des Fehlerstatus ermöglicht. Dies ist insbesondere für das Debugging vorteilhaft, wenn Befehle ausprobiert werden und die gegebenenfalls auftretenden Fehler gehandhabt werden müssen \cite[S. 454]{keysHand15}. Dies vermeidet das unter Umständen mehrmalige Trennen und Wiederherstellen der Verbindung zum AWG sowie das Löschen der Fehler an der Benutzeroberfläche.
 
-\subsubsection{Anpassung der Auflösung am Oszilloskop}
+\subsubsection{Anpassung der horizontalen Auflösung am Oszilloskop}
 
 Um die Auflösung des Oszilloskops ausnutzen zu können, ist die Anpassung der horizontalen wie auch vertikalen Auflösung an das zu messende Signal notwendig.
+Während die horizontale Auflösung durch die Wiederholfrequenz des Pulses mit $f_{BB}$ sich nahezu unabhängig des betrachteten Signals setzen lässt, muss die vertikale Skalierung an das Signal angepasst werden. Um dies etwa während einer Optimierung mit wechselnden Spannungsamplituden zu ermöglichen, sind zwei direkt aufeinander folgende Messungen notwendig. Dabei wird aus der ersten Messung die Amplitude des Signals entnommen und die Skalierung für die zweite, dann genauere Messung, dahingehend angepasst, dass das Signal bildfüllender dargestellt wird.
+Dieser Gewinn an Genauigkeit in der Messung stellte sich insbesondere für die \nameref{sec:opt.H} als notwendig heraus.
 
 
 \subsection{--- offene Punkte---}
@@ -95,7 +92,10 @@ Um die Auflösung des Oszilloskops ausnutzen zu können, ist die Anpassung der h
 -- hier könnten punkte wie etwa die Kommunikation mit dem neuen Oszi oder die evtl. Möglichkeit, Geräte künftig eher als Klassen zu implrementieren, in denen die Visa-Commands gehandhabt werden --- 
 
 
-
+\section{ --- Konventionen / Dokumentation ---- }
+\label{sec:vorg.doku}
+--- in dieser section wird unser Konzept der Dokumentation in Code wie auch in Dokumenten erläutert und ggf. auf die Sammlung von Handbüchern eingegangen --- 
+--- es könnte sinnvoll sein, diese section nach der folgenden erst zu setzen --- 
 
 
 \end{document}

@@ -14,7 +14,6 @@
 \usepackage{siunitx}                            % properly typeset numbers and units
 \usepackage{algorithmic}                        % to include e.g. pseudocodes
 \usepackage{listings}                           % to insert code fragments
-\usepackage{subcaption}                         % allows usage of subfigures
 \usepackage{xcolor}								% allows advanced colors
 \usepackage{tikz}                               % to make drawings directly with LaTeX
 \usepackage{enumitem}                           % allows more flexible enumerate environments
@@ -85,6 +84,8 @@
 
 \usepackage{caption}
 \raggedbottom
+\usepackage{subcaption}                         % allows usage of subfigures & subcaption (incompatible with package subcaption)
+\captionsetup[subfigure]{position=above, belowskip= 0ex, aboveskip = 1.5em}
 
 \let\zz\ifnumbered{}                            % BEGIN fixes a problem of compatibility of mcode with \chapter command from koma script
 \usepackage[framed, numbered]{mcode}            % to properly format matlab code when using a listing (there is a problem with the \chapter command)
@@ -104,6 +105,7 @@
 
 
 \def\promille{\ensuremath{{}^\text{o}\mkern-5mu/\mkern-3mu_\text{oo}}}
+%\renewcommand{\nameref}[1]{\textit{\nameref}}
 \newcommand{\tabref}[1]{Tab.~(\ref{#1})}
 \newcommand{\figref}[1]{Abb.~(\ref{#1})}
 \newcommand{\ofomega}{ \left( \omega \right) }
@@ -131,12 +133,12 @@
 	
 	%\subfile{./chapter/Abstract}
 	\subfile{./chapter/Einfuehrung}
-	%\subfile{./chapter/Vorgehen}
+	\subfile{./chapter/Vorgehen}
 	%\subfile{./chapter/Code-Design}
 	\subfile{./chapter/Optimierung}
 	%\subfile{./chapter/Fazit}
 	%\subfile{./chapter/Ausblick}
-	%\subfile{./chapter/Anhang}
+	\subfile{./chapter/Anhang}
 
 
 
