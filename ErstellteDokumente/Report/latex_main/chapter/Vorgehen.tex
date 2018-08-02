@@ -21,10 +21,74 @@ Ggf. ist es sinnvoll, Teile davon in eigene Chapter auszulagern oder den Titel a
 --- in dieser section wird unser Konzept der Dokumentation in Code wie auch in Dokumenten erläutert und ggf. auf die Sammlung von Handbüchern eingegangen --- 
 --- es könnte sinnvoll sein, diese section nach der folgenden erst zu setzen --- 
 
-\section{ --- Gerätekommunikation ---- }
+\section{Gerätekommunikation}
 \label{sec:vorg.geraete}
---- in dieser section wird ausführlich erläutert, wie wir an die Geräte herangegangen sind, ggf. nochmals wie wir die Arbeit damit dokumentiert haben oder wie wir versucht haben, die Routinen auszulagern / zu separieren bzw. welche Verbesserungen wir (etwa bzgl. der Achsen-Anpassung o.ä.) vorgenommen haben   --- 
+
+Um Messergebnisse sinnvoll für die Verarbeitung in Python aufzunehmen, ist eine effiziente Kommunikation zwischen den Messgeräten und dem angeschlossenen Computer essentiell. Besonders relevant ist hier die zeitliche Abstimmung zwischen Computer und Gerät sowie die bestmögliche Nutzung der Genauigkeiten der verwendeten Geräte. 
+Hierbei wurden die zu Beginn vorliegenden Implementierungen für die Gerätekommunikation erweitert, wobei vor allem
+\begin{enumerate}
+	\item die Optimierung der Laufzeit beim Schreiben und Lesen von Gerätewerten sowie
+	\item die Anpassung der Darstellung des Oszilloskops an die gemessenen Daten für eine höhere Genauigkeit
+\end{enumerate}
+Ziele der Anpassungen waren.
 \\
+\\
+Die Fernsteuerung von Messgeräten, der \lstinline{Remote}-Modus, wird standardmäßig durch das Visa-Protokoll und im vorliegenden Fall durch die Implementierung von National Instruments, NIVisa, geregelt. Die Einbindung in Python wird durch die Erweiterung PyVisa ermöglicht. Übertragen werden Befehle in Form standardisierter Befehlsstrukturen, den SCPI (Standard Commands for Programmable Instruments). Dem inneren Aufbau von Messgeräten zugrunde liegt der IEE-488 Standard, sodass unabhängig vom konkreten Gerät oder der Art der Verbindung eine Reihe von Befehlen existiert, die gemäß IEE-488.2 gebräuchliche Standards bieten \cite[S. 224 ff.]{keysHand15}.
+Weiterhin bieten die Geräte spezifische Befehle zur Manipulation der Einstellungen, die in großer Analogie zur direkten Benutzeroberfläche formuliert sind. Diese werden nach Kontext gegliedert in sogenannte Subsysteme oder Command Groups.
+
+
+\subsubsection{Laufzeitoptimierung}
+Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWG alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. Einen Eindruck der zeitlichen Größenordnung bietet \tabref{tab:vorg.gerate.runtime}.
+
+\begin{table} 
+\begin{subtable}[t]{.35\linewidth}
+\subcaption{Knotenliste}
+\label{ta}
+\begin{tabular}[t]{ | c | c | c | c | } 
+  \hline
+    $P_{\#}$ & $x$ & $y$ \\ 
+  \hline
+    $1$ & $\cos(72\degree)$ 	& $\sin(72\degree)$ \\ 
+  \hline
+    $2$ & $1$ 				& $0$ \\
+  \hline
+    $3$ & $\cos(72\degree)$ 	& $-\sin(72\degree)$ \\
+  \hline
+    $4$ & $-\cos(36\degree)$ & $-\sin(36\degree)$ \\
+  \hline
+    $5$ & $-\cos(36\degree)$ & $\sin(36\degree)$ \\
+  \hline
+    $6$ & $0$ 				& $0$ \\  
+  \hline  
+\end{tabular}
+\end{subtable}
+\caption{Laufzeit unterschiedlicher Befehle am Keysight 33622A}
+\label{tab:vorg.gerate.runtime}
+\end{table}
+
+In der zu Beginn vorliegenden Implementierung lagen pauschale Wartezeiten nach einigen Befehlen sowohl in der Ansteuerung des AWG als auch des Oszilloskops vor. 
+
+Die Wartezeiten für das AWG wurde letztendlich mit
+--------------------------------------------------
+--------------------------------------------------
+angepasst. Die Laufzeit der Routine zum Schreiben eines Arbiträrsignals in der speziellen hier geforderten Form wurde damit von etwa $\SI{25}{\s}$ auf ungefähr --- reduziert.
+\\
+Erfolglos blieben Versuche mit einigen anderen Standardbefehlen.
+\lstinline{*WAI} und \lstinline{*BUSY?} sind keine für das AWG definierten Befehle.
+\lstinline{*OPC?} zwingt Python zum Warten auf Beenden aller Befehle im AWG und führt zu einem \lstinline{TimeoutError}, da die Ausführung zu lange für die internen Routinen von Python braucht, vergleiche hierfür \cite[S. 9]{troeser13}.
+Weiterhin wurde die pauschale Wartezeit an der im Datenblatt \cite[S. 21]{keysData14} für die Verbindung via USB angegebenen, gemessenen Ladedauer eines Arbiträrsignals orientiert. Dieser Richtwert von $\SI{1.25}{\s}$ stellte sich jedoch als zu gering für den hier vorliegenden Fall heraus.
+\\
+\\
+Es wurde festgestellt, das die Verarbeitungsgeschwindigkeit des Oszilloskops bei den hier benötigten Abfragen und Befehlen kein Hindernis darstellt und die Ausführung der Befehle in Python ohne Zeitverzögerung möglich ist. Durch diese Feststellung konnte die Laufzeit je Lese-Aufruf bereits um ungefähr $\SI{15}{\s}$ reduziert werden.
+Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-Abfragen ähnlich den oben für das AWG erläuterten.
+\\
+\\
+Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{SYSTem:ERRor?} möglich ist und durch das dabei erfolgte Löschen der Fehler aus dem internen Speicher nicht nur die Abfrage sondern auch das Rücksetzen des Fehlerstatus ermöglicht. Dies ist insbesondere für das Debugging vorteilhaft, wenn Befehle ausprobiert werden und die gegebenenfalls auftretenden Fehler gehandhabt werden müssen \cite[S. 454]{keysHand15}. Dies vermeidet das unter Umständen mehrmalige Trennen und Wiederherstellen der Verbindung zum AWG sowie das Löschen der Fehler an der Benutzeroberfläche.
+
+\subsubsection{Anpassung der Auflösung am Oszilloskop}
+
+Um die Auflösung des Oszilloskops ausnutzen zu können, ist die Anpassung der horizontalen wie auch vertikalen Auflösung an das zu messende Signal notwendig.
+
 
 \subsection{--- offene Punkte---}
 \label{subsec:vorg.geraete.open}
