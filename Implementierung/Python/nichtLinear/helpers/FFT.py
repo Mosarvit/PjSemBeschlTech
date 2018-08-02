@@ -69,7 +69,7 @@ def spectrum_from_TimeSignal(time, values):
     # check if values not complex
     # check if time evenly spaced
 
-    delta_f = 1 / (time[-1] - time[0])
+    delta_f = 1 / (time[-1] - time[0] + time[1] - time[0])
     N = len(time)
     frequencies = np.linspace(0, N * delta_f, N)
     frequencies, spectrum = spectrum_From_FFT(frequencies, np.fft.fft(values))
