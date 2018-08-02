@@ -122,9 +122,6 @@ def calculate_error(values_computed, values_ideal):
 
     from classes.signal_class import signal_class
 
-    a = type(values_computed)
-    b = type(values_ideal)
-
     if type(values_computed) is np.ndarray and type(values_ideal) is np.ndarray:
 
         shape1 = values_computed.shape
@@ -172,7 +169,7 @@ def calculate_error(values_computed, values_ideal):
 
     err = abs(np.mean(values_tested_vector - values_ideal_vector)) / linalg.norm(values_ideal_vector)
 
-    err = abs(np.mean(values_tested_vector - values_ideal_vector)) / linalg.norm(values_ideal_vector)
+    err = linalg.norm(values_tested_vector - values_ideal_vector) / linalg.norm(values_ideal_vector)
 
     return err
 
