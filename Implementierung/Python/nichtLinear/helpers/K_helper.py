@@ -1,6 +1,6 @@
 import math
 from copy import copy
-from helpers.plot_helper import plot_K1
+from helpers.plot_helper import plot_K
 import numpy as np
 
 

@@ -2,9 +2,10 @@ import unittest
 from unittest import TestCase
 
 from classes.signal_class import signal_class
-from helpers.csv_helper import read_in_get_H_signal_data
+from helpers.csv_helper import read_in_get_H_signal_data, read_in_signal
 from helpers.overlay import overlay
 from helpers.tezt_helper import finilize_tezt_with
+from helpers.plot_helper import plot_2_signals
 from settings import mock_data_path
 from settings import mock_system
 

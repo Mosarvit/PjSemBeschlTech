@@ -10,7 +10,7 @@ from scipy.signal import argrelextrema
 import settings
 
 
-def compute_K_from_a(a, verbosity):
+def compute_K_from_a(a, verbosity=0):
     """
     compute_K_a berechten die Lookup-Tabelle K aus den Vorfaktoren a
 

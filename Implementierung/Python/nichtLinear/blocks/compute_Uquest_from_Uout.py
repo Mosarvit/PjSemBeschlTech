@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from settings import show_plots
 from helpers.apply_transfer_function import apply_transfer_function
 from classes.signal_class import signal_class
+from helpers.plot_helper import plot_2_signals
 
 def compute_Uquest_from_Uout(Uout, H, verbosity=0):
 
@@ -31,7 +32,9 @@ def compute_Uquest_from_Uout(Uout, H, verbosity=0):
     """
 
     Uquest = apply_transfer_function(Uout = Uout, H = H.get_inverse())
-    Uquest_doubled = signal_class(Uquest.time, Uquest.in_V * 2)
+
+    # plot_2_signals(Uout, Uquest)
+    Uquest_doubled = signal_class(Uquest.time, Uquest.in_V)
 
     if verbosity:
         fig = plt.figure()

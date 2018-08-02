@@ -2,6 +2,7 @@ from classes.signal_class import signal_class
 from helpers.apply_transfer_function import apply_transfer_function
 from helpers.apply_K import apply_K
 from helpers.csv_helper import read_in_transfer_function_old_convention
+from copy import copy
 
 
 class mock_system_class :
@@ -100,7 +101,7 @@ class mock_system_class :
         self.__Uin_measured = signal_class(self.__Uin_real.time, Uin_vector)
 
         Uquest = apply_K(K_x_to_y=self.__K, Ux=self.__Uin, verbosity=0)
-
+        # Uquest = copy(self.__Uin)
         self.__Uout_real = apply_transfer_function(Uquest, self.__H)
 
         self.__Uout_real.sample_rate = samplerateOszi

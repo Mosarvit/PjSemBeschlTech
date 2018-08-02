@@ -65,8 +65,32 @@ def plot_transfer_function(H, legend1='H'):
     axarr[1].legend([legend1])
     plt.show()
 
+def plot_H_ideal_Hs(H_ideal, Hs):
 
-def plot_K1(K, legend ='K'):
+    legends = []
+
+    ax1 = plt.subplot(2, 1, 1)
+    ax1.plot(H_ideal.f, H_ideal.a)
+
+    ax2 = plt.subplot(2, 1, 2)
+    ax2.plot(H_ideal.f, H_ideal.p)
+
+    legends.append('H_ideal')
+
+    i = 0
+    for H in Hs:
+        ax1.plot(H.f, H.a)
+        ax2.plot(H.f, H.p)
+        legends.append('H_' + str(i))
+        i += 1
+
+    ax1.legend(legends)
+    ax2.legend(legends)
+
+    plt.show()
+
+
+def plot_K(K, legend ='K'):
 
     plt.plot(K[:,0], K[:,1])
     plt.legend([legend])
@@ -86,5 +110,35 @@ def plot_3_Ks(K1, K2, K3, legend1='K1', legend2='K2', legend3='K3'):
 
     plt.plot(K1[:, 0], K1[:, 1], K2[:, 0], K2[:, 1], K3[:, 0], K3[:, 1])
     plt.legend([legend1, legend2, legend3])
+
+    plt.show()
+
+def plot_Ks(Ks):
+
+    legends = []
+    i = 0
+    for K in Ks:
+        plt.plot(K[:, 0], K[:, 1])
+        legends.append('K_' + str(i))
+        i += 1
+
+    plt.legend(legends)
+
+    plt.show()
+
+def plot_K_ideal_Ks(K_ideal, Ks):
+
+    legends = []
+
+    plt.plot(K_ideal[:, 0], K_ideal[:, 1])
+    legends.append('K_ideal')
+
+    i = 0
+    for K in Ks:
+        plt.plot(K[:, 0], K[:, 1])
+        legends.append('K_' + str(i))
+        i += 1
+
+    plt.legend(legends)
 
     plt.show()

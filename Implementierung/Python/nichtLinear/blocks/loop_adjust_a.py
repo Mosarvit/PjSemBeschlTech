@@ -13,6 +13,8 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
     quality_development = []
     #Initialisierung
     K = K_0
+    Ks = []
+    Ks.append(K_0)
     for i in range(1, num_iters + 1):
         # in welchem Bereich a angepasst wird
         
@@ -51,9 +53,10 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H)
         a_new = adjust_a(a, Uin, Uquest_ideal, Uquest_measured, sigma_a)
         K = compute_K_from_a(a=a_new, verbosity=0)
+        Ks.append(K)
         save_2cols(data_directory + '/K_'+ id +'.csv', K[:, 0], K[:, 1])
 
 
     print('quality_development' + str(quality_development))
-    return K, Uout_measured, quality_development
+    return K, Uout_measured, quality_development, Ks
 

@@ -21,19 +21,22 @@ from numpy import genfromtxt
 import matplotlib.pyplot as plt
 from settings import project_path
 from blocks.determine_a import determine_a
-from helpers.plot_helper import plot_2_transfer_functions, plot_2_signals
+from helpers.plot_helper import plot_2_transfer_functions, plot_2_signals, plot_K
 
 from helpers.signal_evaluation import signal_evaluate
 
 def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
     quality_development = []
 
+    Hs = []
+    Hs.append(H)
     for i in range(1, num_iters + 1):
         id = str(i)
         # compute new Uin
         Uquest = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
 
         Uin = compute_Uin_from_Uquest(Uquest=Uquest, K_Uin_to_Uquest=K)
+
 
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
@@ -59,16 +62,9 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
         quality_development.append(quality)
 
         H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
+        Hs.append(H)
 
         save_transfer_function(H, filename=data_directory + 'H' + id + '.csv')
 
-        plot_H_0_H_current(H, id, data_directory)
-
     print('quality_development' + str(quality_development))
-    return H, Uout_measured, quality_development
-
-def plot_H_0_H_current(H, id, data_directory):
-    verbosity = 0
-    if verbosity:
-        H_0 = read_in_transfer_function_old_convention(data_directory + 'Ha_0.csv', data_directory + 'Hp_0.csv')
-        plot_2_transfer_functions(H1=H_0, H2=H, legend1='H_0', legend2='H_' + id)
+    return Hs, Uout_measured, quality_development

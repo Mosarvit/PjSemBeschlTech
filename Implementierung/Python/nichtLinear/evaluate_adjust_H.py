@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt
 from settings import project_path
 from blocks.loop_adjust_H import loop_adjust_H
 from blocks.determine_a import determine_a
+from helpers.plot_helper import plot_K
 
 from helpers.signal_evaluation import signal_evaluate
 
@@ -58,15 +59,16 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
 
     K = compute_K_from_a(a=a, verbosity=0)
+    # plot_K(K)
     save_2cols(data_directory + '/K_initial.csv', K[:, 0], K[:, 1])
 
-    H, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
+    Hs, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
 
     H_0 = read_in_transfer_function(data_directory + 'H_0.csv')
 
     if not use_mock_system :
         save_text(data_directory)
 
-    return Uout_ideal, Uout_measured, H_0, H
+    return Uout_ideal, Uout_measured, Hs
 
 

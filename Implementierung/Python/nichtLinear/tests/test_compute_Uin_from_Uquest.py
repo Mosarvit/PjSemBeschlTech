@@ -108,6 +108,8 @@ class test_compute_Uin_from_Uquest(TestCase):
         test_succeeded = finilize_tezt_with(values_computed=Uin_computed, set_ideal_signal=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
+
+
     def test_compute_Uin_from_Uquest_from_adjust_a_new_K(self):
         path = mock_data_path + 'adjust_a_19_07_2018-13_53_38/'
 

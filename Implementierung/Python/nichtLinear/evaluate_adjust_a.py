@@ -36,11 +36,11 @@ def evaluate_adjust_a(num_iters = 1, verbosity = 0) :
     K_0 = compute_K_from_a(a=a_0, verbosity=0)
     save_2cols(data_directory + '/K_initial.csv', K_0[:, 0], K_0[:, 1])
 
-    K, Uout_measured, quality_development = loop_adjust_a(a_0, K_0, H, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
+    K, Uout_measured, quality_development, Ks = loop_adjust_a(a_0, K_0, H, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
 
     if not use_mock_system :
         save_text(data_directory)
 
-    return Uout_ideal, Uout_measured, K_0, K
+    return Uout_ideal, Uout_measured, Ks
 
 
