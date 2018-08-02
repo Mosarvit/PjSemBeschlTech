@@ -1,9 +1,30 @@
 \babel@toc {ngerman}{}
-\contentsline {chapter}{\numberline {1}Einf\IeC {\"u}hrung}{2}{chapter.1}
-\contentsline {section}{\numberline {1.1}Modell und Konvention}{2}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}Hammerstein Modell}{3}{subsection.1.1.1}
-\contentsline {section}{\numberline {1.2}Motivation}{3}{section.1.2}
-\contentsline {section}{\numberline {1.3}Aufgabenstellung}{3}{section.1.3}
-\contentsline {chapter}{\numberline {2}Iterative Optimierung des Hammerstein-Modells}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Optimierung der linearen \IeC {\"U}bertragungsfunktion $H$}{4}{section.2.1}
-\contentsline {section}{\numberline {2.2}Optimierung der nichtlinearen Kennlinie $K$}{7}{section.2.2}
+\contentsline {chapter}{\numberline {1}Test}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}---- firstName ----}{2}{section.1.1}
+\contentsline {chapter}{\numberline {2}Abstract}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Einf\IeC {\"u}hrung}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}Modell und Konvention}{4}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Hammerstein Modell}{5}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Motivation}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Aufgabenstellung}{5}{section.3.3}
+\contentsline {chapter}{\numberline {4}Vorgehen}{6}{chapter.4}
+\contentsline {section}{\numberline {4.1}---setup ---}{6}{section.4.1}
+\contentsline {section}{\numberline {4.2} --- Konventionen / Dokumentation ---- }{6}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ger\IeC {\"a}tekommunikation}{6}{section.4.3}
+\contentsline {subsubsection}{Laufzeitoptimierung}{7}{subsubsection*.8}
+\contentsline {subsubsection}{Anpassung der Aufl\IeC {\"o}sung am Oszilloskop}{7}{subsubsection*.10}
+\contentsline {subsection}{\numberline {4.3.1}--- offene Punkte---}{8}{subsection.4.3.1}
+\contentsline {chapter}{\numberline {5}Code-Design}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}---- Motivation / Begr\IeC {\"u}ndung ----}{9}{section.5.1}
+\contentsline {section}{\numberline {5.2} --- Aspekte des Desings ---- }{9}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}--- Struktur -- ?}{9}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}--- TDD und Mock-System --- }{9}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Offene Punkte}{9}{subsection.5.2.3}
+\contentsline {chapter}{\numberline {6}Iterative Optimierung des Hammerstein-Modells}{10}{chapter.6}
+\contentsline {section}{\numberline {6.1}Optimierung der linearen \IeC {\"U}bertragungsfunktion $H$}{10}{section.6.1}
+\contentsline {section}{\numberline {6.2}Optimierung der nichtlinearen Kennlinie $K$}{13}{section.6.2}
+\contentsline {chapter}{\numberline {7}Fazit}{16}{chapter.7}
+\contentsline {chapter}{\numberline {8}Ausblick}{17}{chapter.8}
+\contentsline {section}{\numberline {8.1}---- Optimierung ----}{17}{section.8.1}
+\contentsline {section}{\numberline {8.2}--- Ger\IeC {\"a}tekomm---}{17}{section.8.2}
+\contentsline {chapter}{\numberline {9}--- Anhang ---}{19}{chapter.9}

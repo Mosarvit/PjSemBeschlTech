@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib2tikz import save as tikz_save
+from blocks.compute_a_from_Uin_Uquet import *
+from blocks.compute_K_from_a import *
 #from helpers.plot_helper import *
 from helpers.csv_helper import *
 from settings import *
@@ -95,20 +97,29 @@ def adjust_a_plot_Uquest():
     # plot vonUin
 
     Uquest = read_in_signal(data_path + 'Uquest_initial.csv', delimiter=',')
-    K0 = genfromtxt(data_path + 'K_initial.csv', delimiter=',')
+    Uin = read_in_signal(data_path + 'Uin_initial.csv', delimiter=',')
+    # H0 = read_in_transfer_function(data_path + 'H_0.csv')
+    # K0 = genfromtxt(data_path + 'K_initial.csv', delimiter=',')
 
-    plt.plot(K0[:, 0], K0[:, 1])
+    a3 = compute_a_from_Uin_Uquet(Uin, Uquest, 3)
+    K3 = compute_K_from_a(a3, verbosity=0)
+    a4 = compute_a_from_Uin_Uquet(Uin, Uquest, 4)
+    K4 = compute_K_from_a(a4, verbosity=0)
+    a5 = compute_a_from_Uin_Uquet(Uin, Uquest, 5)
+    K5 = compute_K_from_a(a5, verbosity=0)
+
+    plt.plot(K3[:, 0], K3[:, 1], K4[:, 0], K4[:, 1], K5[:, 0], K5[:, 1])
     plt.axhline(y=max(Uquest.in_mV), color='r')
     plt.axhline(y=min(Uquest.in_mV), color='r')
-    plt.legend(['$K_0$', '$V_{PP}$'])
+    plt.legend(['$K_3$', '$K_4$','$K_5$', '$V_{PP}$'])
     plt.xlabel('$U_{in}$ in \si{\\milli \\volt}')
     plt.ylabel('$U_{?}$ in \si{\\milli \\volt}')
 
     # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_K_Uquest.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
-# adjust_a_plot_Uquest()
+adjust_a_plot_Uquest()
 #adjust_a_plot_Uin_K()
 #adjust_a_plot_Uin()
-adjust_a_plot_K()
-adjust_a_plot_Uout()
+# adjust_a_plot_K()
+# adjust_a_plot_Uout()
 
