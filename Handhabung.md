@@ -2,6 +2,7 @@
 
 Benutzte Geräte:
 - AWG		Keysight 33600A (33622A)
+			(u. U. relevante Spezifikationen: 120-MHz Modell, max. Samplerate mit Filter "OFF" bei 250 MSa/s)
 - Oszi		Tektronix TDS 5054 DOS
 - Verstärker	! Darf nicht mehr als ~1 V Vpp als Eingang bekommen! (hat noch etwas Puffer nach oben -> gute Sicherheit)
 - Kavität		
