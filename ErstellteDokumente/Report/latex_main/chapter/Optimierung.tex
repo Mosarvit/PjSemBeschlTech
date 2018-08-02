@@ -55,8 +55,9 @@ Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \
 					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
 \end{align}
 mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
-liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{fig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
+liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{fig:opt.tzeum} die bei gemessenem Signal auftretende Streuung der Phase. 
 \\
+
 
 \pgfplotstableread[col sep = comma] {opt_spect_ideal_abs.csv} \absSpectIdeal 
 \pgfplotstableread[col sep = comma] {opt_spect_meas_abs.csv} \absSpectMeas
@@ -64,9 +65,8 @@ liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlic
 \pgfplotstableread[col sep = comma] {opt_spect_meas_angle.csv} \angleSpectMeas 
 
 \begin{figure}[htb]
-\caption{Spektrum des Einzelsinus-Signals, berechnet und gemessen mit je $109$ Punkten}
-\label{fig:opt.spektrum_BB_signal}
 \begin{subfigure}{0.5 \textwidth}
+\centering
     \begin{tikzpicture}
 \begin{axis}[
 		legend entries = {Ideales Signal, Gemessenes Signal},
@@ -93,16 +93,18 @@ liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlic
 		\addplot[green, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
 \end{axis}
 \end{tikzpicture}
-\subcaption{Betragsspektren}
+\caption{Betragsspektren}
 	\label{fig:opt.abs_spektrum}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
+\centering
     \begin{tikzpicture}
 \begin{axis}[
 		legend entries = {Ideales Signal, Gemessenes Signal},
 		legend pos = north east,
 		xlabel={Frequenz},
 		ylabel={Phase},
+		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
 %		%xtick distance = 10000000,
 %		xminorgrids,
 %		xmajorgrids,
@@ -125,9 +127,11 @@ liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlic
 		\addplot[green, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
 \end{axis}
 \end{tikzpicture}
-\subcaption{Phasenspektren}
+\caption{Phasenspektren}
 	\label{fig:opt.angle_spektrum}
 \end{subfigure}
+\caption{Spektrum des Einzelsinus-Signals, berechnet und gemessen mit je $109$ Punkten}
+\label{fig:opt.spektrum_BB_signal}
 \end{figure}
 
 Eine Aufstellung der rein auf \eqref{eq:opt.Hnew} beruhenden Anpassung der Übertragungsfunktion über mehrere Iterationsschritte findet sich in --- Abb ---. 
@@ -142,6 +146,10 @@ Besondere Störeinflüsse ergeben sich also durch
 	
 	\item Interpolationsfehler: Die (hier lineare) Interpolation der Spektren zur Auswertung von $\fabs$ an den Frequenzen von $\Hcompl$ kann insbesondere den Einfluss oben genannter Punkte verstärken.
 \end{itemize}
+
+Weiterhin zeigt sich auch in der geringen Stützstellenzahl in \figref{fig:opt.spektrum_BB_signal} bereits eine erste konzeptuelle Problematik des Vorgehens. Der Frequenzabstand zwischen zwei Werten der FFT ist stets mit der Wiederholfrequenz $f_{rep}$ gegeben und lässt sich somit nicht durch eine höhere Auflösung der Messgeräte verbessern, der betrachtete Bereich bis $\SI{80}{\MHz}$ nicht besser auflösen.
+Folglich setzt sich diese Ungenauigkeit auch auf die Optimierung der Kennlinie fort. Insbesondere relevant wird dies, da die Kennlinie mit nahezu der doppelten Anzahl an Werten erstellt wird und somit der Interpolationsfehler ungleich größer wird als bei ähnlicher Anzahl Stützstellen.
+
 
 \subsubsection*{Ignorieren kleiner Beträge im Spektrum}
 \label{subsubsec:opt.H.prom}
@@ -179,8 +187,8 @@ In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die P
 Folglich muss der RMS modifiziert werden. Hier wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich also bei der vorgenommenen Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
  
 
-
 In \figref{fig:opt.H.iteration} ist die Entwicklung von Übertragungsfunktion und $\fabs$ über mehrere Iterationen aufgetragen. Der Einfluss des RMS-Cutters macht sich dabei verglichen mit ---- ABB oben, rein iteriert --- bemerkbar, es treten weniger starke Änderungen auf. 
+Gleichzeitig zeigt sich, dass nicht in jedem Schritt an exakt den gleichen Stellen am jeweiligen RMS geschnitten werden muss. Dies belegt die Zufälligkeit des Fehlers und erläutert die prinzipielle Berechtigung der Methodik.
 Es zeigt sich, dass die vorgenommene Anpassung keinen großartigen Einfluss auf die Qualität des Signals hat.
 Dies ist insofern beachtenswert, als dass die Übertragungsfunktion auch an einigen Stellen mit massiver Verstärkung stark angepasst wird, vergleiche hierzu \figref{fig:opt.H.RMS_H} bei etwa $\SI{25}{\MHz}$.
 Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ---- ---- und zeigt vor allem rauschbedingte Schwankungen.
@@ -197,20 +205,20 @@ Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ----
  
 
 \begin{figure}[htb]
-\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
-\label{fig:opt.H.iteration}
-\begin{center}
-\begin{subfigure}{ 0.7 \textwidth}
-	\begin{center}
+%\begin{center}
+\begin{subfigure}{\textwidth}
+%	\begin{center}
     \begin{tikzpicture}
 \begin{axis}[
-		width = \textwidth,
-		height = 0.25 \textheight,
+		scale only axis,
+		width = 0.75 \textwidth,
+		height = 0.2 \textheight,
 		legend entries = {original, Step 1, Step 2, Step 3},
 		legend pos = north east,
 		legend columns = 3,
 		xlabel={Frequenz},
 		ylabel={Betrag Übertragung $\Hcompl$},
+		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
 		%xtick distance = 10000000,
 %		xminorgrids,
 %		xmajorgrids,
@@ -232,23 +240,24 @@ Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ----
 %		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsThree};
 \end{axis}
 \end{tikzpicture}
-\subcaption{Entwicklung des Betrags der Übertragungsfunktion über mehrere Iterationen und im Anfangszustand}
+\caption{Entwicklung des Betrags der Übertragungsfunktion über mehrere Iterationen und im Anfangszustand}
 	\label{fig:opt.H.RMS_H}
-	\end{center}
+%	\end{center}
 \end{subfigure}
 \\
-\begin{subfigure}{ 0.7 \textwidth}
-\begin{center}
-
+\begin{subfigure}{\textwidth}
+%\begin{center}
     \begin{tikzpicture}
 \begin{axis}[
-		width = \textwidth,
-		height = 0.25 \textheight,
+		scale only axis,
+		width = 0.75 \textwidth,
+		height = 0.2 \textheight,
 		legend entries = {original, Step 1, Step 2, Step 3},
 		legend pos = south west,
 		legend columns = 3,
 		xlabel={Frequenz},
 		ylabel={Korrekturterm $\fabs$},
+		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
 		%xtick distance = 10000000,
 %		xminorgrids,
 %%		xmajorgrids,
@@ -275,11 +284,14 @@ Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ----
 %		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSthree};
 \end{axis}
 \end{tikzpicture}
-\subcaption{Entwicklung des Korrekturterms in angepasster Form über mehrere Iterationen und in initialer, nicht angepasster Form - RMS aus Step 1 zum Vergleich}
+\caption{Entwicklung des Korrekturterms in angepasster Form über mehrere Iterationen und in initialer, nicht angepasster Form - RMS aus Step 1 zum Vergleich}
 \label{fig:opt.H.RMS_fabs}
-\end{center}
+%\end{center}
 \end{subfigure}
-\end{center}
+%\end{center}
+
+\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
+\label{fig:opt.H.iteration}
 \end{figure}
 
 

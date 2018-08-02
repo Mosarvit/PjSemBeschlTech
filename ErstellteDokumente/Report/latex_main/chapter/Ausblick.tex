@@ -8,20 +8,38 @@
 \label{chap:ausb}
 ---- In diesem Kapitel wird auf offene Fragen / neue Probleme / Anstöße für weitere Arbeiten eingegangen. Dabei sollte es um eher inhaltliche Aspekte gehen (u. U. wenig to dos für Code-Design) gegebenenfalls darf hier bei vielem auf die Erfahrungen aus den vorigen Kapiteln verwiesen werden und damit einen Übersichts-Charakter haben (erleichtert nachfolgenden Projekten die Arbeit) --- 
 
-\section{---- Optimierung ----}
+\section{Ausblick: Optimierung}
 \label{sec:ausb.opti}
---- in dieser section werden die offenen Fragen / Anregungen in Bezug auf den Optimierungs-algorithmus dargelegt, etwa: \\
-- Iterations-Reihenfolge mit Messungen: abwechselnd K / H optimieren und dann messen oder zwischen zwei Messungen beide optimieren? Oder erst das eine mit mehreren Messungen optimieren und dann das andere ?
-\\
-- sinnhaftigkeit / Grenzen des genutzten Algorithmus (Idee Jens) erfragen?
-\\
-- Problem / Frage nach Phasen-Optimierung des H-Optimierers
-\\
-- Umgang mit Rauschen, Null-Durchgängen o. ä. im H-Optimierer
-\\
-- Möglichkeiten der Optimierung: Durchlaufen lassen mit direkter Anpassung an steigende Amplituden? 
-\\
+
 - (offene Punkte K-Optimierung?)
+
+
+Auf den Ergebnissen aus \nameref{chap:opt} aufbauend, verbleiben eine Reihe von offenen Fragestellungen:
+
+\begin{enumerate}
+	\item 	Wie wirkt sich die Optimierung von $K$ aufgrund ihrer Nichtlinearität auf die Übertragungsfunktion $\Hcompl$ aus und muss dies in der Optimierung berücksichtigt werden, etwa in der Reihenfolge der Iterationsschritte?
+	
+	\item	Wie wird mit der Tatsache umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen?
+	
+	\item	In welcher Reihenfolge wird die Iteration durchgeführt? Wird zuerst $\Hcompl$ in mehreren Durchgängen angepasst und danach $K$? Oder im Wechsel je eine Iteration?
+	
+	\item 	Wie wird die Auswahl der Schrittweiten $\sigma_H$ und $\sigma_a$ vorgenommen? Werden diese pauschal einmal festgesetzt zu Beginn des Algorithmus oder ist eine dynamische Anpassung, etwa durch die Qualität des letzten gemessenen Signals oder in Abhängigkeit des Iterationsschritts vorzuziehen? 
+	
+	\item 	\label{enum:opt.noise}Wie lässt sich der Einfluss von zufälligem Rauschen auf die Optimierung reduzieren? 
+	
+	\item	\label{enum:opt.zeros}Wie lassen sich die im idealen Spektrum des Einzelsinus enthaltenen Nulldurchgänge in der Optimierung von $\Hcompl$ berücksichtigen, um interpolationsbedingt große Fehlerterme zu vermeiden? Ist das einfache Ignorieren dieser Frequenzen für die Anpassung eine Möglichkeit?
+	
+	\item 	Wie - insofern überhaupt - ist eine Optimierung der Phase von $\Hcompl$ zu gestalten?
+	
+	\item	Nach welchem Qualitätsmerkmal wird das Signal bewertet und wie wirkt sich dies auf den Algorithmus aus?
+	
+	\item	Gibt es eine sinnvolle Abbruchbedingung, mit der die Iteration versehen werden sollte? Etwa, dass sich die Qualität im Vergleich zu den vorherigen Iterationen nicht mehr mit ähnlicher Rate verbessert hat? Der Trade-Off liegt zwischen Laufzeit und Signal-Qualität.
+
+\end{enumerate}
+
+
+
+
 
 \section{--- Gerätekomm---}
 \label{sec:ausb.geraete}
