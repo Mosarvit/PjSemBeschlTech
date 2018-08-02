@@ -303,49 +303,72 @@ Der Unterschied zur Optimierung von $\Hcompl$ ist, dass diese Optimierung im Zei
 	\label{eq:opt.deltaUquest}
 	\Delta \Uquest \oft = \Uquest_{, \mathrm{meas}} \oft - \Uquest_{, \mathrm{ideal}} \oft
 	\qquad
-	\Uquest_{, \mathrm{meas}} \oft = \mathscr{F}^{-1} \left\{ \Hcompl^{-1} \ofomega \, \Uoutc_{, \mathrm{meas}} \ofomega \right\}
+	\Uquest_{, \mathrm{meas}} \oft = \mathscr{F}^{-1} \left\{ \Hcompl^{-1} \ofomega \cdot \Uoutc_{, \mathrm{meas}} \ofomega \right\}
 \end{align}
 geändert werden. Bei den Funktionen $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ handelt es sich um Polynome gleichen Grades deshalb lässt sich die Differenz ebenfalls als ein Polynom mit Grad $N$ darstellen
 \begin{align}
 	\Delta \Uquest \oft = \sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n	
 \end{align}
-Die Koeffizienten $\tilde{a}_n$ sind d
+Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar wie schon die Berechnung der Koeffizienten $a_n$ in -Gleichung- \ref{eq:Uquest} siehe ---Paper Kerstin---. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Mit der Potenzreihe aus -Gleichung- \ref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
 \begin{align}
 	\left( 
-	 \begin{matrix}
-	  U_{in,1} & U_{in,1}^2 & \dots & U_{in,1}^N \\
-	  U_{in,2} & U_{in,2}^2 & \dots & U_{in,2}^N \\
-	  \vdots & \vdots & \ddots & \vdots \\
-	  U_{in,M} & U_{in,M}^2 & \dots & U_{in,M}^N \\
-	 \end{matrix}
+	\begin{matrix}
+	 	\Uin_{,1} & \Uin_{,1}^2 & \dots & \Uin_{,1}^N \\
+		\Uin_{,2} & \Uin_{,2}^2 & \dots & \Uin_{,2}^N \\
+		\vdots & \vdots & \ddots & \vdots \\
+		\Uin_{,M} & \Uin_{,M}^2 & \dots & \Uin_{,M}^N \\
+	\end{matrix}
 	\right)
 	\cdot
 	\left(
 	\begin{matrix}
-	 a_1 \\
-	 a_2 \\
-	 \vdots \\
-	 a_N \\	 
+		\tilde{a}_1 \\
+		\tilde{a}_2 \\
+		\vdots \\
+		\tilde{a}_N \\	 
 	\end{matrix}
-	\right) 
-	= \left( 
+	\right) = \left( 
 	\begin{matrix}
-	 U_{?,1} \\
-	 U_{?,2} \\
-	 \vdots \\
-	 U_{?,M} \\	 
+		\Delta \Uquest_{,1} \\
+		\Delta \Uquest_{,2} \\
+		\vdots \\
+		\Delta \Uquest_{,M} \\	 
 	\end{matrix}
-	\right).
-	\label{eq:lgs}
+	\right)
+	\label{eq:Uquest.Gleichungssystem}
 \end{align}
+Dieses Gleichungssystem ist mit normalerweise $M>N$ überbestimmt und wird mit der Methode der kleinsten Quadrate gelöst. Die Koeffizienten $\tilde{a}_n$ werden nun wie folgt zur Anpassung der Koeffizienten $a_n$ verwendet
+\begin{align}
+	\label{eq:opt.adjusta}
+	a_n^{i+1} = a_n^{i} + \sigma_{a}^{i} \tilde{a}_n^{i}
+\end{align}
+Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$.
 
-
-
-
-
-
-
-
-
-
+\subsubsection*{Erste Ergebnisse}
+\label{subsubsec:opt.adjusta.results}
+Für die Berechnung der ersten Kennlinie $K_0$ wurde das ideal Ausgangssignal $\Uout_{, \mathrm{ideal}}$ über $\Hcompl^{-1}$ zurückgerechnet und als Eingangssignal verwendet $\Uin_{, \mathrm{ideal}} = \Uquest_{, \mathrm{ideal}}$. Dabei wurde $V_{PP} = \SI{600}{\mV}$ gesetzt, um $K_0$ in einen größeren Bereich berechnen zu können.\\
+Wenn man jetzt $\Uquest_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{600}{\mV}$ über $K_0$ zurückrechnet, um das erste nichtlinear vorverzerrtes Eingangsignal zu erhalten, so stellt man fest, dass die Grenzen, in denen $K_0$ invertiert werden kann, zu klein sind. Wenn also $\Uquest_{, \mathrm{ideal}}$ über die Grenzen von $K_0$ geht, so wäre ein möglicher Ansatz $V_{PP}$ auf den maximal von $K_0$ zulässigen Wert zu setzen.\\
+Als andere Möglichkeit die Kennlinie anzupassen könnte man $V_{PP}$ von $\Uquest_{, \mathrm{ideal}}$ verkleinern siehe \figref{Kennlinie}
+\begin{figure}[H]
+\begin{subfigure}{0.5 \textwidth}
+    \newlength\figureheight
+	\newlength\figurewidth
+	\setlength\figureheight{8cm}
+	\setlength\figurewidth{8cm}
+	\input{images/plots/adjust_a_K.tikz}	
+\subcaption{Kennlinie}
+	\label{fig:K}
+\end{subfigure}
+\begin{subfigure}{0.5 \textwidth}
+	\setlength\figureheight{8cm}
+	\setlength\figurewidth{8cm}
+    %\input{images/plots/adjust_a_Uin.tikz}
+    \input{images/plots/adjust_a_Uout.tikz}
+\subcaption{Ausgangsspannung}
+	\label{fig:Uout}
+\end{subfigure}
+\label{fig:opt.Kennlinie}
+\caption{Anpassung von $K$}
+\end{figure}
+In \figref{fig:K} ist $K_0$ die initial Kennlinie und $K_1$ ist die Kennlinie nach der ersten Anpassung. Dabei wurde $\Uquest_{, \mathrm{ideal}}$ so berechnet, dass für $\Uout_{, \mathrm{ideal}}$ gilt $V_{PP} = \SI{1,5}{\V}$
 \end{document}
