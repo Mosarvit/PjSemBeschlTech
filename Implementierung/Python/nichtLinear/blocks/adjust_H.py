@@ -157,6 +157,10 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
     use_rms = True
     rms = np.sqrt(np.mean(np.square(ratio_abs)))
+    ###
+    # just to enable return for report 2018!
+    rms_orig = copy.copy(rms)
+    ###
     values = ratio_abs[np.where(abs(ratio_abs) >= 0.02 * rms)[
         0]]  # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
     rms = np.sqrt(np.mean(np.square(values)))
@@ -210,12 +214,12 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         plt.title('Absratio Umeas / Uideal -1')
         plt.xlabel('f')
         plt.ylabel('ratio')
-        plt.show()
 
-        # if use_rms:
-        #     plt.subplot(2, 3, 4)
-        #     plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
-        #     plt.xlim((0, np.max(Halt.f)))
+        if use_rms:
+            plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms*np.ones(len(Halt.f)), 'r')
+            plt.xlim((0, np.max(Halt.f)))
+
+        plt.show()
 
         #plt.subplot(2, 3, 2)
         plt.plot(Halt.f, Halt.a, 'r', Hneu.f, Hneu.a, 'b')
@@ -254,7 +258,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 #             fig.savefig('../data/adjustH/plots/routine' + str(time.strftime("%d%m_%H%M")) + '.pdf')
 #         # fig.savefig('../../data/adjustH/plots/adjust_Plots' + time.strftime("%H%M_%d%m")+ '.pdf')
 
-    return (Hneu)
+    return (Hneu) #, ratio_abs, Id_spectrum, Meas_spectrum, rms, rms_orig)
+
 
 
 def type_check_adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H):

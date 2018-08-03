@@ -124,11 +124,6 @@ def calculate_error(values_computed, values_ideal):
 
     if type(values_computed) is np.ndarray and type(values_ideal) is np.ndarray:
 
-        shape1 = values_computed.shape
-        shape2 = values_ideal.shape
-
-        a=1
-
         if len(values_computed.shape) == 1 and len(values_ideal.shape) == 1 :
             datatype = 'a'
         elif len(values_computed.shape) == 2 and len(values_ideal.shape) == 2:
@@ -163,6 +158,9 @@ def calculate_error(values_computed, values_ideal):
 
         values_tested_vector = values_computed[:, 1]
         values_ideal_vector = values_ideal[:, 1]
+    elif datatype == 'a':
+        values_tested_vector = values_computed
+        values_ideal_vector = values_ideal
     else:
         raise custom_value_error("the datatype is unknown")
 
@@ -174,10 +172,13 @@ def calculate_error(values_computed, values_ideal):
     return err
 
 def signals_are_equal(U1, U2):
-    return all(U1.in_V == U2.in_V)
+    err =  calculate_error(U1, U2)
+    return err < 1e-10
 
 def transfer_functions_are_equal(H1, H2):
-    return all(H1.c == H2.c)
+    err = calculate_error(H1, H2)
+    return err < 1e-10
 
 def arrays_are_equal(array1, array2):
-    return np.alltrue(array1 == array2)
+    err = calculate_error(array1, array2)
+    return err < 1e-10
