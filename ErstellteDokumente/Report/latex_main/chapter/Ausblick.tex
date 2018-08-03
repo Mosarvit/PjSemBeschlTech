@@ -8,6 +8,20 @@
 \label{chap:ausb}
 ---- In diesem Kapitel wird auf offene Fragen / neue Probleme / Anstöße für weitere Arbeiten eingegangen. Dabei sollte es um eher inhaltliche Aspekte gehen (u. U. wenig to dos für Code-Design) gegebenenfalls darf hier bei vielem auf die Erfahrungen aus den vorigen Kapiteln verwiesen werden und damit einen Übersichts-Charakter haben (erleichtert nachfolgenden Projekten die Arbeit) --- 
 
+\section{Impressionen zum Code}
+\label{sec:ausb.code}
+In Bezug auf das Design des Codes verbleiben eine Reihe Anregungen und Gedanken, die nicht realisiert wurden, je nach Ausführung aber interessant zu bedenken sein könnten.
+
+\begin{itemize}
+	\item	Die Geräte AWG und DSO als Klassen einzubinden könnte den Vorteil bieten, alle SCPI Commands an einer Stelle zu bündeln und den Zugriff darauf allgemeingültig zu halten.
+	
+	\item	Eine Einbindung des momentanen Programms in die RF-Tools des GSI-Standards könnte in zwei Teilen erfolgen. Die bestehende Funktionalität zur Berechnung von $K$ und $\Hcompl$ kann unabhängig der Optimierungsalgorithmen genutzt werden. 
+	
+	\item 	Analog dazu ist die momentane Version in erster Linie über eine Python-IDE ausführbar. Die Ausführung über die Kommandozeile wurde nicht fokussiert.
+	
+	
+\end{itemize}
+
 \section{Ausblick: Optimierung}
 \label{sec:ausb.opti}
 

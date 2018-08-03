@@ -1,0 +1,157 @@
+C:\ProgramData\Anaconda3\python.exe C:/Git/PJSem_S/Implementierung/Python/nichtLinear/all_tezts.py
+.S...FFFFFF.F.F..SF.FF.FF.S....
+======================================================================
+FAIL: test_apply_transfer_function_2 (tests.test_apply_transfer_function.test_apply_transfer_function)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_apply_transfer_function.py", line 42, in test_apply_transfer_function_2
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+- kann so wie implementiert nicht funktionieren: Auflösung H nur bis 80 MHz, Unterschiede zwischen beiden Signalen im Toleranzbereich. 
+- Test benötigt Signal mit begrenzter Bandbreite für zuverlässige Nutzung
+
+======================================================================
+FAIL: test_apply_transfer_function_BBsignal (tests.test_apply_transfer_function.test_apply_transfer_function)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_apply_transfer_function.py", line 28, in test_apply_transfer_function_BBsignal
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+- kann so wie implementiert nicht funktionieren: Auflösung H nur bis 80 MHz, Unterschiede zwischen beiden Signalen im Toleranzbereich. 
+- Test benötigt Signal mit begrenzter Bandbreite für zuverlässige Nutzung
+
+======================================================================
+FAIL: test_compute_K_from_a_jens (tests.test_compute_K_from_a.test_compute_K_from_a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_K_from_a.py", line 27, in test_compute_K_from_a_jens
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+- kann so wie implementiert nicht funktionieren:
+- Frage nach Implementierung von K: wird berechnet in Grenzen +- 400 mV. Verglichen aber mit K für +-300 mV
+- hier müsste ansonsten ein Fehler in dem finilize_tezt_with vorliegen: beide K weisen im Bereich +-300 mV bis in die dritte Nachkommastelle (K berechnet wird da gerundet) genau gleiche Werte auf!
+
+======================================================================
+FAIL: test_compute_K_from_a_our (tests.test_compute_K_from_a.test_compute_K_from_a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_K_from_a.py", line 39, in test_compute_K_from_a_our
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+- selbes Problem wie oben!
+- durch Beschneidung auf bijektiven Bereich nicht möglich!!!
+
+======================================================================
+FAIL: test_compute_aK (tests.test_compute_K_from_a.test_compute_K_from_a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_K_from_a.py", line 55, in test_compute_aK
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_compute_aK1 (tests.test_compute_K_from_a.test_compute_K_from_a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_K_from_a.py", line 71, in test_compute_aK1
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_compute_Uin_from_Uquest_air_new_K (tests.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_Uin_from_Uquest.py", line 95, in test_compute_Uin_from_Uquest_air_new_K
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+- Annahme, Rauschen und Eingangssignal mittels Polynom 3. Grades ineinander umwandeln zu können, ist ambitioniert
+
+
+======================================================================
+FAIL: test_compute_Uin_from_Uquest_from_adjust_a_new_K (tests.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_Uin_from_Uquest.py", line 127, in test_compute_Uin_from_Uquest_from_adjust_a_new_K
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+
+KRITISCH! Warum wird der nicht bestanden, aber der direkt davor schon? die beiden zurückgerechneten Signale sind nahezu gleich, aber der Test läuft einmal durch, einmal nicht
+
+======================================================================
+FAIL: test_compute_Uquest_from_Uout_300_our (tests.test_compute_Uquest_from_Uout.test_compute_Uquest_from_Uout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_Uquest_from_Uout.py", line 40, in test_compute_Uquest_from_Uout_300_our
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+- Test kann nicht bestanden werden, da Matlab-Signal (als Ideal angenommen) nicht V_pp = 300 mV hat, sondern Amplitude.
+- bei anpassen der V_pp beider Signale sind diese sehr ähnlich (aber nicht genau!)
+
+======================================================================
+FAIL: test_compute_Uquest_from_Uout_with_BBsignal_ideal (tests.test_compute_Uquest_from_Uout.test_compute_Uquest_from_Uout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_Uquest_from_Uout.py", line 52, in test_compute_Uquest_from_Uout_with_BBsignal_ideal
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+- selber Fehler wie oben
+
+
+======================================================================
+FAIL: test_compute_a_from_Uin_Uquest_300_our (tests.test_compute_a_from_Uin_Uquest.test_compute_a_from_Uin_Uquest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_compute_a_from_Uin_Uquest.py", line 41, in test_compute_a_from_Uin_Uquest_300_our
+    self.assertTrue(test_succeeded)
+AssertionError: False is not true
+
+- kein Logik-Fehler hier im Test. Abweichung zwischen den a in 3. relevanter Stelle
+
+======================================================================
+FAIL: test_evaluate_adjust_H_5_steps (tests.test_evaluate_adjust_H.test_evaluate_adjust_H)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_evaluate_adjust_H.py", line 48, in test_evaluate_adjust_H_5_steps
+    self.assertTrue(err_last < err_0)
+AssertionError: False is not true
+-------------------- >> begin captured stdout << ---------------------
+Processing the file C:\Git\PJSem_S\Implementierung\Python\nichtLinear/tests/mock_data/mock_results/adjust_H/Uout_measured_1.csv
+myApp:argChk', 'Es wurde keine ganze Periode aufgenommen. Bitte ueberprefen Sie ob die Wiederhol- und Barrier-Bucket-Frequenz in der Eingabedatei stimmen.
+QGesamt1: 0.5406517524513998
+Processing the file C:\Git\PJSem_S\Implementierung\Python\nichtLinear/tests/mock_data/mock_results/adjust_H/Uout_measured_2.csv
+myApp:argChk', 'Es wurde keine ganze Periode aufgenommen. Bitte ueberprefen Sie ob die Wiederhol- und Barrier-Bucket-Frequenz in der Eingabedatei stimmen.
+QGesamt1: 0.5843163031396554
+Processing the file C:\Git\PJSem_S\Implementierung\Python\nichtLinear/tests/mock_data/mock_results/adjust_H/Uout_measured_3.csv
+myApp:argChk', 'Es wurde keine ganze Periode aufgenommen. Bitte ueberprefen Sie ob die Wiederhol- und Barrier-Bucket-Frequenz in der Eingabedatei stimmen.
+QGesamt1: 0.6926136679768329
+Processing the file C:\Git\PJSem_S\Implementierung\Python\nichtLinear/tests/mock_data/mock_results/adjust_H/Uout_measured_4.csv
+myApp:argChk', 'Es wurde keine ganze Periode aufgenommen. Bitte ueberprefen Sie ob die Wiederhol- und Barrier-Bucket-Frequenz in der Eingabedatei stimmen.
+QGesamt1: 0.9081070223022144
+Processing the file C:\Git\PJSem_S\Implementierung\Python\nichtLinear/tests/mock_data/mock_results/adjust_H/Uout_measured_5.csv
+myApp:argChk', 'Es wurde keine ganze Periode aufgenommen. Bitte ueberprefen Sie ob die Wiederhol- und Barrier-Bucket-Frequenz in der Eingabedatei stimmen.
+QGesamt1: 1.2961099314232702
+quality_development[0.5406517524513998, 0.5843163031396554, 0.6926136679768329, 0.9081070223022144, 1.2961099314232702]
+
+--------------------- >> end captured stdout << ----------------------
+
+======================================================================
+FAIL: test_evaluate_adjust_a_0_steps (tests.test_evaluate_adjust_a.test_evaluate_adjust_a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Git\PJSem_S\Implementierung\Python\nichtLinear\tests\test_evaluate_adjust_a.py", line 29, in test_evaluate_adjust_a_0_steps
+    self.assertTrue(err < 5e-2)
+AssertionError: False is not true
+-------------------- >> begin captured stdout << ---------------------
+Processing the file C:\Git\PJSem_S\Implementierung\Python\nichtLinear/tests/mock_data/mock_results/adjust_a/Uout_measured_1.csv
+myApp:argChk', 'Es wurde keine ganze Periode aufgenommen. Bitte ueberprefen Sie ob die Wiederhol- und Barrier-Bucket-Frequenz in der Eingabedatei stimmen.
+QGesamt1: 1.858357730253974
+quality_development[1.858357730253974]
+
+--------------------- >> end captured stdout << ----------------------
+
+----------------------------------------------------------------------
+Ran 31 tests in 748.124s
+
+FAILED (SKIP=3, failures=13)
+
+Process finished with exit code 0

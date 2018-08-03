@@ -39,7 +39,7 @@ def printCSV(saveCSV=False):
 
         sigma_H = 0.5
 
-        H_calc, f_abs_calc, Id_spectrum, Meas_spectrum, rms = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
+        H_calc, f_abs_calc, Id_spectrum, Meas_spectrum, rms, rms_orig = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=1)
         H_old = transfer_function_class(H.f)
         H_old.c = H.c
 
@@ -85,7 +85,7 @@ def printCSV(saveCSV=False):
 
         err = linalg.norm(H_calc.a - H.a) / linalg.norm(H.a)
         print(err)
-        print('RMS: '+ str(rms))
+        print('RMS: '+ str(rms) + ' von reinem: ' + str(rms_orig))
         #csv_helper.save_signale(f_calc_sig, data_path + 'f_abs_orig_' + id + '.csv')
 
     return
