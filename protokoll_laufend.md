@@ -35,15 +35,17 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 	- notieren, wieviele Samples in AWG genutzt werden
 	- Messdaten generieren:
 		- evaluate adjust_H:
-			- zweimal ganz ohne RMS oder Promille Anpassung laufen lassen (mind. 5 Iterationen)
+			- zweimal ganz ohne RMS (mit sigma = 0.5) oder Promille Anpassung laufen lassen (mind. 5 Iterationen)
 				zweimal, um Einfluss von Rauschen zu vergleichen
+			- einmal mit sigma = 0.2 ohne alles laufen lassen (mind. 5 Iterationen), vergleich mit obigem
 			- einmal nur mit Promille Anpassung (ca. 3 Prom) laufen lassen (mind. 5 Iterationen)
 			- einmal nur mit RMS Anpassung laufen lassen (mehr als 5 Iterationen!)
 			- einmal mit beiden Anpassungen durchlaufen lassen (ca. 5 Iterationen)
 			(ideal: jeweils immer mitschreiben, wie groß der RMS wirklich ist)
 		- evaluate adjust_a:
-			- festes V_PP (von Anfang an f. Kennlinie schon)(mind 5 Iterationen)
+			- festes V_PP (von Anfang an f. Kennlinie schon)(mind 5 Iterationen, sigma=0.5)
 			- größeres V_PP (nichtlinearen Bereich ausfahren)
+			- mit sigma = 0.2 
 	
 	- Geraetekommunikation: 
 		- evaluate_connect_devices mit neuem Versuch 2 für AWG testen und ggf. in write_to_AWG übernehmen
@@ -114,6 +116,7 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 	- neue Moeglichkeiten durch die Nutzung unseres Programms
 	- Allgemeine Vorteile unseres Code-Designs fuer die Nutzung in Messsituationen und Probleme
 	- Bewertung Sinnhaftigkeit Optimierung
+	- Erfahrung Problematik FFT-Berechnung-> ein Zeitschritt zu wenig für Berechnung Periodendauer!
 	
 ## Ausblick / weitere Ideen:
 	- RF-Tools, Kommandozeilen-Ausfuehrung
