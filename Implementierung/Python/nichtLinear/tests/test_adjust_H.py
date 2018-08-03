@@ -13,7 +13,7 @@ from classes.transfer_function_class import transfer_function_class
 from helpers.csv_helper import read_in_signal
 from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
 from helpers.signal_helper import generateSinSum
-from helpers.tezt_helper import finilize_tezt_with
+from helpers.tezt_helper import finilize_tezt
 from settings import mock_data_path
 
 
@@ -37,7 +37,7 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-        test_succeeded = finilize_tezt_with(values_computed=Hneu, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_adjust_H_p_trivial(self):
@@ -61,7 +61,7 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-        test_succeeded = finilize_tezt_with(values_computed=Hneu, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -105,7 +105,7 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=verbosity)
 
-        test_succeeded = finilize_tezt_with(values_computed=Hneu, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_adjust_H(self):
@@ -156,7 +156,7 @@ class test_adjust_H(TestCase):
         print("Laufzeit adjust_H in milli Sec: " + str(t*1e3))
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
 
-        test_succeeded = finilize_tezt_with(values_computed=Hneu, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -181,7 +181,7 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-        test_succeeded = finilize_tezt_with(values_computed=Hneu, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     @unittest.skip("old version")
@@ -226,6 +226,6 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=True)
 
-        test_succeeded = finilize_tezt_with(values_computed=Hneu, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 

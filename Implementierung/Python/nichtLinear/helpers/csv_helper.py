@@ -90,6 +90,10 @@ def read_in_K(path, delimiter=','):
     K = genfromtxt(path, delimiter=delimiter)
     return K
 
+def read_in_a(path, delimiter=','):
+    a = genfromtxt(path, delimiter=delimiter)
+    return a
+
 
 def save_transfer_function(H, filename):
 
@@ -173,7 +177,7 @@ def read_in_get_H_signal_data(get_H_csv_directory):
     return Uin_AWG, Uin_time_measured, Uout_time_measured, Uout_freq_measured, Uin_freq_measured, H
 
 def load_ideal_signal(filename, datatype):
-    ideal_values_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
+    ideal_values_data_path, current_unit_test_data_path = generate_path_for_ideal_values(filename)
     if not os.path.exists(ideal_values_data_path):
         raise CustomValueError("No ideal signal found. You should first set the ideal signal by setting argument set_ideal_signal in method finilize_test_with_signal to True")
     if datatype == 'signal':
@@ -182,15 +186,13 @@ def load_ideal_signal(filename, datatype):
         values_ideal = read_in_transfer_function(ideal_values_data_path)
     elif datatype == 'a' or datatype == 'K':
         values_ideal = read_in_array(ideal_values_data_path)
-    else :
+    else:
         raise CustomValueError("Unknown datatype")
 
     return values_ideal
 
 def save_ideal_signal(signal_ideal, filename, datatype):
-    ideal_values_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
-    if not os.path.exists(current_unit_test_data_path):
-        os.makedirs(current_unit_test_data_path)
+    ideal_values_data_path, current_unit_test_data_path = generate_path_for_ideal_values(filename)
     if datatype == 'signal':
         save_signal(signal_ideal, ideal_values_data_path)
     elif datatype == 'transfer_function':
@@ -204,24 +206,32 @@ def save_ideal_signal(signal_ideal, filename, datatype):
 
 def load_ideal_a(filename):
 
-    ideal_values_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
+    ideal_values_data_path, current_unit_test_data_path = generate_path_for_ideal_values(filename)
     if not os.path.exists(ideal_values_data_path):
         raise CustomValueError("No ideal a found. You should first set the ideal signal by setting argument set_ideal_signal in method finilize_test_with_signal to True")
     a_ideal = read_in_a(ideal_values_data_path)
     return a_ideal
 
 def save_ideal_a(a_ideal, filename):
-    a_ideal_data_path, current_unit_test_data_path = generate_paths_for_ideal_values(filename)
+    a_ideal_data_path, current_unit_test_data_path = generate_path_for_ideal_values(filename)
     if not os.path.exists(current_unit_test_data_path):
         os.makedirs(current_unit_test_data_path)
     save_a(a_ideal, a_ideal_data_path)
 
 
-def generate_paths_for_ideal_values(filename):
+def generate_path_for_ideal_values(filename):
+    current_unit_tezt_data_path = get_current_unit_tezt_folder(level=5)
+    Uout_ideal_data_path = current_unit_tezt_data_path + filename
+    return Uout_ideal_data_path, current_unit_tezt_data_path
+
+
+def get_current_unit_tezt_folder(level=2):
     from settings import test_data_path
-    current_unit_test_data_path = test_data_path + get_current_method_name(4) + '/'
-    Uout_ideal_data_path = current_unit_test_data_path + filename
-    return Uout_ideal_data_path, current_unit_test_data_path
+    current_unit_test_data_path = test_data_path + get_current_method_name(level) + '/'
+    if not os.path.exists(current_unit_test_data_path):
+        os.makedirs(current_unit_test_data_path)
+    return current_unit_test_data_path
+
 
 class CustomValueError(ValueError):
  def __init__(self, arg):

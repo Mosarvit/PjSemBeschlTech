@@ -2,7 +2,7 @@ from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.measure_Uout import measure_Uout
 from helpers.csv_helper import save_2cols
-from helpers.csv_helper import save_signal
+from helpers.csv_helper import save_signal, save_a, save_K
 from helpers.plot_helper import plot_2_signals
 from helpers.signal_evaluation import signal_evaluate
 from blocks.adjust_a import adjust_a
@@ -54,9 +54,9 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         a_new = adjust_a(a, Uin, Uquest_ideal, Uquest_measured, sigma_a)
         K = compute_K_from_a(a=a_new, verbosity=0)
         Ks.append(K)
-        save_2cols(data_directory + '/K_'+ id +'.csv', K[:, 0], K[:, 1])
-
+        save_K(K, data_directory + '/K_' + id + '.csv')
+        save_a(a_new, data_directory + 'a_' + id + '.csv')
 
     print('quality_development' + str(quality_development))
-    return K, Uout_measured, quality_development, Ks
+    return Uout_measured, quality_development, Ks
 

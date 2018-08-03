@@ -8,7 +8,7 @@ import numpy as np
 from helpers.custom_value_error import custom_value_error
 
 
-def finilize_tezt_with(values_computed, set_ideal_signal, verbosity):
+def finilize_tezt(values_computed, set_ideal_values, verbosity):
 
     if type(values_computed) is np.ndarray:
 
@@ -27,13 +27,13 @@ def finilize_tezt_with(values_computed, set_ideal_signal, verbosity):
         raise custom_value_error("The computed value is of an appropriate shape")
 
     if datatype == 'signal':
-        Uout_ideal_file_name = 'U_ideal.csv'
+        Uout_ideal_file_name = 'U_accepted.csv'
     elif datatype == 'transfer_function':
-        Uout_ideal_file_name = 'H_ideal.csv'
+        Uout_ideal_file_name = 'H_accepted.csv'
     elif datatype == 'a' or datatype == 'K':
-        Uout_ideal_file_name = datatype + '_ideal.csv'
+        Uout_ideal_file_name = datatype + '_accepted.csv'
 
-    if set_ideal_signal:
+    if set_ideal_values:
         values_ideal = values_computed
         save_ideal_signal(signal_ideal=values_ideal, filename=Uout_ideal_file_name, datatype=datatype)
         test_succeeded = True
@@ -48,16 +48,16 @@ def finilize_tezt_with(values_computed, set_ideal_signal, verbosity):
             test_succeeded = arrays_are_equal(values_computed, values_ideal)
     if verbosity:
         if datatype == 'signal':
-            plot_2_signals(U1=values_ideal, U2=values_computed, legend1='U_ideal.csv.csv.csv.csv', legend2='U_computed')
+            plot_2_signals(U1=values_ideal, U2=values_computed, legend1='U_ideal', legend2='U_computed')
         elif datatype == 'transfer_function':
-            plot_2_transfer_functions(H1=values_ideal, H2=values_computed, legend1='H_ideal.csv.csv.csv.csv', legend2='H_computed')
+            plot_2_transfer_functions(H1=values_ideal, H2=values_computed, legend1='H_ideal', legend2='H_computed')
         elif datatype == 'a':
             warnings.warn('a cannot be plotted')
         elif datatype == 'K':
-            plot_2_Ks(K1=values_ideal, K2=values_computed, legend1='K_ideal.csv.csv', legend2='K_computed')
+            plot_2_Ks(K1=values_ideal, K2=values_computed, legend1='K_ideal', legend2='K_computed')
 
 
-    return test_succeeded
+    return test_succeeded, values_ideal
 
 
 

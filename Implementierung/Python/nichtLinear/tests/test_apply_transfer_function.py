@@ -5,7 +5,7 @@ from helpers.apply_transfer_function import apply_transfer_function
 from helpers.csv_helper import read_in_signal
 from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
 from helpers.overlay import overlay
-from helpers.tezt_helper import finilize_tezt_with
+from helpers.tezt_helper import finilize_tezt
 from settings import mock_data_path
 
 
@@ -24,7 +24,7 @@ class test_apply_transfer_function(TestCase):
         Uout_computed = apply_transfer_function(Uquest_300, H)
         Uout_computed = overlay(Uout_computed, U_BBsignal_generated)
 
-        test_succeeded = finilize_tezt_with(values_computed=Uout_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uout_computed, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -38,7 +38,7 @@ class test_apply_transfer_function(TestCase):
         Uout_computed = apply_transfer_function(Uquest_300, H)
         Uout_300_ideal = overlay(Uout_300_ideal, Uout_computed)
 
-        test_succeeded = finilize_tezt_with(values_computed=Uout_computed, set_ideal_signal=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uout_computed, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
