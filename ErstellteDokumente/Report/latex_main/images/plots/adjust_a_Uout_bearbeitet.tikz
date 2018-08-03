@@ -15,6 +15,7 @@ tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
+%y label style={at={(axis description cs:-0.5,.5)},anchor=south},
 legend cell align={left},
 legend style={draw=white!80.0!black},
 legend entries={{$U_{out,0}$},{$U_{out,1}$}}

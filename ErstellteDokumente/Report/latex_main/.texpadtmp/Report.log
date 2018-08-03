@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  2 AUG 2018 19:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  3 AUG 2018 18:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1613,51 +1613,51 @@ LaTeX Warning: Unused global option(s):
 
 (/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux
 
-LaTeX Warning: Label `fig:opt.spektrum_BB_signal' multiply defined.
-
-
 LaTeX Warning: Label `fig:opt.abs_spektrum' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:opt.abs_spektrum' multiply defined.
 
+
+LaTeX Warning: Label `fig:opt.spektrum_BB_signal' multiply defined.
+
 )
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for MDA/cmr/m/n on input line 121.
-LaTeX Font Info:    Try loading font information for MDA+cmr on input line 121.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for MDA/cmr/m/n on input line 122.
+LaTeX Font Info:    Try loading font information for MDA+cmr on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdacmr.fd
 File: mdacmr.fd 
 )
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for MDB/cmr/m/n on input line 121.
-LaTeX Font Info:    Try loading font information for MDB+cmr on input line 121.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for MDB/cmr/m/n on input line 122.
+LaTeX Font Info:    Try loading font information for MDB+cmr on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbcmr.fd
 File: mdbcmr.fd 
 )
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Try loading font information for T1+5ch on input line 121.
-LaTeX Font Info:    No file T15ch.fd. on input line 121.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Try loading font information for T1+5ch on input line 122.
+LaTeX Font Info:    No file T15ch.fd. on input line 122.
 
 
 LaTeX Font Warning: Font shape `T1/5ch/m/n' undefined
-(Font)              using `T1/cmr/m/n' instead on input line 121.
+(Font)              using `T1/cmr/m/n' instead on input line 122.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1733,129 +1733,129 @@ Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 \symgns@font=\mathgroup11
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/5ch/m/n --> TS1/5ch/b/n on input line 121.
-Package gensymb Info: Math companion symbols declared on input line 121.
-LaTeX Info: Redefining \degree on input line 121.
-LaTeX Info: Redefining \celsius on input line 121.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 121.
-LaTeX Info: Redefining \ohm on input line 121.
-Package gensymb Info: Using \textohm for \ohm on input line 121.
-LaTeX Info: Redefining \micro on input line 121.
-Package gensymb Info: Using \textmu for \micro on input line 121.
+(Font)                  TS1/5ch/m/n --> TS1/5ch/b/n on input line 122.
+Package gensymb Info: Math companion symbols declared on input line 122.
+LaTeX Info: Redefining \degree on input line 122.
+LaTeX Info: Redefining \celsius on input line 122.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 122.
+LaTeX Info: Redefining \ohm on input line 122.
+Package gensymb Info: Using \textohm for \ohm on input line 122.
+LaTeX Info: Redefining \micro on input line 122.
+Package gensymb Info: Using \textmu for \micro on input line 122.
 
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.16}).
 
-Package hyperref Info: Link coloring OFF on input line 121.
-LaTeX Info: Redefining \ref on input line 121.
-LaTeX Info: Redefining \pageref on input line 121.
-LaTeX Info: Redefining \nameref on input line 121.
+Package hyperref Info: Link coloring OFF on input line 122.
+LaTeX Info: Redefining \ref on input line 122.
+LaTeX Info: Redefining \pageref on input line 122.
+LaTeX Info: Redefining \nameref on input line 122.
 (/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.out) (/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.out)
 \@outlinefile=\write6
 \openout6 = `Report.out'.
 
-LaTeX Font Info:    Try loading font information for OT1+mdbch on input line 121.
+LaTeX Font Info:    Try loading font information for OT1+mdbch on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbch/ot1mdbch.fd
 File: ot1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OT1/mdbch.
 )
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 11.04007pt on input line 121.
+(Font)              scaled to size 11.04007pt on input line 122.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 121.
+(Font)              scaled to size 7.68005pt on input line 122.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 6.62404pt on input line 121.
-LaTeX Font Info:    Try loading font information for OML+mdbch on input line 121.
+(Font)              scaled to size 6.62404pt on input line 122.
+LaTeX Font Info:    Try loading font information for OML+mdbch on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbch/omlmdbch.fd
 File: omlmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OML/mdbch.
 )
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 11.04007pt on input line 121.
+(Font)              scaled to size 11.04007pt on input line 122.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 7.68005pt on input line 121.
+(Font)              scaled to size 7.68005pt on input line 122.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 6.62404pt on input line 121.
-LaTeX Font Info:    Try loading font information for OMS+mdbch on input line 121.
+(Font)              scaled to size 6.62404pt on input line 122.
+LaTeX Font Info:    Try loading font information for OMS+mdbch on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbch/omsmdbch.fd
 File: omsmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OMS/mdbch.
 )
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 11.04007pt on input line 121.
+(Font)              scaled to size 11.04007pt on input line 122.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 121.
+(Font)              scaled to size 7.68005pt on input line 122.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 6.62404pt on input line 121.
-LaTeX Font Info:    Try loading font information for OMX+mdbch on input line 121.
+(Font)              scaled to size 6.62404pt on input line 122.
+LaTeX Font Info:    Try loading font information for OMX+mdbch on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbch/omxmdbch.fd
 File: omxmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OMX/mdbch.
 )
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 11.04007pt on input line 121.
+(Font)              scaled to size 11.04007pt on input line 122.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 121.
+(Font)              scaled to size 7.68005pt on input line 122.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 6.62404pt on input line 121.
+(Font)              scaled to size 6.62404pt on input line 122.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 11.04007pt on input line 121.
+(Font)              scaled to size 11.04007pt on input line 122.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 121.
+(Font)              scaled to size 7.68005pt on input line 122.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 6.62404pt on input line 121.
-LaTeX Font Info:    Try loading font information for MDA+mdbch on input line 121.
+(Font)              scaled to size 6.62404pt on input line 122.
+LaTeX Font Info:    Try loading font information for MDA+mdbch on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbch/mdamdbch.fd
 File: mdamdbch.fd 2013/08/29 Fontinst v1.933 font definitions for MDA/mdbch.
 )
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 11.04007pt on input line 121.
+(Font)              scaled to size 11.04007pt on input line 122.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 121.
+(Font)              scaled to size 7.68005pt on input line 122.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 6.62404pt on input line 121.
-LaTeX Font Info:    Try loading font information for MDB+mdbch on input line 121.
+(Font)              scaled to size 6.62404pt on input line 122.
+LaTeX Font Info:    Try loading font information for MDB+mdbch on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbch/mdbmdbch.fd
 File: mdbmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for MDB/mdbch.
 )
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 11.04007pt on input line 121.
+(Font)              scaled to size 11.04007pt on input line 122.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 121.
+(Font)              scaled to size 7.68005pt on input line 122.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 6.62404pt on input line 121.
-LaTeX Font Info:    Try loading font information for OML+mdput on input line 121.
+(Font)              scaled to size 6.62404pt on input line 122.
+LaTeX Font Info:    Try loading font information for OML+mdput on input line 122.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/omlmdput.fd
 File: omlmdput.fd 2013/08/29 Fontinst v1.933 font definitions for OML/mdput.
 )
 LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
-(Font)              scaled to size 10.81003pt on input line 121.
+(Font)              scaled to size 10.81003pt on input line 122.
 LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
-(Font)              scaled to size 7.52002pt on input line 121.
+(Font)              scaled to size 7.52002pt on input line 122.
 LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
-(Font)              scaled to size 6.48601pt on input line 121.
-LaTeX Font Info:    Try loading font information for TS1+5ch on input line 121.
-LaTeX Font Info:    No file TS15ch.fd. on input line 121.
+(Font)              scaled to size 6.48601pt on input line 122.
+LaTeX Font Info:    Try loading font information for TS1+5ch on input line 122.
+LaTeX Font Info:    No file TS15ch.fd. on input line 122.
 
 
 LaTeX Font Warning: Font shape `TS1/5ch/m/n' undefined
-(Font)              using `TS1/cmr/m/n' instead on input line 121.
+(Font)              using `TS1/cmr/m/n' instead on input line 122.
 
 
 LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <11.5> not available
-(Font)              size <12> substituted on input line 121.
+(Font)              size <12> substituted on input line 122.
 
 LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
-(Font)              scaled to size 12.46802pt on input line 121.
+(Font)              scaled to size 12.46802pt on input line 122.
 LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
-(Font)              scaled to size 8.31201pt on input line 121.
+(Font)              scaled to size 8.31201pt on input line 122.
 LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
-(Font)              scaled to size 7.27301pt on input line 121.
+(Font)              scaled to size 7.27301pt on input line 122.
 
 LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <11.5> not available
-(Font)              size <12> substituted on input line 121.
+(Font)              size <12> substituted on input line 122.
 
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 12.86407pt on input line 121.
+(Font)              scaled to size 12.86407pt on input line 122.
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 8.57605pt on input line 121.
+(Font)              scaled to size 8.57605pt on input line 122.
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 7.50404pt on input line 121.
+(Font)              scaled to size 7.50404pt on input line 122.
 \@TUD@tmp@baselineskip=\skip139
 \@TUD@tmp@parwidth=\skip140
 \TUD@titleboxheight=\skip141
@@ -1879,34 +1879,34 @@ LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
 \TUD@sponsorbox=\box115
 \TUD@tmp@height=\skip155
 \TUD@tmp@depth=\skip156
-LaTeX Font Info:    Try loading font information for T1+5fp on input line 126.
-LaTeX Font Info:    No file T15fp.fd. on input line 126.
+LaTeX Font Info:    Try loading font information for T1+5fp on input line 127.
+LaTeX Font Info:    No file T15fp.fd. on input line 127.
 
 LaTeX Font Warning: Font shape `T1/5fp/mb/n' undefined
-(Font)              using `T1/cmr/m/n' instead on input line 126.
+(Font)              using `T1/cmr/m/n' instead on input line 127.
 
 \@TUD@titlelines=\count375
 
 LaTeX Font Warning: Font shape `T1/5fp/m/n' undefined
-(Font)              using `T1/cmr/m/n' instead on input line 126.
+(Font)              using `T1/cmr/m/n' instead on input line 127.
 
-<tud_logo.pdf, id=115, 157.58875pt x 63.23625pt>
+<tud_logo.pdf, id=47, 157.58875pt x 63.23625pt>
 File: tud_logo.pdf Graphic file (type pdf)
 <use tud_logo.pdf>
-Package pdftex.def Info: tud_logo.pdf  used on input line 126.
+Package pdftex.def Info: tud_logo.pdf  used on input line 127.
 (pdftex.def)             Requested size: 134.92238pt x 62.59605pt.
 File: tud_logo.pdf Graphic file (type pdf)
 <use tud_logo.pdf>
-Package pdftex.def Info: tud_logo.pdf  used on input line 126.
+Package pdftex.def Info: tud_logo.pdf  used on input line 127.
 (pdftex.def)             Requested size: 134.92238pt x 62.59605pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 127.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 127.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 127.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 127.
 [0
 Non-PDF special ignored!
 <special> papersize=597.50787pt,845.04684pt
@@ -1985,190 +1985,6 @@ Overfull \hbox (2.44385pt too wide) in paragraph at lines 125--187
 []$[]$ $[]$ 
  []
 
-) (./chapter/Abstract.tex
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
- [2
-
-]
-chapter 2.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-) (./chapter/Einfuehrung.tex
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
- [3
-
-]
-chapter 3.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-<images/eps/BB_req.pdf, id=181, 548.0475pt x 333.245pt>
-File: images/eps/BB_req.pdf Graphic file (type pdf)
-<use images/eps/BB_req.pdf>
-Package pdftex.def Info: images/eps/BB_req.pdf  used on input line 12.
-(pdftex.def)             Requested size: 348.54475pt x 211.93874pt.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 20.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 20.
-<images/eps/Aufbau.pdf, id=184, 690.58pt x 341.275pt>
-File: images/eps/Aufbau.pdf Graphic file (type pdf)
-<use images/eps/Aufbau.pdf>
-Package pdftex.def Info: images/eps/Aufbau.pdf  used on input line 25.
-(pdftex.def)             Requested size: 348.54475pt x 172.24617pt.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 29.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 29.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 29.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 29.
-[4
-
- <./images/eps/BB_req.pdf>]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 31.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 31.
-<images/eps/Hammerstein.pdf, id=198, 293.095pt x 78.2925pt>
-File: images/eps/Hammerstein.pdf Graphic file (type pdf)
-<use images/eps/Hammerstein.pdf>
-Package pdftex.def Info: images/eps/Hammerstein.pdf  used on input line 36.
-(pdftex.def)             Requested size: 248.96162pt x 66.50352pt.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 48.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 48.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 53.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 53.
-) (./chapter/Vorgehen.tex
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
- [5 <./images/eps/Aufbau.pdf> <./images/eps/Hammerstein.pdf>]
-chapter 4.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 13.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 13.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 19.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 19.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 24.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 24.
-LaTeX Font Info:    Font shape `T1/pcr/m/n' will be
-(Font)              scaled to size 11.924pt on input line 36.
-LaTeX Font Info:    Font shape `T1/pcr/m/n' will be
-(Font)              scaled to size 9.97278pt on input line 36.
-
-Underfull \hbox (badness 10000) in paragraph at lines 33--38
-
- []
-
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 42.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 42.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 42.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 42.
-[6
-
-]
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 77.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1pcr.fd
-File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 71--87
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 71--87
-
- []
-
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 93.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 93.
-) (./chapter/Code-Design.tex
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
- [7]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
- [8]
-chapter 5.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 11.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 11.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 16.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 16.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 20.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 20.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 25.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 25.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 29.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 29.
 ) (./chapter/Optimierung.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
@@ -2178,17 +1994,21 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 6.
- [9
+ [2
 
 ]
-chapter 6.
+chapter 2.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 6.
 
-LaTeX Warning: Citation `----Jens---' on page 10 undefined on input line 17.
+LaTeX Warning: Citation `----Jens---' on page 3 undefined on input line 17.
 
+LaTeX Font Info:    Font shape `T1/pcr/m/n' will be
+(Font)              scaled to size 11.924pt on input line 19.
+LaTeX Font Info:    Font shape `T1/pcr/m/n' will be
+(Font)              scaled to size 9.97278pt on input line 19.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
 (Font)              scaled to size 9.21606pt on input line 19.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
@@ -2347,6 +2167,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
  []
 
 
+LaTeX Warning: Reference `fig:opt.tzeum' on page 3 undefined on input line 58.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 56--60
 
  []
@@ -2359,7 +2182,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 60.
-[10
+[3
 
 ]
 PGFPlots: reading {../csv/opt_spect_ideal_abs.csv}
@@ -2367,30 +2190,29 @@ PGFPlots: reading {../csv/opt_spect_meas_abs.csv}
 PGFPlots: reading {../csv/opt_spect_ideal_angle.csv}
 PGFPlots: reading {../csv/opt_spect_meas_angle.csv}
 
-Overfull \hbox (3.45786pt too wide) in paragraph at lines 127--128
-[][] 
- []
-
-
-Overfull \hbox (2.44385pt too wide) in paragraph at lines 69--131
+Overfull \hbox (2.44385pt too wide) in paragraph at lines 68--133
 []$[]$ $[]$ 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--158
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 154.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 154.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 154.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 154.
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 157--166
 
  []
 
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 158.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 158.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 158.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 158.
-[11] (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 176.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 188.
@@ -2400,7 +2222,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 188.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 188.
- [12]
+ [5]
 PGFPlots: reading {../csv/f_abs_orig.csv}
 PGFPlots: reading {../csv/f_abs_RMS_1.csv}
 PGFPlots: reading {../csv/f_abs_RMS_2.csv}
@@ -2409,56 +2231,180 @@ PGFPlots: reading {../csv/H_RMS_orig.csv}
 PGFPlots: reading {../csv/H_RMS_1.csv}
 PGFPlots: reading {../csv/H_RMS_2.csv}
 PGFPlots: reading {../csv/H_RMS_3.csv}
-
-Overfull \hbox (9.52263pt too wide) in paragraph at lines 234--235
- [] 
- []
-
-
-Overfull \hbox (66.87097pt too wide) in paragraph at lines 277--278
- [] 
- []
-
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 287.
+(babel)             in language  on input line 299.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 287.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 287.
+(babel)             in language  on input line 299.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 287.
+(hyperref)                removing `math shift' on input line 299.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 299.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 299.
+(babel)             in language  on input line 307.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 299.
+(babel)             in language  on input line 307.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 299.
+(babel)             in language  on input line 307.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 299.
-[13]
+(babel)             in language  on input line 307.
+[6]
 
-LaTeX Warning: Reference `Kennlinie' on page 14 undefined on input line 339.
+LaTeX Warning: Reference `eq:Uquest' on page 7 undefined on input line 312.
 
 \figureheight=\skip157
 \figurewidth=\skip158
-(./images/plots/adjust_a_K.tikz) (./images/plots/adjust_a_Uout.tikz)
-Overfull \hbox (2.44385pt too wide) in paragraph at lines 341--359
+(./images/plots/adjust_a_K_bearbeitet.tikz
+LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
+(Font)              scaled to size 5.195pt on input line 1842.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 1842.
+
+LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
+(Font)              scaled to size 5.195pt on input line 1842.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
+(Font)              scaled to size 5.36003pt on input line 1842.
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 1842.
+
+LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
+(Font)              scaled to size 5.36003pt on input line 1842.
+LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 1842.
+LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 1842.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 4.418pt on input line 1842.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 3.76001pt on input line 1842.
+)
+Overfull \hbox (2.56393pt too wide) in paragraph at lines 1844--359
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1844--359
+
+ []
+
+(./images/plots/adjust_a_Uout_bearbeitet.tikz)
+Overfull \hbox (2.44385pt too wide) in paragraph at lines 353--371
 []$[]$ $[]$
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 373.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 373.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 373.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 361.
-[14]) (./chapter/Fazit.tex
+(babel)             in language  on input line 373.
+[7] (./images/plots/K_bearbeitet.tikz)
+Underfull \hbox (badness 10000) in paragraph at lines 584--385
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 584--385
+
+ []
+
+(./images/plots/UinUquest.tikz)
+LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
+(Font)              scaled to size 10.39001pt on input line 392.
+LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
+(Font)              scaled to size 6.23401pt on input line 392.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
+(Font)              scaled to size 10.72006pt on input line 392.
+LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
+(Font)              scaled to size 6.43204pt on input line 392.
+LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
+(Font)              scaled to size 9.98405pt on input line 392.
+LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
+(Font)              scaled to size 6.04803pt on input line 392.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 9.77602pt on input line 392.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 5.92201pt on input line 392.
+
+Overfull \hbox (2.44385pt too wide) in paragraph at lines 381--395
+[]$[]$ $[]$ 
+ []
+
+) (./chapter/Fazit.tex
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 2.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 2.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 2.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 2.
+ [8]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2467,12 +2413,15 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 7.
- [15]
-chapter 7.
+ [9]
+chapter 3.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 7.
+
+LaTeX Warning: Reference `sec:code.mot' on page 10 undefined on input line 9.
+
 ) (./chapter/Ausblick.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
@@ -2482,10 +2431,10 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 7.
- [16
+ [10
 
 ]
-chapter 8.
+chapter 4.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2495,9 +2444,9 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 11.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 44.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 44.
 ) (./chapter/Anhang.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 8.
@@ -2507,7 +2456,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 8.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 8.
- [17
+ [11
 
 ]
 
@@ -2515,44 +2464,44 @@ LaTeX Font Warning: Font shape `T1/5ch/m/it' undefined
 (Font)              using `T1/5ch/m/n' instead on input line 15.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 57.
+(babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 57.
+(babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 57.
+(babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 57.
-[18
+(babel)             in language  on input line 58.
+[12
 
 ]
-chapter 9.
+chapter 5.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 57.
+(babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 57.
+(babel)             in language  on input line 58.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 146.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 146.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 146.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 145.
- [19
+(babel)             in language  on input line 146.
+ [13
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 146.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 146.
  (/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 145.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 145.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 146.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 146.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
+(Font)              up to 1.0pt have occurred.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2565,18 +2514,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 60366 strings out of 492649
- 1453197 string characters out of 6129622
- 2931918 words of memory out of 5000000
- 63161 multiletter control sequences out of 15000+600000
- 636631 words of font info for 198 fonts, out of 8000000 for 9000
+ 60359 strings out of 492649
+ 1453045 string characters out of 6129622
+ 3184323 words of memory out of 5000000
+ 63179 multiletter control sequences out of 15000+600000
+ 667454 words of font info for 251 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,22n,136p,10434b,3000s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.pdf (20 pages, 466401 bytes).
+ 78i,22n,136p,10434b,3015s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.pdf (14 pages, 443238 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 355 compressed objects within 4 object streams
- 88 named destinations out of 1000 (max. 500000)
- 261 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
 
