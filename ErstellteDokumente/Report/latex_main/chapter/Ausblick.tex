@@ -48,7 +48,10 @@ Auf den Ergebnissen aus \nameref{chap:opt} aufbauend, verbleiben eine Reihe von 
 	\item	Nach welchem Qualitätsmerkmal wird das Signal bewertet und wie wirkt sich dies auf den Algorithmus aus?
 	
 	\item	Gibt es eine sinnvolle Abbruchbedingung, mit der die Iteration versehen werden sollte? Etwa, dass sich die Qualität im Vergleich zu den vorherigen Iterationen nicht mehr mit ähnlicher Rate verbessert hat? Der Trade-Off liegt zwischen Laufzeit und Signal-Qualität.
-
+	
+	\item	Wie bestimmt man die Grenzen, in denen $K$ genutzt werden kann? Wie kann man garantieren, dass $K$ in den Bereichen, aus denen die Daten zur Berechnung von $a_n$ benutzten werden, bijektiv ist?
+	
+	\item	Gibt es eine Möglichkeit die Grenzen von $K$ bei der Optimierung zu erweitern? Ein möglicher Indikator: Kann man die Rückgabe von \lstinline{numpy.linalg.lstsq(LGS)} aus der Berechnung von $a_n$ nutzen, um eine Aussage über die Abweichung der Werte zu treffen.
 \end{enumerate}
 
 

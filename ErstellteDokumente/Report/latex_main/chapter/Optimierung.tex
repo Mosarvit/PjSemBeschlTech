@@ -298,7 +298,7 @@ Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ----
 
 \section{Optimierung der nichtlinearen Kennlinie $K$}
 \label{sec:opt.K}
-Der Unterschied zur Optimierung von $\Hcompl$ ist, dass diese Optimierung im Zeitbereich statt findet. Deshalb kann \ref{eq:opt.relFehler} zu
+Der Unterschied zur Optimierung von $\Hcompl$ ist, dass diese Optimierung im Zeitbereich statt findet. Deshalb kann \eqref{eq:opt.relFehler} zu
 \begin{align}
 	\label{eq:opt.deltaUquest}
 	\Delta \Uquest \oft = \Uquest_{, \mathrm{meas}} \oft - \Uquest_{, \mathrm{ideal}} \oft
@@ -309,7 +309,7 @@ geändert werden. Bei den Funktionen $\Uquest_{, \mathrm{meas}} \oft$ und $\Uque
 \begin{align}
 	\Delta \Uquest \oft = \sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n	
 \end{align}
-Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar wie schon die Berechnung der Koeffizienten $a_n$ in -Gleichung- \ref{eq:Uquest} siehe ---Paper Kerstin---. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Mit der Potenzreihe aus -Gleichung- \ref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
+Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar wie schon die Berechnung der Koeffizienten $a_n$ in \eqref{eq:Uquest} siehe \cite{harzheim}. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Mit der Potenzreihe aus  \eqref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
 \begin{align}
 	\left( 
 	\begin{matrix}
@@ -346,16 +346,16 @@ Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$.
 
 \subsubsection*{Erste Ergebnisse}
 \label{subsubsec:opt.adjusta.results}
-Für die Berechnung der ersten Kennlinie $K_0$ wurde das ideal Ausgangssignal $\Uout_{, \mathrm{ideal}}$ über $\Hcompl^{-1}$ zurückgerechnet und als Eingangssignal verwendet $\Uin_{, \mathrm{ideal}} = \Uquest_{, \mathrm{ideal}}$. Dabei wurde $V_{PP} = \SI{600}{\mV}$ gesetzt, um $K_0$ in einen größeren Bereich berechnen zu können.\\
-Wenn man jetzt $\Uquest_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{600}{\mV}$ über $K_0$ zurückrechnet, um das erste nichtlinear vorverzerrtes Eingangsignal zu erhalten, so stellt man fest, dass die Grenzen, in denen $K_0$ invertiert werden kann, zu klein sind. Wenn also $\Uquest_{, \mathrm{ideal}}$ über die Grenzen von $K_0$ geht, so wäre ein möglicher Ansatz $V_{PP}$ auf den maximal von $K_0$ zulässigen Wert zu setzen.\\
-Als andere Möglichkeit die Kennlinie anzupassen könnte man $V_{PP}$ von $\Uquest_{, \mathrm{ideal}}$ verkleinern siehe \figref{Kennlinie}
+Für die Berechnung der ersten Kennlinie $K_0$ wurde das ideal Ausgangssignal $\Uout_{, \mathrm{ideal}}$ über $\Hcompl^{-1}$ zurückgerechnet und als Eingangssignal verwendet $\Uin_{, \mathrm{initial }} = \Uquest_{, \mathrm{ideal}}$. Dabei wurde $V_{PP} = \SI{600}{\mV}$ gesetzt, um $K_0$ in einen größeren Bereich berechnen zu können.\\
+Wenn man jetzt $\Uquest_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{600}{\mV}$ über $K_0$ zurückrechnet, um das erste nichtlinear vorverzerrte Eingangssignal zu erhalten, so stellt man fest, dass die Grenzen, in denen $K_0$ invertiert werden kann, zu klein sind. Wenn also $\Uquest_{, \mathrm{ideal}}$ über die Grenzen von $K_0$ geht, so wäre ein möglicher Ansatz $V_{PP}$ auf den maximal von $K_0$ zulässigen Wert zu setzen.\\
+Als andere Möglichkeit die Kennlinie anzupassen könnte man $V_{PP}$ von $\Uquest_{, \mathrm{ideal}}$ verkleinern siehe \figref{fig:K}
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
     \newlength\figureheight
 	\newlength\figurewidth
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-	\input{images/plots/adjust_a_K.tikz}	
+	\input{images/plots/adjust_a_K_bearbeitet.tikz}	
 \subcaption{Kennlinie}
 	\label{fig:K}
 \end{subfigure}
@@ -363,15 +363,37 @@ Als andere Möglichkeit die Kennlinie anzupassen könnte man $V_{PP}$ von $\Uque
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
     %\input{images/plots/adjust_a_Uin.tikz}
-    \input{images/plots/adjust_a_Uout.tikz}
+    \input{images/plots/adjust_a_Uout_bearbeitet.tikz}
 \subcaption{Ausgangsspannung}
 	\label{fig:Uout}
 \end{subfigure}
 \label{fig:opt.Kennlinie}
 \caption{Anpassung von $K$}
 \end{figure}
-In \figref{fig:K} ist $K_0$ die initial Kennlinie und $K_1$ ist die Kennlinie nach der ersten Anpassung. Dabei wurde $\Uquest_{, \mathrm{ideal}}$ so berechnet, dass für $\Uout_{, \mathrm{ideal}}$ gilt $V_{PP} = \SI{1,5}{\V}$
-\subsubsection*{-Probleme mit der Kennlinie-}
+In \figref{fig:K} ist $K_0$ die initial Kennlinie und $K_1$ ist die Kennlinie nach der ersten Anpassung und $K_2$ nach der 2. Anpassung. Dabei wurde $\Uquest_{, \mathrm{ideal}}$ so berechnet, dass für $\Uout_{, \mathrm{ideal}}$ gilt $V_{PP} = \SI{1,5}{\V}$. Die Grenzen sind in \figref{fig:K} angezeigt.
+\subsubsection*{Grenzen der initial Kennlinie}
 \label{subsubsec:opt.adjusta.problem}
--Hier wird die Problematik mit der Amplitude nochmal aufgegriffen und unsere Lösungsansätze mit Plots verdeutlicht-
+-Hier wird die Problematik mit der Amplitude nochmal aufgegriffen und unsere Lösungsansätze mit Plots verdeutlicht-\\
+In \figref{fig:UinUquest} sind die Spannungen eingezeichnet mit denen $K_0$ berechnet wurde. Dabei gilt für $\Uin = \Uquest_{,\mathrm{ideal}}$, was sich durch $\Uout_{,\mathrm{ideal}}$ mit $V_{PP} = \SI{3}{\V}$ berechnen lässt. Die Spannung $\Uquest_{,1}$ wurde aus dem gemessenen $\Uout_{,\mathrm{meas}}$ berechnet.\\
+Das eingezeichnete Maximum von $\Uquest$ in \figref{fig:K0} liegt über der zulässigen Grenze von $K_0$, deshalb kann damit kein vorverzerrtes Signal berechnet werden.
+-Erläuterung des Problems mit der least square method: Grenzen bekommen nicht genug Gewichtung, um genau berechnet zu werden. Und damit nicht garantiert im bijektiven Bereich liegen-
+
+\begin{figure}[H]
+\begin{subfigure}{0.5 \textwidth}
+	\setlength\figureheight{8cm}
+	\setlength\figurewidth{8cm}
+	\input{images/plots/K_bearbeitet.tikz}	
+\subcaption{Kennlinie}
+	\label{fig:K0}
+\end{subfigure}
+\begin{subfigure}{0.5 \textwidth}
+	\setlength\figureheight{8cm}
+	\setlength\figurewidth{8cm}
+    \input{images/plots/UinUquest.tikz}
+\subcaption{Berechnung von $K$}
+	\label{fig:UinUquest}
+\end{subfigure}
+\caption{Nichtlineare Vorverzerrung}
+\label{fig:Amplitudenproblem}
+\end{figure}
 \end{document}
