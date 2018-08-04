@@ -89,12 +89,12 @@ def adjust_a_plot_Uout():
     Uout_1 = read_in_signal(data_path + 'Uout_measured_1.csv', delimiter=',')
     Uout_2 = read_in_signal(data_path + 'Uout_measured_2.csv', delimiter=',')
     # plt.plot([t * 1e6 for t in Uout_1.time[::4]], Uout_1.in_mV[::4], [t * 1e6 for t in Uout_2.time[::4]],Uout_2.in_mV[::4])
-    plt.plot([t * 1e6 for t in Uout_1.time[::50]], Uout_1.in_mV[::50], [t * 1e6 for t in Uout_2.time[::50]], Uout_2.in_mV[::50])
+    plt.plot([t * 1e6 for t in Uout_1.time[::100]], Uout_1.in_mV[::100], [t * 1e6 for t in Uout_2.time[::100]], Uout_2.in_mV[::100])
     plt.legend(['$U_{out,0}$', '$U_{out,1}$', '$U_{out,2}$'])
     plt.xlabel('$t$ in \si{\\micro \\second}')
     plt.ylabel('$U_{out}$ in \si{\\milli \\volt}')
 
-    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_Uout.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_Uout.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 
 def adjust_a_plot_Uquest():
@@ -123,16 +123,16 @@ def adjust_a_plot_Uquest():
     # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/K.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 
-    plt.plot([t * 1e6 for t in Uquest.time[::50]], Uquest.in_mV[::50], [t * 1e6 for t in Uin.time[::50]], Uin.in_mV[::50])
+    plt.plot([t * 1e6 for t in Uquest.time[::100]], Uquest.in_mV[::100], [t * 1e6 for t in Uin.time[::100]], Uin.in_mV[::100])
     plt.legend(['$U_{?,1}$', '$U_{in}$'])
     plt.xlabel('$t$ in \si{\\micro \\second}')
     plt.ylabel('$U$ in \si{\\milli \\volt}')
     plt.ylim((-400,400))
-    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 # adjust_a_plot_Uquest()
 # adjust_a_plot_Uin_K()
 # adjust_a_plot_Uin() #sinnlos
-adjust_a_plot_K()
-# adjust_a_plot_Uout()
+# adjust_a_plot_K()
+adjust_a_plot_Uout()
 

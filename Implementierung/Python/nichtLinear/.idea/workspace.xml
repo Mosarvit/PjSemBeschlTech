@@ -8,7 +8,10 @@
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/K_bearbeitet.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/K_bearbeitet.tikz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot_tikz.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_tikz.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +26,8 @@
       <file leaf-file-name="plot_tikz.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot_tikz.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+            <state relative-caret-position="474">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
             </state>
           </provider>
         </entry>
@@ -648,8 +651,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot_tikz.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+        <state relative-caret-position="474">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
         </state>
       </provider>
     </entry>
