@@ -25,8 +25,8 @@ Input:  fmax          ------  max frequency of interest
 """
 
 
-def compute(fmax, Vpp, bits=10, writeAWG=True, showPlots=0, createCSV=1, \
-        formatOutput=1):
+def get_H(fmax, Vpp, bits=10, writeAWG=True, showPlots=0, createCSV=1, \
+          formatOutput=1):
     import visa
     from helpers import MLBS
     import time

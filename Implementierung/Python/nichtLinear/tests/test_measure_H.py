@@ -20,7 +20,7 @@ from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from settings import project_path, mock_data_path
 from settings import mock_system
-from blocks.measure_H import measure_H
+from blocks.determine_H import determine_H
 from classes.transfer_function_class import transfer_function_class
 from helpers.csv_helper import read_in_transfer_function_old_convention, read_in_signal, read_in_transfer_function_complex
 from helpers.plot_helper import plot_2_transfer_functions, plot_2_signals, plot_transfer_function
@@ -41,7 +41,7 @@ class test_measure_H(TestCase):
     def test_measure_H(self):
 
         H_ideal = mock_system.H
-        H_computed = measure_H()
+        H_computed = determine_H()
 
         err = linalg.norm(H_computed.c - H_ideal.c) / linalg.norm(H_ideal.c)
 

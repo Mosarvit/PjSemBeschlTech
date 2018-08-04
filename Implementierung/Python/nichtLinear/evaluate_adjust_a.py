@@ -2,7 +2,7 @@ from blocks.compute_K_from_a import compute_K_from_a
 from blocks.determine_a import determine_a
 from blocks.generate_BBsignal import generate_BBsignal
 from blocks.loop_adjust_a import loop_adjust_a
-from blocks.measure_H import measure_H
+from blocks.determine_H import determine_H
 from helpers.csv_helper import save_2cols
 from helpers.csv_helper import save_transfer_function, save_signal, save_a
 from save_results import save, save_text
@@ -29,7 +29,7 @@ def evaluate_adjust_a(num_iters = 1, verbosity = 0) :
 
     save_signal(Uout_ideal, data_directory+'Uout_ideal.csv')
 
-    H_0 = measure_H(loadCSV=1, saveCSV=1)
+    H_0 = determine_H(loadCSV=1, saveCSV=1)
 
     save_transfer_function(H=H_0, filename=data_directory + 'H_initial.csv')
 

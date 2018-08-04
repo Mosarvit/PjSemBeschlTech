@@ -8,7 +8,7 @@ from settings import use_mock_system, project_path, show_plots, mock_system
 from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention, save_transfer_function
 from helpers.plot_helper import plot_transfer_function
 
-def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
+def determine_H(loadCSV=0, saveCSV=0, verbosity=0):
 
     """
 
@@ -28,7 +28,7 @@ def measure_H(loadCSV=0, saveCSV=0, verbosity=0):
 
         fmax = 80e6
         vpp = 40e-3
-        f, Ha, Hph = get_H.compute(fmax, vpp, bits=9)
+        f, Ha, Hph = get_H.get_H(fmax, vpp, bits=9)
 
         H = transfer_function_class(f)
         H.a = Ha

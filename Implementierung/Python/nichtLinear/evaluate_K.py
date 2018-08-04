@@ -3,7 +3,7 @@ from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
-from blocks.measure_H import measure_H
+from blocks.determine_H import determine_H
 from blocks.measure_Uout import measure_Uout
 from helpers.signal_helper import convert_V_to_mV
 from helpers.signal_helper import convert_mV_to_V
@@ -52,7 +52,7 @@ def evaluate_K() :
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max)
 
-    H = measure_H(loadCSV=1, saveCSV=1)
+    H = determine_H(loadCSV=1, saveCSV=1)
 
     save_transfer_function(H=H, directory=data_directory, id = '0' )
 
