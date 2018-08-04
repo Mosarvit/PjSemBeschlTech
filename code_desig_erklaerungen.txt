@@ -1,0 +1,61 @@
+warum evaluate/compute/determine .. als Namen gewählt?
+
+compute_: Eine größe wird aus einer oder mehreren anderen größen berechnet. Es wird lediglich zwischen etwas berechnet, es findet keine Kommunikation mit den geraetens statt
+adjust_: steht für einen iterationsschritt zur optimierung einer größe, wie z.B. der übertragungsfunktion H
+determine_: es findet kommunikaiton mit den Geräten statt und daraus wird eine größe bestimmt, wie z.B. die Übertragungsfunktion H
+generate_: ein datensatz wird ertellt, wie z.B. das ideale Ausgangssignal
+get_: wurde als prefix nur deswegen beibehalten, um die herkunft von get_H aus dem uns zur verfügung gestellten getH.py zu unterstreichen
+loop_: steht für die Iterationsschleife der Optimierung. Dort wird beispielsweise mehrmals das enstprechende adjust_ ausgeführt
+measure_: eine Größe wird gemessen, dafür findet kommunikation mit den Geräten statt. Bei uns wird nur Uout gemessen
+evaluate_: diese routinen können auch als eveluierung eines use case([1], chapter 4-5-4) angesehen warden. Hier wird der use case ausgeführt und das ergebnis mit ideal werden verglichen und/oder geplottet. 
+
+Ordnerstruktur
+
+blocks: hier sind alle programmblöcke gespeichert. Jeder der Blöcke kann als die implementierung eines abstrakten Schritts angesehen werden. Die Blöcke sollten im idealen so getrennt werden, dass aus der kombination bestimmter Blöcke der Benutzer jeden use case zusammenstellen kann. 
+helpers: hier sind alle hilfsfunktionen[2] gespeichert
+tests: hier sind alle Klassen, die zu den unit tests gehören, gespeichert
+tools: die uns zur verfügung gestellten tools
+data: hier werden die ergebnisse gespeichert
+classes: alle erstellten ADTs(Abstact Data Types) ([3], chapter 6.1.)
+new_DSO: (wird wahrscheinlich entfernt)
+Bilder: (ich weiss gar nicht, woher die Bilder kommen, wird es genutzt?)
+setting.py: hier sind die Einstellungen gespeichert, wie z.B. auch die Pfade zu den Datenordnern und Technische Spezifikationen der Geräte
+
+ADTs
+
+Manche übliche Datensätze, wie z.B. die Übetragungsfunktion und das Signal, wurden als eigene abstrakte Datentypen ( ADT, [3], chapter 6.1.) implemntiert. Allgemeine Vorteile davon sind folgende:
+ - relevante Funktionalitäten der Datentypen wenden alle in der jeweiligen Klasse implementiert. 
+ - typechecking wird emöglicht: obwohl bei Python die Typisierung dynamisch ist, kann die Zugehörigkeite der Übergabeparameter zu einer bestimment Klasse abgefragt werden. So können die Übergabeparamter der Funktionen am Anfang überprüft werden une evtl. eine sinnvolle Fehlermedlung ausgeben. Ausserdem können generische Funktionen besser erstellt werden. Ein Beispiel in unserem Code ist die Hilfsfunktion calculate_error(value_computed, value_ideal), die den Fehler verschieder Datentypen verschieden berechent.  
+Vorteile für signal_class:
+ - das Originalsignal wir immer abgespeichert. Falls später beim Signal die Samplerate geändert wird, wird immer vom Originalsignal interpoliert. So wird die Fortpflanunnzung der Interpolationsfehelern vermieden.  
+ - Es können bestimmte manipulationen des Signal-Datensatzes ausgeschlossen werden. Beispiel: wenn das Signal als array mit 2 Spalten für Spannung und Zeit gespeichert wird und der Programmierer die Amplitude des Signals verdoppeln möchte und es einfach als doppeltes_signal= signal*2 implentiert, verändert er so versehentlich auch den Zeitvektor. Der dabei entstehende Fehler ist besonders schwer zu debuggen: der Compiler sieht ihn natürlich nicht und erst bei der Evalueirung des Code fallen dann unstimmigkeiten auf, die dann erst nach evtl. tiefergehender Codeanalyse zur richtigen Zeile führen. 
+
+TDD
+
+Eine gute Auflistung der pros und cons von tdd findet sich unter [4]
+Folgende Vorteile waren in unserem Fall besonders relevant:
+ - eine der Voraussetzung, die an uns gestellt wurde ist dass der Code modular aufgebaut ist. Genau das ist etwas, TDD üblicherweise zwingt.
+ - Unit tests stellen eine Arte Dokumentation der Funktionalität dar. Wer später an dem Code arbeitet und sich fragt wofür genau das modul gut ist und in welchem fall welche parameter übergeben werden, kann sich einfach den Unit test des Moduls ansehen
+Refactoring wird ermöglicht. Beispielsweise, als die signal_class eingeführt wurde, haben die Unit tests geholfen alle Stellen im Code zu finden, für die diese änderung relevant war. Dabei wurden etliche Logikfehler enddeckt, die sonst erst bei der eigentlichen Nutztung der Software aufgefallen wären.
+Der größte Teil von Debuggen konnte ohne die Geräte von Zuhause aus durchgeführt werden.  
+ - Manche unsere Unit tests reproduzieren echte messvorgänge. Dadurch sorgen sie, dass Progrmamfehler, die beim Messen aufgefallen, nicht nur gelöst werden, sondern in der Form nie wieder auftreten.
+Sorgt dafür, dass mehrere Teammitglieder änderungen im abgekapselten teil des Codes vornehmen können ohne dass sie den rest des Codes komplett verstehen. Sie haben die Zuversicht, dass solange alle unit tests bestanden sind, das gesamte programm keinen schaden getragen hat. 
+Die Arbeit konnte in Stücke aufgeteilt werden, dessen Ziele sehr klar definiert sind, in der Form einer Arte “Hausaufgabe”, wie z.B. “Sorge dafür, dass der unit test xy bestanden wird”
+ - Es wurde ermöglicht, die Ergebnisse unseres Codes mit den ergebnissen des zur verfügung gestellten Matlab-Codes zu vergleichen und unseren Code solange zu verändern, bis dier Ergebnisse gleich waren.
+
+Mock-System
+
+Das von uns erstellte mock_system stellt ein typische beispiel für einen mock object [5] dar. Es simuliert also das  getestete System. Da wir das Hammerstein Modell als basis nehmen, simuliert auch das Mock System das gemessene System nach diesem Modell: das Signal geht erst durch eine nichtlineare Verzerrung, dann durch eine lineare. Die nichtlineare Verzerrung wird durch das anwenden der Lookup-Tabelle K auf das Eingangssignal simuliert. Dabei wird ein K so erstellt, dass das System bis zu einer bestimmtnen Vpp linear ist und erst bei höheren Vpp eine nichtlinearen Kurve folgt. Die lineare Verzerrung wird durch das anweden der Übertragungsfunktion H simuliert. Dabei entand das H des Mocksystems aus einer echten Messung am System. 
+Die wichtigsten Vorteile, die das Mocksystem für uns sind:
+ - System tests [6] wurden ermöglicht: ohne das Mocksystem konnten die module, die mit den Geräten kommuniziert haben, also read_from_DSO und/oder write_to_AWG aufgerufen haben, nicht getestet werden. Da es mit der Zeit immer mehr solche Blöcke gab, erschien der Aufwand, ein Mocksystem zu imlementieren, gerechtfertigt. 
+ - Unter der Annahme, dass das gemessene System mit dem Hammerstein Modell ausreichend genau beschrieben werden kann, folgt aus der Konvergenz der Optmierungsschleifen am echten System die Konvergenz auch an dem Mocksystem. Somit kann das Erreichen der Konvergenz am Mocksystem als notwendige Bedingung als erstes Ziel genommen werden. Da wir die Idealparameter K und H des Mocksystems kennen, können wir sogar feststellen, ob die Optimierungsschleife gegen den richtigen Wert konvergiert. In unserem Fall has Mocksystem tatsächlich geholfen, einen Logikfehler im Code, der dazu geführt hat, dass die Optimierungsschleifen nicht konvergieren,  im Voraus zu entdecken.
+ - Der Prozess des Erstellens des Mocksystems hilft uns, das System und die Gerätekommunikation besser zu verstehen. Letztendlich, wenn man das Veralten des Systems richtig nachbilden kann, kann man auch davon ausgehen, dass man es ausreichend genug versteht. 
+ - Zusammenfassend kann dank des Mocksystems der Größte Teil des Codes aus Entfernung debugged werden und das Refactoring und das Optimieren des Codes kann von jemenden zugeteilt werden, der selten oder gar keinen Zugriff auf das echte System hat. 
+
+
+[1] Software Engineering 9th edition I. Sommerville
+[2] https://en.wikipedia.org/wiki/Helper_class
+[3] Code Complete 2 by Steve McConnell
+[4] https://www.testingexcellence.com/pros-cons-test-driven-development/
+[5] https://en.wikipedia.org/wiki/Mock_object
+[6] https://en.wikipedia.org/wiki/System_testing
