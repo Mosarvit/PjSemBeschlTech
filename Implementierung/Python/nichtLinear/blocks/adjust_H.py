@@ -55,7 +55,6 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     if verbosity:
         delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
         delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
-        fig = plt.figure()
         # Plot voltages
         plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
         plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
@@ -189,7 +188,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
   
 
     if verbosity:
-        fig = plt.figure(1)
+
         # Plot Magnitudes:
             
             #plot gsi
