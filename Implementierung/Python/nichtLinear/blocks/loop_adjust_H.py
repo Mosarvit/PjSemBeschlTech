@@ -35,7 +35,7 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
         # compute new Uin
         Uquest = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
 
-        Uin = compute_Uin_from_Uquest(Uquest=Uquest, K_Uin_to_Uquest=K)
+        Uin, Uquest = compute_Uin_from_Uquest(Uquest=Uquest, K_Uin_to_Uquest=K)
 
 
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)

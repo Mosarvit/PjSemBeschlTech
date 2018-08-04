@@ -37,7 +37,7 @@ def evaluate_with_BBsignal(num_iters = 1) :
 
     Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
 
-    Uin = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K, verbosity=0)
+    Uin, Uquest_ideal = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K, verbosity=0)
 
     Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_AWG_max=sample_rate_AWG_max, loadCSV=0, saveCSV=0, id='2', verbosity=0)
 

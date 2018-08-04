@@ -1,7 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ac804e9-0a39-4f9b-9cc7-9c2a54e98b3a" name="Default" comment="" />
+    <list default="true" id="7ac804e9-0a39-4f9b-9cc7-9c2a54e98b3a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nichtLinear.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nichtLinear.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/loop_adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/loop_adjust_H.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/loop_adjust_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/loop_adjust_a.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate_K.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_K.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate_with_BBsignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_with_BBsignal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/apply_K.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/apply_K.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_10.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_10.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_4.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_5.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_5.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_6.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_6.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_7.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_7.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_8.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_8.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_9.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_9.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungFBereich_Uout_measured_9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_10.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_10.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_4.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_5.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_5.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_6.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_6.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_7.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_7.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_8.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_8.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_9.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_9.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_1P_Uout_measured_9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_10.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_10.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_4.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_5.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_5.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_6.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_6.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_7.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_7.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_8.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_8.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_9.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_9.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bilder/AbbildungTD_Uout_measured_9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/H_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/K_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/K_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_awg_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uin_measured_uncut_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uout_measured_uncut_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/Uquest_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_H/quality_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/H_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/H_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/K_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_awg_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uin_measured_uncut_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_ideal.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_ideal.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uout_measured_uncut_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_ideal_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/Uquest_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_initial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/a_initial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_10.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_data/mock_results/adjust_a/quality_9.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/mock_system/mock_system_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/mock_system/mock_system_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,64 +235,45 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="test_loop_adjust_a.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_loop_adjust_a.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="165">
+              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_compute_Uin_from_Uquest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="41" column="74" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="74" />
               <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="little_file.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/little_file.py">
+      <file leaf-file-name="apply_K.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/helpers/apply_K.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="188">
+              <caret line="100" column="18" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#74#105#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plot_tikz.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plot_tikz.py">
+      <file leaf-file-name="singlesine_SineRef.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/singlesine_SineRef.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2210">
-              <caret line="130" column="118" selection-start-line="130" selection-start-column="118" selection-end-line="130" selection-end-column="118" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="plot_results.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plot_results.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="determine_H.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/determine_H.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="15" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get_H.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="27" column="9" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="9" />
+            <state relative-caret-position="822">
+              <caret line="117" column="12" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -76,8 +281,8 @@
       <file leaf-file-name="loop_adjust_a.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
+            <state relative-caret-position="568">
+              <caret line="53" column="86" selection-start-line="53" selection-start-column="86" selection-end-line="53" selection-end-column="86" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -85,32 +290,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate_adjust_a.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+      <file leaf-file-name="loop_adjust_H.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_H.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="77">
+              <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apply_K.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/apply_K.py">
+      <file leaf-file-name="mock_system_class.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/mock_system/mock_system_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_tezts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/all_tezts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="248">
+              <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -121,6 +314,8 @@
     <findStrings>
       <find>set_ideal_values=0</find>
       <find>set_ideal_values=1</find>
+      <find>print</find>
+      <find>colorama</find>
     </findStrings>
     <replaceStrings>
       <replace>set_ideal_values=1</replace>
@@ -137,14 +332,20 @@
         <option value="$PROJECT_DIR$/blocks/determine_H.py" />
         <option value="$PROJECT_DIR$/blocks/get_H.py" />
         <option value="$PROJECT_DIR$/tests/test_loop_adjust_a.py" />
+        <option value="$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py" />
+        <option value="$PROJECT_DIR$/tests/mock_system/mock_system_class.py" />
+        <option value="$PROJECT_DIR$/blocks/loop_adjust_H.py" />
+        <option value="$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py" />
+        <option value="$PROJECT_DIR$/evaluate_with_BBsignal.py" />
+        <option value="$PROJECT_DIR$/evaluate_K.py" />
+        <option value="$PROJECT_DIR$/blocks/loop_adjust_a.py" />
+        <option value="$PROJECT_DIR$/helpers/apply_K.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1537" />
-    <option name="y" value="-8" />
-    <option name="width" value="979" />
-    <option name="height" value="1040" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -161,6 +362,32 @@
             <path>
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="blocks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="mock_system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -193,8 +420,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.all_tezts (1)">
-    <configuration name="all_tezts (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our_new_K">
+    <configuration name="all_tezts" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -212,43 +439,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="all_tezts" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="nichtLinear" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\GitHub\PjSemBeschlTech\Implementierung\Python\nichtLinear\tests\all_tezts.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="plot_tikz" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="nichtLinear" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plot_tikz.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="nichtLinear" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -258,21 +449,62 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68&quot;" />
+      <option name="_new_target" value="&quot;test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our_new_K" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="nichtLinear" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our_new_K&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="nichtLinear" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest_new_K" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="nichtLinear" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest_new_K&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <list>
-      <item itemvalue="Python.plot_tikz" />
+      <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" />
+      <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest_new_K" />
+      <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" />
+      <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our_new_K" />
       <item itemvalue="Python.all_tezts" />
-      <item itemvalue="Python tests.Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" />
-      <item itemvalue="Python.all_tezts (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.all_tezts (1)" />
-        <item itemvalue="Python tests.Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" />
+        <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our_new_K" />
+        <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" />
         <item itemvalue="Python.all_tezts" />
-        <item itemvalue="Python.plot_tikz" />
+        <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest_new_K" />
+        <item itemvalue="Python tests.Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" />
       </list>
     </recent_temporary>
   </component>
@@ -290,60 +522,67 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_loop_adjust_a_test_loop_adjust_a_test_loop_adjust_a_68 - 2018.08.04 at 00h 10m 13s.xml">
-      <configuration name="Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 49m 46s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_loop_adjust_a_test_loop_adjust_a_test_loop_adjust_a_68 - 2018.08.04 at 00h 10m 27s.xml">
-      <configuration name="Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 52m 57s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_with_higher_Uquest - 2018.08.04 at 00h 14m 12s.xml">
-      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 53m 18s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_with_higher_Uquest - 2018.08.04 at 00h 14m 24s.xml">
-      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 54m 13s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_with_higher_Uquest - 2018.08.04 at 00h 14m 36s.xml">
-      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 56m 20s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_with_higher_Uquest - 2018.08.04 at 00h 14m 52s.xml">
-      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_with_higher_Uquest" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 56m 34s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_loop_adjust_a_test_loop_adjust_a_test_loop_adjust_a_68 - 2018.08.04 at 00h 17m 49s.xml">
-      <configuration name="Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 56m 48s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_loop_adjust_a_test_loop_adjust_a_test_loop_adjust_a_68 - 2018.08.04 at 00h 18m 20s.xml">
-      <configuration name="Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 57m 21s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_loop_adjust_a_test_loop_adjust_a_test_loop_adjust_a_68 - 2018.08.04 at 00h 40m 07s.xml">
-      <configuration name="Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest - 2018.08.04 at 10h 57m 52s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_loop_adjust_a_test_loop_adjust_a_test_loop_adjust_a_68 - 2018.08.04 at 01h 26m 37s.xml">
-      <configuration name="Unittests for test_loop_adjust_a.test_loop_adjust_a.test_loop_adjust_a_68" configurationId="tests" />
+    <history-entry file="Unittests_for_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_test_compute_Uin_from_Uquest_our_new_K - 2018.08.04 at 11h 02m 25s.xml">
+      <configuration name="Unittests for test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest.test_compute_Uin_from_Uquest_our_new_K" configurationId="tests" />
     </history-entry>
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2013261" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32923076" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32923076" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32923076" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32820514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.24442083" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32923076" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39076924" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -351,10 +590,80 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="15" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/adjust_a_19_07_2018-13_57_54/result.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/adjust_a_19_07_2018-13_57_54/Uquest_ideal_1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2847" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/adjust_a_19_07_2018-13_57_54/Uin_awg_4.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2847" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/determine_H.py" />
+    <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/all_tezts.py" />
+    <entry file="file://$PROJECT_DIR$/little_file.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_tikz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1845">
+          <caret line="130" column="118" selection-start-line="130" selection-start-column="118" selection-end-line="130" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="101" column="65" lean-forward="true" selection-start-line="101" selection-start-column="65" selection-end-line="101" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_loop_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/plot_helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -371,29 +680,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_set_sample_rate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-57" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_adjust_H.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3366">
           <caret line="228" column="79" selection-start-line="228" selection-start-column="79" selection-end-line="228" selection-end-column="79" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -401,28 +694,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="40" column="88" selection-start-line="40" selection-start-column="88" selection-end-line="40" selection-end-column="88" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_generate_BBsignal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-57" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_measure_H.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="49" column="81" selection-start-line="49" selection-start-column="81" selection-end-line="49" selection-end-column="81" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -430,9 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="61" column="97" selection-start-line="61" selection-start-column="97" selection-end-line="61" selection-end-column="97" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -440,9 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
           <caret line="50" column="104" selection-start-line="50" selection-start-column="104" selection-end-line="50" selection-end-column="104" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -450,9 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
           <caret line="67" column="94" selection-start-line="67" selection-start-column="94" selection-end-line="67" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,41 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
           <caret line="39" column="89" selection-start-line="39" selection-start-column="89" selection-end-line="39" selection-end-column="89" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mock_data/unit_test_data/test_evaluate_adjust_a/H_0.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mock_data/unit_test_data/test_loop_adjust_a_68/K_68.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mock_data/unit_test_data/test_loop_adjust_a_68/H_initial.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mock_data/unit_test_data/test_loop_adjust_a_68/a_68.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_evaluate_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="128" column="62" selection-start-line="128" selection-start-column="62" selection-end-line="128" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -502,9 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#95#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -512,50 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="137" selection-start-line="137" selection-end-line="137" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_evaluate_adjust_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/apply_K.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -580,57 +772,167 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/K_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocks/get_H.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="27" column="9" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/all_tezts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_loop_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/little_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plot_tikz.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
+        <state relative-caret-position="564">
           <caret line="130" column="118" selection-start-line="130" selection-start-column="118" selection-end-line="130" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/little_file.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_loop_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/determine_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/compute_K_from_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-753">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_evaluate_adjust_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_evaluate_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/all_tezts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_K.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_with_BBsignal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_H.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="53" column="86" selection-start-line="53" selection-start-column="86" selection-end-line="53" selection-end-column="86" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_results.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/tests/mock_system/mock_system_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/singlesine_SineRef.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="822">
+          <caret line="117" column="12" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="41" column="74" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/apply_K.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="100" column="18" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
+          <folding>
+            <element signature="e#74#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

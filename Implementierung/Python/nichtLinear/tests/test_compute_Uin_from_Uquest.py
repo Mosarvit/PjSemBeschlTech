@@ -34,7 +34,7 @@ class test_compute_Uin_from_Uquest(TestCase):
     #
     #     test_succeeded = finilize_test_with_signal(U_computed=Uin_computed, set_ideal_signal=0, verbosity=0)
     #     self.assertTrue(test_succeeded)
-
+    @unittest.skip("Old Konvention for K")
     def test_compute_Uin_from_Uquest_our(self):
         Uin_ideal = read_in_signal(mock_data_path + 'Uin_our.csv')
         Uin_ideal.Vpp = 0.3
@@ -43,13 +43,30 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         K_300 = genfromtxt(mock_data_path + 'K_300_jens.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_300, K_300, verbosity=False)
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_300, K_300, verbosity=False)
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
 
         test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
+    def test_compute_Uin_from_Uquest_our_new_K(self):
+        Uin_ideal = read_in_signal(mock_data_path + 'Uin_our.csv')
+        Uin_ideal.Vpp = 0.3
+
+        Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
+
+        a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_300, 3)
+        K_new = compute_K_from_a(a, verbosity=0)
+
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_300, K_new, verbosity=False)
+
+        Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
+
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        self.assertTrue(test_succeeded)
+
+    @unittest.skip("Old Konvention for K")
     def test_compute_Uin_from_Uquest_air(self):
         path = mock_data_path + 'adjust_a_19_07_2018-14_02_41/'
 
@@ -57,13 +74,14 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
 
         test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
+    @unittest.skip("Old Konvention for K")
     def test_compute_Uin_from_Uquest_air(self):
         path = mock_data_path + 'adjust_a_19_07_2018-14_02_41/'
 
@@ -71,7 +89,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
 
@@ -87,13 +105,14 @@ class test_compute_Uin_from_Uquest(TestCase):
         a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_initial)
 
         test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
+    @unittest.skip("Old Konvention for K")
     def test_compute_Uin_from_Uquest_from_adjust_a(self):
         path = mock_data_path + 'adjust_a_19_07_2018-13_53_38/'
 
@@ -101,7 +120,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
 
@@ -119,13 +138,14 @@ class test_compute_Uin_from_Uquest(TestCase):
         a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_measured, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_measured, K_new, verbosity=0)
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_measured, K_new, verbosity=0)
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
         # plot_2_signals(Uin_computed_overlay_obj, Uin_initial)
         test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
+    @unittest.skip("Old Konvention for K")
     def test_compute_Uin_from_Uquest_with_higher_Uquest(self):
         path = mock_data_path + 'adjust_a_19_07_2018-13_53_38/'
 
@@ -133,12 +153,30 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         K_300 = genfromtxt(path + 'K_initial.csv', delimiter=',')
 
-        Uin_computed = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_300, verbosity=0)
 
         Uin_computed.Vpp = Uin_computed.Vpp * 1.5
         Uin_awg.Vpp = Uin_awg.Vpp * 1.5
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
+
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        self.assertTrue(test_succeeded)
+
+    def test_compute_Uin_from_Uquest_with_higher_Uquest_new_K(self):
+        path = mock_data_path + 'adjust_a_19_07_2018-13_53_38/'
+
+        Uin_ideal = read_in_signal(path + 'Uin_initial.csv')
+        Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
+        a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_initial, 3)
+        K_new = compute_K_from_a(a, verbosity=0)
+
+        Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
+
+        Uin_computed.Vpp = Uin_computed.Vpp * 1.5
+        Uin_ideal.Vpp = Uin_ideal.Vpp * 1.5
+
+        Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
 
         test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
         self.assertTrue(test_succeeded)

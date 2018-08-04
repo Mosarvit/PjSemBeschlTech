@@ -10,8 +10,8 @@ from helpers.K_helper import invert_K
 def compute_Uin_from_Uquest(Uquest, K_Uin_to_Uquest, verbosity=False):
 
     K_Uquest_to_Uin = invert_K(K_Uin_to_Uquest)
-    Uin = apply_K(K_Uquest_to_Uin, Uquest, verbosity)
+    Uquest, Uin = apply_K(K_Uquest_to_Uin, Uquest, verbosity)
 
-    return Uin
+    return Uin, Uquest
 
 

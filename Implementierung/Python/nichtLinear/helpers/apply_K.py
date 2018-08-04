@@ -5,6 +5,7 @@ Created on Sun June 3 2018
 """
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
+import colorama
 
 import settings
 from classes.signal_class import signal_class
@@ -95,6 +96,10 @@ def apply_K(K_x_to_y, Ux, verbosity):
     # elif K_min_V - Uquest_min_V > 0:
     #     vpp_new = abs(K_min_V / (Uquest_min_V / vpp))
     # Uquest.Vpp = vpp_new
+
+    # Color for print()
+    colorama.init()
+
     # berechnet unabhänig beide Vpp aus und setzt das kleinere
     if K_max_V - Uquest_max_V < 0:
         vpp_new1 = abs(K_max_V / (Uquest_max_V / vpp))
@@ -102,8 +107,10 @@ def apply_K(K_x_to_y, Ux, verbosity):
         vpp_new2 = abs(K_min_V / (Uquest_min_V / vpp))
     if vpp_new1 < vpp_new2:
         Ux.Vpp = vpp_new1
+        print(colorama.Back.RED + colorama.Style.BRIGHT + 'Warning: Uquest Vpp set to: '+ str(vpp_new1) + colorama.Style.NORMAL + colorama.Back.RESET)
     else:
         Ux.Vpp = vpp_new2
+        print(colorama.Back.RED + colorama.Style.BRIGHT + 'Warning: Uquest Vpp set to: ' + str(vpp_new2) + colorama.Style.NORMAL + colorama.Back.RESET)
     # if Uquest.Vpp*1000 > vpp_max*0.95:
     #     # der Wert 0.9 ist random gewählt, weil 1 nicht geklappt hat.. müssen wir herausfinden was geht
     #     Uquest.Vpp = 0.95*vpp_max/1000
@@ -134,4 +141,4 @@ def apply_K(K_x_to_y, Ux, verbosity):
     # - speichere Ausgang mit Uin(:, 1) = Uquest(:, 1) gleiche Zeitpunkte und interpolierten Werten
     # Uin[:,1] = Uin[:,1];
     # Uin_obj = signal_class.gen_signal_from_old_convention(Uin)
-    return Uy
+    return Ux, Uy
