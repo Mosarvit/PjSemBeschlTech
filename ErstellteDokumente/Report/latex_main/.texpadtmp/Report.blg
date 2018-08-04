@@ -3,11 +3,14 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux
 The style file: abbrv.bst
 I found no \bibdata command---while reading file /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux
-Warning--I didn't find a database entry for "----Jens---"
+Warning--I didn't find a database entry for "PJS_Denys"
 Warning--I didn't find a database entry for "harzheim"
+Warning--I didn't find a database entry for "keysHand15"
+Warning--I didn't find a database entry for "troeser13"
+Warning--I didn't find a database entry for "keysData14"
 You've used 0 entries,
             2118 wiz_defined-function locations,
-            499 strings with 3895 characters,
+            504 strings with 3940 characters,
 and the built_in function-call counts, 18 in all, are:
 = -- 0
 > -- 0
