@@ -1,5 +1,8 @@
 \documentclass[../Report.tex]{subfiles}
 
+%\makeatletter
+%%\@ifundefined{subRoot}{\newcommand{\subRoot}[1]{../#1}}
+%\@ifundefined{importTikz}{\newcommand{\importTikz}[1]{\input{../images/plots/#1}}}
 
 \begin{document}
 
@@ -355,7 +358,7 @@ Als andere Möglichkeit die Kennlinie anzupassen könnte man $V_{PP}$ von $\Uque
 	\newlength\figurewidth
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-	\input{images/plots/adjust_a_K_bearbeitet.tikz}	
+	\importTikz{adjust_a_K_bearbeitet.tikz}	
 \subcaption{Kennlinie}
 	\label{fig:K}
 \end{subfigure}
@@ -363,7 +366,7 @@ Als andere Möglichkeit die Kennlinie anzupassen könnte man $V_{PP}$ von $\Uque
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
     %\input{images/plots/adjust_a_Uin.tikz}
-    \input{images/plots/adjust_a_Uout.tikz}
+    \importTikz{adjust_a_Uout.tikz}
 \subcaption{Ausgangsspannung}
 	\label{fig:Uout}
 \end{subfigure}
@@ -382,14 +385,14 @@ Das eingezeichnete Maximum von $\Uquest$ in \figref{fig:K0} liegt über der zul�
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-	\input{images/plots/K_bearbeitet.tikz}	
+	\importTikz{K_bearbeitet.tikz}	
 \subcaption{Kennlinie}
 	\label{fig:K0}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-    \input{images/plots/UinUquest.tikz}
+    \importTikz{UinUquest.tikz}
 \subcaption{Berechnung von $K$}
 	\label{fig:UinUquest}
 \end{subfigure}
