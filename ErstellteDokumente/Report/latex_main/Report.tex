@@ -118,8 +118,14 @@
 \newsubcommand{\Uquestc}{\underline{U}}{?}
 \newsubcommand{\fabs}{ \; \mathit{f}}{\mathrm{abs}}
 
+\makeatletter
+%\@ifundefined{subRoot}{\newcommand{\subRoot}[1]{../#1}}
+\@ifundefined{importTikz}{\newcommand{\importTikz}[1]{\input{../images/plots/#1}}} % hard coding to input tex-files (tikz) in subfiles to enable separate compiling (just useful with starting command in begin document
 
 \begin{document}
+
+	\renewcommand{\importTikz}[1]{\input{./images/plots/#1}}			%will not be read by subfiles
+		% hard-coding to input tex-files (tikz) in subfiles to enable separate compiling
 
     \title{-------------------------------------}
     \subtitle{Artem Moskalew \\ Jonas Christ \\ Maximilian Nolte}
@@ -128,15 +134,15 @@
     \tableofcontents
     
     
-	\subfile{./chapter/test}
+	%\subfile{./chapter/test}
 	
 	%\subfile{./chapter/Abstract}
-	%\subfile{./chapter/Einfuehrung}
-	%\subfile{./chapter/Vorgehen}
-	%\subfile{./chapter/Code-Design}
-	\subfile{./chapter/Optimierung}
-	\subfile{./chapter/Fazit}
-	\subfile{./chapter/Ausblick}
+	\subfile{./chapter/Einfuehrung}
+	\subfile{./chapter/Vorgehen}
+	\subfile{./chapter/Code-Design}
+	%\subfile{./chapter/Optimierung}
+%	\subfile{./chapter/Fazit}
+%	\subfile{./chapter/Ausblick}
 	\subfile{./chapter/Anhang}
 
 

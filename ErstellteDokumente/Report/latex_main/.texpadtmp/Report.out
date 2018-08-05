@@ -1,10 +1,28 @@
-\BOOKMARK [0][-]{chapter.1}{Test}{}% 1
-\BOOKMARK [1][-]{section.1.1}{\204- firstName \204-}{chapter.1}% 2
-\BOOKMARK [0][-]{chapter.2}{Iterative Optimierung des Hammerstein-Modells}{}% 3
-\BOOKMARK [1][-]{section.2.1}{Optimierung der linearen \334bertragungsfunktion H}{chapter.2}% 4
-\BOOKMARK [1][-]{section.2.2}{Optimierung der nichtlinearen Kennlinie K}{chapter.2}% 5
-\BOOKMARK [0][-]{chapter.3}{Fazit}{}% 6
-\BOOKMARK [0][-]{chapter.4}{Ausblick}{}% 7
-\BOOKMARK [1][-]{section.4.1}{Ausblick: Optimierung}{chapter.4}% 8
-\BOOKMARK [1][-]{section.4.2}{\204 Ger\344tekomm\204}{chapter.4}% 9
-\BOOKMARK [0][-]{chapter.5}{\204 Anhang \204}{}% 10
+\BOOKMARK [0][-]{chapter.1}{Einf\374hrung}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Modell und Konvention}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Hammerstein Modell}{section.1.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Motivation}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Aufgabenstellung}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Vorgehen}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Vorhandene Implementierung}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.1.1}{Python}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{MATLAB}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{Funktionalit\344t reproduzieren}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{Neues Design}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{Tests}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.3}{Fehlersuche}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Funktionalit\344t erweitern}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{Erste Optimierungs Idee}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.2}{Laufzeit Optimierung}{section.2.3}% 16
+\BOOKMARK [1][-]{section.2.4}{Ger\344tekommunikation}{chapter.2}% 17
+\BOOKMARK [1][-]{section.2.5}{Kritische Punkte}{chapter.2}% 18
+\BOOKMARK [0][-]{chapter.3}{Code-Design}{}% 19
+\BOOKMARK [1][-]{section.3.1}{Motivation}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.2}{Aufbau}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.2.1}{Namenskonvention}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.2}{Ordnerstruktur}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.3}{Abstact Data Types}{section.3.2}% 24
+\BOOKMARK [1][-]{section.3.3}{Methodik}{chapter.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.1}{Test Driven Development}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.2}{Mock-System}{section.3.3}% 27
+\BOOKMARK [0][-]{chapter.4}{\204 Anhang \204}{}% 28

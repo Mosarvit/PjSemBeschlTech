@@ -6,15 +6,53 @@
 
 \chapter{Vorgehen}
 \label{chap:vorgehen}
-Was war gegeben? Auf Basis von Matlab weiter entwickelt und warum wir dieses Design gewählt haben
----- In diesem Kapitel soll die Übernahme des Matlab-Codes, die Dokumentation (samt Konventionen und Dokumentationskonzept) und die Gerätekommunikation dargestellt werden 
-Ggf. ist es sinnvoll, Teile davon in eigene Chapter auszulagern oder den Titel anzupassen--- 
-
-\section[---setup ---]{---- Start und bereits vorhanden  ----}
+In diesem Kapitel werden die wichtigsten Punkte in der Weiterentwicklung des vorhandenen Tools erklärt. Dabei wird unsere Methodik vorgestellt an den vorhandenen Weg anzuschließen und weiter fortzusetzen im Hinblick darauf, dass an das Projekt von anderen Personen angesetzt werden kann.
+\section[Vorhandene Implementierung]{Vorhandene Implementierung}
 \label{sec:vorg.setup}
---- in dieser section wird auf die anfangs gegebene Code-Struktur, die vorgegebenen Methoden und die parallelen Strukturen zwischen matlab und python eingegangen und ggf. die projektarbeit von Denys und Armin in Hinblick auf konkretere Aspekte referenziert ---
---- Ziel des Abschnitts: Leser hat (gute) Vorstellung, mit welchen Voraussetzungen, welchen Daten- und Programmstrukturen wir gestartet sind und auf welchen wir aufbauen---
+Unser Projekt setzt an 2 Punkten an. Zum einen das Projektseminar \cite{PJS_Denys}, in dem der Grundstein in Python gelegt wurde und zum anderen eine funktionierende Implementierung de nichtlinearen Bestandteils des Modells aus \figref{fig:Hammerstein} nach der Vorstellung aus \cite{harzheim}.
+\subsection{Python}
+\label{sec:vorg.python}
+Das vorhandene Python Tool konnte mit einem Pseudorauschen die Übertragungsfunktion des Systems im linearen Bereich bestimmt werden. Diese Funktionalität haben wir vollständig übernommen. Darüber hinaus waren folgende Funktionalitäten implementiert:
+\begin{itemize}
+	\item	$\Hcompl$ auf das Spektrum von $\Uout_{,ideal}$ anzuwenden.
+	
+	\item	Signale an das AWG zu senden und vom Oszilloskop zu messen.
+	
+	\item	aus gegebenen Koeffizienten $a_n$ eine Kennlinie als Look-Up Tabelle zu berechnen.
+\end{itemize}
+\subsection{MATLAB}
+\label{sec:vorg.matlab}
+Als zweiten Ansatzpunkt hatten wir funktionierende Methoden aus der MATLAB Implementierung des nichtlinearen Teils mit folgenden Funktionalitäten:
+\begin{itemize}
+	\item	$\Hcompl$ auf das Spektrum von $\Uout_{,ideal}$ anzuwenden.
+	
+	\item	$a_n$ für die nichtlineare Kennlinie zu berechnen.
+	
+	\item	$K$ als Look-Up Tabelle aufzustellen.
+	
+	\item	ein vorverzerrtes Eingangssignal über $K$ zu berechnen.
+\end{itemize}
 
+\section[Funktionalität reproduzieren]{Funktionalität reproduzieren}
+\label{sec:vorg.reproduktion}
+Als ersten wurde versucht die vorhandene Implementierung zu überblicken und letztendlich beide in Python zusammenzuführen. Dabei wurde eine starke Kopplung festgestellt, was die Fehlersuche und Fortführung erschwerte. Ein paar Funktionen hatten teilweise auch mehrere logische Aufgaben, die für eine bessere Verständlichkeit getrennt werden sollten. Mit dem Code wurden schon gute Ergebnisse erzielt und das erste Ziel war, den Code in eine neue Form zu überführen, ohne die Funktionalität zu beeinträchtigen.
+\subsection{Neues Design}
+\label{sec:vorg.design}
+Das in \figref{fig:Hammerstein} dargestellte Modell wird in zwei Blöcke gegliedert und so wurde ein Code-Design gewählt, das diese Blöcke repräsentiert. Dafür bietet sich ein modulares Design an, das in Kap. \ref{chap:code} genauer erklärt ist und dabei möglichst selbsterklärend dieses Modell abbildet.
+\subsection{Tests}
+\label{sec:vorg.tests}
+
+\subsection{Fehlersuche}
+\label{sec:vorg.fehlersuche}
+
+\section[Funktionalität erweitern]{Funktionalität erweitern}
+\label{sec:vorg.erweiterung}
+
+\subsection{Erste Optimierungs Idee}
+\label{sec:vorg.optimierung}
+
+\subsection{Laufzeit Optimierung}
+\label{sec:vorg.laufzeit}
 
 \section{Gerätekommunikation}
 \label{sec:vorg.geraete}
@@ -85,12 +123,6 @@ Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{S
 Um die Auflösung des Oszilloskops ausnutzen zu können, ist die Anpassung der horizontalen wie auch vertikalen Auflösung an das zu messende Signal notwendig.
 Während die horizontale Auflösung durch die Wiederholfrequenz des Pulses mit $f_{BB}$ sich nahezu unabhängig des betrachteten Signals setzen lässt, muss die vertikale Skalierung an das Signal angepasst werden. Um dies etwa während einer Optimierung mit wechselnden Spannungsamplituden zu ermöglichen, sind zwei direkt aufeinander folgende Messungen notwendig. Dabei wird aus der ersten Messung die Amplitude des Signals entnommen und die Skalierung für die zweite, dann genauere Messung, dahingehend angepasst, dass das Signal bildfüllender dargestellt wird.
 Dieser Gewinn an Genauigkeit in der Messung stellte sich insbesondere für die \nameref{sec:opt.H} als notwendig heraus.
-
-
-\section{ --- Konventionen / Dokumentation ---- }
-\label{sec:vorg.doku}
---- in dieser section wird unser Konzept der Dokumentation in Code wie auch in Dokumenten erläutert und ggf. auf die Sammlung von Handbüchern eingegangen --- 
---- es könnte sinnvoll sein, diese section nach der folgenden erst zu setzen ---
 
 
 \section{Kritische Punkte}

@@ -46,7 +46,7 @@ def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=99990000
 
     T_BB = 1 / f_BB
     # t0 = (T_rep/(num_points_rep - 1))
-    num_points_BB = np.floor(T_BB / t0)
+    num_points_BB = int(np.floor(T_BB / t0))
     T_BB = t0 * (num_points_BB - 1 )
 
     t_BB = np.linspace(0, T_BB, num_points_BB)

@@ -30,7 +30,7 @@ Der Prototyp des ESR BB besteht aus einem Funktionsgenerator (Keysight 3600A ser
 
 \subsection{Hammerstein Modell}
 \label{subsec:einf.modell_BB.hammerstein}
-In \figref{fig:Hammerstein} sind alle von uns verwendeten Größen dargestellt. $U_{in}$ ist die Eingangsspannung vom Funktionsgenerator. Der erste Block in \figref{fig:Hammerstein} stellt die nichtlineare Modellierung dar. Die Spannung $U_{?}$ ist eine rein virtuelle Größe und kann wie in \ref{eq:Uquest} über die Koeffizienten $a_n$ berechnet werden. Bei der Potenzreihe hatte $N = 3$ in der MATLAB Implementierung schon gute Ergebnisse geliefert und wurde von uns auch weiterhin so verwendet. Die nichtlinearen Kennlinie im Folgenden nur noch als $K$ bezeichnet wird als Look-Up Tabelle in unserem Programm hinterlegt. Die Spannung $U_{out}$ ist die Gap Spannung in der Kavität.
+In \figref{fig:Hammerstein} sind alle von uns verwendeten Größen dargestellt. $U_{in}$ ist die Eingangsspannung vom Funktionsgenerator. Der erste Block in \figref{fig:Hammerstein} stellt die nichtlineare Modellierung dar. Die Spannung $U_{?}$ ist eine rein virtuelle Größe und kann wie in \eqref{eq:Uquest} über die Koeffizienten $a_n$ berechnet werden. Bei der Potenzreihe hatte $N = 3$ in der MATLAB Implementierung schon gute Ergebnisse geliefert und wurde von uns auch weiterhin so verwendet. Die nichtlinearen Kennlinie im Folgenden nur noch als $K$ bezeichnet wird als Look-Up Tabelle in unserem Programm hinterlegt. Die Spannung $U_{out}$ ist die Gap Spannung in der Kavität.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{eps/Hammerstein.pdf}
@@ -47,7 +47,7 @@ In \figref{fig:Hammerstein} sind alle von uns verwendeten Größen dargestellt. 
 
 \section{Motivation}
 \label{sec:einf.motivation}
-Dieses Modell wurde bis auf die Berechnung von $K$ schon erfolgreich in Python implementiert, dabei sei auf das Projektseminar \cite{PJS_Denys} verwiesen. Deshalb lag unsere Motivation darin dieses Modell in Python zu vervollständigen, um dann eine möglichen Optimierungsansatz aufzustellen.
+Dieses Modell wurde bis auf die Berechnung von $K$ schon erfolgreich in Python implementiert, dabei sei auf das Projektseminar \cite{PJS_Denys} verwiesen. Deshalb lag unsere Motivation darin dieses Modell in Python zu vervollständigen, um dann einen möglichen Optimierungsansatz aufzustellen.
 
 
 \section{Aufgabenstellung}
