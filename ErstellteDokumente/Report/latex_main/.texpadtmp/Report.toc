@@ -9,16 +9,15 @@
 \contentsline {subsection}{\numberline {2.1.1}Python}{4}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}MATLAB}{4}{subsection.2.1.2}
 \contentsline {section}{\numberline {2.2}Funktionalit\IeC {\"a}t reproduzieren}{4}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Neues Design}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.1}Neues Design}{5}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Tests}{5}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Fehlersuche}{5}{subsection.2.2.3}
 \contentsline {section}{\numberline {2.3}Funktionalit\IeC {\"a}t erweitern}{5}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Erste Optimierungs Idee}{5}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Laufzeit Optimierung}{5}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Ger\IeC {\"a}tekommunikation}{5}{section.2.4}
-\contentsline {subsubsection}{Laufzeitoptimierung}{5}{subsubsection*.7}
-\contentsline {subsubsection}{Anpassung der horizontalen Aufl\IeC {\"o}sung am Oszilloskop}{6}{subsubsection*.9}
-\contentsline {section}{\numberline {2.5}Kritische Punkte}{6}{section.2.5}
+\contentsline {section}{\numberline {2.4}Ger\IeC {\"a}tekommunikation}{6}{section.2.4}
+\contentsline {subsubsection}{Laufzeitoptimierung}{6}{subsubsection*.7}
+\contentsline {subsubsection}{Anpassung der horizontalen Aufl\IeC {\"o}sung am Oszilloskop}{7}{subsubsection*.9}
+\contentsline {section}{\numberline {2.5}Kritische Punkte}{7}{section.2.5}
 \contentsline {chapter}{\numberline {3}Code-Design}{8}{chapter.3}
 \contentsline {section}{\numberline {3.1}Motivation}{8}{section.3.1}
 \contentsline {section}{\numberline {3.2}Aufbau}{8}{section.3.2}
@@ -28,4 +27,7 @@
 \contentsline {section}{\numberline {3.3}Methodik}{8}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Test Driven Development}{8}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Mock-System}{8}{subsection.3.3.2}
-\contentsline {chapter}{\numberline {4}--- Anhang ---}{10}{chapter.4}
+\contentsline {chapter}{\numberline {4}Iterative Optimierung des Hammerstein-Modells}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Optimierung der linearen \IeC {\"U}bertragungsfunktion $H$}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Optimierung der nichtlinearen Kennlinie $K$}{13}{section.4.2}
+\contentsline {chapter}{\numberline {5}--- Anhang ---}{17}{chapter.5}

@@ -6,19 +6,19 @@
 
 \chapter{Vorgehen}
 \label{chap:vorgehen}
-In diesem Kapitel werden die wichtigsten Punkte in der Weiterentwicklung des vorhandenen Tools erklärt. Dabei wird unsere Methodik vorgestellt an den vorhandenen Weg anzuschließen und weiter fortzusetzen im Hinblick darauf, dass an das Projekt von anderen Personen angesetzt werden kann.
+In diesem Kapitel werden die wichtigsten Punkte in der Weiterentwicklung des vorhandenen Tools erklärt. Dabei wird die Methodik vorgestellt mit der der vorhandenen Weg fortgesetzt wurde im Hinblick darauf, dass andere Personen daran anschließen können.
 \section[Vorhandene Implementierung]{Vorhandene Implementierung}
 \label{sec:vorg.setup}
-Unser Projekt setzt an 2 Punkten an. Zum einen das Projektseminar \cite{PJS_Denys}, in dem der Grundstein in Python gelegt wurde und zum anderen eine funktionierende Implementierung de nichtlinearen Bestandteils des Modells aus \figref{fig:Hammerstein} nach der Vorstellung aus \cite{harzheim}.
+Das Projekt setzt an 2 Punkten an. Zum einen das Projektseminar \cite{PJS_Denys}, in dem der Grundstein in Python gelegt wurde und zum anderen eine funktionierende Implementierung des nichtlinearen Bestandteils des Modells aus \figref{fig:Hammerstein} nach der Vorstellung aus \cite{harzheim}.
 \subsection{Python}
 \label{sec:vorg.python}
-Das vorhandene Python Tool konnte mit einem Pseudorauschen die Übertragungsfunktion des Systems im linearen Bereich bestimmt werden. Diese Funktionalität haben wir vollständig übernommen. Darüber hinaus waren folgende Funktionalitäten implementiert:
+Das vorhandene Python Tool kann mit einem Pseudorauschen die Übertragungsfunktion des Systems im linearen Bereich bestimmen. Diese Funktionalität wurde vollständig übernommen. Darüber hinaus waren folgende Funktionalitäten implementiert:
 \begin{itemize}
 	\item	$\Hcompl$ auf das Spektrum von $\Uout_{,ideal}$ anzuwenden.
 	
 	\item	Signale an das AWG zu senden und vom Oszilloskop zu messen.
 	
-	\item	aus gegebenen Koeffizienten $a_n$ eine Kennlinie als Look-Up Tabelle zu berechnen.
+	\item	aus gegebenen Koeffizienten $a_n$ eine Kennlinie $K$ als Look-Up Tabelle zu berechnen.
 \end{itemize}
 \subsection{MATLAB}
 \label{sec:vorg.matlab}
@@ -35,24 +35,27 @@ Als zweiten Ansatzpunkt hatten wir funktionierende Methoden aus der MATLAB Imple
 
 \section[Funktionalität reproduzieren]{Funktionalität reproduzieren}
 \label{sec:vorg.reproduktion}
-Als ersten wurde versucht die vorhandene Implementierung zu überblicken und letztendlich beide in Python zusammenzuführen. Dabei wurde eine starke Kopplung festgestellt, was die Fehlersuche und Fortführung erschwerte. Ein paar Funktionen hatten teilweise auch mehrere logische Aufgaben, die für eine bessere Verständlichkeit getrennt werden sollten. Mit dem Code wurden schon gute Ergebnisse erzielt und das erste Ziel war, den Code in eine neue Form zu überführen, ohne die Funktionalität zu beeinträchtigen.
+Als ersten wurde versucht die vorhandene Implementierung zu überblicken und letztendlich beide in Python zusammenzuführen. Dabei wurde eine starke Kopplung innerhalb der vorhandenen Implementierungen festgestellt, was die Fehlersuche und Fortführung erschwerte. Ein paar Funktionen hatten teilweise auch mehrere logische Aufgaben, die für eine bessere Verständlichkeit getrennt werden sollten. Mit dem Code wurden aber schon gute Ergebnisse erzielt und das erste Ziel war, den Code in eine neue Form zu überführen, ohne die Funktionalität zu beeinträchtigen.
 \subsection{Neues Design}
 \label{sec:vorg.design}
-Das in \figref{fig:Hammerstein} dargestellte Modell wird in zwei Blöcke gegliedert und so wurde ein Code-Design gewählt, das diese Blöcke repräsentiert. Dafür bietet sich ein modulares Design an, das in Kap. \ref{chap:code} genauer erklärt ist und dabei möglichst selbsterklärend dieses Modell abbildet.
+Das in \figref{fig:Hammerstein} dargestellte Modell wird in zwei Blöcke gegliedert und so wurde ein Code-Design gewählt, das diese Blöcke repräsentiert. Dafür bietet sich ein modulares Design an, das in Kap. \ref{chap:code} genauer erklärt ist und dabei möglichst selbsterklärend dieses Modell abbildet. Dieses Design wurde auch in Hinblick auf die Team Arbeit gewählt, damit an mehreren logisch getrennten Abschnitten gleichzeitig gearbeitet werden kann. \\ Dafür wurde eine Github Repository erstellt, um eine Versionen Kontrolle vorzunehmen.
 \subsection{Tests}
 \label{sec:vorg.tests}
-
+Aus den erstellten Daten der beiden Implementierungen konnten Unit-Tests erstellt werden, die die geforderte Funktionalität beschreiben und somit die Ergebnisse aus dem neuen Design mit schon bestehenden Ergebnissen evaluieren. \\ Ziel war es den Code umzustrukturieren mit der Bedingung, dass die Funktionalität nicht verändert wird. Die bestehende Implementierung wurde in mehrere logische Abschnitte unterteilt, bei denen jeder Abschnitt für sich die geforderten Daten erzeugen sollte. Dabei sollte die funktionierenden Teile aus MATLAB in Python überführt werden.
 \subsection{Fehlersuche}
 \label{sec:vorg.fehlersuche}
+Die Möglichkeiten der Fehlersuche soll an zwei Beispielen erklärt werden. In der Python Implementierung aus dem Projektseminar \cite{PJS_Denys} war schon ein erster Entwurf zur Berechnung der Koeffizienten $a_n$ gegeben, der aber noch keine guten Werte berechnete. Die Ergebnisse aus der MATLAB Implementierung wurden in den Unit Test importiert, sodass in Python mehrere Möglichkeiten getestet wurden, bis die Ergebnisse mit den schon bestehenden Werten übereinstimmen. \\
+Das zweite Beispiel ist die Berechnung des Eingangssignals über $K$. Dabei wurden während einer Messung Daten gespeichert, die zu einem Programmabbruch führten. Diese Daten wurden in einem Unit Test zusammengeführt, damit der Fehler im Programm ohne Messaufbau behoben werden konnte. Einzelheiten dazu im Abschnitt (\ref{sec:opt.K}).
+Des weiteren wird durch das neue Design eine strukturierte Fehlersucher ermöglicht. Wenn eine Veränderung an einem Block vorgenommen wird, so lässt sich diese isoliert betrachten und sollte keinen Einfluss auf die Logik anderer Blöcke haben.
 
 \section[Funktionalität erweitern]{Funktionalität erweitern}
 \label{sec:vorg.erweiterung}
-
+Nachdem die Funktionalitäten beider Implementierungen in Python zusammengeführt wurden konnten im nächsten Schritt Erweiterungen der vorhandenen Funktionalität vorgenommen werden. Dabei stellte das neue Design mit seinem modularen Aufbau eine gute Grundlage dar, um an den logisch getrennten Aufbau anzuschließen und schon vorhandene Funktionalität zu nutzen.
 \subsection{Erste Optimierungs Idee}
 \label{sec:vorg.optimierung}
-
-\subsection{Laufzeit Optimierung}
-\label{sec:vorg.laufzeit}
+Als nächster Schritt wurde ein erster Optimierungsansatz implementiert, wie er in der Aufgabenstellung aus Abschnitt (\ref{sec:einf.aufgabe}) vorgesehen war. Genauere Erläuterungen folgen in Kap. \ref{chap:opt}. Der Ansatz wurde mit zwei Routinen getestet und mit dem RF-Tool zur Güteberechnung des Ausgangssignals evaluiert. \\
+Das Tool befand sich zu diesem Zeitpunkt noch in der Entwicklung und Testphase, sodass erst einmal herausgefunden werden musste, wie das Tool die Daten verarbeiten kann.\\
+Bei der Nutzung des Programms ist eine längere Wartezeit für die Geräte aufgefallen, die bei kleineren Durchläufen nicht so ins Gewicht fällt aber im Hinblick auf mehr Iterationsschritten noch optimiert werden sollte. Dazu werden im folgenden Abschnitt Ansätze vorgestellt.
 
 \section{Gerätekommunikation}
 \label{sec:vorg.geraete}
@@ -73,7 +76,7 @@ Weiterhin bieten die Geräte spezifische Befehle zur Manipulation der Einstellun
 \subsubsection{Laufzeitoptimierung}
 Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWG alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. Einen Eindruck der zeitlichen Größenordnung bietet \tabref{tab:vorg.gerate.runtime}.
 
-\begin{table} 
+\begin{table}[H]
 \begin{subtable}[t]{.35\linewidth}
 \subcaption{Knotenliste}
 \label{ta}
