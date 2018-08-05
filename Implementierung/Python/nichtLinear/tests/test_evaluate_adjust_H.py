@@ -37,7 +37,7 @@ class test_evaluate_adjust_H(TestCase):
 
         H_ideal = mock_system.H
 
-        verbosity = 0
+        verbosity = 1
         if verbosity:
             plot_H_ideal_Hs(H_ideal, Hs)
             plot_2_signals(Uout_ideal, Uout_measured, legend1='Uout_ideal', legend2='Uout_measured')

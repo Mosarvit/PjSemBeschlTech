@@ -93,22 +93,16 @@ class mock_system_class :
 
     def read_from_DSO(self, samplerateOszi,  vpp_ch1, fmax, signal):
 
-        self.__Uin_real = self.__Uin
-        self.__Uin_real.sample_rate = samplerateOszi
+        self.__Uin_measured = self.__Uin
+        self.__Uin_measured.sample_rate = samplerateOszi
 
-        Uin_vector = self.__Uin_real.in_V
+        use_apply_K = True
+        if use_apply_K :
+            _, Uquest = apply_K(K_x_to_y=self.__K, Ux=self.__Uin, verbosity=0)
+        else:
+            Uquest = copy(self.__Uin)
 
-        self.__Uin_measured = signal_class(self.__Uin_real.time, Uin_vector)
-
-        Uin, Uquest = apply_K(K_x_to_y=self.__K, Ux=self.__Uin, verbosity=0)
-        # Uquest = copy(self.__Uin)
-        self.__Uout_real = apply_transfer_function(Uquest, self.__H)
-
-        self.__Uout_real.sample_rate = samplerateOszi
-
-        Uout_vector = self.__Uout_real.in_V
-
-        self.__Uout_measured = signal_class.gen_signal_from_f_rep( Uout_vector, self.__Uout_real.f_rep )
+        self.__Uout_measured = apply_transfer_function(Uquest, self.__H)
         self.__Uout_measured.sample_rate = samplerateOszi
 
         time = self.__Uin_measured.time
