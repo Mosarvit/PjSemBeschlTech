@@ -15,18 +15,18 @@ class test_compute_Uquest_from_Uout(TestCase):
     def __init__(self, *args, **kwargs):
         super(test_compute_Uquest_from_Uout, self).__init__(*args, **kwargs)
 
-    @unittest.skip("data not reasonable")
-    def test_compute_Uquest_from_Uout_300_jens(self):
-
-       Uout_300 = read_in_signal(mock_data_path + 'Uout_300_jens.csv')
-       Uquest_300_ideal_matlab = read_in_signal(mock_data_path + 'Uquest_300_jens.csv')
-
-       H = read_in_transfer_function(mock_data_path + 'H_jens.csv')
-
-       Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
-
-       test_succeeded = finilize_tezt(values_computed=Uquest_300_computed, set_ideal_values=0, verbosity=0)
-       self.assertTrue(test_succeeded)
+    # @unittest.skip("data not reasonable")
+    # def test_compute_Uquest_from_Uout_300_jens(self):
+    #
+    #    Uout_300 = read_in_signal(mock_data_path + 'Uout_300_jens.csv')
+    #    Uquest_300_ideal_matlab = read_in_signal(mock_data_path + 'Uquest_300_jens.csv')
+    #
+    #    H = read_in_transfer_function(mock_data_path + 'H_jens.csv')
+    #
+    #    Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
+    #
+    #    test_succeeded = finilize_tezt(values_computed=Uquest_300_computed, set_ideal_values=0, verbosity=0)
+    #    self.assertTrue(test_succeeded)
 
     def test_compute_Uquest_from_Uout_300_our(self):
         Uout_300 = read_in_signal(mock_data_path + 'Uout_300_our.csv')
@@ -53,7 +53,6 @@ class test_compute_Uquest_from_Uout(TestCase):
 
 
 
-    # @unittest.skip("reason for skipping")
     def test_compute_Uquest_from_Uout_catch_imaginary(self):
 
         BBsignal_ideal = read_in_signal(mock_data_path + 'BBsignal_our.csv')

@@ -29,7 +29,7 @@ class test_loop_adjust_a(TestCase):
         # plot_K(K_0)
 
         Uout_measured, quality_development, Ks = loop_adjust_a(a_0, K_0, H_0, Uout_ideal, data_directory,
-                                                                  num_iters=10, sample_rate_DSO=sample_rate_DSO)
+                                                                  num_iters=5, sample_rate_DSO=sample_rate_DSO)
 
         self.assertTrue(1)
 

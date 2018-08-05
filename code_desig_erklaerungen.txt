@@ -9,6 +9,7 @@ loop_: steht für die Iterationsschleife der Optimierung. Dort wird beispielsweis
 measure_: eine Größe wird gemessen, dafür findet kommunikation mit den Geräten statt. Bei uns wird nur Uout gemessen
 evaluate_: diese routinen können auch als eveluierung eines use case([1], chapter 4-5-4) angesehen warden. Hier wird der use case ausgeführt und das ergebnis mit ideal werden verglichen und/oder geplottet. 
 
+
 Ordnerstruktur
 
 blocks: hier sind alle programmblöcke gespeichert. Jeder der Blöcke kann als die implementierung eines abstrakten Schritts angesehen werden. Die Blöcke sollten im idealen so getrennt werden, dass aus der kombination bestimmter Blöcke der Benutzer jeden use case zusammenstellen kann. 
@@ -21,6 +22,7 @@ new_DSO: (wird wahrscheinlich entfernt)
 Bilder: (ich weiss gar nicht, woher die Bilder kommen, wird es genutzt?)
 setting.py: hier sind die Einstellungen gespeichert, wie z.B. auch die Pfade zu den Datenordnern und Technische Spezifikationen der Geräte
 
+
 ADTs
 
 Manche übliche Datensätze, wie z.B. die Übetragungsfunktion und das Signal, wurden als eigene abstrakte Datentypen ( ADT, [3], chapter 6.1.) implemntiert. Allgemeine Vorteile davon sind folgende:
@@ -30,6 +32,7 @@ Vorteile für signal_class:
  - das Originalsignal wir immer abgespeichert. Falls später beim Signal die Samplerate geändert wird, wird immer vom Originalsignal interpoliert. So wird die Fortpflanunnzung der Interpolationsfehelern vermieden.  
  - Es können bestimmte manipulationen des Signal-Datensatzes ausgeschlossen werden. Beispiel: wenn das Signal als array mit 2 Spalten für Spannung und Zeit gespeichert wird und der Programmierer die Amplitude des Signals verdoppeln möchte und es einfach als doppeltes_signal= signal*2 implentiert, verändert er so versehentlich auch den Zeitvektor. Der dabei entstehende Fehler ist besonders schwer zu debuggen: der Compiler sieht ihn natürlich nicht und erst bei der Evalueirung des Code fallen dann unstimmigkeiten auf, die dann erst nach evtl. tiefergehender Codeanalyse zur richtigen Zeile führen. 
 
+ 
 TDD
 
 Eine gute Auflistung der pros und cons von tdd findet sich unter [4]
@@ -43,15 +46,49 @@ Sorgt dafür, dass mehrere Teammitglieder änderungen im abgekapselten teil des Co
 Die Arbeit konnte in Stücke aufgeteilt werden, dessen Ziele sehr klar definiert sind, in der Form einer Arte “Hausaufgabe”, wie z.B. “Sorge dafür, dass der unit test xy bestanden wird”
  - Es wurde ermöglicht, die Ergebnisse unseres Codes mit den ergebnissen des zur verfügung gestellten Matlab-Codes zu vergleichen und unseren Code solange zu verändern, bis dier Ergebnisse gleich waren.
 
+ 
+Die Übliche Abfolge eines Unit tests
+
+Die meinsten Unit tests haben eine ähnliche Abfolge. Hier die Abfolge am Beispiel des Unit Tests der apply_transfer_function namens test_apply_transfer_function_2. apply_transfer_function ist eine Funktion, die eine Übertragungsfunktion auf ein Signal anwendet und das übertrage Signal rausgibt. Per Definition sollte für solche Funktion gelten, dass wenn auf ein Signal erst eine Übertrangsfunktion H angewendet wird und dann auf das Ergebnissignal die inverse Übertragungsfunktion H^-1 angewendet wird, das Ergebnis wieder das Ursprüngliche Signal sein sollte. Hier der Unit Test, der diese Annahme überprüft : 
+
+1. Arbeitsdaten werden eingelesen: die Übertragungsfunktion H und ein Beispiel Uout: 
+
+	H = read_in_transfer_function(mock_data_path + 'H.csv')
+	Uout = read_in_signal(mock_data_path + 'Uout.csv')
+
+2. Die getestete Funktion wird angewendet, in diesem Unit test sogar 2 Mal:
+	
+	Utransferred = apply_transfer_function(Uout, H)
+	Uout_computed = apply_transfer_function(Utransferred, H.get_inverse())
+
+3. Auswertung der Ergebnisse. In der funktion finilize_tezt wird der Output test_succeeded genau dann True, wenn ein übergebene U_computed gleich einem akzeptierten U_accepted ist. 
+
+	test_succeeded = finilize_tezt(U_computed=Uout_computed, set_ideal_values=False)
+	self.assertTrue(test_succeeded)
+
+Da stellt sich automatisch die Frage, woher U_accepted kommt. Die Erklärung ist einfach, derjenige, der den Unit Test erstellt, entscheidet selbst, ob das berechnete U_computed akzeptabel ist. Zum Beispiel für den vorliegenen Fall könnte der Programmierer die Abweichung von Uout_computed zu Uout berechnen und auf Besis dessen entscheiden, ob geanu dieses Uout_computed akzeptabel ist. Da die Berechnung der Abweichung vom idealen Ergebnis nicht trivial ist, könnte auch eine Sichtkontrolle einfacher sein: dafür würde der Programmierer die Uout_computed und Uout plotten und schauen, ob die ähnlich genug sind. Sollte der Programmierer entscheiden, dass Uout_computed akzeptabel ist, muss er nur noch bei der Funktion finilize_tezt den Übergabeparameter set_ideal_values auf True setzen und schon wird das Uout_computed als U_accepted abgespeichert. Setzt er set_ideal_values wieder auf False, wird das U_accepted nicht mehr gesetzt, sondern es wird damit verglichen. 
+
+Eine alternative Methode, das Ergebnis auszuwerten, wäre den Fehler von Uout_computed im Vegleich zu Uout zu berechnen und den Test dann als bestanden gelten lassen, wenn der Fehler innerhalb bestimmter Toleranz liegt. Tatsächlich war das die erste Methode, die wir für unsere Unit tests implementiert haben, jedoch sind wir bei dieser Methode auf Probleme gestossen:
+ - die tolleranz für manche Unit Tests betrug bis zu 20% (für das Beschriebe Beispiel von test_apply_transfer_function_2 waren es 4%). Das Bedeutet, dass innerhalb dieser recht hohen Toleranz sich das berechnete Ausgangssignal stark ändern kann, ohne, dass der Unit test es meldet. Idealweise sollte der Unit Test jede noch so kleine Änderung der Ausgabe den Programmierer zumindest auf die Änderung aufmerksam machen. (In der zweiten, von uns gewählten Methode kann der Progrmmierer dann entscheiden, ob die (kleine) Änderung akzetabel ist)
+ - der Fehler kann auf vielen Art und Weisen berechnet werden und es ist uns keine Methode bekannt, die immer die Ähnlichkeit zwischen zwei Signalen immer gut beschreibt. Beispielsweise, die von uns zuerst verwendete Methode norm(Ucomputed-Uout)/norm(Uout) hat für manche sehr ähnlich aussehende Signale große große Fehler von bis zu 30% ergeben. Es wurden auch andere Methoden ausprobiert und keine schien immer einen kleinen Fehler für ähnlich aussehende Signale und immer einen großen Fehler für unterschiedlich aussehende Signale auszugeben. 
+ 
+ 
 Mock-System
 
 Das von uns erstellte mock_system stellt ein typische beispiel für einen mock object [5] dar. Es simuliert also das  getestete System. Da wir das Hammerstein Modell als basis nehmen, simuliert auch das Mock System das gemessene System nach diesem Modell: das Signal geht erst durch eine nichtlineare Verzerrung, dann durch eine lineare. Die nichtlineare Verzerrung wird durch das anwenden der Lookup-Tabelle K auf das Eingangssignal simuliert. Dabei wird ein K so erstellt, dass das System bis zu einer bestimmtnen Vpp linear ist und erst bei höheren Vpp eine nichtlinearen Kurve folgt. Die lineare Verzerrung wird durch das anweden der Übertragungsfunktion H simuliert. Dabei entand das H des Mocksystems aus einer echten Messung am System. 
 Die wichtigsten Vorteile, die das Mocksystem für uns sind:
  - System tests [6] wurden ermöglicht: ohne das Mocksystem konnten die module, die mit den Geräten kommuniziert haben, also read_from_DSO und/oder write_to_AWG aufgerufen haben, nicht getestet werden. Da es mit der Zeit immer mehr solche Blöcke gab, erschien der Aufwand, ein Mocksystem zu imlementieren, gerechtfertigt. 
  - Unter der Annahme, dass das gemessene System mit dem Hammerstein Modell ausreichend genau beschrieben werden kann, folgt aus der Konvergenz der Optmierungsschleifen am echten System die Konvergenz auch an dem Mocksystem. Somit kann das Erreichen der Konvergenz am Mocksystem als notwendige Bedingung als erstes Ziel genommen werden. Da wir die Idealparameter K und H des Mocksystems kennen, können wir sogar feststellen, ob die Optimierungsschleife gegen den richtigen Wert konvergiert. In unserem Fall has Mocksystem tatsächlich geholfen, einen Logikfehler im Code, der dazu geführt hat, dass die Optimierungsschleifen nicht konvergieren,  im Voraus zu entdecken.
+ - Es können Randfälle, die in der Praxis eher selten auftreten, untersucht werden. Ein Beispiel ist eine grosse anzahl an iterationen der Optimierungsschleife, die bei uns tatsächlich zu einem unerwarteten Fehler geführt hat. 
  - Der Prozess des Erstellens des Mocksystems hilft uns, das System und die Gerätekommunikation besser zu verstehen. Letztendlich, wenn man das Veralten des Systems richtig nachbilden kann, kann man auch davon ausgehen, dass man es ausreichend genug versteht. 
  - Zusammenfassend kann dank des Mocksystems der Größte Teil des Codes aus Entfernung debugged werden und das Refactoring und das Optimieren des Codes kann von jemenden zugeteilt werden, der selten oder gar keinen Zugriff auf das echte System hat. 
 
+ 
+Das Erstellen des idealen Signals
+
+Mit der funtion generate_BBsignal wird das ideale Ausgangssignal erzeugt. Dabei können die wiederhohlfrequenz, die Barrier-Bucket Frequenz und die Vpp Spannung eingestellt werden, die dann an die maximale Samplingrate des AWGs angepasst werden. Alternativ kann das Signal auch mithifle der zur Verfüng gestellten tools erzeugt werden.
+ 
+ 
 
 [1] Software Engineering 9th edition I. Sommerville
 [2] https://en.wikipedia.org/wiki/Helper_class

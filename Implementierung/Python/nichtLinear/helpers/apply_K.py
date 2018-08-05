@@ -10,6 +10,7 @@ import colorama
 import settings
 from classes.signal_class import signal_class
 from helpers.K_helper import invert_K
+import math
 
 
 def apply_K(K_x_to_y, Ux, verbosity):
@@ -74,7 +75,16 @@ def apply_K(K_x_to_y, Ux, verbosity):
     vpp_new1 = vpp
     vpp_new2 = vpp
     # - interpoliere Kennlinie
-    K_function = interp1d(K_y_to_x[:, 1], K_y_to_x[:, 0], kind='slinear')
+    K_function = interp1d(K_x_to_y[:, 0], K_x_to_y[:, 1], kind='slinear')
+
+
+    ###########
+    K_functionV = interp1d(K_x_to_y[:, 0]/1000, K_x_to_y[:, 1]/1000, kind='slinear')
+    #############
+
+    K0 = K_x_to_y[:, 0]
+    K1 = K_x_to_y[:, 1]
+
     # vpp_max = K[-1, 1] - K[0, 1]
     if verbosity:
         plt.figure()
@@ -99,12 +109,14 @@ def apply_K(K_x_to_y, Ux, verbosity):
 
     # Color for print()
     colorama.init()
-
+    round_by = 15
     # berechnet unabhänig beide Vpp aus und setzt das kleinere
     if K_max_V - Uquest_max_V < 0:
         vpp_new1 = abs(K_max_V / (Uquest_max_V / vpp))
+        vpp_new1 = math.floor(vpp_new1*10**round_by)/(10**round_by)
     if K_min_V - Uquest_min_V > 0:
         vpp_new2 = abs(K_min_V / (Uquest_min_V / vpp))
+        vpp_new2 = math.floor(vpp_new2*10**round_by)/(10**round_by)
     if vpp_new1 < vpp_new2:
         Ux.Vpp = vpp_new1
         print(colorama.Back.RED + colorama.Style.BRIGHT + 'Warning: Uquest Vpp set to: '+ str(vpp_new1) + colorama.Style.NORMAL + colorama.Back.RESET)
@@ -116,8 +128,15 @@ def apply_K(K_x_to_y, Ux, verbosity):
     #     Uquest.Vpp = 0.95*vpp_max/1000
     #     print('Uquest adapted to K maximum, new Vpp: ' + str(Uquest.Vpp))
     # - werte interpolierte Kennlinie an den gewunschten Werten Uquest(:, 1) aus
-    Uin_in_mV = K_function(Ux.in_mV)
-    Uy = signal_class(Ux.time, Uin_in_mV / 1000)  #### woher der Faktor 10 vorher????
+    # Uy_in_mV = K_function(Ux.in_mV)
+    # Uy = signal_class(Ux.time, Uy_in_mV / 1000)
+
+    #######################
+    Uy_in_V = K_functionV(Ux.in_V)
+    Uy = signal_class(Ux.time, Uy_in_V )
+    #######################
+
+
     if verbosity:
         plt.subplot(2, 2, 2)
         plt.plot(Ux.time, Ux.in_mV)

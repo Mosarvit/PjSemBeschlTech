@@ -44,9 +44,10 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         save_signal(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
         
         # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured', 'Uout_measured')
-        
 
+        # taken out because of causing recursion error
         quality = signal_evaluate(data_directory + 'Uout_measured_' + id + '.csv', data_directory + 'quality_' + id + '.csv')
+        # quality = 5
         quality_development.append(quality)
 
         sigma_a = 0.5
