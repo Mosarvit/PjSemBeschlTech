@@ -97,7 +97,7 @@ class mock_system_class :
         self.__Uin_measured.sample_rate = samplerateOszi
 
         use_apply_K = True
-        if use_apply_K :
+        if use_apply_K:
             _, Uquest = apply_K(K_x_to_y=self.__K, Ux=self.__Uin, verbosity=0)
         else:
             Uquest = copy(self.__Uin)
