@@ -26,7 +26,7 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
         save_signal(Uquest_ideal, data_directory + 'Uquest_ideal_' + id + '.csv')
 #        Uquest_ideal.Vpp = 0.2
-        Uin, Uquest_adapted = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K, verbosity = 1)
+        Uin, Uquest_adapted = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K, verbosity = 0)
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
         
         save_signal(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
@@ -55,7 +55,7 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         sigma_a = 0.5
         Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H)
         a_new = adjust_a(a, Uin, Uquest_adapted, Uquest_measured, sigma_a)
-        K = compute_K_from_a(a=a_new, verbosity=1)
+        K = compute_K_from_a(a=a_new, verbosity=0)
         Ks.append(K)
         save_K(K, data_directory + '/K_' + id + '.csv')
         save_a(a_new, data_directory + 'a_' + id + '.csv')

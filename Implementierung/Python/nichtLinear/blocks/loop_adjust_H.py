@@ -33,12 +33,12 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
     for i in range(1, num_iters + 1):
         id = str(i)
         # compute new Uin
-        Uquest = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=1)
+        Uquest = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
 
         Uin, Uquest = compute_Uin_from_Uquest(Uquest=Uquest, K_Uin_to_Uquest=K)
 
 
-        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, verbosity=1)
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, verbosity=0)
 
         save_signal(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
         save_signal(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
@@ -61,7 +61,7 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
         sigma_H = 0.5
         quality_development.append(quality)
 
-        H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=1)
+        H = adjust_H(H, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
         Hs.append(H)
 
         save_transfer_function(H, filename=data_directory + 'H' + id + '.csv')

@@ -28,7 +28,7 @@ def determine_H(loadCSV=0, saveCSV=0, verbosity=0):
 
         fmax = 80e6
         vpp = 40e-3
-        f, Ha, Hph = get_H.get_H(fmax, vpp, bits=9, showPlots=1)
+        f, Ha, Hph = get_H.get_H(fmax, vpp, bits=9, showPlots=0)
 
         H = transfer_function_class(f)
         H.a = Ha
