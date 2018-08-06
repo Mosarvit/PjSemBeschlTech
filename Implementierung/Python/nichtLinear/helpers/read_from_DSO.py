@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
+def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal, measure_H = False):
 
     """
 
@@ -13,12 +13,14 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
         samplerateOszi: positiver integer; Abtastrate des DSO
         fmax : positiver skalar; max frequency of interest
         signal : nx1 vector; Signalvektor
+        measure_H : set true for measure H with Denys method
 
     OUTPUT:
 
         time : nx1 vector; Zeitvektor
         dataUin : nx1 vector; Signalvektor des Eingangssignals (Vorausgesetzt richtig angeschlossen ans DSO)
         dataUout : nx1 vector; Signalvektor des Eingangssignals (Vorausgesetzt richtig angeschlossen ans DSO)
+        :param measure_H:
 
     """
 
@@ -28,14 +30,13 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal):
 
     dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
     DSO = visa.ResourceManager().get_instrument(dso_ip)
-    version = 2
-    if version == 1:
+    if measure_H:
         Tns = 0.4/fmax
         periodTime = signal.size*Tns
         horizontalScalePerDiv = 1.5*periodTime/10 #At least one period needs to be
                                                   #shown on the DSO 
-    elif version == 2:
-        periodTime = 1/900e3
+    else:
+        periodTime = 1/fmax
         horizontalScalePerDiv = 1.5*periodTime/10
     
     # random samplerate versuch max

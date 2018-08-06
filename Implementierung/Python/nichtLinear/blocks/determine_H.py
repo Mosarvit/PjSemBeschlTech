@@ -28,14 +28,14 @@ def determine_H(loadCSV=0, saveCSV=0, verbosity=0):
 
         fmax = 80e6
         vpp = 40e-3
-        f, Ha, Hph = get_H.get_H(fmax, vpp, bits=9)
+        f, Ha, Hph = get_H.get_H(fmax, vpp, bits=9, showPlots=0)
 
         H = transfer_function_class(f)
         H.a = Ha
         H.p = Hph
 
         if saveCSV:
-            save_transfer_function(H, project_path + 'data/current_data/', '0')
+            save_transfer_function(H, project_path + 'data/current_data/H_0.csv')
 
     if verbosity:
 

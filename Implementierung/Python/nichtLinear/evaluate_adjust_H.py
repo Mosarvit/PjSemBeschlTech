@@ -50,12 +50,12 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     sample_rate_AWG_max = 2e8
     sample_rate_DSO = 9999e5
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
 
-    H = determine_H(loadCSV=1, saveCSV=1)
+    H = determine_H(loadCSV=1, saveCSV=1, verbosity=0)
 
     save_transfer_function(H=H, filename=data_directory + 'H_0.csv')
-
+    return
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
 
     K = compute_K_from_a(a=a, verbosity=0)

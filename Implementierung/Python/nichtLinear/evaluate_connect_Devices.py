@@ -1,24 +1,9 @@
-"""
-    This module offers checks for the devices used in the context of the barrier bucket systems, which are:
-    (July 2018)
-    - AWG Keysight via USB
-    - Tektronix DSO via Lan
-
-    The advantage of this module is that it is not necessary to start the main routine
-    and be surprised by errors thrown there.
-    This is like a developer mode for new ideas before doing changes in the main routine, especially in
-    - write_to_AWG.write
-    - read_from_DSO.read
-"""
-
 import visa
 import time
 import matplotlib.pyplot as plt
 import numpy as np
 import timeit
 from blocks.generate_BBsignal import generate_BBsignal
-
-# TODO: wait for AWG / DSO after each (nontrivial) command if possible with *OPC? after checking time-attempts
 
 
 def wait_for_AWG(AWG, attempt=0):
@@ -38,27 +23,12 @@ def wait_for_AWG(AWG, attempt=0):
         # print("Ereigniszustand handeln: " + str(ese))
         # AWG.write("*ESE 0")
         AWG.write("*OPC")
+        a = AWG.write("*ESR?")[0]
         #sets the opc-bit (AWG has to finish every commands before it can be written with new commands)
-        while int(AWG.write("*ESR?")) & 1 != 1:
+        while int(a) & 1 != 1:
             # asks for the standard-event-register: if bit 0 (operation complete) is set to 1, stop
             time.sleep(0.01)    # any value possible, just desired input here
-    #
-    # elif attempt == 3: # did not work when being tested in July 2018 -> maybe too much input in the query afterwards?
-    #     AWG.write("*WAI")  # new attempt 2 to reduce time to wait -> AWG will wait till commands above are finished.
-    #     # python will go on and write the commands in the input buffer
-    #     # they will be executed after WAI has finished
-    # elif attempt == 4: # did not work when being tested in July 2018 -> busy not defined for AWG
-    #     busy = 1 # initialize
-    #     busy = AWG.write("BUSY?")  # new attempt to reduce time to wait -> runs until OPC? is set to 1
-    #     # try additionally:
-    #     # busy = AWG.read() # comnined with write-command above should be same as query
-    #     print("busy:")
-    #     print(busy)
-    #     print("busy ready")
-    #     while int(busy[0]) != 0:  # loop until not busy any more
-    #         time.sleep(0.01)  # just to pose less requests to DSO, 10 msec waiting time -> not necessary
-    #         busy = AWG.write("BUSY?")
-    #         print(busy)  # just to have a control option -> not necessary, it an attempt work
+            a = AWG.write("*ESR?")[0]
     elif attempt == 5:
         # -> does not proceed until *OPC? is set to 1 by internal queue.
         # so, finishing this *OPC? in the program will last until the device is ready
@@ -87,6 +57,7 @@ def check_AWG():
         (no output)
 
     """
+    use_mock_system = 0
     #from evaluate_connect_Devices import wait_for_AWG
 
     # Define functions to use time-analysis by timeit.timeit
@@ -157,7 +128,22 @@ def check_AWG():
     print("Laufzeit von time_attempt_2 in milli Sec: " + str(t * 1e3) + " at Position zero")
     t = 0
     AWG.write("SYSTem:ERRor?")
-    time.sleep(4)
+    while True:
+        try:
+            AWG.write("*OPC?")
+            a = AWG.read()
+            break
+        except TimeoutError:
+            print("This shows that a TimeoutError ocurred when *OPC? is called. ..."
+                      "Repeating and going on till OPC is finished")
+
+    #time.sleep(4)
+#    a = AWG.write("*ESR?")[0]
+#    #sets the opc-bit (AWG has to finish every commands before it can be written with new commands)
+#    while int(a) & 1 != 1:
+#        # asks for the standard-event-register: if bit 0 (operation complete) is set to 1, stop
+#        time.sleep(0.01)    # any value possible, just desired input here
+#        a = AWG.write("*ESR?")[0]
     b = AWG.read()
     
     print(str(b))

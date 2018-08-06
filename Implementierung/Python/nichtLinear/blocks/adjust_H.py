@@ -112,8 +112,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # to reduce WHITE NOISE: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
     # TODO: add input parameter with ratio to not define it here
-    ratio_ideal = 0#5e-3
-    ratio_meas = 0#5e-3
+    ratio_ideal = 3e-3
+    ratio_meas = 3e-3
     # find indices to set to default:
     idx_clear_Id = np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id)))[0]
     idx_clear_Meas = np.where(abs(spectrum_Meas) <= ratio_meas * np.max(abs(spectrum_Meas)))[0]
@@ -183,7 +183,7 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # initialize Hneu
     Hneu = transfer_function_class(Halt.f)
-    Hneu.a = Halt.a * (1 - sigma_H * complex_ratio.a)
+    Hneu.a = Halt.a * (1 + sigma_H * complex_ratio.a)
     Hneu.p = Halt.p #- sigma_H * complex_ratio.p
   
 

@@ -1,0 +1,1 @@
+Einpendeln bei Q = 1.3, K init mit Uin 600 mV angepasst mit Uquest Vpp = 200mV
