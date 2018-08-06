@@ -37,7 +37,7 @@ def evaluate_adjust_a(num_iters = 1, verbosity = 0) :
 
     save_a(a_0, data_directory + 'a_initial.csv')
 
-    K_0 = compute_K_from_a(a=a_0, verbosity=0)
+    K_0 = compute_K_from_a(a=a_0, verbosity=1)
     save_2cols(data_directory + '/K_initial.csv', K_0[:, 0], K_0[:, 1])
 
     Uout_measured, quality_development, Ks = loop_adjust_a(a_0, K_0, H_0, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)

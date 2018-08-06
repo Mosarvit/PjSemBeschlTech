@@ -31,7 +31,7 @@ def compute_K_from_a(a, verbosity=0):
     b = a;
     du = 1;
 
-    M1=round(400/du)
+    M1=round(300/du)
     M=int(M1*2+1)
     K=np.zeros((M,2))
     L=len(b) 

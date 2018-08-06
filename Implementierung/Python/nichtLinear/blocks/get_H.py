@@ -101,7 +101,7 @@ def get_H(fmax, Vpp, bits=10, writeAWG=True, showPlots=0, createCSV=1, \
 
         time, dataUin, dataUout = read_from_DSO_resolution.read_from_DSO_resolution(samplerateOszi=samplerateOszi,
                                                                                     vpp_ch1=awg_volt, fmax=fmax,
-                                                                                    signal=signal)
+                                                                                    signal=signal, measure_H = True)
 
 
 

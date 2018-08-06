@@ -1,0 +1,1 @@
+Faktor 2 korrigiert K initial mit Uin 600mV Vpp bestimmt Uout Vpp auf 750 mV

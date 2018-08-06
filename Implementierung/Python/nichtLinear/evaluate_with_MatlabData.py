@@ -57,7 +57,7 @@ def sendUinToAWG():
 def receiveFromDSO():
     fmax = 80e6
     samplerateOszi = 100 * samplerateAWG
-    [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin)
+    [time, dataUin, dataUout] = read_from_DSO.read(samplerateOszi, vpp, fmax, Uin,,
     return time, dataUin, dataUout
 
 

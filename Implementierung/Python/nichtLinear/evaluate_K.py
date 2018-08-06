@@ -54,7 +54,7 @@ def evaluate_K() :
 
     H = determine_H(loadCSV=1, saveCSV=1)
 
-    save_transfer_function(H=H, directory=data_directory, id = '0' )
+#    save_transfer_function(H=H, directory=data_directory, id = '0' )
 
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
 
@@ -67,11 +67,12 @@ def evaluate_K() :
 
     quality_development = []
     Vpp_development = []
-    for i in range(1,10):
+    for i in range(5,10):
         id = str(i)
-        Uout_ideal.Vpp = 6*i*0.1
         Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
         save_signal(Uquest_ideal, data_directory + 'Uquest_ideal_' + id + '.csv')
+        
+        Uquest_ideal.Vpp = 0.3*i*0.1
         Uin, Uquest_adapted = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K)
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
@@ -98,9 +99,9 @@ def evaluate_K() :
                                   data_directory + 'quality_' + id + '.csv')
         # quality = 5
         quality_development.append(quality)
-        Vpp_development.append(Vpp)
+        Vpp_development.append(Uquest_adapted.Vpp)
 
-    print()
+    print(quality_development)
     save_2cols(data_directory + 'quality_vpp.csv', np.asarray(Vpp_development), np.asarray(quality_development))
     if not use_mock_system :
         save_text(data_directory)

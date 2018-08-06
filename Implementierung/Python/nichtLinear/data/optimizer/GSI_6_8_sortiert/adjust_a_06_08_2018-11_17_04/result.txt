@@ -1,0 +1,1 @@
+Uout Vpp 1V, K initial mit Uin Vpp 600mV

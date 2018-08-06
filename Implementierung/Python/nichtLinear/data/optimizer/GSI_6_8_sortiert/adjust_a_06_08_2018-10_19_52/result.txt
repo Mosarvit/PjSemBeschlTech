@@ -1,0 +1,1 @@
+erster Versuch Setup: K mit Uin 600mV bestimmt. K mit Uout Vpp 1.5V optimiert => keine Verbesserung
