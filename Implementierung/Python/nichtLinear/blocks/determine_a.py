@@ -18,11 +18,20 @@ from blocks.compute_K_from_a import compute_K_from_a
 from helpers.overlay import overlay
 
 def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory):
-    Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
-    Uin = copy(Uquest_ideal)
-    Uin.Vpp = 0.6
-    Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, loadCSV=0, saveCSV=0, id='1',
-                                               verbosity=0)
+    version = 1
+    if version == 1:
+        Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
+        Uin = copy(Uquest_ideal)
+        Uin.Vpp = 0.6
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, loadCSV=0, saveCSV=0, id='1',
+                                                   verbosity=0)
+    elif version == 2:
+        Uout_ideal.Vpp = 6
+        Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
+        Uin = copy(Uquest_ideal)
+        Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, loadCSV=0, saveCSV=0,
+                                                   id='1',
+                                                   verbosity=0)
     # save initial Data
     save_2cols(data_directory + 'Uin_initial.csv', Uin_measured.time, Uin_measured.in_V)
     save_2cols(data_directory + 'Uout_initial.csv', Uout_measured.time, Uout_measured.in_V)

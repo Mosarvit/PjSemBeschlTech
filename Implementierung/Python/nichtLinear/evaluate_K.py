@@ -68,15 +68,17 @@ def evaluate_K() :
     quality_development = []
     Vpp_development = []
     for i in range(1,10):
-        Vpp = 0.6*i*0.1
         id = str(i)
-
-        # set new vpp for Uquest
-        Uin.Vpp = Vpp
+        Uout_ideal.Vpp = 6*i*0.1
+        Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H)
+        save_signal(Uquest_ideal, data_directory + 'Uquest_ideal_' + id + '.csv')
+        Uin, Uquest_adapted = compute_Uin_from_Uquest(Uquest=Uquest_ideal, K_Uin_to_Uquest=K)
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO)
 
         save_signal(Uin_measured, data_directory + 'Uin_measured_uncut_' + id + '.csv')
         save_signal(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
+
+        # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured_uncut', 'Uout_measured_uncut')
 
         f_rep_fix = 9e5
         Uout_measured = Uout_measured.cut_one_period(f_rep_fix)
@@ -84,15 +86,21 @@ def evaluate_K() :
 
         # save Uin and Uout
         save_signal(Uin, data_directory + 'Uin_awg_' + id + '.csv')
-        save_signal(Uquest_ideal, data_directory + 'Uquest_' + id + '.csv')
+        # save_signal(Uquest_ideal, data_directory + 'Uquest_' + id + '.csv')
         save_signal(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
         save_signal(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
+        save_signal(Uquest_adapted, data_directory + 'Uquest_adapted_' + id + '.csv')
 
+        # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured', 'Uout_measured')
+
+        # taken out because of causing recursion error
         quality = signal_evaluate(data_directory + 'Uout_measured_' + id + '.csv',
                                   data_directory + 'quality_' + id + '.csv')
+        # quality = 5
         quality_development.append(quality)
         Vpp_development.append(Vpp)
 
+    print()
     save_2cols(data_directory + 'quality_vpp.csv', np.asarray(Vpp_development), np.asarray(quality_development))
     if not use_mock_system :
         save_text(data_directory)
