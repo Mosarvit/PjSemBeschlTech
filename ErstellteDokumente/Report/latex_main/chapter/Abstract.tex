@@ -1,4 +1,4 @@
-\documentclass[./Report.tex]{subfiles}
+\documentclass[../Report.tex]{subfiles}
 
 
 \begin{document}
@@ -7,9 +7,16 @@
 \chapter{Abstract}
 \label{chap:abstract}
 
---- dieses chapter führt eine kurze Vorstellung unseres Projektseminars aus. Beinhaltet einen kurz-Überblick über wichtigste Ergebnisse und Erkenntnisse, sollte (m. E.) wenig auf den Ausblick eingehen ---
-
-
+Für die sinnvolle Nutzung der Barrier-Bucket-Kavität an den Speicherringen der GSI Darmstadt ist ein qualitativ hochwertiger Einzelsinus als Ausgangsspannung am Gap unabdingbar. 
+Modelliert man den Messaufbau durch ein Hammerstein-Modell mit einer nichtlinearen Kennlinie im Zeitbereich und einer linearen Übertragungsfunktion im Frequenzbereich, so verlagert sich die Schwierigkeit auf das hinreichend genaue Bestimmen dieser Komponenten.
+Diese lassen sich einzeln, aber nacheinander und damit nicht unabhängig voneinander über automatisierte Messungen erfassen und direkt zur Weiterverarbeitung bereitstellen. Um die Modellierung zu verbessern liegt eine iterative Anpassung der beiden Bausteine nahe.
+\\
+\\
+In einem ersten Ansatz zur Optimierung werden Kennlinie und Übertragungsfunktion einzeln betrachtet. Es zeigt sich am simulierten idealen Hammerstein-Modell, dass dieser Ansatz die richtige Richtung einschlägt.
+Für eine merkliche Verbesserung der Modellierung auch am realen System sind jedoch noch eine Reihe von Hürden zu nehmen. Diese sind teilweise auf Diskretisierung und Interpolation zurückzuführen. Jedoch liegen gerade bei der nichtlinearen Kennlinie auch konzeptionelle Probleme bezüglich des Definitionsbereichs vor, die eine genauere Betrachtung nicht nur für die Optimierung erfordern.
+\\
+\\
+Unverzichtbare Grundlage der hier verfolgten Ansätze sowie Sprungbrett für die weitere Arbeit an einer Optimierung ist das Design einer Programmstruktur, die an den Kontext eines Messaufbaus angepasst ist. Ein feingliedriger, modularer Aufbau von Funktionalitäten, die Möglichkeit zur Simulation des mathematischen Modells sowie die Wahl eines auf periodische Funktionstest ausgelegten Programmier-Konzepts erweisen sich für die vorliegende Problemstellung als außerordentlich hilfreich.
 
 
 \end{document}

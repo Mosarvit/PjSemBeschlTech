@@ -69,54 +69,38 @@ Hierbei wurden die zu Beginn vorliegenden Implementierungen für die Gerätekomm
 Ziele der Anpassungen waren.
 \\
 \\
-Die Fernsteuerung von Messgeräten, der \lstinline{Remote}-Modus, wird standardmäßig durch das Visa-Protokoll und im vorliegenden Fall durch die Implementierung von National Instruments, NIVisa, geregelt. Die Einbindung in Python wird durch die Erweiterung PyVisa ermöglicht. Übertragen werden Befehle in Form standardisierter Befehlsstrukturen, den SCPI (Standard Commands for Programmable Instruments). Dem inneren Aufbau von Messgeräten zugrunde liegt der IEE-488 Standard, sodass unabhängig vom konkreten Gerät oder der Art der Verbindung eine Reihe von Befehlen existiert, die gemäß IEE-488.2 gebräuchliche Standards bieten \cite[S. 224 ff.]{keysHand15}.
+Die Fernsteuerung von Messgeräten, der \lstinline{Remote}-Modus, wird standardmäßig durch das Visa-Protokoll und im vorliegenden Fall durch die Implementierung von National Instruments, NIVisa, geregelt. Die Einbindung in Python wird durch die Erweiterung PyVisa ermöglicht. Übertragen werden Befehle in Form standardisierter Befehlsstrukturen, den SCPI (Standard Commands for Programmable Instruments). Dem inneren Aufbau von Messgeräten zugrunde liegt der IEEE-488 Standard, sodass unabhängig vom konkreten Gerät oder der Art der Verbindung eine Reihe von Befehlen existiert, die gemäß IEEE-488.2 gebräuchliche Standards bieten. Diese Befehle sind in der Form \lstinline{*COMMAND} gehalten \cite[S. 224 ff.]{keysHand15}. 
 Weiterhin bieten die Geräte spezifische Befehle zur Manipulation der Einstellungen, die in großer Analogie zur direkten Benutzeroberfläche formuliert sind. Diese werden nach Kontext gegliedert in sogenannte Subsysteme oder Command Groups.
+\\
+\\
+\noindent
+Es wird ein Keysight 33622A als Signalgenerator (AWG) und ein Oszilloskop der TDS 5000 Serie von Tektronix genutzt.
 
 
 \subsubsection{Laufzeitoptimierung}
-Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWG alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. Einen Eindruck der zeitlichen Größenordnung bietet \tabref{tab:vorg.gerate.runtime}.
-
-\begin{table}[H]
-\begin{subtable}[t]{.35\linewidth}
-\subcaption{Knotenliste}
-\label{ta}
-\begin{tabular}[t]{ | c | c | c | c | } 
-  \hline
-    $P_{\#}$ & $x$ & $y$ \\ 
-  \hline
-    $1$ & $\cos(72\degree)$ 	& $\sin(72\degree)$ \\ 
-  \hline
-    $2$ & $1$ 				& $0$ \\
-  \hline
-    $3$ & $\cos(72\degree)$ 	& $-\sin(72\degree)$ \\
-  \hline
-    $4$ & $-\cos(36\degree)$ & $-\sin(36\degree)$ \\
-  \hline
-    $5$ & $-\cos(36\degree)$ & $\sin(36\degree)$ \\
-  \hline
-    $6$ & $0$ 				& $0$ \\  
-  \hline  
-\end{tabular}
-\end{subtable}
-\caption{Laufzeit unterschiedlicher Befehle am Keysight 33622A}
-\label{tab:vorg.gerate.runtime}
-\end{table}
-
-In der zu Beginn vorliegenden Implementierung lagen pauschale Wartezeiten nach einigen Befehlen sowohl in der Ansteuerung des AWG als auch des Oszilloskops vor. 
-
-Die Wartezeiten für das AWG wurde letztendlich mit
---------------------------------------------------
---------------------------------------------------
-angepasst. Die Laufzeit der Routine zum Schreiben eines Arbiträrsignals in der speziellen hier geforderten Form wurde damit von etwa $\SI{25}{\s}$ auf ungefähr --- reduziert.
+Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWG alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. 
+Die Größenordnung dieser Wartezeiten schwankt dabei stark. So dauert ein \lstinline{Re}\lstinline{set} des AWG bis zu 5 Sekungen und das Schreiben eines Arbiträrsignals benötigt ebenso mehr als eine Sekunde. Das Oszilloskop hingegen verarbeitet ohne im Kontext dieses Aufbaus messbare Verzögerung. Verbunden damit, dass das Oszilloskop auf absehbare Zeit durch das neuere MAUI von Teledyne LeCroy ersetzt wird, wird im Folgenden nicht weiter auf die Laufzeit dieses Gerätes eingegangen. Durch diese Feststellung konnte die Laufzeit je Lese-Aufruf bereits um ungefähr 15 Sekunden reduziert werden.
+Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-Abfragen ähnlich den nachfolgend für das AWG erläuterten.
 \\
-Erfolglos blieben Versuche mit einigen anderen Standardbefehlen.
-\lstinline{*WAI} und \lstinline{*BUSY?} sind keine für das AWG definierten Befehle.
-\lstinline{*OPC?} zwingt Python zum Warten auf Beenden aller Befehle im AWG und führt zu einem \lstinline{TimeoutError}, da die Ausführung zu lange für die internen Routinen von Python braucht, vergleiche hierfür \cite[S. 9]{troeser13}.
+\\
+\noindent
+In der zu Beginn vorliegenden Implementierung lagen pauschale Wartezeiten nach einigen als besonders zeitintensiv erwarteten Befehlen sowohl in der Ansteuerung des AWG als auch des Oszilloskops vor. 
+Insgesamt blieb die Verbesserung der Zugriffszeiten auf das AWG erfolglos. Es stellt nach wie vor das Nadelöhr des Programms dar mit etwa 25 Sekunden Laufzeit je Aufruf. 
+Es wurden eine Reihe von IEEE-488 Standardbefehlen für diesen Zweck ausprobiert, nachfolgend mit den wichtigsten Eigenschaften:
+\begin{enumerate}
+	\item \lstinline{*BU}\lstinline{SY?} ist kein für das AWG definierter Standardbefehl. Dieser würde 0 zurückgeben, wenn das Gerät gerade nicht mit Ausführen eines Befehls beschäftigt ist.
+	
+	\item \lstinline{*WA}\lstinline{I} ist in erster Linie ein interner Befehl, zuerst alle Befehle abzuarbeiten, bevor neue angegangen werden. Dies geschieht jedoch ohne Rückgabe an den aufrufenden Code.
+	
+	\item \lstinline{*OPC?} zwingt das aufrufende Programm zum Warten auf Beenden aller Befehle im AWG und führt zu einem \lstinline{VisaTimeoutError} im AWG, wenn zu lange auf die Rückgabe gewartet werden muss \cite[S. 9]{troeser13}. Dieser Fehler konnte auch nicht im Programm aufgefangen werden, sodass er folgenlos für den Ablauf geblieben wäre.
+	
+	\item \label{enum:gerateOPC}\lstinline{*OPC} setzt das zugehörige Bit \lstinline{Standard-Event-Register} des Gerätes, sobald alle Befehle abgearbeitet sind. Im Unterschied zu \lstinline{*OPC?} wird damit jedoch nicht auch das aufrufende Programm geblockt. Jedoch muss mit einer Statusabfrage über \lstinline{*ESR?} dieses Register ausgelesen werden. Die dafür benötigte Schleife konnte jedoch nicht derart über PyVisa implementiert werden, dass tatsächlich mit Sicherheit alle vorigen Befehle beendet wurden.
+
+\end{enumerate}
+
+Als besonders erfolgversprechend erschien der letzte Ansatz \ref{enum:gerateOPC}, der jedoch auch zeitlich der letzte war. Mit einer Schleife über \lstinline{*ESR?} könnte das zugehörige Bit erneut ausgelesen und eine sehr kleine pauschale Wartezeit im Programm eingebaut werden, bevor die nächste Abfrage stattfindet. Hier könnte es sich um ein Resultat der Codierung über PyVisa handeln, da hierbei mehrere Arten, einen Befehl an das Gerät zu senden, zur Verfügung stehen. \ref{}
+
 Weiterhin wurde die pauschale Wartezeit an der im Datenblatt \cite[S. 21]{keysData14} für die Verbindung via USB angegebenen, gemessenen Ladedauer eines Arbiträrsignals orientiert. Dieser Richtwert von $\SI{1.25}{\s}$ stellte sich jedoch als zu gering für den hier vorliegenden Fall heraus.
-\\
-\\
-Es wurde festgestellt, das die Verarbeitungsgeschwindigkeit des Oszilloskops bei den hier benötigten Abfragen und Befehlen kein Hindernis darstellt und die Ausführung der Befehle in Python ohne Zeitverzögerung möglich ist. Durch diese Feststellung konnte die Laufzeit je Lese-Aufruf bereits um ungefähr $\SI{15}{\s}$ reduziert werden.
-Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-Abfragen ähnlich den oben für das AWG erläuterten.
 \\
 \\
 Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{SYSTem:ERRor?} möglich ist und durch das dabei erfolgte Löschen der Fehler aus dem internen Speicher nicht nur die Abfrage sondern auch das Rücksetzen des Fehlerstatus ermöglicht. Dies ist insbesondere für das Debugging vorteilhaft, wenn Befehle ausprobiert werden und die gegebenenfalls auftretenden Fehler gehandhabt werden müssen \cite[S. 454]{keysHand15}. Dies vermeidet das unter Umständen mehrmalige Trennen und Wiederherstellen der Verbindung zum AWG sowie das Löschen der Fehler an der Benutzeroberfläche.
@@ -130,7 +114,7 @@ Dieser Gewinn an Genauigkeit in der Messung stellte sich insbesondere für die \
 
 \section{Kritische Punkte}
 \label{sec:vorg.critical}
-
+--------- sollten wir an andere Stelle setzen ---
 Infolge der Auseinandersetzung mit dem anfangs vorliegenden Code sowie im Zuge der Ausarbeitung sind einige Punkte aufgetreten, an deren Bedeutung die implementierte Funktionalität teilweise essentiell hing, die jedoch im Zuge der Implementierung für Probleme sorgten. Diese seien aufgrund ihrer unterschiedlichen Natur hier stichpunktartig erläutert:
 \begin{itemize}
 	\item	Bei diskreten Zeitsignalen ist zu beachten, dass die Periodendauer $T$ nicht durch die Differenz der Zeitwerte des letzten und des ersten Wertes, sondern noch zuzüglich eines Zeitschritts  zu berechnen ist, also \lstinline{T = time[end] - time[0] + delta_time}, womit gelten sollte \lstinline{T = N * delta_time}. Dies wirkt sich insbesondere auch auf die FFT aus, wenn die zugehörige Frequenzachse berechnet werden muss.
