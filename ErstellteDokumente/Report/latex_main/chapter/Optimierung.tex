@@ -688,15 +688,14 @@ Als andere Möglichkeit die Kennlinie anzupassen könnte man $V_{PP}$ von $\Uque
 	\newlength\figurewidth
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-	\importTikz{adjust_a_K_bearbeitet.tikz}	
+    \input{images/plots/adjust_a_K_bearbeitet.tikz}
 \subcaption{Kennlinie}
 	\label{fig:K}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-    %\input{images/plots/adjust_a_Uin.tikz}
-    \importTikz{adjust_a_Uout.tikz}
+    \input{images/plots/adjust_a_Uout.tikz}
 \subcaption{Ausgangsspannung}
 	\label{fig:Uout}
 \end{subfigure}
@@ -707,46 +706,46 @@ In \figref{fig:K} ist $K_0$ die initial Kennlinie und $K_1$ ist die Kennlinie na
 \subsubsection*{Grenzen der initial Kennlinie}
 \label{subsubsec:opt.adjusta.problem}
 In \figref{fig:UinUquest} sind die Spannungen eingezeichnet mit denen $K_0$ berechnet wurde. Dabei gilt für $\Uin = \Uquest_{,\mathrm{ideal}}$, was sich durch $\Uout_{,\mathrm{ideal}}$ mit $V_{PP} = \SI{3}{\V}$ berechnen lässt. Die Spannung $\Uquest_{,1}$ wurde aus dem gemessenen $\Uout_{,\mathrm{meas}}$ berechnet.\\
-Das eingezeichnete Maximum von $\Uquest$ in \figref{fig:K0} liegt über der zulässigen Grenze von $K_0$, deshalb kann damit kein vorverzerrtes Signal berechnet werden.
--Erläuterung des Problems mit der least square method: Grenzen bekommen nicht genug Gewichtung, um genau berechnet zu werden. Und damit nicht garantiert im bijektiven Bereich liegen-
+Das eingezeichnete Maximum von $\Uquest$ in \figref{fig:K0} liegt an der zulässigen Grenze von $K_0$, deshalb kann damit zwar ein vorverzerrtes Signal berechnen werden, aber Messungen zeigen, dass die Qualität in diesem Bereich stark abnimmt. \\
+Eine Ursache dafür könnte sein, dass mit der least-square Methode, mit der die Parameter $a_n$ für $K$ bestimmt werden, die Extrema von $\Uquest$ nicht genug Gewichtung bekommen, um in diesem Bereich gültig zu sein.
 
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-	\importTikz{K_bearbeitet.tikz}	
+    \input{images/plots/K_bearbeitet.tikz}	
 \subcaption{Kennlinie}
 	\label{fig:K0}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{8cm}
 	\setlength\figurewidth{8cm}
-    \importTikz{UinUquest.tikz}
+    \input{images/plots/UinUquest.tikz}
 \subcaption{Berechnung von $K$}
 	\label{fig:UinUquest}
 \end{subfigure}
 \caption{Nichtlineare Vorverzerrung}
 \label{fig:Amplitudenproblem}
 \end{figure}
-Für die Evaluierung der Grenzen der Kennlinien wurden verschiedene Amplituden von $\Uquest_{,\textrm{ideal}}$ über die Kennlinie nichtlinear vorverzerrt. Das Ausgangssignal wurde mit dem RF-Tool bewertet und ist in \figref{fig:evaluateK.quality} gezeigt.
-%\begin{figure}[H]
-%\begin{subfigure}{0.5 \textwidth}
-%	\setlength\figureheight{8cm}
-%	\setlength\figurewidth{8cm}
-%	\importTikz{evaluate_K.tikz}	
-%\subcaption{Kennlinie}
-%	\label{fig:K0_quality}
-%\end{subfigure}
-%\begin{subfigure}{0.5 \textwidth}
-%	\setlength\figureheight{8cm}
-%	\setlength\figurewidth{8cm}
-%    \importTikz{evaluate_K_quality.tikz}
-%\subcaption{Berechnung von $K$}
-%	\label{fig:evaluateK.quality}
-%\end{subfigure}
-%\caption{Güte von $\Uout$}
-%\label{fig:Amplitudenproblem}
-%\end{figure}
-
+Für die Evaluierung der Grenzen der Kennlinien wurden verschiedene Amplituden von $\Uquest_{,\textrm{ideal}}$ über die Kennlinie nichtlinear vorverzerrt. Das Ausgangssignal wurde mit dem RF-Tool bewertet und ist in \figref{fig:evaluateK.quality} gezeigt. Dabei sind die Grenzen von $\Uquest$ in \figref{fig:K0_quality} mit $\min(\Uquest)$ und $\max(\Uquest)$ beschriftet dies entspricht mit \SI{120}{\mV} etwa $34\%$ des maximal möglichen $V_{PP}$ das von $K$ im bijektiven Bereich zugelassen ist. Die anderen Grenzen sind die, bis wohin die Güte überprüft wurde.
+\begin{figure}[H]
+\begin{subfigure}{0.5 \textwidth}
+	\setlength\figureheight{8cm}
+	\setlength\figurewidth{8cm}
+    \input{images/plots/evaluate_K_bearbeitet.tikz}	
+\subcaption{Kennlinie}
+	\label{fig:K0_quality}
+\end{subfigure}
+\begin{subfigure}{0.5 \textwidth}
+	\setlength\figureheight{8cm}
+	\setlength\figurewidth{8cm}
+    \input{images/plots/evaluate_K_quality_bearbeitet.tikz}	
+\subcaption{Berechnung von $K$}
+	\label{fig:evaluateK.quality}
+\end{subfigure}
+\caption{Bewertung des Ausgangssignals}
+\label{fig:Amplitudenproblem}
+\end{figure}
+Dabei ist der kleinste und damit der beste Wert der Güte mit \SI{190}{\mV} etwa $54\%$ des maximal möglichen $V_{PP}$ das von $K$ aufgezeichnet worden. Diese Messung lässt sich nicht auf alle Kennlinien übertragen und sollte im Vornherein festgestellt werden.
 
 \end{document}

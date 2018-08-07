@@ -16,7 +16,10 @@ x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
 legend entries={{$K_0$}},
 legend cell align={left},
-legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black}
+legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black},
+extra y ticks={64.0888558094, -55.9111441906, 115.359940457, -100.640059543},
+extra y tick labels={\tiny{$\max(U_?)$}, \tiny{$\min(U_?)$}},
+extra y tick style={grid=major, ytick pos=left, ytick align=inside, ticklabel pos=left}
 ]
 \addlegendimage{no markers, color0}
 \addplot [semithick, color0]
@@ -321,26 +324,6 @@ table {%
 294 159.727904709
 296 159.770698145
 298 159.793000478
-};
-\addplot [semithick, red, forget plot]
-table {%
-0 64.0888558094
-1 64.0888558094
-};
-\addplot [semithick, red, forget plot]
-table {%
-0 -55.9111441906
-1 -55.9111441906
-};
-\addplot [semithick, green!50.0!black, forget plot]
-table {%
-0 115.359940457
-1 115.359940457
-};
-\addplot [semithick, green!50.0!black, forget plot]
-table {%
-0 -100.640059543
-1 -100.640059543
 };
 \end{axis}
 

@@ -7,12 +7,12 @@
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/adjust_a_Uout.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/adjust_a_Uout.tikz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/K_bearbeitet.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/K_bearbeitet.tikz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/evaluate_K.tikz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/evaluate_K_quality.tikz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/evaluate_K_06_08_2018-12_59_03/quality_vpp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/evaluate_K_06_08_2018-12_59_03/Vpp_quality.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate_K.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_K.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plot_tikz.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_tikz.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="plot_tikz.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot_tikz.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="170" column="24" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
+            <state relative-caret-position="452">
+              <caret line="205" column="112" selection-start-line="205" selection-start-column="112" selection-end-line="205" selection-end-column="112" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -37,18 +37,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate_K.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluate_K.py">
+      <file leaf-file-name="evaluate_adjust_a.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="91" column="19" lean-forward="true" selection-start-line="91" selection-start-column="19" selection-end-line="93" />
+            <state relative-caret-position="461">
+              <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vpp_quality.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/evaluate_K_06_08_2018-12_59_03/Vpp_quality.csv">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -108,7 +106,22 @@
               <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
               <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="evaluate_K_06_08_2018-12_59_03" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+              <item name="GSI_6_8_sortiert" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nichtLinear" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nichtLinear" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+              <item name="GSI_6_8_sortiert" type="462c0819:PsiDirectoryNode" />
+              <item name="adjust_a_30_Iterationen" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -198,10 +211,27 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/evaluate_K.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_tikz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="170" column="24" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_evaluate_adjust_H.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -225,12 +255,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/mock_system/mock_system_class.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -260,9 +284,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_K.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -276,9 +297,6 @@
           <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_apply_transfer_function.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -339,9 +357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -491,16 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blocks/loop_adjust_a.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -515,12 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_results.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/evaluate_K_06_08_2018-12_59_03/K_initial.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file:///anaconda3/lib/python3.6/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-186">
@@ -531,17 +530,45 @@
     <entry file="file://$PROJECT_DIR$/data/evaluate_K_06_08_2018-12_59_03/Vpp_quality.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_K.py">
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_30_Iterationen/K_1.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runme_adjust_a.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="91" column="19" lean-forward="true" selection-start-line="91" selection-start-column="19" selection-end-line="93" />
+        <state>
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate_K.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_30_Iterationen/quality_12.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_30_Iterationen/quality_1.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/plot_tikz.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="170" column="24" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
+        <state relative-caret-position="452">
+          <caret line="205" column="112" selection-start-line="205" selection-start-column="112" selection-end-line="205" selection-end-column="112" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

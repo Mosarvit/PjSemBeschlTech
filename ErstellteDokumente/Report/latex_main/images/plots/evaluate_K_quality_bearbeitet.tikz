@@ -4,7 +4,7 @@
 \definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
 
 \begin{axis}[
-xlabel={$\frac{V_{PP, U_{?}}}{V_{PP, max}}$},
+xlabel={$\frac{V_{PP, U_{?}}}{V_{PP, \textrm{max}}}$},
 ylabel={QGesamt1},
 xmin=0.326820036459133, xmax=0.626405069880006,
 ymin=1.2425958340305, ymax=1.6843073440395,

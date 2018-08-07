@@ -98,7 +98,7 @@ def adjust_a_plot_Uout():
     plt.show()
 
 def adjust_a_plot_Uquest():
-    data_path = project_path + 'data/optimizer/adjust_a_19_07_2018-13_53_38/'
+    data_path = project_path + 'data/evaluate_K_06_08_2018-12_59_03/'
     plt.figure()
     # evaluate adjust a mit Out vpp 3,.. V zurückgerechnet
     # plot vonUin
@@ -116,18 +116,16 @@ def adjust_a_plot_Uquest():
     plt.legend(['$K_0$'], loc=2)
     plt.xlabel('$U_{in}$ in \si{\\milli \\volt}')
     plt.ylabel('$U_{?}$ in \si{\\milli \\volt}')
-    plt.ylim((-400,400))
-    Uout = read_in_signal(data_path + 'Uout_initial.csv', delimiter = ',')
-    print(Uout.Vpp)
+    plt.ylim((-200, 200))
 
     # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/K.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 
-    plt.plot([t * 1e6 for t in Uquest.time[::100]], Uquest.in_mV[::100], [t * 1e6 for t in Uin.time[::100]], Uin.in_mV[::100])
+    plt.plot([t * 1e6 for t in Uquest.time[::100]], Uquest.in_mV[::100], [t * 1e6 for t in Uin.time[::100]], [u * 0.5 for u in Uin.in_mV[::100]])
     plt.legend(['$U_{?,1}$', '$U_{in}$'])
     plt.xlabel('$t$ in \si{\\micro \\second}')
     plt.ylabel('$U$ in \si{\\milli \\volt}')
-    plt.ylim((-400,400))
+    plt.ylim((-200, 200))
     # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 # adjust_a_plot_Uquest()
@@ -160,7 +158,7 @@ def new_adjust_a_plot_K():
     plt.legend(['$K_0$'])
     plt.xlabel('$U_{in}$ in \si{\\milli \\volt}')
     plt.ylabel('$U_{?}$ in \si{\\milli \\volt}')
-    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/evaluate_K.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/evaluate_K.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
 
     plt.show()
     # plt.subplot(1, 2, 2)
@@ -170,8 +168,46 @@ def new_adjust_a_plot_K():
     plt.xlabel('$\\frac{V_{PP, U_{?}}}{V_{PP, max}}$')
     plt.ylabel('QGesamt1')
 
-    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/evaluate_K_quality.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/evaluate_K_quality.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
 
     plt.show()
+def new_adjust_a_plot_30():
+    data_path = project_path + 'data/optimizer/GSI_6_8_sortiert/adjust_a_30_Iterationen/'
 
-new_adjust_a_plot_K()
+    Qall = []
+    iteration = []
+    plt.figure()
+    #plt.subplot(1,2,1)
+    for i in [1,2,3,29,30]:
+        # k = 1 + 2 * i
+        K = genfromtxt(data_path + 'K_' + str(i) + '.csv', delimiter=',')
+        plt.plot(K[:, 0][::2], K[:, 1][::2])
+
+        # Q = genfromtxt(data_path + 'quality_' + str(i) + '.csv', delimiter=',')
+        # Qall.append(Q[9, 1])
+        iteration.append(i)
+
+
+    plt.legend(iteration)
+    plt.xlabel('$U_{in}$ in \si{\\milli \\volt}')
+    plt.ylabel('$U_{?}$ in \si{\\milli \\volt}')
+
+    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    plt.show()
+    #plt.subplot(1,2,2)
+    for i in range(1,31):
+        Q = genfromtxt(data_path + 'quality_' + str(i) + '.csv', delimiter=',')
+        if i == 1 or  i == 2 or i == 3 or i == 29 or i == 30:
+            plt.plot(i, Q[9, 1], 'bo')
+        else:
+            plt.plot(i, Q[9, 1], 'bx')
+
+    plt.legend(['Güte'], loc=2)
+    plt.xlabel('Iteration')
+    plt.ylabel('QGesamt1')
+
+    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    plt.show()
+
+new_adjust_a_plot_30()
+# new_adjust_a_plot_K()

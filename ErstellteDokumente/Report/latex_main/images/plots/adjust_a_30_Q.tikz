@@ -1,0 +1,142 @@
+% This file was created by matplotlib2tikz v0.6.17.
+\begin{tikzpicture}
+
+\begin{axis}[
+xlabel={Iteration},
+ylabel={QGesamt1},
+xmin=-0.45, xmax=31.45,
+ymin=1.04829029440141, ymax=3.10021311484252,
+width=\figurewidth,
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+x grid style={white!69.01960784313725!black},
+y grid style={white!69.01960784313725!black},
+legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black},
+legend cell align={left},
+legend entries={{Güte}}
+]
+\addlegendimage{no markers, blue}
+\addplot [semithick, blue, mark=*, mark size=3, mark options={solid}, only marks]
+table {%
+1 1.33933657581415
+};
+\addplot [semithick, blue, mark=*, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+2 1.71408593424802
+};
+\addplot [semithick, blue, mark=*, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+3 1.14155951351237
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+4 1.92563871584933
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+5 1.20828266898654
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+6 1.83819854338923
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+7 1.15509998393241
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+8 2.43128738947511
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+9 1.24003365394859
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+10 2.47474461493424
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+11 1.20493465742107
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+12 2.97380032968469
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+13 1.27797746368757
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+14 2.93080134092079
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+15 1.21602915220021
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+16 2.77292007210168
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+17 1.21379443133402
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+18 2.72757644489784
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+19 1.23951736331941
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+20 3.00614253023569
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+21 1.23130025809298
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+22 2.66341712746378
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+23 1.21301024650504
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+24 2.74936004060199
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+25 1.21843227630116
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+26 2.94636297359222
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+27 1.27435230337997
+};
+\addplot [semithick, blue, mark=x, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+28 2.96054792478101
+};
+\addplot [semithick, blue, mark=*, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+29 1.26596961123896
+};
+\addplot [semithick, blue, mark=*, mark size=3, mark options={solid}, only marks, forget plot]
+table {%
+30 3.00694389573156
+};
+\end{axis}
+
+\end{tikzpicture}
