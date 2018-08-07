@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  7 AUG 2018 19:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  7 AUG 2018 22:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1625,11 +1625,7 @@ or  <return>  to continue without it.
 LaTeX Warning: Unused global option(s):
     [scrreprt].
 
-(/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux
-
-LaTeX Warning: Label `fig:Amplitudenproblem' multiply defined.
-
-)
+(/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux)
 \openout1 = `Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
@@ -2541,73 +2537,16 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 632.
 
+
+Package caption Warning: \label without proper reference on input line 777.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:opt.Kennlinie' on page 17 undefined on input line 683.
+
 \figureheight=\skip157
 \figurewidth=\skip158
-(./images/plots/adjust_a_K_bearbeitet.tikz
-LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
-(Font)              scaled to size 5.195pt on input line 941.
-
-
-LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 941.
-
-LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
-(Font)              scaled to size 5.195pt on input line 941.
-LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 5.36003pt on input line 941.
-
-LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 941.
-
-LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 5.36003pt on input line 941.
-LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 4.51202pt on input line 941.
-LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 3.84003pt on input line 941.
-LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
-(Font)              scaled to size 4.418pt on input line 941.
-LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
-(Font)              scaled to size 3.76001pt on input line 941.
-)
-Overfull \hbox (2.56393pt too wide) in paragraph at lines 943--692
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 943--692
-
- []
-
-(./images/plots/adjust_a_Uout.tikz)
+(./images/plots/adjust_a_30_K_bearbeitet.tikz) (./images/plots/adjust_a_30_Q.tikz)
 Overfull \hbox (2.44385pt too wide) in paragraph at lines 686--703
 []$[]$ $[]$
  []
@@ -2620,54 +2559,122 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 705.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 705.
-[17] (./images/plots/K_bearbeitet.tikz)
-Underfull \hbox (badness 10000) in paragraph at lines 301--717
+[17] (./images/plots/K_bearbeitet.tikz
+LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
+(Font)              scaled to size 5.195pt on input line 299.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 299.
+
+LaTeX Font Info:    Font shape `T1/cmss/m/n' will be
+(Font)              scaled to size 5.195pt on input line 299.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
+(Font)              scaled to size 5.36003pt on input line 299.
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 299.
+
+LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
+(Font)              scaled to size 5.36003pt on input line 299.
+LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
+(Font)              scaled to size 4.51202pt on input line 299.
+LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
+(Font)              scaled to size 3.84003pt on input line 299.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 4.418pt on input line 299.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 3.76001pt on input line 299.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 301--719
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--717
+Underfull \hbox (badness 10000) in paragraph at lines 301--719
 
  []
 
 (./images/plots/UinUquest.tikz)
-Overfull \hbox (2.44385pt too wide) in paragraph at lines 713--727
+Overfull \hbox (2.44385pt too wide) in paragraph at lines 715--729
 []$[]$ $[]$ 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 730.
+(babel)             in language  on input line 732.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 730.
+(babel)             in language  on input line 732.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 730.
+(babel)             in language  on input line 732.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 730.
+(babel)             in language  on input line 732.
 [18] (./images/plots/evaluate_K_bearbeitet.tikz)
-Underfull \hbox (badness 10000) in paragraph at lines 330--736
+Underfull \hbox (badness 10000) in paragraph at lines 330--739
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--736
+Underfull \hbox (badness 10000) in paragraph at lines 330--739
 
  []
 
 (./images/plots/evaluate_K_quality_bearbeitet.tikz)
-Overfull \hbox (2.44385pt too wide) in paragraph at lines 732--746
+Overfull \hbox (2.44385pt too wide) in paragraph at lines 735--749
 []$[]$ $[]$ 
  []
 
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 754.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 754.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 754.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 754.
+[19] (./images/plots/adjust_a_kleinerBereich_K_bearbeitet.tikz)
+Underfull \hbox (badness 10000) in paragraph at lines 1551--767
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1551--767
+
+ []
+
+(./images/plots/adjust_a_kleinerBereich_Q.tikz)
+Overfull \hbox (2.44385pt too wide) in paragraph at lines 763--778
+[]$[]$ $[]$
+ []
+
 ) (./chapter/Fazit.tex
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 7.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 7.
- [19]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2813,23 +2820,20 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 60868 strings out of 492649
- 1463512 string characters out of 6129622
- 2451646 words of memory out of 5000000
- 63560 multiletter control sequences out of 15000+600000
- 670982 words of font info for 261 fonts, out of 8000000 for 9000
+ 60914 strings out of 492649
+ 1464649 string characters out of 6129622
+ 2530087 words of memory out of 5000000
+ 63597 multiletter control sequences out of 15000+600000
+ 671548 words of font info for 263 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,22n,136p,10434b,3120s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 78i,23n,136p,10434b,3124s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.pdf (28 pages, 405143 bytes).
+Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.pdf (28 pages, 422251 bytes).
 PDF statistics:
- 559 PDF objects out of 1000 (max. 8388607)
- 501 compressed objects within 6 object streams
- 134 named destinations out of 1000 (max. 500000)
+ 560 PDF objects out of 1000 (max. 8388607)
+ 502 compressed objects within 6 object streams
+ 135 named destinations out of 1000 (max. 500000)
  333 words of extra memory for PDF output out of 10000 (max. 10000000)
 

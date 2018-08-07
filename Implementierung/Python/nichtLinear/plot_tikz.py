@@ -192,11 +192,14 @@ def new_adjust_a_plot_30():
     plt.xlabel('$U_{in}$ in \si{\\milli \\volt}')
     plt.ylabel('$U_{?}$ in \si{\\milli \\volt}')
 
-    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_K.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
     #plt.subplot(1,2,2)
     for i in range(1,31):
         Q = genfromtxt(data_path + 'quality_' + str(i) + '.csv', delimiter=',')
+        Uquest = read_in_signal(data_path + 'Uquest_adapted_' + str(i) + '.csv', delimiter=',')
+        print(Uquest.Vpp)
+
         if i == 1 or  i == 2 or i == 3 or i == 29 or i == 30:
             plt.plot(i, Q[9, 1], 'bo')
         else:
@@ -206,8 +209,48 @@ def new_adjust_a_plot_30():
     plt.xlabel('Iteration')
     plt.ylabel('QGesamt1')
 
-    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 
-new_adjust_a_plot_30()
+
+def sinnvoll():
+    data_path = project_path + 'data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-12_02_11/'
+
+    Qall = []
+    iteration = []
+    plt.figure()
+    # plt.subplot(1,2,1)
+    K = genfromtxt(data_path + 'K_initial.csv', delimiter=',')
+    plt.plot(K[:, 0][::2], K[:, 1][::2])
+    for i in range(1,5):
+        # k = 1 + 2 * i
+        K = genfromtxt(data_path + 'K_' + str(i) + '.csv', delimiter=',')
+        plt.plot(K[:, 0][::2], K[:, 1][::2])
+
+        Q = genfromtxt(data_path + 'quality_' + str(i) + '.csv', delimiter=',')
+        Qall.append(Q[9, 1])
+        iteration.append(i)
+
+
+    plt.legend(['initial','1','2','3','4'])
+    plt.xlabel('$U_{in}$ in \si{\\milli \\volt}')
+    plt.ylabel('$U_{?}$ in \si{\\milli \\volt}')
+
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_K.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    plt.show()
+    # plt.subplot(1,2,2)
+    # Uin_initial = read_in_signal(data_path + 'Uin_initial.csv')
+    for i in range(1,5):
+        Uquest = read_in_signal(data_path + 'Uquest_adapted_' + str(i) + '.csv', delimiter=',')
+        print(Uquest.Vpp)
+
+    plt.plot(iteration, Qall, 'x')
+    plt.legend(['Güte'], loc=2)
+    plt.xlabel('Iteration')
+    plt.ylabel('QGesamt1')
+
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    plt.show()
+sinnvoll()
+# new_adjust_a_plot_30()
 # new_adjust_a_plot_K()

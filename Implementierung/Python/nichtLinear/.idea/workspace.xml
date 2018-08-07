@@ -5,13 +5,9 @@
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/K_bearbeitet.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/K_bearbeitet.tikz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/evaluate_K.tikz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/evaluate_K_quality.tikz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_Q.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/adjust_a_30_Q.tikz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plot_tikz.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_tikz.py" afterDir="false" />
     </list>
@@ -28,22 +24,10 @@
       <file leaf-file-name="plot_tikz.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot_tikz.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="205" column="112" selection-start-line="205" selection-start-column="112" selection-end-line="205" selection-end-column="112" />
+            <state relative-caret-position="344">
+              <caret line="223" selection-start-line="223" selection-end-line="223" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evaluate_adjust_a.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,7 +105,7 @@
               <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="optimizer" type="462c0819:PsiDirectoryNode" />
               <item name="GSI_6_8_sortiert" type="462c0819:PsiDirectoryNode" />
-              <item name="adjust_a_30_Iterationen" type="462c0819:PsiDirectoryNode" />
+              <item name="adjust_a_06_08_2018-12_02_11" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -183,17 +167,25 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32923076" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32923076" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32923076" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -211,72 +203,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/plot_tikz.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="12" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/evaluate_K.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_tikz.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="170" column="24" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_evaluate_adjust_H.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/compute_Uin_from_Uquest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="47" lean-forward="true" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_adjust_a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="52" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mock_system/mock_system_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocks/measure_Uout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="65" column="59" lean-forward="true" selection-start-line="65" selection-start-column="59" selection-end-line="65" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO_resolution.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/read_from_DSO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -565,10 +502,34 @@
     <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_30_Iterationen/quality_1.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_30_Iterationen/result.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-11_40_20_sinnvoll/result.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-10_59_52/result.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-12_02_11/quality_4.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-12_02_11/quality_3.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-12_02_11/quality_2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-12_02_11/quality_1.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-12_02_11/result.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/plot_tikz.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="205" column="112" selection-start-line="205" selection-start-column="112" selection-end-line="205" selection-end-column="112" />
+        <state relative-caret-position="344">
+          <caret line="223" selection-start-line="223" selection-end-line="223" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
