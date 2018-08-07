@@ -1,0 +1,158 @@
+%Struktur: 20 min Vortrag mit 1,5 min pro Folie -> 15 Folien inkl. Titelfolie
+%10 min Fragen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[colorbacktitle,inverttitle,landscape,presentation,
+	english,
+	aspectratio=43, %43 or 169, 1610
+	accentcolor=tud9b, %tud9b (temf) or tud5b (gsce) 
+]{tudbeamer}
+
+%%additional packages(Praesentation)
+%%standard:
+
+%%language:
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%%math:
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+%%tikz:
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage[siunitx,americaninductors]{circuitikz}
+\usepackage{siunitx}
+%%pgfplots:
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{patchplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}\usepgfplotslibrary{units}
+%%scaling:
+\usepackage{adjustbox}
+\usepackage{wrapfig,lipsum,booktabs}
+%%additional packages(Praesentation)
+ 
+
+%needs to come last
+\usepackage{temfbeamer}
+
+%remove TU logo from every slide but the title
+\setbeamertemplate{headline}[TUD theme nologo] 
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\usepackage{listings}
+\lstset{ %
+  float=tp,
+  floatplacement=tbp,
+  abovecaptionskip=-5pt,
+  backgroundcolor=\color{gray!25},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\scriptsize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  commentstyle=\color{mygreen},    % comment style
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+%  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+}
+
+\usepackage[absolute,overlay]{textpos}
+ 
+ 
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+
+%set date
+\date{20. Juni, 2018}
+
+\newcount\WertA
+
+\newcounter{from}
+\newcounter{till}
+\newcounter{onlyAt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Generierung des Eingangssingals für Barrier Bucket RF Systeme and der GSI }
+
+\subtitle{\\[0.3\baselineskip]
+	Jonas Christ, Artem Moskalew, Maximilian Nolte \\
+{\small Jens Harzheim, M.Sc.}\\
+[0.3\baselineskip]
+{\tiny Projektseminar Beschleunigertechnik}\\[0.3em]
+	\mbox{\scriptsize}~}
+	
+\institute[TU Darmstadt | Fachbereich 18 | Institut Theorie Elektromagnetischer Felder]{Institut für Theorie Elektromagnetischer Felder, TU Darmstadt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+	
+\begin{titleframe}
+	\tudtitle[images/temf_logo.pdf]{images/temf_background.jpg} 
+	%\tudtitle[images/gsce_logo.pdf]{images/gsce_background.jpg}
+	\end{titleframe}
+	
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents%[currentsection,subsectionstyle=show/show/hide]
+\end{frame}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Einführung}
+
+\subsection{Problemstellung}
+\input{slides/Problemstellung}
+
+\subsection{Aufbau}
+\input{slides/Aufbau}
+
+\section{Gerätekommunikation}
+\input{slides/ResultGeraetekommunikation}
+\input{slides/EvalGeraetekommunikation}
+
+\section{Code}
+
+\WertA=1
+\subsection{Design}
+\input{slides/ResultCode}
+
+\subsection{Vorgehensweise}
+\input{slides/Gegeben}
+
+\WertA=2
+\subsection{Evaluierung}
+\input{slides/ResultCode}
+
+
+
+\section{Ausblick}
+\input{slides/Ausblick}
+\input{slides/Fragen}
+
+\section{Quellen}
+\input{slides/References}
+
+
+	
+	
+\end{document}
