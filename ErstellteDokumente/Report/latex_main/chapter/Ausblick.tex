@@ -36,15 +36,15 @@ Auf den Ergebnissen aus \nameref{chap:opt} aufbauend, verbleiben eine Reihe von 
 \begin{enumerate}
 	\item 	Wie wirkt sich die Optimierung von $K$ aufgrund ihrer Nichtlinearität auf die Übertragungsfunktion $\Hcompl$ aus und muss dies in der Optimierung berücksichtigt werden, etwa in der Reihenfolge der Iterationsschritte?
 	
-	\item	Wie wird mit der Tatsache umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen?
+	\item	Wie wird mit der Tatsache umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen? Eine erste Verbesserung könnte das zero-padding genannte Hinzufügen von zusätzlichen $0$-Werten an die Zeitsignale sein, womit sich für die Berechnung der FFT der Frequenzabstand zweier Werte verringern lässt. 
 	
 	\item	In welcher Reihenfolge wird die Iteration durchgeführt? Wird zuerst $\Hcompl$ in mehreren Durchgängen angepasst und danach $K$? Oder im Wechsel je eine Iteration?
 	
 	\item 	Wie wird die Auswahl der Schrittweiten $\sigma_H$ und $\sigma_a$ vorgenommen? Werden diese pauschal einmal festgesetzt zu Beginn des Algorithmus oder ist eine dynamische Anpassung, etwa durch die Qualität des letzten gemessenen Signals oder in Abhängigkeit des Iterationsschritts vorzuziehen? 
 	
-	\item 	\label{enum:opt.noise}Wie lässt sich der Einfluss von zufälligem Rauschen auf die Optimierung reduzieren? 
+	\item 	Wie lässt sich der Einfluss von zufälligem Rauschen auf die Optimierung reduzieren? Insbesondere die Auflösung im höherfrequenten Betragsspektrum ist hier zu problematisch.
 	
-	\item	\label{enum:opt.zeros}Wie lassen sich die im idealen Spektrum des Einzelsinus enthaltenen Nulldurchgänge in der Optimierung von $\Hcompl$ berücksichtigen, um interpolationsbedingt große Fehlerterme zu vermeiden? Ist das einfache Ignorieren dieser Frequenzen für die Anpassung eine Möglichkeit?
+	\item	Wie lassen sich die im idealen Spektrum des Einzelsinus enthaltenen Nulldurchgänge in der Optimierung von $\Hcompl$ berücksichtigen, um interpolationsbedingt große Fehlerterme zu vermeiden? Ist das einfache Ignorieren dieser Frequenzen für die Anpassung eine Möglichkeit? Und in welchem kleinen Frequenzbereich um einen Nulldurchgang müssten dann die Werte ignoriert werden?
 	
 	\item 	Wie - insofern überhaupt - ist eine Optimierung der Phase von $\Hcompl$ zu gestalten?
 	
@@ -54,7 +54,7 @@ Auf den Ergebnissen aus \nameref{chap:opt} aufbauend, verbleiben eine Reihe von 
 	
 	\item	Wie bestimmt man die Grenzen, in denen $K$ genutzt werden kann? Wie kann man garantieren, dass $K$ in den Bereichen, aus denen die Daten zur Berechnung von $a_n$ benutzten werden, bijektiv ist?
 	
-	\item	Gibt es eine Möglichkeit die Grenzen von $K$ bei der Optimierung zu erweitern? Ein möglicher Indikator: Kann man die Rückgabe von \lstinline{numpy.linalg.lstsq(LGS)} aus der Berechnung von $a_n$ nutzen, um eine Aussage über die Abweichung der Werte zu treffen.
+	\item	Gibt es eine Möglichkeit die Grenzen von $K$ bei der Optimierung zu erweitern? Ein möglicher Indikator: Kann man die Rückgabe von \lstinline{numpy.linalg.lstsq(LGS)} aus der Berechnung von $a_n$ nutzen, um eine Aussage über die Abweichung der Werte zu treffen?
 \end{enumerate}
 
 

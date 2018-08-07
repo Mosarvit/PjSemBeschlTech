@@ -32,10 +32,10 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 # bis nächstes Mal an GSI zu tun:
 
 # nächstes Mal an GSI zu tun:
-	- notieren, wieviele Samples in AWG genutzt werden
+	- notieren, wieviele Samples in AWG genutzt werden: 221
 	- Messdaten generieren:
 		- evaluate adjust_H:
-			- zweimal ganz ohne RMS (mit sigma = 0.5) oder Promille Anpassung laufen lassen (mind. 5 Iterationen)
+			- I I zweimal ganz ohne RMS (mit sigma = 0.5) oder Promille Anpassung laufen lassen (mind. 5 Iterationen)
 				zweimal, um Einfluss von Rauschen zu vergleichen
 			- einmal mit sigma = 0.2 ohne alles laufen lassen (mind. 5 Iterationen), vergleich mit obigem
 			- einmal nur mit Promille Anpassung (ca. 3 Prom) laufen lassen (mind. 5 Iterationen)
@@ -102,13 +102,9 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 ## Bericht ueber Vorgehen:
 	- Was war vorgegeben / womit wurde angefangen? (Matlab zu Python) (Max)
 	- Geraetekommunikation (Jonas)
-	- Dokumentation, Konventionen, Konzept hinter Konvention und Dokumentation (Jonas)
 	- Optimierung: (Jonas)
-		. Idee
-		. Implementierung
 		. Daten und Versuche
 		. (Einbindung Tool zur Bewertung)
-		. (ggf. Problematik mit Samplerate des AWG)
 	- Optimierung a/K (Max)
 
 ## Evaluierung / Erkenntnisse (erste Meta-Ebene)
@@ -117,12 +113,7 @@ beim Sammeln von Ideen fuer Report notieren, welche Daten an der GSI generiert w
 	- Allgemeine Vorteile unseres Code-Designs fuer die Nutzung in Messsituationen und Probleme
 	- Bewertung Sinnhaftigkeit Optimierung
 	- Erfahrung Problematik FFT-Berechnung-> ein Zeitschritt zu wenig für Berechnung Periodendauer!
+	- Problematisch: wenig RF-Tool einbindung (Bewertung, Erzeugung Singlesine)
 	
-## Ausblick / weitere Ideen:
-	- RF-Tools, Kommandozeilen-Ausfuehrung
-	- Optimierung:
-		- alternierende / parallele Iteration?
-		- Formel sinnvoll?
-		- Rauschen filtern?
-		- Interpolationsfehler bei Nulldurchgaengen des Spektrums reduzieren?
+
 	

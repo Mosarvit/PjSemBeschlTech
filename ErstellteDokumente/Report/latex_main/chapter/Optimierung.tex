@@ -1,8 +1,5 @@
 \documentclass[../Report.tex]{subfiles}
 
-%\makeatletter
-%%\@ifundefined{subRoot}{\newcommand{\subRoot}[1]{../#1}}
-%\@ifundefined{importTikz}{\newcommand{\importTikz}[1]{\input{../images/plots/#1}}}
 
 \begin{document}
 
@@ -164,8 +161,8 @@ Zu beachten bei letzterem Punkt ist die notwendige Rundung, wenn die Einträge d
 \\
 \\
 \indent
-Mit Beschränkung auf $5 \, \promille$ und dem globalen Minimum beider Spektren als Default-Wert ergeben sich die angepassten Betragsspektren wie in ---- ABB --- zu sehen, der Übersichtlichkeit halber mit kleinem vertikalen Ausschnitt.
-Mit diesem Schritt ergibt sich über drei Iterationen ein Verlauf des Korrekturterms $\fabs$ und der Übertragungsfunktion für eine Schrittweite $\sigma_H = \nicefrac{1}{2}$ wie in ---- ABB --- dargestellt. 
+Mit Beschränkung auf $3 \, \promille$ und dem globalen Minimum beider Spektren als Default-Wert werden insbesondere Einträge in den höheren Frequenzen des Spektrums \ref{fig:opt.abs_spektrum} beeinflusst. Erst ab etwa $5 \promille$ werden alle Frequenzen ab ungefähr $\SI{60}{\MHz}$ auf den Default-Wert gesetzt. Mit dieser Methodik werden folglich in erster Linie Korrekturen an hohen Frequenzen von $\Hcompl$ verhindert.
+Verglichen mit der nachfolgend beschriebenen Anpassung hat dieses Vorgehen aufgrund der beschriebenen Bandbreite einen niedrigeren Einfluss auf die Qualität des Ausgangssignals.
 
 
 \subsubsection*{Ignorieren großer Korrektur-Terme}
@@ -188,37 +185,39 @@ Der reine RMS von $\fabs$ unterliegt der Problematik, eine unproportional große
 Idealerweise enthält $\fabs$ mit jeder Iteration kleinere Einträge als zuvor. Es würden also bei Nutzung des reinen RMS unter Umständen mit zunehmender Schrittzahl zunehmend mehr Werte in $\fabs$ ignoriert - was der Optimierung entsprechende Grenzen setzt. 
 In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die Problematik unumgänglich, da Frequenzen, die explizit nicht bei der Anpassung berücksichtig werden sollen, den reinen RMS-Wert beeinflussen.
 Folglich muss der RMS modifiziert werden. Hier wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich also bei der vorgenommenen Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
- 
 
-In \figref{fig:opt.H.iteration} ist die Entwicklung von Übertragungsfunktion und $\fabs$ über mehrere Iterationen aufgetragen. Der Einfluss des RMS-Cutters macht sich dabei verglichen mit ---- ABB oben, rein iteriert --- bemerkbar, es treten weniger starke Änderungen auf. 
-Gleichzeitig zeigt sich, dass nicht in jedem Schritt an exakt den gleichen Stellen am jeweiligen RMS geschnitten werden muss. Dies belegt die Zufälligkeit des Fehlers und erläutert die prinzipielle Berechtigung der Methodik.
-Es zeigt sich, dass die vorgenommene Anpassung keinen großartigen Einfluss auf die Qualität des Signals hat.
-Dies ist insofern beachtenswert, als dass die Übertragungsfunktion auch an einigen Stellen mit massiver Verstärkung stark angepasst wird, vergleiche hierzu \figref{fig:opt.H.RMS_H} bei etwa $\SI{25}{\MHz}$.
-Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ---- ---- und zeigt vor allem rauschbedingte Schwankungen.
-%TODO: check!!! Mehr Durchläufe ausprobieren, unbedingt!
+\subsubsection{Auswertung}
 
-\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
-\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
-\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
-\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
-\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
-\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
-\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
-\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
+Eine erste Illustration bietet die Anwendung des beschriebenen Vorgehens auf das \mock-System. Hier lässt sich testen, ob unter der Annahme einer vorgegebenen Übertragungsfunktion  $\Hcompl_{\mathrm{mock}}$ im Sinne des Hammerstein-Modells und unter Vernachlässigung der Kennlinie (entspricht einer als ideal berechneten Kennlinie) eine Verbesserung des Signals erreicht wird und wie sich die Fehlerquellen mit Ausnahme von Rauschen auswirken. 
+Das Ergebnis dieses Tests ist eindeutig und anschaulich in \figref{fig:opt.H.mock} aufgetragen für jeweils 15 Iterationen. Es lässt sich feststellen, dass eine Anpassung sowohl der Nulldurchgänge als auch bei hohen Frequenzen unbedingt notwendig ist und dies durch die Beschränkung großer Korrekturterme angegangen werden kann.\footnote{Die Auswirkungen der zusätzlichen Nutzung einer Beschränkung auf $3 \promille$ verbessern die Übertragungsfunktion optisch nicht wesentlich.}
+Auch zeigen sich in direkter Umgebung der Nulldurchgänge noch Frequenzen, an denen die Korrekturterme zwar geringer als der modifizierte RMS, jedoch immer noch ungenau durch die Interpolation aufgelöst sind.
+Diese Fehler sind ausschlaggebend dafür, dass sich die Qualität des erhaltenen Ausgangssignals über die Iterationen verschlechtert.\footnote{Je geringer der Wert des Qualitätskriteriums, desto ähnlicher ist das Signal einem idealen Einzelsinus.} Nichtsdestotrotz nähert sich die Übertragungsfunktion außerhalb der problematischen Nulldurchgänge gerade in niedrigeren Frequenzen sehr gut an $\Hcompl_{\mathrm{mock}}$ an. 
  
+ 
+\pgfplotstableread[col sep = comma] {opt_mock_rms/H0.csv} \Hinit
+\pgfplotstableread[col sep = comma] {H_a_mock.csv} \Hmock
+%\pgfplotstableread[col sep = comma] {opt_mock_rms/H1.csv} \rmsHone
+%\pgfplotstableread[col sep = comma] {opt_mock_rms/H5.csv} \rmsHfive
+%\pgfplotstableread[col sep = comma] {opt_mock_rms/H10.csv} \rmsHten
+\pgfplotstableread[col sep = comma] {opt_mock_rms/H15_3prom.csv} \rmsHprom
+\pgfplotstableread[col sep = comma] {opt_mock_rms/H15.csv} \rmsHften
+%\pgfplotstableread[col sep = comma] {opt_mock_simple/H1.csv} \simpleHone
+%\pgfplotstableread[col sep = comma] {opt_mock_simple/H5.csv} \simpleHfive
+%\pgfplotstableread[col sep = comma] {opt_mock_simple/H10.csv} \simpleHten
+\pgfplotstableread[col sep = comma] {opt_mock_simple/H15.csv} \simpleHften
 
 \begin{figure}[htb]
-%\begin{center}
 \begin{subfigure}{\textwidth}
-%	\begin{center}
     \begin{tikzpicture}
 \begin{axis}[
 		scale only axis,
-		width = 0.75 \textwidth,
-		height = 0.2 \textheight,
-		legend entries = {original, Step 1, Step 2, Step 3},
-		legend pos = north east,
-		legend columns = 3,
+		width = 0.8 \textwidth,
+		height = 0.2 \textheight,		
+		legend style={ at={(0.5,1.1)},
+				anchor=south},
+		legend columns = 2,
+		transpose legend, 
+		cycle list name = color list,
 		xlabel={Frequenz},
 		ylabel={Betrag Übertragung $\Hcompl$},
 		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
@@ -234,30 +233,182 @@ Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ----
 		xtick scale label code/.code={[MHz]},
 		xmin = 0,
 		xmax = 80000000,
-%		ymin = 0,
-		%ymax = 0.03,
-		]
-		\addplot [black, sharp plot, mark size = 3pt] table [x index = 0, y index = 1] {\Horig};
-		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsOne};
-		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsTwo};
-%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsThree};
+		ymin = 0,
+		ymax = 15,
+		]	
+		\addplot  table [x index = 0, y index = 1] {\Hmock}; \addlegendentry{$\Hcompl_{\mathrm{mock}}$}
+		
+		\addplot  table [x index = 0, y index = 1] {\Hinit}; \addlegendentry{$\Hcompl_{\mathrm{initial}}$}
+		
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHone}; \addlegendentry{Step 1 - keine Anpassung}
+%		\addplot  table [x index = 0, y index = 1] {\simpleHfive}; \addlegendentry{Step 5 - keine Anpassung}
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHten}; \addlegendentry{Step 10 - keine Anpassung}
+		\addplot  table [x index = 0, y index = 1] {\simpleHften}; \addlegendentry{Step 15 - keine Anpassung}
+		
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\rmsHone}; \addlegendentry{Step 1 - mit RMS}
+%		\addplot  table [x index = 0, y index = 1] {\rmsHfive}; \addlegendentry{Step 5 - mit RMS}
+		\addplot  table [x index = 0, y index = 1] {\rmsHften}; \addlegendentry{Step 15 - mit RMS}	
+		
+		\addplot table [x index = 0, y index = 1] {\rmsHprom}; \addlegendentry{Step 15 - mit RMS und $3 \promille$}
+
+		
 \end{axis}
 \end{tikzpicture}
-\caption{Entwicklung des Betrags der Übertragungsfunktion über mehrere Iterationen und im Anfangszustand}
-	\label{fig:opt.H.RMS_H}
-%	\end{center}
+\caption{Entwicklung des Betrags der Übertragungsfunktion des \mock-Systems mit und ohne Anpassung großer Korrekturterme}
+	\label{subfig:opt.H.mock}
 \end{subfigure}
 \\
 \begin{subfigure}{\textwidth}
+\begin{tikzpicture}
+	\begin{axis}[
+		scale only axis,
+		width = 0.4 \textwidth,
+		height = 0.2 \textheight,		
+		legend pos = outer north east,
+		xlabel={Iterationsschritt},
+		ylabel={Güte Ausgangssignal},
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		xmin = 0.2,
+		xmax = 15.8,
+		]	
+		
+	\addplot table [x expr=\coordindex+1, y index =0]{
+		0.48726213261815016 
+		0.49000679356347154
+		0.5101194806372478
+		0.5266448340807586
+		0.5375527813320436
+		0.5447108764910896
+		0.5499773649457441
+		0.5545875437451622
+		0.5592582035611007
+		0.5643452240862432
+		0.5699343256576608
+		0.5758895933658901
+		0.5819216415470254
+		0.5877172129682854
+		0.5930401259075484
+		}; \addlegendentry{Korrektur ohne Anpassung}	
+	
+	\addplot table [x expr=\coordindex+1, y index =0]{
+		0.48726213261815016
+		0.4759961751169583 
+		0.4852543982854474 
+		0.4954878236964439 
+		0.5034038461346506 
+		0.5086562700430226 
+		0.5124108351861989 
+		0.5156318810838099 
+		0.517584903029569
+		0.518781160261209
+		0.5195457063994412 
+		0.520135841606002
+		0.5205906984373314 
+		0.5210120621383171 
+		0.5215551522937539
+		}; \addlegendentry{Korrektur mit RMS}
+		
+		\addplot table [x expr=\coordindex+1, y index =0]{
+		0.48726213261815016 
+		0.4695879133604225
+		0.47376436493301266 
+		0.48016422206587334 
+		0.4867655459013696 
+		0.4916978026875846 
+		0.49484977950838993 
+		0.4971321854184491 
+		0.4989985349115239 
+		0.5021058501215027 
+		0.5044349692747538 
+		0.5061724548300056 
+		0.5074558511064865 
+		0.5085423753752575 
+		0.5094731920124752
+		}; \addlegendentry{Korrektur mit RMS und $3 \promille$ }			
+	\end{axis}
+\end{tikzpicture}
+\caption{Entwicklung des Qualitätswertes des Ausgagnssigals über 15 Iterationen, mit und ohne Anpassung des Korrekturterms}
+	\label{subfig:opt.H.mockQuality}
+\end{subfigure}
+\caption[Optimierung von $\Hcompl$ im \mock-System]{Anwendung der Optimierung von $\Hcompl$ mit und ohne Anpassung des Korrekturterms auf das \mock-System bei $\sigma_H = \nicefrac{1}{2}$}
+\end{figure}
+
+
+Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlinie $K$, übertragen sich die prinzipiellen Erkenntnisse aus dem \mock-System  auf die Kavität und es lässt sich auch der Einfluss von Rauschen auf die Optimierung feststellen. Wie sich die Kombination aus Anpassung kleiner Beträge in den Spektren der genutzten Ausgangssignale und Einschränkung des Korrekturterms auswirkt, ist in \figref{fig:opt.H.RMS_fabs} aufgetragen. Klar erkennbar sind wieder die Problematik der Nulldurchgänge und die Auflösung hoher Frequenzen. 
+
+
+%In \figref{fig:opt.H.iteration} ist die Entwicklung von Übertragungsfunktion und $\fabs$ über mehrere Iterationen aufgetragen. Der Einfluss des RMS-Cutters macht sich dabei verglichen mit ---- ABB oben, rein iteriert --- bemerkbar, es treten weniger starke Änderungen auf. 
+%Gleichzeitig zeigt sich, dass nicht in jedem Schritt an exakt den gleichen Stellen am jeweiligen RMS geschnitten werden muss. Dies belegt die Zufälligkeit des Fehlers und erläutert die prinzipielle Berechtigung der Methodik.
+%Es zeigt sich, dass die vorgenommene Anpassung keinen großartigen Einfluss auf die Qualität des Signals hat.
+%Dies ist insofern beachtenswert, als dass die Übertragungsfunktion auch an einigen Stellen mit massiver Verstärkung stark angepasst wird, vergleiche hierzu \figref{fig:opt.H.RMS_H} bei etwa $\SI{25}{\MHz}$.
+%Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ---- ---- und zeigt vor allem rauschbedingte Schwankungen.
+%%TODO: check!!! Mehr Durchläufe ausprobieren, unbedingt!
+
+\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
+\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
+\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
+\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
+\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
+\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
+\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
+\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
+ 
+
+\begin{figure}[htb]
 %\begin{center}
+%\begin{subfigure}{\textwidth}
+%%	\begin{center}
+%    \begin{tikzpicture}
+%\begin{axis}[
+%		scale only axis,
+%		width = 0.75 \textwidth,
+%		height = 0.2 \textheight,
+%		legend entries = {original, Step 1, Step 2, Step 3},
+%		legend pos = north east,
+%		legend columns = 3,
+%		xlabel={Frequenz},
+%		ylabel={Betrag Übertragung $\Hcompl$},
+%		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+%		%xtick distance = 10000000,
+%%		xminorgrids,
+%%		xmajorgrids,
+%%		minor x tick num =3,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={[MHz]},
+%		xmin = 0,
+%		xmax = 80000000,
+%		ymin = 0,
+%		%ymax = 0.03,
+%		]
+%		\addplot [black, sharp plot, mark size = 3pt] table [x index = 0, y index = 1] {\Horig};
+%		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsOne};
+%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsTwo};
+%%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsThree};
+%\end{axis}
+%\end{tikzpicture}
+%\caption{Entwicklung des Betrags der Übertragungsfunktion über mehrere Iterationen und im Anfangszustand} %alte Messung!
+%	\label{fig:opt.H.RMS_H}
+%%	\end{center}
+%\end{subfigure}
+%\\
+%\begin{subfigure}{\textwidth}
+%%\begin{center}
     \begin{tikzpicture}
 \begin{axis}[
 		scale only axis,
-		width = 0.75 \textwidth,
-		height = 0.2 \textheight,
-		legend entries = {original, Step 1, Step 2, Step 3},
+		width = 0.7 \textwidth,
+		height = 0.17 \textheight,
+		legend entries = {initial, angepasst},
 		legend pos = south west,
 		legend columns = 3,
+		cycle list name = color list,
 		xlabel={Frequenz},
 		ylabel={Korrekturterm $\fabs$},
 		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
@@ -281,24 +432,25 @@ Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ----
 		ymax = 0.75,
 		]
 		
-		\addplot [black, sharp plot, mark size = 3pt] table [x index = 0, y index = 1] {\fabsOrig};
-		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSone};
-		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMStwo};
+		\addplot  table [x index = 0, y index = 1] {\fabsOrig};
+		\addplot  table [x index = 0, y index = 1] {\fabsRMSone};
+%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMStwo};
 %		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSthree};
 \end{axis}
 \end{tikzpicture}
-\caption{Entwicklung des Korrekturterms in angepasster Form über mehrere Iterationen und in initialer, nicht angepasster Form - RMS aus Step 1 zum Vergleich}
+\caption{Korrekturterm in initialer und in angepasster Form mit RMS- und $3 \promille$-Korrektur}
 \label{fig:opt.H.RMS_fabs}
 %\end{center}
-\end{subfigure}
+%\end{subfigure}
 %\end{center}
-
-\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
-\label{fig:opt.H.iteration}
+%\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
+%\label{fig:opt.H.iteration}
 \end{figure}
 
 
 
+\newpage
+\newpage
 \section{Optimierung der nichtlinearen Kennlinie $K$}
 \label{sec:opt.K}
 Der Unterschied zur Optimierung von $\Hcompl$ ist, dass diese Optimierung im Zeitbereich statt findet. Deshalb kann \eqref{eq:opt.relFehler} zu
