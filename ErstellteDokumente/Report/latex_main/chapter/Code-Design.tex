@@ -10,7 +10,8 @@ Die Aufgabe des Projektseminars war ein bestehendes Tool weiter zu entwickeln. E
 
 \section{Motivation}
 \label{sec:code.motivation}
-Ziel ist es ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des weiteren wird eine lose Kopplung der einzelnen Bestandteile angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung zum anderen auch die Verständlichkeit des gesamten Programms.
+Ziel ist es ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des weiteren wird eine lose Kopplung der einzelnen angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung im Team zum anderen auch die Verständlichkeit des gesamten Programms. \\
+Ohne ein modulares Design ist eine Optimierung der einzelnen Bestandteile nur schwer umzusetzen.
 
 \section{Aufbau}
 \label{sec:code.aufbau}
@@ -18,24 +19,116 @@ Der Aufbau des Programms orientiert sich an dem vorgegebenen Modell aus \figref{
 
 \subsection{Namenskonvention}
 \label{subsec:code.namen}
-Einfache und selbsterklärende Präfixe von Funktionen \lstinline{adjust_}
-
-
- 
+In der nachfolgenden \tabref{tab:code.namen} sind die verwendeten Präfixe erklärt.
+	
+\begin{table}[H]
+\centering 
+\begin{tabular}[t]{| >{\texttt\bgroup}r<{\egroup} | l |} 
+  \hline
+    \textrm{Präfix} & Erklärung \\ 
+  \hline \hline
+    adjust & Anpassung einer Größe in einem Iterationsschritt	\\
+  \hline
+    compute & Berechnung einer Größe, ohne Kommunikation der Geräte \\ 
+  \hline
+    determine & Bestimmung einer Größe mit Kommunikation der Geräte 	\\
+  \hline 
+    evaluate & Routinen mit Bewertung der Ergebnisse mit idealen Ergebnissen \\  
+  \hline 
+    generate & Erstellung eines Datensatzes \\
+  \hline
+    get & Aus der Implementierung von \cite{PJS_Denys} übernommen für get\_H \\
+  \hline
+    loop & Eine Iterierungsschleife im Optimierungsalgorithmus \\  
+  \hline  
+    measure & Messung einer Größe \\  
+  \hline
+\end{tabular}
+\caption{Erklärung der Präfixe von Methoden}
+\label{tab:code.namen}
+\end{table}
 
 \subsection{Ordnerstruktur}
 \label{subsec:code.ordner}
+In \tabref{tab:code.ordner} sind die Inhalte der verwendeten Ordner augelistet.
+
+\begin{table}[H]
+\centering 
+\begin{tabular}[t]{| >{\texttt\bgroup}r<{\egroup} | l |} 
+  \hline
+    \textrm{Ordner} & Inhalt \\ 
+  \hline \hline
+    blocks & Implementierung der abstrakten Schritte im Modell	\\
+  \hline  
+    classes & ADTs siehe \ref{subsec:code.adt} \\  
+  \hline
+    data & Alle Ergebnisse \\ 
+  \hline
+    helpers & Hilfsfunktionen nach \cite{helper_class} 	\\
+  \hline 
+    tests & Alle Klassen mit Unit Tests \\  
+  \hline 
+    tools & RF-Tools \\ 
+  \hline
+\end{tabular}
+\caption{Namen der Ordner}
+\label{tab:code.ordner}
+\end{table}
+
+
 
 \subsection{Abstact Data Types}
 \label{subsec:code.adt}
+Bestimmte Datensätze wurden als eigene abstrakte Datentypen (ADTs) implementiert, siehe \cite[Kap. 6.1]{mcConnell}. Daraus ergeben sich folgende Vorteile:
+\begin{itemize}
+	\item Allgemeine Funktionalität wird in der Klasse implementiert
+	\item Typüberprüfung wird ermöglicht
+	\item Implementierung generischer Klassen beispielsweise \lstinline{calculate_error()} ermöglicht
+\end{itemize}
+Für die Klasse \lstinline{signal_class()} ergeben sich speziell noch weitere Vorteile:
+\begin{itemize}
+\item Vermeidung von ungewollten Manipulationen an Datensätzen, die nur schwer zu debuggen sind
+	\item Das Orginalsignal ist immer gespeichert 
+	\begin{itemize}
+		\item dadurch Vermeidung der Fortpflanzung von Interpolationsfehlern durch Resampling
+	\end{itemize}
+\end{itemize}
 
 \section{Methodik}
 \label{subsec:code.methodik}
+Für diesen Typ Aufgabenstellung konnte viel Programmierarbeit ohne den Versuchsaufbau vorgenommen werden, sodass viele Fehler schon vor dem eigentlichen Testlauf am System entdeckt und behoben werden konnten. Dafür werden zwei Möglichkeiten vorgestellt, die diese Fehlersuche ermöglicht und erleichtert haben.
 
 \subsection{Test Driven Development}
 \label{subsec:code.tdd}
+Nach der Methode TDD werden vor dem eigentlichen Programmieren Tests geschrieben, die mit der folgenden Implementierung der Funktionalität bestanden werden müssen. Diese Tests geben ein gutes Feedback darüber, ob eine Methode gut implementiert wurde. Die folgenden Vorteile waren besonders wichtig in der Entwicklung des Codes für diese Aufgabe:
+\begin{itemize}
+	\item Testen von kleinen Abschnitt erzwingt einen modularen Aufbau
+	\item Tests dokumentieren Funktionalität
+	\item Refactoring wird ermöglicht
+	\item Einfachere Fehlersuche auch ohne Versuchsaufbau möglich
+	\item Reproduktion von Messvorgängen, die Fehler aufgedeckt haben
+	\item Arbeitsteilung an logisch getrennten Abschnitten ermöglicht
+	\item Vergleich zwischen der Implementierung aus MATLAB und der aus Python
+\end{itemize}
+Eine große Schwierigkeit dieser Methode liegt darin, gute Tests zu formulieren, die auch alle möglichen Fälle abdecken. Das kann einige Zeit in Anspruch nehmen, lohnt sich aber auf längere Sicht
 
 \subsection{Mock-System}
 \label{subsec:code.mock}
+Das implementierte Mock System stellt ein typtisches Beispiel für ein mock object nach \cite{mock} dar und simuliert das getestete reale System nach einem bestimmten Modell. In diesem Fall wird zur Simulation ein ideales Hammerstein Modell als Grundlage verwenden, weil dieses Modell verwendet wird, um das reale System abzubilden. Dieses Mock-System testet die Möglichkeiten der implementierten Methoden ein Hammerstein Modell darzustellen und zu optimieren.\\
+Mit diesem System konnten auch Methoden getestet werden, die eigentlich mit den Geräten kommunizieren und somit nicht gut ohne Versuchsaufbau getestet werden können. Der Ablauf sieht wie folgt aus:
+\begin{itemize}
+	\item Das Eingangssignal wird nicht an das AWG übergeben sondern an die Simulation
+	\item Verzerrung über eine nichtlineare Kennlinie $K$ 
+	\item Berechnung das Ausgangssignals über die Übertragungsfunktion $\Hcompl$
+	\item Das Ausgangssignal wird wieder an die eigentliche Methode übergeben
+\end{itemize}
+Unter der Annahme, dass der Versuchsaufbau sich hinreichend genau als Hammerstein Modell beschreiben lässt, wurde die Konvergenz der Optimierungsideen in der Simulation schon erreicht. Ein weiterer Vorteil dieser Methode war, dass man durch den Aufbau der Simulation das System besser verstehen konnte. Dadurch können die Aufgaben Refactoring, Debugging und Optimierung des Codes einer Person zugeteilt werden, die selten bis gar keinen Zugriff zu den Geräten hat.
+
+
+
+
+
+
+
 
 \end{document}
