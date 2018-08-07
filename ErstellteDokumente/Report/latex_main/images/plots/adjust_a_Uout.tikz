@@ -15,9 +15,9 @@ tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
-legend style={draw=white!80.0!black},
 legend cell align={left},
-legend entries={{$U_{out,0}$},{$U_{out,1}$}}
+legend entries={{$U_{out,0}$},{$U_{out,1}$}},
+legend style={draw=white!80.0!black}
 ]
 \addlegendimage{no markers, color0}
 \addlegendimage{no markers, color1}

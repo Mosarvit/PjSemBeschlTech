@@ -128,11 +128,50 @@ def adjust_a_plot_Uquest():
     plt.xlabel('$t$ in \si{\\micro \\second}')
     plt.ylabel('$U$ in \si{\\milli \\volt}')
     plt.ylim((-400,400))
-    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/UinUquest.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 # adjust_a_plot_Uquest()
 # adjust_a_plot_Uin_K()
 # adjust_a_plot_Uin() #sinnlos
 # adjust_a_plot_K()
-adjust_a_plot_Uout()
+# adjust_a_plot_Uout()
 
+def new_adjust_a_plot_K():
+    data_path = project_path + 'data/evaluate_K_06_08_2018-12_59_03/'
+    plt.figure()
+
+    vpp_quality = genfromtxt(data_path + 'Vpp_quality.csv', delimiter=',')
+    K0 = genfromtxt(data_path + 'K_initial.csv', delimiter=',')
+    Uquest5 = read_in_signal(data_path + 'Uquest_adapted_5.csv')
+    Uquest9 = read_in_signal(data_path + 'Uquest_adapted_9.csv')
+    # evaluate adjust a mit Out vpp 1.5 V zurückgerechnet
+    Vpp_Kmax = K0[-1,1] - K0[0,1]
+    vpp_quality[:,0] = [vpp*1000/Vpp_Kmax for vpp in vpp_quality[:,0]]
+    Vpp_max = vpp_quality[-1,0]
+    Vpp_min = vpp_quality[-2,0]
+    # plt.subplot(1, 2, 1)
+    plt.plot(K0[:, 0][::2], K0[:, 1][::2])
+    plt.axhline(y=max(Uquest5.in_mV), color='r', linestyle='-')
+    plt.axhline(y=min(Uquest5.in_mV), color='r', linestyle='-')
+    plt.axhline(y=max(Uquest9.in_mV), color='g', linestyle='-')
+    plt.axhline(y=min(Uquest9.in_mV), color='g', linestyle='-')
+
+
+    plt.legend(['$K_0$'])
+    plt.xlabel('$U_{in}$ in \si{\\milli \\volt}')
+    plt.ylabel('$U_{?}$ in \si{\\milli \\volt}')
+    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/evaluate_K.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+
+    plt.show()
+    # plt.subplot(1, 2, 2)
+    plt.plot(vpp_quality[:,0], vpp_quality[:,1], 'x')
+
+    plt.legend(['Güte'])
+    plt.xlabel('$\\frac{V_{PP, U_{?}}}{V_{PP, max}}$')
+    plt.ylabel('QGesamt1')
+
+    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/evaluate_K_quality.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+
+    plt.show()
+
+new_adjust_a_plot_K()
