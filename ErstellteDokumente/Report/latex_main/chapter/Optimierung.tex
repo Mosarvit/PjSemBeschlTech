@@ -337,7 +337,8 @@ Diese Fehler sind ausschlaggebend dafür, dass sich die Qualität des erhaltenen
 \end{figure}
 
 
-Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlinie $K$, übertragen sich die prinzipiellen Erkenntnisse aus dem \mock-System  auf die Kavität und es lässt sich auch der Einfluss von Rauschen auf die Optimierung feststellen. Wie sich die Kombination aus Anpassung kleiner Beträge in den Spektren der genutzten Ausgangssignale und Einschränkung des Korrekturterms auswirkt, ist in \figref{fig:opt.H.RMS_fabs} aufgetragen. Klar erkennbar sind wieder die Problematik der Nulldurchgänge und die Auflösung hoher Frequenzen. 
+Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlinie $K$, übertragen sich die prinzipiellen Erkenntnisse aus dem \mock-System  auf die Kavität und es lässt sich auch der Einfluss von Rauschen auf die Optimierung feststellen. Wie sich die Kombination aus Anpassung kleiner Beträge in den Spektren der genutzten Ausgangssignale und Einschränkung des Korrekturterms auswirkt, ist in \figref{fig:opt.H.RMS_fabs} aufgetragen. Klar erkennbar sind wieder die Problematik der Nulldurchgänge und die Auflösung hoher Frequenzen.
+Einen Überblick über die Variation der Parameter der Optimierung bietet \figref{subfig:opt.H.qualityOverview}. 
 
 
 %In \figref{fig:opt.H.iteration} ist die Entwicklung von Übertragungsfunktion und $\fabs$ über mehrere Iterationen aufgetragen. Der Einfluss des RMS-Cutters macht sich dabei verglichen mit ---- ABB oben, rein iteriert --- bemerkbar, es treten weniger starke Änderungen auf. 
@@ -355,8 +356,6 @@ Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlini
 \pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
 \pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
 \pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
- 
-
 \begin{figure}[htb]
 %\begin{center}
 %\begin{subfigure}{\textwidth}
@@ -438,7 +437,7 @@ Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlini
 %		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSthree};
 \end{axis}
 \end{tikzpicture}
-\caption{Korrekturterm in initialer und in angepasster Form mit RMS- und $3 \promille$-Korrektur}
+\caption{Korrekturterm in initialer und in angepasster Form mit RMS- und $3 \promille$-Korrektur, am Messaufbau}
 \label{fig:opt.H.RMS_fabs}
 %\end{center}
 %\end{subfigure}
@@ -446,6 +445,184 @@ Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlini
 %\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
 %\label{fig:opt.H.iteration}
 \end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+	\begin{subfigure}{\textwidth}
+\begin{tikzpicture}
+	\begin{axis}[
+		scale only axis,
+		width = 0.4 \textwidth,
+		height = 0.2 \textheight,		
+		legend pos = outer north east,
+		xlabel={Iterationsschritt},
+		ylabel={Güte Ausgangssignal},
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		xmin = 0.2,
+		xmax = 5.8,
+		]	
+		
+	\addplot [blue, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+			ohne alles, an System
+			QGesamt1,2.141630873256258
+			QGesamt1,2.064664590979294
+			QGesamt1,2.165397345084028
+			QGesamt1,1.9985538231494953
+			QGesamt1,2.031694877231738
+		}; \addlegendentry{Ohne Anpassungen Messung 1}	
+	\addplot [blue, mark = +] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+			ohne alles für Rauscheinfluss, data
+			QGesamt1,2.135948818933304
+			QGesamt1,2.1384178165733116
+			QGesamt1,2.0464488222784887
+			QGesamt1,1.9973886067241382
+			QGesamt1,2.0689413165209682
+		}; \addlegendentry{Ohne Anpassungen Messung 2}	
+	\addplot [black, mark = *] table [col sep = comma, x expr=\coordindex+1, y index =1]{			simple mit sigma 0.2, data
+			QGesamt1,2.0536759283401667
+			QGesamt1,2.025676659927534
+			QGesamt1,2.035313029109188
+		}; \addlegendentry{mit $\sigma_H = 0.2$}	
+	\addplot [red, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+			mit RMS, data
+			QGesamt1,2.0868523560789374
+			QGesamt1,2.062575354725346
+			QGesamt1,1.9691672211272198
+			QGesamt1,2.0299124251901866
+			QGesamt1,2.0676059254911445
+		}; \addlegendentry{RMS}	
+	\addplot [green, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+			mit 3 prom, data
+			QGesamt1,2.2592583084704576
+			QGesamt1,2.1266302971337128
+			QGesamt1,2.0822550911677356
+			QGesamt1,2.0910260802802365
+			QGesamt1,2.0850568732052337
+		}; \addlegendentry{ $3 \promille$ }	
+	\addplot [yellow, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+			mit 3 prom und RMS, data
+			QGesamt1,2.09716411420358
+			QGesamt1,2.0352919493881836
+			QGesamt1,2.0714614121252213
+			QGesamt1,1.9686861551413428
+			QGesamt1,2.120204783654906
+		}; \addlegendentry{ RMS und $3 \promille$ }	
+	
+	\end{axis}
+\end{tikzpicture}
+	\caption{Entwicklung der Qualität des Ausgangssignals bei unterschiedlicher Parameterwahl}
+	\label{subfig:opt.H.qualityOverview}
+	\end{subfigure}
+	\\
+	\begin{subfigure}{\textwidth}
+    \begin{tikzpicture}
+\begin{axis}[
+		scale only axis,
+		width = 0.4 \textwidth,
+		height = 0.2 \textheight,		
+		legend style={ at={(0.5,1.1)},
+				anchor=south},
+		legend columns = 2,
+		transpose legend, 
+		cycle list name = color list,
+		xlabel={Frequenz},
+		ylabel={Betrag Übertragung $\Hcompl$},
+		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+		%xtick distance = 10000000,
+%		xminorgrids,
+%		xmajorgrids,
+%		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={[MHz]},
+		xmin = 0,
+		xmax = 15000000,
+		ymin = 5,
+		ymax = 15,
+		]	
+		\addplot  table [x index = 0, y index = 1] {\Hmock}; \addlegendentry{$\Hcompl_{\mathrm{mock}}$}
+		
+		\addplot  table [x index = 0, y index = 1] {\Hinit}; \addlegendentry{$\Hcompl_{\mathrm{initial}}$}
+		
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHone}; \addlegendentry{Step 1 - keine Anpassung}
+%		\addplot  table [x index = 0, y index = 1] {\simpleHfive}; \addlegendentry{Step 5 - keine Anpassung}
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHten}; \addlegendentry{Step 10 - keine Anpassung}
+		\addplot  table [x index = 0, y index = 1] {\simpleHften}; \addlegendentry{Step 15 - keine Anpassung}
+		
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\rmsHone}; \addlegendentry{Step 1 - mit RMS}
+%		\addplot  table [x index = 0, y index = 1] {\rmsHfive}; \addlegendentry{Step 5 - mit RMS}
+		\addplot  table [x index = 0, y index = 1] {\rmsHften}; \addlegendentry{Step 15 - mit RMS}	
+		
+		\addplot table [x index = 0, y index = 1] {\rmsHprom}; \addlegendentry{Step 15 - mit RMS und $3 \promille$}
+
+		
+\end{axis}
+%\end{tikzpicture}
+%	\caption{Einfluss unterschiedlicher Parameterwahl auf Entwicklung der Übertragungsfunktion bei niedrigen Frequenzen}
+%	\label{subfig:opt.H.lowFreqParam}
+%	\end{subfigure}
+%	
+%	
+%	\begin{subfigure}{0.5 \textwidth}
+%    \begin{tikzpicture}
+\begin{axis}[
+		scale only axis,
+		width = 0.4 \textwidth,
+		height = 0.2 \textheight,		
+		legend style={ at={(0.5,1.1)},
+				anchor=south},
+		legend columns = 2,
+		transpose legend, 
+		cycle list name = color list,
+		xlabel={Frequenz},
+		ylabel={Betrag Übertragung $\Hcompl$},
+		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+		%xtick distance = 10000000,
+%		xminorgrids,
+%		xmajorgrids,
+%		minor x tick num =3,
+		xtick pos = lower,
+		ytick pos = left,
+		xtick align = outside,
+		ytick align = outside,
+		scaled x ticks = base 10:-6,
+		xtick scale label code/.code={[MHz]},
+		xmin = 65000000,
+		xmax = 80000000,
+		ymin = 0,
+		ymax = 5,
+		]	
+		\addplot  table [x index = 0, y index = 1] {\Hmock}; \addlegendentry{$\Hcompl_{\mathrm{mock}}$}
+		
+		\addplot  table [x index = 0, y index = 1] {\Hinit}; \addlegendentry{$\Hcompl_{\mathrm{initial}}$}
+		
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHone}; \addlegendentry{Step 1 - keine Anpassung}
+%		\addplot  table [x index = 0, y index = 1] {\simpleHfive}; \addlegendentry{Step 5 - keine Anpassung}
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHten}; \addlegendentry{Step 10 - keine Anpassung}
+		\addplot  table [x index = 0, y index = 1] {\simpleHften}; \addlegendentry{Step 15 - keine Anpassung}
+		
+%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\rmsHone}; \addlegendentry{Step 1 - mit RMS}
+%		\addplot  table [x index = 0, y index = 1] {\rmsHfive}; \addlegendentry{Step 5 - mit RMS}
+		\addplot  table [x index = 0, y index = 1] {\rmsHften}; \addlegendentry{Step 15 - mit RMS}	
+		
+		\addplot table [x index = 0, y index = 1] {\rmsHprom}; \addlegendentry{Step 15 - mit RMS und $3 \promille$}
+
+		
+\end{axis}
+\end{tikzpicture}
+	\caption{Einfluss unterschiedlicher Parameterwahl auf Entwicklung der Übertragungsfunktion bei hohen Frequenzen}
+	\end{subfigure}
+\caption{Einfluss unterschiedlicher Parameterwahl auf Entwicklung der Qualität des Ausgangssignals und die Übertragungsfunktion}
+\label{fig:opt.H.parameter}
+\end{center}
+\end{figure}
+
 
 
 

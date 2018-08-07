@@ -104,21 +104,20 @@
 
 
 \def\promille{\, \ensuremath{{}^\text{o}\mkern-5mu/\mkern-3mu_\text{oo}}}
-\renewcommand{\eqref}[1]{Glg.~(\ref{#1})}
-\newcommand{\mock}{\lstinline{mock}}
-\newcommand{\tabref}[1]{Tab.~(\ref{#1})}
-\newcommand{\figref}[1]{Abb.~(\ref{#1})}
-\newcommand{\ofomega}{ \left( \omega \right) }
-\newcommand{\oft}{ \left( t \right) }
-\newcommand{\Hcompl}{\underline{H}}			%because \H is already a defined command
-\newsubcommand{\Uout}{U}{out}				% see above definition
-\newsubcommand{\Uoutc}{\underline{U}}{out}
-\newsubcommand{\Uin}{U}{in}
-\newsubcommand{\Uinc}{\underline{U}}{in}
-\newsubcommand{\Uquest}{U}{?}
-\newsubcommand{\Uquestc}{\underline{U}}{?}
-\newsubcommand{\fabs}{ \; \mathit{f}}{\mathrm{abs}}
-\newcommand{\mock}{\lstinline{mock}}
+\renewcommand{\eqref}[1]{Glg.~(\ref{#1})}			%our style to reference equations
+\newcommand{\tabref}[1]{Tab.~(\ref{#1})}			% our style to reference tables
+\newcommand{\figref}[1]{Abb.~(\ref{#1})}			% our style to reference figures
+\newcommand{\ofomega}{ \left( \omega \right) }		% function of omega for lazy
+\newcommand{\oft}{ \left( t \right) }				% function of time for lazy
+\newcommand{\Hcompl}{\underline{H}}			%because \H is already a defined command, use Hcompl -> complex transfer-function
+\newsubcommand{\Uout}{U}{out}				% see above definition for subcommand. output voltage of the system
+\newsubcommand{\Uoutc}{\underline{U}}{out}	% phasor of output voltage
+\newsubcommand{\Uin}{U}{in}					% input voltage
+\newsubcommand{\Uinc}{\underline{U}}{in}	%phasor of input voltage
+\newsubcommand{\Uquest}{U}{?}				% virtual Uquest of hammerstein modell
+\newsubcommand{\Uquestc}{\underline{U}}{?}	% phasor of uquest
+\newsubcommand{\fabs}{ \; \mathit{f}}{\mathrm{abs}}		% term used in optimization of H / a as error-calculator
+\newcommand{\mock}{\lstinline{mo}\lstinline{ck}}		%standard for mock- system (crazy command to avoid coloring by lstinline for the following code)
 
 
 
