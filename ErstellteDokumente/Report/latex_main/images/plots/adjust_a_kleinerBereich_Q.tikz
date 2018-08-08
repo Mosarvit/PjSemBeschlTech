@@ -14,9 +14,9 @@ tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
-legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black},
-legend entries={{Güte}},
-legend cell align={left}
+legend cell align={left},
+legend style={draw=white!80.0!black},
+legend entries={{Güte}}
 ]
 \addlegendimage{no markers, color0}
 \addplot [semithick, color0, mark=x, mark size=3, mark options={solid}, only marks]

@@ -28,9 +28,11 @@
 \BOOKMARK [0][-]{chapter.5}{Iterative Optimierung des Hammerstein-Modells}{}% 28
 \BOOKMARK [1][-]{section.5.1}{Optimierung der linearen \334bertragungsfunktion H}{chapter.5}% 29
 \BOOKMARK [1][-]{section.5.2}{Optimierung der nichtlinearen Kennlinie K}{chapter.5}% 30
-\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 31
-\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 32
-\BOOKMARK [1][-]{section.7.1}{Impressionen zum Code}{chapter.7}% 33
-\BOOKMARK [1][-]{section.7.2}{Ausblick: Optimierung}{chapter.7}% 34
-\BOOKMARK [1][-]{section.7.3}{\204 Ger\344tekomm\204}{chapter.7}% 35
-\BOOKMARK [0][-]{chapter.8}{\204 Anhang \204}{}% 36
+\BOOKMARK [2][-]{subsection.5.2.1}{Erste Ansatz}{section.5.2}% 31
+\BOOKMARK [2][-]{subsection.5.2.2}{Zweiter Ansatz}{section.5.2}% 32
+\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 33
+\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 34
+\BOOKMARK [1][-]{section.7.1}{Impressionen zum Code}{chapter.7}% 35
+\BOOKMARK [1][-]{section.7.2}{Ausblick: Optimierung}{chapter.7}% 36
+\BOOKMARK [1][-]{section.7.3}{\204 Ger\344tekomm\204}{chapter.7}% 37
+\BOOKMARK [0][-]{chapter.8}{\204 Anhang \204}{}% 38

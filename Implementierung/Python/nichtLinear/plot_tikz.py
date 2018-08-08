@@ -245,11 +245,11 @@ def sinnvoll():
         print(Uquest.Vpp)
 
     plt.plot(iteration, Qall, 'x')
-    plt.legend(['Güte'], loc=2)
+    plt.legend(['Güte'], loc=1)
     plt.xlabel('Iteration')
     plt.ylabel('QGesamt1')
 
-    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 sinnvoll()
 # new_adjust_a_plot_30()

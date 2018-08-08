@@ -6,7 +6,7 @@
 
 \chapter{Einführung}
 \label{chap:einfuehrung}
-Mit den Barrier Bucket (BB) RF Systemen können am neu entstehenden Synchrotron SIS100 oder im Experimentier Speicherring (ESR) am GSI Helmholtzzentrum viele longitudinale Manipulationen am Teilchenstrahl vorgenommen werden. Der dazu notwendige Spannungspuls hat die Form wie in \figref{fig:BB_req} dargestellt. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so wird im Phasenraum eine stationäre Potential Barriere erstellt. Wenn die Wiederholfrequenz nicht gleich der Umlauffrequenz ist verschiebt sich die Potential Barriere im Phasenraum und es entstehen Bunches mit unterschiedlicher Länge.\\ Der Anspruch an diese Systeme liegt darin eine hohe Qualität des Impulses am Gap der Kavität zu erzeugen, damit sogenannte Microbunches unerwünscht entstehen, deshalb müssen die Nachschwinger nach dem Einzelsinus kleiner als 2,5\% von $\hat{U}_{BB}$ sein.
+Mit den Barrier Bucket (BB) RF Systemen können am neu entstehenden Synchrotron SIS100 oder im Experimentier Speicherring (ESR) am GSI Helmholtzzentrum viele longitudinale Manipulationen am Teilchenstrahl vorgenommen werden. Der dazu notwendige Spannungspuls hat die Form wie in \figref{fig:BB_req} dargestellt. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so wird im Phasenraum eine stationäre Potential Barriere erstellt. Wenn die Wiederholfrequenz nicht gleich der Umlauffrequenz ist verschiebt sich die Potential Barriere im Phasenraum und es entstehen Bunches mit unterschiedlicher Länge.\\ Der Anspruch an diese Systeme liegt darin eine hohe Qualität des Impulses am Gap der Kavität zu erzeugen, damit keine unerwünscht Microbunches entstehen. Dafür müssen die Nachschwinger nach dem Einzelsinus kleiner als 2,5\% von $\hat{U}_{BB}$ sein.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{eps/BB_req.pdf}
@@ -14,7 +14,7 @@ Mit den Barrier Bucket (BB) RF Systemen können am neu entstehenden Synchrotron 
   \label{fig:BB_req}
 \end{figure}
 
-Dabei benutzen wir im Folgenden $f_{rep}$ für die Wiederholfrequenz des Spannungssignals und die Barrier Bucket Frequenz $f_{BB}$ bestimmt die Breite der Potential Barriere. Für unsere Messungen haben wir ${f_{rep} = 900 \si{\kilo \hertz}}$ und ${f_{BB} = 5 \si{\mega \hertz}}$ verwendet.
+Dabei wird im Folgenden $f_{rep}$ für die Wiederholfrequenz des Spannungssignals verwendet und die Barrier Bucket Frequenz $f_{BB}$ bestimmt die Breite der Potential Barriere. Für die Messungen in diesm Projektseminar wurden ${f_{rep} = 900 \si{\kilo \hertz}}$ und ${f_{BB} = 5 \si{\mega \hertz}}$ verwendet.
 
 
 \section[Modell und Konvention]{Versuchsaufbau und Modell}
@@ -52,5 +52,5 @@ Dieses Modell wurde bis auf die Berechnung von $K$ schon erfolgreich in Python i
 
 \section{Aufgabenstellung}
 \label{sec:einf.aufgabe}
-Im Rahmen unseres Projektseminar sollte eine iterative Optimierung der Vorverzerrung auf Basis einer Hammersteinmodellierung in Python implementiert werden. Dabei sollte das Tool die nichtlineare Kennlinie $K$ und die Übertragungsfunktion $\Hcompl$ wechselseitig optimieren, wobei eine optimale Gewichtung der Parameter zur Optimierung noch nicht erreicht werden musste.
+Im Rahmen dieses Projektseminars sollte eine iterative Optimierung der Vorverzerrung auf Basis einer Hammersteinmodellierung in Python implementiert werden. Dabei sollte das Tool die nichtlineare Kennlinie $K$ und die Übertragungsfunktion $\Hcompl$ wechselseitig optimieren, wobei eine optimale Gewichtung der Parameter zur Optimierung noch nicht erreicht werden musste.
 \end{document}

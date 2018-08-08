@@ -10,7 +10,7 @@ Die Aufgabe des Projektseminars war ein bestehendes Tool weiter zu entwickeln. E
 
 \section{Motivation}
 \label{sec:code.motivation}
-Ziel ist es ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des weiteren wird eine lose Kopplung der einzelnen angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung im Team zum anderen auch die Verständlichkeit des gesamten Programms. \\
+Ziel ist es ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des weiteren wird eine lose Kopplung der einzelnen Blöcke angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung im Team zum anderen aber auch die Verständlichkeit des gesamten Programms. \\
 Ohne ein modulares Design ist eine Optimierung der einzelnen Bestandteile nur schwer umzusetzen.
 
 \section{Aufbau}
@@ -83,7 +83,7 @@ Bestimmte Datensätze wurden als eigene abstrakte Datentypen (ADTs) implementier
 \begin{itemize}
 	\item Allgemeine Funktionalität wird in der Klasse implementiert
 	\item Typüberprüfung wird ermöglicht
-	\item Implementierung generischer Klassen beispielsweise \lstinline{calculate_error()} ermöglicht
+	\item Implementierung generischer Klassen\footnote{Implementierungen, die unabhängig vom übergebenen Datentyp sind.} beispielsweise \lstinline{calculate_error()} ermöglicht, das heißt die Implementierung ist unabhängig von
 \end{itemize}
 Für die Klasse \lstinline{signal_class()} ergeben sich speziell noch weitere Vorteile:
 \begin{itemize}
@@ -104,7 +104,7 @@ Nach der Methode TDD werden vor dem eigentlichen Programmieren Tests geschrieben
 \begin{itemize}
 	\item Testen von kleinen Abschnitt erzwingt einen modularen Aufbau
 	\item Tests dokumentieren Funktionalität
-	\item Refactoring wird ermöglicht
+	\item Refactoring\footnote{Änderung der Struktur ohne Veränderung der Funktionalität.} wird ermöglicht
 	\item Einfachere Fehlersuche auch ohne Versuchsaufbau möglich
 	\item Reproduktion von Messvorgängen, die Fehler aufgedeckt haben
 	\item Arbeitsteilung an logisch getrennten Abschnitten ermöglicht

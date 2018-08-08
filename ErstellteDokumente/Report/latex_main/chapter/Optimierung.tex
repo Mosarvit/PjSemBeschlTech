@@ -677,11 +677,14 @@ Dieses Gleichungssystem ist mit normalerweise $M>N$ überbestimmt und wird mit d
 \end{align}
 Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$.
 
-\subsubsection*{Erste Ergebnisse}
-\label{subsubsec:opt.adjusta.results}
+\subsection{Erste Ansatz}
+\label{subsec:opt.adjusta.results}
 Für die Berechnung der ersten Kennlinie $K_0$ wurde das ideal Ausgangssignal $\Uout_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{6}{\V}$ über $\Hcompl^{-1}$ zurückgerechnet und als Eingangssignal verwendet $\Uin_{, \mathrm{initial }} = \Uquest_{, \mathrm{ideal}}$ mit $V_{PP} \approx \SI{587}{\mV}$, um $K_0$ in einen größeren Bereich berechnen zu können.\\
-Die Ergebnisse vom ersten Optimierungsansatz sind in \figref{fig:opt.Kennlinie} gezeigt. Der Ansatz hierfür war, dass $K$ im gleichen Bereich optimiert wird, in dem es zur Initialisierung berechnet wurde. Falls $\Uquest$ über die bijektiven Grenzen von $K_i$ hinausgeht wird es auf $80\%$ des maximal von $K_i$ zulässigen Wert von $V_{PP}$ gesetzt. Ziel hierbei war den gültigen Bereich zu erweitern.
-
+Die Ergebnisse vom ersten Optimierungsansatz sind in \figref{fig:evaluate30K} gezeigt. Der Ansatz hierfür war, dass $K$ im gleichen Bereich optimiert wird, in dem es zur Initialisierung berechnet wurde. Falls $\Uquest$ über die bijektiven Grenzen von $K_i$ hinausgeht wird es auf $80\%$ des maximal von $K_i$ zulässigen Wert von $V_{PP}$ gesetzt. Ziel hierbei war den gültigen Bereich zu erweitern.
+\subsubsection*{Ergebnisse und Erkenntnisse}
+\label{subsubsec:opt.adjusta.results}
+Das Ergebnis ist eine Schwankung der Qualität. Ursache dafür könnte sein, dass die Kennlinie in einen nicht mehr sinnvollen Bereich genutzt wurde, um das Eingangssignal zu berechnen und damit eine zu starke Änderung an der Kennlinie vorgenommen wurde. \\
+Ein weiteres Ergebnis ist auch, dass die eigentlich berechnete Amplitude von $V_{PP} = \SI{6}{\V}$ am Ausgang nur ein Richtwert zur Berechnung des ersten Eingangssignals ist aber kein guter Wert für die Optimierung darstellt.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
     \newlength\figureheight
@@ -702,8 +705,6 @@ Die Ergebnisse vom ersten Optimierungsansatz sind in \figref{fig:opt.Kennlinie} 
 \label{fig:opt.evaluate30}
 \caption{Erster Ansatz zur Anpassung von $K$}
 \end{figure}
-
-Das Ergebnis ist eine Schwankung der Qualität. Ursache dafür könnte sein, dass die Kennlinie in einen nicht mehr sinnvollen Bereich genutzt wurde, um das Eingangssignal zu berechnen und damit eine zu starke Änderung an der Kennlinie vorgenommen wurde.
 
 \subsubsection*{Grenzen der initial Kennlinie}
 \label{subsubsec:opt.adjusta.problem}
@@ -731,6 +732,7 @@ Eine Ursache dafür könnte sein, dass die Methode der kleinsten Quadrate, mit d
 \end{figure}
 
 Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\textrm{ideal}}$ über die Kennlinie nichtlinear vorverzerrt. Das Ausgangssignal wurde mit dem RF-Tool bewertet und ist in \figref{fig:evaluateK.quality} gezeigt. Dabei sind die Grenzen von $\Uquest$ in \figref{fig:K0_quality} mit $\min(\Uquest)$ und $\max(\Uquest)$ beschriftet dies entspricht mit \SI{120}{\mV} etwa $34\%$ des maximal möglichen $V_{PP}$, das von $K$ im bijektiven Bereich zugelassen ist. Die anderen Grenzen sind die, bis wohin die Güte überprüft wurde.
+
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{8cm}
@@ -751,7 +753,7 @@ Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\
 \end{figure}
 Dabei ist der kleinste und damit der beste Wert der Güte mit \SI{190}{\mV} etwa $54\%$ des maximal möglichen $V_{PP}$ das von $K$ aufgezeichnet worden. Diese Messung lässt sich nicht auf alle Kennlinien übertragen und sollte im Vornherein festgestellt werden.
 
-\subsubsection*{Kleinerer Bereich zur Anpassung}
+\subsection{Zweiter Ansatz}
 \label{subsubsec:opt.adjusta.kleiner}
 Als zweiter Ansatz wurde folgendes Setup verwendet:
 \begin{itemize}
@@ -759,6 +761,10 @@ Als zweiter Ansatz wurde folgendes Setup verwendet:
 	\item $K$ angepasst über $\Uout_{,\textrm{ideal}}$ mit $V_{PP} = \SI{3}{\V}$
 \end{itemize}
 Damit wurde $K$ mit einem $\Uquest_{,\textrm{ideal}}$ optimiert, bei dem $V_{PP}$ auf $66\%$ des maximal zulässigen Wertes gesetzt wurde. Der Bereich ist in \figref{fig:opt.kleinerBereich.K} eingezeichnet.
+\subsubsection*{Ergebnisse und Erkenntnisse}
+\label{subsubsec:opt.adjusta.kleiner.results}
+Für diesen Ansatz wurden keine weiteren Iterationen durchgeführt, deshalb lässt sich darüber nur bedingt eine Aussage über die Konvergenz treffen, aber diese niedrigen Werte der Güte wurden bisher nur mit diesem Ansatz erreicht.\\
+Die Schrittweite wurde bei all diesen Messungen auf $\sigma_a = 0.5$ gelassen.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{8cm}
@@ -777,5 +783,5 @@ Damit wurde $K$ mit einem $\Uquest_{,\textrm{ideal}}$ optimiert, bei dem $V_{PP}
 \label{fig:opt.Kennlinie}
 \caption{Zweite Ansatz zur Anpassung von $K$}
 \end{figure}
-Für diesen Ansatz wurden keine weiteren Iterationen durchgeführt, deshalb lässt sich darüber nur bedingt eine Aussage treffen, aber diese niedrigen Werte der Güte wurden bisher nur mit diesem Ansatz erreicht.
+
 \end{document}

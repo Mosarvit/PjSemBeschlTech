@@ -7,7 +7,7 @@
 xlabel={$U_{in}$ in \si{\milli \volt}},
 ylabel={$U_{?}$ in \si{\milli \volt}},
 xmin=-329.9, xmax=327.9,
-ymin=-210.31894648375, ymax=177.41737890475,
+ymin=-200, ymax=200,
 width=\figurewidth,
 height=\figureheight,
 tick align=outside,
