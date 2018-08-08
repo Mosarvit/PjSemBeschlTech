@@ -52,7 +52,7 @@ Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \
 					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
 \end{align}
 mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
-liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{fig:opt.tzeum} die bei gemessenem Signal auftretende Streuung der Phase. 
+liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{subfig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
 \\
 
 
@@ -91,7 +91,7 @@ liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlic
 \end{axis}
 \end{tikzpicture}
 \caption{Betragsspektren}
-	\label{fig:opt.abs_spektrum}
+	\label{subfig:opt.abs_spektrum}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
 \centering
@@ -125,7 +125,7 @@ liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlic
 \end{axis}
 \end{tikzpicture}
 \caption{Phasenspektren}
-	\label{fig:opt.angle_spektrum}
+	\label{subfig:opt.angle_spektrum}
 \end{subfigure}
 \caption{Spektrum des Einzelsinus-Signals, berechnet und gemessen mit je $109$ Punkten}
 \label{fig:opt.spektrum_BB_signal}
@@ -158,7 +158,7 @@ Zu beachten bei letzterem Punkt ist die notwendige Rundung, wenn die Einträge d
 \\
 \\
 \noindent
-Mit Beschränkung auf $3 \, \promille$ und dem globalen Minimum beider Spektren als Default-Wert werden insbesondere Einträge in den höheren Frequenzen des Spektrums \ref{fig:opt.abs_spektrum} beeinflusst. Erst ab etwa $5 \promille$ werden alle Frequenzen ab ungefähr $\SI{60}{\MHz}$ auf den Default-Wert gesetzt. Mit dieser Methodik könnten folglich in erster Linie massive Korrekturen an hohen Frequenzen von $\Hcompl$ verhindert.
+Mit Beschränkung auf $3 \, \promille$ und dem globalen Minimum beider Spektren als Default-Wert werden insbesondere Einträge in den höheren Frequenzen des Spektrums \ref{subfig:opt.abs_spektrum} beeinflusst. Erst ab etwa $5 \promille$ werden alle Frequenzen ab ungefähr $\SI{60}{\MHz}$ auf den Default-Wert gesetzt. Mit dieser Methodik könnten folglich in erster Linie massive Korrekturen an hohen Frequenzen von $\Hcompl$ verhindert.
 Verglichen mit der nachfolgend beschriebenen Anpassung hat dieses Vorgehen aufgrund der beschriebenen Bandbreite einen niedrigeren Einfluss auf die Qualität des Ausgangssignals.
 
 
@@ -291,7 +291,7 @@ Für die Einordnung der Größenordnung des Korrekturterms sei nochmals betont, 
 
 
 Eine erste Illustration bietet die Anwendung des beschriebenen Vorgehens auf das \mock-System. Hier lässt sich testen, ob unter der Annahme einer vorgegebenen Übertragungsfunktion  $\Hcompl_{ \mathrm{mock}}$ im Sinne des Hammerstein-Modells und unter Vernachlässigung der Kennlinie (entspricht einer als ideal berechneten Kennlinie) eine Verbesserung des Signals erreicht wird und wie sich die Fehlerquellen mit Ausnahme von Rauschen auswirken. 
-Das Ergebnis dieses Tests ist eindeutig und anschaulich in \figref{fig:opt.H.mock} aufgetragen für jeweils 15 Iterationen. Es lässt sich feststellen, dass eine Anpassung sowohl der Nulldurchgänge als auch bei hohen Frequenzen unbedingt notwendig ist und dies durch die Beschränkung großer Korrekturterme angegangen werden kann.\footnote{Die Auswirkungen der zusätzlichen Nutzung einer Beschränkung auf $3 \promille$ verbessern die Übertragungsfunktion optisch nicht wesentlich.}
+Das Ergebnis dieses Tests ist eindeutig und anschaulich in \figref{subfig:opt.H.mock} aufgetragen für jeweils 15 Iterationen. Es lässt sich feststellen, dass eine Anpassung sowohl der Nulldurchgänge als auch bei hohen Frequenzen unbedingt notwendig ist und dies durch die Beschränkung großer Korrekturterme angegangen werden kann.\footnote{Die Auswirkungen der zusätzlichen Nutzung einer Beschränkung auf $3 \promille$ verbessern die Übertragungsfunktion optisch nicht wesentlich.}
 Auch zeigen sich in direkter Umgebung der Nulldurchgänge noch Frequenzen, an denen die Korrekturterme zwar geringer als der modifizierte RMS, jedoch immer noch ungenau durch die Interpolation aufgelöst sind.
 Diese Fehler sind ausschlaggebend dafür, dass sich die Qualität des erhaltenen Ausgangssignals über die Iterationen verschlechtert.\footnote{Je geringer der Wert des Qualitätskriteriums, desto ähnlicher ist das Signal einem idealen Einzelsinus.} Nichtsdestotrotz nähert sich die Übertragungsfunktion außerhalb der problematischen Nulldurchgänge gerade in niedrigeren Frequenzen sehr gut an $\Hcompl_{\mathrm{mock}}$ an. 
  
@@ -308,7 +308,7 @@ Diese Fehler sind ausschlaggebend dafür, dass sich die Qualität des erhaltenen
 %\pgfplotstableread[col sep = comma] {opt_mock_simple/H10.csv} \simpleHten
 \pgfplotstableread[col sep = comma] {opt_mock_simple/H15.csv} \simpleHften
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{subfigure}{\textwidth}
     \begin{tikzpicture}
 \begin{axis}[
@@ -440,18 +440,9 @@ Diese Fehler sind ausschlaggebend dafür, dass sich die Qualität des erhaltenen
 
 
 Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlinie $K$, übertragen sich die prinzipiellen Erkenntnisse aus dem \mock-System  auf die Kavität und es lässt sich auch der Einfluss von Rauschen auf die Optimierung feststellen. Genutzt wurde hierzu und im Folgenden eine Kennlinie, die mit einer Peak-to-Peak-Spannung des Eingangssignals von $\SI{0.6}{\volt}$ erzeugt wurde. Das Ausgangssignal wurde in der Optimierung mit $V_{pp} = \SI{0.6}{\volt}$ angesetzt, was zu etwa $\SI{60}{\milli\volt}$ Peak-to-Peak-Spannung am Eingang zurückgerechnet wird. 
-\footnote{Hier sei auf die in ------ beschriebene Problematik der nichtlinearen Vorverzerrung bei großen Unterschieden zwischen der Amplitude des momentan betrachteten Signals und des zur Berechnung von $K$ genutzten hingewiesen. Diese Erkenntnis lag zum Zeitpunkt der hier betrachteten Messung noch nicht in dieser Schärfe vor.}
+\footnote{Hier sei auf die unter\textit{\nameref{subsubsec:opt.adjusta.problem}} beschriebene Problematik der nichtlinearen Vorverzerrung bei großen Unterschieden zwischen der Amplitude des momentan betrachteten Signals und des zur Berechnung von $K$ genutzten hingewiesen. Diese Erkenntnis lag zum Zeitpunkt der hier betrachteten Messung noch nicht in dieser Schärfe vor.}
 Klar erkennbar sind wieder die Problematik der Nulldurchgänge und die Auflösung hoher Frequenzen.
 Einen Überblick über die Variation der Parameter der Optimierung bietet \figref{fig:opt.H.parameter}. 
-
-
-%In \figref{fig:opt.H.iteration} ist die Entwicklung von Übertragungsfunktion und $\fabs$ über mehrere Iterationen aufgetragen. Der Einfluss des RMS-Cutters macht sich dabei verglichen mit ---- ABB oben, rein iteriert --- bemerkbar, es treten weniger starke Änderungen auf. 
-%Gleichzeitig zeigt sich, dass nicht in jedem Schritt an exakt den gleichen Stellen am jeweiligen RMS geschnitten werden muss. Dies belegt die Zufälligkeit des Fehlers und erläutert die prinzipielle Berechtigung der Methodik.
-%Es zeigt sich, dass die vorgenommene Anpassung keinen großartigen Einfluss auf die Qualität des Signals hat.
-%Dies ist insofern beachtenswert, als dass die Übertragungsfunktion auch an einigen Stellen mit massiver Verstärkung stark angepasst wird, vergleiche hierzu \figref{fig:opt.H.RMS_H} bei etwa $\SI{25}{\MHz}$.
-%Die Qualität des Signals bewegt sich zwischen einem Wert von ---- ---- und ---- ---- und zeigt vor allem rauschbedingte Schwankungen.
-%%TODO: check!!! Mehr Durchläufe ausprobieren, unbedingt!
-
 
 
 \pgfplotstableread[col sep = comma] {H_iteration/H_0.csv} \Hstart 
@@ -462,7 +453,7 @@ Einen Überblick über die Variation der Parameter der Optimierung bietet \figre
 \pgfplotstableread[col sep = comma] {H_iteration/H_simple1.csv} \HsimpleA %no number in name
 \pgfplotstableread[col sep = comma] {H_iteration/H_simple2.csv} \HsimpleB
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 	\begin{subfigure}{\textwidth}
 \begin{tikzpicture}
@@ -627,8 +618,6 @@ Und letztlich ist über die hier vorgenommenen Iterationsschritte keine eindeuti
 Festhalten jedoch lässt sich auch bei Messungen am Messaufbau, dass die vorgenommenen Anpassungen und insbesondere die Beschränkung mit einem modifizierten RMS wesentlich weniger als abwegig angesehene Korrekturterme erlauben und so eine kleinschrittigere Anpassung möglich machen. 
 
 
-\newpage
-\newpage
 \section{Optimierung der nichtlinearen Kennlinie $K$}
 \label{sec:opt.K}
 Der Unterschied zur Optimierung von $\Hcompl$ ist, dass diese Optimierung im Zeitbereich statt findet. Deshalb kann \eqref{eq:opt.relFehler} zu

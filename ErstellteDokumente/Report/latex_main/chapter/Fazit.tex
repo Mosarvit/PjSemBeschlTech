@@ -6,18 +6,28 @@
 
 \chapter{Fazit}
 \label{chap:fazit}
----- In diesem Kapitel wird eine kurze Evaluierung vorgenommen. Welche Aspekte der Problemstellung wurden erfüllt (welche nicht), welche Hindernisse genommen? Einordnung der eigenen Arbeit in Kontext der in der Einleitung geführten Rahmenbedingung? Welche Erkenntnisse sind besonders erwähnenswert? Hier können Erfahrungen mit den gedachten Vorteilen (siehe \ref{sec:code.mot} ) des Codes oder eine Bewertung der Sinnhaftigkeit der Optimierung nochmals geführt werden.--- 
+Die vorliegende Implementierung bietet die Möglichkeit, in einem Aufruf Kennlinie und Übertragungsfunktion des Hammerstein-Modells zu bestimmen, zu speichern und für eine weitere Auswertung vorzuhalten.
+Der Funktionsumfang wurde um Schleifen für die getrennte iterative Anpassung der beiden Blöcke ergänzt und ein erster Ansatz für diese Optimierung ausprobiert.
 \\
-Erfahrung: ähnlich viel Zeitaufwand in Aufräumen des gegebenen Codes wie notwendig war, um (komplexe) Funktionalität zu erweitern. -> Erweiterbarkeit viel leichter, weitere Möglichkeiten im Idealfall schneller möglich einzubetten und zu testen. 
+\\ 
+Dabei lässt sich feststellen, dass die Anpassung der Übertragungsfunktion theoretisch zielführend ist, jedoch für eine merkliche Verbesserung am realen System noch der Einfluss von Rauschen betrachtet werden muss. Auch muss ein Umgang mit den Einflüssen von Interpolation und Diskretisierung auf die Spektren der genutzten Signale gefunden werden. Die hierzu vorgenommenen Anpassungen in der Optimierung konnten zwar die Problematiken aufgreifen, stellen jedoch noch keine Lösung dar.
+\\
+Die Optimierung der Kennlinie führt zur Feststellung konzeptioneller Probleme. Der Definitionsbereich des zur initialen Berechnung genutzten Signals und die Amplituden der für weitere Iterationen genutzten Signale haben entscheidenden Einfluss auf Erfolg und Qualität der Optimierung. Hier konnte die Problematik erkannt und beschrieben werden, ohne jedoch eine verlässliche Lösung anzubieten. 
+\\
+Es lässt sich anhand der vorgenommenen Implementierung feststellen, dass die verfolgten Ansätze das Modell nicht verschlechtern. Eine Aussage über eine merkliche Verbesserung ist mit den genutzten Algorithmen jedoch nicht abschließend möglich. 
+\\
+Bei erfolgreicher Durchführung einer iterativen Optimierung der Bausteine des Hammerstein-Modells ausgehend von initialen Werten könnte es möglich sein, für ein beliebiges Ausgangssignal hinreichend gute Werte erhalten zu können. Wird die Optimierung weiterhin auf ein ideales Hammerstein-Modell angewendet, bietet sich die Möglichkeit zum Vergleich zwischen Messaufbau und mathematischem Modell. Auf dieser Basis kann der Algorithmus zur Beurteilung der Grenzen der vorgenommenen Modellierung für die Kavität genutzt werden.
+Dies ist auf Basis der im Rahmen dieser Arbeit vorliegenden Werte noch nicht möglich. 
 \\
 \\
+Im Entstehungsprozess der Implementierung konnte festgestellt werden, dass eine umfassende Anpassung der Code-Struktur notwendig war. Dadurch konnte verwirklicht werden, dass für weitere Arbeiten an der Implementierung eine aussagekräftige Dokumentation und ansprechende Struktur vorliegen, die einen leichten Einstieg und die einfache Erweiterbarkeit ermöglichen sollen.
+\\ 
+Das vorliegende Design ist in modulare Blöcke aufgeteilt, die jeweils einzelne in sich geschlossene Funktionalitäten darstellen. Auch wurde ein Programmier-Konzept genutzt, bei dem bereits lange vor den Messungen an der Kavität die Funktionalität des Codes überprüft werden konnte. Die dafür elementaren Tests der modularen Blöcke können sicherstellen, dass neue Änderungen keine bereits erfolgreich implementierte Funktionalität beeinträchtigen.
+Das Konzept umfasst ebenso die Simulation eines Hammerstein-Modells, sodass die Optimierungsalgorithmen nicht erst am Messaufbau ausprobiert und weiterentwickelt werden konnten.
+Dabei ist festzustellen, dass der Prozess der Umstrukturierung und die Einbettung dieser neuen Umgebung sich ausnehmend aufwendig gestaltet hat. Fehlersuche, Übersicht und Erweiterbarkeit konnten unverkennbar verbessert werden. Dadurch konnte die Einbindung von neuen Funktionen um ein Vielfaches vereinfacht werden, wenn dies auch mit einem nennenswerten Maß an Disziplin beim Coden verbunden ist. Es lässt sich also konstatieren, dass die vorliegende Form der Optimierung ohne dieses Design nicht zu verwirklichen gewesen wäre.
 \\
-%%% Zur Optimierung:
-Auf Basis der im Rahmen dieser Arbeit vorliegenden Werte lässt sich keine Aussage darüber treffen, ob das verwendete Modell für jedes Signal (Signalform und Amplitude) gleichermaßen genau das Verhalten des Messaufbaus simuliert.
-Deshalb könnte es ausgehend von initialen Werten für die Bausteine des Hammerstein-Modells möglich sein, über eine iterative Optimierung eine Anpassung an $\Hcompl$ und $K$ derart vorzunehmen, dass sie für das gewünschte $\Uout_{, \mathrm{ideal}}$ hinreichend gute Werte liefert. Dies könnte etwa zur Kalibrierung der Kavität auf Grundlage der Charakteristik des Vortages genutzt werden. Vorteilhaft ist, dass die iterative Optimierung unabhängig der zur Berechnung der initialen Charakteristik genutzten Signale arbeiten könnte und damit etwa eine Verbesserung der Kennlinie für die momentan gewünschte Amplitude der Gapspannung möglich wäre.
-Es ließen sich mit einer solchen Optimierung beim Versuch, hohe Amplituden zu erreichen, auch Aussagen über die - falls vorhandenen - Grenzen des Hammerstein-Modells für den Messaufbau treffen.
 \\
-Bewertung der Zielführung der Optimierung
+Zusammenfassend stellt die vorliegende Projektarbeit eine Basis für nachfolgende inhaltliche Erweiterungen von Optimierungsansätzen am Barrier-Bucket-System dar.
 
 
 \end{document}

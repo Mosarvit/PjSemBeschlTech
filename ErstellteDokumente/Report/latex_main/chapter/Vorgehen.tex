@@ -98,7 +98,7 @@ Es wurden eine Reihe von IEEE-488 Standardbefehlen für diesen Zweck ausprobiert
 
 \end{enumerate}
 
-Als besonders erfolgversprechend erschien der letzte Ansatz \ref{enum:gerateOPC}, der jedoch auch zeitlich der letzte war. Mit einer Schleife über \lstinline{*ESR?} könnte das zugehörige Bit erneut ausgelesen und eine sehr kleine pauschale Wartezeit im Programm eingebaut werden, bevor die nächste Abfrage stattfindet. Hier könnte es sich um ein Resultat der Codierung über PyVisa handeln, da hierbei mehrere Arten, einen Befehl an das Gerät zu senden, zur Verfügung stehen. \ref{}
+Als besonders erfolgversprechend erschien der letzte Ansatz \ref{enum:gerateOPC}, der jedoch auch zeitlich der letzte war. Mit einer Schleife über \lstinline{*ES}\lstinline{R?} könnte das zugehörige Bit erneut ausgelesen und eine sehr kleine pauschale Wartezeit im Programm eingebaut werden, bevor die nächste Abfrage stattfindet. Hier könnte es sich um ein Resultat der Codierung über PyVisa handeln, da hierbei mehrere Arten, einen Befehl an das Gerät zu senden, zur Verfügung stehen.
 
 Weiterhin wurde die pauschale Wartezeit an der im Datenblatt \cite[S. 21]{keysData14} für die Verbindung via USB angegebenen, gemessenen Ladedauer eines Arbiträrsignals orientiert. Dieser Richtwert von $\SI{1.25}{\s}$ stellte sich jedoch als zu gering für den hier vorliegenden Fall heraus.
 \\
