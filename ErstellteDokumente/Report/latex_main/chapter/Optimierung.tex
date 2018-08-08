@@ -148,6 +148,7 @@ Weiterhin zeigt sich auch in der geringen Stützstellenzahl in \figref{fig:opt.s
 Folglich setzt sich diese Ungenauigkeit auch auf die Optimierung der Kennlinie fort. Insbesondere relevant wird dies, da die Kennlinie mit nahezu der doppelten Anzahl an Werten erstellt wird und somit der Interpolationsfehler ungleich größer wird als bei ähnlicher Anzahl Stützstellen.
 
 
+\subsection{Umgang mit Fehlerquellen}
 \subsubsection*{Ignorieren kleiner Beträge im Spektrum}
 \label{subsubsec:opt.H.prom}
 
@@ -287,9 +288,8 @@ Für die Einordnung der Größenordnung des Korrekturterms sei nochmals betont, 
 
 
 
-\subsubsection{Auswertung}
-
-
+\subsection{Auswertung}
+\label{subsec:opt.H.auswertung}
 Eine erste Illustration bietet die Anwendung des beschriebenen Vorgehens auf das \mock-System. Hier lässt sich testen, ob unter der Annahme einer vorgegebenen Übertragungsfunktion  $\Hcompl_{ \mathrm{mock}}$ im Sinne des Hammerstein-Modells und unter Vernachlässigung der Kennlinie (entspricht einer als ideal berechneten Kennlinie) eine Verbesserung des Signals erreicht wird und wie sich die Fehlerquellen mit Ausnahme von Rauschen auswirken. 
 Das Ergebnis dieses Tests ist eindeutig und anschaulich in \figref{subfig:opt.H.mock} aufgetragen für jeweils 15 Iterationen. Es lässt sich feststellen, dass eine Anpassung sowohl der Nulldurchgänge als auch bei hohen Frequenzen unbedingt notwendig ist und dies durch die Beschränkung großer Korrekturterme angegangen werden kann.\footnote{Die Auswirkungen der zusätzlichen Nutzung einer Beschränkung auf $3 \promille$ verbessern die Übertragungsfunktion optisch nicht wesentlich.}
 Auch zeigen sich in direkter Umgebung der Nulldurchgänge noch Frequenzen, an denen die Korrekturterme zwar geringer als der modifizierte RMS, jedoch immer noch ungenau durch die Interpolation aufgelöst sind.
@@ -741,6 +741,7 @@ Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\
 \label{fig:evaluateK}
 \end{figure}
 Dabei ist der kleinste und damit der beste Wert der Güte mit \SI{190}{\mV} etwa $54\%$ des maximal möglichen $V_{PP}$ das von $K$ aufgezeichnet worden. Diese Messung wurde nur für diese Kennlinie durchgeführt und lässt keine Schlüsse auf die allgemeine Gültigkeit für alle Kennlinien zu, deshalb sollte der optimale Wert für $V_{PP}$ sicherheitshalbe für alle Kennlinien einzeln bestimmt werden.
+
 \subsection{Zweiter Ansatz}
 \label{subsubsec:opt.adjusta.kleiner}
 Aus den Ergebnissen aus \ref{subsec:opt.adjusta.results} und der Evaluierung der Grenzen aus dem vorherigen Abschnitt wurde ein neuer Ansatz zur Optimierung aufgestellt, bei dem die Kennlinie $K$ in einem kleineren Bereich optimiert wird als der, aus dem sie vorher zur Initialisierung berechnet wurde.\\
@@ -752,7 +753,8 @@ Als zweiter Ansatz wurde folgendes Setup verwendet:
 Damit wurde $K$ mit einem $\Uquest_{,\textrm{ideal}}$ optimiert, bei dem $V_{PP}$ auf $66\%$ des maximal zulässigen Wertes gesetzt wurde. Der Bereich ist in \figref{fig:opt.kleinerBereich.K} eingezeichnet.
 \subsubsection*{Ergebnisse und Erkenntnisse}
 \label{subsubsec:opt.adjusta.kleiner.results}
-Für diesen Ansatz wurden keine weiteren Iterationen durchgeführt, deshalb lässt sich darüber nur bedingt eine Aussage über die Konvergenz treffen, aber diese niedrigen Werte der Güte wurden bisher nur mit diesem Ansatz erreicht.\\
+Für diesen Ansatz wurden aufgrund der späten Erkenntnis keine ausführlichen Tests durchgeführt, deshalb lässt sich darüber nur bedingt eine Aussage über die Konvergenz treffen. Aber diese niedrigen Werte der Güte konnten bisher nur mit diesem Ansatz erreicht werden. Im Vergleich zu den Ergebnissen des vorigen Ansatzes in \figref{fig:evaluate30Q} fällt jedoch auf, dass in den ersten Iterationen keine Verschlechterung der Qualität verglichen mit dem Initalwert auftritt.
+\\
 Die Schrittweite wurde bei all diesen Messungen auf $\sigma_a = 0.5$ gelassen.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
