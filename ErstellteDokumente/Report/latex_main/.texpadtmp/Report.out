@@ -9,30 +9,24 @@
 \BOOKMARK [2][-]{subsection.3.1.1}{Python}{section.3.1}% 9
 \BOOKMARK [2][-]{subsection.3.1.2}{MATLAB}{section.3.1}% 10
 \BOOKMARK [1][-]{section.3.2}{Funktionalit\344t reproduzieren}{chapter.3}% 11
-\BOOKMARK [2][-]{subsection.3.2.1}{Neues Design}{section.3.2}% 12
-\BOOKMARK [2][-]{subsection.3.2.2}{Tests}{section.3.2}% 13
-\BOOKMARK [2][-]{subsection.3.2.3}{Fehlersuche}{section.3.2}% 14
-\BOOKMARK [1][-]{section.3.3}{Funktionalit\344t erweitern}{chapter.3}% 15
-\BOOKMARK [2][-]{subsection.3.3.1}{Erste Optimierungs Idee}{section.3.3}% 16
-\BOOKMARK [1][-]{section.3.4}{Ger\344tekommunikation}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.5}{Kritische Punkte}{chapter.3}% 18
-\BOOKMARK [0][-]{chapter.4}{Code-Design}{}% 19
-\BOOKMARK [1][-]{section.4.1}{Motivation}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.2}{Aufbau}{chapter.4}% 21
-\BOOKMARK [2][-]{subsection.4.2.1}{Namenskonvention}{section.4.2}% 22
-\BOOKMARK [2][-]{subsection.4.2.2}{Ordnerstruktur}{section.4.2}% 23
-\BOOKMARK [2][-]{subsection.4.2.3}{Abstract Data Types}{section.4.2}% 24
-\BOOKMARK [1][-]{section.4.3}{Methodik}{chapter.4}% 25
-\BOOKMARK [2][-]{subsection.4.3.1}{Test Driven Development}{section.4.3}% 26
-\BOOKMARK [2][-]{subsection.4.3.2}{Mock-System}{section.4.3}% 27
-\BOOKMARK [0][-]{chapter.5}{Iterative Optimierung des Hammerstein-Modells}{}% 28
-\BOOKMARK [1][-]{section.5.1}{Optimierung der linearen \334bertragungsfunktion H}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.2}{Optimierung der nichtlinearen Kennlinie K}{chapter.5}% 30
-\BOOKMARK [2][-]{subsection.5.2.1}{Erster Ansatz}{section.5.2}% 31
-\BOOKMARK [2][-]{subsection.5.2.2}{Zweiter Ansatz}{section.5.2}% 32
-\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 33
-\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 34
-\BOOKMARK [1][-]{section.7.1}{Impressionen zum Code}{chapter.7}% 35
-\BOOKMARK [1][-]{section.7.2}{Ausblick: Optimierung}{chapter.7}% 36
-\BOOKMARK [1][-]{section.7.3}{\204 Ger\344tekomm\204}{chapter.7}% 37
-\BOOKMARK [0][-]{chapter.8}{\204 Anhang \204}{}% 38
+\BOOKMARK [1][-]{section.3.3}{Funktionalit\344t erweitern}{chapter.3}% 12
+\BOOKMARK [2][-]{subsection.3.3.1}{Erste Optimierungs Idee}{section.3.3}% 13
+\BOOKMARK [1][-]{section.3.4}{Ger\344tekommunikation}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.5}{Kritische Punkte}{chapter.3}% 15
+\BOOKMARK [0][-]{chapter.4}{Code-Design}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Motivation}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.2}{Aufbau}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.3}{Methodik}{chapter.4}% 19
+\BOOKMARK [2][-]{subsection.4.3.1}{Test Driven Development}{section.4.3}% 20
+\BOOKMARK [2][-]{subsection.4.3.2}{Mock-System}{section.4.3}% 21
+\BOOKMARK [0][-]{chapter.5}{Iterative Optimierung des Hammerstein-Modells}{}% 22
+\BOOKMARK [1][-]{section.5.1}{Optimierung der linearen \334bertragungsfunktion H}{chapter.5}% 23
+\BOOKMARK [1][-]{section.5.2}{Optimierung der nichtlinearen Kennlinie K}{chapter.5}% 24
+\BOOKMARK [2][-]{subsection.5.2.1}{Erster Ansatz}{section.5.2}% 25
+\BOOKMARK [2][-]{subsection.5.2.2}{Zweiter Ansatz}{section.5.2}% 26
+\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 27
+\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 28
+\BOOKMARK [1][-]{section.7.1}{Impressionen zum Code}{chapter.7}% 29
+\BOOKMARK [1][-]{section.7.2}{Ausblick: Optimierung}{chapter.7}% 30
+\BOOKMARK [1][-]{section.7.3}{\204 Ger\344tekomm\204}{chapter.7}% 31
+\BOOKMARK [0][-]{chapter.8}{Anhang}{}% 32

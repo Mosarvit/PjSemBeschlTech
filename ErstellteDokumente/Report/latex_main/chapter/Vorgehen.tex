@@ -36,13 +36,13 @@ Als zweiten Ansatzpunkt hatten wir funktionierende Methoden aus der MATLAB Imple
 \section[Funktionalität reproduzieren]{Funktionalität reproduzieren}
 \label{sec:vorg.reproduktion}
 Als ersten wurde versucht die vorhandene Implementierung zu überblicken und letztendlich beide in Python zusammenzuführen. Dabei wurde eine starke Kopplung innerhalb der vorhandenen Implementierungen festgestellt, was die Fehlersuche und Fortführung erschwerte. Ein paar Funktionen hatten teilweise auch mehrere logische Aufgaben, die für eine bessere Verständlichkeit getrennt werden sollten. Mit dem Code wurden aber schon gute Ergebnisse erzielt und das erste Ziel war, den Code in eine neue Form zu überführen, ohne die Funktionalität zu beeinträchtigen.
-\subsection{Neues Design}
+\subsection*{Neues Design}
 \label{sec:vorg.design}
 Das in \figref{fig:Hammerstein} dargestellte Modell wird in zwei Blöcke gegliedert und so wurde ein Code-Design gewählt, das diese Blöcke repräsentiert. Dafür bietet sich ein modulares Design an, das in Kap. \ref{chap:code} genauer erklärt ist und dabei möglichst selbsterklärend dieses Modell abbildet. Dieses Design wurde auch in Hinblick auf die Team Arbeit gewählt, damit an mehreren logisch getrennten Abschnitten gleichzeitig gearbeitet werden kann. \\ Dafür wurde eine Github Repository erstellt, um eine Versionen Kontrolle vorzunehmen.
-\subsection{Tests}
+\subsection*{Tests}
 \label{sec:vorg.tests}
 Aus vorherigen Messungen und den Ergebnissen aus beiden Implementierungen konnten Unit-Tests erstellt werden, die die geforderte Funktionalität beschreiben und somit die Ergebnisse aus dem neuen Design mit schon bestehenden Ergebnissen evaluieren. \\ Ziel war es den Code umzustrukturieren mit der Bedingung, dass die Funktionalität nicht verändert wird. Die bestehende Implementierung wurde in mehrere logische Abschnitte unterteilt, bei denen jeder Abschnitt für sich die geforderten Daten erzeugen sollte. Dabei sollte die funktionierenden Teile aus MATLAB in Python überführt werden.
-\subsection{Fehlersuche}
+\subsection*{Fehlersuche}
 \label{sec:vorg.fehlersuche}
 Die Möglichkeiten der Fehlersuche soll an zwei Beispielen erklärt werden. In der Python Implementierung aus dem Projektseminar \cite{PJS_Denys} war schon ein erster Entwurf zur Berechnung der Koeffizienten $a_n$ gegeben, der aber noch keine guten Werte berechnete. Die Ergebnisse aus der MATLAB Implementierung wurden in den Unit Test importiert, sodass in Python mehrere Möglichkeiten getestet wurden, bis die Ergebnisse mit den schon bestehenden Werten übereinstimmen. \\
 Das zweite Beispiel ist die Berechnung des Eingangssignals über $K$. Dabei wurden während einer Messung Daten gespeichert, die zu einem Programmabbruch führten. Diese Daten wurden in einem Unit Test zusammengeführt, damit der Fehler im Programm ohne Messaufbau behoben werden konnte. Einzelheiten dazu im Abschnitt (\ref{sec:opt.K}).
