@@ -1,0 +1,43 @@
+\begin{frame}
+\frametitle{Das Mock-System}
+
+\onslide<2->{
+\begin{itemize}
+	\onslide<1->{\item Wird genutzt, wenn mit Geräten kommuniziert wird:	
+	\begin{itemize}
+		\item \texttt{mock\_system.write\_to\_AWG}
+		\item \texttt{mock\_system.read\_from\_DSO}
+	\end{itemize}		
+ 	}
+	\onslide<3->{\item Simuliert das Verhalten des Messaufbaus nach dem Hammerstein Model}
+\end{itemize}
+	
+}
+
+
+\onslide<4->{Vorteile:
+\onslide<5->{
+\begin{itemize}
+	\onslide<5->{\item Ermöglicht:	
+	\begin{itemize}
+			\onslide<5->{\item Unit Tests von Bausteinen, in den Gerätekommunikation stattfindet }
+			\onslide<6->{\item System Tests }	
+			\onslide<7->{\item Testen von Randfällen}
+	\end{itemize}		
+ 	}
+	\onslide<8->{\item Hilft das System besser zu verstehen }
+\end{itemize}
+}
+} 
+
+\onslide<9->{Nachteile:
+\onslide<9->{
+\begin{itemize}
+	\onslide<9->{\item Extra Aufwand: mehr Code zu debuggen}
+\end{itemize}
+}
+}
+ 
+ 
+
+\end{frame}

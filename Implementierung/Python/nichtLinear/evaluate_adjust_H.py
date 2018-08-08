@@ -55,7 +55,7 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     H = determine_H(loadCSV=1, saveCSV=1, verbosity=0)
 
     save_transfer_function(H=H, filename=data_directory + 'H_0.csv')
-    return
+
     a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
 
     K = compute_K_from_a(a=a, verbosity=0)

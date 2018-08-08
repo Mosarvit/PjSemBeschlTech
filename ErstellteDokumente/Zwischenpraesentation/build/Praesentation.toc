@@ -6,6 +6,5 @@
 \beamer@sectionintoc {3}{Code}{19}{0}{3}
 \beamer@subsectionintoc {3}{1}{Design}{19}{0}{3}
 \beamer@subsectionintoc {3}{2}{Vorgehensweise}{37}{0}{3}
-\beamer@subsectionintoc {3}{3}{Evaluierung}{54}{0}{3}
-\beamer@sectionintoc {4}{Ausblick}{79}{0}{4}
-\beamer@sectionintoc {5}{Quellen}{87}{0}{5}
+\beamer@sectionintoc {4}{Ausblick}{63}{0}{4}
+\beamer@sectionintoc {5}{Quellen}{73}{0}{5}
