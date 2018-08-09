@@ -39,7 +39,7 @@ Iterativ mit einer Schrittweite $\sigma_H$ ausgeführt, folgt für den $i$-ten S
 \label{eq:opt.Hnew}
 	\mathrm{abs} \left( \Hcompl^{i+1} \right)
 		=\mathrm{abs} \left( \Hcompl^{i}  \right) \cdot
-		\left( 1 - \sigma_H^i \: \fabs^{i}	\right)					 
+		\left( 1 + \sigma_H^i \: \fabs^{i}	\right)					 
 \end{align}
 
 für $\sigma_H^i \in \left[ 0 , 1 \right]$ und $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt}.
@@ -52,7 +52,10 @@ Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \
 					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
 \end{align}
 mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
-liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{subfig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
+liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. 
+%Allerdings ist zu erwähnen, dass sich nicht ausschließen lässt, dass im simpelsten Fall das Vorzeichen des Iterationsschrittes schlicht falsch gewählt wurde. Aufgrund des späten Auftretens dieser möglichen Fehlerquellen konnten jedoch keine Tests diesbezüglich mehr dürchgeführt werden.
+%%%%%%%%%%%%%%%%%%%%%%%% TODO: Check Phase am Mock-System!!!! %%%%%%
+In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{subfig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
 \\
 
 
