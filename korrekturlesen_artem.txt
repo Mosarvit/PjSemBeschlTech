@@ -1,0 +1,12 @@
+3.1.1. ... bestimmt werden
+4.3.2. sondern an das Mock System
+... der Teil ueber das Testen der Randfalle, wie z.B. hohe Anzahl an Iterationen. 
+
+Das Problem auf Seite 14, das Jens nicht verstanden hat, hatte ich mir mal selbst genau so ¨¹berlegt, wie es da steht, deshalb kann ich das gut nachvollziehen. Allerdings habe ich schon damals nach langem Hin und Her diese ¨¹berlegung verworfen. 
+Zum erseten Punkt, kann es in einem Periodischen Signal keine anderen Frequenzen geben, als ein ganzzahlig-vielfaches der kleinsten Frequenz. Es werden nat¨¹rlich auch anderen (zwischen-)Frequenzen gemessen, aber die geh?ren eindeutig zum Rauschen und w¨¹rden uns bei der Optimierung nicht weiterhelfen, wenn nich sogar sch?digen. 
+Und zum letzten Gedaneken, es passt schon, dass wir mehr als doppelte so gro?e Samplingrate an das AWG schicken, als die betrachtete gr??te Frequenz, denn, genau das entspricht dem Nyquist-Kriterium. 
+
+Abb. 5.3.a - die Farbe der Kennlinie Step 15 - mit RMS macht es kaum erkennbar
+Abb. 5.4.a dito
+
+Ich hatte ja mal den Einwand, dass das K_mock mit auf die Graphen in Abschnitt 5 m¨¹ssen. Aber jetzt sehe ich, dass Ergebnisse aus Messugen am realen System stammen, da geh?rt K_mock dann nat¨¹rlich nicht mit rein.
