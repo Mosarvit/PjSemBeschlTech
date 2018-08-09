@@ -56,14 +56,21 @@ def plot_3_transfer_functions(H1, H2, H3, legend1 = 'H1', legend2 = 'H2', legend
     plt.show()
 
 
-def plot_transfer_function(H, legend1='H'):
+def plot_transfer_function(H, legend='H'):
+    # fig = plt.figure()
     f, axarr = plt.subplots(2, sharex=True)
     axarr[0].plot(H.f, H.a)
-    axarr[0].legend([legend1])
+    axarr[0].legend([legend])
+    axarr[0].set_ylabel('Amplitude')
+    axarr[0].set_xlabel('f')
+
 
     axarr[1].plot(H.f, H.p)
-    axarr[1].legend([legend1])
+    axarr[1].legend([legend])
+    axarr[1].set_ylabel('Phase')
+    axarr[1].set_xlabel('f')
     plt.show()
+    # f.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/H_mock.pdf')
 
 def plot_H_ideal_Hs(H_ideal, Hs):
 
@@ -91,12 +98,13 @@ def plot_H_ideal_Hs(H_ideal, Hs):
 
 
 def plot_K(K, legend ='K'):
-
+    fig = plt.figure()
     plt.plot(K[:,0], K[:,1])
     plt.legend([legend])
-    plt.xlabel('K[:,0]')
-    plt.ylabel('K[:,1]')
+    plt.xlabel('$U_{in}$')
+    plt.ylabel('$U_{?}$')
     plt.show()
+    # fig.savefig('../../../ErstellteDokumente/Zwischenpraesentation/slides/ResultCode/plots/K_mock.pdf')
 
 
 def plot_2_Ks(K1, K2,  legend1='K1', legend2='K2'):
