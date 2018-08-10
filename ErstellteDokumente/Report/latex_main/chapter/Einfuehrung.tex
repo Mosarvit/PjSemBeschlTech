@@ -6,7 +6,7 @@
 
 \chapter{Einführung}
 \label{chap:einfuehrung}
-Mit den Barrier Bucket (BB) RF Systemen können am neu entstehenden Synchrotron SIS100 oder im Experimentier Speicherring (ESR) am GSI Helmholtzzentrum viele longitudinale Manipulationen am Teilchenstrahl vorgenommen werden. Der dazu notwendige Spannungspuls hat die Form wie in \figref{fig:BB_req} dargestellt. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so wird im Phasenraum eine stationäre Potential Barriere erstellt. Wenn die Wiederholfrequenz nicht gleich der Umlauffrequenz ist verschiebt sich die Potential Barriere im Phasenraum und es entstehen Bunches mit unterschiedlicher Länge.\\ Der Anspruch an diese Systeme liegt darin eine hohe Qualität des Impulses am Gap der Kavität zu erzeugen, damit keine unerwünscht Microbunches entstehen. Dafür müssen die Nachschwinger nach dem Einzelsinus kleiner als 2,5\% von $\hat{U}_{BB}$ sein.
+Mit Barrier Bucket (BB) RF Systemen sollen am neu entstehenden Synchrotron SIS100 oder im Experimentier Speicherring (ESR) am GSI Helmholtzzentrum unterschiedliche longitudinale Manipulationen an Teilchenstrahlen vorgenommen werden. Der dazu notwendige Spannungspuls hat die in \figref{fig:BB_req} dargestellte Form. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so führt dies zu einer stationären Potentialbarriere im Phasenraum. Diese Barrieren können dazu verwendet werden, den Strahl longitudinal einzuschließen und ermöglichen somit varialble Bruchlängen. Unterscheiden sich Wiederholfrequenz des Spannungssignals und Umlauffrequenz, so gewegt sich die Barriere im Phasenraum ("moving barrier") und ermöglicht Kompression/Dekompression der Bunches.\\ Eine Herausforderung dieser Systeme liegt darin, eine hohe Qualität des Pulses am Gap der Kavität zu erzeugen, um unerwünschte Effekte auf den Strahl zu verhindern. Laut Spezifikation für das EST System müssen die Nachschwinger nach dem Einzelsinus beispielsweise kleiner als 2,5\% von $\hat{U}_{BB}$ sein.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{eps/BB_req.pdf}
@@ -14,23 +14,23 @@ Mit den Barrier Bucket (BB) RF Systemen können am neu entstehenden Synchrotron 
   \label{fig:BB_req}
 \end{figure}
 
-Dabei wird im Folgenden $f_{rep}$ für die Wiederholfrequenz des Spannungssignals verwendet und die Barrier Bucket Frequenz $f_{BB}$ bestimmt die Breite der Potential Barriere. Für die Messungen in diesm Projektseminar wurden ${f_{rep} = 900 \si{\kilo \hertz}}$ und ${f_{BB} = 5 \si{\mega \hertz}}$ verwendet.
+Dabei wird im Folgenden $f_{rep}$ für die Wiederholfrequenz des Spannungssignals verwendet. Die Barrier Bucket Frequenz $f_{BB}$ bestimmt die Breite der Potential Barriere. Für die Messungen in diesm Projektseminar wurden ${f_{rep} = 900 \si{\kilo \hertz}}$ und ${f_{BB} = 5 \si{\mega \hertz}}$ verwendet.
 
 
 \section[Modell und Konvention]{Versuchsaufbau und Modell}
 \label{sec:einf.modell_BB}
-Der Prototyp des ESR BB besteht aus einem Funktionsgenerator (Keysight 3600A series 2-channel AWG), einem Verstärker (AR1000A225) und der Breitband Ringkern Kavität. Der Versuchsaufbau ist in \figref{fig:Aufbau} gezeigt.\\Dabei kann angenommen werden, dass sich das System bis $\hat{U}_{BB} = 550V$ annähernd linear verhält und durch die Übertragungsfunktion $\Hcompl$ beschrieben werden kann. Eine mathematische Modellierung ist ebenfalls in \figref{fig:Aufbau} gegeben, bei der zur linearen Übertragungsfunktion $\Hcompl$ noch eine nichtlineare Kennlinie enthalten ist. Die Größen werden im nächsten Abschnitt erklärt.
+Der Prototyp des ESR BB besteht aus einem Funktionsgenerator (Keysight 3600A series 2-channel ($50\Omega $)AWG), einem Verstärker (AR1000A225) und der Breitband Ringkern-Kavität. Der Versuchsaufbau ist in \figref{fig:Aufbau} gezeigt. Für eine Messung wird ein berechnetes Eingangssignal $\Uin_{\textrm{,ideal}}$ an das AWG übergeben, der das Signal über den Verstärker an die Kavität leitet\\Dabei kann angenommen werden, dass sich das System bis $\hat{U}_{BB} = 550V$ annähernd linear verhält und durch die Übertragungsfunktion $\Hcompl$ beschrieben werden kann. Eine mathematische Modellierung ist ebenfalls in \figref{fig:Aufbau} gegeben, bei der zur linearen Übertragungsfunktion $\Hcompl$ noch eine nichtlineare Kennlinie enthalten ist. Die Größen werden im nächsten Abschnitt erklärt.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{eps/Aufbau.pdf}
-	\caption{Versuchsaufbau und Modell}
+	\caption{Versuchsaufbau und Modell siehe \cite{harzheim}}
   	\label{fig:Aufbau}
 \end{figure}
 
 
 \subsection{Hammerstein Modell}
 \label{subsec:einf.modell_BB.hammerstein}
-In \figref{fig:Hammerstein} sind alle von uns verwendeten Größen dargestellt. $U_{in}$ ist die Eingangsspannung vom Funktionsgenerator. Der erste Block in \figref{fig:Hammerstein} stellt die nichtlineare Modellierung dar. Die Spannung $U_{?}$ ist eine rein virtuelle Größe und kann wie in \eqref{eq:Uquest} über die Koeffizienten $a_n$ berechnet werden. Bei der Potenzreihe hatte $N = 3$ in der MATLAB Implementierung schon gute Ergebnisse geliefert und wurde von uns auch weiterhin so verwendet. Die nichtlinearen Kennlinie im Folgenden nur noch als $K$ bezeichnet wird als Look-Up Tabelle in unserem Programm hinterlegt. Die Spannung $U_{out}$ ist die Gap Spannung in der Kavität.
+In \figref{fig:Hammerstein} sind alle verwendeten Größen dargestellt. $U_{in}$ ist die Eingangsspannung des Funktionsgenerators. Der erste Block in \figref{fig:Hammerstein} stellt die nichtlineare Modellierung dar. Die Spannung $U_{?}$ ist eine rein virtuelle Größe und kann wie in \eqref{eq:Uquest} aus der Eingangsspannung über die Koeffizienten $a_n$ berechnet werden. Bei der Potenzreihe hatte $N = 3$ in der MATLAB Implementierung schon gute Ergebnisse geliefert und wurde daher weiterhin so verwendet. Die nichtlinearen Kennlinie im Folgenden nur noch als $K$ bezeichnet, wird als Look-Up Tabelle im Programm hinterlegt. Die Spannung $U_{out}$ ist die Gapspannung in der Kavität.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{eps/Hammerstein.pdf}
@@ -47,7 +47,7 @@ In \figref{fig:Hammerstein} sind alle von uns verwendeten Größen dargestellt. 
 
 \section{Motivation}
 \label{sec:einf.motivation}
-Dieses Modell wurde bis auf die Berechnung von $K$ schon erfolgreich in Python implementiert, dabei sei auf das Projektseminar \cite{PJS_Denys} verwiesen. Deshalb lag unsere Motivation darin dieses Modell in Python zu vervollständigen, um dann einen möglichen Optimierungsansatz aufzustellen.
+Das Hammerstein Modell wurde bis auf die Berechnung von $K$ schon erfolgreich in Python implementiert. Dabei sei auf das Projektseminar \cite{PJS_Denys} verwiesen. Deshalb lag unsere Motivation darin, dieses Modell in Python zu vervollständigen, um dann einen möglichen Optimierungsansatz aufzustellen.
 
 
 \section{Aufgabenstellung}

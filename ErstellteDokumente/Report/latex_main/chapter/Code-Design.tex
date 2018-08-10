@@ -6,11 +6,11 @@
 
 \chapter{Code-Design}
 \label{chap:code}
-Die Aufgabe des Projektseminars war ein bestehendes Tool weiter zu entwickeln. Es wurde nach einer Methode gesucht an die vorhandene Funktionalität anzuschließen und fortzusetzen. Gleiches wird wahrscheinlich mit dieser Projektarbeit passieren. Deshalb wird in diesem Kapitel die Namenskonvention und die allgemeine Struktur unseres Design vorgestellt.
+Die Aufgabe des Projektseminars war, ein bestehendes Tool weiterzuentwickeln. Es wurde nach einer Methode gesucht, um an die vorhandene Funktionalität anzuschließen und fortzusetzen. Um auf dieses Projekt aufbauende Arbeiten zu erleichtern, wird in diesem Kapitel die Namenskonvention und die allgemeine Struktur unseres Design vorgestellt.
 
 \section{Motivation}
 \label{sec:code.motivation}
-Ziel ist es ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des weiteren wird eine lose Kopplung der einzelnen Blöcke angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung im Team zum anderen aber auch die Verständlichkeit des gesamten Programms. \\
+Ziel ist es, ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des weiteren wird eine lose Kopplung der einzelnen Blöcke angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung im Team, zum anderen aber auch die Verständlichkeit des gesamten Programms. \\
 Ohne ein modulares Design ist eine Optimierung der einzelnen Bestandteile nur schwer umzusetzen.
 
 \section{Aufbau}
@@ -19,13 +19,13 @@ Der Aufbau des Programms orientiert sich an dem vorgegebenen Modell aus \figref{
 
 \subsection*{Namenskonvention}
 \label{subsec:code.namen}
-In der nachfolgenden \tabref{tab:code.namen} sind die verwendeten Präfixe erklärt.
+In der nachfolgenden Tabelle sind die verwendeten Präfixe erklärt.
 	
 \begin{table}[H]
 \centering 
 \begin{tabular}[t]{| >{\texttt\bgroup}r<{\egroup} | l |} 
   \hline
-    \textrm{Präfix} & Erklärung \\ 
+    \textrm{\textbf{Präfix}} & \textbf{Erklärung} \\ 
   \hline \hline
     adjust & Anpassung einer Größe in einem Iterationsschritt	\\
   \hline
@@ -56,11 +56,11 @@ In \tabref{tab:code.ordner} sind die Inhalte der verwendeten Ordner augelistet.
 \centering 
 \begin{tabular}[t]{| >{\texttt\bgroup}r<{\egroup} | l |} 
   \hline
-    \textrm{Ordner} & Inhalt \\ 
+    \textrm{\textbf{Ordner}} & \textbf{Inhalt} \\ 
   \hline \hline
     blocks & Implementierung der abstrakten Schritte im Modell	\\
   \hline  
-    classes & ADTs siehe \ref{subsec:code.adt} \\  
+    classes & ADTs, siehe \ref{subsec:code.adt} \\  
   \hline
     data & Alle Ergebnisse \\ 
   \hline
@@ -81,16 +81,16 @@ In \tabref{tab:code.ordner} sind die Inhalte der verwendeten Ordner augelistet.
 \label{subsec:code.adt}
 Bestimmte Datensätze wurden als eigene abstrakte Datentypen (ADTs) implementiert, siehe \cite[Kap. 6.1]{mcConnell}. Daraus ergeben sich folgende Vorteile:
 \begin{itemize}
-	\item Allgemeine Funktionalität wird in der Klasse implementiert
-	\item Typüberprüfung wird ermöglicht
-	\item Implementierung generischer Klassen\footnote{Implementierungen, die unabhängig vom übergebenen Datentyp sind.} beispielsweise \lstinline{calculate_error()} ermöglicht, das heißt die Implementierung ist unabhängig von
+	\item Allgemeine Funktionalität wird in der Klasse implementiert.
+	\item Typüberprüfung wird ermöglicht.
+	\item Implementierung generischer Klassen\footnote{Implementierungen, die unabhängig vom übergebenen Datentyp sind.} beispielsweise \lstinline{calculate_error()} ermöglicht.
 \end{itemize}
 Für die Klasse \lstinline{signal_class()} ergeben sich speziell noch weitere Vorteile:
 \begin{itemize}
 \item Vermeidung von ungewollten Manipulationen an Datensätzen, die nur schwer zu debuggen sind
-	\item Das Orginalsignal ist immer gespeichert 
+	\item Das Orginalsignal ist immer gespeichert.
 	\begin{itemize}
-		\item dadurch Vermeidung der Fortpflanzung von Interpolationsfehlern durch Resampling
+		\item dadurch Vermeidung der Fortpflanzung von Interpolationsfehlern durch Resampling.
 	\end{itemize}
 \end{itemize}
 
@@ -102,13 +102,13 @@ Für diesen Typ Aufgabenstellung konnte viel Programmierarbeit ohne den Versuchs
 \label{subsec:code.tdd}
 Nach der Methode TDD werden vor dem eigentlichen Programmieren Tests geschrieben, die mit der folgenden Implementierung der Funktionalität bestanden werden müssen. Diese Tests geben ein gutes Feedback darüber, ob eine Methode gut implementiert wurde. Die folgenden Vorteile waren besonders wichtig in der Entwicklung des Codes für diese Aufgabe:
 \begin{itemize}
-	\item Testen von kleinen Abschnitt erzwingt einen modularen Aufbau
-	\item Tests dokumentieren Funktionalität
-	\item Refactoring\footnote{Änderung der Struktur ohne Veränderung der Funktionalität.} wird ermöglicht
-	\item Einfachere Fehlersuche auch ohne Versuchsaufbau möglich
-	\item Reproduktion von Messvorgängen, die Fehler aufgedeckt haben
-	\item Arbeitsteilung an logisch getrennten Abschnitten ermöglicht
-	\item Vergleich zwischen der Implementierung aus MATLAB und der aus Python
+	\item Testen von kleinen Abschnitt erzwingt einen modularen Aufbau.
+	\item Tests dokumentieren Funktionalität.
+	\item Refactoring\footnote{Änderung der Struktur ohne Veränderung der Funktionalität.} wird ermöglicht.
+	\item Einfachere Fehlersuche auch ohne Versuchsaufbau möglich.
+	\item Reproduktion von Messvorgängen, die Fehler aufgedeckt haben.
+	\item Arbeitsteilung an logisch getrennten Abschnitten ermöglicht.
+	\item Vergleich zwischen der Implementierung aus MATLAB und der aus Python.
 \end{itemize}
 Eine große Schwierigkeit dieser Methode liegt darin, gute Tests zu formulieren, die auch alle möglichen Fälle abdecken. Das kann einige Zeit in Anspruch nehmen, lohnt sich aber auf längere Sicht
 
@@ -122,6 +122,6 @@ Mit diesem System konnten auch Methoden getestet werden, die eigentlich mit den 
 	\item Berechnung das Ausgangssignals über die Übertragungsfunktion $\Hcompl$
 	\item Das Ausgangssignal wird wieder an die eigentliche Methode übergeben
 \end{itemize}
-Die Optimierungsansätze aus Kap. \ref{chap:opt} wurden bereits in der Simulation des idealen Systems getestet und es wurde festgestellt, dass diese für das ideale Modell tatsächlich zu einer Verbesserung führen. Die Frage dabei ist aber, inwieweit sich der Versuchsaufbau durch ein ideales Hammerstein-Modell beschreiben lässt und sich damit die Verbesserung auf den realen Aufbau übertragen lässt. Je nach Ergebnissen der Übertragung auf das reale System lassen sich Aussagen über die Grenzen des Modells für diesen Aufbau treffen.\\
+Die Optimierungsansätze aus Kap. \ref{chap:opt} wurden bereits mit dem Mock-System getestet und es wurde festgestellt, dass diese für das ideale Modell tatsächlich zu einer Verbesserung führen. Die Frage dabei ist aber, inwieweit sich der Versuchsaufbau durch ein ideales Hammerstein-Modell beschreiben lässt und sich damit die Verbesserung auf den realen Aufbau übertragen lässt. Je nach Ergebnissen der Übertragung auf das reale System lassen sich Aussagen über die Grenzen des Modells für diesen Aufbau treffen.\\
 Mit dem Testen an der Simulation können Aufgaben wie Debugging, Refactoring und Erweiterungen der Funktion auch ohne den Versuchsaufbau durchgeführt werden.
 \end{document}

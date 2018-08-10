@@ -76,9 +76,55 @@
 \label{chap:anhang}
 
 
-%TODO: was muss sonst in den Anhang? Übersichtsgrafiken über Ordnerstrukturen? Abbildungsverzeichnis? Handhabung.md? 
-hier kommt eine Liste der Funktionen nochmals hin
-
+\begin{table}[H]
+\centering 
+\begin{tabular}[t]{| >{\texttt\bgroup}r<{\egroup} | l | l | l |} 
+  \hline
+    \textrm{\textbf{Ordner}} & \textbf{Funktion} & \textbf{Input} & \textbf{Output} \\ 
+  \hline \hline
+    \multicolumn{4}{|c|}{blocks} \\
+  \hline \hline
+  adjust\_a & Anpassung der Parameter der Kennlinie 	& $a_{old}$ & $a_{new}$ \\
+  & & $\Uin$ & \\
+  & & $\Uquest_{,\textrm{ideal}}$ & \\
+  & & $\Uquest_{,\textrm{meas}}$ & \\
+  & & $\sigma_a$ & \\
+  \hline
+  adjust\_H & Anpassung der Übertragungsfunktion 	& $H_{old}$ & $H_{new}$ \\
+  & & $\Uout_{,\textrm{ideal}}$ & \\
+  & & $\Uout{,\textrm{meas}}$ & \\
+  & & $\sigma_H$ & \\
+  \hline
+  compute\_a & Berechnung der Parameter der Kennlinie 	& $\Uin$ & $a_n$ \\
+  & & $\Uquest$ & \\
+  & & $N$ & \\
+  \hline
+  compute\_K & Berechnung der Parameter der Kennlinie 	& $a_n$ & $K$ \\
+  \hline
+  compute\_Uin & Berechnung des Eingangssignals		 	& $\Uquest$ & $\Uin$ \\
+  & & $K$ & $\Uquest_{,\textrm{adapted}}$ \\
+  \hline
+  compute\_Uquest & Berechnung der virtuellen Spannung $\Uquest$ & $\Uout$ & $\Uquest$ \\
+  & & $H$ & \\
+  \hline
+  
+  
+  
+  \hline \hline
+    classes & ADTs, siehe \ref{subsec:code.adt} \\  
+  \hline \hline
+    data & Alle Ergebnisse \\ 
+  \hline
+    helpers & Hilfsfunktionen nach \cite{helper_class} 	\\
+  \hline 
+    tests & Alle Klassen mit Unit Tests \\  
+  \hline 
+    tools & RF-Tools \\ 
+  \hline
+\end{tabular}
+\caption{Liste aller Funktionen}
+\label{tab:anhang.Funktionen}
+\end{table}
 
 
 

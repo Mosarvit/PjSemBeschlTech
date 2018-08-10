@@ -21,7 +21,7 @@ x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
 legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black},
 legend cell align={left},
-legend entries={{initial},{1},{2},{3},{29},{30}}
+legend entries={{$K_{\textrm{initial}}$},{$K_1$},{$K_2$},{$K_3$},{$K_{29}$},{$K_{30}$}}
 ]
 \addlegendimage{no markers, color5}
 \addlegendimage{no markers, color0}

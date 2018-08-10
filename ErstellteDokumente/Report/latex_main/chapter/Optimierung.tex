@@ -623,18 +623,24 @@ Festhalten jedoch lässt sich auch bei Messungen am Messaufbau, dass die vorgeno
 
 \section{Optimierung der nichtlinearen Kennlinie $K$}
 \label{sec:opt.K}
-Der Unterschied zur Optimierung von $\Hcompl$ ist, dass diese Optimierung im Zeitbereich statt findet. Deshalb kann \eqref{eq:opt.relFehler} zu
+Die erste Kennlinie wird über ein linear vorverzerrtes Signal bestimmt. Dabei ist es möglich, dass sich die Kennlinie für ein nichtlinear vorverzerrtes Signal oder für eine Eingangssignal mit verändertem Frequenzspektrum ändert. \\
+Für die Anpassung der Kennlinie $K$ werden die beiden berechneten Signal $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ mit einander verglichen. Diese Signale lassen sich wie folgt aus der Parametrisierung der nichtlinearen Kennlinie als Potenzreihe berechnen.
 \begin{align}
-	\label{eq:opt.deltaUquest}
+	\Uquest_{, \mathrm{meas}} \oft = \sum_{n=1}^N \, \overline{a}_n \left[ U_{in}(t) \right]^n
+	\quad
+	\Uquest_{, \mathrm{ideal}} \oft = \sum_{n=1}^N \, a_n \left[ U_{in}(t) \right]^n
+\end{align}
+Dabei sind $\overline{a}_n$ die Koeffizienten der neuen Kennlinie. Diese können mit der schon aus \cite{harzheim} bekannten Matrixmultiplikation berechnet werden. Bei diesem Verfahren werden einzelne Sample des Eingangssignals $\Uin$ und der Größe $\Uquest$ verglichen und das entstehende lineare Optimierungsproblem mit der Methode der kleinsten Quadrate gelöst. \\
+Für eine Optimierung ist es notwendig eine Schrittweiter zu definieren. Die Differenz der beiden Signale $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ wird ebenfalls durch eine Potenzreihe der nichtlinearen Kennlinie parametrisiert.
+\begin{align}
+\label{eq:opt.deltaUquest}
 	\Delta \Uquest \oft = \Uquest_{, \mathrm{meas}} \oft - \Uquest_{, \mathrm{ideal}} \oft
-	\qquad
-	\Uquest_{, \mathrm{meas}} \oft = \mathscr{F}^{-1} \left\{ \Hcompl^{-1} \ofomega \cdot \Uoutc_{, \mathrm{meas}} \ofomega \right\}
+	=
+	\sum_{n=1}^N \, \left( \overline{a}_n -  a_n\right) \left[ U_{in}(t) \right]^n
+	=
+	\sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n	
 \end{align}
-geändert werden. Die Funktionen $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ werden im mathematischen Modell aus $\Uin \oft$ mit einem Polynom gleichen Grades berechnet, deshalb kann die Differenz dieser Funktionen $\Delta \Uquest \oft$ auch als Polynom gleichen Grades aus $\Uin \oft$ berechnet werden
-\begin{align}
-	\Delta \Uquest \oft = \sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n	
-\end{align}
-Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar wie schon die Berechnung der Koeffizienten $a_n$ in \eqref{eq:Uquest} siehe \cite{harzheim}. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Mit der Potenzreihe aus  \eqref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
+Dafür können die Koeffizienten $\tilde{a}_n$ direkt ohne die Berechnung von $\overline{a}_n$ bestimmt werden. Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Mit der Potenzreihe aus  \eqref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
 \begin{align}
 	\left( 
 	\begin{matrix}
@@ -671,25 +677,26 @@ Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$.
 
 \subsection{Erster Ansatz}
 \label{subsec:opt.adjusta.results}
-Für die Berechnung der ersten Kennlinie $K_0$ wurde das ideale Ausgangssignal $\Uout_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{6}{\V}$ über $\Hcompl^{-1}$ zurückgerechnet und als Eingangssignal verwendet $\Uin_{, \mathrm{initial }} = \Uquest_{, \mathrm{ideal}}$. Damit ergibt sich für das Einganssignal ein $V_{PP} \approx \SI{587}{\mV}$, um $K_0$ für den nichlinearen Spannungsbereich des Systems zu berechnen.\\
-Als erster Ansatz wurde versucht $K$ über das selbe $\Uquest_{, \mathrm{ideal}}$ zu optimieren, mit dem es zuvor zur Berechnung verwendet wurde. Das heißt, dass die beiden Signale die gleiche Amplitude haben. Beim Zurückrechnen über die Kennlinie wurde festgestellt, dass $K$ in diesem Bereich nicht mehr bijektiv ist. Für den Fall, dass das Signal zu groß für den gültigen Bereich ist wird es auf beliebig gewählte $80\%$ des maximal zulässigen Wertes gesetzt. Dabei könnten sich in jedem Iterationsschritt unterschiedliche Amplituden von $\Uquest$ ergeben. Ziel hierbei ist es den Bereich, in dem $K$ bijektiv ist, schrittweise zu vergrößern.
+Für die Berechnung der ersten Kennlinie $K_0$ wurde das ideale Ausgangssignal $\Uout_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{6}{\V}$ über $\Hcompl^{-1}$ zurückgerechnet und als Eingangssignal verwendet $\Uin_{, \mathrm{initial }} = \Uquest_{, \mathrm{ideal}}$. Dieser Wert von $V_{PP} = \SI{6}{\V}$ wurde nicht gemessen, sondern lediglich zur Berechnung des ersten Eingangssignals verwendet, damit die Kennlinie im nichtlinearen Spannungsbereich des System berechnet werden kann. Für das berechnete Eingangssignal ergibt sich $V_{PP} \approx \SI{587}{\mV}$.\\
+Als erster Ansatz wurde versucht $K$ über das selbe $\Uquest_{, \mathrm{ideal}}$ zu optimieren, mit dem es zuvor zur Berechnung verwendet wurde. Das heißt, dass die beiden Signale die gleiche Amplitude haben. Beim Zurückrechnen über die Kennlinie wurde festgestellt, dass $K$ in diesem Bereich nicht mehr bijektiv ist. Für den Fall, dass das Signal zu groß für den gültigen Bereich ist wird es auf beliebig gewählte $80\%$ des maximal zulässigen Wertes gesetzt. Zu diesem Zeitpunkt war schon bekannt, dass die Kennlinie nicht für $100\%$ ihres gültigen Bereiches gültig ist, deshalb wurde ein kleinerer Wert gesetzt. Dabei könnten sich in jedem Iterationsschritt unterschiedliche Amplituden von $\Uquest$ ergeben. Ziel hierbei ist es den Bereich, in dem $K$ bijektiv ist, schrittweise zu vergrößern.
 \subsubsection*{Ergebnisse und Erkenntnisse}
 \label{subsubsec:opt.adjusta.results}
-Das Ergebnis ist eine Schwankung der Qualität siehe \figref{fig:evaluate30Q}. Die Kennlinien, zu den markierten Iterationen sind in \figref{fig:evaluate30K} eingezeichnet. Zu erkennen ist eine alternierende Anpassung der Kennlinie, die schon in den ersten drei Iterationen angefangen hat. Ergänzend wurden auch die letzten beiden Kennlinien eingezeichnet, um die große Anpassung innerhalb einer Iteration zu verdeutlichen. Ursache dafür könnte sein, dass die Kennlinie in einen nicht mehr sinnvollen Bereich genutzt wurde, um das Eingangssignal zu berechnen. Dadurch könnten zu große Änderungen in einem Iterationsschritt vorgenommen worden sein, die nicht mehr zielführend waren.\\
-Ein weiteres Ergebnis ist auch, dass ein $\Uquest$, das über das ideale Ausgangssignal mit $V_{PP} = \SI{6}{\V}$ bestimmt wird, nur als Eingangssignal sinnvoll ist, um die Kennlinie zu berechnen. Dabei wurde am Ausgang eine Spannung von $V_{PP} = \SI{4,7}{\V}$ gemessen und daraus folgt, dass für die Optimierung ein $\Uquest$ verwendet werden sollte, das sich über ein Ausgangssignal mit höchsten diesem Wert für $V_{PP}$ berechnet.
+Das Ergebnis ist eine Schwankung der Qualität siehe \figref{fig:evaluate30Q}. Die Kennlinien, zu den markierten Iterationen sind in \figref{fig:evaluate30K} eingezeichnet. Zu erkennen ist eine alternierende Anpassung der Kennlinie, die schon in den ersten drei Iterationen angefangen hat. Ergänzend wurden auch die letzten beiden Kennlinien eingezeichnet, um die große Anpassung innerhalb einer Iteration zu verdeutlichen. Ursache dafür könnte sein, dass die Kennlinie in einen nicht mehr sinnvollen Bereich genutzt wurde, um das Eingangssignal zu berechnen. Die Details dazu folgen im nächsten Abschitt. Dadurch könnten zu große Änderungen in einem Iterationsschritt vorgenommen worden sein, die nicht mehr zielführend waren.\\
+Ein weiteres Ergebnis ist auch, dass das hier verwendete Eingangssignal nicht die zur Berechnung verwendeten $V_{PP} = \SI{6}{\V}$ über dem Gapspannungsteiler erreicht. Mit dem daraus berechneten Eingangssignal lassen sich $V_{PP} = \SI{4,7}{\V}$ über dem Gapspannungsteiler erreichen, deshalb sollte im nächsten Ansatz zur Optimierung von einem Ausgangssignal mit höchstens diesem Wert von $V_{PP}$ ausgegangen werden. Diese Wahl der Amplitunden am Ausgang dienen lediglich der Referenz auf einen Wert. Man kann analog dazu auch die Amplitude des Eingangssignal festlegen und damit als Referenz arbeiten.\\
+Im nachfolgenden Diagramm der Güte wurden die Iterationen 1, 2, 3, 29 und 30 anders markiert, weil die dazu gehörigen Kennlinien $K_i$ im nebenstehenden Diagramm eingezeichnet wurden. Die anderen Kennlinien hatten sich über dem Verlauf der Messung den Kennlinien $K_{29}$ und $K_{30}$ abwechselnd angenähert.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
     \newlength\figureheight
 	\newlength\figurewidth
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/adjust_a_30_K_bearbeitet.tikz}
 \subcaption{Kennlinien}
 	\label{fig:evaluate30K}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/adjust_a_30_Q.tikz}
 \subcaption{Qualität}
 	\label{fig:evaluate30Q}
@@ -706,15 +713,15 @@ Deshalb kann damit zwar ein vorverzerrtes Signal berechnen werden, aber Messunge
 Eine Ursache dafür könnte sein, dass die Methode der kleinsten Quadrate, mit der die Parameter $a_n$ für $K$ bestimmt werden, die Extrema von $\Uquest$ nicht genug gewichtet, um in diesem Bereich noch gültig zu sein.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/K_bearbeitet.tikz}	
-\subcaption{Kennlinie}
+\subcaption{Resultierende Kennlinie}
 	\label{fig:K0}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/UinUquest.tikz}
 \subcaption{Ideales und gemessenes $U_?$}
 	\label{fig:UinUquest}
@@ -727,15 +734,15 @@ Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\
 
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/evaluate_K_bearbeitet.tikz}	
 \subcaption{Kennlinie}
 	\label{fig:K0_quality}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/evaluate_K_quality_bearbeitet.tikz}	
 \subcaption{Berechnung von $K$}
 	\label{fig:evaluateK.quality}
@@ -761,15 +768,15 @@ Für diesen Ansatz wurden aufgrund der späten Erkenntnis keine ausführlichen T
 Die Schrittweite wurde bei all diesen Messungen auf $\sigma_a = 0.5$ gelassen.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/adjust_a_kleinerBereich_K_bearbeitet.tikz}
 \subcaption{Kennlinie}
 	\label{fig:opt.kleinerBereich.K}
 \end{subfigure}
 \begin{subfigure}{0.5 \textwidth}
-	\setlength\figureheight{8cm}
-	\setlength\figurewidth{8cm}
+	\setlength\figureheight{7.5cm}
+	\setlength\figurewidth{7.5cm}
     \input{images/plots/adjust_a_kleinerBereich_Q.tikz}
 \subcaption{Qualität}
 	\label{fig:opt.kleinerBereich.Q}
