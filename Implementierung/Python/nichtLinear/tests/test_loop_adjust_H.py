@@ -45,7 +45,7 @@ class test_loop_adjust_H(TestCase):
         Hs, Uout_measured, quality_development= loop_adjust_H(H_0, K_0, Uout_ideal, data_directory,
                                                                   num_iters=10, sample_rate_DSO=sample_rate_DSO)
 
-        plot_H_ideal_Hs(H_mock, Hs)
+        # plot_H_ideal_Hs(H_mock, Hs)
 
         self.assertTrue(quality_development[1]>quality_development[-1] and quality_development[1]>quality_development[-2])
 
