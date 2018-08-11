@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  12 AUG 2018 00:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.23)  12 AUG 2018 01:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1962,7 +1962,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 \openout4 = `Praesentation.vrb'.
 
  (/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.vrb)
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 37--37
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
 []|| $[]$| 
  []
 
@@ -1974,13 +1974,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [13
 
 ]
-<slides/adjust_a/30Iteration.png, id=142, 1343.0175pt x 674.52pt>
-File: slides/adjust_a/30Iteration.png Graphic file (type png)
-<use slides/adjust_a/30Iteration.png>
-Package pdftex.def Info: slides/adjust_a/30Iteration.png  used on input line 46.
-(pdftex.def)             Requested size: 335.75356pt x 168.62958pt.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.58002pt on input line 45.
 
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 46--46
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 45--45
 []|| $[]$| 
  []
 
@@ -1991,7 +1988,91 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [14
 
- <./slides/adjust_a/30Iteration.png>])
+]
+<slides/adjust_a/30Iteration.png, id=147, 1343.0175pt x 674.52pt>
+File: slides/adjust_a/30Iteration.png Graphic file (type png)
+<use slides/adjust_a/30Iteration.png>
+Package pdftex.def Info: slides/adjust_a/30Iteration.png  used on input line 54.
+(pdftex.def)             Requested size: 335.75356pt x 168.62958pt.
+
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 54--54
+[]|| $[]$| 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[15
+
+ <./slides/adjust_a/30Iteration.png>]
+<slides/adjust_a/Grenzen_K.png, id=155, 1633.10126pt x 750.805pt>
+File: slides/adjust_a/Grenzen_K.png Graphic file (type png)
+<use slides/adjust_a/Grenzen_K.png>
+Package pdftex.def Info: slides/adjust_a/Grenzen_K.png  used on input line 62.
+(pdftex.def)             Requested size: 326.61447pt x 150.15834pt.
+
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 62--62
+[]|| $[]$| 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[16
+
+ <./slides/adjust_a/Grenzen_K.png>]
+<slides/adjust_a/Grenzen_eval.png, id=163, 1554.80875pt x 735.74875pt>
+File: slides/adjust_a/Grenzen_eval.png Graphic file (type png)
+<use slides/adjust_a/Grenzen_eval.png>
+Package pdftex.def Info: slides/adjust_a/Grenzen_eval.png  used on input line 70.
+(pdftex.def)             Requested size: 342.05898pt x 161.86522pt.
+
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 70--70
+[]|| $[]$| 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[17
+
+ <./slides/adjust_a/Grenzen_eval.png>]
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 79--79
+[]|| $[]$| 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[18
+
+]
+<slides/adjust_a/Zweiter_Versuch.png, id=175, 1358.07375pt x 612.2875pt>
+File: slides/adjust_a/Zweiter_Versuch.png Graphic file (type png)
+<use slides/adjust_a/Zweiter_Versuch.png>
+Package pdftex.def Info: slides/adjust_a/Zweiter_Versuch.png  used on input line 88.
+(pdftex.def)             Requested size: 339.51761pt x 153.0715pt.
+
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 88--88
+[]|| $[]$| 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[19
+
+ <./slides/adjust_a/Zweiter_Versuch.png>])
 \tf@nav=\write8
 \openout8 = `Praesentation.nav'.
 
@@ -2010,18 +2091,18 @@ Package rerunfilecheck Info: File `Praesentation.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 54144 strings out of 492649
- 1313951 string characters out of 6129622
- 1669761 words of memory out of 5000000
- 57083 multiletter control sequences out of 15000+600000
- 581878 words of font info for 102 fonts, out of 8000000 for 9000
+ 54184 strings out of 492649
+ 1314782 string characters out of 6129622
+ 1669762 words of memory out of 5000000
+ 57110 multiletter control sequences out of 15000+600000
+ 583614 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,22n,136p,10388b,780s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 78i,22n,136p,10388b,942s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.pdf (14 pages, 655857 bytes).
+Output written on /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.pdf (19 pages, 1276844 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

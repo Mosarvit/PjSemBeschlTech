@@ -7,4 +7,3 @@
 \begin{align}
 	a_n^{i+1} = a_n^{i} + \sigma_{a}^{i} \tilde{a}_n^{i}
 \end{align}
-	
