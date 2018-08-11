@@ -640,7 +640,7 @@ Für eine Optimierung ist es notwendig eine Schrittweiter zu definieren. Die Dif
 	=
 	\sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n	
 \end{align}
-Dafür können die Koeffizienten $\tilde{a}_n$ direkt ohne die Berechnung von $\overline{a}_n$ bestimmt werden. Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Mit der Potenzreihe aus  \eqref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
+Dafür können die Koeffizienten $\tilde{a}_n$ direkt ohne die Berechnung von $\overline{a}_n$ bestimmt werden. Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Dieses Lösungsverfahren wird in \cite{harzheim} vorgestellt. Mit der Potenzreihe aus \eqref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
 \begin{align}
 	\left( 
 	\begin{matrix}
@@ -673,7 +673,49 @@ Dieses Gleichungssystem ist mit normalerweise $M>N$ überbestimmt und wird mit d
 	\label{eq:opt.adjusta}
 	a_n^{i+1} = a_n^{i} + \sigma_{a}^{i} \tilde{a}_n^{i}
 \end{align}
-Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$.
+Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$. Der Ablauf des Algorithmus ist in \figref{fig:Algorithmus.K} gezeigt. Dabei stellen die grünen Schritt die Initialisierung dar, blaue Schritte sind Berechnungen oder Messungen von Signalen und im roten Block findet die eigentliche Anpassung der Kennlinie statt. Durchgezogene Pfeile folgen dem Programmablauf und gestrichelte Pfeile stellen Parameterübergaben dar.
+
+\begin{figure}[H]
+\centering
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block_g} = [rectangle, draw, fill=green!20, 
+    text width=6.5em, text centered, rounded corners, node distance=2cm, minimum height=4em]
+\tikzstyle{block_b} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, node distance=4.5cm, minimum height=4em]
+\tikzstyle{block_r} = [rectangle, draw, fill=red!20, 
+    text width=6em, text centered, rounded corners, node distance=4.5cm, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\begin{tikzpicture}[node distance = 5cm, auto]
+    % Place nodes
+    \node [block_g] (ideal) {$\Uout_{,\textrm{ideal}}$ festlegen};
+    \node [block_g, below of=ideal] (H) {$\Hcompl$ bestimmen};
+    \node [block_g, below of=H] (K) {$K_0$ bestimmen \newline Ref.: \newline ${V_{PP,?} = \SI{578}{\mV}}$};
+    \node [block_b, right of=H] (Uquest) {$\Uquest_{,\textrm{ideal}}$ berechnen};
+    \node [block_b, below of=Uquest] (Uin) {$\Uin$ mit $K_i$ berechnen};
+    \node [block_r, right of=Uquest] (adjust) {$a_n$ anpassen $K_i$ neu berechnen};
+    \node [block_b, right of=adjust] (Uquest_meas) {$\Uquest_{,\textrm{meas}}$ berechnen};
+    \node [block_b, below of=Uquest_meas] (Uout) {$\Uout$ messen};
+    
+    % Draw edges
+    \path [line, thick] (ideal) --  (H);
+    \path [line, dashed] (H) -- node {$\Hcompl$} (Uquest);
+    \path [line, thick] (H) -- (K);
+    \path [line, thick] (K) -- node {$K_0$} (Uin);
+    \path [line, thick] (Uin) -- (Uout);
+    \path [line, dashed] (Uin) -- ++(45mm,0) -- ++(0,20mm) node [xshift=1em] {$\Uin$} -- (adjust);
+    \path [line, thick] (Uout) -- (Uquest_meas);
+    \path [line, thick] (Uquest_meas) -- node {$\Uquest_{,\textrm{meas}}$} (adjust);
+    \path [line, thick] (adjust) -- (Uquest);
+    \path [line, dashed] (adjust) -- node {$K_i$} (Uin);
+    \path [line, thick] (Uquest) -- (Uin);
+    \path [line, dashed] (Uquest) -- ++(0,15mm) -- node {$\Uquest_{,\textrm{ideal}}$} ++(45mm,0) -- (adjust);
+\end{tikzpicture}
+\caption{Algorithmus zur Optimierung von $K$}
+  	\label{fig:Algorithmus.K}
+\end{figure}
 
 \subsection{Erster Ansatz}
 \label{subsec:opt.adjusta.results}
@@ -730,7 +772,7 @@ Eine Ursache dafür könnte sein, dass die Methode der kleinsten Quadrate, mit d
 \label{fig:Amplitudenproblem}
 \end{figure}
 
-Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\textrm{ideal}}$ über die Kennlinie nichtlinear vorverzerrt. Das Ausgangssignal wurde mit dem RF-Tool -Zitat fehlt noch- bewertet und ist in \figref{fig:evaluateK.quality} gezeigt. Dabei sind die Grenzen von $\Uquest$ in \figref{fig:K0_quality} mit $\min(\Uquest)$ und $\max(\Uquest)$ beschriftet dies entspricht mit $V_{PP} = \SI{120}{\mV}$ etwa $34\%$ des maximal möglichen $V_{PP}$, das von $K$ im bijektiven Bereich zugelassen ist. Die anderen eingezeichneten Grenzen, die nicht beschriftet sind, stellen die Grenzen dar, bis zu denen die Güte es Ausgangssignals überprüft wurde
+Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\textrm{ideal}}$ über die Kennlinie nichtlinear vorverzerrt. Das Ausgangssignal wurde mit dem RF-Tool \cite{RF-Tool} bewertet und ist in \figref{fig:evaluateK.quality} gezeigt. Dabei sind die Grenzen von $\Uquest$ in \figref{fig:K0_quality} mit $\min(\Uquest)$ und $\max(\Uquest)$ beschriftet dies entspricht mit $V_{PP} = \SI{120}{\mV}$ etwa $34\%$ des maximal möglichen $V_{PP}$, das von $K$ im bijektiven Bereich zugelassen ist. Die anderen eingezeichneten Grenzen, die nicht beschriftet sind, stellen die Grenzen dar, bis zu denen die Güte es Ausgangssignals überprüft wurde.
 
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}

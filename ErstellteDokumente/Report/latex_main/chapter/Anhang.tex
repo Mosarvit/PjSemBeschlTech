@@ -69,7 +69,8 @@
 	
 \bibitem{system_testing}
 	\url{https://en.wikipedia.org/wiki/System_testing}	
-
+\bibitem{RF-Tool}
+	Tools zur Berechnung der Verzerrungszahlen, Version: Rev. 0.0.3, 15.06.2018
 \end{thebibliography}
 
 \chapter{Anhang}
@@ -100,7 +101,7 @@
   \hline
   generate\_BB\_Signal & Erstellen eines idealen Barrier-Bucket Ausgangssignal & $f_{rep}$ \newline $f_{BB}$ \newline $V_{PP}$ \newline $f_{S,\textrm{AWG}}$ \newline save\_csv & $\Uout_{,\textrm{ideal}}$\\
   \hline
-  get\_H & Funktion um Übertragungsfunktion zu Messen & $f_{max}$ \newline $V_{PP}$ \newline bits & $[f]$ \newline $[|\Hcompl|$ \newline $[\arg{\Hcompl}]$\\
+  get\_H & Funktion um Übertragungsfunktion zu Messen & $f_{max}$ \newline $V_{PP}$ \newline bits & $[f]$ \newline $[|\Hcompl|]$ \newline $[\arg{(\Hcompl)}]$\\
   \hline
   loop\_adust\_a & Ein Iterationsschritt in der Anpassung von $K$ & $a_{old}$ \newline $K_0$ \newline $\Uout_{,\textrm{ideal}}$ \newline Iterationen \newline $f_{S,\textrm{DSO}}$ & $\Uout_{,\textrm{meas}}$ \newline$[Q_i]$ \newline $[K_i]$\\
   \hline
@@ -120,7 +121,7 @@
   \hline \hline
     \multicolumn{4}{|c|}{classes} \\
   \hline \hline
-  signal & Abstract Data Type für Signale & $[time]$ \newline $[U]$  & $U$\\
+  signal\_class & Abstract Data Type für Signale & $[time]$ \newline $[U]$  & $U$\\
   \hline
   transfer\_function & Abstract Data Type für Übertragungsfunktion & $H_{old}$ \newline $\Uout_{,\textrm{ideal}}$ \newline $\Uout_{,\textrm{meas}}$ \newline $\sigma_H$ & $H_{new}$\\
   \hline \hline
@@ -128,15 +129,19 @@
   \hline \hline
   apply\_ \newline transfer\_function & Anwenden einer Übertragungsfunktion auf ein Signal & $Uout$ \newline $\Hcompl$  & $\Uquest$\\
   \hline
+  csv\_helper & Funktionen, um Werte einheitlich und einfach zu speichern und einzulesen &  & \\
+  \hline
   MLBS & Pseudorauschsignal bestimmen & bits & output \newline seedRandom\\
   \hline
   overlay & Zwei Signale übereinanderlegen mit Kreuzkorrelation & $U_1$ \newline $U_2$ & $U_{1,\textrm{shifted}}$\\
   \hline
-  read\_from\_DSO & Auslesen eines Messsignals aus dem DSO, der Parameter measure\_H muss auf 1 gesetzt werden, damit das Signal für die Übertragungsfunktion richtig gemessen wird (diese Funktion sollte dringend nochmal überarbeitet werden & $f_{S,\textrm{DSO}}$ \newline $V_{PP,\textrm{ch1}}$ \newline $V_{PP,\textrm{out}}$ \newline $f_{max}$ \newline $U$ \newline measure\_H & $[time]$ \newline $[U_{in}]$ \newline $[U_{out}]$\\
+  plot\_helper & Funktionen, um Datensätze einheitlich und einfach zu speichern & & \\
+  \hline
+  read\_from\_DSO & Auslesen eines Messsignals aus dem DSO, der Parameter measure\_H muss auf 1 gesetzt werden, damit das Signal für die Übertragungsfunktion richtig gemessen wird (diese Funktion sollte dringend nochmal überarbeitet werden) & $f_{S,\textrm{DSO}}$ \newline $V_{PP,\textrm{ch1}}$ \newline $V_{PP,\textrm{out}}$ \newline $f_{max}$ \newline $U$ \newline measure\_H & $[time]$ \newline $[U_{in}]$ \newline $[U_{out}]$\\
   \hline
   read\_from\_DSO\_ \newline resolution & Verwendet die vorherige Funktion, um eine bessere Auflösung zu erreichen & $f_{S,\textrm{DSO}}$ \newline $V_{PP,\textrm{ch1}}$ \newline $f_{max}$ \newline $U$ \newline measure\_H & $[time]$ \newline $[U_{in}]$ \newline $[U_{out}]$\\
   \hline
-  signal\_evaluate & Bestimmung der Güte eines Ausgangssignales mit dem RF-Tool & Uout\_file \newline Result\_file & $[Q]$\\
+  signal\_evaluate & Bestimmung der Güte eines Ausgangssignales mit dem RF-Tool \cite{RF-Tool} & Uout\_file \newline Result\_file & $[Q]$\\
   \hline
   write\_to\_AWG & Signal an das AWG übergeben & $U$ \newline $V_{PP,\textrm{AWG}}$ $f_{rep}$ \newline $f_{S,\textrm{AWG}}$ &  \\
   \hline
@@ -144,7 +149,14 @@
 \caption{Liste aller Funktionen und Klassen aus classes und helpers}
 \label{tab:anhang.Funktionen.class.helpers}
 \end{table}
-
+\subsubsection{Erklärungen zu den Übergabeparametern}
+\begin{itemize}
+	\item a: Vektor mit Koeffizienten der Potenzreihe für die Kennlinie
+	\item U: Signale werden als Objekte der Klasse \texttt{signal\_class} übergeben
+	\item H: Übertragungsfunktionen werden als Objekte der Klasse \texttt{transfer\_function\_class} übergeben
+	\item K: Als Matrix mit $[\Uin, \Uquest]$
+	\item $[..]$: Vektoren mit Inhalt, der in den Klammern steht
+\end{itemize}
 \begin{table}[H]
 \centering 
 \begin{tabular}[t]{| >{\texttt\bgroup}m{6cm}<{\egroup}|m{8cm}|} 

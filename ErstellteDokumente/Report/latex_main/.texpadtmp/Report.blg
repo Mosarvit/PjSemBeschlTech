@@ -5,6 +5,7 @@ The style file: abbrv.bst
 I found no \bibdata command---while reading file /Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux
 Warning--I didn't find a database entry for "harzheim"
 Warning--I didn't find a database entry for "PJS_Denys"
+Warning--I didn't find a database entry for "RF-Tool"
 Warning--I didn't find a database entry for "keysHand15"
 Warning--I didn't find a database entry for "troeser13"
 Warning--I didn't find a database entry for "keysData14"
@@ -14,7 +15,7 @@ Warning--I didn't find a database entry for "mock"
 Warning--I didn't find a database entry for "----Jens---"
 You've used 0 entries,
             2118 wiz_defined-function locations,
-            510 strings with 3996 characters,
+            512 strings with 4010 characters,
 and the built_in function-call counts, 18 in all, are:
 = -- 0
 > -- 0

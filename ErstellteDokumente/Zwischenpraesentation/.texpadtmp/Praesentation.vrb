@@ -1,0 +1,10 @@
+\frametitle{Optimierung von $K$}
+\begin{itemize}
+	\item Bestimmung der Parameter $\tilde{a}_n$
+	\item Vergleichen der Samples ${\Delta U_{?,i} = \Delta U_? (i \cdot \Delta t)}$ mit ${U_{in,i} = U_{in}(i \cdot \Delta t)}$
+	\item Lösung des linearen Optimierungsproblems ergibt die Anpassung der alten Parameter
+\end{itemize}
+\begin{align}
+	a_n^{i+1} = a_n^{i} + \sigma_{a}^{i} \tilde{a}_n^{i}
+\end{align}
+	

@@ -36,7 +36,7 @@ class test_compute_Uquest_from_Uout(TestCase):
 
         Uquest_300_computed = compute_Uquest_from_Uout(Uout=Uout_300, H=H, verbosity=False)
 
-        test_succeeded = finilize_tezt(values_computed=Uquest_300_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uquest_300_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_Uquest_from_Uout_with_BBsignal_ideal(self):
@@ -48,7 +48,7 @@ class test_compute_Uquest_from_Uout(TestCase):
 
         Uquest_from_BBsignal_computed = compute_Uquest_from_Uout(Uout=BBsignal_ideal, H=H, verbosity=False)
 
-        test_succeeded = finilize_tezt(values_computed=Uquest_from_BBsignal_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uquest_from_BBsignal_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 

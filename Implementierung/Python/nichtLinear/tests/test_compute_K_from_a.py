@@ -23,7 +23,7 @@ class test_compute_K_from_a(TestCase):
 
         K_computed = compute_K_from_a(a_300, verbosity=False)
 
-        test_succeeded = finilize_tezt(values_computed=K_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=K_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_K_from_a_our(self):
@@ -35,7 +35,7 @@ class test_compute_K_from_a(TestCase):
 
         # plot_2_Ks(K_300_ideal, K_computed)
 
-        test_succeeded = finilize_tezt(values_computed=K_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=K_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_aK(self):
@@ -51,7 +51,7 @@ class test_compute_K_from_a(TestCase):
 
         # plot_2_Ks(K_computed, K_computed)
 
-        test_succeeded = finilize_tezt(values_computed=a_300_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=a_300_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_aK1(self):
@@ -65,7 +65,7 @@ class test_compute_K_from_a(TestCase):
         a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
         K_computed = compute_K_from_a(a_300_computed, verbosity=0)
 
-        test_succeeded, K_ideal = finilize_tezt(values_computed=K_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded, K_ideal = finilize_tezt(values_computed=K_computed, set_accepted_values=0, verbosity=0)
 
         # plot_2_Ks(K_computed, K_300_ideal)
 

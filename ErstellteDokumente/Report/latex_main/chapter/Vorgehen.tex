@@ -53,10 +53,10 @@ Des weiteren wird durch das neue Design eine strukturierte Fehlersucher ermögli
 Nachdem die Funktionalitäten beider Implementierungen in Python zusammengeführt wurden konnten im nächsten Schritt Erweiterungen der vorhandenen Funktionalität vorgenommen werden. Dabei stellte das neue Design mit seinem modularen Aufbau eine gute Grundlage dar, um an den logisch getrennten Aufbau anzuschließen und schon vorhandene Funktionalität zu nutzen.
 \subsection{Erste Optimierungs Idee}
 \label{sec:vorg.optimierung}
-Als nächster Schritt wurde ein erster Optimierungsansatz implementiert, wie er in der Aufgabenstellung aus Abschnitt \ref{sec:einf.aufgabe} vorgesehen war. Genauere Erläuterungen folgen in Kap. \ref{chap:opt}. Der Ansatz wurde mit zwei Routinen getestet und mit dem RF-Tool -ZITAT FEHLT NOCH- zur Güteberechnung des Ausgangssignals evaluiert. \\
+Als nächster Schritt wurde ein erster Optimierungsansatz implementiert, wie er in der Aufgabenstellung aus Abschnitt \ref{sec:einf.aufgabe} vorgesehen war. Genauere Erläuterungen folgen in Kap. \ref{chap:opt}. Der Ansatz wurde mit zwei Routinen getestet und mit dem RF-Tool \cite{RF-Tool} zur Güteberechnung des Ausgangssignals evaluiert. \\
 Bei der Nutzung des Programms ist eine längere Wartezeit für die Geräte aufgefallen, die bei kleineren Durchläufen nicht so ins Gewicht fällt aber im Hinblick auf eine höhere Zahl an Iterationsschritten noch optimiert werden sollte. Dazu werden im folgenden Abschnitt Ansätze vorgestellt.
 
-\section{Gerätekommunikation}
+\chapter{Gerätekommunikation}
 \label{sec:vorg.geraete}
 
 Um Messergebnisse sinnvoll für die Verarbeitung in Python aufzunehmen, ist eine effiziente Kommunikation zwischen den Messgeräten und dem angeschlossenen Computer essentiell. Besonders relevant ist hier die zeitliche Abstimmung zwischen Computer und Gerät sowie die bestmögliche Nutzung der Genauigkeiten der verwendeten Geräte. 
@@ -76,7 +76,7 @@ Weiterhin bieten die Geräte spezifische Befehle zur Manipulation der Einstellun
 Es wird ein Keysight 33622A als Signalgenerator (AWG) und ein Oszilloskop der TDS 5000 Serie von Tektronix genutzt.
 
 
-\subsubsection{Laufzeitoptimierung}
+\section{Laufzeitoptimierung}
 Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWG alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. 
 Die Größenordnung dieser Wartezeiten schwankt dabei stark. So dauert ein \lstinline{Re}\lstinline{set} des AWG bis zu 5 Sekungen und das Schreiben eines Arbiträrsignals benötigt ebenso mehr als eine Sekunde. Das Oszilloskop hingegen verarbeitet ohne im Kontext dieses Aufbaus messbare Verzögerung. Verbunden damit, dass das Oszilloskop auf absehbare Zeit durch das neuere MAUI von Teledyne LeCroy ersetzt wird, wird im Folgenden nicht weiter auf die Laufzeit dieses Gerätes eingegangen. Durch diese Feststellung konnte die Laufzeit je Lese-Aufruf bereits um ungefähr 15 Sekunden reduziert werden.
 Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-Abfragen ähnlich den nachfolgend für das AWG erläuterten.
@@ -104,7 +104,7 @@ Weiterhin wurde die pauschale Wartezeit an der im Datenblatt \cite[S. 21]{keysDa
 \\
 Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{SYSTem:ERRor?} möglich ist und durch das dabei erfolgte Löschen der Fehler aus dem internen Speicher nicht nur die Abfrage sondern auch das Rücksetzen des Fehlerstatus ermöglicht. Dies ist insbesondere für das Debugging vorteilhaft, wenn Befehle ausprobiert werden und die gegebenenfalls auftretenden Fehler gehandhabt werden müssen \cite[S. 454]{keysHand15}. Dies vermeidet das unter Umständen mehrmalige Trennen und Wiederherstellen der Verbindung zum AWG sowie das Löschen der Fehler an der Benutzeroberfläche.
 
-\subsubsection{Anpassung der horizontalen Auflösung am Oszilloskop}
+\section{Anpassung der horizontalen Auflösung am Oszilloskop}
 
 Um die Auflösung des Oszilloskops ausnutzen zu können, ist die Anpassung der horizontalen wie auch vertikalen Auflösung an das zu messende Signal notwendig.
 Während die horizontale Auflösung durch die Wiederholfrequenz des Pulses mit $f_{BB}$ sich nahezu unabhängig des betrachteten Signals setzen lässt, muss die vertikale Skalierung an das Signal angepasst werden. Um dies etwa während einer Optimierung mit wechselnden Spannungsamplituden zu ermöglichen, sind zwei direkt aufeinander folgende Messungen notwendig. Dabei wird aus der ersten Messung die Amplitude des Signals entnommen und die Skalierung für die zweite, dann genauere Messung, dahingehend angepasst, dass das Signal bildfüllender dargestellt wird.

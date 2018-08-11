@@ -220,6 +220,9 @@ def sinnvoll():
     iteration = []
     plt.figure()
     # plt.subplot(1,2,1)
+    # Uout_08 = read_in_signal('/Users/max/GitHub/PjSemBeschlTech/Implementierung/Python/nichtLinear/data/optimizer/GSI_6_8_sortiert/adjust_a_06_08_2018-11_35_37/Uout_initial.csv')
+    # Uout3 = read_in_signal(data_path + 'Uout_measured_3.csv')
+    # Uin3 = read_in_signal(data_path + 'Uin_measured_3.csv')
     K = genfromtxt(data_path + 'K_initial.csv', delimiter=',')
     plt.plot(K[:, 0][::2], K[:, 1][::2])
     for i in range(1,5):
@@ -249,7 +252,7 @@ def sinnvoll():
     plt.xlabel('Iteration')
     plt.ylabel('QGesamt1')
 
-    tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
+    # tikz_save('/Users/max/GitHub/PjSemBeschlTech/ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_Q.tikz', figureheight='\\figureheight', figurewidth='\\figurewidth')
     plt.show()
 sinnvoll()
 # new_adjust_a_plot_30()
