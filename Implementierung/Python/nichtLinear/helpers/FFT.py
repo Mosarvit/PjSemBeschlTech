@@ -15,6 +15,8 @@ Output  frq      --------  frequency vector
         H        --------  vector with complex frequency domain
 """
 import numpy as np
+from helpers.adapt_Optimization import zero_padding
+from classes.signal_class import signal_class
 
 def get(signal, Fns):
     
@@ -76,3 +78,27 @@ def spectrum_from_TimeSignal(time, values):
     frequencies, spectrum = spectrum_From_FFT(frequencies, np.fft.fft(values))
 
     return (frequencies, spectrum)
+
+def spectrum_from_Time_Signal_ZeroPadding(time, values, number):
+    """
+
+    :param time: evenly spaced time array 1xn
+    :param values: real values raised at points in time, size 1xn
+    :param number: amount of values to be added by zero-padding at beginning and end of signal each
+    :return:
+    """
+    # check length
+    if len(time) != len(values):
+        raise TypeError('Time-Array and Values have to contain same number of values')
+
+    # TODO: type-check
+    # check if values not complex
+    # check if time evenly spaced
+    # check if number is int
+
+    signal = signal_class(time=time, signal_in_V=values)
+    signal_appended = zero_padding(signal, number=number)
+    frequencies, spectrum = spectrum_from_TimeSignal(time=signal_appended.time, values=signal_appended.in_V)
+    spectrum_to_return = spectrum * (signal.length + 2*number) / signal.length
+
+    return (frequencies, spectrum_to_return)

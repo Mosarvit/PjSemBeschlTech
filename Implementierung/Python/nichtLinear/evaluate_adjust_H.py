@@ -45,7 +45,7 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
 
     f_rep = 900e3
     f_BB = 5e6
-    Vpp = 0.6
+    Vpp = 0.3
 
     sample_rate_AWG_max = 2e8
     sample_rate_DSO = 9999e5

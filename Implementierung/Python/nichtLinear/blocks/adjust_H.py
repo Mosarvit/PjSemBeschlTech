@@ -5,11 +5,13 @@ from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 import time
 import copy
+from helpers.overlay import overlay
+from helpers import adapt_Optimization
 
-from helpers.FFT import spectrum_from_TimeSignal
+from helpers.FFT import spectrum_from_TimeSignal, spectrum_from_Time_Signal_ZeroPadding
 
 
-def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT=False):
+def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, savePLOT=False):
     """
     adjust_H adopts transfer function H by comparing desired and received Output (Gain) Voltage.
     This implementation uses a simple first approach in adjusting abs(H).
@@ -50,26 +52,47 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     """
 
-    type_check_adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
+    type_check_adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H)
 
-    if verbosity:
-        delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
-        delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
-        # Plot voltages
-        plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
-        plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
-        plt.title('U_ideal.csv.csv.csv.csv - red, Uout_meas - blue')
-        plt.xlabel('t')
-        plt.ylabel('U')
-        plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
-        plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
-        plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
-        plt.show()
+    Uout_ideal = overlay(Uout_ideal_init, Uout_measured)
+    # if verbosity:
+    #     delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
+    #     delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
+    #     # Plot voltages
+    #     plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
+    #     plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
+    #     plt.title('U_ideal.csv.csv.csv.csv - red, Uout_meas - blue')
+    #     plt.xlabel('t')
+    #     plt.ylabel('U')
+    #     plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
+    #     plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
+    #     plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
+    #     plt.show()
      
 
     # calculate Spectrum:
-    frequencies_Id, spectrum_Id = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
-    frequencies_Meas, spectrum_Meas = spectrum_from_TimeSignal(Uout_measured.time, Uout_measured.in_V)
+
+    # # use zero-padding?
+    use_zero_padding = True
+    if use_zero_padding:
+        # here: enlarges the length by factor 3 (setting Uout_ideal_length at each beginning and end of signal)
+        frequencies_Id, spectrum_Id = spectrum_from_Time_Signal_ZeroPadding(Uout_ideal.time, Uout_ideal.in_V,
+                                                                            Uout_ideal.length)
+        frequencies_Meas, spectrum_Meas = spectrum_from_Time_Signal_ZeroPadding(Uout_measured.time, Uout_measured.in_V,
+                                                                                Uout_measured.length)
+    else:
+        frequencies_Id, spectrum_Id = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
+        frequencies_Meas, spectrum_Meas = spectrum_from_TimeSignal(Uout_measured.time,
+                                                                   Uout_measured.in_V)
+
+    # if verbosity:
+    #     frequencies_Id_init, spectrum_Id_init = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
+    #     frequencies_Meas_init, spectrum_Meas_init = spectrum_from_TimeSignal(Uout_measured.time, Uout_measured.in_V)
+    #     # to compare influence of zero-padding:
+    #     plt.plot(frequencies_Id_init, abs(spectrum_Id_init), 'r', frequencies_Id, abs(spectrum_Id), 'b')
+    #     plt.show()
+    #     plt.plot(frequencies_Meas_init, abs(spectrum_Meas_init), 'r', frequencies_Meas, abs(spectrum_Meas), 'b')
+    #     plt.show()
 
     # reduce to lower describable frequency:
     fmax_to_use = np.minimum(frequencies_Meas[-1], frequencies_Id[-1])
@@ -82,10 +105,15 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # check frequency range of signal. If less frequencies than in H,
     # add frequency in signal with amplitude 1 s.t. signal has frequencies >= H
-    # (default_value is just what you like to have as default value, calculated to enable Plots showing senseful scale)
-    default_value = np.minimum(np.min(abs(spectrum_Id)), np.min(abs(spectrum_Meas)))
+    # here: find default-value as 1 permille of signals
+    default_permille = 1e-3
+    # find indices to set to default:
+    permille_in_Ideal = np.max(np.abs(spectrum_Id)) * default_permille
+    permille_in_Meas = np.max(np.abs(spectrum_Meas)) * default_permille
+    default_value = np.minimum(permille_in_Ideal, permille_in_Meas)
     if default_value == 0:
-        default_value = 1e-4 # avoids problems by dividing through 0
+        raise TypeError("seems one signal given to the method has no spectrum")
+
     delta_f_Id = frequencies_Id[1] - frequencies_Id[0]
     delta_f_Meas = frequencies_Meas[1] - frequencies_Meas[0]
     if np.amax(Halt.f) > frequencies_Meas[-1]:
@@ -109,11 +137,11 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # just to enable return for report 2018!
     ##### end
 
-    # to reduce WHITE NOISE: clear lowest percentage of signal amplitudes
+    # to reduce NOISE and avoid problems by dividing by 0: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
     # TODO: add input parameter with ratio to not define it here
-    ratio_ideal = 10e-3
-    ratio_meas = 10e-3
+    ratio_ideal = 3e-3
+    ratio_meas = 3e-3
     # find indices to set to default:
     idx_clear_Id = np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id)))[0]
     idx_clear_Meas = np.where(abs(spectrum_Meas) <= ratio_meas * np.max(abs(spectrum_Meas)))[0]
@@ -134,19 +162,28 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     spectrum_Id[idx_clear_crossref_Id] = default_value * np.ones(len(idx_clear_crossref_Id))
     spectrum_Meas[idx_clear_crossref_Meas] = default_value * np.ones(len(idx_clear_crossref_Meas))
 
+
+
     # interpolate magnitude and phase seperately
     magnitude_Ideal = interp1d(frequencies_Id, np.abs(spectrum_Id), kind='linear')
     angle_ideal = interp1d(frequencies_Id, np.angle(spectrum_Id), kind='linear')
     magnitude_Meas = interp1d(frequencies_Meas, np.abs(spectrum_Meas), kind='linear')
     angle_meas = interp1d(frequencies_Meas, np.angle(spectrum_Meas), kind='linear')
 
+    #
+    complex_ideal = magnitude_Ideal(Halt.f) * np.exp(1j * angle_ideal(Halt.f))
+    complex_meas = magnitude_Meas(Halt.f) * np.exp(1j*angle_meas(Halt.f))
+
     # calculate separately for amplitude and angle
-    ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
-    diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
+    # ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
+    # diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
+    #f_compl = -( (1 / magnitude_Meas(Halt.f)) * magnitude_Ideal(Halt.f) * np.exp(-1j*(angle_meas(Halt.f)-angle_ideal(Halt.f))) - 1)
+    # also working: ???see report -> just different speed of convergence? no further test by august 18
+    f_compl = (magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp(1j * (angle_meas(Halt.f) - angle_ideal(Halt.f))) - 1)
 
     ###
     # just to enable return for report 2018!
-    fabs_orig = copy.copy(ratio_abs)
+    # fabs_orig = copy.copy(ratio_abs)
     ###
 
     # to reduce WHITE NOISE attempt 2:
@@ -154,28 +191,40 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
     # TODO: add input parameter use_rms to not define it here
     # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
-    use_rms = True
-    rms = np.sqrt(np.mean(np.square(ratio_abs)))
+    # use_rms = False
+    # rms = np.sqrt(np.mean(np.square(ratio_abs)))
+    # ###
+    # # just to enable return for report 2018!
+    # rms_orig = copy.copy(rms)
+    # ###
+    # values = ratio_abs[np.where(abs(ratio_abs) >= 0.02 * rms)[
+    #     0]]  # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
+    # rms = np.sqrt(np.mean(np.square(values)))
+    # if use_rms:
+    #     # find indices to set to 1:
+    #     idx_clear = np.where(abs(ratio_abs) > rms)[0]
+    #     if not (len(idx_clear) == len(ratio_abs)):  # check for simple signals with Uout_Id = multiple Uout_Meas
+    #         ratio_abs[idx_clear] = np.zeros(len(idx_clear))
+    #         diff_angle[idx_clear] = np.zeros(len(idx_clear))
+    use_rms = False
+    rms = np.sqrt(np.mean(np.square(np.abs(f_compl))))
     ###
     # just to enable return for report 2018!
     rms_orig = copy.copy(rms)
     ###
-    values = ratio_abs[np.where(abs(ratio_abs) >= 0.02 * rms)[
-        0]]  # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
+    values = np.abs(f_compl[np.where(np.abs(f_compl) >= 0.02 * rms)[
+        0]] ) # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
     rms = np.sqrt(np.mean(np.square(values)))
     if use_rms:
         # find indices to set to 1:
-        idx_clear = np.where(abs(ratio_abs) > rms)[0]
-        if not (len(idx_clear) == len(ratio_abs)):  # check for simple signals with Uout_Id = multiple Uout_Meas
-            ratio_abs[idx_clear] = np.zeros(len(idx_clear))
-            diff_angle[idx_clear] = np.zeros(len(idx_clear))
-
+        idx_clear = np.where(np.abs(f_compl) > rms)[0]
+        if not (len(idx_clear) == len(f_compl)):  # check for simple signals with Uout_Id = multiple Uout_Meas
+            f_compl[idx_clear] = np.zeros(len(idx_clear))
 
     # now using new convention with classes transfer_function for frequency and complex-values connecting variables
     ### just using convention here!
     complex_ratio = transfer_function_class(Halt.f)
-    complex_ratio.a = ratio_abs
-    complex_ratio.p = diff_angle
+    complex_ratio.c = f_compl
     complex_spectrum_Id = transfer_function_class(frequencies_Id) # complex spectrum
     complex_spectrum_Id.c = spectrum_Id
     complex_spectrum_Meas = transfer_function_class(frequencies_Meas)
@@ -183,8 +232,8 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
 
     # initialize Hneu
     Hneu = transfer_function_class(Halt.f)
-    Hneu.a = Halt.a * (1 + sigma_H * complex_ratio.a)
-    Hneu.p = Halt.p + sigma_H * complex_ratio.p
+    Hneu.c = Halt.c * (1+sigma_H * complex_ratio.c)
+
   
 
     if verbosity:
@@ -200,6 +249,14 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
         plt.xlim((0, np.max(Halt.f)))
         plt.ylim((0, 1e-3))
         plt.show()
+
+        plt.plot(Halt.f, magnitude_Ideal(Halt.f), 'r', Halt.f, magnitude_Meas(Halt.f), 'b')
+        plt.title('ABS(FFT): Ideal rot, Meas blau')
+        plt.xlabel('f')
+        plt.ylabel('Ampl')
+        plt.xlim((0, np.max(Halt.f)))
+        plt.ylim((0, 1e-3))
+        plt.show()
     #
 #       # plt.subplot(2, 3, 4)
         plt.plot(Halt.f, rms * np.ones(len(Halt.f)), 'r', Halt.f, -rms * np.ones(len(Halt.f)), 'r')
@@ -207,10 +264,10 @@ def adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=False, savePLOT
        #plt.ylim((-rms * 3, 3 * rms))
 
        #plt.subplot(2, 3, 4)
-        plt.plot(Halt.f, ratio_abs, 'b')
+        plt.plot(Halt.f, complex_ratio.a, 'b')
         plt.xlim((0, np.max(Halt.f)))
-        plt.ylim((-rms * 3, 3 * rms))
-        plt.title('Absratio Umeas / Uideal -1')
+        # plt.ylim((-rms * 3, 3 * rms))
+        plt.title('Absratio ')
         plt.xlabel('f')
         plt.ylabel('ratio')
 

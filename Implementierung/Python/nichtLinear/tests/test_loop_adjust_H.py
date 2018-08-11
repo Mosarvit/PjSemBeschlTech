@@ -6,7 +6,7 @@ from helpers.signal_helper import calculate_error
 from settings import project_path, mock_system
 from blocks.loop_adjust_a import loop_adjust_a
 from blocks.loop_adjust_H import loop_adjust_H
-from helpers.plot_helper import plot_K, plot_transfer_function, plot_2_transfer_functions, plot_H_ideal_Hs
+from helpers.plot_helper import plot_K, plot_transfer_function, plot_2_transfer_functions, plot_H_ideal_Hs, plot_2_signals
 from classes.transfer_function_class import transfer_function_class
 from blocks.determine_a import determine_a
 from blocks.compute_K_from_a import compute_K_from_a
@@ -24,7 +24,7 @@ class test_loop_adjust_H(TestCase):
 
         f_rep = 900e3
         f_BB = 5e6
-        Vpp = 0.6
+        Vpp = 0.3
 
         sample_rate_AWG_max = 2e8
         sample_rate_DSO = 9999e5
@@ -44,6 +44,11 @@ class test_loop_adjust_H(TestCase):
 
         Hs, Uout_measured, quality_development= loop_adjust_H(H_0, K_0, Uout_ideal, data_directory,
                                                                   num_iters=10, sample_rate_DSO=sample_rate_DSO)
+
+        verbosity = 0
+        if verbosity:
+            plot_H_ideal_Hs(H_0, Hs)
+            plot_2_signals(Uout_ideal, Uout_measured, legend1='Uout_ideal', legend2='Uout_measured')
 
         # plot_H_ideal_Hs(H_mock, Hs)
 
