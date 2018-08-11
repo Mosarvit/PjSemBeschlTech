@@ -3,35 +3,35 @@
 \contentsline {chapter}{\numberline {2}Einf\IeC {\"u}hrung}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Modell und Konvention}{3}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Hammerstein Modell}{4}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}Motivation}{4}{section.2.2}
-\contentsline {section}{\numberline {2.3}Aufgabenstellung}{4}{section.2.3}
-\contentsline {chapter}{\numberline {3}Vorgehen}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Vorhandene Implementierung}{5}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Python}{5}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}MATLAB}{5}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Funktionalit\IeC {\"a}t reproduzieren}{5}{section.3.2}
-\contentsline {section}{\numberline {3.3}Funktionalit\IeC {\"a}t erweitern}{6}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Erste Optimierungs Idee}{6}{subsection.3.3.1}
-\contentsline {section}{\numberline {3.4}Ger\IeC {\"a}tekommunikation}{7}{section.3.4}
-\contentsline {subsubsection}{Laufzeitoptimierung}{7}{subsubsection*.7}
-\contentsline {subsubsection}{Anpassung der horizontalen Aufl\IeC {\"o}sung am Oszilloskop}{8}{subsubsection*.8}
-\contentsline {section}{\numberline {3.5}Kritische Punkte}{8}{section.3.5}
-\contentsline {chapter}{\numberline {4}Code-Design}{10}{chapter.4}
-\contentsline {section}{\numberline {4.1}Motivation}{10}{section.4.1}
-\contentsline {section}{\numberline {4.2}Aufbau}{10}{section.4.2}
-\contentsline {section}{\numberline {4.3}Methodik}{11}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Test Driven Development}{11}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Mock-System}{12}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Iterative Optimierung des Hammerstein-Modells}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Optimierung der linearen \IeC {\"U}bertragungsfunktion $H$}{13}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Umgang mit Fehlerquellen}{15}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Auswertung}{16}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Optimierung der nichtlinearen Kennlinie $K$}{19}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Erster Ansatz}{19}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Zweiter Ansatz}{22}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}Fazit}{24}{chapter.6}
-\contentsline {chapter}{\numberline {7}Ausblick}{25}{chapter.7}
-\contentsline {section}{\numberline {7.1}Impressionen zum Code}{25}{section.7.1}
-\contentsline {section}{\numberline {7.2}Ausblick: Optimierung}{25}{section.7.2}
-\contentsline {section}{\numberline {7.3}--- Ger\IeC {\"a}tekomm---}{26}{section.7.3}
-\contentsline {chapter}{\numberline {8}Anhang}{28}{chapter.8}
+\contentsline {section}{\numberline {2.2}Motivation}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}Aufgabenstellung}{5}{section.2.3}
+\contentsline {chapter}{\numberline {3}Vorgehen}{6}{chapter.3}
+\contentsline {section}{\numberline {3.1}Vorhandene Implementierung}{6}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Python}{6}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}MATLAB}{6}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Funktionalit\IeC {\"a}t reproduzieren}{6}{section.3.2}
+\contentsline {section}{\numberline {3.3}Funktionalit\IeC {\"a}t erweitern}{7}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Erste Optimierungs Idee}{7}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Ger\IeC {\"a}tekommunikation}{8}{section.3.4}
+\contentsline {subsubsection}{Laufzeitoptimierung}{8}{subsubsection*.8}
+\contentsline {subsubsection}{Anpassung der horizontalen Aufl\IeC {\"o}sung am Oszilloskop}{9}{subsubsection*.9}
+\contentsline {section}{\numberline {3.5}Kritische Punkte}{9}{section.3.5}
+\contentsline {chapter}{\numberline {4}Code-Design}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motivation}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}Aufbau}{11}{section.4.2}
+\contentsline {section}{\numberline {4.3}Methodik}{12}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Test Driven Development}{12}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Mock-System}{13}{subsection.4.3.2}
+\contentsline {chapter}{\numberline {5}Iterative Optimierung des Hammerstein-Modells}{14}{chapter.5}
+\contentsline {section}{\numberline {5.1}Optimierung der linearen \IeC {\"U}bertragungsfunktion $H$}{14}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Umgang mit Fehlerquellen}{16}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Auswertung}{17}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Optimierung der nichtlinearen Kennlinie $K$}{20}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Erster Ansatz}{20}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Zweiter Ansatz}{23}{subsection.5.2.2}
+\contentsline {chapter}{\numberline {6}Fazit}{25}{chapter.6}
+\contentsline {chapter}{\numberline {7}Ausblick}{26}{chapter.7}
+\contentsline {section}{\numberline {7.1}Impressionen zum Code}{26}{section.7.1}
+\contentsline {section}{\numberline {7.2}Ausblick: Optimierung}{26}{section.7.2}
+\contentsline {section}{\numberline {7.3}--- Ger\IeC {\"a}tekomm---}{27}{section.7.3}
+\contentsline {chapter}{\numberline {8}Anhang}{29}{chapter.8}

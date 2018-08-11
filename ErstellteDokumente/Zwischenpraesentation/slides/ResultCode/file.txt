@@ -1,5 +1,5 @@
 Uout_ideal = generate_BBsignal ( fq_rep, fq_bb, vpp )
-H = measure_H ( )
+H = determine_H ( )
 Uquest_ideal = compute_Uquest ( Uout_ideal, H )
 Uin = Uquest_ideal
 Uout_measured = measure_Uout ( Uin )

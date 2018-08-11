@@ -17,6 +17,8 @@
 \usepackage{subcaption}                         % allows usage of subfigures
 \usepackage{xcolor}								% allows advanced colors
 \usepackage{tikz}                               % to make drawings directly with LaTeX
+\usetikzlibrary{shapes,arrows}					% for flow chart Diagramm
+
 \usepackage{enumitem}                           % allows more flexible enumerate environments
 \usepackage{gensymb}							% for generic symbols like \degree
 \usepackage{multirow}							% for tabels
@@ -104,10 +106,10 @@
 
 
 \def\promille{\, \ensuremath{{}^\text{o}\mkern-5mu/\mkern-3mu_\text{oo}}}
-\renewcommand{\eqref}[1]{Glg.~(\ref{#1})}
-\newcommand{\tabref}[1]{Tab.~(\ref{#1})}
+\renewcommand{\eqref}[1]{Gl.~(\ref{#1})}
+\newcommand{\tabref}[1]{Tab.~\ref{#1}}
 \newcommand{\coderef}[1]{Code~(ref{#1})}
-\newcommand{\figref}[1]{Abb.~(\ref{#1})}
+\newcommand{\figref}[1]{Abb.~\ref{#1}}
 \newcommand{\ofomega}{ \left( \omega \right) }
 \newcommand{\oft}{ \left( t \right) }
 \newcommand{\Hcompl}{\underline{H}}			%because \H is already a defined command
