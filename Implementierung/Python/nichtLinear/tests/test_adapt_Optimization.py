@@ -46,35 +46,36 @@ class test_adapt_Optimization(TestCase):
         test_succeeded = True
         self.assertTrue(test_succeeded)
 
-    def test_zero_padding_with_FFT(self):
-        f_rep = 900e3
-        f_BB = 5e6
-        Vpp = 0.3
-
-        sample_rate_AWG_max = 2e8
-        sample_rate_DSO = 9999e5
-
-        Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max,
-                                       verbosity=0)
-
-        U_appended = zero_padding(Uout_ideal, Uout_ideal.length)
-
-        frequencies_orig, spectrum_orig = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
-        frequencies_appended, spectrum_appended = spectrum_from_TimeSignal(U_appended.time, U_appended.in_V)
-        multiplied_spectrum = spectrum_appended * U_appended.length / Uout_ideal.length
-
-        frequencies, spectrum = spectrum_from_Time_Signal_ZeroPadding(time=Uout_ideal.time, values=Uout_ideal.in_V, number=Uout_ideal.length)
-
-        frequencies_new, normalized_spectrum = spectrum_from_Time_Signal_ZeroPadding(Uout_ideal.time, Uout_ideal.in_V, Uout_ideal.length)
-        plt.plot(frequencies, np.abs(spectrum), 'r', frequencies_appended, np.abs(multiplied_spectrum), 'b')
-        plt.show()
-        plt.plot(frequencies_orig, abs(spectrum_orig), 'r', frequencies_appended, abs(spectrum_appended), 'r', frequencies_appended, np.abs(multiplied_spectrum), 'g', frequencies_new, np.abs(normalized_spectrum), 'y')
-        plt.show()
-        plt.plot(frequencies_orig, np.angle(spectrum_orig, deg=True), 'r', frequencies_appended, np.angle(spectrum_appended, deg=True), 'b')
-        plt.show()
-
-        test_succeeded = True
-        self.assertTrue(test_succeeded)
+    # @unittest.skip("not finished - test function of zero-paddingt fft")
+    # def test_zero_padding_with_FFT(self):
+    #     f_rep = 900e3
+    #     f_BB = 5e6
+    #     Vpp = 0.3
+    #
+    #     sample_rate_AWG_max = 2e8
+    #     sample_rate_DSO = 9999e5
+    #
+    #     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max,
+    #                                    verbosity=0)
+    #
+    #     U_appended = zero_padding(Uout_ideal, Uout_ideal.length)
+    #
+    #     frequencies_orig, spectrum_orig = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
+    #     frequencies_appended, spectrum_appended = spectrum_from_TimeSignal(U_appended.time, U_appended.in_V)
+    #     multiplied_spectrum = spectrum_appended * U_appended.length / Uout_ideal.length
+    #
+    #     frequencies, spectrum = spectrum_from_Time_Signal_ZeroPadding(time=Uout_ideal.time, values=Uout_ideal.in_V, number=Uout_ideal.length)
+    #
+    #     frequencies_new, normalized_spectrum = spectrum_from_Time_Signal_ZeroPadding(Uout_ideal.time, Uout_ideal.in_V, Uout_ideal.length)
+    #     plt.plot(frequencies, np.abs(spectrum), 'r', frequencies_appended, np.abs(multiplied_spectrum), 'b')
+    #     plt.show()
+    #     plt.plot(frequencies_orig, abs(spectrum_orig), 'r', frequencies_appended, abs(spectrum_appended), 'r', frequencies_appended, np.abs(multiplied_spectrum), 'g', frequencies_new, np.abs(normalized_spectrum), 'y')
+    #     plt.show()
+    #     plt.plot(frequencies_orig, np.angle(spectrum_orig, deg=True), 'r', frequencies_appended, np.angle(spectrum_appended, deg=True), 'b')
+    #     plt.show()
+    #
+    #     test_succeeded = True
+    #     self.assertTrue(test_succeeded)
 
 
 
