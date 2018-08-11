@@ -48,7 +48,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_Uin_from_Uquest_our_new_K(self):
@@ -64,7 +64,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -81,7 +81,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -99,7 +99,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_Uin_from_Uquest_air_new_K(self):
@@ -115,7 +115,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_initial)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -132,7 +132,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -150,7 +150,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
         # plot_2_signals(Uin_computed_overlay_obj, Uin_initial)
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -170,7 +170,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_awg)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_compute_Uin_from_Uquest_with_higher_Uquest_new_K(self):
@@ -189,5 +189,5 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uin_computed_overlay_obj = overlay(Uin_computed, Uin_ideal)
 
-        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Uin_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)

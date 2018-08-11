@@ -1,0 +1,7 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Einf\IeC {\"u}hrung}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Problemstellung}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Aufbau}{7}{0}{1}
+\beamer@sectionintoc {2}{Optimierung}{12}{0}{2}
+\beamer@subsectionintoc {2}{1}{Optimierung der \IeC {\"U}bertragungsfunktion}{12}{0}{2}
+\beamer@subsectionintoc {2}{2}{Optimierung der Kennlinie}{12}{0}{2}

@@ -37,5 +37,5 @@ class test_compute_a_from_Uin_Uquest(TestCase):
 
         a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
 
-        test_succeeded = finilize_tezt(values_computed=a_300_computed, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=a_300_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)

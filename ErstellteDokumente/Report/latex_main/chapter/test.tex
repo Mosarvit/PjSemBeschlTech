@@ -9,6 +9,42 @@
 \section{---- firstName ----}
 \label{sec:test_firstName}
 
+\begin{figure}[H]
+\centering
+\tikzstyle{block_g} = [rectangle, draw, fill=green!20, 
+    text width=6.5em, text centered, rounded corners, node distance=2cm, minimum height=4em]
+\tikzstyle{block_b} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, node distance=4.5cm, minimum height=4em]
+\tikzstyle{block_r} = [rectangle, draw, fill=red!20, 
+    text width=6em, text centered, rounded corners, node distance=4.5cm, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\begin{tikzpicture}[node distance = 5cm, auto]
+    % Place nodes
+    \node [block_g] (ideal) {$\Uout_{,\textrm{ideal}}$ festlegen};
+    \node [block_g, below of=ideal] (H) {$\Hcompl$ bestimmen};
+    \node [block_g, below of=H] (K) {$K_0$ bestimmen \newline Ref.: \newline ${V_{PP,?} = \SI{600}{\mV}}$};
+    \node [block_b, right of=H] (Uquest) {$\Uquest_{,\textrm{ideal}}$ berechnen};
+    \node [block_b, below of=Uquest] (Uin) {$\Uin$ berechnen};
+    \node [block_r, right of=Uquest] (adjust) {$\Hcompl$ anpassen $H_i$ neu berechnen};
+    \node [block_b, right of=Uin] (Uout) {$\Uout$ messen};
+    
+    % Draw edges
+    \path [line, thick] (ideal) --  (H);
+    \path [line, dashed] (H) -- node {$\Hcompl_0$} (Uquest);
+    \path [line, thick] (H) -- (K);
+    \path [line, thick] (K) -- node {$K$} (Uin);
+    \path [line, thick] (Uin) -- (Uout);
+	\path [line, thick] (Uout) -- node {$\Uout_{,\textrm{meas}}$}(adjust);
+    \path [line, thick] (adjust) -- node {$H_i$}(Uquest);
+    \path [line, thick] (Uquest) -- (Uin);
+    \path [line, dashed] (Uquest) -- ++(0,15mm) -- node {$\Uquest_{,\textrm{ideal}}$} ++(45mm,0) -- (adjust);
+\end{tikzpicture}
+\caption{Algorithmus zur Optimierung von $\Hcompl$}
+  	\label{fig:Algorithmus.H}
+\end{figure}
+
+
+
 Diese Zeile teste das paket $ nameref$ mit \nameref{chap:test} und hier mit einer PHANTOMSECTION via \nameref{pha:test.try}---
 
 %\begin{figure}[htb]
@@ -102,89 +138,89 @@ Diese Zeile teste das paket $ nameref$ mit \nameref{chap:test} und hier mit eine
 %  \label{fig:bsp_transfer}
 %\end{figure}
 
-
-Dies ist ein Versuch, ein Frequenzspektrum zu plotten und Marker an relevanten Punkten zu setzen: Hiermit soll die Refernz in Sub-figures versucht werden:
-Dies hier soll zu \ref{fig:opt.spektrum_BB_signal} dem Hauptbild referenzieren.\\
-Dies hier soll zu \ref{fig:opt.abs_spektrum} dem Betragsspektrum referenzieren.\\
-Dies hier soll zu \ref{fig:opt.angle_spektrum} dem Phasen referenzieren.\\
-
-
-\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
-\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
-\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
-\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
-\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
-\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
-\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
-\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
- 
-
-\begin{figure}[htb]
-\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$}
-\label{fig:opt.spektrum_BB_signal}
-\begin{subfigure}{0.5 \textwidth}
-    \begin{tikzpicture}
-\begin{axis}[
-		legend entries = {original, Step 1, Step 2, Step 3},
-		legend pos = north east,
-		xlabel={Frequenz},
-		ylabel={Betrag Übertragung $\Hcompl$},
-		%xtick distance = 10000000,
-%		xminorgrids,
-%		xmajorgrids,
-%		minor x tick num =3,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={[MHz]},
-		xmin = -5000000,
-		xmax = 85000000,
-%		ymin = 0,
-		%ymax = 0.03,
-		]
-		\addplot table [x index = 0, y index = 1] {\Horig};
-		\addplot table [x index = 0, y index = 1] {\HrmsOne};
-		\addplot table [x index = 0, y index = 1] {\HrmsTwo};
-		\addplot table [x index = 0, y index = 1] {\HrmsThree};
-\end{axis}
-\end{tikzpicture}
-\subcaption{ -- name ---}
-	\label{fig:opt.abs_spektrum}
-\end{subfigure}
-\begin{subfigure}{0.5 \textwidth}
-    \begin{tikzpicture}
-\begin{axis}[
-		legend entries = {original, Step 1, Step 2, Step 3},
-		legend pos = north east,
-		xlabel={Frequenz},
-		ylabel={Korrekturterm $\fabs$},
-		%xtick distance = 10000000,
-%		xminorgrids,
+%
+%Dies ist ein Versuch, ein Frequenzspektrum zu plotten und Marker an relevanten Punkten zu setzen: Hiermit soll die Refernz in Sub-figures versucht werden:
+%Dies hier soll zu \ref{fig:opt.spektrum_BB_signal} dem Hauptbild referenzieren.\\
+%Dies hier soll zu \ref{fig:opt.abs_spektrum} dem Betragsspektrum referenzieren.\\
+%Dies hier soll zu \ref{fig:opt.angle_spektrum} dem Phasen referenzieren.\\
+%
+%
+%\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
+%\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
+%\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
+%\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
+%\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
+%\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
+%\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
+%\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
+% 
+%
+%\begin{figure}[htb]
+%\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$}
+%\label{fig:opt.spektrum_BB_signal}
+%\begin{subfigure}{0.5 \textwidth}
+%    \begin{tikzpicture}
+%\begin{axis}[
+%		legend entries = {original, Step 1, Step 2, Step 3},
+%		legend pos = north east,
+%		xlabel={Frequenz},
+%		ylabel={Betrag Übertragung $\Hcompl$},
+%		%xtick distance = 10000000,
+%%		xminorgrids,
 %%		xmajorgrids,
-%		minor x tick num =3,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={[MHz]},
-		xmin = -5000000,
-		xmax = 85000000,
-%		ymin = 0,
-%		ymax = 0.03,
-		]
-		
-		\addplot table [x index = 0, y index = 1] {\fabsOrig};
-		\addplot table [x index = 0, y index = 1] {\fabsRMSone};
-		\addplot table [x index = 0, y index = 1] {\fabsRMStwo};
-		\addplot table [x index = 0, y index = 1] {\fabsRMSthree};
-\end{axis}
-\end{tikzpicture}
-\subcaption{--- name --}
-\end{subfigure}
-\end{figure}
+%%		minor x tick num =3,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={[MHz]},
+%		xmin = -5000000,
+%		xmax = 85000000,
+%%		ymin = 0,
+%		%ymax = 0.03,
+%		]
+%		\addplot table [x index = 0, y index = 1] {\Horig};
+%		\addplot table [x index = 0, y index = 1] {\HrmsOne};
+%		\addplot table [x index = 0, y index = 1] {\HrmsTwo};
+%		\addplot table [x index = 0, y index = 1] {\HrmsThree};
+%\end{axis}
+%\end{tikzpicture}
+%\subcaption{ -- name ---}
+%	\label{fig:opt.abs_spektrum}
+%\end{subfigure}
+%\begin{subfigure}{0.5 \textwidth}
+%    \begin{tikzpicture}
+%\begin{axis}[
+%		legend entries = {original, Step 1, Step 2, Step 3},
+%		legend pos = north east,
+%		xlabel={Frequenz},
+%		ylabel={Korrekturterm $\fabs$},
+%		%xtick distance = 10000000,
+%%		xminorgrids,
+%%%		xmajorgrids,
+%%		minor x tick num =3,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={[MHz]},
+%		xmin = -5000000,
+%		xmax = 85000000,
+%%		ymin = 0,
+%%		ymax = 0.03,
+%		]
+%		
+%		\addplot table [x index = 0, y index = 1] {\fabsOrig};
+%		\addplot table [x index = 0, y index = 1] {\fabsRMSone};
+%		\addplot table [x index = 0, y index = 1] {\fabsRMStwo};
+%		\addplot table [x index = 0, y index = 1] {\fabsRMSthree};
+%\end{axis}
+%\end{tikzpicture}
+%\subcaption{--- name --}
+%\end{subfigure}
+%\end{figure}
 
 
 \end{document}

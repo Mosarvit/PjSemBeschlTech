@@ -12,26 +12,28 @@
 \contentsline {section}{\numberline {3.2}Funktionalit\IeC {\"a}t reproduzieren}{6}{section.3.2}
 \contentsline {section}{\numberline {3.3}Funktionalit\IeC {\"a}t erweitern}{7}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Erste Optimierungs Idee}{7}{subsection.3.3.1}
-\contentsline {section}{\numberline {3.4}Ger\IeC {\"a}tekommunikation}{8}{section.3.4}
-\contentsline {subsubsection}{Laufzeitoptimierung}{8}{subsubsection*.8}
-\contentsline {subsubsection}{Anpassung der horizontalen Aufl\IeC {\"o}sung am Oszilloskop}{9}{subsubsection*.9}
-\contentsline {section}{\numberline {3.5}Kritische Punkte}{9}{section.3.5}
-\contentsline {chapter}{\numberline {4}Code-Design}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Motivation}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Aufbau}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}Methodik}{12}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Test Driven Development}{12}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Mock-System}{13}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Iterative Optimierung des Hammerstein-Modells}{14}{chapter.5}
-\contentsline {section}{\numberline {5.1}Optimierung der linearen \IeC {\"U}bertragungsfunktion $H$}{14}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Umgang mit Fehlerquellen}{16}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Auswertung}{17}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Optimierung der nichtlinearen Kennlinie $K$}{20}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Erster Ansatz}{20}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Zweiter Ansatz}{23}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}Fazit}{25}{chapter.6}
-\contentsline {chapter}{\numberline {7}Ausblick}{26}{chapter.7}
-\contentsline {section}{\numberline {7.1}Impressionen zum Code}{26}{section.7.1}
-\contentsline {section}{\numberline {7.2}Ausblick: Optimierung}{26}{section.7.2}
-\contentsline {section}{\numberline {7.3}--- Ger\IeC {\"a}tekomm---}{27}{section.7.3}
-\contentsline {chapter}{\numberline {8}Anhang}{29}{chapter.8}
+\contentsline {chapter}{\numberline {4}Ger\IeC {\"a}tekommunikation}{8}{chapter.4}
+\contentsline {section}{\numberline {4.1}Laufzeitoptimierung}{8}{section.4.1}
+\contentsline {section}{\numberline {4.2}Anpassung der horizontalen Aufl\IeC {\"o}sung am Oszilloskop}{9}{section.4.2}
+\contentsline {section}{\numberline {4.3}Kritische Punkte}{9}{section.4.3}
+\contentsline {chapter}{\numberline {5}Code-Design}{11}{chapter.5}
+\contentsline {section}{\numberline {5.1}Motivation}{11}{section.5.1}
+\contentsline {section}{\numberline {5.2}Aufbau}{11}{section.5.2}
+\contentsline {section}{\numberline {5.3}Methodik}{12}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Test Driven Development}{12}{subsection.5.3.1}
+\contentsline {subsubsection}{Beispiel: Test f\IeC {\"u}r apply\_transfer\_function}{13}{subsubsection*.10}
+\contentsline {subsection}{\numberline {5.3.2}Mock-System}{13}{subsection.5.3.2}
+\contentsline {chapter}{\numberline {6}Iterative Optimierung des Hammerstein-Modells}{15}{chapter.6}
+\contentsline {section}{\numberline {6.1}Optimierung der linearen \IeC {\"U}bertragungsfunktion $H$}{15}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Umgang mit Fehlerquellen}{17}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Auswertung}{18}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Optimierung der nichtlinearen Kennlinie $K$}{21}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Erster Ansatz}{22}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Zweiter Ansatz}{25}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {7}Fazit}{26}{chapter.7}
+\contentsline {chapter}{\numberline {8}Ausblick}{27}{chapter.8}
+\contentsline {section}{\numberline {8.1}Impressionen zum Code}{27}{section.8.1}
+\contentsline {section}{\numberline {8.2}Ausblick: Optimierung}{27}{section.8.2}
+\contentsline {section}{\numberline {8.3}--- Ger\IeC {\"a}tekomm---}{28}{section.8.3}
+\contentsline {chapter}{\numberline {9}Anhang}{30}{chapter.9}
+\contentsline {subsubsection}{Erkl\IeC {\"a}rungen zu den \IeC {\"U}bergabeparametern}{32}{subsubsection*.25}

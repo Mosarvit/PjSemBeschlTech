@@ -37,7 +37,7 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_adjust_H_p_trivial(self):
@@ -61,7 +61,7 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -105,7 +105,7 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H, verbosity=verbosity)
 
-        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
     def test_adjust_H(self):
@@ -156,7 +156,7 @@ class test_adjust_H(TestCase):
         print("Laufzeit adjust_H in milli Sec: " + str(t*1e3))
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H=sigma_H, verbosity=0)
 
-        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 
 
@@ -181,6 +181,6 @@ class test_adjust_H(TestCase):
 
         Hneu = adjust_H(Halt, Uout_ideal, Uout_measured, sigma_H)
 
-        test_succeeded = finilize_tezt(values_computed=Hneu, set_ideal_values=0, verbosity=0)
+        test_succeeded = finilize_tezt(values_computed=Hneu, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)
 

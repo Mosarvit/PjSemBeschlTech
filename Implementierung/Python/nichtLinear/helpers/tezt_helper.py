@@ -8,7 +8,7 @@ import numpy as np
 from helpers.custom_value_error import custom_value_error
 
 
-def finilize_tezt(values_computed, set_ideal_values, verbosity):
+def finilize_tezt(values_computed, set_accepted_values, verbosity):
 
     if type(values_computed) is np.ndarray:
 
@@ -33,7 +33,7 @@ def finilize_tezt(values_computed, set_ideal_values, verbosity):
     elif datatype == 'a' or datatype == 'K':
         Uout_ideal_file_name = datatype + '_accepted.csv'
 
-    if set_ideal_values:
+    if set_accepted_values:
         values_ideal = values_computed
         save_ideal_signal(signal_ideal=values_ideal, filename=Uout_ideal_file_name, datatype=datatype)
         test_succeeded = True
