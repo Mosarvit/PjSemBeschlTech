@@ -96,6 +96,8 @@ def spectrum_from_Time_Signal_ZeroPadding(time, values, number):
     # check if time evenly spaced
     # check if number is int
 
+    # TODO: use zero-padding to enlarge the length of the signal to a potenz 2^n by which the fft can be calculated more efficiently!
+
     signal = signal_class(time=time, signal_in_V=values)
     signal_appended = zero_padding(signal, number=number)
     frequencies, spectrum = spectrum_from_TimeSignal(time=signal_appended.time, values=signal_appended.in_V)

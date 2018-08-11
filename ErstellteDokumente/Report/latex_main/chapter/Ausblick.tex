@@ -36,7 +36,9 @@ Auf den Ergebnissen aus \nameref{chap:opt} aufbauend, verbleiben eine Reihe von 
 \begin{enumerate}
 	\item 	Wie wirkt sich die Optimierung von $K$ aufgrund ihrer Nichtlinearität auf die Übertragungsfunktion $\Hcompl$ aus und muss dies in der Optimierung berücksichtigt werden, etwa in der Reihenfolge der Iterationsschritte?
 	
-	\item	Wie wird mit der Tatsache umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen? Eine erste Verbesserung könnte das zero-padding genannte Hinzufügen von zusätzlichen $0$-Werten an die Zeitsignale sein, womit sich für die Berechnung der FFT der Frequenzabstand zweier Werte verringern lässt. 
+	\item	Wie wird mit der Tatsache umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen?
+	
+	\item 	Ist die getrennte Interpolation von Betrag und Phase der Signalspektren auf die Frequenzen der Übertragungsfunktion in der Optimierung von $\Hcompl$ die beste Lösung? 
 	
 	\item	In welcher Reihenfolge wird die Iteration durchgeführt? Wird zuerst $\Hcompl$ in mehreren Durchgängen angepasst und danach $K$? Oder im Wechsel je eine Iteration?
 	
