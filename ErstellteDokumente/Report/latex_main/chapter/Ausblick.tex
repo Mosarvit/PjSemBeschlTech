@@ -12,12 +12,11 @@
 In Bezug auf das Design des Codes verbleiben eine Reihe Anregungen und Gedanken, die nicht realisiert wurden, je nach Ausführung aber interessant zu bedenken sein könnten.
 
 \begin{itemize}
-	\item	Die Geräte AWG und DSO als Klassen einzubinden könnte den Vorteil bieten, alle SCPI Commands an einer Stelle zu bündeln und den Zugriff darauf allgemeingültig zu halten.
+	\item	Die Geräte AWG und DSO als Klassen einzubinden, könnte den Vorteil bieten, alle SCPI Commands an einer Stelle zu bündeln und den Zugriff darauf allgemeingültig zu halten.
 	
-	\item	Eine Einbindung des momentanen Programms in die RF-Tools des GSI-Standards könnte in zwei Teilen erfolgen. Die bestehende Funktionalität zur Berechnung von $K$ und $\Hcompl$ kann unabhängig der Optimierungsalgorithmen genutzt werden. Dabei ist insbesondere zu prüfen, ob oder wie die Aspekte im \nameref{chap:code} beibehalten werden. 
+	\item	Eine Einbindung des momentanen Programms in die RF-Tools des GSI-Standards könnte in zwei Teilen erfolgen. Die bestehende Funktionalität zur Berechnung von $K$ und $\Hcompl$ kann unabhängig von den Optimierungsalgorithmen genutzt werden. Dabei ist insbesondere zu prüfen, ob oder wie die Aspekte im \nameref{chap:code} beibehalten werden. 
 	
 	\item 	Die momentane Version ist in erster Linie über eine Python-IDE ausführbar. Die Ausführung über die Kommandozeile wurde nicht fokussiert.
-	\item Für die Erstellung eines idealen Barrier-Bucket Ausgangssignals wird momentan noch eine selbst implementierte Methode verwendet. Dafür kann auch das vorhandene RF-Tool verwendet werden.
 	
 \end{itemize}
 
@@ -28,20 +27,20 @@ In Bezug auf das Design des Codes verbleiben eine Reihe Anregungen und Gedanken,
 \section{Ausblick: Optimierung}
 \label{sec:ausb.opti}
 
-Auf den Ergebnissen aus \nameref{chap:opt} aufbauend, verbleiben eine Reihe von offenen Fragestellungen:
+Auf den Ergebnissen des Kapitels \ref{chap:opt} aufbauend, verbleibt eine Reihe von offenen Fragestellungen:
 
 \begin{enumerate}
-	\item 	Wie wirkt sich die Optimierung von $K$ aufgrund ihrer Nichtlinearität auf die Übertragungsfunktion $\Hcompl$ aus und muss dies in der Optimierung berücksichtigt werden, etwa in der Reihenfolge der Iterationsschritte?
+	\item 	Wie wirkt sich die Optimierung von $K$ aufgrund der Nichtlinearität der Kennlinie auf die Übertragungsfunktion $\Hcompl$ aus und muss diese Problematik in der Optimierung berücksichtigt werden, etwa in der Reihenfolge der Iterationsschritte?
 	
-	\item	Wie wird mit der Tatsache umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen?
+	\item	Wie damit umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen?
 	
-	\item 	Ist die getrennte Interpolation von Betrag und Phase der Signalspektren auf die Frequenzen der Übertragungsfunktion in der Optimierung von $\Hcompl$ die beste Lösung? 
+	\item 	Ist die getrennte Interpolation von Betrag und Phase der Signalspektren an den Frequenzen der Übertragungsfunktion in der Optimierung von $\Hcompl$ die beste Lösung? 
 	
 	\item	In welcher Reihenfolge wird die Iteration durchgeführt? Wird zuerst $\Hcompl$ in mehreren Durchgängen angepasst und danach $K$? Oder im Wechsel je eine Iteration?
 	
-	\item 	Wie wird die Auswahl der Schrittweiten $\sigma_H$ und $\sigma_a$ vorgenommen? Werden diese pauschal einmal festgesetzt zu Beginn des Algorithmus oder ist eine dynamische Anpassung, etwa durch die Qualität des letzten gemessenen Signals oder in Abhängigkeit des Iterationsschritts vorzuziehen? 
+	\item 	Wie wird die Auswahl der Schrittweiten $\sigma_H$ und $\sigma_a$ vorgenommen? Werden diese pauschal zu Beginn des Algorithmus festgesetzt oder ist eine dynamische Anpassung, etwa durch die Qualität des letzten gemessenen Signals oder in Abhängigkeit des Iterationsschritts vorzuziehen? 
 	
-	\item 	Wie lässt sich der Einfluss von zufälligem Rauschen auf die Optimierung reduzieren? Insbesondere die Auflösung im höherfrequenten Betragsspektrum ist hier problematisch. Und im Falle des Ignorieren von Korrekturen an als fehlerhaft befundenen Frequenzen: Auf welchen Wert wird der Korrekturterm bei diesen Frequenzen gesetzt?
+	\item 	Wie lässt sich der Einfluss von zufälligem Rauschen auf die Optimierung reduzieren? Insbesondere die Auflösung im höherfrequenten Betragsspektrum ist hier problematisch. Auf welchen Wert wird der Korrekturterm bei zu ignorierenden Frequenzen gesetzt?
 	
 	\item	Wie lassen sich die im idealen Spektrum des Einzelsinus enthaltenen Nulldurchgänge in der Optimierung von $\Hcompl$ berücksichtigen, um interpolationsbedingt große Fehlerterme zu vermeiden? Ist das einfache Ignorieren dieser Frequenzen für die Anpassung eine Möglichkeit? Und in welchem kleinen Frequenzbereich um einen Nulldurchgang müssten dann die Werte ignoriert werden?
 	
@@ -49,17 +48,14 @@ Auf den Ergebnissen aus \nameref{chap:opt} aufbauend, verbleiben eine Reihe von 
 	
 	\item 	Ist es sinnvoller, statt einer pauschalen Form der Anpassung der Korrekturterme zur Verminderung von Fehlern auf eine dynamische Version zu setzen, die spezieller auf die im jeweiligen Schritt vorliegenden Signale reagiert?
 	
-	\item	Welches Qualitätsmerkmal des Ausgangssignal ist für die Optimierung entscheidend und wie wirkt sich dies auf den Algorithmus aus?
+	\item	Welches Qualitätsmerkmal des Ausgangssignals, das durch das RF-Tool \cite{RF-Tool} berechnet werden kann, ist für die Optimierung entscheidend und wie wirkt sich dies auf den Algorithmus aus?
 	
-	\item	Gibt es eine sinnvolle Abbruchbedingung, mit der die Iteration versehen werden sollte? Etwa, dass sich die Qualität im Vergleich zu den vorherigen Iterationen nicht mehr mit ähnlicher Rate verbessert hat? Der Trade-Off liegt zwischen Laufzeit und Signal-Qualität.
+	\item	Gibt es eine sinnvolle Abbruchbedingung, mit der die Iteration versehen werden sollte? Etwa, dass sich die Qualität im Vergleich zu den vorherigen Iterationen nicht mehr verbessert hat? Der Trade-Off liegt zwischen Laufzeit und Signal-Qualität.
 	
-	\item	Wie bestimmt man die Grenzen, in denen $K$ genutzt werden kann? Wie kann man garantieren, dass $K$ in den Bereichen, aus denen die Daten zur Berechnung von $a_n$ benutzten werden, bijektiv ist?
+	\item	Wie bestimmt man die Grenzen, in denen $K$ genutzt werden kann? Wie kann man garantieren, dass $K$ in den Bereichen, aus denen die Daten zur Berechnung von $a_n$ verwendet werden, bijektiv ist?
 	
 	\item	Gibt es eine Möglichkeit die Grenzen von $K$ bei der Optimierung zu erweitern? Ein möglicher Indikator: Kann man die Rückgabe von \lstinline{numpy.linalg.lstsq(LGS)} aus der Berechnung von $a_n$ nutzen, um eine Aussage über die Abweichung der Werte zu treffen?
 \end{enumerate}
-
-
-
 
 
 \end{document}

@@ -2,6 +2,37 @@
 \begin{itemize}
 	\item Bestimmung der Parameter $\tilde{a}_n$
 	\item Vergleichen der Samples ${\Delta U_{?,i} = \Delta U_? (i \cdot \Delta t)}$ mit ${U_{in,i} = U_{in}(i \cdot \Delta t)}$
+\end{itemize}
+
+\begin{align}
+	\left(
+	\begin{matrix}
+	 	U_{in,1} & U_{in,1}^2 & \dots & U_{in,1}^N \\
+		U_{in,2} & U_{in,2}^2 & \dots & U_{in,2}^N \\
+		\vdots & \vdots & \ddots & \vdots \\
+		U_{,M} & U_{in,M}^2 & \dots & U_{in,M}^N \\
+	\end{matrix}
+	\right)
+	\cdot
+	\left(
+	\begin{matrix}
+		\tilde{a}_1 \\
+		\tilde{a}_2 \\
+		\vdots \\
+		\tilde{a}_N \\	
+	\end{matrix}
+	\right) = \left(
+	\begin{matrix}
+		\Delta U_{?,1} \\
+		\Delta U_{?,2} \\
+		\vdots \\
+		\Delta U_{?,M} \\	
+	\end{matrix}
+	\right)
+	\label{eq:Uquest.Gleichungssystem}
+\end{align}
+
+\begin{itemize}
 	\item Lösung des linearen Optimierungsproblems ergibt die Anpassung der alten Parameter
 \end{itemize}
 \begin{align}

@@ -17,29 +17,56 @@
 \headcommand {\beamer@framepages {8}{11}}
 \headcommand {\beamer@sectionpages {3}{11}}
 \headcommand {\beamer@subsectionpages {7}{11}}
-\headcommand {\sectionentry {2}{Optimierung}{12}{Optimierung}{0}}
+\headcommand {\sectionentry {2}{Code}{12}{Code}{0}}
 \headcommand {\beamer@subsectionpages {12}{11}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{12}{Optimierung der \IeC {\"U}bertragungsfunktion}}
-\headcommand {\beamer@subsectionpages {12}{11}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{12}{Optimierung der Kennlinie}}
-\headcommand {\slideentry {2}{2}{1}{12/12}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {2}{2}{2}{13/13}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {2}{2}{3}{14/14}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {2}{2}{4}{15/15}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {2}{2}{5}{16/16}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {2}{2}{6}{17/17}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {2}{2}{7}{18/18}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {2}{2}{8}{19/19}{Optimierung der Kennlinie}{0}}
-\headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@partpages {1}{19}}
-\headcommand {\beamer@subsectionpages {12}{19}}
-\headcommand {\beamer@sectionpages {12}{19}}
-\headcommand {\beamer@documentpages {19}}
-\headcommand {\gdef \inserttotalframenumber {13}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{12}{Design}}
+\headcommand {\slideentry {2}{1}{1}{12/29}{Design}{0}}
+\headcommand {\beamer@framepages {12}{29}}
+\headcommand {\beamer@subsectionpages {12}{29}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{30}{Vorgehensweise}}
+\headcommand {\slideentry {2}{2}{1}{30/34}{Vorgehensweise}{0}}
+\headcommand {\beamer@framepages {30}{34}}
+\headcommand {\slideentry {2}{2}{2}{35/45}{Vorgehensweise}{0}}
+\headcommand {\beamer@framepages {35}{45}}
+\headcommand {\slideentry {2}{2}{3}{46/57}{Vorgehensweise}{0}}
+\headcommand {\beamer@framepages {46}{57}}
+\headcommand {\beamer@sectionpages {12}{57}}
+\headcommand {\beamer@subsectionpages {30}{57}}
+\headcommand {\sectionentry {3}{Optimierung}{58}{Optimierung}{0}}
+\headcommand {\beamer@subsectionpages {58}{57}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{58}{Optimierung der \IeC {\"U}bertragungsfunktion}}
+\headcommand {\beamer@subsectionpages {58}{57}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{58}{Optimierung der Kennlinie}}
+\headcommand {\slideentry {3}{2}{1}{58/58}{Optimierung der Kennlinie}{0}}
+\headcommand {\beamer@framepages {58}{58}}
+\headcommand {\slideentry {3}{2}{2}{59/59}{Optimierung der Kennlinie}{0}}
+\headcommand {\beamer@framepages {59}{59}}
+\headcommand {\slideentry {3}{2}{3}{60/60}{Optimierung der Kennlinie}{0}}
+\headcommand {\beamer@framepages {60}{60}}
+\headcommand {\slideentry {3}{2}{4}{61/61}{Optimierung der Kennlinie}{0}}
+\headcommand {\beamer@framepages {61}{61}}
+\headcommand {\slideentry {3}{2}{5}{62/62}{Optimierung der Kennlinie}{0}}
+\headcommand {\beamer@framepages {62}{62}}
+\headcommand {\slideentry {3}{2}{6}{63/63}{Optimierung der Kennlinie}{0}}
+\headcommand {\beamer@framepages {63}{63}}
+\headcommand {\slideentry {3}{2}{7}{64/64}{Optimierung der Kennlinie}{0}}
+\headcommand {\beamer@framepages {64}{64}}
+\headcommand {\beamer@sectionpages {58}{64}}
+\headcommand {\beamer@subsectionpages {58}{64}}
+\headcommand {\sectionentry {4}{Ausblick}{65}{Ausblick}{0}}
+\headcommand {\slideentry {4}{0}{1}{65/65}{}{0}}
+\headcommand {\beamer@framepages {65}{65}}
+\headcommand {\slideentry {4}{0}{2}{66/67}{}{0}}
+\headcommand {\beamer@framepages {66}{67}}
+\headcommand {\slideentry {4}{0}{3}{68/75}{}{0}}
+\headcommand {\beamer@framepages {68}{75}}
+\headcommand {\beamer@sectionpages {65}{75}}
+\headcommand {\beamer@subsectionpages {65}{75}}
+\headcommand {\sectionentry {5}{Quellen}{76}{Quellen}{0}}
+\headcommand {\slideentry {5}{0}{1}{76/76}{}{0}}
+\headcommand {\beamer@framepages {76}{76}}
+\headcommand {\beamer@partpages {1}{76}}
+\headcommand {\beamer@subsectionpages {76}{76}}
+\headcommand {\beamer@sectionpages {76}{76}}
+\headcommand {\beamer@documentpages {76}}
+\headcommand {\gdef \inserttotalframenumber {20}}

@@ -6,11 +6,11 @@
 
 \chapter{Code-Design}
 \label{chap:code}
-Die Aufgabe des Projektseminars war, ein bestehendes Tool weiterzuentwickeln. Es wurde nach einer Methode gesucht, um an die vorhandene Funktionalität anzuschließen und fortzusetzen. Um auf dieses Projekt aufbauende Arbeiten zu erleichtern, wird in diesem Kapitel die Namenskonvention und die allgemeine Struktur unseres Design vorgestellt.
+Die Aufgabe des Projektseminars war, ein bestehendes Tool weiterzuentwickeln. Es wurde nach einer Methode gesucht, um an die vorhandene Funktionalität anzuschließen und diese fortzusetzen. Um auf dieses Projekt aufbauende Arbeiten zu erleichtern, wird in diesem Kapitel die Namenskonvention und die allgemeine Struktur des verwendeten Designs vorgestellt.
 
 \section{Motivation}
 \label{sec:code.motivation}
-Ziel ist es, ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des weiteren wird eine lose Kopplung der einzelnen Blöcke angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung im Team, zum anderen aber auch die Verständlichkeit des gesamten Programms. \\
+Ziel ist es, ein Design aufzustellen, das mit seinen Funktionen und seiner gesamten Dokumentation für sich spricht. Des Weiteren wird eine lose Kopplung der einzelnen Blöcke angestrebt, damit Bestandteile ohne die Logik anderer Funktionen verstanden und bearbeitet werden können. Dies verbessert zum einen die Arbeitsaufteilung im Team, zum anderen aber auch die Verständlichkeit des gesamten Programms. \\
 Ohne ein modulares Design ist eine Optimierung der einzelnen Bestandteile nur schwer umzusetzen.
 
 \section{Aufbau}
@@ -83,11 +83,11 @@ Bestimmte Datensätze wurden als eigene abstrakte Datentypen (ADTs) implementier
 \begin{itemize}
 	\item Allgemeine Funktionalität wird in der Klasse implementiert.
 	\item Typüberprüfung wird ermöglicht.
-	\item Implementierung generischer Klassen\footnote{Implementierungen, die unabhängig vom übergebenen Datentyp sind.} beispielsweise \lstinline{calculate_error()} ermöglicht.
+	\item Implementierung generischer Klassen\footnote{Implementierungen, die unabhängig vom übergebenen Datentyp sind.} ermöglicht, wie beispielsweise \lstinline{calculate_error()}.
 \end{itemize}
 Für die Klasse \lstinline{signal_class()} ergeben sich speziell noch weitere Vorteile:
 \begin{itemize}
-\item Vermeidung von ungewollten Manipulationen an Datensätzen, die nur schwer zu debuggen sind
+\item Vermeidung von ungewollten Manipulationen an Datensätzen, die nur schwer zu debuggen sind.
 	\item Das Orginalsignal ist immer gespeichert.
 	\begin{itemize}
 		\item dadurch Vermeidung der Fortpflanzung von Interpolationsfehlern durch Resampling.
@@ -100,22 +100,22 @@ Für diesen Typ Aufgabenstellung konnte viel Programmierarbeit ohne den Versuchs
 
 \subsection{Test Driven Development}
 \label{subsec:code.tdd}
-Nach der Methode TDD werden vor dem eigentlichen Programmieren Tests geschrieben, die mit der folgenden Implementierung der Funktionalität bestanden werden müssen. Diese Tests geben ein gutes Feedback darüber, ob eine Methode gut implementiert wurde. Die folgenden Vorteile waren besonders wichtig in der Entwicklung des Codes für diese Aufgabe:
+Nach der Methode TDD werden vor dem eigentlichen Programmieren Tests geschrieben, die mit der folgenden Implementierung der Funktionalität bestanden werden müssen. Diese Tests geben ein sinnvolles Feedback darüber, ob eine Methode gut implementiert wurde. Die folgenden Vorteile waren besonders wichtig in der Entwicklung des Codes für diese Aufgabe:
 \begin{itemize}
-	\item Testen von kleinen Abschnitt erzwingt einen modularen Aufbau.
+	\item Testen von kleinen Abschnitten erzwingt einen modularen Aufbau.
 	\item Tests dokumentieren Funktionalität.
 	\item Refactoring\footnote{Änderung der Struktur ohne Veränderung der Funktionalität.} wird ermöglicht.
-	\item Einfachere Fehlersuche auch ohne Versuchsaufbau möglich.
+	\item Einfache Fehlersuche ist auch ohne Versuchsaufbau möglich.
 	\item Reproduktion von Messvorgängen, die Fehler aufgedeckt haben.
-	\item Arbeitsteilung an logisch getrennten Abschnitten ermöglicht.
-	\item Hilft bei der Migration der Implementierung aus MATLAB nach Python.
+	\item Möglichkeit der Arbeitsteilung an logisch getrennten Abschnitten.
+	\item Unterstützt bei der Migration der Implementierung aus MATLAB nach Python.
 \end{itemize}
-Eine große Schwierigkeit dieser Methode liegt darin, gute Tests zu formulieren, die auch alle möglichen Fälle abdecken. Das kann einige Zeit in Anspruch nehmen, lohnt sich aber auf längere Sicht
+Eine große Schwierigkeit dieser Methode liegt darin, gute Tests zu formulieren, die auch alle möglichen Fälle abdecken. Das kann einige Zeit in Anspruch nehmen, lohnt sich aber auf längere Sicht.
 
-\subsubsection{Beispiel: Test für apply\_transfer\_function}
+\subsubsection{Beispiel: Test für \lstinline{apply_transfer_function}}
 \label{subsubsec.code.tdd.example}
 Der übliche Aufbau eines Unit Tests wird am Beispiel \lstinline{test_apply_transfer_function_2} erklärt. Diese Funktion wendet eine Übertragungsfunktion auf ein Signal an und gibt das Ausgangssignal zurück. Per Definition sollte bei zweifacher Anwendung der Funktion wieder das ursprüngliche Signal zurückgegeben werden.\\
-Als erstes werden die Daten eingelesen, mit denen gearbeitet werden soll.
+Als Erstes werden die Daten eingelesen, mit denen gearbeitet werden soll.
 \lstset{language=Python}
 \begin{lstlisting}
 	H = read_in_transfer_function(mock_data_path + 'H.csv')
@@ -127,31 +127,31 @@ Im nächsten Schritt wird die Funktion angewendet.
 	Utransferred = apply_transfer_function(Uout, H)
 	Uout_computed = apply_transfer_function(Utransferred, H.get_inverse())	
 \end{lstlisting}
-Der letzt Schritt ist die Auswertund. Dabei ist die Rückgabe der Funktion \lstinline{finilize_tezt} genau dann \lstinline{True}, wenn das \lstinline{U_computed} gleich dem \lstinline{U_accepted} ist.
+Der letzte Schritt ist die Auswertung. Dabei ist die Rückgabe der Funktion \lstinline{finilize_tezt} genau dann \lstinline{True}, wenn das \lstinline{U_computed} gleich dem \lstinline{U_accepted} ist.
+\footnote{Die Notation \lstinline{tezt} hängt mit der Verwendung der Erweiterung \lstinline{python.nose} zusammen.}
 \lstset{language=Python}
 \begin{lstlisting}
 	test_succeeded = finilize_tezt(Uout_computed, set_ideal_values=False)
 	self.assertTrue(test_succeeded)
 \end{lstlisting}
-\lstinline{U_computed} -Wert wird festgelegt und gespeichert..muss genauf (auf 1e-10 getroffen werden-
--Alternative über die Norm: Schwierigkeit..zu große Toleranzen, keine universelle Fehlerberechnung möglich-
-\subsection{Mock-System}
+Dabei wird der Wert \lstinline{U_computed} vom Programmierer des Tests festgelegt. Dieser Wert muss auf eine Genauigkeit von $10^{-10}$ genau getroffen werden. Die Alternative wäre über die Norm zu arbeiten. Wobei sich hierbei zu große Toleranzen ergeben und keine universelle Möglichkeit zur Fehlerberechnung existiert.
+\subsection{Mock System}
 \label{subsec:code.mock}
-Das implementierte Mock System stellt ein typtisches Beispiel für ein mock object nach \cite{mock} dar und simuliert das getestete reale System nach einem bestimmten Modell. In diesem Fall wird zur Simulation ein ideales Hammerstein Modell als Grundlage verwenden, weil dieses Modell verwendet wird, um das reale System abzubilden. Dieses Mock-System testet die Möglichkeiten der implementierten Methoden ein Hammerstein Modell darzustellen und zu optimieren.\\
+Das implementierte Mock System stellt ein typtisches Beispiel für ein \lstinline{mock object} nach \cite{mock} dar und simuliert das getestete reale System nach einem bestimmten Modell. In diesem Fall wird zur Simulation ein ideales Hammerstein-Modell als Grundlage festgelegt, weil dieses Modell verwendet wird, um das reale System abzubilden. Dieses Mock System testet die Möglichkeiten der implementierten Methoden ein Hammerstein-Modell darzustellen und zu optimieren.\\
 Mit diesem System konnten auch Methoden getestet werden, die eigentlich mit den Geräten kommunizieren und somit nicht gut ohne Versuchsaufbau getestet werden können. Der Ablauf sieht wie folgt aus:
 \begin{itemize}
-	\item Das Eingangssignal wird nicht an das AWG übergeben sondern an die Simulation
-	\item Verzerrung über eine nichtlineare Kennlinie $K$ 
-	\item Berechnung das Ausgangssignals über die Übertragungsfunktion $\Hcompl$
-	\item Das Ausgangssignal wird wieder an die eigentliche Methode übergeben
+	\item Das Eingangssignal wird nicht an das AWG übergeben, sondern an das Mock System.
+	\item Verzerrung über eine nichtlineare Kennlinie $K$.
+	\item Berechnung das Ausgangssignals über die Übertragungsfunktion $\Hcompl$.
+	\item Das Ausgangssignal wird wieder an die eigentliche Methode übergeben.
 \end{itemize}
 Daraus folgen für diese Zielsetzung folgende Vorteile:
 \begin{itemize}
-	\item Unter der Voraussetzung, dass das Mock-System richtig implementiert ist und das reale System mit dem Hammerstein Modell beschrieben werden kann, können über die Konvergenz Aussagen getroffen werden. Wenn der Optimierungsalgorithmus am realen System konvergiert, so wird er auch am Mock-System konvergieren. Umgekehrt lässt sich von der Divergenz am Mock-System auf die Divergenz am realen System schließen.
-	\item Der Algorithmus kann ohne Versuchsaufbau entwickelt werden, weil die Konvergenz am Mock-System eine notwendige Bedingung für die Konvergenz am realen System ist, das mit einem Hammerstein Modell beschrieben werden kann.
-	\item Das Programm kann am Mock-System mit in der Praxis selten auftretenden Szenarien getestet werden. Zum Beispiel eine hohe Anzahl an Iterationen. Dabei konnte in diesem Projekt mit über 100 Iterationen ein unerwarteter Fehler beobachtet werden.
-	\item Durch die Implementierung des Mock-Systems wird das Modell besser verstanden.
+	\item Unter der Voraussetzung, dass das Mock System richtig implementiert ist und das reale System mit dem Hammerstein-Modell beschrieben werden kann, können über die Konvergenz Aussagen getroffen werden. Wenn der Optimierungsalgorithmus am realen System konvergiert, so wird er auch am Mock System konvergieren. Umgekehrt lässt sich von der Divergenz am Mock System auf die Divergenz am realen System schließen.
+	\item Der Algorithmus kann ohne Versuchsaufbau entwickelt werden, weil die Konvergenz am Mock System eine notwendige Bedingung für die Konvergenz am realen System ist, das mit einem Hammerstein-Modell beschrieben werden kann.
+	\item Das Programm kann am Mock System mit in der Praxis selten auftretenden Szenarien getestet werden. Ein Beispiel dafür stellt eine hohe Anzahl an Iterationen dar. Dabei konnte in diesem Projekt mit über 100 Iterationen ein unerwarteter Fehler beobachtet werden.
+	\item Durch die Implementierung des Mock Systems wird das Modell besser verstanden.
 \end{itemize}
-Die Optimierungsansätze aus Kap. \ref{chap:opt} wurden bereits mit dem Mock-System getestet und es wurde festgestellt, dass diese für das ideale Modell tatsächlich zu einer Verbesserung führen. Die Frage dabei ist aber, inwieweit sich der Versuchsaufbau durch ein ideales Hammerstein-Modell beschreiben lässt und sich damit die Verbesserung auf den realen Aufbau übertragen lässt. Je nach Ergebnissen der Übertragung auf das reale System lassen sich Aussagen über die Grenzen des Modells für diesen Aufbau treffen.\\
+Die Optimierungsansätze aus Kap. \ref{chap:opt} wurden bereits mit dem Mock System getestet und es wurde festgestellt, dass diese für das ideale Modell tatsächlich zu einer Verbesserung führen. Die Frage dabei ist aber, inwieweit sich der Versuchsaufbau durch ein ideales Hammerstein-Modell beschreiben lässt und sich damit die Verbesserung auf den realen Aufbau überträgt. Je nach Ergebnissen der Übertragung auf das reale System lassen sich Aussagen über die Grenzen des Modells für diesen Aufbau treffen.\\
 Mit dem Testen an der Simulation können Aufgaben wie Debugging, Refactoring und Erweiterungen der Funktion auch ohne den Versuchsaufbau durchgeführt werden.
 \end{document}

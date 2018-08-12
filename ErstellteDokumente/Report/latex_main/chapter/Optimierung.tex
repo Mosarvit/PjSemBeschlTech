@@ -2,215 +2,327 @@
 
 
 \begin{document}
-
-\chapter{Iterative Optimierung des Hammerstein-Modells}
-\label{chap:opt}
-
-%TODO: überprüfe Referenz zu Jens, da Ideen nicht publiziert wurden! Wie wird das eingebunden?
-Ziel der Optimierung von Übertragungsfunktion $\Hcompl$ und Kennlinie $K$ mit ihren Parametern $a$ ist die Minimierung des Fehlers zwischen idealem und gemessenem Ausgangssignal, $\Uout_{, \mathrm{id}}$ und $\Uout_{, \mathrm{meas}}$ . Die Minimierung des relativen Fehlers ist also gegeben durch
-\begin{align}
-\label{eq:opt.relFehler}
-	\min \; \mathit{f} \oft = \min \left( \frac{\Uout_{, \mathrm{meas}}  - \Uout_{, \mathrm{id}} }{ \Uout_{, \mathrm{id}} } \right) 
-	= \min \left( \frac{ \Uout_{, \mathrm{meas}}}{ \Uout_{, \mathrm{id}}} -1 \right) 
-	\; .
-\end{align}
-Für das verwendete Hammerstein-Modell liegt die in \cite{----Jens---} %TODO: Referenz Idee iterative Optimierung Jens
-vorgeschlagene getrennte, iterative Optimierung von $\Hcompl$ und $K$ nahe. 
-Die Auswertung der Qualität des Einzelsinus erfolgt dabei durch das RF-Tool von --- Zitat RF-Tool --- mit Entwicklungsstand vom --- --- unter Verwendung des als \lstinline{QGesamt1} geführten Qualitätswerts \footnote{\label{foot:opt.H.quality} Hierauf beziehen sich alle weiteren Angaben zur Qualität des Signals. Eine intensivere Befassung mit dem Tool hat nicht stattgefunden.}.
-%TODO: Auffüllen Daten!
-
-
-\section{Optimierung der linearen Übertragungsfunktion $H$}
-\label{sec:opt.H}
-
-Die Optimierung von $\Hcompl \ofomega$ beruht auf der Annahme, dass sich \eqref{eq:opt.relFehler} auf die Betragsspektren des berechneten und des gemessenen Ausgangssignals, $\Uoutc_{, \mathrm{id}} \ofomega $ und $\Uoutc_{, \mathrm{meas}} \ofomega $ fortsetzen lässt mit 
-
-\begin{align}
-\label{eq:opt.ratio}
-	\fabs \ofomega :=  
-				\frac{\mathrm{abs} \left( \Uoutc_{, \mathrm{meas}} \ofomega \right)}{\mathrm{abs} \left(\Uoutc_{, \mathrm{id}} \ofomega \right)} -1
-				\; .
-\end{align} 
-
-Ist im Betragsspektrum des gemessenen Signals eine Frequenz mit halbem Betrag verglichen mit dem idealen Signal vertreten, wird dies entsprechend der Linearität der Übertragunsfunktion dahingehend gedeutet, dass die Verstärkung von $\Hcompl$ bei dieser Frequenz um einen Faktor $2$ zu gering ist.
-Iterativ mit einer Schrittweite $\sigma_H$ ausgeführt, folgt für den $i$-ten Schritt
-
-\begin{align}
-\label{eq:opt.Hnew}
-	\mathrm{abs} \left( \Hcompl^{i+1} \right)
-		=\mathrm{abs} \left( \Hcompl^{i}  \right) \cdot
-		\left( 1 + \sigma_H^i \: \fabs^{i}	\right)					 
-\end{align}
-
-für $\sigma_H^i \in \left[ 0 , 1 \right]$ und $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt}.
-Würde allerdings \eqref{eq:opt.Hnew} mit komplexen Zahlen und nicht allein den Beträgen ausgeführt, würde auch die Phase der $-1$ beachtet und folglich die durch $\sigma_H$ skalierte komplexe Zahl wesentlich verändert. Also muss für das Phasenspektrum eine andere Optimierung erfolgen.
-Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \left( \Hcompl \right) = \varphi_H$ mit 
-\begin{align}
-\label{eq:opt.HnewPhase}
-	\varphi_H^{i+1} = \varphi_H^{i} - \sigma_{\varphi}^{i} 
-			\left( \: \mathrm{arg} \left( \Uoutc_{, \mathrm{meas}} \right)
-					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
-\end{align}
-mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
-liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. 
-%Allerdings ist zu erwähnen, dass sich nicht ausschließen lässt, dass im simpelsten Fall das Vorzeichen des Iterationsschrittes schlicht falsch gewählt wurde. Aufgrund des späten Auftretens dieser möglichen Fehlerquellen konnten jedoch keine Tests diesbezüglich mehr dürchgeführt werden.
-%%%%%%%%%%%%%%%%%%%%%%%% TODO: Check Phase am Mock-System!!!! %%%%%%
-In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{subfig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
-\\
-
-
-\pgfplotstableread[col sep = comma] {opt_spect_ideal_abs.csv} \absSpectIdeal 
-\pgfplotstableread[col sep = comma] {opt_spect_meas_abs.csv} \absSpectMeas
-\pgfplotstableread[col sep = comma] {opt_spect_ideal_angle.csv} \angleSpectIdeal 
-\pgfplotstableread[col sep = comma] {opt_spect_meas_angle.csv} \angleSpectMeas 
-
-\begin{figure}[htb]
-\begin{subfigure}{0.5 \textwidth}
-\centering
-    \begin{tikzpicture}
-\begin{axis}[
-		legend entries = {Ideales Signal, Gemessenes Signal},
-		legend pos = north east,
-		xlabel={Frequenz},
-		ylabel={Spektraldichte },
-		%xtick distance = 10000000,
-%		xminorgrids,
-%		xmajorgrids,
-		minor x tick num =3,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={\si{\MHz}},
-		xmin = -5000000,
-		xmax = 85000000,
-		ymin = 0,
-		ymax = 0.03,
-		]
-		
-		\addplot[blue, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectIdeal};	% plot des Idealen Betragsspektrums
-		\addplot[green, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
-\end{axis}
-\end{tikzpicture}
-\caption{Betragsspektren}
-	\label{subfig:opt.abs_spektrum}
-\end{subfigure}
-\begin{subfigure}{0.5 \textwidth}
-\centering
-    \begin{tikzpicture}
-\begin{axis}[
-		legend entries = {Ideales Signal, Gemessenes Signal},
-		legend pos = north east,
-		xlabel={Frequenz},
-		ylabel={Phase},
-		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+%
+%\chapter{Iterative Optimierung des Hammerstein-Modells}
+%\label{chap:opt}
+%
+%%TODO: überprüfe Referenz zu Jens, da Ideen nicht publiziert wurden! Wie wird das eingebunden?
+%Ziel der Optimierung von Übertragungsfunktion $\Hcompl$ und Kennlinie $K$ mit ihren Parametern $a$ ist die Minimierung des Fehlers zwischen idealem und gemessenem Ausgangssignal, $\Uout_{, \mathrm{id}}$ und $\Uout_{, \mathrm{meas}}$ . Die Minimierung des relativen Fehlers ist also gegeben durch
+%\begin{align}
+%\label{eq:opt.relFehler}
+%	\min \; \mathit{f} \oft = \min \left( \frac{\Uout_{, \mathrm{meas}}  - \Uout_{, \mathrm{id}} }{ \Uout_{, \mathrm{id}} } \right) 
+%	= \min \left( \frac{ \Uout_{, \mathrm{meas}}}{ \Uout_{, \mathrm{id}}} -1 \right) 
+%	\; .
+%\end{align}
+%Für das verwendete Hammerstein-Modell liegt die in \cite{----Jens---} %TODO: Referenz Idee iterative Optimierung Jens
+%vorgeschlagene getrennte, iterative Optimierung von $\Hcompl$ und $K$ nahe. 
+%Die Auswertung der Qualität des Einzelsinus erfolgt dabei durch das RF-Tool von --- Zitat RF-Tool --- mit Entwicklungsstand vom --- --- unter Verwendung des als \lstinline{QGesamt1} geführten Qualitätswerts \footnote{\label{foot:opt.H.quality} Hierauf beziehen sich alle weiteren Angaben zur Qualität des Signals. Eine intensivere Befassung mit dem Tool hat nicht stattgefunden.}.
+%%TODO: Auffüllen Daten!
+%
+%
+%\section{Optimierung der linearen Übertragungsfunktion $H$}
+%\label{sec:opt.H}
+%
+%Die Optimierung von $\Hcompl \ofomega$ beruht auf der Annahme, dass sich \eqref{eq:opt.relFehler} auf die Betragsspektren des berechneten und des gemessenen Ausgangssignals, $\Uoutc_{, \mathrm{id}} \ofomega $ und $\Uoutc_{, \mathrm{meas}} \ofomega $ fortsetzen lässt mit 
+%
+%\begin{align}
+%\label{eq:opt.ratio}
+%	\fabs \ofomega :=  
+%				\frac{\mathrm{abs} \left( \Uoutc_{, \mathrm{meas}} \ofomega \right)}{\mathrm{abs} \left(\Uoutc_{, \mathrm{id}} \ofomega \right)} -1
+%				\; .
+%\end{align} 
+%
+%Ist im Betragsspektrum des gemessenen Signals eine Frequenz mit halbem Betrag verglichen mit dem idealen Signal vertreten, wird dies entsprechend der Linearität der Übertragunsfunktion dahingehend gedeutet, dass die Verstärkung von $\Hcompl$ bei dieser Frequenz um einen Faktor $2$ zu gering ist.
+%Iterativ mit einer Schrittweite $\sigma_H$ ausgeführt, folgt für den $i$-ten Schritt
+%
+%\begin{align}
+%\label{eq:opt.Hnew}
+%	\mathrm{abs} \left( \Hcompl^{i+1} \right)
+%		=\mathrm{abs} \left( \Hcompl^{i}  \right) \cdot
+%		\left( 1 + \sigma_H^i \: \fabs^{i}	\right)					 
+%\end{align}
+%
+%für $\sigma_H^i \in \left[ 0 , 1 \right]$ und $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt}.
+%Würde allerdings \eqref{eq:opt.Hnew} mit komplexen Zahlen und nicht allein den Beträgen ausgeführt, würde auch die Phase der $-1$ beachtet und folglich die durch $\sigma_H$ skalierte komplexe Zahl wesentlich verändert. Also muss für das Phasenspektrum eine andere Optimierung erfolgen.
+%Eine Möglichkeit hierfür wäre die simple Anpassung der Phase $ \mathrm{arg} \left( \Hcompl \right) = \varphi_H$ mit 
+%\begin{align}
+%\label{eq:opt.HnewPhase}
+%	\varphi_H^{i+1} = \varphi_H^{i} - \sigma_{\varphi}^{i} 
+%			\left( \: \mathrm{arg} \left( \Uoutc_{, \mathrm{meas}} \right)
+%					- \mathrm{arg} \left( \Uoutc_{, \mathrm{id}} \right) \: \right)
+%\end{align}
+%mit $\sigma_{\varphi}^i \in \left[ 0 , 1 \right]$. Diese Anpassung der Phase wurde jedoch nur kurzen Tests unterzogen und anschließend nicht weiter verfolgt. Es hat sich die Signalform des Ausgangssignals unproportional stärker verändert, als dies nur im Falle der Betrags-Anpassung der Fall war. Vermutlich %%%% TODO: kann man vermutlich hier nutzen???
+%liegt dies an dem aus dem Ausgangssignal gewonnenen Phasengang, der in wesentlich größerem Maße vom idealen Phasengang abweicht als im Betragsspektrum. 
+%%Allerdings ist zu erwähnen, dass sich nicht ausschließen lässt, dass im simpelsten Fall das Vorzeichen des Iterationsschrittes schlicht falsch gewählt wurde. Aufgrund des späten Auftretens dieser möglichen Fehlerquellen konnten jedoch keine Tests diesbezüglich mehr dürchgeführt werden.
+%%%%%%%%%%%%%%%%%%%%%%%%% TODO: Check Phase am Mock-System!!!! %%%%%%
+%In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Insbesondere illustriert \figref{subfig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
+%\\
+%
+%
+%\pgfplotstableread[col sep = comma] {opt_spect_ideal_abs.csv} \absSpectIdeal 
+%\pgfplotstableread[col sep = comma] {opt_spect_meas_abs.csv} \absSpectMeas
+%\pgfplotstableread[col sep = comma] {opt_spect_ideal_angle.csv} \angleSpectIdeal 
+%\pgfplotstableread[col sep = comma] {opt_spect_meas_angle.csv} \angleSpectMeas 
+%
+%\begin{figure}[htb]
+%\begin{subfigure}{0.5 \textwidth}
+%\centering
+%    \begin{tikzpicture}
+%\begin{axis}[
+%		legend entries = {Ideales Signal, Gemessenes Signal},
+%		legend pos = north east,
+%		xlabel={Frequenz},
+%		ylabel={Spektraldichte },
 %		%xtick distance = 10000000,
-%		xminorgrids,
-%		xmajorgrids,
-		minor x tick num =3,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={\si{\MHz}},
-		xmin = -5000000,
-		xmax = 85000000,
-		scaled y ticks={real:3.1415},
-		ytick scale label code/.code={$\si{\radian}$},
+%%		xminorgrids,
+%%		xmajorgrids,
+%		minor x tick num =3,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={\si{\MHz}},
+%		xmin = -5000000,
+%		xmax = 85000000,
 %		ymin = 0,
 %		ymax = 0.03,
-		]
-		
-		\addplot[blue, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectIdeal};	% plot des Idealen Betragsspektrums
-		\addplot[green, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
-\end{axis}
-\end{tikzpicture}
-\caption{Phasenspektren}
-	\label{subfig:opt.angle_spektrum}
-\end{subfigure}
-\caption{Spektrum des Einzelsinus-Signals, berechnet und gemessen mit je $109$ Punkten}
-\label{fig:opt.spektrum_BB_signal}
-\end{figure}
-
- 
-Neben den für kontinuierliche Funktionen problemlos definierbaren iterativen Zuweisungen ergeben sich in Messung und diskreter Ausführung jedoch Fehlerquellen. Problematisch sind insbesondere solche, die in \eqref{eq:opt.Hnew} durch das Betragsverhältnis der Ausgangssignale verstärkt werden. 
-Unterscheiden sich die Spektren hier um einen großen Faktor, resultiert dies in einer großen Anpassung der Übertragungsfunktion für die betreffende Frequenz. Dies ist folglich insbesondere bei kleinen Beträgen der Spektren problematisch, wenn Ungenauigkeiten und Störeinflüsse betrachtet werden. 
-\\
-Besondere Störeinflüsse ergeben sich also durch
-\begin{itemize}
-	\item Rauschen: Weißes Rauschen macht sich in allen Frequenzen bemerkbar mit kritischem Einfluss bei geringer Spektraldichte des Signals.
-	
-	\item Diskretisierungsfehler: Die FFT bedingt eine begrenzte Auflösung, in den Spektren von $\Hcompl$ und den gemessenen Signalen und liegt insbesondere im Allgemeinen an unterschiedlichen Frequenzen und mit unterschiedlich vielen Punkten vor.
-	
-	\item Interpolationsfehler: Die (hier lineare) Interpolation der Spektren zur Auswertung von $\fabs$ an den Frequenzen von $\Hcompl$ kann insbesondere den Einfluss oben genannter Punkte verstärken.
-\end{itemize}
-
-Weiterhin zeigt sich auch in der geringen Stützstellenzahl in \figref{fig:opt.spektrum_BB_signal} bereits eine erste konzeptuelle Problematik des Vorgehens. Der Frequenzabstand zwischen zwei Werten der FFT ist stets mit der Wiederholfrequenz $f_{rep}$ gegeben und lässt sich somit nicht durch eine höhere Auflösung der Messgeräte verbessern, der betrachtete Bereich bis $\SI{80}{\MHz}$ nicht besser auflösen.
-Folglich setzt sich diese Ungenauigkeit auch auf die Optimierung der Kennlinie fort. Insbesondere relevant wird dies, da die Kennlinie mit nahezu der doppelten Anzahl an Werten erstellt wird und somit der Interpolationsfehler ungleich größer wird als bei ähnlicher Anzahl Stützstellen.
-
-
-\subsection{Umgang mit Fehlerquellen}
-\subsubsection*{Ignorieren kleiner Beträge im Spektrum}
-\label{subsubsec:opt.H.prom}
-
-Um Rauscheinflüsse und Probleme durch Nulldurchgänge zu dämpfen, wurde ein erster intuitiver Ansatz vorgenommen: Bei den Betragsspektren der in $\fabs$ eingehenden Signale, des gemessenen und idealisierten Spannungssignals, wurden alle Anteile, die verglichen mit dem Maximalwert des betreffenden Spektrums besonders klein sind, auf einen vorgegebenen Wert, im Folgenden Default-Wert genannt, gesetzt. Dies führt an den betroffenen Frequenzen zu $\fabs = 0$ und damit keiner Änderung von $\Hcompl$.
-Dies bedeutet also, dass alle Einträge des Betragsspektrums von $\Uout_{,\mathrm{ideal}}$ mit weniger als zum Beispiel $5 \, \promille $ der maximalen Amplitude auf den Default-Wert gesetzt werden. Insbesondere werden auch die Einträge an den Frequenzen zurückgesetzt, die im Spektrum von $\Uout_{,\mathrm{meas}}$ klein gegen das zugehörige Maximum sind.
-\\
-Zu beachten bei letzterem Punkt ist die notwendige Rundung, wenn die Einträge der FFT an unterschiedlichen Frequenzen vorliegen. 
-\\
-\\
-\noindent
-Mit Beschränkung auf $3 \, \promille$ und dem globalen Minimum beider Spektren als Default-Wert werden insbesondere Einträge in den höheren Frequenzen des Spektrums \ref{subfig:opt.abs_spektrum} beeinflusst. Erst ab etwa $5 \promille$ werden alle Frequenzen ab ungefähr $\SI{60}{\MHz}$ auf den Default-Wert gesetzt. Mit dieser Methodik könnten folglich in erster Linie massive Korrekturen an hohen Frequenzen von $\Hcompl$ verhindert.
-Verglichen mit der nachfolgend beschriebenen Anpassung hat dieses Vorgehen aufgrund der beschriebenen Bandbreite einen niedrigeren Einfluss auf die Qualität des Ausgangssignals.
-
-
-\subsubsection*{Ignorieren großer Korrektur-Terme}
-\label{subsubsec:opt.H.RMS}
-
-Ein zweiter, sehr grober Ansatz liegt in der Beschränkung von $\fabs$ auf Werte unterhalb einer vorgegebenen Schwelle. Zugrunde liegt die Annahme, dass die gerade an Nulldurchgängen des Spektrums sowie bei vielen hohen Frequenzen auftretenden großen Werte durch die in obiger Aufzählung genannten Fehlerquellen entstehen. Hier bedeutet dies insbesondere, dass die Diskretisierung die Nulldurchgänge nicht korrekt darstellen kann. Die Interpolation auf Frequenzen von $\Hcompl$ ist dann aufgrund der großen Sprünge von Werten in direkter Umgebung der problematischen Frequenzen mit großer Ungenauickgeit behaftet. Dies kann zu den beschriebenen, großen Korrektur-Termen in $\fabs$ führen.
-
-\lstset{language=Python}
-\begin{lstlisting}[caption={Pseudocode zur Veranschaulichung der Anpassung des Korrekturterms}, label=code:opt.H.pseudoRMS, numbers=none]
-	rms_orig = root_mean_square( f_abs )
-	f_abs_to_use = f_abs[ where( abs(f_abs) >= 0.02 * rms_orig ] 
-	rms_mod = root_mean_square( f_abs_to_use )
-	idx_to_clear = f_abs[ where( abs(f_abs) >= rms_mod ] 
-	f_abs[ ix_to_clear ] = 0
-\end{lstlisting}
-
-Vereinfacht bedeutet der verfolgte Ansatz, ausnehmend große Werte von $\fabs$ als unrealistisch abzutun. Eine Pseudo-Implementierung findet sich in \coderef{code:opt.H.pseudoRMS}, um die nachfolgende Erläuterung zu illustrieren. In der vorgenommenen Implementierung wurde $\fabs$ an den ausgewählten Frequenzen beliebig auf $0$ gesetzt, also keine Anpassung bei diesen Frequenzen ermöglicht.
-Als Grenze genutzt wurde ein modifizierter Effektivwert, nachfolgend mit RMS (Root Mean Square) bezeichnet. 
-Der reine RMS von $\fabs$ unterliegt der Problematik, eine unproportional große Gewichtung von kleinen Einträgen zu enthalten.
-\\
-Idealerweise enthält $\fabs$ mit jeder Iteration kleinere Einträge als zuvor. Es würden also bei Nutzung des reinen RMS unter Umständen mit zunehmender Schrittzahl zunehmend mehr Werte in $\fabs$ ignoriert - was der Optimierung entsprechende Grenzen setzt. 
-In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die Problematik unumgänglich, da Frequenzen, die explizit nicht bei der Anpassung berücksichtig werden sollen, den reinen RMS-Wert beeinflussen.
-Folglich muss der RMS modifiziert werden. Hier wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich also bei der vorgenommenen Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
-
-Für einen Eindruck der Tragweite der RMS-Beschränkung bietet sich die Betrachtung von $\fabs$ in \figref{fig:opt.H.RMS_fabs} an. Klar zu erkennen sind die Ausreißer bei den meisten Frequenzen der originalen Nulldurchgänge. Auch die bei höheren Frequenzen auftretenden größeren Fehlerterme fallen auf. Die Korrekturen sind an den auf 0 gezogenen Werten zu erkennen. Der Unterschied zwischen dem originalen und dem modifizierten RMS liegt hier bei ungefähr $0.04$, also nahezu $10 \%$.
-Für die Einordnung der Größenordnung des Korrekturterms sei nochmals betont, dass aufgrund der Anpassung \eqref{eq:opt.Hnew} ein Korrekturterm von $\pm 0.5$ bei dem im Folgenden standardmäßig verwendeten $\sigma_H = \nicefrac{1}{2}$ zu einer Anpassung in $\Hcompl$ in Höhe eines Viertels des ursprünglichen Wertes führt.
-
-\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
-\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
-\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
-\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
-\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
-\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
-\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
-\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
-\begin{figure}[htb]
-%\begin{center}
-%\begin{subfigure}{\textwidth}
-%%	\begin{center}
+%		]
+%		
+%		\addplot[blue, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectIdeal};	% plot des Idealen Betragsspektrums
+%		\addplot[green, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
+%\end{axis}
+%\end{tikzpicture}
+%\caption{Betragsspektren}
+%	\label{subfig:opt.abs_spektrum}
+%\end{subfigure}
+%\begin{subfigure}{0.5 \textwidth}
+%\centering
+%    \begin{tikzpicture}
+%\begin{axis}[
+%		legend entries = {Ideales Signal, Gemessenes Signal},
+%		legend pos = north east,
+%		xlabel={Frequenz},
+%		ylabel={Phase},
+%		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+%%		%xtick distance = 10000000,
+%%		xminorgrids,
+%%		xmajorgrids,
+%		minor x tick num =3,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={\si{\MHz}},
+%		xmin = -5000000,
+%		xmax = 85000000,
+%		scaled y ticks={real:3.1415},
+%		ytick scale label code/.code={$\si{\radian}$},
+%%		ymin = 0,
+%%		ymax = 0.03,
+%		]
+%		
+%		\addplot[blue, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectIdeal};	% plot des Idealen Betragsspektrums
+%		\addplot[green, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
+%\end{axis}
+%\end{tikzpicture}
+%\caption{Phasenspektren}
+%	\label{subfig:opt.angle_spektrum}
+%\end{subfigure}
+%\caption{Spektrum des Einzelsinus-Signals, berechnet und gemessen mit je $109$ Punkten}
+%\label{fig:opt.spektrum_BB_signal}
+%\end{figure}
+%
+% 
+%Neben den für kontinuierliche Funktionen problemlos definierbaren iterativen Zuweisungen ergeben sich in Messung und diskreter Ausführung jedoch Fehlerquellen. Problematisch sind insbesondere solche, die in \eqref{eq:opt.Hnew} durch das Betragsverhältnis der Ausgangssignale verstärkt werden. 
+%Unterscheiden sich die Spektren hier um einen großen Faktor, resultiert dies in einer großen Anpassung der Übertragungsfunktion für die betreffende Frequenz. Dies ist folglich insbesondere bei kleinen Beträgen der Spektren problematisch, wenn Ungenauigkeiten und Störeinflüsse betrachtet werden. 
+%\\
+%Besondere Störeinflüsse ergeben sich also durch
+%\begin{itemize}
+%	\item Rauschen: Weißes Rauschen macht sich in allen Frequenzen bemerkbar mit kritischem Einfluss bei geringer Spektraldichte des Signals.
+%	
+%	\item Diskretisierungsfehler: Die FFT bedingt eine begrenzte Auflösung, in den Spektren von $\Hcompl$ und den gemessenen Signalen und liegt insbesondere im Allgemeinen an unterschiedlichen Frequenzen und mit unterschiedlich vielen Punkten vor.
+%	
+%	\item Interpolationsfehler: Die (hier lineare) Interpolation der Spektren zur Auswertung von $\fabs$ an den Frequenzen von $\Hcompl$ kann insbesondere den Einfluss oben genannter Punkte verstärken.
+%\end{itemize}
+%
+%Weiterhin zeigt sich auch in der geringen Stützstellenzahl in \figref{fig:opt.spektrum_BB_signal} bereits eine erste konzeptuelle Problematik des Vorgehens. Der Frequenzabstand zwischen zwei Werten der FFT ist stets mit der Wiederholfrequenz $f_{rep}$ gegeben und lässt sich somit nicht durch eine höhere Auflösung der Messgeräte verbessern, der betrachtete Bereich bis $\SI{80}{\MHz}$ nicht besser auflösen.
+%Folglich setzt sich diese Ungenauigkeit auch auf die Optimierung der Kennlinie fort. Insbesondere relevant wird dies, da die Kennlinie mit nahezu der doppelten Anzahl an Werten erstellt wird und somit der Interpolationsfehler ungleich größer wird als bei ähnlicher Anzahl Stützstellen.
+%
+%
+%\subsection{Umgang mit Fehlerquellen}
+%\subsubsection*{Ignorieren kleiner Beträge im Spektrum}
+%\label{subsubsec:opt.H.prom}
+%
+%Um Rauscheinflüsse und Probleme durch Nulldurchgänge zu dämpfen, wurde ein erster intuitiver Ansatz vorgenommen: Bei den Betragsspektren der in $\fabs$ eingehenden Signale, des gemessenen und idealisierten Spannungssignals, wurden alle Anteile, die verglichen mit dem Maximalwert des betreffenden Spektrums besonders klein sind, auf einen vorgegebenen Wert, im Folgenden Default-Wert genannt, gesetzt. Dies führt an den betroffenen Frequenzen zu $\fabs = 0$ und damit keiner Änderung von $\Hcompl$.
+%Dies bedeutet also, dass alle Einträge des Betragsspektrums von $\Uout_{,\mathrm{ideal}}$ mit weniger als zum Beispiel $5 \, \promille $ der maximalen Amplitude auf den Default-Wert gesetzt werden. Insbesondere werden auch die Einträge an den Frequenzen zurückgesetzt, die im Spektrum von $\Uout_{,\mathrm{meas}}$ klein gegen das zugehörige Maximum sind.
+%\\
+%Zu beachten bei letzterem Punkt ist die notwendige Rundung, wenn die Einträge der FFT an unterschiedlichen Frequenzen vorliegen. 
+%\\
+%\\
+%\noindent
+%Mit Beschränkung auf $3 \, \promille$ und dem globalen Minimum beider Spektren als Default-Wert werden insbesondere Einträge in den höheren Frequenzen des Spektrums \ref{subfig:opt.abs_spektrum} beeinflusst. Erst ab etwa $5 \promille$ werden alle Frequenzen ab ungefähr $\SI{60}{\MHz}$ auf den Default-Wert gesetzt. Mit dieser Methodik könnten folglich in erster Linie massive Korrekturen an hohen Frequenzen von $\Hcompl$ verhindert.
+%Verglichen mit der nachfolgend beschriebenen Anpassung hat dieses Vorgehen aufgrund der beschriebenen Bandbreite einen niedrigeren Einfluss auf die Qualität des Ausgangssignals.
+%
+%
+%\subsubsection*{Ignorieren großer Korrektur-Terme}
+%\label{subsubsec:opt.H.RMS}
+%
+%Ein zweiter, sehr grober Ansatz liegt in der Beschränkung von $\fabs$ auf Werte unterhalb einer vorgegebenen Schwelle. Zugrunde liegt die Annahme, dass die gerade an Nulldurchgängen des Spektrums sowie bei vielen hohen Frequenzen auftretenden großen Werte durch die in obiger Aufzählung genannten Fehlerquellen entstehen. Hier bedeutet dies insbesondere, dass die Diskretisierung die Nulldurchgänge nicht korrekt darstellen kann. Die Interpolation auf Frequenzen von $\Hcompl$ ist dann aufgrund der großen Sprünge von Werten in direkter Umgebung der problematischen Frequenzen mit großer Ungenauickgeit behaftet. Dies kann zu den beschriebenen, großen Korrektur-Termen in $\fabs$ führen.
+%
+%\lstset{language=Python}
+%\begin{lstlisting}[caption={Pseudocode zur Veranschaulichung der Anpassung des Korrekturterms}, label=code:opt.H.pseudoRMS, numbers=none]
+%	rms_orig = root_mean_square( f_abs )
+%	f_abs_to_use = f_abs[ where( abs(f_abs) >= 0.02 * rms_orig ] 
+%	rms_mod = root_mean_square( f_abs_to_use )
+%	idx_to_clear = f_abs[ where( abs(f_abs) >= rms_mod ] 
+%	f_abs[ ix_to_clear ] = 0
+%\end{lstlisting}
+%
+%Vereinfacht bedeutet der verfolgte Ansatz, ausnehmend große Werte von $\fabs$ als unrealistisch abzutun. Eine Pseudo-Implementierung findet sich in \coderef{code:opt.H.pseudoRMS}, um die nachfolgende Erläuterung zu illustrieren. In der vorgenommenen Implementierung wurde $\fabs$ an den ausgewählten Frequenzen beliebig auf $0$ gesetzt, also keine Anpassung bei diesen Frequenzen ermöglicht.
+%Als Grenze genutzt wurde ein modifizierter Effektivwert, nachfolgend mit RMS (Root Mean Square) bezeichnet. 
+%Der reine RMS von $\fabs$ unterliegt der Problematik, eine unproportional große Gewichtung von kleinen Einträgen zu enthalten.
+%\\
+%Idealerweise enthält $\fabs$ mit jeder Iteration kleinere Einträge als zuvor. Es würden also bei Nutzung des reinen RMS unter Umständen mit zunehmender Schrittzahl zunehmend mehr Werte in $\fabs$ ignoriert - was der Optimierung entsprechende Grenzen setzt. 
+%In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die Problematik unumgänglich, da Frequenzen, die explizit nicht bei der Anpassung berücksichtig werden sollen, den reinen RMS-Wert beeinflussen.
+%Folglich muss der RMS modifiziert werden. Hier wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich also bei der vorgenommenen Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
+%
+%Für einen Eindruck der Tragweite der RMS-Beschränkung bietet sich die Betrachtung von $\fabs$ in \figref{fig:opt.H.RMS_fabs} an. Klar zu erkennen sind die Ausreißer bei den meisten Frequenzen der originalen Nulldurchgänge. Auch die bei höheren Frequenzen auftretenden größeren Fehlerterme fallen auf. Die Korrekturen sind an den auf 0 gezogenen Werten zu erkennen. Der Unterschied zwischen dem originalen und dem modifizierten RMS liegt hier bei ungefähr $0.04$, also nahezu $10 \%$.
+%Für die Einordnung der Größenordnung des Korrekturterms sei nochmals betont, dass aufgrund der Anpassung \eqref{eq:opt.Hnew} ein Korrekturterm von $\pm 0.5$ bei dem im Folgenden standardmäßig verwendeten $\sigma_H = \nicefrac{1}{2}$ zu einer Anpassung in $\Hcompl$ in Höhe eines Viertels des ursprünglichen Wertes führt.
+%
+%\pgfplotstableread[col sep = comma] {f_abs_orig.csv} \fabsOrig 
+%\pgfplotstableread[col sep = comma] {f_abs_RMS_1.csv} \fabsRMSone 
+%\pgfplotstableread[col sep = comma] {f_abs_RMS_2.csv} \fabsRMStwo
+%\pgfplotstableread[col sep = comma] {f_abs_RMS_3.csv} \fabsRMSthree
+%\pgfplotstableread[col sep = comma] {H_RMS_orig.csv} \Horig
+%\pgfplotstableread[col sep = comma] {H_RMS_1.csv} \HrmsOne
+%\pgfplotstableread[col sep = comma] {H_RMS_2.csv} \HrmsTwo
+%\pgfplotstableread[col sep = comma] {H_RMS_3.csv} \HrmsThree
+%\begin{figure}[htb]
+%%\begin{center}
+%%\begin{subfigure}{\textwidth}
+%%%	\begin{center}
+%%    \begin{tikzpicture}
+%%\begin{axis}[
+%%		scale only axis,
+%%		width = 0.75 \textwidth,
+%%		height = 0.2 \textheight,
+%%		legend entries = {original, Step 1, Step 2, Step 3},
+%%		legend pos = north east,
+%%		legend columns = 3,
+%%		xlabel={Frequenz},
+%%		ylabel={Betrag Übertragung $\Hcompl$},
+%%		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+%%		%xtick distance = 10000000,
+%%%		xminorgrids,
+%%%		xmajorgrids,
+%%%		minor x tick num =3,
+%%		xtick pos = lower,
+%%		ytick pos = left,
+%%		xtick align = outside,
+%%		ytick align = outside,
+%%		scaled x ticks = base 10:-6,
+%%		xtick scale label code/.code={[MHz]},
+%%		xmin = 0,
+%%		xmax = 80000000,
+%%		ymin = 0,
+%%		%ymax = 0.03,
+%%		]
+%%		\addplot [black, sharp plot, mark size = 3pt] table [x index = 0, y index = 1] {\Horig};
+%%		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsOne};
+%%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsTwo};
+%%%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsThree};
+%%\end{axis}
+%%\end{tikzpicture}
+%%\caption{Entwicklung des Betrags der Übertragungsfunktion über mehrere Iterationen und im Anfangszustand} %alte Messung!
+%%	\label{fig:opt.H.RMS_H}
+%%%	\end{center}
+%%\end{subfigure}
+%%\\
+%%\begin{subfigure}{\textwidth}
+%%%\begin{center}
 %    \begin{tikzpicture}
 %\begin{axis}[
 %		scale only axis,
-%		width = 0.75 \textwidth,
-%		height = 0.2 \textheight,
-%		legend entries = {original, Step 1, Step 2, Step 3},
-%		legend pos = north east,
-%		legend columns = 3,
+%		width = 0.7 \textwidth,
+%		height = 0.17 \textheight,
+%		legend entries = {initial, angepasst},
+%		legend pos = south west,
+%		legend columns = 2,
+%		cycle list name = color list,
+%		xlabel={Frequenz},
+%		ylabel={Korrekturterm $\fabs$},
+%		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+%		%xtick distance = 10000000,
+%%		xminorgrids,
+%%%		xmajorgrids,
+%%		minor x tick num =3,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={[MHz]},
+%		extra y ticks={0.5697153886590458, -0.5697153886590458
+%						},
+%			extra y tick labels={+RMS, -RMS},
+%		extra y tick style={grid=major, ytick pos=right, ytick align=outside, ticklabel pos=right},		
+%		xmin = 0,
+%		xmax = 80000000,
+%		ymin = -0.75,
+%		ymax = 0.75,
+%		]
+%		
+%		\addplot  table [x index = 0, y index = 1] {\fabsOrig};
+%		\addplot  table [x index = 0, y index = 1] {\fabsRMSone};
+%%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMStwo};
+%%		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSthree};
+%\end{axis}
+%\end{tikzpicture}
+%\caption{Korrekturterm in initialer und in angepasster Form mit RMS- Korrektur, am Messaufbau}
+%\label{fig:opt.H.RMS_fabs}
+%%\end{center}
+%%\end{subfigure}
+%%\end{center}
+%%\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
+%%\label{fig:opt.H.iteration}
+%\end{figure}
+%
+%
+%
+%\subsection{Auswertung}
+%\label{subsec:opt.H.auswertung}
+%Eine erste Illustration bietet die Anwendung des beschriebenen Vorgehens auf das \mock-System. Hier lässt sich testen, ob unter der Annahme einer vorgegebenen Übertragungsfunktion  $\Hcompl_{ \mathrm{mock}}$ im Sinne des Hammerstein-Modells und unter Vernachlässigung der Kennlinie (entspricht einer als ideal berechneten Kennlinie) eine Verbesserung des Signals erreicht wird und wie sich die Fehlerquellen mit Ausnahme von Rauschen auswirken. 
+%Das Ergebnis dieses Tests ist eindeutig und anschaulich in \figref{subfig:opt.H.mock} aufgetragen für jeweils 15 Iterationen. Es lässt sich feststellen, dass eine Anpassung sowohl der Nulldurchgänge als auch bei hohen Frequenzen unbedingt notwendig ist und dies durch die Beschränkung großer Korrekturterme angegangen werden kann.\footnote{Die Auswirkungen der zusätzlichen Nutzung einer Beschränkung auf $3 \promille$ verbessern die Übertragungsfunktion optisch nicht wesentlich.}
+%Auch zeigen sich in direkter Umgebung der Nulldurchgänge noch Frequenzen, an denen die Korrekturterme zwar geringer als der modifizierte RMS, jedoch immer noch ungenau durch die Interpolation aufgelöst sind.
+%Diese Fehler sind ausschlaggebend dafür, dass sich die Qualität des erhaltenen Ausgangssignals über die Iterationen verschlechtert.\footnote{Je geringer der Wert des Qualitätskriteriums, desto ähnlicher ist das Signal einem idealen Einzelsinus.} Nichtsdestotrotz nähert sich die Übertragungsfunktion außerhalb der problematischen Nulldurchgänge gerade in niedrigeren Frequenzen sehr gut an $\Hcompl_{\mathrm{mock}}$ an. 
+% 
+% 
+%\pgfplotstableread[col sep = comma] {opt_mock_rms/H0.csv} \Hinit
+%\pgfplotstableread[col sep = comma] {H_a_mock.csv} \Hmock
+%%\pgfplotstableread[col sep = comma] {opt_mock_rms/H1.csv} \rmsHone
+%%\pgfplotstableread[col sep = comma] {opt_mock_rms/H5.csv} \rmsHfive
+%%\pgfplotstableread[col sep = comma] {opt_mock_rms/H10.csv} \rmsHten
+%\pgfplotstableread[col sep = comma] {opt_mock_rms/H15_3prom.csv} \rmsHprom
+%\pgfplotstableread[col sep = comma] {opt_mock_rms/H15.csv} \rmsHften
+%%\pgfplotstableread[col sep = comma] {opt_mock_simple/H1.csv} \simpleHone
+%%\pgfplotstableread[col sep = comma] {opt_mock_simple/H5.csv} \simpleHfive
+%%\pgfplotstableread[col sep = comma] {opt_mock_simple/H10.csv} \simpleHten
+%\pgfplotstableread[col sep = comma] {opt_mock_simple/H15.csv} \simpleHften
+%
+%\begin{figure}[H]
+%\begin{subfigure}{\textwidth}
+%    \begin{tikzpicture}
+%\begin{axis}[
+%		scale only axis,
+%		width = 0.8 \textwidth,
+%		height = 0.2 \textheight,		
+%		legend style={ at={(0.5,1.1)},
+%				anchor=south},
+%		legend columns = 2,
+%		transpose legend, 
+%		cycle list name = color list,
 %		xlabel={Frequenz},
 %		ylabel={Betrag Übertragung $\Hcompl$},
 %		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
@@ -227,420 +339,308 @@ Für die Einordnung der Größenordnung des Korrekturterms sei nochmals betont, 
 %		xmin = 0,
 %		xmax = 80000000,
 %		ymin = 0,
-%		%ymax = 0.03,
-%		]
-%		\addplot [black, sharp plot, mark size = 3pt] table [x index = 0, y index = 1] {\Horig};
-%		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsOne};
-%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsTwo};
-%%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\HrmsThree};
+%		ymax = 15,
+%		]	
+%		\addplot  table [x index = 0, y index = 1] {\Hmock}; \addlegendentry{$\Hcompl_{\mathrm{mock}}$}
+%		
+%		\addplot  table [x index = 0, y index = 1] {\Hinit}; \addlegendentry{$\Hcompl_{\mathrm{initial}}$}
+%		
+%%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHone}; \addlegendentry{Step 1 - keine Anpassung}
+%%		\addplot  table [x index = 0, y index = 1] {\simpleHfive}; \addlegendentry{Step 5 - keine Anpassung}
+%%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHten}; \addlegendentry{Step 10 - keine Anpassung}
+%		\addplot  table [x index = 0, y index = 1] {\simpleHften}; \addlegendentry{Step 15 - keine Anpassung}
+%		
+%%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\rmsHone}; \addlegendentry{Step 1 - mit RMS}
+%%		\addplot  table [x index = 0, y index = 1] {\rmsHfive}; \addlegendentry{Step 5 - mit RMS}
+%		\addplot  table [x index = 0, y index = 1] {\rmsHften}; \addlegendentry{Step 15 - mit RMS}	
+%		
+%		\addplot table [x index = 0, y index = 1] {\rmsHprom}; \addlegendentry{Step 15 - mit RMS und $3 \promille$}
+%
+%		
 %\end{axis}
 %\end{tikzpicture}
-%\caption{Entwicklung des Betrags der Übertragungsfunktion über mehrere Iterationen und im Anfangszustand} %alte Messung!
-%	\label{fig:opt.H.RMS_H}
-%%	\end{center}
+%\caption{Entwicklung des Betrags der Übertragungsfunktion des \mock-Systems mit und ohne Anpassung großer Korrekturterme}
+%	\label{subfig:opt.H.mock}
 %\end{subfigure}
 %\\
 %\begin{subfigure}{\textwidth}
-%%\begin{center}
-    \begin{tikzpicture}
-\begin{axis}[
-		scale only axis,
-		width = 0.7 \textwidth,
-		height = 0.17 \textheight,
-		legend entries = {initial, angepasst},
-		legend pos = south west,
-		legend columns = 2,
-		cycle list name = color list,
-		xlabel={Frequenz},
-		ylabel={Korrekturterm $\fabs$},
-		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
-		%xtick distance = 10000000,
-%		xminorgrids,
-%%		xmajorgrids,
-%		minor x tick num =3,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={[MHz]},
-		extra y ticks={0.5697153886590458, -0.5697153886590458
-						},
-			extra y tick labels={+RMS, -RMS},
-		extra y tick style={grid=major, ytick pos=right, ytick align=outside, ticklabel pos=right},		
-		xmin = 0,
-		xmax = 80000000,
-		ymin = -0.75,
-		ymax = 0.75,
-		]
-		
-		\addplot  table [x index = 0, y index = 1] {\fabsOrig};
-		\addplot  table [x index = 0, y index = 1] {\fabsRMSone};
-%		\addplot [red, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMStwo};
-%		\addplot [blue, sharp plot, mark size =3pt] table [x index = 0, y index = 1] {\fabsRMSthree};
-\end{axis}
-\end{tikzpicture}
-\caption{Korrekturterm in initialer und in angepasster Form mit RMS- Korrektur, am Messaufbau}
-\label{fig:opt.H.RMS_fabs}
-%\end{center}
-%\end{subfigure}
-%\end{center}
-%\caption[Ignorieren großer Korrektur-Terme]{Entwicklung von Übertragungsfunktion und Korrekturterm bei Beschränkung von $\fabs$ mit angepasstem RMS-Wert und Schrittweite $\sigma_H = \frac12$}
-%\label{fig:opt.H.iteration}
-\end{figure}
-
-
-
-\subsection{Auswertung}
-\label{subsec:opt.H.auswertung}
-Eine erste Illustration bietet die Anwendung des beschriebenen Vorgehens auf das \mock-System. Hier lässt sich testen, ob unter der Annahme einer vorgegebenen Übertragungsfunktion  $\Hcompl_{ \mathrm{mock}}$ im Sinne des Hammerstein-Modells und unter Vernachlässigung der Kennlinie (entspricht einer als ideal berechneten Kennlinie) eine Verbesserung des Signals erreicht wird und wie sich die Fehlerquellen mit Ausnahme von Rauschen auswirken. 
-Das Ergebnis dieses Tests ist eindeutig und anschaulich in \figref{subfig:opt.H.mock} aufgetragen für jeweils 15 Iterationen. Es lässt sich feststellen, dass eine Anpassung sowohl der Nulldurchgänge als auch bei hohen Frequenzen unbedingt notwendig ist und dies durch die Beschränkung großer Korrekturterme angegangen werden kann.\footnote{Die Auswirkungen der zusätzlichen Nutzung einer Beschränkung auf $3 \promille$ verbessern die Übertragungsfunktion optisch nicht wesentlich.}
-Auch zeigen sich in direkter Umgebung der Nulldurchgänge noch Frequenzen, an denen die Korrekturterme zwar geringer als der modifizierte RMS, jedoch immer noch ungenau durch die Interpolation aufgelöst sind.
-Diese Fehler sind ausschlaggebend dafür, dass sich die Qualität des erhaltenen Ausgangssignals über die Iterationen verschlechtert.\footnote{Je geringer der Wert des Qualitätskriteriums, desto ähnlicher ist das Signal einem idealen Einzelsinus.} Nichtsdestotrotz nähert sich die Übertragungsfunktion außerhalb der problematischen Nulldurchgänge gerade in niedrigeren Frequenzen sehr gut an $\Hcompl_{\mathrm{mock}}$ an. 
- 
- 
-\pgfplotstableread[col sep = comma] {opt_mock_rms/H0.csv} \Hinit
-\pgfplotstableread[col sep = comma] {H_a_mock.csv} \Hmock
-%\pgfplotstableread[col sep = comma] {opt_mock_rms/H1.csv} \rmsHone
-%\pgfplotstableread[col sep = comma] {opt_mock_rms/H5.csv} \rmsHfive
-%\pgfplotstableread[col sep = comma] {opt_mock_rms/H10.csv} \rmsHten
-\pgfplotstableread[col sep = comma] {opt_mock_rms/H15_3prom.csv} \rmsHprom
-\pgfplotstableread[col sep = comma] {opt_mock_rms/H15.csv} \rmsHften
-%\pgfplotstableread[col sep = comma] {opt_mock_simple/H1.csv} \simpleHone
-%\pgfplotstableread[col sep = comma] {opt_mock_simple/H5.csv} \simpleHfive
-%\pgfplotstableread[col sep = comma] {opt_mock_simple/H10.csv} \simpleHten
-\pgfplotstableread[col sep = comma] {opt_mock_simple/H15.csv} \simpleHften
-
-\begin{figure}[H]
-\begin{subfigure}{\textwidth}
-    \begin{tikzpicture}
-\begin{axis}[
-		scale only axis,
-		width = 0.8 \textwidth,
-		height = 0.2 \textheight,		
-		legend style={ at={(0.5,1.1)},
-				anchor=south},
-		legend columns = 2,
-		transpose legend, 
-		cycle list name = color list,
-		xlabel={Frequenz},
-		ylabel={Betrag Übertragung $\Hcompl$},
-		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
-		%xtick distance = 10000000,
-%		xminorgrids,
-%		xmajorgrids,
-%		minor x tick num =3,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={[MHz]},
-		xmin = 0,
-		xmax = 80000000,
-		ymin = 0,
-		ymax = 15,
-		]	
-		\addplot  table [x index = 0, y index = 1] {\Hmock}; \addlegendentry{$\Hcompl_{\mathrm{mock}}$}
-		
-		\addplot  table [x index = 0, y index = 1] {\Hinit}; \addlegendentry{$\Hcompl_{\mathrm{initial}}$}
-		
-%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHone}; \addlegendentry{Step 1 - keine Anpassung}
-%		\addplot  table [x index = 0, y index = 1] {\simpleHfive}; \addlegendentry{Step 5 - keine Anpassung}
-%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\simpleHten}; \addlegendentry{Step 10 - keine Anpassung}
-		\addplot  table [x index = 0, y index = 1] {\simpleHften}; \addlegendentry{Step 15 - keine Anpassung}
-		
-%		\addplot [mark size =3pt] table [x index = 0, y index = 1] {\rmsHone}; \addlegendentry{Step 1 - mit RMS}
-%		\addplot  table [x index = 0, y index = 1] {\rmsHfive}; \addlegendentry{Step 5 - mit RMS}
-		\addplot  table [x index = 0, y index = 1] {\rmsHften}; \addlegendentry{Step 15 - mit RMS}	
-		
-		\addplot table [x index = 0, y index = 1] {\rmsHprom}; \addlegendentry{Step 15 - mit RMS und $3 \promille$}
-
-		
-\end{axis}
-\end{tikzpicture}
-\caption{Entwicklung des Betrags der Übertragungsfunktion des \mock-Systems mit und ohne Anpassung großer Korrekturterme}
-	\label{subfig:opt.H.mock}
-\end{subfigure}
-\\
-\begin{subfigure}{\textwidth}
-\begin{tikzpicture}
-	\begin{axis}[
-		scale only axis,
-		width = 0.4 \textwidth,
-		height = 0.2 \textheight,		
-		legend pos = outer north east,
-		xlabel={Iterationsschritt},
-		ylabel={Güte Ausgangssignal},
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		xmin = 0.2,
-		xmax = 15.8,
-		]	
-		
-	\addplot table [x expr=\coordindex+1, y index =0]{
-		0.48726213261815016 
-		0.49000679356347154
-		0.5101194806372478
-		0.5266448340807586
-		0.5375527813320436
-		0.5447108764910896
-		0.5499773649457441
-		0.5545875437451622
-		0.5592582035611007
-		0.5643452240862432
-		0.5699343256576608
-		0.5758895933658901
-		0.5819216415470254
-		0.5877172129682854
-		0.5930401259075484
-		}; \addlegendentry{Korrektur ohne Anpassung}	
-	
-	\addplot table [x expr=\coordindex+1, y index =0]{
-		0.48726213261815016
-		0.4759961751169583 
-		0.4852543982854474 
-		0.4954878236964439 
-		0.5034038461346506 
-		0.5086562700430226 
-		0.5124108351861989 
-		0.5156318810838099 
-		0.517584903029569
-		0.518781160261209
-		0.5195457063994412 
-		0.520135841606002
-		0.5205906984373314 
-		0.5210120621383171 
-		0.5215551522937539
-		}; \addlegendentry{Korrektur mit RMS}
-		
-		\addplot table [x expr=\coordindex+1, y index =0]{
-		0.48726213261815016 
-		0.4695879133604225
-		0.47376436493301266 
-		0.48016422206587334 
-		0.4867655459013696 
-		0.4916978026875846 
-		0.49484977950838993 
-		0.4971321854184491 
-		0.4989985349115239 
-		0.5021058501215027 
-		0.5044349692747538 
-		0.5061724548300056 
-		0.5074558511064865 
-		0.5085423753752575 
-		0.5094731920124752
-		}; \addlegendentry{Korrektur mit RMS und $3 \promille$ }			
-	\end{axis}
-\end{tikzpicture}
-\caption{Entwicklung des Qualitätswertes des Ausgagnssigals über 15 Iterationen, mit und ohne Anpassung des Korrekturterms}
-	\label{subfig:opt.H.mockQuality}
-\end{subfigure}
-\caption[Optimierung von $\Hcompl$ im \mock-System]{Anwendung der Optimierung von $\Hcompl$ mit und ohne Anpassung des Korrekturterms auf das \mock-System bei $\sigma_H = \nicefrac{1}{2}$}
-\end{figure}
-
-
-Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlinie $K$, übertragen sich die prinzipiellen Erkenntnisse aus dem \mock-System  auf die Kavität und es lässt sich auch der Einfluss von Rauschen auf die Optimierung feststellen. Genutzt wurde hierzu und im Folgenden eine Kennlinie, die mit einer Peak-to-Peak-Spannung des Eingangssignals von $\SI{0.6}{\volt}$ erzeugt wurde. Das Ausgangssignal wurde in der Optimierung mit $V_{pp} = \SI{0.6}{\volt}$ angesetzt, was zu etwa $\SI{60}{\milli\volt}$ Peak-to-Peak-Spannung am Eingang zurückgerechnet wird. 
-\footnote{Hier sei auf die unter\textit{\nameref{subsubsec:opt.adjusta.problem}} beschriebene Problematik der nichtlinearen Vorverzerrung bei großen Unterschieden zwischen der Amplitude des momentan betrachteten Signals und des zur Berechnung von $K$ genutzten hingewiesen. Diese Erkenntnis lag zum Zeitpunkt der hier betrachteten Messung noch nicht in dieser Schärfe vor.}
-Klar erkennbar sind wieder die Problematik der Nulldurchgänge und die Auflösung hoher Frequenzen.
-Einen Überblick über die Variation der Parameter der Optimierung bietet \figref{fig:opt.H.parameter}. 
-
-
-\pgfplotstableread[col sep = comma] {H_iteration/H_0.csv} \Hstart 
-\pgfplotstableread[col sep = comma] {H_iteration/H_3prom.csv} \Hprom
-\pgfplotstableread[col sep = comma] {H_iteration/H_RMS.csv} \Hrms 
-\pgfplotstableread[col sep = comma] {H_iteration/H_RMS_3prom.csv} \Hrmsprom 
-\pgfplotstableread[col sep = comma] {H_iteration/H_sigma0.2.csv} \Hsigma
-\pgfplotstableread[col sep = comma] {H_iteration/H_simple1.csv} \HsimpleA %no number in name
-\pgfplotstableread[col sep = comma] {H_iteration/H_simple2.csv} \HsimpleB
-
-\begin{figure}[H]
-\begin{center}
-	\begin{subfigure}{\textwidth}
-\begin{tikzpicture}
-	\begin{axis}[
-		scale only axis,
-		width = 0.4 \textwidth,
-		height = 0.2 \textheight,		
-		%legend pos = outer north east,
-		legend style={ at={(1.5,0.2)},
-				anchor=south},	
-		xlabel={Iterationsschritt},
-		ylabel={Güte Ausgangssignal},
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		xmin = 0.2,
-		xmax = 5.8,
-		]	
-		
-	\addplot [blue, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
-			ohne alles, an System
-			QGesamt1,2.141630873256258
-			QGesamt1,2.064664590979294
-			QGesamt1,2.165397345084028
-			QGesamt1,1.9985538231494953
-			QGesamt1,2.031694877231738
-		}; \label{plot:opt.H.simple_adjustA} \addlegendentry{Ohne Anpassungen Messung 1}	
-	\addplot [blue, mark = +] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
-			ohne alles für Rauscheinfluss, data
-			QGesamt1,2.135948818933304
-			QGesamt1,2.1384178165733116
-			QGesamt1,2.0464488222784887
-			QGesamt1,1.9973886067241382
-			QGesamt1,2.0689413165209682
-		}; \label{plot:opt.H.simple_adjustB} \addlegendentry{Ohne Anpassungen Messung 2}	
-	\addplot [black, mark = *] table [col sep = comma, x expr=\coordindex+1, y index =1]{			simple mit sigma 0.2, data
-			QGesamt1,2.0536759283401667
-			QGesamt1,2.025676659927534
-			QGesamt1,2.035313029109188
-		}; \addlegendentry{mit $\sigma_H = 0.2$}	
-	\addplot [red, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
-			mit RMS, data
-			QGesamt1,2.0868523560789374
-			QGesamt1,2.062575354725346
-			QGesamt1,1.9691672211272198
-			QGesamt1,2.0299124251901866
-			QGesamt1,2.0676059254911445
-		}; \addlegendentry{RMS}	
-	\addplot [green, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
-			mit 3 prom, data
-			QGesamt1,2.2592583084704576
-			QGesamt1,2.1266302971337128
-			QGesamt1,2.0822550911677356
-			QGesamt1,2.0910260802802365
-			QGesamt1,2.0850568732052337
-		}; \addlegendentry{ $3 \promille$ }	
-	\addplot [yellow, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
-			mit 3 prom und RMS, data
-			QGesamt1,2.09716411420358
-			QGesamt1,2.0352919493881836
-			QGesamt1,2.0714614121252213
-			QGesamt1,1.9686861551413428
-			QGesamt1,2.120204783654906
-		}; \addlegendentry{ RMS und $3 \promille$ }	
-	
-	\end{axis}
-\end{tikzpicture}
-	\caption{Entwicklung der Qualität des Ausgangssignals bei unterschiedlicher Parameterwahl}
-	\label{subfig:opt.H.qualityOverview}
-	\end{subfigure}
-	\\
-	\begin{subfigure}{\textwidth}
-    \begin{tikzpicture}
-\begin{axis}[
+%\begin{tikzpicture}
+%	\begin{axis}[
 %		scale only axis,
 %		width = 0.4 \textwidth,
 %		height = 0.2 \textheight,		
-%		legend style={ at={(1,1.1)},
-%				anchor=south},
-		legend columns = -1,
-%		transpose legend, 
-		legend entries={initial,
-						ohne Anpassung, 
-%						ohne Anpassung 2,
-%						$\sigma_H = 0.2$ in Step 3,
-						RMS,
-						$3\promille$,
-%						RMS und $3\promille$
-						},
-		legend to name=named,
-		cycle list name = color list,
-		xlabel={Frequenz},
-		ylabel={Betrag Übertragung $\Hcompl$},
-		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
-		xtick distance = 5000000,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={[MHz]},
-		xmin = 0,
-		xmax = 20000000,
-		ymin = 5,
-		ymax = 13,
-		]	
-		\addplot [black] table [x index = 0, y index = 1] {\Hstart};
-%		\addplot  table [x index = 0, y index = 1] {\HsimpleA};
-		\addplot [blue] table [x index = 0, y index = 1] {\HsimpleB};
-%		\addplot  table [x index = 0, y index = 1] {\Hsigma};
-		\addplot [red] table [x index = 0, y index = 1] {\Hrms};
-		\addplot [green] table [x index = 0, y index = 1] {\Hprom};
-%		\addplot  table [x index = 0, y index = 1] {\Hrmsprom};
-\end{axis}
-\end{tikzpicture}
-    \begin{tikzpicture}
-\begin{axis}[
+%		legend pos = outer north east,
+%		xlabel={Iterationsschritt},
+%		ylabel={Güte Ausgangssignal},
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		xmin = 0.2,
+%		xmax = 15.8,
+%		]	
+%		
+%	\addplot table [x expr=\coordindex+1, y index =0]{
+%		0.48726213261815016 
+%		0.49000679356347154
+%		0.5101194806372478
+%		0.5266448340807586
+%		0.5375527813320436
+%		0.5447108764910896
+%		0.5499773649457441
+%		0.5545875437451622
+%		0.5592582035611007
+%		0.5643452240862432
+%		0.5699343256576608
+%		0.5758895933658901
+%		0.5819216415470254
+%		0.5877172129682854
+%		0.5930401259075484
+%		}; \addlegendentry{Korrektur ohne Anpassung}	
+%	
+%	\addplot table [x expr=\coordindex+1, y index =0]{
+%		0.48726213261815016
+%		0.4759961751169583 
+%		0.4852543982854474 
+%		0.4954878236964439 
+%		0.5034038461346506 
+%		0.5086562700430226 
+%		0.5124108351861989 
+%		0.5156318810838099 
+%		0.517584903029569
+%		0.518781160261209
+%		0.5195457063994412 
+%		0.520135841606002
+%		0.5205906984373314 
+%		0.5210120621383171 
+%		0.5215551522937539
+%		}; \addlegendentry{Korrektur mit RMS}
+%		
+%		\addplot table [x expr=\coordindex+1, y index =0]{
+%		0.48726213261815016 
+%		0.4695879133604225
+%		0.47376436493301266 
+%		0.48016422206587334 
+%		0.4867655459013696 
+%		0.4916978026875846 
+%		0.49484977950838993 
+%		0.4971321854184491 
+%		0.4989985349115239 
+%		0.5021058501215027 
+%		0.5044349692747538 
+%		0.5061724548300056 
+%		0.5074558511064865 
+%		0.5085423753752575 
+%		0.5094731920124752
+%		}; \addlegendentry{Korrektur mit RMS und $3 \promille$ }			
+%	\end{axis}
+%\end{tikzpicture}
+%\caption{Entwicklung des Qualitätswertes des Ausgagnssigals über 15 Iterationen, mit und ohne Anpassung des Korrekturterms}
+%	\label{subfig:opt.H.mockQuality}
+%\end{subfigure}
+%\caption[Optimierung von $\Hcompl$ im \mock-System]{Anwendung der Optimierung von $\Hcompl$ mit und ohne Anpassung des Korrekturterms auf das \mock-System bei $\sigma_H = \nicefrac{1}{2}$}
+%\end{figure}
+%
+%
+%Nutzt man die Optimierung für $\Hcompl$ im nahezu linearen Bereich der Kennlinie $K$, übertragen sich die prinzipiellen Erkenntnisse aus dem \mock-System  auf die Kavität und es lässt sich auch der Einfluss von Rauschen auf die Optimierung feststellen. Genutzt wurde hierzu und im Folgenden eine Kennlinie, die mit einer Peak-to-Peak-Spannung des Eingangssignals von $\SI{0.6}{\volt}$ erzeugt wurde. Das Ausgangssignal wurde in der Optimierung mit $V_{pp} = \SI{0.6}{\volt}$ angesetzt, was zu etwa $\SI{60}{\milli\volt}$ Peak-to-Peak-Spannung am Eingang zurückgerechnet wird. 
+%\footnote{Hier sei auf die unter\textit{\nameref{subsubsec:opt.adjusta.problem}} beschriebene Problematik der nichtlinearen Vorverzerrung bei großen Unterschieden zwischen der Amplitude des momentan betrachteten Signals und des zur Berechnung von $K$ genutzten hingewiesen. Diese Erkenntnis lag zum Zeitpunkt der hier betrachteten Messung noch nicht in dieser Schärfe vor.}
+%Klar erkennbar sind wieder die Problematik der Nulldurchgänge und die Auflösung hoher Frequenzen.
+%Einen Überblick über die Variation der Parameter der Optimierung bietet \figref{fig:opt.H.parameter}. 
+%
+%
+%\pgfplotstableread[col sep = comma] {H_iteration/H_0.csv} \Hstart 
+%\pgfplotstableread[col sep = comma] {H_iteration/H_3prom.csv} \Hprom
+%\pgfplotstableread[col sep = comma] {H_iteration/H_RMS.csv} \Hrms 
+%\pgfplotstableread[col sep = comma] {H_iteration/H_RMS_3prom.csv} \Hrmsprom 
+%\pgfplotstableread[col sep = comma] {H_iteration/H_sigma0.2.csv} \Hsigma
+%\pgfplotstableread[col sep = comma] {H_iteration/H_simple1.csv} \HsimpleA %no number in name
+%\pgfplotstableread[col sep = comma] {H_iteration/H_simple2.csv} \HsimpleB
+%
+%\begin{figure}[H]
+%\begin{center}
+%	\begin{subfigure}{\textwidth}
+%\begin{tikzpicture}
+%	\begin{axis}[
 %		scale only axis,
-%		width = 0.35 \textwidth,
+%		width = 0.4 \textwidth,
 %		height = 0.2 \textheight,		
-		cycle list name = color list,
-		xlabel={Frequenz},
-		ylabel={Betrag Übertragung $\Hcompl$},
-		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
-		xtick distance = 5000000,
-		xtick pos = lower,
-		ytick pos = left,
-		xtick align = outside,
-		ytick align = outside,
-		scaled x ticks = base 10:-6,
-		xtick scale label code/.code={[MHz]},
-		xmin = 60000000,
-		xmax = 80000000,
-		ymin = 0,
-		ymax = 5,
-		]	
-		\addplot [black] table [x index = 0, y index = 1] {\Hstart};
-%		\addplot  table [x index = 0, y index = 1] {\HsimpleA};
-		\addplot [blue] table [x index = 0, y index = 1] {\HsimpleB};
-%		\addplot  table [x index = 0, y index = 1] {\Hsigma};
-		\addplot [red] table [x index = 0, y index = 1] {\Hrms};
-		\addplot [green] table [x index = 0, y index = 1] {\Hprom};
-%		\addplot  table [x index = 0, y index = 1] {\Hrmsprom};
-\end{axis}
-\end{tikzpicture}
-
-\ref{named}
-	\caption{Einfluss unterschiedlicher Parameterwahl auf Entwicklung der Übertragungsfunktion bei hohen Frequenzen, nach 5 Iterationen}
-	\label{subfig:opt.H.paramHoverview}
-	\end{subfigure}
-\caption{Einfluss unterschiedlicher Parameterwahl auf Entwicklung der Qualität des Ausgangssignals und die Übertragungsfunktion}
-\label{fig:opt.H.parameter}
-\end{center}
-\end{figure}
-
-
-Klar erkennbar ist aus \figref{subfig:opt.H.qualityOverview} vor allem, dass der Einfluss zufälliger Schwankungen auf die Qualität des Signals enorm ist, man vergleiche hierzu nur die unter identischen Voraussetzungen und um wenige Minuten verzögert entstandenen Messungen mit \ref{plot:opt.H.simple_adjustA} und \ref{plot:opt.H.simple_adjustB}. 
-Weiterhin lässt sich im Vergleich mit  \figref{subfig:opt.H.mockQuality} die wenig verwunderliche Aussage treffen, dass die Qualität aller Ausgangssignale wesentlich schlechter ist, als dies beim \mock-System der Fall war. 
-Diese nicht eindeutige Änderung der Qualität ist insofern verwunderlich, als dass auch die starke Anpassung über die Iteration bei in $\Hcompl$ stark verstärkten niedrigen Frequenzen nicht nennenswert auf die Qualität auswirkt.
-Und letztlich ist über die hier vorgenommenen Iterationsschritte keine eindeutige Verbesserung des Ausgangssignals zu erkennen. Da gleichzeitig jedoch auch keine enorme Verschlechterung eintritt und der Rauscheinfluss nicht beziffert werden kann, ist eine qualitative Aussage über die einzelne Optimierung von $\Hcompl$ mit den vorliegenden Daten für die vorgenommenen Anpassungen nicht zu treffen.
-Festhalten jedoch lässt sich auch bei Messungen am Messaufbau, dass die vorgenommenen Anpassungen und insbesondere die Beschränkung mit einem modifizierten RMS wesentlich weniger als abwegig angesehene Korrekturterme erlauben und so eine kleinschrittigere Anpassung möglich machen. 
+%		%legend pos = outer north east,
+%		legend style={ at={(1.5,0.2)},
+%				anchor=south},	
+%		xlabel={Iterationsschritt},
+%		ylabel={Güte Ausgangssignal},
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		xmin = 0.2,
+%		xmax = 5.8,
+%		]	
+%		
+%	\addplot [blue, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+%			ohne alles, an System
+%			QGesamt1,2.141630873256258
+%			QGesamt1,2.064664590979294
+%			QGesamt1,2.165397345084028
+%			QGesamt1,1.9985538231494953
+%			QGesamt1,2.031694877231738
+%		}; \label{plot:opt.H.simple_adjustA} \addlegendentry{Ohne Anpassungen Messung 1}	
+%	\addplot [blue, mark = +] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+%			ohne alles für Rauscheinfluss, data
+%			QGesamt1,2.135948818933304
+%			QGesamt1,2.1384178165733116
+%			QGesamt1,2.0464488222784887
+%			QGesamt1,1.9973886067241382
+%			QGesamt1,2.0689413165209682
+%		}; \label{plot:opt.H.simple_adjustB} \addlegendentry{Ohne Anpassungen Messung 2}	
+%	\addplot [black, mark = *] table [col sep = comma, x expr=\coordindex+1, y index =1]{			simple mit sigma 0.2, data
+%			QGesamt1,2.0536759283401667
+%			QGesamt1,2.025676659927534
+%			QGesamt1,2.035313029109188
+%		}; \addlegendentry{mit $\sigma_H = 0.2$}	
+%	\addplot [red, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+%			mit RMS, data
+%			QGesamt1,2.0868523560789374
+%			QGesamt1,2.062575354725346
+%			QGesamt1,1.9691672211272198
+%			QGesamt1,2.0299124251901866
+%			QGesamt1,2.0676059254911445
+%		}; \addlegendentry{RMS}	
+%	\addplot [green, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+%			mit 3 prom, data
+%			QGesamt1,2.2592583084704576
+%			QGesamt1,2.1266302971337128
+%			QGesamt1,2.0822550911677356
+%			QGesamt1,2.0910260802802365
+%			QGesamt1,2.0850568732052337
+%		}; \addlegendentry{ $3 \promille$ }	
+%	\addplot [yellow, mark = x] table [col sep = comma, x expr=\coordindex+1, y index =1]{			
+%			mit 3 prom und RMS, data
+%			QGesamt1,2.09716411420358
+%			QGesamt1,2.0352919493881836
+%			QGesamt1,2.0714614121252213
+%			QGesamt1,1.9686861551413428
+%			QGesamt1,2.120204783654906
+%		}; \addlegendentry{ RMS und $3 \promille$ }	
+%	
+%	\end{axis}
+%\end{tikzpicture}
+%	\caption{Entwicklung der Qualität des Ausgangssignals bei unterschiedlicher Parameterwahl}
+%	\label{subfig:opt.H.qualityOverview}
+%	\end{subfigure}
+%	\\
+%	\begin{subfigure}{\textwidth}
+%    \begin{tikzpicture}
+%\begin{axis}[
+%%		scale only axis,
+%%		width = 0.4 \textwidth,
+%%		height = 0.2 \textheight,		
+%%		legend style={ at={(1,1.1)},
+%%				anchor=south},
+%		legend columns = -1,
+%%		transpose legend, 
+%		legend entries={initial,
+%						ohne Anpassung, 
+%%						ohne Anpassung 2,
+%%						$\sigma_H = 0.2$ in Step 3,
+%						RMS,
+%						$3\promille$,
+%%						RMS und $3\promille$
+%						},
+%		legend to name=named,
+%		cycle list name = color list,
+%		xlabel={Frequenz},
+%		ylabel={Betrag Übertragung $\Hcompl$},
+%		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+%		xtick distance = 5000000,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={[MHz]},
+%		xmin = 0,
+%		xmax = 20000000,
+%		ymin = 5,
+%		ymax = 13,
+%		]	
+%		\addplot [black] table [x index = 0, y index = 1] {\Hstart};
+%%		\addplot  table [x index = 0, y index = 1] {\HsimpleA};
+%		\addplot [blue] table [x index = 0, y index = 1] {\HsimpleB};
+%%		\addplot  table [x index = 0, y index = 1] {\Hsigma};
+%		\addplot [red] table [x index = 0, y index = 1] {\Hrms};
+%		\addplot [green] table [x index = 0, y index = 1] {\Hprom};
+%%		\addplot  table [x index = 0, y index = 1] {\Hrmsprom};
+%\end{axis}
+%\end{tikzpicture}
+%    \begin{tikzpicture}
+%\begin{axis}[
+%%		scale only axis,
+%%		width = 0.35 \textwidth,
+%%		height = 0.2 \textheight,		
+%		cycle list name = color list,
+%		xlabel={Frequenz},
+%		ylabel={Betrag Übertragung $\Hcompl$},
+%		y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+%		xtick distance = 5000000,
+%		xtick pos = lower,
+%		ytick pos = left,
+%		xtick align = outside,
+%		ytick align = outside,
+%		scaled x ticks = base 10:-6,
+%		xtick scale label code/.code={[MHz]},
+%		xmin = 60000000,
+%		xmax = 80000000,
+%		ymin = 0,
+%		ymax = 5,
+%		]	
+%		\addplot [black] table [x index = 0, y index = 1] {\Hstart};
+%%		\addplot  table [x index = 0, y index = 1] {\HsimpleA};
+%		\addplot [blue] table [x index = 0, y index = 1] {\HsimpleB};
+%%		\addplot  table [x index = 0, y index = 1] {\Hsigma};
+%		\addplot [red] table [x index = 0, y index = 1] {\Hrms};
+%		\addplot [green] table [x index = 0, y index = 1] {\Hprom};
+%%		\addplot  table [x index = 0, y index = 1] {\Hrmsprom};
+%\end{axis}
+%\end{tikzpicture}
+%
+%\ref{named}
+%	\caption{Einfluss unterschiedlicher Parameterwahl auf Entwicklung der Übertragungsfunktion bei hohen Frequenzen, nach 5 Iterationen}
+%	\label{subfig:opt.H.paramHoverview}
+%	\end{subfigure}
+%\caption{Einfluss unterschiedlicher Parameterwahl auf Entwicklung der Qualität des Ausgangssignals und die Übertragungsfunktion}
+%\label{fig:opt.H.parameter}
+%\end{center}
+%\end{figure}
+%
+%
+%Klar erkennbar ist aus \figref{subfig:opt.H.qualityOverview} vor allem, dass der Einfluss zufälliger Schwankungen auf die Qualität des Signals enorm ist, man vergleiche hierzu nur die unter identischen Voraussetzungen und um wenige Minuten verzögert entstandenen Messungen mit \ref{plot:opt.H.simple_adjustA} und \ref{plot:opt.H.simple_adjustB}. 
+%Weiterhin lässt sich im Vergleich mit  \figref{subfig:opt.H.mockQuality} die wenig verwunderliche Aussage treffen, dass die Qualität aller Ausgangssignale wesentlich schlechter ist, als dies beim \mock-System der Fall war. 
+%Diese nicht eindeutige Änderung der Qualität ist insofern verwunderlich, als dass auch die starke Anpassung über die Iteration bei in $\Hcompl$ stark verstärkten niedrigen Frequenzen nicht nennenswert auf die Qualität auswirkt.
+%Und letztlich ist über die hier vorgenommenen Iterationsschritte keine eindeutige Verbesserung des Ausgangssignals zu erkennen. Da gleichzeitig jedoch auch keine enorme Verschlechterung eintritt und der Rauscheinfluss nicht beziffert werden kann, ist eine qualitative Aussage über die einzelne Optimierung von $\Hcompl$ mit den vorliegenden Daten für die vorgenommenen Anpassungen nicht zu treffen.
+%Festhalten jedoch lässt sich auch bei Messungen am Messaufbau, dass die vorgenommenen Anpassungen und insbesondere die Beschränkung mit einem modifizierten RMS wesentlich weniger als abwegig angesehene Korrekturterme erlauben und so eine kleinschrittigere Anpassung möglich machen. 
 
 
 \section{Optimierung der nichtlinearen Kennlinie $K$}
 \label{sec:opt.K}
-Die erste Kennlinie wird über ein linear vorverzerrtes Signal bestimmt. Dabei ist es möglich, dass sich die Kennlinie für ein nichtlinear vorverzerrtes Signal oder für eine Eingangssignal mit verändertem Frequenzspektrum ändert. \\
-Für die Anpassung der Kennlinie $K$ werden die beiden berechneten Signal $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ mit einander verglichen. Diese Signale lassen sich wie folgt aus der Parametrisierung der nichtlinearen Kennlinie als Potenzreihe berechnen.
+Die erste Kennlinie wird über ein linear vorverzerrtes Signal bestimmt. Dabei ist es möglich, dass sich die Kennlinie für ein nichtlinear vorverzerrtes Signal oder für ein Eingangssignal mit verändertem Frequenzspektrum ändert. \\
+Für die Anpassung der Kennlinie $K$ werden die beiden berechneten Signal $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ miteinander verglichen. Diese Signale lassen sich wie folgt aus der Parametrisierung der nichtlinearen Kennlinie als Potenzreihe berechnen.
 \begin{align}
 	\Uquest_{, \mathrm{meas}} \oft = \sum_{n=1}^N \, \overline{a}_n \left[ U_{in}(t) \right]^n
 	\quad
 	\Uquest_{, \mathrm{ideal}} \oft = \sum_{n=1}^N \, a_n \left[ U_{in}(t) \right]^n
 \end{align}
-Dabei sind $\overline{a}_n$ die Koeffizienten der neuen Kennlinie. Diese können mit der schon aus \cite{harzheim} bekannten Matrixmultiplikation berechnet werden. Bei diesem Verfahren werden einzelne Sample des Eingangssignals $\Uin$ und der Größe $\Uquest$ verglichen und das entstehende lineare Optimierungsproblem mit der Methode der kleinsten Quadrate gelöst. \\
-Für eine Optimierung ist es notwendig eine Schrittweiter zu definieren. Die Differenz der beiden Signale $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ wird ebenfalls durch eine Potenzreihe der nichtlinearen Kennlinie parametrisiert.
+Dabei sind $\overline{a}_n$ die Koeffizienten der neuen Kennlinie. Diese können mit der schon aus \cite{harzheim} bekannten Matrixmultiplikation berechnet werden. Bei diesem Verfahren werden einzelne Samples des Eingangssignals $\Uin$ und der Größe $\Uquest$ verglichen und das entstehende lineare Optimierungsproblem mit der Methode der kleinsten Quadrate gelöst. \\
+Für eine Optimierung ist es notwendig eine Schrittweite zu definieren. Die Differenz der beiden Signale $\Uquest_{, \mathrm{meas}} \oft$ und $\Uquest_{, \mathrm{ideal}} \oft$ wird ebenfalls durch eine Potenzreihe der nichtlinearen Kennlinie parametrisiert.
 \begin{align}
 \label{eq:opt.deltaUquest}
-	\Delta \Uquest \oft = \Uquest_{, \mathrm{meas}} \oft - \Uquest_{, \mathrm{ideal}} \oft
+	\Delta \Uquest \oft := \Uquest_{, \mathrm{meas}} \oft - \Uquest_{, \mathrm{ideal}} \oft
 	=
 	\sum_{n=1}^N \, \left( \overline{a}_n -  a_n\right) \left[ U_{in}(t) \right]^n
 	=
 	\sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n	
 \end{align}
-Dafür können die Koeffizienten $\tilde{a}_n$ direkt ohne die Berechnung von $\overline{a}_n$ bestimmt werden. Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} = \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} = \Uin (i \cdot \Delta t)}$ verglichen. Dieses Lösungsverfahren wird in \cite{harzheim} vorgestellt. Mit der Potenzreihe aus \eqref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
+Dafür können die Koeffizienten $\tilde{a}_n$ direkt ohne die Berechnung von $\overline{a}_n$ bestimmt werden. Die Berechnung der Koeffizienten $\tilde{a}_n$ stellt ebenso ein lineares Optimierungsproblem dar. Dabei werden $M$ Samples von ${\Delta \Uquest_{,i} := \Delta \Uquest (i \cdot \Delta t)}$ mit zugehörigen Samples des Eingangssignals ${\Uin_{,i} := \Uin (i \cdot \Delta t)}$ verglichen. Dieses Lösungsverfahren wird in \cite{harzheim} vorgestellt. Mit der Potenzreihe aus \eqref{eq:opt.deltaUquest} ergibt sich folgendes Gleichungssystem
 \begin{align}
 	\left( 
 	\begin{matrix}
@@ -665,15 +665,15 @@ Dafür können die Koeffizienten $\tilde{a}_n$ direkt ohne die Berechnung von $\
 		\vdots \\
 		\Delta \Uquest_{,M} \\	 
 	\end{matrix}
-	\right)
+	\right) \; .
 	\label{eq:Uquest.Gleichungssystem}
 \end{align}
-Dieses Gleichungssystem ist mit normalerweise $M>N$ überbestimmt und wird mit der Methode der kleinsten Quadrate gelöst. Die Koeffizienten $\tilde{a}_n$ werden nun wie folgt zur Anpassung der Koeffizienten $a_n$ verwendet
+Dieses Gleichungssystem ist mit $M>N$ überbestimmt und wird mit der Methode der kleinsten Quadrate gelöst. Die Koeffizienten $\tilde{a}_n$ werden nun wie folgt zur Anpassung der Koeffizienten $a_n$ verwendet
 \begin{align}
 	\label{eq:opt.adjusta}
 	a_n^{i+1} = a_n^{i} + \sigma_{a}^{i} \tilde{a}_n^{i}
 \end{align}
-Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$. Der Ablauf des Algorithmus ist in \figref{fig:Algorithmus.K} gezeigt. Dabei stellen die grünen Schritt die Initialisierung dar, blaue Schritte sind Berechnungen oder Messungen von Signalen und im roten Block findet die eigentliche Anpassung der Kennlinie statt. Durchgezogene Pfeile folgen dem Programmablauf und gestrichelte Pfeile stellen Parameterübergaben dar.
+Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$. Der Ablauf des Algorithmus ist in \figref{fig:Algorithmus.K} gezeigt. Dabei stellen die grünen Schritte die Initialisierung dar, blaue Schritte sind Berechnungen oder Messungen von Signalen und im roten Block findet die eigentliche Anpassung der Kennlinie statt. Durchgezogene Pfeile folgen dem Programmablauf und gestrichelte Pfeile stellen Parameterübergaben dar.
 
 \begin{figure}[H]
 \centering
@@ -720,12 +720,23 @@ Für die Schrittweite gilt $\sigma_{a}^i \in \left[ 0 , 1 \right]$. Der Ablauf d
 \subsection{Erster Ansatz}
 \label{subsec:opt.adjusta.results}
 Für die Berechnung der ersten Kennlinie $K_0$ wurde das ideale Ausgangssignal $\Uout_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{6}{\V}$ über $\Hcompl^{-1}$ zurückgerechnet und als Eingangssignal verwendet $\Uin_{, \mathrm{initial }} = \Uquest_{, \mathrm{ideal}}$. Dieser Wert von $V_{PP} = \SI{6}{\V}$ wurde nicht gemessen, sondern lediglich zur Berechnung des ersten Eingangssignals verwendet, damit die Kennlinie im nichtlinearen Spannungsbereich des System berechnet werden kann. Für das berechnete Eingangssignal ergibt sich $V_{PP} \approx \SI{587}{\mV}$.\\
-Als erster Ansatz wurde versucht $K$ über das selbe $\Uquest_{, \mathrm{ideal}}$ zu optimieren, mit dem es zuvor zur Berechnung verwendet wurde. Das heißt, dass die beiden Signale die gleiche Amplitude haben. Beim Zurückrechnen über die Kennlinie wurde festgestellt, dass $K$ in diesem Bereich nicht mehr bijektiv ist. Für den Fall, dass das Signal zu groß für den gültigen Bereich ist wird es auf beliebig gewählte $80\%$ des maximal zulässigen Wertes gesetzt. Zu diesem Zeitpunkt war schon bekannt, dass die Kennlinie nicht für $100\%$ ihres gültigen Bereiches gültig ist, deshalb wurde ein kleinerer Wert gesetzt. Dabei könnten sich in jedem Iterationsschritt unterschiedliche Amplituden von $\Uquest$ ergeben. Ziel hierbei ist es den Bereich, in dem $K$ bijektiv ist, schrittweise zu vergrößern.
+\begin{itemize}
+	\item 	Gleiche Amplituden zur Berechnung von $K$ und zur Optimierung.
+	
+	\item 	Falls Amplitude über den bijektiven Bereich hinausgeht, wird diese auf $80 \%$ des maximal möglichen Wertes\footnote{Bei $100 \%$ wurde bereits eine starke Verschlechterung festgestellt.} gesetzt.
+	
+\end{itemize}
+Dadurch können sich bei jedem Iterationsschritt unterschiedliche Amplituden von $\Uquest$ ergeben. Ziel hierbei ist es, den bijektiven Bereich von $K$ schrittweise zu vergrößern.
+
+
 \subsubsection*{Ergebnisse und Erkenntnisse}
 \label{subsubsec:opt.adjusta.results}
-Das Ergebnis ist eine Schwankung der Qualität siehe \figref{fig:evaluate30Q}. Die Kennlinien, zu den markierten Iterationen sind in \figref{fig:evaluate30K} eingezeichnet. Zu erkennen ist eine alternierende Anpassung der Kennlinie, die schon in den ersten drei Iterationen angefangen hat. Ergänzend wurden auch die letzten beiden Kennlinien eingezeichnet, um die große Anpassung innerhalb einer Iteration zu verdeutlichen. Ursache dafür könnte sein, dass die Kennlinie in einen nicht mehr sinnvollen Bereich genutzt wurde, um das Eingangssignal zu berechnen. Die Details dazu folgen im nächsten Abschitt. Dadurch könnten zu große Änderungen in einem Iterationsschritt vorgenommen worden sein, die nicht mehr zielführend waren.\\
-Ein weiteres Ergebnis ist auch, dass das hier verwendete Eingangssignal nicht die zur Berechnung verwendeten $V_{PP} = \SI{6}{\V}$ über dem Gapspannungsteiler erreicht. Mit dem daraus berechneten Eingangssignal lassen sich $V_{PP} = \SI{4,7}{\V}$ über dem Gapspannungsteiler erreichen, deshalb sollte im nächsten Ansatz zur Optimierung von einem Ausgangssignal mit höchstens diesem Wert von $V_{PP}$ ausgegangen werden. Diese Wahl der Amplitunden am Ausgang dienen lediglich der Referenz auf einen Wert. Man kann analog dazu auch die Amplitude des Eingangssignal festlegen und damit als Referenz arbeiten.\\
-Im nachfolgenden Diagramm der Güte wurden die Iterationen 1, 2, 3, 29 und 30 anders markiert, weil die dazu gehörigen Kennlinien $K_i$ im nebenstehenden Diagramm eingezeichnet wurden. Die anderen Kennlinien hatten sich über dem Verlauf der Messung den Kennlinien $K_{29}$ und $K_{30}$ abwechselnd angenähert.
+Das Ergebnis ist eine Schwankung der Qualität siehe \figref{fig:evaluate30Q}. Die Kennlinien zu den markierten Iterationen sind in \figref{fig:evaluate30K} eingezeichnet. Zu erkennen ist eine alternierende Anpassung der Kennlinie, die schon in den ersten drei Iterationen angefangen hat. 
+Ergänzend wurden auch die letzten beiden Kennlinien eingezeichnet, um die große Anpassung innerhalb einer Iteration zu verdeutlichen. Ursache dafür könnte sein, dass die Kennlinie in einem nicht mehr sinnvollen Bereich genutzt wurde, um das Eingangssignal zu berechnen. Die Details dazu folgen im nächsten Abschitt. Dadurch könnten zu große Änderungen in einem Iterationsschritt vorgenommen worden sein, die nicht mehr zielführend waren.
+\\
+Weiterhin lässt sich feststellen, dass das hier verwendete Eingangssignal nicht das zur Berechnung verwendete $V_{PP} = \SI{6}{\V}$ über dem Gapspannungsteiler erreicht. Mit dem daraus berechneten Eingangssignal lassen sich $V_{PP} = \SI{4,7}{\V}$ über dem Gapspannungsteiler erreichen. Diese Wahl der Amplitude am Ausgang dient lediglich als Referenz auf einen Wert. Man kann analog dazu auch die Amplitude des Eingangssignals festlegen und damit als Referenz arbeiten.
+\\
+Im nachfolgenden Diagramm der Güte werden die zu den in \figref{fig:evaluate30K} gezeigten Kennlinien gehörigen Gütewerte in \figref{fig:evaluate30Q} mit \ref{plot:opt.a.iteration.marker} markiert. Die anderen Kennlinien hatten sich über den Verlauf der Messung den Kennlinien $K_{29}$ und $K_{30}$ abwechselnd angenähert.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
     \newlength\figureheight
@@ -747,12 +758,12 @@ Im nachfolgenden Diagramm der Güte wurden die Iterationen 1, 2, 3, 29 und 30 an
 \caption{Erster Ansatz zur Anpassung von $K$}
 \end{figure}
 
-\subsubsection*{Grenzen der initial Kennlinie}
+\subsubsection*{Grenzen der initialen Kennlinie}
 \label{subsubsec:opt.adjusta.problem}
-Das Signal $\Uquest_{,\mathrm{meas}}$, wurde aus dem gemessenen $\Uout_{,\mathrm{meas}}$ berechnet und ist in \figref{fig:Amplitudenproblem} eingezeichnet. Die sich daraus ergebende Kennlinie ist in \figref{fig:K0} eingezeichnet. Das dazu gehörige Eingangssignal hat dabei die Form von $\Uquest_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{578}{\mV}$ und ist damit etwa doppelt so groß wie das in \figref{fig:UinUquest} eingezeichnete $\Uquest_{, \mathrm{ideal}}$.\\
-Wenn man jetzt $\Uquest_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{300}{\mV}$ über $K_0$ zurückrechnet, um das erste nichtlinear vorverzerrte Eingangssignal zu erhalten, so stellt man fest, dass dies an der Grenze von $K_0$ stößt, siehe auch das eingezeichnete Maximum von $\Uquest$ in \figref{fig:K0}. \\
-Deshalb kann damit zwar ein vorverzerrtes Signal berechnen werden, aber Messungen zeigen, dass die Qualität in diesem Bereich abnimmt. \\
-Eine Ursache dafür könnte sein, dass die Methode der kleinsten Quadrate, mit der die Parameter $a_n$ für $K$ bestimmt werden, die Extrema von $\Uquest$ nicht genug gewichtet, um in diesem Bereich noch gültig zu sein.
+Das Signal $\Uquest_{,\mathrm{meas}}$ wurde aus dem gemessenen $\Uout_{,\mathrm{meas}}$ berechnet und ist in \figref{fig:Amplitudenproblem} eingezeichnet. Die sich daraus ergebende Kennlinie zeigt \figref{fig:K0}. Das dazu gehörige Eingangssignal hat dabei die Form von $\Uquest_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{578}{\mV}$ und ist damit etwa doppelt so groß wie das in \figref{fig:UinUquest} eingezeichnete $\Uquest_{, \mathrm{ideal}}$.\\
+Wenn man jetzt $\Uquest_{, \mathrm{ideal}}$ mit $V_{PP} = \SI{300}{\mV}$ über $K_0$ zurückrechnet, um das erste nichtlinear vorverzerrte Eingangssignal zu erhalten, so stellt man fest, dass dies an die Grenze von $K_0$ stößt, siehe auch das eingezeichnete Maximum von $\Uquest$ in \figref{fig:K0}. \\
+Deshalb kann damit zwar ein vorverzerrtes Signal berechnet werden, aber Messungen zeigen, dass die Qualität in diesem Bereich abnimmt. \\
+Eine Ursache dafür könnte sein, dass die Methode der kleinsten Quadrate, mit der die Parameter $a_n$ für $K$ bestimmt werden, die Extrema von $\Uquest$ nicht ausreichend gewichtet, um in diesem Bereich noch gültig zu sein.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{7.5cm}
@@ -772,7 +783,8 @@ Eine Ursache dafür könnte sein, dass die Methode der kleinsten Quadrate, mit d
 \label{fig:Amplitudenproblem}
 \end{figure}
 
-Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\textrm{ideal}}$ über die Kennlinie nichtlinear vorverzerrt. Das Ausgangssignal wurde mit dem RF-Tool \cite{RF-Tool} bewertet und ist in \figref{fig:evaluateK.quality} gezeigt. Dabei sind die Grenzen von $\Uquest$ in \figref{fig:K0_quality} mit $\min(\Uquest)$ und $\max(\Uquest)$ beschriftet dies entspricht mit $V_{PP} = \SI{120}{\mV}$ etwa $34\%$ des maximal möglichen $V_{PP}$, das von $K$ im bijektiven Bereich zugelassen ist. Die anderen eingezeichneten Grenzen, die nicht beschriftet sind, stellen die Grenzen dar, bis zu denen die Güte es Ausgangssignals überprüft wurde.\\
+\noindent
+Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\textrm{ideal}}$ über die Kennlinie nichtlinear vorverzerrt. Das Ausgangssignal wurde mit dem RF-Tool \cite{RF-Tool} bewertet und ist in \figref{fig:evaluateK.quality} gezeigt. Dabei sind die Grenzen von $\Uquest$ in \figref{fig:K0_quality} mit $\min(\Uquest)$ und $\max(\Uquest)$ beschriftet. Dies entspricht mit $V_{PP} = \SI{120}{\mV}$ etwa $34\%$ des maximal möglichen $V_{PP}$, das von $K$ im bijektiven Bereich zugelassen ist. Die anderen eingezeichneten Grenzen, die nicht beschriftet sind, stellen die Grenzen dar, bis zu denen die Güte es Ausgangssignals überprüft wurde.\\
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{7.5cm}
@@ -791,22 +803,25 @@ Für die Evaluierung der Grenzen wurden verschiedene Amplituden von $\Uquest_{,\
 \caption{Bewertung des Ausgangssignals}
 \label{fig:evaluateK}
 \end{figure}
-Dabei ist der kleinste und damit der beste Wert der Güte mit \SI{190}{\mV} etwa $54\%$ des maximal möglichen $V_{PP}$ das von $K$ aufgezeichnet worden. Diese Messung wurde nur für diese Kennlinie durchgeführt und lässt keine Schlüsse auf die allgemeine Gültigkeit für alle Kennlinien zu, deshalb sollte der optimale Wert für $V_{PP}$ sicherheitshalbe für alle Kennlinien einzeln bestimmt werden.
+
+\noindent
+Der kleinste und damit beste Wert der Güte ist dabei mit \SI{190}{\mV} berechnet worden. Das entspricht etwa $54\%$ des maximal möglichen $V_{PP}$, das im bijektiven Bereich von $K$ zulässig ist. Diese Messung wurde nur für diese Kennlinie durchgeführt und lässt keine Schlüsse auf die allgemeine Gültigkeit für alle Kennlinien zu, deshalb sollte der optimale Wert für $V_{PP}$ sicherheitshalber für alle Kennlinien einzeln bestimmt werden.
 
 \subsection{Zweiter Ansatz}
 \label{subsubsec:opt.adjusta.kleiner}
-Aus den Ergebnissen aus \ref{subsec:opt.adjusta.results} und der Evaluierung der Grenzen aus dem vorherigen Abschnitt wurde ein neuer Ansatz zur Optimierung aufgestellt, bei dem die Kennlinie $K$ in einem kleineren Bereich optimiert wird als der, aus dem sie vorher zur Initialisierung berechnet wurde.\\
-Als zweiter Ansatz wurde folgendes Setup verwendet:
+Aus den Ergebnissen aus Abschnitt \ref{subsec:opt.adjusta.results} und der Evaluierung der Grenzen aus dem vorherigen Abschnitt wurde ein neuer Ansatz zur Optimierung aufgestellt, bei dem die Kennlinie $K$ in einem kleineren Bereich optimiert wird als der, aus dem sie vorher zur Initialisierung berechnet wurde.\\
+Für den zweiten Ansatz wurde folgendes Setup verwendet:
 \begin{itemize}
 	\item $K_0$ bestimmt über $\Uout_{,\textrm{ideal}}$ mit $V_{PP} = \SI{6}{\V}$
 	\item $K$ angepasst über $\Uout_{,\textrm{ideal}}$ mit $V_{PP} = \SI{3}{\V}$
 \end{itemize}
 Damit wurde $K$ mit einem $\Uquest_{,\textrm{ideal}}$ optimiert, bei dem $V_{PP}$ auf $66\%$ des maximal zulässigen Wertes gesetzt wurde. Der Bereich ist in \figref{fig:opt.kleinerBereich.K} eingezeichnet.
+
 \subsubsection*{Ergebnisse und Erkenntnisse}
 \label{subsubsec:opt.adjusta.kleiner.results}
-Für diesen Ansatz wurden aufgrund der späten Erkenntnis keine ausführlichen Tests durchgeführt, deshalb lässt sich darüber nur bedingt eine Aussage über die Konvergenz treffen. Aber diese niedrigen Werte der Güte konnten bisher nur mit diesem Ansatz erreicht werden. Im Vergleich zu den Ergebnissen des vorigen Ansatzes in \figref{fig:evaluate30Q} fällt jedoch auf, dass in den ersten Iterationen keine Verschlechterung der Qualität verglichen mit dem Initalwert auftritt.
+Mit dieser Amplituden der Ausgangsspannung wurde ein Eingangssignal mit $V_{PP} = \SI{290}{\mV}$ berechnet und damit ein $V_{PP} = \SI{4.7}{\V}$ am Ausgang über dem Gapspannungsteiler gemessen. Für diesen Ansatz wurden aufgrund der späten Erkenntnis keine ausführlichen Tests durchgeführt, deshalb lässt sich darüber nur bedingt eine Aussage über die Konvergenz treffen. Aber derart niedrige Werte der Güte konnten bisher nur mit diesem Ansatz erreicht werden. Im Vergleich zu den Ergebnissen des vorigen Ansatzes in \figref{fig:evaluate30Q} fällt jedoch auf, dass in den ersten Iterationen keine Verschlechterung der Qualität verglichen mit dem Initalwert auftritt.
 \\
-Die Schrittweite wurde bei all diesen Messungen auf $\sigma_a = 0.5$ gelassen.
+Dabei wurde bei all diesen Messungen $\sigma_a = 0.5$ gewählt.
 \begin{figure}[H]
 \begin{subfigure}{0.5 \textwidth}
 	\setlength\figureheight{7.5cm}
@@ -823,7 +838,7 @@ Die Schrittweite wurde bei all diesen Messungen auf $\sigma_a = 0.5$ gelassen.
 	\label{fig:opt.kleinerBereich.Q}
 \end{subfigure}
 \label{fig:opt.Kennlinie}
-\caption{Zweite Ansatz zur Anpassung von $K$}
+\caption{Zweiter Ansatz zur Anpassung von $K$}
 \end{figure}
 
 \end{document}
