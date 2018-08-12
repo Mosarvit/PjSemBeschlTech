@@ -81,7 +81,7 @@ Klar erkennbar sind die Nulldurchgänge des Betragsspektrums sowie die große St
 		]
 		
 		\addplot[blue, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectIdeal};	% plot des Idealen Betragsspektrums
-		\addplot[green, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
+		\addplot[orange, mark size=3.5pt] table [ x index =0, y index=1] {\absSpectMeas};	% Plot des gemessenen Betragsspektrums
 \end{axis}
 \end{tikzpicture}
 \caption{Betragsspektren}
@@ -115,7 +115,7 @@ Klar erkennbar sind die Nulldurchgänge des Betragsspektrums sowie die große St
 		]
 		
 		\addplot[blue, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectIdeal};	% plot des Idealen Betragsspektrums
-		\addplot[green, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
+		\addplot[orange, only marks, mark size=1pt] table [ x index =0, y index=1] {\angleSpectMeas};	% Plot des gemessenen Betragsspektrums
 \end{axis}
 \end{tikzpicture}
 \caption{Phasenspektren}
@@ -430,7 +430,7 @@ Es lässt sich also festhalten, dass eine Anpassung des Korrekturterms notwendig
 	\addplot table [col sep = comma, x expr=\coordindex+1, y index =0] \qualityAll;
 	 \label{plot:opt.H.quality.mock_all} \addlegendentry{Mit $3 \promille$, Zero-Padding und RMS}
 	 
-	 \addplot table [x expr=\coordindex+1, y index =0]{
+%	 \addplot table [x expr=\coordindex+1, y index =0]{
 		0.48726213261815016 
 		0.49000679356347154
 		0.5101194806372478
@@ -513,7 +513,7 @@ Bemerkenswert ist weiterhin, dass die Qualität des Ausgangssignals verbessert w
 		\addplot table [x index = 0, y index = 1] {\HsimpleFive};
 %		\addplot table [x index = 0, y index = 1] {\HrmsFive};
 		\addplot table [x index = 0, y index = 1] {\HpromFive};
-		\addplot table [x index = 0, y index = 1] {\HzeroFive};
+		\addplot [orange] table [x index = 0, y index = 1] {\HzeroFive};
 		
 
 \end{axis}
@@ -544,7 +544,7 @@ Bemerkenswert ist weiterhin, dass die Qualität des Ausgangssignals verbessert w
 		\addplot table [x index = 0, y index = 1] {\HsimpleFive};
 %		\addplot table [x index = 0, y index = 1] {\HrmsFive};
 		\addplot table [x index = 0, y index = 1] {\HpromFive};
-		\addplot table [x index = 0, y index = 1] {\HzeroFive};
+		\addplot [orange] table [x index = 0, y index = 1] {\HzeroFive};
 		
 \end{axis}
 \end{tikzpicture}
