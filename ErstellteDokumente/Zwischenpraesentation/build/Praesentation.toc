@@ -1,11 +1,14 @@
 \babel@toc {english}{}
 \beamer@sectionintoc {1}{Einf\IeC {\"u}hrung}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Aufbau}{7}{0}{1}
-\beamer@sectionintoc {2}{Der Code}{12}{0}{2}
-\beamer@subsectionintoc {2}{1}{Die Bl\IeC {\"o}cke}{12}{0}{2}
-\beamer@subsectionintoc {2}{2}{Vorgehensweise}{30}{0}{2}
-\beamer@subsectionintoc {2}{3}{Test Driven Development}{36}{0}{2}
-\beamer@subsectionintoc {2}{4}{Mock-System}{48}{0}{2}
-\beamer@sectionintoc {3}{Optimierung}{60}{0}{3}
-\beamer@subsectionintoc {3}{1}{Optimierung der \IeC {\"U}bertragungsfunktion}{60}{0}{3}
-\beamer@sectionintoc {4}{Ausblick}{60}{0}{4}
+\beamer@subsectionintoc {1}{1}{Problemstellung}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Aufbau}{7}{0}{1}
+\beamer@sectionintoc {2}{Code}{12}{0}{2}
+\beamer@sectionintoc {3}{Design}{12}{0}{3}
+\beamer@subsectionintoc {3}{1}{Bl\IeC {\"o}cke}{12}{0}{3}
+\beamer@subsectionintoc {3}{2}{Test Driven Development}{30}{0}{3}
+\beamer@subsectionintoc {3}{3}{MockSystem}{40}{0}{3}
+\beamer@sectionintoc {4}{Optimierung}{52}{0}{4}
+\beamer@subsectionintoc {4}{1}{Optimierung der \IeC {\"U}bertragungsfunktion}{52}{0}{4}
+\beamer@subsectionintoc {4}{2}{Optimierung der Kennlinie}{71}{0}{4}
+\beamer@sectionintoc {5}{Ausblick}{78}{0}{5}
+\beamer@sectionintoc {6}{Quellen}{88}{0}{6}

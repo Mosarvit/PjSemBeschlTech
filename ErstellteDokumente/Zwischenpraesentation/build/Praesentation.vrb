@@ -1,366 +1,40 @@
-\ifnum\WertA=1
-\frametitle{Code: Die Bausteine}
-\else
-\frametitle{Code: Evaluierung}
-\fi
+\frametitle{Optimierung von $K$}
+\begin{itemize}
+	\item Bestimmung der Parameter $\tilde{a}_n$
+	\item Vergleichen der Samples ${\Delta U_{?,i} = \Delta U_? (i \cdot \Delta t)}$ mit ${U_{in,i} = U_{in}(i \cdot \Delta t)}$
+\end{itemize}
 
-%\only<1>
-%	{
-%\framebox{   %   % just so you can see where the "picture" is
+\begin{align}
+	\left(
+	\begin{matrix}
+	 	U_{in,1} & U_{in,1}^2 & \dots & U_{in,1}^N \\
+		U_{in,2} & U_{in,2}^2 & \dots & U_{in,2}^N \\
+		\vdots & \vdots & \ddots & \vdots \\
+		U_{,M} & U_{in,M}^2 & \dots & U_{in,M}^N \\
+	\end{matrix}
+	\right)
+	\cdot
+	\left(
+	\begin{matrix}
+		\tilde{a}_1 \\
+		\tilde{a}_2 \\
+		\vdots \\
+		\tilde{a}_N \\	
+	\end{matrix}
+	\right) = \left(
+	\begin{matrix}
+		\Delta U_{?,1} \\
+		\Delta U_{?,2} \\
+		\vdots \\
+		\Delta U_{?,M} \\	
+	\end{matrix}
+	\right)
+	\label{eq:Uquest.Gleichungssystem}
+\end{align}
 
-\setcounter{onlyAt}{0}
-
-\ifnum\WertA=1
-
-%\setcounter{onlyAt}{\value{onlyAt}+1}
-%\only<\value{onlyAt}>
-%{
-%	\begin{center}
-%		\includegraphics[scale=0.45]{slides/ResultCode/WEPVA047f2_2-eps-converted-to.pdf}
-%	\end{center}
-%}
-
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-	{
-	\begin{picture}(100,70)
-		\put(15,0){
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide1.eps}
-		}
-	\end{picture}
-	}
-\fi
-		
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-	{
-	\begin{picture}(100,70)
-		\put(15,0){
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide2.eps}
-		}
-	\end{picture}
-	}
-	
-
-
-\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
-\only<\value{from} - \value{till}>
-	{
-	\begin{picture}(100,70)
-		\put(15,0){
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide3.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=1]{slides/ResultCode/file.txt}
-	}	
-	
-\ifnum\WertA=2
-	\setcounter{onlyAt}{\value{from} + 1}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(80,50)
-    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/Uout_ideal.pdf}
-		\end{textblock}	
-	} 	
-\fi	
-\setcounter{onlyAt}{\value{till}}
-
-
-\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
-\only<\value{from} - \value{till}>
-	{
-	\begin{picture}(100,70)
-		\put(15,0){
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide4.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=2]{slides/ResultCode/file.txt}
-	}
-	
-\ifnum\WertA=2
-	\setcounter{onlyAt}{\value{from} + 1}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(93,50)
-    		\includegraphics[ width=3.5cm, height=3.1cm ]{slides/ResultCode/plots/H_p.pdf}
-		\end{textblock}			
-		\begin{textblock}{20}(61,50)
-    		\includegraphics[ width=3.5cm, height=3.1cm]{slides/ResultCode/plots/H_a.pdf}
-		\end{textblock}	
-		
-	} 	
-\fi	
-\setcounter{onlyAt}{\value{till}}
-
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-	{
-	\begin{picture}(100,70)
-		\put(15,0){
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide5.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=3]{slides/ResultCode/file.txt}
-	}	
-	
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-	{
-	\begin{picture}(100,70)
-		\put(15,0){
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide5-1.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=3]{slides/ResultCode/file.txt}
-	}
-	
-\ifnum\WertA=2
-	\setcounter{from}{\value{onlyAt}}
-	\setcounter{till}{\value{onlyAt}+2}
-	\only<\value{from} - \value{till}>
-	{
-		\begin{textblock}{20}(80,50)
-    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/U_quest_ideal.pdf}
-		\end{textblock}	
-	}
-\fi	
-
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide6.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=3]{slides/ResultCode/file.txt}
-}
-
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide7.eps}
-		}
-	\end{picture} 	
-	\lstinputlisting[firstline=1,lastline=4]{slides/ResultCode/file.txt} 	
-}	
-
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide7.eps}
-		}
-	\end{picture} 	
-	\lstinputlisting[firstline=1,lastline=5]{slides/ResultCode/file.txt} 		
-
-}
-
-\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+3} \fi	
-\only<\value{from} - \value{till}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide8.eps}
-		}
-	\end{picture} 	
-	\lstinputlisting[firstline=1,lastline=5]{slides/ResultCode/file.txt} 		
-
-}
-
-\ifnum\WertA=2
-	\setcounter{onlyAt}{\value{from}+1}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(80,50)
-    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/Uout_measured.pdf}
-		\end{textblock}	
-	}
-	\setcounter{onlyAt}{\value{from}+2}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(80,50)
-    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/Uout_measured_cut.pdf}
-		\end{textblock}	
-	}
-\fi
-\setcounter{onlyAt}{\value{till}}
-
-\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
-\only<\value{from} - \value{till}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide9.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=6]{slides/ResultCode/file.txt}
-}	
-
-\ifnum\WertA=2
-	\setcounter{onlyAt}{\value{from} + 1}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(80,50)
-    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/U_quest_measured.pdf}
-		\end{textblock}	
-	}
-\fi
-\setcounter{onlyAt}{\value{till}}
-	
-\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
-\only<\value{from} - \value{till}>
-{
-	\begin{picture}(100,70)
-		\put(15,0){
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide10.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=7]{slides/ResultCode/file.txt}
-}
-
-\ifnum\WertA=2
-	\setcounter{onlyAt}{\value{from} + 1}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(65,72)
-    		\includegraphics[scale=0.6 ]{slides/ResultCode/plots/a.JPG}
-		\end{textblock}	
-	}
-\fi	
-\setcounter{onlyAt}{\value{till}}	
-
-
-\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
-\only<\value{from} - \value{till}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide11.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=8]{slides/ResultCode/file.txt}
-}
-
-\ifnum\WertA=2
-	\setcounter{onlyAt}{\value{from} + 1}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(80,50)
-    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/K.pdf}
-		\end{textblock}	
-	}
-\fi	
-\setcounter{onlyAt}{\value{till}}	
-
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide12-0.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=8]{slides/ResultCode/file.txt}
-}
-	
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide12-01.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=8]{slides/ResultCode/file.txt}
-}
-	
-\ifnum\WertA=1 \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+1} \else \setcounter{from}{\value{onlyAt}+1} \setcounter{till}{\value{onlyAt}+2} \fi	
-\only<\value{from} - \value{till}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide12.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt}
-}
-
-\ifnum\WertA=2
-	\setcounter{onlyAt}{\value{from} + 1}
-	\only<\value{onlyAt}>
-	{
-		\begin{textblock}{20}(80,50)
-    		\includegraphics[height=3.5cm, width=4.5cm ]{slides/ResultCode/plots/U_in.pdf}
-		\end{textblock}	
-	}
-\fi	
-\setcounter{onlyAt}{\value{till}}
-	
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide13-0.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt}
-}
-
-
-
-%\setcounter{onlyAt}{\value{onlyAt}+1}
-%\only<\value{onlyAt}>
-%{
-%	\begin{picture}(100,70)
-%		\put(15,0)
-%		{
-%			\includegraphics[scale=1.0]{slides/ResultCode/Slide13-01.eps}
-%		}
-%	\end{picture}
-%	\lstinputlisting[firstline=1,lastline=10]{slides/ResultCode/file.txt}
-%}
-	
-\setcounter{onlyAt}{\value{onlyAt}+1}
-\only<\value{onlyAt}>
-{
-	\begin{picture}(100,70)
-		\put(15,0)
-		{
-			\includegraphics[scale=1.0]{slides/ResultCode/Slide13.eps}
-		}
-	\end{picture}
-	\lstinputlisting[firstline=1,lastline=10]{slides/ResultCode/file.txt}
-}
-
-
-%	\begin{figure}[t]
-%	
-%%	
-%	\end{figure}	
-	%}
-%\only<2>{ \lstinputlisting[firstline=1,lastline=2]{slides/ResultCode/file.txt} }
-%\only<3>{ \lstinputlisting[firstline=1,lastline=3]{slides/ResultCode/file.txt} }
-%\only<4>{ \lstinputlisting[firstline=1,lastline=4]{slides/ResultCode/file.txt} }
-%\only<5>{ \lstinputlisting[firstline=1,lastline=5]{slides/ResultCode/file.txt} }
-%\only<6>{ \lstinputlisting[firstline=1,lastline=6]{slides/ResultCode/file.txt} }
-%\only<7>{ \lstinputlisting[firstline=1,lastline=7]{slides/ResultCode/file.txt} }
-%\only<8>{ \lstinputlisting[firstline=1,lastline=8]{slides/ResultCode/file.txt} }
-%\only<9>{ \lstinputlisting[firstline=1,lastline=9]{slides/ResultCode/file.txt} }
-%\only<10>{ \lstinputlisting[firstline=1,lastline=10]{slides/ResultCode/file.txt} }
-
-
+\begin{itemize}
+	\item Lösung des linearen Optimierungsproblems ergibt die Anpassung der alten Parameter
+\end{itemize}
+\begin{align}
+	a_n^{i+1} = a_n^{i} + \sigma_{a}^{i} \tilde{a}_n^{i}
+\end{align}
