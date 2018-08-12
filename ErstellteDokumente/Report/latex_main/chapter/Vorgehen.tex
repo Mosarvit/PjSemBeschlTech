@@ -77,18 +77,17 @@ Es wird ein Keysight 33622A als Signalgenerator (AWG) und ein Oszilloskop der TD
 
 
 \section{Laufzeitoptimierung}
-Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWG alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. 
-Die Größenordnung dieser Wartezeiten schwankt dabei stark. So dauert ein \lstinline{Re}\lstinline{set} des AWG bis zu 5 Sekungen und das Schreiben eines Arbiträrsignals benötigt ebenso mehr als eine Sekunde. Das Oszilloskop hingegen verarbeitet ohne im Kontext dieses Aufbaus messbare Verzögerung. Verbunden damit, dass das Oszilloskop auf absehbare Zeit durch das neuere MAUI von Teledyne LeCroy ersetzt wird, wird im Folgenden nicht weiter auf die Laufzeit dieses Gerätes eingegangen. Durch diese Feststellung konnte die Laufzeit je Lese-Aufruf bereits um ungefähr 15 Sekunden reduziert werden.
+Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWGs alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. 
+Die Größenordnung dieser Wartezeiten schwankt dabei stark. So dauert ein \lstinline{Re}\lstinline{set} des AWGs bis zu 5 Sekungen und das Schreiben eines Arbiträrsignals benötigt ebenso mehr als eine Sekunde. Das Oszilloskop hingegen verarbeitet ohne im Kontext dieses Aufbaus messbare Verzögerung. Verbunden damit, dass das Oszilloskop auf absehbare Zeit durch das neuere MAUI von Teledyne LeCroy ersetzt wird, wird im Folgenden nicht weiter auf die Laufzeit dieses Gerätes eingegangen. Durch diese Feststellung konnte die Laufzeit je Lese-Aufruf bereits um ungefähr 15 Sekunden reduziert werden.
 Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-Abfragen ähnlich den nachfolgend für das AWG erläuterten.
 \\
 \\
 \noindent
-In der zu Beginn vorliegenden Implementierung lagen pauschale Wartezeiten nach einigen als besonders zeitintensiv erwarteten Befehlen sowohl in der Ansteuerung des AWG als auch des Oszilloskops vor. 
+In der zu Beginn vorliegenden Implementierung lagen pauschale Wartezeiten nach einigen als besonders zeitintensiv erwarteten Befehlen sowohl in der Ansteuerung des AWGs als auch des Oszilloskops vor. 
 Insgesamt blieb die Verbesserung der Zugriffszeiten auf das AWG erfolglos. Es stellt nach wie vor das Nadelöhr des Programms dar mit etwa 25 Sekunden Laufzeit je Aufruf. 
 Es wurden eine Reihe von IEEE-488 Standardbefehlen für diesen Zweck ausprobiert, nachfolgend mit den wichtigsten Eigenschaften:
 \begin{enumerate}
-	\item \lstinline{*BU}\lstinline{SY?} ist kein für das AWG definierter Standardbefehl. Dieser würde 0 zurückgeben, wenn das Gerät gerade nicht mit Ausführen eines Befehls beschäftigt ist.
-	
+
 	\item \lstinline{*WA}\lstinline{I} ist in erster Linie ein interner Befehl, zuerst alle Befehle abzuarbeiten, bevor neue angegangen werden. Dies geschieht jedoch ohne Rückgabe an den aufrufenden Code.
 	
 	\item \lstinline{*OPC?} zwingt das aufrufende Programm zum Warten auf Beenden aller Befehle im AWG und führt zu einem \lstinline{VisaTimeoutError} im AWG, wenn zu lange auf die Rückgabe gewartet werden muss \cite[S. 9]{troeser13}. Dieser Fehler konnte auch nicht im Programm aufgefangen werden, sodass er folgenlos für den Ablauf geblieben wäre.
@@ -97,6 +96,9 @@ Es wurden eine Reihe von IEEE-488 Standardbefehlen für diesen Zweck ausprobiert
 
 \end{enumerate}
 
+Nicht für das AWG definiert ist der Standardbefehl \lstinline{*BU}\lstinline{SY?}, der eine 0 zurückgeben würde, wenn das Gerät gerade nicht mit Ausführen eines Befehls beschäftigt ist. Ansonsten wäre die Rückgabe 1.
+\\
+\\
 Als besonders erfolgversprechend erschien der letzte Ansatz \ref{enum:gerateOPC}, der jedoch auch zeitlich der letzte war. Mit einer Schleife über \lstinline{*ES}\lstinline{R?} könnte das zugehörige Bit erneut ausgelesen und eine sehr kleine pauschale Wartezeit im Programm eingebaut werden, bevor die nächste Abfrage stattfindet. Hier könnte es sich um ein Resultat der Codierung über PyVisa handeln, da hierbei mehrere Arten, einen Befehl an das Gerät zu senden, zur Verfügung stehen.
 
 Weiterhin wurde die pauschale Wartezeit an der im Datenblatt \cite[S. 21]{keysData14} für die Verbindung via USB angegebenen, gemessenen Ladedauer eines Arbiträrsignals orientiert. Dieser Richtwert von $\SI{1.25}{\s}$ stellte sich jedoch als zu gering für den hier vorliegenden Fall heraus.
@@ -109,15 +111,6 @@ Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{S
 Um die Auflösung des Oszilloskops ausnutzen zu können, ist die Anpassung der horizontalen wie auch vertikalen Auflösung an das zu messende Signal notwendig.
 Während die horizontale Auflösung durch die Wiederholfrequenz des Pulses mit $f_{BB}$ sich nahezu unabhängig des betrachteten Signals setzen lässt, muss die vertikale Skalierung an das Signal angepasst werden. Um dies etwa während einer Optimierung mit wechselnden Spannungsamplituden zu ermöglichen, sind zwei direkt aufeinander folgende Messungen notwendig. Dabei wird aus der ersten Messung die Amplitude des Signals entnommen und die Skalierung für die zweite, dann genauere Messung, dahingehend angepasst, dass das Signal bildfüllender dargestellt wird.
 Dieser Gewinn an Genauigkeit in der Messung stellte sich insbesondere für die \nameref{sec:opt.H} als notwendig heraus.
-
-
-\section{Kritische Punkte}
-\label{sec:vorg.critical}
---------- sollten wir an andere Stelle setzen ---
-Infolge der Auseinandersetzung mit dem anfangs vorliegenden Code sowie im Zuge der Ausarbeitung sind einige Punkte aufgetreten, an deren Bedeutung die implementierte Funktionalität teilweise essentiell hing, die jedoch im Zuge der Implementierung für Probleme sorgten. Diese seien aufgrund ihrer unterschiedlichen Natur hier stichpunktartig erläutert:
-\begin{itemize}
-	\item	Bei diskreten Zeitsignalen ist zu beachten, dass die Periodendauer $T$ nicht durch die Differenz der Zeitwerte des letzten und des ersten Wertes, sondern noch zuzüglich eines Zeitschritts  zu berechnen ist, also \lstinline{T = time[end] - time[0] + delta_time}, womit gelten sollte \lstinline{T = N * delta_time}. Dies wirkt sich insbesondere auch auf die FFT aus, wenn die zugehörige Frequenzachse berechnet werden muss.
-\end{itemize}
 
 
 \end{document}
