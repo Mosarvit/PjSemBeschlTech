@@ -1,35 +1,41 @@
 \begin{frame}[fragile]
-\frametitle{Optimierung von $K$}
-
+\frametitle{Optimierung der Kennlinie}
+\uncover<1->{
 \begin{itemize}
-  \item Eine Kennlinie an das momentane Signal anpassen
+  \item Anpassung der Kennlinie an das momentane Signal
 \end{itemize}
-
-\begin{align}
+}
+\uncover<2->{
+\begin{align*}
 	U_{?, \mathrm{meas}} (t) = \sum_{n=1}^N \, \overline{a}_n \left[ U_{in}(t)\right]^n
 	\quad
 	U_{?, \mathrm{ideal}} (t) = \sum_{n=1}^N \, a_n \left[ U_{in}(t) \right]^n
-\end{align}
+\end{align*}
+}
+\uncover<3->{
 \begin{itemize}
-  \item Oder direkt über die Differenz der Signale
+  \item Differenz der Signale
 \end{itemize}
-\begin{align}
+\begin{align*}
 	\Delta U_? (t) = U_{?, \mathrm{meas}} (t) - U_{?, \mathrm{ideal}} (t)
 	=
 	\sum_{n=1}^N \, \left( \overline{a}_n -  a_n\right) \left[ U_{in}(t) \right]^n
 	=
 	\sum_{n=1}^N \, \tilde{a}_n \, \left[ U_{in}(t) \right]^n
-\end{align}
+\end{align*}
+}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Optimierung von $K$}
+\frametitle{Optimierung der Kennlinie}
 \begin{itemize}
-	\item Bestimmung der Parameter $\tilde{a}_n$
-	\item Vergleichen der Samples ${\Delta U_{?,i} = \Delta U_? (i \cdot \Delta t)}$ mit ${U_{in,i} = U_{in}(i \cdot \Delta t)}$
+\uncover<1->{
+	\item Bestimmung der Parameter $\tilde{a}_n$}
+\uncover<2->{
+	\item Vergleich der Samples ${\Delta U_{?,i} = \Delta U_? (i \cdot \Delta t)}$ mit ${U_{in,i} = U_{in}(i \cdot \Delta t)}$ 
 \end{itemize}
 
-\begin{align}
+\begin{align*}
 	\left( 
 	\begin{matrix}
 	 	U_{in,1} & U_{in,1}^2 & \dots & U_{in,1}^N \\
@@ -55,14 +61,16 @@
 	\end{matrix}
 	\right)
 	\label{eq:Uquest.Gleichungssystem}
-\end{align}
-
+\end{align*}
+}
+\uncover<3->{
 \begin{itemize}
-	\item Lösung des linearen Optimierungsproblems ergibt die Anpassung der alten Parameter
+	\item Anpassung der alten Parameter
 \end{itemize}
-\begin{align}
+\begin{align*}
 	a_n^{i+1} = a_n^{i} + \sigma_{a}^{i} \tilde{a}_n^{i}
-\end{align}
+\end{align*}
+}
 \end{frame}
 
 %\begin{frame}
@@ -101,8 +109,8 @@
 \begin{frame}
 \frametitle{Zweiter Ansatz}
 \begin{itemize}
-	\item $K$ in einem kleineren Spannungsbereich anpassen
-	\item Es wurden $66\%$ des maximal zulässigen Bereichs verwendet
+	\item Anpassung von $K$ in einem kleineren Spannungsbereich
+	\item $66\%$ des maximal zulässigen Bereichs
 \end{itemize}
 \end{frame}
 
@@ -115,10 +123,10 @@
 	\end{picture}
 \end{frame}
 
-\begin{frame}
-\frametitle{Offene Punkte}
-\begin{itemize}
-	\item Zweiter Ansatz mit mehr Iterationen Testen
-	\item Die Grenzen für $K$ allgemein bestimmen
-\end{itemize}
-\end{frame}
+%\begin{frame}
+%\frametitle{Offene Punkte}
+%\begin{itemize}
+%	\item Zweiter Ansatz mit mehr Iterationen Testen
+%	\item Die Grenzen für $K$ allgemein bestimmen
+%\end{itemize}
+%\end{frame}
