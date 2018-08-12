@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.6.3)  12 AUG 2018 19:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.6.3)  12 AUG 2018 19:43
 entering extended mode
 **./Praesentation.tex
 (Praesentation.tex
@@ -2271,12 +2271,12 @@ LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
 (Font)              scaled to size 9.40002pt on input line 107.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
 (Font)              scaled to size 6.58002pt on input line 107.
-<images/temf_background.jpg, id=53, 3111.625pt x 1449.415pt>
+<images/temf_background.jpg, id=73, 3111.625pt x 1449.415pt>
 File: images/temf_background.jpg Graphic file (type jpg)
 <use images/temf_background.jpg>
 Package pdftex.def Info: images/temf_background.jpg  used on input line 112.
 (pdftex.def)             Requested size: 345.98322pt x 119.51628pt.
-<images/temf_logo.pdf, id=54, 218.91588pt x 63.44502pt>
+<images/temf_logo.pdf, id=74, 218.91588pt x 63.44502pt>
 File: images/temf_logo.pdf Graphic file (type pdf)
 <use images/temf_logo.pdf>
 Package pdftex.def Info: images/temf_logo.pdf  used on input line 112.
@@ -2349,6 +2349,10 @@ Overfull \hbox (76.95012pt too wide) in paragraph at lines 117--117
  []
 
 
+Overfull \vbox (12.74878pt too high) detected at line 117
+ []
+
+
 Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
@@ -2367,8 +2371,8 @@ d-to.pdf>
 eq-eps-converted-to.pdf slides/Problemstellung/BB_req.eps>
 (epstopdf)             \includegraphics on input line 26.
 Package epstopdf Info: Output file is already uptodate.
-<slides/Problemstellung/BB_req-eps-converted-to.pdf, id=93, 548.0475pt x 333.24
-5pt>
+<slides/Problemstellung/BB_req-eps-converted-to.pdf, id=122, 548.0475pt x 333.2
+45pt>
 File: slides/Problemstellung/BB_req-eps-converted-to.pdf Graphic file (type pdf
 )
 <use slides/Problemstellung/BB_req-eps-converted-to.pdf>
@@ -2483,7 +2487,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
 praesentation\build\Praesentation.vrb
-<slides/ResultCode/WEPVA047f2_2-eps-converted-to.pdf, id=116, 690.58pt x 341.27
+<slides/ResultCode/WEPVA047f2_2-eps-converted-to.pdf, id=145, 690.58pt x 341.27
 5pt>
 File: slides/ResultCode/WEPVA047f2_2-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -2528,7 +2532,7 @@ d-to.pdf>
 e1-eps-converted-to.pdf slides/Problemstellung/Slide1.eps>
 (epstopdf)             \includegraphics on input line 40.
 Package epstopdf Info: Output file is already uptodate.
-<slides/Problemstellung/Slide1-eps-converted-to.pdf, id=125, 293.095pt x 78.292
+<slides/Problemstellung/Slide1-eps-converted-to.pdf, id=154, 293.095pt x 78.292
 5pt>
 File: slides/Problemstellung/Slide1-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -2677,7 +2681,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide1.eps>
 (epstopdf)             \includegraphics on input line 31.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide1-eps-converted-to.pdf, id=153, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide1-eps-converted-to.pdf, id=182, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide1-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide1-eps-converted-to.pdf>
@@ -2690,21 +2694,13 @@ Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
 [12
 
-]
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[13 <./slides/ResultCode/Slide1-eps-converted-to.pdf>]
+ <./slides/ResultCode/Slide1-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
 praesentation\build\Praesentation.vrb
 Package epstopdf Info: Source file: <slides/ResultCode/Slide2.eps>
@@ -2718,7 +2714,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide2.eps>
 (epstopdf)             \includegraphics on input line 42.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide2-eps-converted-to.pdf, id=167, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide2-eps-converted-to.pdf, id=189, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide2-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide2-eps-converted-to.pdf>
@@ -2735,7 +2731,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[14
+[13
 
  <./slides/ResultCode/Slide2-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2751,7 +2747,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide3.eps>
 (epstopdf)             \includegraphics on input line 55.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide3-eps-converted-to.pdf, id=175, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide3-eps-converted-to.pdf, id=198, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide3-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide3-eps-converted-to.pdf>
@@ -2770,7 +2766,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[15
+[14
 
  <./slides/ResultCode/Slide3-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2786,7 +2782,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide4.eps>
 (epstopdf)             \includegraphics on input line 78.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide4-eps-converted-to.pdf, id=186, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide4-eps-converted-to.pdf, id=209, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide4-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide4-eps-converted-to.pdf>
@@ -2803,7 +2799,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[16
+[15
 
  <./slides/ResultCode/Slide4-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2819,7 +2815,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide5.eps>
 (epstopdf)             \includegraphics on input line 104.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide5-eps-converted-to.pdf, id=197, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide5-eps-converted-to.pdf, id=220, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide5-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide5-eps-converted-to.pdf>
@@ -2836,7 +2832,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[17
+[16
 
  <./slides/ResultCode/Slide5-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2852,7 +2848,7 @@ o.pdf>
 eps-converted-to.pdf slides/ResultCode/Slide5-1.eps>
 (epstopdf)             \includegraphics on input line 115.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide5-1-eps-converted-to.pdf, id=208, 293.095pt x 79.29625p
+<slides/ResultCode/Slide5-1-eps-converted-to.pdf, id=231, 293.095pt x 79.29625p
 t>
 File: slides/ResultCode/Slide5-1-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide5-1-eps-converted-to.pdf>
@@ -2869,7 +2865,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[18
+[17
 
  <./slides/ResultCode/Slide5-1-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2885,7 +2881,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide6.eps>
 (epstopdf)             \includegraphics on input line 138.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide6-eps-converted-to.pdf, id=216, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide6-eps-converted-to.pdf, id=239, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide6-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide6-eps-converted-to.pdf>
@@ -2902,7 +2898,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[19
+[18
 
  <./slides/ResultCode/Slide6-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2918,7 +2914,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide7.eps>
 (epstopdf)             \includegraphics on input line 150.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide7-eps-converted-to.pdf, id=225, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide7-eps-converted-to.pdf, id=247, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide7-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide7-eps-converted-to.pdf>
@@ -2935,7 +2931,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[20
+[19
 
  <./slides/ResultCode/Slide7-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2966,7 +2962,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[21
+[20
 
 ]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -2982,7 +2978,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide8.eps>
 (epstopdf)             \includegraphics on input line 176.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide8-eps-converted-to.pdf, id=238, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide8-eps-converted-to.pdf, id=261, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide8-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide8-eps-converted-to.pdf>
@@ -2999,7 +2995,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[22
+[21
 
  <./slides/ResultCode/Slide8-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3015,7 +3011,7 @@ pdf>
 s-converted-to.pdf slides/ResultCode/Slide9.eps>
 (epstopdf)             \includegraphics on input line 206.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide9-eps-converted-to.pdf, id=246, 293.095pt x 79.29625pt>
+<slides/ResultCode/Slide9-eps-converted-to.pdf, id=269, 293.095pt x 79.29625pt>
 
 File: slides/ResultCode/Slide9-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide9-eps-converted-to.pdf>
@@ -3032,7 +3028,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[23
+[22
 
  <./slides/ResultCode/Slide9-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3048,7 +3044,7 @@ Package epstopdf Info: Source file: <slides/ResultCode/Slide10.eps>
 ps-converted-to.pdf slides/ResultCode/Slide10.eps>
 (epstopdf)             \includegraphics on input line 228.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide10-eps-converted-to.pdf, id=257, 293.095pt x 79.29625pt
+<slides/ResultCode/Slide10-eps-converted-to.pdf, id=280, 293.095pt x 79.29625pt
 >
 File: slides/ResultCode/Slide10-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide10-eps-converted-to.pdf>
@@ -3065,7 +3061,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[24
+[23
 
  <./slides/ResultCode/Slide10-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3081,7 +3077,7 @@ Package epstopdf Info: Source file: <slides/ResultCode/Slide11.eps>
 ps-converted-to.pdf slides/ResultCode/Slide11.eps>
 (epstopdf)             \includegraphics on input line 252.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide11-eps-converted-to.pdf, id=268, 293.095pt x 79.29625pt
+<slides/ResultCode/Slide11-eps-converted-to.pdf, id=291, 293.095pt x 79.29625pt
 >
 File: slides/ResultCode/Slide11-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide11-eps-converted-to.pdf>
@@ -3098,7 +3094,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[25
+[24
 
  <./slides/ResultCode/Slide11-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3114,7 +3110,7 @@ to.pdf>
 -eps-converted-to.pdf slides/ResultCode/Slide12-0.eps>
 (epstopdf)             \includegraphics on input line 275.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide12-0-eps-converted-to.pdf, id=280, 293.095pt x 79.29625
+<slides/ResultCode/Slide12-0-eps-converted-to.pdf, id=302, 293.095pt x 79.29625
 pt>
 File: slides/ResultCode/Slide12-0-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide12-0-eps-converted-to.pdf>
@@ -3131,7 +3127,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[26
+[25
 
  <./slides/ResultCode/Slide12-0-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3147,7 +3143,7 @@ Package epstopdf Info: Source file: <slides/ResultCode/Slide12-01.eps>
 1-eps-converted-to.pdf slides/ResultCode/Slide12-01.eps>
 (epstopdf)             \includegraphics on input line 287.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide12-01-eps-converted-to.pdf, id=288, 293.095pt x 79.2962
+<slides/ResultCode/Slide12-01-eps-converted-to.pdf, id=311, 293.095pt x 79.2962
 5pt>
 File: slides/ResultCode/Slide12-01-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -3165,7 +3161,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[27
+[26
 
  <./slides/ResultCode/Slide12-01-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3181,7 +3177,7 @@ Package epstopdf Info: Source file: <slides/ResultCode/Slide12.eps>
 ps-converted-to.pdf slides/ResultCode/Slide12.eps>
 (epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide12-eps-converted-to.pdf, id=296, 293.095pt x 79.29625pt
+<slides/ResultCode/Slide12-eps-converted-to.pdf, id=319, 293.095pt x 79.29625pt
 >
 File: slides/ResultCode/Slide12-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide12-eps-converted-to.pdf>
@@ -3198,7 +3194,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[28
+[27
 
  <./slides/ResultCode/Slide12-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3214,7 +3210,7 @@ to.pdf>
 -eps-converted-to.pdf slides/ResultCode/Slide13-0.eps>
 (epstopdf)             \includegraphics on input line 322.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide13-0-eps-converted-to.pdf, id=307, 293.095pt x 79.29625
+<slides/ResultCode/Slide13-0-eps-converted-to.pdf, id=330, 293.095pt x 79.29625
 pt>
 File: slides/ResultCode/Slide13-0-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide13-0-eps-converted-to.pdf>
@@ -3231,7 +3227,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[29
+[28
 
  <./slides/ResultCode/Slide13-0-eps-converted-to.pdf>]
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
@@ -3247,7 +3243,7 @@ Package epstopdf Info: Source file: <slides/ResultCode/Slide13.eps>
 ps-converted-to.pdf slides/ResultCode/Slide13.eps>
 (epstopdf)             \includegraphics on input line 348.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide13-eps-converted-to.pdf, id=315, 293.095pt x 79.29625pt
+<slides/ResultCode/Slide13-eps-converted-to.pdf, id=338, 293.095pt x 79.29625pt
 >
 File: slides/ResultCode/Slide13-eps-converted-to.pdf Graphic file (type pdf)
 <use slides/ResultCode/Slide13-eps-converted-to.pdf>
@@ -3268,9 +3264,21 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[30
+[29
 
  <./slides/ResultCode/Slide13-eps-converted-to.pdf>]) (slides/TDD.tex
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
+[]|| $[]$| 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[30
+
+]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
 []|| $[]$| 
  []
@@ -3378,8 +3386,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [39
 
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
+]) (slides/MockSystem.tex
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
 []|| $[]$| 
  []
 
@@ -3390,35 +3398,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [40
 
-]) (slides/ResultCode.tex
-\openout4 = `Praesentation.vrb'.
-
-
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide1.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 112192 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide1-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 9314 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide1-ep
-s-converted-to.pdf slides/ResultCode/Slide1.eps>
-(epstopdf)             \includegraphics on input line 31.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide1-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide1-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide1-eps-converted-to.pdf  used on
- input line 31.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
-)
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
+]
+Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
 []|| $[]$| 
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -3428,743 +3411,6 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [41
 
 ]
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[42]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide2.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 86279 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide2-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 2681 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide2-ep
-s-converted-to.pdf slides/ResultCode/Slide2.eps>
-(epstopdf)             \includegraphics on input line 42.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide2-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide2-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide2-eps-converted-to.pdf  used on
- input line 42.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
-)
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[43
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide3.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 112276 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide3-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 8460 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide3-ep
-s-converted-to.pdf slides/ResultCode/Slide3.eps>
-(epstopdf)             \includegraphics on input line 55.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide3-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide3-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide3-eps-converted-to.pdf  used on
- input line 55.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[44
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide4.eps>
-(epstopdf)                    date: 2018-08-11 20:11:57
-(epstopdf)                    size: 117747 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide4-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-11 20:11:57
-(epstopdf)                    size: 9490 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide4-ep
-s-converted-to.pdf slides/ResultCode/Slide4.eps>
-(epstopdf)             \includegraphics on input line 78.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide4-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide4-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide4-eps-converted-to.pdf  used on
- input line 78.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[45
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide5.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 130003 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide5-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 12609 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide5-ep
-s-converted-to.pdf slides/ResultCode/Slide5.eps>
-(epstopdf)             \includegraphics on input line 104.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide5-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide5-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide5-eps-converted-to.pdf  used on
- input line 104.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[46
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide5-1.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 103881 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide5-1-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 6932 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide5-1-
-eps-converted-to.pdf slides/ResultCode/Slide5-1.eps>
-(epstopdf)             \includegraphics on input line 115.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide5-1-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide5-1-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide5-1-eps-converted-to.pdf  used 
-on input line 115.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[47
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide6.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 103371 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide6-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 7013 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide6-ep
-s-converted-to.pdf slides/ResultCode/Slide6.eps>
-(epstopdf)             \includegraphics on input line 138.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide6-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide6-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide6-eps-converted-to.pdf  used on
- input line 138.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[48
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide7.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 97644 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide7-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 5639 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide7-ep
-s-converted-to.pdf slides/ResultCode/Slide7.eps>
-(epstopdf)             \includegraphics on input line 150.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide7-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide7-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide7-eps-converted-to.pdf  used on
- input line 150.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[49
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide7.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 97644 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide7-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 5639 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide7-ep
-s-converted-to.pdf slides/ResultCode/Slide7.eps>
-(epstopdf)             \includegraphics on input line 163.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide7-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide7-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide7-eps-converted-to.pdf  used on
- input line 163.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[50
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide8.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 117105 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide8-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 10182 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide8-ep
-s-converted-to.pdf slides/ResultCode/Slide8.eps>
-(epstopdf)             \includegraphics on input line 176.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide8-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide8-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide8-eps-converted-to.pdf  used on
- input line 176.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[51
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide9.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 145754 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide9-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 16496 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide9-ep
-s-converted-to.pdf slides/ResultCode/Slide9.eps>
-(epstopdf)             \includegraphics on input line 206.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide9-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide9-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide9-eps-converted-to.pdf  used on
- input line 206.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[52
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide10.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 146790 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide10-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 16734 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide10-e
-ps-converted-to.pdf slides/ResultCode/Slide10.eps>
-(epstopdf)             \includegraphics on input line 228.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide10-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide10-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide10-eps-converted-to.pdf  used o
-n input line 228.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[53
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide11.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 150016 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide11-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 17607 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide11-e
-ps-converted-to.pdf slides/ResultCode/Slide11.eps>
-(epstopdf)             \includegraphics on input line 252.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide11-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide11-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide11-eps-converted-to.pdf  used o
-n input line 252.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[54
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide12-0.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 97625 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide12-0-eps-converted-
-to.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 5566 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide12-0
--eps-converted-to.pdf slides/ResultCode/Slide12-0.eps>
-(epstopdf)             \includegraphics on input line 275.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide12-0-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide12-0-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide12-0-eps-converted-to.pdf  used
- on input line 275.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[55
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide12-01.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 109200 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide12-01-eps-converted
--to.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 8341 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide12-0
-1-eps-converted-to.pdf slides/ResultCode/Slide12-01.eps>
-(epstopdf)             \includegraphics on input line 287.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide12-01-eps-converted-to.pdf Graphic file (type pdf)
-
-<use slides/ResultCode/Slide12-01-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide12-01-eps-converted-to.pdf  use
-d on input line 287.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[56
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide12.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 126101 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide12-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 12009 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide12-e
-ps-converted-to.pdf slides/ResultCode/Slide12.eps>
-(epstopdf)             \includegraphics on input line 299.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide12-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide12-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide12-eps-converted-to.pdf  used o
-n input line 299.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[57
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide13-0.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 102964 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide13-0-eps-converted-
-to.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 7045 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide13-0
--eps-converted-to.pdf slides/ResultCode/Slide13-0.eps>
-(epstopdf)             \includegraphics on input line 322.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide13-0-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide13-0-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide13-0-eps-converted-to.pdf  used
- on input line 322.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[58
-
-]
-(C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
-praesentation\build\Praesentation.vrb
-Package epstopdf Info: Source file: <slides/ResultCode/Slide13.eps>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 108918 bytes
-(epstopdf)             Output file: <slides/ResultCode/Slide13-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2018-08-09 21:42:30
-(epstopdf)                    size: 8505 bytes
-(epstopdf)             Command: <epstopdf --outfile=slides/ResultCode/Slide13-e
-ps-converted-to.pdf slides/ResultCode/Slide13.eps>
-(epstopdf)             \includegraphics on input line 348.
-Package epstopdf Info: Output file is already uptodate.
-File: slides/ResultCode/Slide13-eps-converted-to.pdf Graphic file (type pdf)
-<use slides/ResultCode/Slide13-eps-converted-to.pdf>
-Package pdftex.def Info: slides/ResultCode/Slide13-eps-converted-to.pdf  used o
-n input line 348.
-(pdftex.def)             Requested size: 293.09427pt x 79.29604pt.
- (slides/ResultCode/file.txt))
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 370--370
-[]|| $[]$| 
- []
-
-
-Overfull \vbox (2.47899pt too high) detected at line 370
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[59
-
-]) (slides/Vorgehensweise.tex
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 14--14
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[60
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 14--14
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[61
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 14--14
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[62
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 14--14
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[63
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 14--14
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[64
-
-]) (slides/TDD.tex
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[65
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[66
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[67
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[68
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[69
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[70
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[71
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[72
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[73
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 36--36
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[74
-
-]) (slides/MockSystem.tex
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
-[]|| $[]$| 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[75
-
-]
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[76]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
 []|| $[]$| 
  []
@@ -4174,19 +3420,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[77
-
-]
-Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
-[]|| $[]$| 
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-[78
+[42
 
 ]
 Package epstopdf Info: Source file: <slides/ResultCode/Slide_mock.eps>
@@ -4200,7 +3434,7 @@ Package epstopdf Info: Source file: <slides/ResultCode/Slide_mock.eps>
 k-eps-converted-to.pdf slides/ResultCode/Slide_mock.eps>
 (epstopdf)             \includegraphics on input line 60.
 Package epstopdf Info: Output file is already uptodate.
-<slides/ResultCode/Slide_mock-eps-converted-to.pdf, id=574, 293.095pt x 79.2962
+<slides/ResultCode/Slide_mock-eps-converted-to.pdf, id=414, 293.095pt x 79.2962
 5pt>
 File: slides/ResultCode/Slide_mock-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -4223,7 +3457,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[79
+[43
 
  <./slides/ResultCode/Slide_mock-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <slides/ResultCode/Slide_mock.eps>
@@ -4248,7 +3482,7 @@ Overfull \hbox (236.18906pt too wide) in paragraph at lines 60--60
 [][]  
  []
 
-<slides/ResultCode/plots/K_mock.pdf, id=583, 462.52798pt x 346.89601pt>
+<slides/ResultCode/plots/K_mock.pdf, id=423, 462.52798pt x 346.89601pt>
 File: slides/ResultCode/plots/K_mock.pdf Graphic file (type pdf)
 <use slides/ResultCode/plots/K_mock.pdf>
 Package pdftex.def Info: slides/ResultCode/plots/K_mock.pdf  used on input line
@@ -4269,7 +3503,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[80
+[44
 
  <./slides/ResultCode/plots/K_mock.pdf>]
 Package epstopdf Info: Source file: <slides/ResultCode/Slide_mock.eps>
@@ -4304,7 +3538,7 @@ Overfull \hbox (25.60518pt too wide) in paragraph at lines 60--60
 [][]  
  []
 
-<slides/ResultCode/plots/H_mock.pdf, id=614, 462.52798pt x 346.89601pt>
+<slides/ResultCode/plots/H_mock.pdf, id=454, 462.52798pt x 346.89601pt>
 File: slides/ResultCode/plots/H_mock.pdf Graphic file (type pdf)
 <use slides/ResultCode/plots/H_mock.pdf>
 Package pdftex.def Info: slides/ResultCode/plots/H_mock.pdf  used on input line
@@ -4325,7 +3559,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[81
+[45
 
  <./slides/ResultCode/plots/H_mock.pdf>]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
@@ -4337,7 +3571,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[82
+[46
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
@@ -4349,7 +3583,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[83
+[47
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
@@ -4361,7 +3595,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[84
+[48
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
@@ -4373,7 +3607,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[85
+[49
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
@@ -4385,7 +3619,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[86
+[50
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 60--60
@@ -4397,10 +3631,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[87
+[51
 
 ]) (slides/adjust_H_einf.tex
-<slides/adjust_H/adjust_H_mock.png, id=690, 316.66306pt x 236.082pt>
+<slides/adjust_H/adjust_H_mock.png, id=530, 316.66306pt x 236.082pt>
 File: slides/adjust_H/adjust_H_mock.png Graphic file (type png)
 <use slides/adjust_H/adjust_H_mock.png>
 Package pdftex.def Info: slides/adjust_H/adjust_H_mock.png  used on input line 
@@ -4416,7 +3650,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[88
+[52
 
  <./slides/adjust_H/adjust_H_mock.png>]
 File: slides/adjust_H/adjust_H_mock.png Graphic file (type png)
@@ -4434,7 +3668,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[89
+[53
 
 ]
 File: slides/adjust_H/adjust_H_mock.png Graphic file (type png)
@@ -4452,7 +3686,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[90
+[54
 
 ]
 File: slides/adjust_H/adjust_H_mock.png Graphic file (type png)
@@ -4470,7 +3704,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[91
+[55
 
 ]
 File: slides/adjust_H/adjust_H_mock.png Graphic file (type png)
@@ -4488,26 +3722,26 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[92
+[56
 
 ]) (slides/adjust_H_eval.tex
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 74.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 9.40002pt on input line 74.
-<slides/adjust_H/adjust_H_spectre.png, id=719, 263.18324pt x 229.5777pt>
+<slides/adjust_H/adjust_H_spectre.png, id=558, 263.18324pt x 229.5777pt>
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
 <use slides/adjust_H/adjust_H_spectre.png>
 Package pdftex.def Info: slides/adjust_H/adjust_H_spectre.png  used on input li
 ne 74.
 (pdftex.def)             Requested size: 157.91116pt x 137.74768pt.
-<slides/adjust_H/adjust_H_quality.png, id=720, 386.76495pt x 184.89075pt>
+<slides/adjust_H/adjust_H_quality.png, id=559, 386.76495pt x 184.89075pt>
 File: slides/adjust_H/adjust_H_quality.png Graphic file (type png)
 <use slides/adjust_H/adjust_H_quality.png>
 Package pdftex.def Info: slides/adjust_H/adjust_H_quality.png  used on input li
 ne 74.
 (pdftex.def)             Requested size: 193.382pt x 92.44513pt.
-<slides/adjust_H/adjust_H_high_frequencies.png, id=721, 274.626pt x 242.22495pt
+<slides/adjust_H/adjust_H_high_frequencies.png, id=560, 274.626pt x 242.22495pt
 >
 File: slides/adjust_H/adjust_H_high_frequencies.png Graphic file (type png)
 <use slides/adjust_H/adjust_H_high_frequencies.png>
@@ -4524,7 +3758,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[93
+[57
 
  <./slides/adjust_H/adjust_H_spectre.png> <./slides/adjust_H/adjust_H_quality.p
 ng> <./slides/adjust_H/adjust_H_high_frequencies.png>]
@@ -4553,7 +3787,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[94
+[58
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4581,7 +3815,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[95
+[59
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4609,7 +3843,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[96
+[60
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4637,7 +3871,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[97
+[61
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4665,7 +3899,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[98
+[62
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4693,7 +3927,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[99
+[63
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4721,7 +3955,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[100
+[64
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4749,7 +3983,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[101
+[65
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4777,7 +4011,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[102
+[66
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4805,7 +4039,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[103
+[67
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4833,7 +4067,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[104
+[68
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4861,7 +4095,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[105
+[69
 
 ]
 File: slides/adjust_H/adjust_H_spectre.png Graphic file (type png)
@@ -4889,7 +4123,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[106
+[70
 
 ]) (slides/adjust_a.tex
 \openout4 = `Praesentation.vrb'.
@@ -4906,7 +4140,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[107
+[71
 
 ]
 \openout4 = `Praesentation.vrb'.
@@ -4923,10 +4157,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[108
+[72
 
 ]
-<slides/adjust_a/30Iteration.png, id=807, 1343.0175pt x 674.52pt>
+<slides/adjust_a/30Iteration.png, id=645, 1343.0175pt x 674.52pt>
 File: slides/adjust_a/30Iteration.png Graphic file (type png)
 <use slides/adjust_a/30Iteration.png>
 Package pdftex.def Info: slides/adjust_a/30Iteration.png  used on input line 84
@@ -4942,10 +4176,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[109
+[73
 
  <./slides/adjust_a/30Iteration.png>]
-<slides/adjust_a/Grenzen_eval.png, id=816, 1554.80875pt x 735.74875pt>
+<slides/adjust_a/Grenzen_eval.png, id=654, 1554.80875pt x 735.74875pt>
 File: slides/adjust_a/Grenzen_eval.png Graphic file (type png)
 <use slides/adjust_a/Grenzen_eval.png>
 Package pdftex.def Info: slides/adjust_a/Grenzen_eval.png  used on input line 1
@@ -4961,7 +4195,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[110
+[74
 
  <./slides/adjust_a/Grenzen_eval.png>]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 107--107
@@ -4973,10 +4207,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[111
+[75
 
 ]
-<slides/adjust_a/Zweiter_Versuch.png, id=828, 1358.07375pt x 612.2875pt>
+<slides/adjust_a/Zweiter_Versuch.png, id=666, 1358.07375pt x 612.2875pt>
 File: slides/adjust_a/Zweiter_Versuch.png Graphic file (type png)
 <use slides/adjust_a/Zweiter_Versuch.png>
 Package pdftex.def Info: slides/adjust_a/Zweiter_Versuch.png  used on input lin
@@ -4992,7 +4226,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[112
+[76
 
  <./slides/adjust_a/Zweiter_Versuch.png>]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 124--124
@@ -5004,7 +4238,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[113
+[77
 
 ]) (slides/Ausblick.tex
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 58--58
@@ -5016,7 +4250,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[114
+[78
 
 ]) (slides/EpfehlungenCodeDesign.tex
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 12--12
@@ -5028,7 +4262,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[115
+[79
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 12--12
@@ -5040,7 +4274,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[116
+[80
 
 ]) (slides/Fragen.tex
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 25--25
@@ -5052,7 +4286,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[117
+[81
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 25--25
@@ -5064,7 +4298,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[118
+[82
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 25--25
@@ -5076,7 +4310,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[119
+[83
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 25--25
@@ -5088,7 +4322,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[120
+[84
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 25--25
@@ -5100,7 +4334,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[121
+[85
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 25--25
@@ -5112,7 +4346,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[122
+[86
 
 ]
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 25--25
@@ -5124,7 +4358,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[123
+[87
 
 ]) (slides/References.tex
 Overfull \hbox (76.95012pt too wide) in paragraph at lines 23--23
@@ -5136,7 +4370,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[124
+[88
 
 ])
 \tf@nav=\write8
@@ -5148,13 +4382,13 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 \tf@snm=\write10
 \openout10 = `Praesentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 172.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 172.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 165.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 165.
 
 (C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteDokumente\Zwischen
 praesentation\build\Praesentation.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 172.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 172.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 165.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 165.
 
 
 Package rerunfilecheck Warning: File `Praesentation.out' has changed.
@@ -5162,38 +4396,50 @@ Package rerunfilecheck Warning: File `Praesentation.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `Praesentation.out':
-(rerunfilecheck)             Before: DED6E58DC90B00D0B2E3FBF5A71B4B5C;621
-(rerunfilecheck)             After:  A8A5A7293C8C9D6A977D5BC89542D949;876.
+(rerunfilecheck)             Before: A8A5A7293C8C9D6A977D5BC89542D949;876
+(rerunfilecheck)             After:  11F9988AC85A996EF5E320B33CBA2225;751.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 56255 strings out of 493305
- 1346598 string characters out of 3138866
- 1791026 words of memory out of 3000000
- 58410 multiletter control sequences out of 15000+200000
+ 56144 strings out of 493305
+ 1339337 string characters out of 3138866
+ 1790026 words of memory out of 3000000
+ 58444 multiletter control sequences out of 15000+200000
  588105 words of font info for 108 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  78i,22n,136p,783b,1353s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Outline0.3.2.52} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Outline0.3.1.52} has been referenced but does not e
+pdfTeX warning (dest): name{Navigation124} has been referenced but does not e
 xist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.2.3.40} has been referenced but does not e
+pdfTeX warning (dest): name{Navigation114} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation107} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.4.2.107} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.4.1.88} has been referenced but does not e
 xist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.2.2.30} has been referenced but does not e
+pdfTeX warning (dest): name{Outline0.3.5.60} has been referenced but does not e
 xist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.2.1.12} has been referenced but does not e
+pdfTeX warning (dest): name{Outline0.3.4.41} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.3.3.41} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.3.2.31} has been referenced but does not e
 xist, replaced by a fixed one
 
  <C:\Users\Mosarvit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
-\ectt0900.pk> <C:\Users\Mosarvit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
-pen\ec\dpi600\ectt1000.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.
+\ectt1000.pk> <C:\Users\Mosarvit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
+pen\ec\dpi600\ectt0900.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.
 enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/Mi
@@ -5203,10 +4449,10 @@ pe1/public/amsfonts/symbols/msam5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/u
 hvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
 Output written on C:\Users\Mosarvit\Documents\GitHub\PjSemBeschlTech\ErstellteD
-okumente\Zwischenpraesentation\build\Praesentation.pdf (124 pages, 1919316 byte
-s).
+okumente\Zwischenpraesentation\build\Praesentation.pdf (88 pages, 1858429 bytes
+).
 PDF statistics:
- 1030 PDF objects out of 1200 (max. 8388607)
- 270 named destinations out of 1000 (max. 500000)
- 288 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 845 PDF objects out of 1000 (max. 8388607)
+ 200 named destinations out of 1000 (max. 500000)
+ 328 words of extra memory for PDF output out of 10000 (max. 10000000)
 
