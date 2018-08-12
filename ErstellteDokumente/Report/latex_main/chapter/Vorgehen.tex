@@ -6,54 +6,54 @@
 
 \chapter{Vorgehen}
 \label{chap:vorgehen}
-In diesem Kapitel werden die wichtigsten Punkte in der Weiterentwicklung des vorhandenen Tools erklärt. Es wird die Methodik erläutert, mit der an den vorhandenen Weg angeschlossen wurde. Dies geschieht auch in Hinblick darauf, dass andere Personen an den hier beschriebenen Weg anschließen werden.
+In diesem Kapitel werden die wichtigsten Punkte in der Weiterentwicklung des vorhandenen Tools erklärt. Es wird die Methodik erläutert, mit der an den vorhandenen Weg angeschlossen wurde. Dies geschieht auch in Hinblick darauf, dass andere Personen dieses Projekt fortsetzen können.
 \section[Vorhandene Implementierung]{Vorhandene Implementierung}
 \label{sec:vorg.setup}
-Das Projekt setzt an 2 Punkten an. Zum einen an dem Projektseminar \cite{PJS_Denys}, in dem der Grundstein in Python gelegt wurde und zum anderen an einer funktionierenden Implementierung des nichtlinearen Bestandteils des Modells aus \figref{fig:Hammerstein} in MATLAB nach \cite{harzheim}.
+Das Projekt knüpft an zwei Arbeiten an. Zum einen an dem Projektseminar \cite{PJS_Denys}, in dem der Grundstein in Python gelegt wurde und zum anderen an einer funktionierenden Implementierung des nichtlinearen Bestandteils des Modells aus \figref{fig:Hammerstein} in MATLAB nach \cite{harzheim}.
 \subsection{Python}
 \label{sec:vorg.python}
-Das vorhandene Python Tool kann mit einem Pseudorauschen die Übertragungsfunktion des Systems im linearen Bereich bestimmen. Diese Funktionalität wurde vollständig übernommen. Darüber hinaus waren folgende Funktionalitäten implementiert:
+Das vorhandene Python Tool \cite{PJS_Denys} kann die Übertragungsfunktion des Systems im linearen Bereich mit einem Pseudorauschen bestimmen. Diese Funktionalität wurde vollständig übernommen. Darüber hinaus waren folgende Funktionalitäten implementiert:
 \begin{itemize}
-	\item	$\Hcompl$ auf das Spektrum von $\Uout_{,ideal}$ anzuwenden.
+	\item	Anwendung von $\Hcompl$ auf das Spektrum von $\Uout_{,ideal}$.
 	
-	\item	Signale an das AWG zu senden und Messsignale aus dem Oszilloskop auszulesen.
+	\item	Senden von Signalen an das AWG und Auslesen von Messsignale aus dem Oszilloskop.
 	
-	\item	aus gegebenen Koeffizienten $a_n$ eine Kennlinie $K$ als Look-Up Tabelle zu berechnen.
+	\item	Berechnung einer Kennlinie $K$ als Look-Up Tabelle mit gegebenen Koeffizienten $a_n$.
 \end{itemize}
 \subsection{MATLAB}
 \label{sec:vorg.matlab}
 Als zweiten Ansatzpunkt standen funktionierende Methoden aus der MATLAB Implementierung des nichtlinearen Teils mit folgenden Funktionalitäten zur Verfügung:
 \begin{itemize}
-	\item	Das Eingangssignal des linearen Blocks aus $\Hcompl$ und $\Uout_{,ideal}$ zu berechnen.
+	\item	Berechnung des Eingangssignals des linearen Blocks aus $\Hcompl$ und $\Uout_{,ideal}$.
 	
-	\item	$a_n$ für die nichtlineare Kennlinie zu berechnen.
+	\item	Berechnung von $a_n$ für die nichtlineare Kennlinie.
 	
-	\item	$K$ als Look-Up Tabelle aufzustellen.
+	\item	Aufstellung von $K$ als Look-Up Tabelle.
 	
-	\item	ein vorverzerrtes Eingangssignal über $K$ zu berechnen.
+	\item	Berechnung eines vorverzerrten Eingangssignals über $K$.
 \end{itemize}
 
 \section[Funktionalität reproduzieren]{Funktionalität reproduzieren}
 \label{sec:vorg.reproduktion}
-Als Erstes wurde versucht, die vorhandenen Implementierungen zu verstehen, um letztendlich beide in Python zusammenzuführen. Dabei wurde eine starke Kopplung innerhalb der vorhandenen Implementierungen festgestellt, was die Fehlersuche und Fortführung erschwerte. Ein paar Funktionen hatten teilweise mehrere logische Aufgaben, die für eine bessere Verständlichkeit getrennt werden sollten. Mit dem Code wurden aber schon gute Ergebnisse erzielt und das erste Ziel war, den Code in eine neue Form zu überführen, ohne die Funktionalität zu beeinträchtigen.
+Zuerst wurde versucht, die vorhandenen Implementierungen zu verstehen, um letztendlich beide in Python zusammenzuführen. Dabei wurde eine starke Kopplung innerhalb der vorhandenen Implementierungen festgestellt, was die Fehlersuche und Fortführung erschwerte. Einige Funktionen beinhalteten mehrere logische Aufgaben, die für eine bessere Verständlichkeit getrennt werden sollten. Mit dem Code wurden aber schon gute Ergebnisse erzielt und das erste Ziel war es, den Code in eine neue Form zu überführen, ohne die Funktionalität zu beeinträchtigen.
 \subsection*{Neues Design}
 \label{sec:vorg.design}
-Das in \figref{fig:Hammerstein} dargestellte Modell wird in zwei Blöcke gegliedert und so wurde ein Code-Design gewählt, das diese Blöcke repräsentiert. Dafür bietet sich ein modulares Design an, das dieses Modell möglichst genau abbildet (Kap. \ref{chap:code}). Dieses Design wurde auch in Hinblick auf die Teamarbeit gewählt, damit an mehreren logisch getrennten Abschnitten gleichzeitig gearbeitet werden kann. \\ Dafür wurde ein Github Repository erstellt, um eine Versionenkontrolle vorzunehmen.
+Das in \figref{fig:Hammerstein} dargestellte Modell wird in zwei Blöcke gegliedert und dementsprechend liegt Code-Design nahe, das diese Blöcke repräsentiert. Dafür bietet sich ein modulares Design an, das dieses Modell möglichst genau abbildet (Kap. \ref{chap:code}). Dieses Design wurde auch im Hinblick auf die Teamarbeit gewählt, damit an mehreren logisch getrennten Abschnitten gleichzeitig gearbeitet werden kann. \\ Dafür wurde ein Github Repository erstellt, um eine Versionenkontrolle vorzunehmen.
 \subsection*{Tests}
 \label{sec:vorg.tests}
-Aus vorherigen Messungen und den Ergebnissen beider Implementierungen konnten Unit-Tests erstellt werden, die die geforderte Funktionalität beschreiben und somit die Ergebnisse aus dem neuen Design mit schon bestehenden Ergebnissen evaluieren. \\ Ziel war es, den Code umzustrukturieren mit der Bedingung, dass die Funktionalität nicht verändert wird. Die bestehende Implementierung wurde in mehrere logische Abschnitte unterteilt, bei denen jeder Abschnitt für sich die geforderten Daten erzeugen sollte. Dabei sollte die funktionierenden Teile aus MATLAB in Python überführt werden.
+Aus vorherigen Messungen und den Ergebnissen beider Implementierungen konnten Unit-Tests erstellt werden, die die geforderte Funktionalität beschreiben und somit die Ergebnisse aus dem neuen Design mit schon bestehenden Ergebnissen evaluieren. \\ Ziel war es, den Code umzustrukturieren unter der Bedingung, dass die Funktionalität nicht verändert wird. Die bestehende Implementierung wurde in mehrere logische Abschnitte unterteilt, bei denen jeder Abschnitt für sich die geforderten Daten erzeugen sollte. Dabei sollten die funktionierenden Teile aus MATLAB in Python überführt werden.
 \subsection*{Fehlersuche}
 \label{sec:vorg.fehlersuche}
-Die Möglichkeiten der Fehlersuche soll an zwei Beispielen erklärt werden. In der Python Implementierung aus \cite{PJS_Denys} war schon ein erster Entwurf zur Berechnung der Koeffizienten $a_n$ gegeben, der aber noch keine korrekten Werte berechnete. Die Ergebnisse aus der MATLAB Implementierung wurden in den Unit Test importiert, sodass in Python mehrere Möglichkeiten getestet wurden, bis die Ergebnisse mit den schon bestehenden Werten übereinstimmen. \\
-Das zweite Beispiel ist die Berechnung des Eingangssignals über $K$. Dabei wurden während einer Messung Daten gespeichert, die zu einem Programmabbruch führten. Diese Daten wurden in einem Unit Test zusammengeführt, damit der Fehler im Programm ohne Messaufbau behoben werden konnte. Einzelheiten dazu im Abschnitt \ref{sec:opt.K}.
+Die Möglichkeiten der Fehlersuche wird an zwei Beispielen erklärt. In der Python Implementierung aus \cite{PJS_Denys} war schon ein erster Entwurf zur Berechnung der Koeffizienten $a_n$ gegeben, der aber noch keine korrekten Werte berechnete. Die Ergebnisse aus der MATLAB Implementierung wurden in den Unit Test importiert, sodass in Python mehrere Möglichkeiten getestet wurden, bis die Ergebnisse mit den schon bestehenden Werten übereinstimmen. \\
+Das zweite Beispiel ist die Berechnung des Eingangssignals über $K$. Dabei wurden während einer Messung Daten gespeichert, die zu einem Programmabbruch führten. Diese Daten wurden in einem Unit Test zusammengeführt, damit der Fehler im Programm ohne Messaufbau behoben werden konnte, siehe hierzu \ref{sec:opt.K}.
 Des Weiteren wird durch das neue Design eine strukturierte Fehlersuche ermöglicht. Wenn eine Veränderung an einem Block vorgenommen wird, so lässt sich diese isoliert betrachten und sollte keinen Einfluss auf die Logik anderer Blöcke haben.
 
 \section[Funktionalität erweitern]{Funktionalität erweitern}
 \label{sec:vorg.erweiterung}
 Nachdem die Funktionalitäten beider Implementierungen in Python zusammengeführt wurden, konnten im nächsten Schritt Erweiterungen der vorhandenen Funktionalität vorgenommen werden. Dabei stellte das neue Design mit seinem modularen Aufbau eine gute Grundlage dar, um an den logisch getrennten Aufbau anzuschließen und schon vorhandene Funktionalität zu nutzen.
-\subsection{Erste Optimierungs Idee}
+\subsection{Erste Idee einer Optimierung}
 \label{sec:vorg.optimierung}
-Als nächster Schritt wurde ein erster Optimierungsansatz implementiert, wie er in der Aufgabenstellung aus Abschnitt \ref{sec:einf.aufgabe} vorgesehen war. Genauere Erläuterungen folgen in Kap. \ref{chap:opt}. Der Ansatz wurde mit zwei Routinen getestet und mit dem RF-Tool \cite{RF-Tool} zur Güteberechnung des Ausgangssignals evaluiert. \\
+Im nächsten Schritt wurde ein erster Optimierungsansatz implementiert, wie er in der Aufgabenstellung aus Abschnitt \ref{sec:einf.aufgabe} vorgesehen war. Genauere Erläuterungen folgen in Kap. \ref{chap:opt}. Der Ansatz wurde mit zwei Routinen getestet und mit dem RF-Tool \cite{RF-Tool} zur Güteberechnung des Ausgangssignals evaluiert. \\
 Bei der Nutzung des Programms ist eine längere Wartezeit für die Geräte aufgefallen, die bei kleineren Durchläufen nicht so ins Gewicht fallen, aber im Hinblick auf eine höhere Zahl an Iterationsschritten noch optimiert werden sollte. Dazu werden im folgenden Abschnitt Ansätze vorgestellt.
 
 \chapter{Gerätekommunikation}
@@ -68,48 +68,49 @@ Hierbei wurden die zu Beginn vorliegenden Implementierungen für die Gerätekomm
 Ziele der Anpassungen waren.
 \\
 \\
-Die Fernsteuerung von Messgeräten, der \lstinline{Remote}-Modus, wird standardmäßig durch das Visa-Protokoll und im vorliegenden Fall durch die Implementierung von National Instruments, NIVisa, geregelt. Die Einbindung in Python wird durch die Erweiterung PyVisa ermöglicht. Übertragen werden Befehle in Form standardisierter Befehlsstrukturen, den SCPI (Standard Commands for Programmable Instruments). Dem inneren Aufbau von Messgeräten zugrunde liegt der IEEE-488 Standard, sodass unabhängig vom konkreten Gerät oder der Art der Verbindung eine Reihe von Befehlen existiert, die gemäß IEEE-488.2 gebräuchliche Standards bieten. Diese Befehle sind in der Form \lstinline{*COMMAND} gehalten \cite[S. 224 ff.]{keysHand15}. 
-Weiterhin bieten die Geräte spezifische Befehle zur Manipulation der Einstellungen, die in großer Analogie zur direkten Benutzeroberfläche formuliert sind. Diese werden nach Kontext gegliedert in sogenannte Subsysteme oder Command Groups.
+Die Fernsteuerung von Messgeräten, der \lstinline{Remote}-Modus, wird standardmäßig durch das Visa-Protokoll und im vorliegenden Fall durch die Implementierung von National Instruments, NIVisa, geregelt. Die Einbindung in Python wird durch die Erweiterung PyVisa ermöglicht. Übertragen werden Befehle in Form standardisierter Befehlsstrukturen, den SCPI (Standard Commands for Programmable Instruments). Dem inneren Aufbau von Messgeräten liegt der IEEE-488 Standard zugrunde, sodass unabhängig vom konkreten Gerät oder der Art der Verbindung eine Reihe von Befehlen existiert, die gemäß IEEE-488.2 gebräuchliche Standards bieten. Diese Befehle sind in der Form \lstinline{*COMMAND} gehalten \cite[S. 224 ff.]{keysHand15}. 
+Weiterhin bieten die Geräte spezifische Befehle zur Manipulation der Einstellungen, die in großer Analogie zur direkten Benutzeroberfläche formuliert sind. Diese werden nach Kontext in sogenannte Subsysteme oder Command Groups gegliedert.
 \\
 \\
 \noindent
-Es wird ein Keysight 33622A als Signalgenerator (AWG) und ein Oszilloskop der TDS 5000 Serie von Tektronix genutzt.
+Es werden ein Keysight 33622A als Signalgenerator (AWG) und ein Oszilloskop der TDS 5000 Serie von Tektronix genutzt.
 
 
 \section{Laufzeitoptimierung}
-Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWGs alle Einstellungen zurückzusetzen und anschließend neu zu setzen. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. 
-Die Größenordnung dieser Wartezeiten schwankt dabei stark. So dauert ein \lstinline{Re}\lstinline{set} des AWGs bis zu 5 Sekungen und das Schreiben eines Arbiträrsignals benötigt ebenso mehr als eine Sekunde. Das Oszilloskop hingegen verarbeitet ohne im Kontext dieses Aufbaus messbare Verzögerung. Verbunden damit, dass das Oszilloskop auf absehbare Zeit durch das neuere MAUI von Teledyne LeCroy ersetzt wird, wird im Folgenden nicht weiter auf die Laufzeit dieses Gerätes eingegangen. Durch diese Feststellung konnte die Laufzeit je Lese-Aufruf bereits um ungefähr 15 Sekunden reduziert werden.
-Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-Abfragen ähnlich den nachfolgend für das AWG erläuterten.
+Im vorliegenden Messaufbau ist es notwendig, beim Konfigurieren des AWGs alle Einstellungen zurückzusetzen und anschließend neu zu initialisieren. Dabei werden Befehle nach dem First-Come-First-Serve Prinzip aus dem internen Speicher abgearbeitet. Dies führt aufgrund begrenzter Speicherkapazität und Verarbeitungsgeschwindigkeit bei einer Reihe von Befehlen zur Notwendigkeit, das Senden von Befehlen im Programm mit dem Arbeitsstatus des Gerätes zu synchronisieren. 
+Die Größenordnung dieser Wartezeiten schwankt dabei stark. So dauert ein \lstinline{Re}\lstinline{set} des AWGs bis zu 5 Sekunden und das Schreiben eines Arbiträrsignals benötigt ebenso mehr als eine Sekunde. Das Oszilloskop hingegen verarbeitet ohne im Kontext dieses Aufbaus messbare Verzögerung. Verbunden damit, dass das Oszilloskop auf absehbare Zeit durch das neuere MAUI von Teledyne LeCroy ersetzt werden soll, wird im Folgenden nicht weiter auf die Laufzeit dieses Gerätes eingegangen. Dadurch konnte die Laufzeit je Lese-Aufruf bereits um ungefähr 15 Sekunden reduziert werden.
+Bei den zur Sicherheit implementierten Warte-Befehlen handelt es sich um Status-Abfragen ähnlich den nachfolgend für das AWG Erläuterten.
 \\
 \\
 \noindent
-In der zu Beginn vorliegenden Implementierung lagen pauschale Wartezeiten nach einigen als besonders zeitintensiv erwarteten Befehlen sowohl in der Ansteuerung des AWGs als auch des Oszilloskops vor. 
-Insgesamt blieb die Verbesserung der Zugriffszeiten auf das AWG erfolglos. Es stellt nach wie vor das Nadelöhr des Programms dar mit etwa 25 Sekunden Laufzeit je Aufruf. 
-Es wurden eine Reihe von IEEE-488 Standardbefehlen für diesen Zweck ausprobiert, nachfolgend mit den wichtigsten Eigenschaften:
+Die zu Beginn vorliegende Implementierung beinhaltete pauschale Wartezeiten nach einigen als besonders zeitintensiv erwarteten Befehlen sowohl in der Ansteuerung des AWGs als auch des Oszilloskops vor. 
+Insgesamt blieb die Verbesserung der Zugriffszeiten auf das AWG erfolglos. Mit etwa 25 Sekunden Laufzeit stellt das AWG nach wie vor das Nadelöhr des Programms dar.
+Es wurden eine Reihe von IEEE-488 Standardbefehlen für diesen Zweck ausprobiert, nachfolgend aufgezählt mit den wichtigsten Eigenschaften:
 \begin{enumerate}
 
-	\item \lstinline{*WA}\lstinline{I} ist in erster Linie ein interner Befehl, zuerst alle Befehle abzuarbeiten, bevor neue angegangen werden. Dies geschieht jedoch ohne Rückgabe an den aufrufenden Code.
+	\item \lstinline{*WA}\lstinline{I} ist in erster Linie ein interner Befehl, zuerst alle Befehle abzuarbeiten, bevor neue angefangen werden. Dies geschieht jedoch ohne Rückgabe an den aufrufenden Code.
 	
-	\item \lstinline{*OPC?} zwingt das aufrufende Programm zum Warten auf Beenden aller Befehle im AWG und führt zu einem \lstinline{VisaTimeoutError} im AWG, wenn zu lange auf die Rückgabe gewartet werden muss \cite[S. 9]{troeser13}. Dieser Fehler konnte auch nicht im Programm aufgefangen werden, sodass er folgenlos für den Ablauf geblieben wäre.
+	\item \lstinline{*OPC?} zwingt das aufrufende Programm zum Warten auf das Beenden aller Befehle im AWG und führt zu einem \lstinline{VisaTimeoutError} im AWG, wenn zu lange auf die Rückgabe gewartet werden muss \cite[S. 9]{troeser13}. Dieser Fehler konnte auch nicht im Programm aufgefangen werden, sodass er folgenlos für den Ablauf geblieben wäre.
 	
-	\item \label{enum:gerateOPC}\lstinline{*OPC} setzt das zugehörige Bit \lstinline{Standard-Event-Register} des Gerätes, sobald alle Befehle abgearbeitet sind. Im Unterschied zu \lstinline{*OPC?} wird damit jedoch nicht auch das aufrufende Programm geblockt. Jedoch muss mit einer Statusabfrage über \lstinline{*ESR?} dieses Register ausgelesen werden. Die dafür benötigte Schleife konnte jedoch nicht derart über PyVisa implementiert werden, dass tatsächlich mit Sicherheit alle vorigen Befehle beendet wurden.
+	\item \label{enum:gerateOPC}\lstinline{*OPC} setzt das zugehörige Bit \lstinline{Standard-Event-Register} des Gerätes, sobald alle Befehle abgearbeitet sind. Im Unterschied zu \lstinline{*OPC?} wird damit jedoch nicht auch das aufrufende Programm geblockt. Jedoch muss dieses Register mit einer Statusabfrage über \lstinline{*ESR?} ausgelesen werden. Die dafür benötigte Schleife konnte jedoch nicht derart über PyVisa implementiert werden, dass tatsächlich mit Sicherheit alle vorigen Befehle beendet wurden.
 
 \end{enumerate}
 
+\noindent
 Nicht für das AWG definiert ist der Standardbefehl \lstinline{*BU}\lstinline{SY?}, der eine 0 zurückgeben würde, wenn das Gerät gerade nicht mit Ausführen eines Befehls beschäftigt ist. Ansonsten wäre die Rückgabe 1.
 \\
 \\
-Als besonders erfolgversprechend erschien der letzte Ansatz \ref{enum:gerateOPC}, der jedoch auch zeitlich der letzte war. Mit einer Schleife über \lstinline{*ES}\lstinline{R?} könnte das zugehörige Bit erneut ausgelesen und eine sehr kleine pauschale Wartezeit im Programm eingebaut werden, bevor die nächste Abfrage stattfindet. Hier könnte es sich um ein Resultat der Codierung über PyVisa handeln, da hierbei mehrere Arten, einen Befehl an das Gerät zu senden, zur Verfügung stehen.
-
+Als besonders Erfolg versprechend erschien der letzte Ansatz \ref{enum:gerateOPC}, der jedoch nicht abschließend mit Erfolg getestet werden konnte. Mit einer Schleife über \lstinline{*ES}\lstinline{R?} könnte das zugehörige Bit erneut ausgelesen und eine sehr kleine pauschale Wartezeit im Programm eingebaut werden, bevor die nächste Abfrage stattfindet. Hier könnte es sich um ein Resultat der Codierung über PyVisa handeln, da hierbei mehrere Arten, einen Befehl an das Gerät zu senden, zur Verfügung stehen.
+\\
 Weiterhin wurde die pauschale Wartezeit an der im Datenblatt \cite[S. 21]{keysData14} für die Verbindung via USB angegebenen, gemessenen Ladedauer eines Arbiträrsignals orientiert. Dieser Richtwert von $\SI{1.25}{\s}$ stellte sich jedoch als zu gering für den hier vorliegenden Fall heraus.
 \\
 \\
-Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{SYSTem:ERRor?} möglich ist und durch das dabei erfolgte Löschen der Fehler aus dem internen Speicher nicht nur die Abfrage sondern auch das Rücksetzen des Fehlerstatus ermöglicht. Dies ist insbesondere für das Debugging vorteilhaft, wenn Befehle ausprobiert werden und die gegebenenfalls auftretenden Fehler gehandhabt werden müssen \cite[S. 454]{keysHand15}. Dies vermeidet das unter Umständen mehrmalige Trennen und Wiederherstellen der Verbindung zum AWG sowie das Löschen der Fehler an der Benutzeroberfläche.
+Letztlich sei erwähnt, dass die Abfrage der Fehler im AWG mittels  \lstinline{SYSTem:ERRor?} möglich ist und durch das dabei erfolgte Löschen der Fehler aus dem internen Speicher nicht nur die Abfrage, sondern auch das Rücksetzen des Fehlerstatus ermöglicht. Dies ist insbesondere für das Debugging vorteilhaft, wenn Befehle ausprobiert werden und die gegebenenfalls auftretenden Fehler gehandhabt werden müssen \cite[S. 454]{keysHand15}. Dies vermeidet das unter Umständen mehrmalige Trennen und Wiederherstellen der Verbindung zum AWG sowie das Löschen der Fehler an der Benutzeroberfläche.
 
 \section{Anpassung der horizontalen Auflösung am Oszilloskop}
 
 Um die Auflösung des Oszilloskops ausnutzen zu können, ist die Anpassung der horizontalen wie auch vertikalen Auflösung an das zu messende Signal notwendig.
-Während die horizontale Auflösung durch die Wiederholfrequenz des Pulses mit $f_{BB}$ sich nahezu unabhängig des betrachteten Signals setzen lässt, muss die vertikale Skalierung an das Signal angepasst werden. Um dies etwa während einer Optimierung mit wechselnden Spannungsamplituden zu ermöglichen, sind zwei direkt aufeinander folgende Messungen notwendig. Dabei wird aus der ersten Messung die Amplitude des Signals entnommen und die Skalierung für die zweite, dann genauere Messung, dahingehend angepasst, dass das Signal bildfüllender dargestellt wird.
+Während die horizontale Auflösung durch die Wiederholfrequenz des Pulses mit $f_{BB}$ sich nahezu unabhängig von dem betrachteten Signal setzen lässt, muss die vertikale Skalierung an das Signal angepasst werden. Um dies etwa während einer Optimierung mit wechselnden Spannungsamplituden zu ermöglichen, sind zwei direkt aufeinander folgende Messungen notwendig. Dabei wird aus der ersten Messung die Amplitude des Signals entnommen und die Skalierung für die zweite, dann genauere Messung, dahingehend angepasst, dass das Signal bildfüllender dargestellt wird.
 Dieser Gewinn an Genauigkeit in der Messung stellte sich insbesondere für die \nameref{sec:opt.H} als notwendig heraus.
 
 

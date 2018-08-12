@@ -111,13 +111,44 @@
 
 \chapter{Anhang}
 \label{chap:anhang}
+\subsubsection{Erklärungen zu den Übergabeparametern}
+\begin{itemize}
+	\item $a$: Vektor mit Koeffizienten der Potenzreihe für die Kennlinie
+	\item $U$: Signale werden als Objekte der Klasse \texttt{signal\_class} übergeben
+	\item $\Hcompl$: Übertragungsfunktionen werden als Objekte der Klasse \texttt{transfer\_function\_class} übergeben
+	\item $K$: Als Matrix mit $[\Uin, \Uquest]$
+	\item $f_S$: Samplefrequenz von Oszilloskop oder AWG
+	\item $[\cdot]$: Vektoren mit Inhalt, der in den Klammern steht
+\end{itemize}
+
+\begin{table}[H]
+\centering 
+\begin{tabular}[t]{| >{\texttt\bgroup}m{6cm}<{\egroup}|m{8cm}|} 
+  \hline
+    \textrm{\textbf{Routine}} & \textbf{Funktion} \\ 
+  \hline \hline
+  evaluate\_adjust\_a & Ist die Implementierung des ersten Optimierungsansatzes für $K$ \\
+  \hline
+  evaluate\_adjust\_H & Ist die Implementierung des Optimierungsansatzes für $\Hcompl$ \\
+  \hline 
+  evaluate\_connect\_Devices & Stellt eine Arbeitsumgebung zum Überprüfen von Befehlen der Gerätekommunikation dar\\
+  \hline
+  evaluate\_K & Wertet mehrere Bereiche einer zuvor berechneten Kennlinie aus\\
+  \hline
+  evaluate\_with\_BBSignal & Berechnung des ersten nichtlinear vorverzerrten Eingangssignals \\
+  \hline
+\end{tabular}
+\caption{Liste aller verwendeten Routinen}
+\label{tab:anhang.Funktionen.routine}
+\end{table}
+
 \begin{table}[H]
 \centering 
 \begin{tabular}[t]{| >{\texttt\bgroup}m{3.5cm}<{\egroup}|m{8cm}|m{2cm}|m{2cm}|} 
   \hline
     \textrm{\textbf{Name}} & \textbf{Funktion} & \textbf{Input} & \textbf{Output} \\ 
   \hline \hline
-    \multicolumn{4}{|c|}{blocks} \\
+    \multicolumn{4}{|c|}{\textbf{blocks}} \\
   \hline \hline
   adjust\_a & Anpassung der Parameter für die Kennlinie & $a_{old}$ \newline $\Uin$ \newline $\Uquest_{,\textrm{ideal}}$ \newline $\Uquest_{,\textrm{meas}}$ \newline $\sigma_a$ & $a_{new}$\\
   \hline
@@ -129,21 +160,21 @@
   \hline
   compute\_Uin & Berechnung des nichtlinear vorverzerrten Eingangssignals & $\Uquest$ \newline $K$ & $\Uin$\\
   \hline
-  compute\_Uquest & Berechnung es linear vorverzerrten Eingangssignals & $\Uout$ \newline $\Hcompl$ & $\Uquest$\\
+  compute\_Uquest & Berechnung des linear vorverzerrten Eingangssignals & $\Uout$ \newline $\Hcompl$ & $\Uquest$\\
   \hline
   determine\_a & Bestimmung der Parameter für die erste Kennlinie & $\Hcompl$ \newline $\Uout_{,\textrm{ideal}}$ \newline $f_{S,\textrm{DSO}}$ & $a_0$\\
   \hline
   determine\_H & Bestimmung der Übertragungsfunktion über ein Pseudorauschen nach \cite{PJS_Denys} & load\_csv \newline save\_csv  & $\Hcompl_0$\\
   \hline
-  generate\_BB\_Signal & Erstellen eines idealen Barrier-Bucket Ausgangssignal & $f_{rep}$ \newline $f_{BB}$ \newline $V_{PP}$ \newline $f_{S,\textrm{AWG}}$ \newline save\_csv & $\Uout_{,\textrm{ideal}}$\\
+  generate\_BB\_Signal & Erstellen eines idealen Barrier Bucket Ausgangssignals & $f_{rep}$ oder $f_{S,\textrm{AWG}}$ \newline $f_{BB}$ \newline $V_{PP}$ \newline save\_csv & $\Uout_{,\textrm{ideal}}$\\
   \hline
-  get\_H & Funktion um Übertragungsfunktion zu Messen & $f_{max}$ \newline $V_{PP}$ \newline bits & $[f]$ \newline $[|\Hcompl|]$ \newline $[\arg{(\Hcompl)}]$\\
+  get\_H & Funktion zum Messen der Übertragungsfunktion & $f_{max}$ \newline $V_{PP}$ \newline bits & $[f]$ \newline $[|\Hcompl|]$ \newline $[\arg{(\Hcompl)}]$\\
   \hline
   loop\_adust\_a & Ein Iterationsschritt in der Anpassung von $K$ & $a_{old}$ \newline $K_0$ \newline $\Uout_{,\textrm{ideal}}$ \newline Iterationen \newline $f_{S,\textrm{DSO}}$ & $\Uout_{,\textrm{meas}}$ \newline$[Q_i]$ \newline $[K_i]$\\
   \hline
   loop\_adust\_H & Ein Iterationsschritt in der Anpassung von $\Hcompl$ & $\Hcompl_0$ \newline $K$ \newline $\Uout_{,\textrm{ideal}}$ \newline Iterationen \newline $f_{S,\textrm{DSO}}$ & $[\Hcompl_i]$ \newline $[Q_i]$ \newline $\Uout_{,\textrm{meas}}$\\
   \hline
-  measure\_Uout & Messsignal aus DSO auslesen & $a_{old}$ \newline $\Uin$ \newline $f_{S,\textrm{DSO}}$ & $\Uout$\\
+  measure\_Uout & Messsignal aus Oszilloskop auslesen & $a_{old}$ \newline $\Uin$ \newline $f_{S,\textrm{DSO}}$ & $\Uout$\\
   \hline
 \end{tabular}
 \caption{Liste aller Funktionen in blocks}
@@ -155,15 +186,15 @@
   \hline
     \textrm{\textbf{Name}} & \textbf{Funktion} & \textbf{Input} & \textbf{Output} \\ 
   \hline \hline
-    \multicolumn{4}{|c|}{classes} \\
+    \multicolumn{4}{|c|}{\textbf{classes}} \\
   \hline \hline
   signal\_class & Abstract Data Type für Signale & $[time]$ \newline $[U]$  & $U$\\
   \hline
   transfer\_function & Abstract Data Type für Übertragungsfunktion & $[f]$ & $\Hcompl$\\
   \hline \hline
-    \multicolumn{4}{|c|}{helpers} \\
+    \multicolumn{4}{|c|}{\textbf{helpers}} \\
   \hline \hline
-  apply\_ \newline transfer\_function & Anwenden einer Übertragungsfunktion auf ein Signal & $Uout$ \newline $\Hcompl$  & $\Uquest$\\
+  apply\_ \newline transfer\_function & Anwenden einer Übertragungsfunktion auf ein Signal, Standard:  & $\Uout$ \newline $\Hcompl^{-1}$  & $\Uquest$\\
   \hline
   csv\_helper & Funktionen, um Werte einheitlich und einfach zu speichern und einzulesen &  & \\
   \hline
@@ -171,47 +202,21 @@
   \hline
   overlay & Zwei Signale übereinanderlegen mit Kreuzkorrelation & $U_1$ \newline $U_2$ & $U_{1,\textrm{shifted}}$\\
   \hline
-  plot\_helper & Funktionen, um Datensätze einheitlich und einfach zu speichern & & \\
+  plot\_helper & Funktionen, um Datensätze einheitlich und einfach darzustellen & & \\
   \hline
-  read\_from\_DSO & Auslesen eines Messsignals aus dem DSO, der Parameter measure\_H muss auf 1 gesetzt werden, damit das Signal für die Übertragungsfunktion richtig gemessen wird (diese Funktion sollte dringend nochmal überarbeitet werden) & $f_{S,\textrm{DSO}}$ \newline $V_{PP,\textrm{ch1}}$ \newline $V_{PP,\textrm{out}}$ \newline $f_{max}$ \newline $U$ \newline measure\_H & $[time]$ \newline $[U_{in}]$ \newline $[U_{out}]$\\
+  read\_from\_DSO & Auslesen eines Messsignals aus dem DSO, der Parameter measure\_H muss auf 1 gesetzt werden, damit das Signal für die Übertragungsfunktion richtig gemessen wird \footnote{Diese Funktion sollte dringend überarbeitet oder an das neue LeCroy DSO angepasst werden.} & $f_{S,\textrm{DSO}}$ \newline $V_{PP,\textrm{ch1}}$ \newline $V_{PP,\textrm{out}}$ \newline $f_{max}$ \newline $U$ \newline measure\_H & $[time]$ \newline $[U_{in}]$ \newline $[U_{out}]$\\
   \hline
   read\_from\_DSO\_ \newline resolution & Verwendet die vorherige Funktion, um eine bessere Auflösung zu erreichen & $f_{S,\textrm{DSO}}$ \newline $V_{PP,\textrm{ch1}}$ \newline $f_{max}$ \newline $U$ \newline measure\_H & $[time]$ \newline $[U_{in}]$ \newline $[U_{out}]$\\
   \hline
-  signal\_evaluate & Bestimmung der Güte eines Ausgangssignales mit dem RF-Tool \cite{RF-Tool} & Uout\_file \newline Result\_file & $[Q]$\\
+  signal\_evaluate & Bestimmung der Güte eines Ausgangssignals mit dem RF-Tool \cite{RF-Tool} & Uout\_file \newline Result\_file & $[Q]$\\
   \hline
-  write\_to\_AWG & Signal an das AWG übergeben & $U$ \newline $V_{PP,\textrm{AWG}}$ $f_{rep}$ \newline $f_{S,\textrm{AWG}}$ &  \\
+  write\_to\_AWG & Signal an das AWG übergeben & $U$ \newline $V_{PP,\textrm{AWG}}$  \newline $f_{S,\textrm{AWG}}$ oder $f_{rep}$ &  \\
   \hline
 \end{tabular}
 \caption{Liste aller Funktionen und Klassen aus classes und helpers}
 \label{tab:anhang.Funktionen.class.helpers}
 \end{table}
-\subsubsection{Erklärungen zu den Übergabeparametern}
-\begin{itemize}
-	\item a: Vektor mit Koeffizienten der Potenzreihe für die Kennlinie
-	\item U: Signale werden als Objekte der Klasse \texttt{signal\_class} übergeben
-	\item H: Übertragungsfunktionen werden als Objekte der Klasse \texttt{transfer\_function\_class} übergeben
-	\item K: Als Matrix mit $[\Uin, \Uquest]$
-	\item $[..]$: Vektoren mit Inhalt, der in den Klammern steht
-\end{itemize}
-\begin{table}[H]
-\centering 
-\begin{tabular}[t]{| >{\texttt\bgroup}m{6cm}<{\egroup}|m{8cm}|} 
-  \hline
-    \textrm{\textbf{Routine}} & \textbf{Funktion} \\ 
-  \hline \hline
-  evaluate\_adjust\_a & Ist die Implementierung des ersten Optimierungsansatzes für $K$ \\
-  \hline
-  evaluate\_adjust\_H & Ist die Implementierung des ersten Optimierungsansatzes für $\Hcompl$ \\
-  \hline 
-  evaluate\_connect\_Devices & Testet unterschiedliche Befehle aus der Gerätekommunikation \\
-  \hline
-  evaluate\_K & Testet mehrere Bereiche einer zuvor berechneten Kennlinie \\
-  \hline
-  evaluate\_with\_BBSignal & Berechnung des ersten nichtlinear vorverzerrten Eingangssignals \\
-  \hline
-\end{tabular}
-\caption{Liste aller verwendeten Routinen}
-\label{tab:anhang.Funktionen.routine}
-\end{table}
+
+
 
 \end{document}
