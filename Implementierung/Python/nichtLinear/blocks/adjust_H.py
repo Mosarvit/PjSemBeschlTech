@@ -68,12 +68,17 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
     #     plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
     #     plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
     #     plt.show()
-     
 
+    use_rms = False
+    use_zero_padding = False
+    ratio_to_cut = 0
+    ratio_ideal = ratio_to_cut
+    ratio_meas = ratio_to_cut
     # calculate Spectrum:
 
+
     # # use zero-padding?
-    use_zero_padding = True
+
     if use_zero_padding:
         # here: enlarges the length by factor 3 (setting Uout_ideal_length at each beginning and end of signal)
         frequencies_Id, spectrum_Id = spectrum_from_Time_Signal_ZeroPadding(Uout_ideal.time, Uout_ideal.in_V,
@@ -85,6 +90,12 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
         frequencies_Meas, spectrum_Meas = spectrum_from_TimeSignal(Uout_measured.time,
                                                                    Uout_measured.in_V)
 
+    if verbosity:
+        plt.plot(frequencies_Id, np.abs(spectrum_Id), 'r', frequencies_Meas, np.abs(spectrum_Meas), 'b')
+        plt.show()
+        plt.scatter(frequencies_Id, np.angle(spectrum_Id), c='r')
+        plt.scatter(frequencies_Meas, np.angle(spectrum_Meas), c='b')
+        plt.show()
     # if verbosity:
     #     frequencies_Id_init, spectrum_Id_init = spectrum_from_TimeSignal(Uout_ideal.time, Uout_ideal.in_V)
     #     frequencies_Meas_init, spectrum_Meas_init = spectrum_from_TimeSignal(Uout_measured.time, Uout_measured.in_V)
@@ -140,8 +151,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
     # to reduce NOISE and avoid problems by dividing by 0: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
     # TODO: add input parameter with ratio to not define it here
-    ratio_ideal = 3e-3
-    ratio_meas = 3e-3
+
     # find indices to set to default:
     idx_clear_Id = np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id)))[0]
     idx_clear_Meas = np.where(abs(spectrum_Meas) <= ratio_meas * np.max(abs(spectrum_Meas)))[0]
@@ -206,7 +216,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
     #     if not (len(idx_clear) == len(ratio_abs)):  # check for simple signals with Uout_Id = multiple Uout_Meas
     #         ratio_abs[idx_clear] = np.zeros(len(idx_clear))
     #         diff_angle[idx_clear] = np.zeros(len(idx_clear))
-    use_rms = False
+
     rms = np.sqrt(np.mean(np.square(np.abs(f_compl))))
     ###
     # just to enable return for report 2018!

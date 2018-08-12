@@ -32,7 +32,7 @@ Die Optimierung von $\Hcompl \ofomega$ beruht auf der Annahme, dass sich \eqref{
 				\; .
 \end{align}
 
-Ist im Spektrum des gemessenen Signals eine Frequenz stärker vertreten verglichen mit dem idealen Signal, wurde die Verstärkung des realen Systems bei der Berechnung von $\Uquest$ unterschätzt. Folglich muss die Verstärkung im Hammerstein-Modell angehoben werden. Die Korrektur der Phase ist dabei in \eqref{eq:opt.ratio} mitinbegriffen.
+Ist im Spektrum des gemessenen Signals eine Frequenz stärker vertreten verglichen mit dem idealen Signal, wurde die Verstärkung des realen Systems bei der Berechnung von $\Uquestc$ unterschätzt. Folglich muss die Verstärkung im Hammerstein-Modell angehoben werden. Die Korrektur der Phase ist dabei in \eqref{eq:opt.ratio} mitinbegriffen.
 Iterativ mit einer Schrittweite $\sigma_H^i \in \left[ 0 , 1 \right]$ ausgeführt, folgt für den $i$-ten Schritt
 
 \begin{align}
@@ -45,7 +45,7 @@ Iterativ mit einer Schrittweite $\sigma_H^i \in \left[ 0 , 1 \right]$ ausgeführ
 für $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal.
 \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt} 
 In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Die Transformation erfolgt dabei durch die Erweiterung \lstinline{numpy} in Python mit \lstinline{numpy.fft}. Die Routine nutzt einen Algorithmus von Cooley and Tukey \cite[S. 297-301]{cooley65}.
-Klar erkennbar sind die Nulldurchgänge des Betragsspektrums. 
+Klar erkennbar sind die Nulldurchgänge des Betragsspektrums sowie die große Streuung der Phasenwerte. 
 %%% TODO: Samples der Signale!
 % Insbesondere illustriert \figref{subfig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
 \\
@@ -174,15 +174,15 @@ Besondere Störeinflüsse ergeben sich also durch
 \begin{itemize}
 	\item Rauschen: Unterschiedliche Rauscharten macht sich in allen Frequenzen bemerkbar mit kritischem Einfluss bei geringer Spektraldichte des Signals.\cite[S. 205 ff.]{lerch10}
 	
-	\item Diskretisierungsfehler: Die FFT bedingt eine begrenzte Auflösung, in den Spektren von $\Hcompl$ und den gemessenen Signalen und liegt insbesondere im Allgemeinen an unterschiedlichen Frequenzen und mit unterschiedlich vielen Punkten vor.
+	\item Diskretisierungsfehler: Die FFT bedingt eine begrenzte Auflösung in den Spektren von $\Hcompl$ und den gemessenen Signalen und liegt insbesondere im Allgemeinen an unterschiedlichen Frequenzen und mit unterschiedlich vielen Punkten vor.
 	
 	\item Interpolationsfehler: Die (hier lineare) Interpolation der Spektren zur Auswertung von $\fabs$ an den Frequenzen von $\Hcompl$ kann insbesondere den Einfluss oben genannter Punkte verstärken.
 \end{itemize}
 
-Weiterhin unterscheidet sich die Auflösung des Spektrums zwischen der FFT der Signale und der Darstellung von $\Hcompl$. Der Frequenzabstand zweier Einträge in den Signal-Spektren ist durch die Wiederholfrequenz $f_{rep}$ gegeben. Hierdurch ergeben sich im betrachteten Bereich der Übertragungsfunktion weniger etwa 100 Werte in den Spektren der Signale, während die Übertragungsfunktion mit über 200 Werten berechnet wird. Hieraus resultiert eine konzeptionelle Ungenauigkeit, auf die in \ref{subsubsec:opt.H.zeropadd} eingegangen wird. 
+Weiterhin unterscheidet sich die Auflösung des Spektrums zwischen der FFT der Signale und der Darstellung von $\Hcompl$. Der Frequenzabstand zweier Einträge in den Signal-Spektren ist durch die Wiederholfrequenz $f_{rep}$ gegeben. Hierdurch ergeben sich im betrachteten Bereich der Übertragungsfunktion etwa 100 Werte in den Spektren der Signale, während die Übertragungsfunktion mit über 200 Werten berechnet wird. Hieraus resultiert eine konzeptionelle Ungenauigkeit, auf die in \ref{subsubsec:opt.H.zeropadd} eingegangen wird. 
 \\
 \\
-Ein Aspekt, der sich in der Implementierung als entscheidend, aber nicht auf den ersten Blick intuitiv darstellt, liegt in der Periodendauer diskreter Signale. Bei diskreten Zeitsignalen ist zu beachten, dass die Periodendauer $T$ nicht durch die Differenz der Zeitwerte des letzten und des ersten Wertes, sondern noch zuzüglich eines Zeitschritts  zu berechnen ist, also \lstinline{T = time[end] - time[0] + delta_time}, womit gelten sollte \lstinline{T = N * delta_time}. Dies wirkt sich insbesondere auch auf die FFT aus, wenn die zugehörige Frequenzachse berechnet werden muss.
+Ein Aspekt, der sich hierzu in der Implementierung als entscheidend, aber nicht auf den ersten Blick intuitiv darstellt, liegt in der Periodendauer diskreter Signale. Bei diskreten Zeitsignalen ist zu beachten, dass die Periodendauer $T$ nicht durch die Differenz der Zeitwerte des letzten und des ersten Wertes, sondern noch zuzüglich eines Zeitschritts  zu berechnen ist, also \lstinline{T = time[end] - time[0] + delta_time}, womit gelten sollte \lstinline{T = N * delta_time}. Dies wirkt sich insbesondere auch auf die FFT aus, wenn die zugehörige Frequenzachse berechnet werden muss.
 
 
 \subsection{Umgang mit Fehlerquellen}
@@ -191,8 +191,8 @@ Ein Aspekt, der sich in der Implementierung als entscheidend, aber nicht auf den
 \subsubsection*{Ignorieren kleiner Beträge im Spektrum}
 \label{subsubsec:opt.H.prom}
 
-Um Rauscheinflüsse und Probleme durch Nulldurchgänge zu dämpfen, wird ein erster intuitiver Ansatz vorgenommen: Bei den Betragsspektren der in $\fabs$ eingehenden Signale, des gemessenen und idealisierten Spannungssignals, werden alle Anteile, die verglichen mit dem Maximalwert des betreffenden Spektrums besonders klein sind, auf einen vorgegebenen Wert, im Folgenden Default-Wert genannt, gesetzt. Dies führt an den betroffenen Frequenzen zu $\fabs = 0$ und damit keiner Änderung von $\Hcompl$.
-Dies bedeutet also, dass alle Einträge des Betragsspektrums von $\Uout_{,\mathrm{ideal}}$ mit weniger als zum Beispiel $3 \, \promille $ der maximalen Amplitude auf den Default-Wert gesetzt werden. An den betroffenen Frequenzen wird auch das Spectrum von $\Uout_{,\mathrm{meas}}$ unabhängig der dort vorhandenen Werte auf den Default-Wert gesetzt, um $\fabs = 0$ an dieser Frequenz zu erreichen.
+Um Rauscheinflüsse und Probleme durch Nulldurchgänge zu dämpfen, wird ein erster intuitiver Ansatz vorgenommen: Bei den Betragsspektren der in $\fabs$ eingehenden Signale, des gemessenen und idealisierten Spannungssignals, werden alle Anteile, die verglichen mit dem Maximalwert des betreffenden Spektrums besonders klein sind, auf einen vorgegebenen Wert, im Folgenden Default-Wert genannt, gesetzt. Dies führt an den betroffenen Frequenzen zu $\fabs = 0$ und damit zu keiner Änderung von $\Hcompl$.
+Dies bedeutet also, dass alle Einträge des Betragsspektrums von $\Uoutc_{,\mathrm{ideal}}$ mit weniger als zum Beispiel $3 \, \promille $ der maximalen Amplitude auf den Default-Wert gesetzt werden. An den betroffenen Frequenzen wird auch das Spectrum von $\Uoutc_{,\mathrm{meas}}$ unabhängig der dort vorhandenen Werte auf den Default-Wert gesetzt, um $\fabs = 0$ an dieser Frequenz zu erreichen.
 Zu beachten bei letzterem Punkt ist die notwendige Rundung, falls die Einträge der FFT an unterschiedlichen Frequenzen vorliegen. 
 \\
 \\
@@ -219,17 +219,17 @@ Hier bedeutet dies insbesondere, dass die Diskretisierung die Nulldurchgänge ni
 Vereinfacht bedeutet der verfolgte Ansatz, ausnehmend große Werte von $\fabs$ als unrealistisch zu bewerten. Eine Pseudo-Implementierung findet sich in \coderef{code:opt.H.pseudoRMS}, um die nachfolgende Erläuterung zu illustrieren. In der vorgenommenen Implementierung wurde $\fabs$ an den ausgewählten Frequenzen beliebig auf $0$ gesetzt, also keine Anpassung bei diesen Frequenzen ermöglicht.
 Dadurch werden bei dieser Anpassung verglichen mit dem Ignorieren kleiner Einträge in den Spektren wesentlich mehr Frequenzen nicht in der Optimierung berücksichtigt.
 \\
-Als Grenze genutzt wurde ein modifizierter Effektivwert, nachfolgend mit RMS (Root Mean Square) bezeichnet. 
+Als Grenze genutzt wird ein modifizierter Effektivwert, nachfolgend mit RMS (Root Mean Square) bezeichnet. 
 Der reine RMS von $\fabs$ unterliegt der Problematik, eine unproportional große Gewichtung von kleinen Einträgen zu enthalten.
 \\
 Idealerweise enthält $\fabs$ mit jeder Iteration betragsmäßig kleinere Einträge als zuvor. Es würden also bei Nutzung des reinen RMS unter Umständen mit zunehmender Schrittzahl zunehmend mehr Werte in $\fabs$ ignoriert - was der Optimierung entsprechende Grenzen setzt. 
-In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die Problematik unumgänglich, da Frequenzen, die explizit nicht bei der Anpassung berücksichtig werden sollen, den reinen RMS-Wert beeinflussen.
-Folglich muss der RMS modifiziert werden. In der vorliegenden Implementierungen wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich bei dieser Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
+In Kombination mit den im vorigen Abschnitt erläuterten Anpassungen wäre die Problematik unumgänglich, da Frequenzen, die explizit nicht bei der Optimierung berücksichtig werden sollen, den reinen RMS-Wert beeinflussen.
+Folglich muss der RMS modifiziert werden. In der vorliegenden Implementierung wurden zur Berechnung des modifizierten RMS nur die Werte einbezogen, die mehr als beliebig gewählte $2 \, \%$ des reinen RMS betragen. Es handelt sich bei dieser Anpassung um eine sehr grobe und größtenteils willkürliche Wahl der Parameter, die zu Zwecken der Illustration jedoch brauchbare Ergebnisse liefert.
 
 \subsubsection*{Zero-Padding}
 \label{subsubsec:opt.H.zeropadd}
 
-Eine einfache Möglichkeit, den Frequenzabstand in der FFT der genutzten Signale zu verbessern, liegt in der Nutzung von Zero-Padding. Hierbei werden einem Signal eine Reihe von zusätzlichen 0-Werten hinzugefügt. Dadurch wird die Anzahl Samples einer Periode künstlich vergrößert, woraus ein kleinerer Frequenzabstand bei der FFT folgt. Voraussetzung hierfür ist ein Signal, das bei 0 beginnt und zu 0 abfällt, damit keine Sprünge zwischen Zeitwerten auftreten.
+Eine einfache Möglichkeit, den Frequenzabstand in der FFT der genutzten Signale zu verbessern, liegt in der Nutzung von Zero-Padding \cite{zeropad}. Hierbei werden einem Signal eine Reihe von zusätzlichen 0-Werten hinzugefügt. Dadurch wird die Anzahl Samples einer Periode künstlich vergrößert, woraus ein kleinerer Frequenzabstand bei der FFT folgt. Voraussetzung hierfür ist ein Signal, das bei 0 beginnt und zu 0 abfällt, damit keine Sprünge zwischen Zeitwerten auftreten.
 Hierdurch ist es möglich, ein Spektrum der zur Optimierung notwendigen Signale zu erreichen, dessen Frequenzabstand geringer ist als bei der Übertragungsfunktion.
 Dies resultiert in einer genaueren Interpolation der Spektren auf die Frequenzwerte der Übertragungsfunktion, an denen $\fabs$ ausgewertet wird.
 \footnote{Es sei darauf hingewiesen, dass die vorliegende Implementierung eine separate Interpolation von Betrag und Phase vornimmt.}
@@ -241,9 +241,9 @@ Dies resultiert in einer genaueren Interpolation der Spektren auf die Frequenzwe
 
 \subsubsection{Grundlegende Erkenntnisse}
 
-In der ersten Implementierung der Optimierung wurde aufgrund noch nicht behobener kritischer Fehler in Hilfs-Methoden die Anpassung nach \eqref{eq:opt.Hnew} nur mit den Beträgen der betrachteten Komponenten vorgenommen. Eine Phasenanpassung wurde in diesem Schritt nicht vorgenommen. Für den Korrekturterm dieser Implementierung wird im Folgenden $f_{\mathrm{abs}}$ verwendet, um den Unterschied zur komplexen Anpassung zu unterstreichen.
+In einer ersten Implementierung der Optimierung wurde aufgrund noch nicht behobener kritischer Fehler in Hilfs-Methoden die Anpassung nach \eqref{eq:opt.Hnew} nur mit den Beträgen der betrachteten Komponenten vorgenommen. Eine Phasenanpassung fand in diesem Schritt nicht statt. Für den Korrekturterm dieser Implementierung wird im Folgenden $f_{\mathrm{abs}}$ verwendet, um den Unterschied zur komplexen Anpassung zu unterstreichen.
 Hierbei konnten die Fehlerquellen konkretisiert werden und die beschriebenen Ansätze zur Handhabung der Fehler getestet werden mit Ausnahme des unter \ref{subsubsec:opt.H.zeropadd} beschriebenen Zero-Paddings.
-Dieser Algorithmus führt jedoch nicht zu einer Verbesserung der Qualität des Ausgangssignals, wie schon der Vergleich bei Anwendung auf das Mock-System zeigt, illustriert in \figref{subfig:opt.H.mockQuality}
+Dieser Algorithmus führt jedoch nicht zu einer Verbesserung der Qualität des Ausgangssignals, wie schon der Vergleich bei Anwendung auf das Mock-System zeigt, illustriert in \figref{fig:opt.H.mock_quality} mit dem Plot \ref{plot:opt.H.quality.mock_old}. 
 
 Wendet man die Beschränkung durch den RMS-Wert auf diese erste Implementierung an, wird die drastische Wirkungsweise auf den Korrekturterm $f_{\mathrm{abs}}$ ersichtlich, wie \figref{fig:opt.H.RMS_fabs} illustriert. Die Einschränkung betrifft dabei nicht nur obere Frequenzen, sondern insbesondere auch solche in Umgebung der Nulldurchgänge des idealen Spektrums.
 Für die Einordnung der Größenordnung des Korrekturterms sei nochmals betont, dass aufgrund der Anpassung nach \eqref{eq:opt.Hnew} ein Korrekturterm von $f_{\mathrm{abs}} = \pm 0.5$ bei dem im Folgenden standardmäßig verwendeten $\sigma_H = \nicefrac{1}{2}$ zu einer Anpassung in $\Hcompl$ in Höhe eines Viertels des ursprünglichen Wertes führt.
@@ -295,7 +295,8 @@ Für die Einordnung der Größenordnung des Korrekturterms sei nochmals betont, 
 
 \end{figure}
 
-Vergleicht man weiterhin die beiden mit identischem Setup innerhalb weniger Minuten entstandenen Messungen \ref{plot:opt.H.simple_adjustA} und \ref{plot:opt.H.simple_adjustB} in \figref{fig:opt.H.qualityOverview}, so wird die Bedeutung zufälliger Rauscheinflüsse auf den Erfolg der Optimierung deutlich. Trotz identischen Einstellunge schwankt die Güte des Signals bei einer Optimierung ohne jede Anpassung nach \ref{subsec:opt.H.handle_fehler} derart, dass der Effekt einer Optimierung über wenige Iterationsschritte nur mit großer Unsicherheit quantitativ zu beziffern ist, solange nicht eine sehr merkliche Verbesserung eintritt.
+Vergleicht man weiterhin die beiden mit identischem Setup innerhalb weniger Minuten entstandenen Messungen \ref{plot:opt.H.simple_adjustA} und \ref{plot:opt.H.simple_adjustB} in \figref{fig:opt.H.qualityOverview}, so wird die Bedeutung zufälliger Rauscheinflüsse auf den Erfolg der Optimierung deutlich. Trotz identischen Einstellungen schwankt die Güte des Signals bei einer Optimierung ohne jede Anpassung nach \ref{subsec:opt.H.handle_fehler} derart, dass aufgrund der vorliegenden Daten eine mögliche Verbesserung über wenige Iterationsschritte nur mit großer Unsicherheit quantitativ zu beziffern ist.
+Auch wenn diese Anpassung in erster Linie Erkenntnisse über Fehlerquellen und die Implementierung eines funktionsfähigen Algorithmus lieferte, konnten Ergebnisse über den Unterschied zwischen der Anwendung auf das \mock-System und auf die Kavität generiert werden. Es zeigt sich, dass der am \mock-System nicht divergierende Algorithmus unter Nutzung der Anpassungen mit RMS und $3 \promille$ am realen System zu einer leichten Verbesserung der Qualität führt. Dies geschieht jedoch in anderen Skalenordnungen, da die Qualität eines an der Kavität gemessenen Signals durch Rauscheinflüsse bei Gütewerten knapp über 2.1 liegt, während am \mock-System generierte Signale mit Gütewerten von etwa 0.45 vorliegen. Die prozentuale Verbesserung ist jedoch vergleichbar.
 
 
 \begin{figure}[htb]
@@ -380,9 +381,9 @@ Dadurch wird es möglich, die Anwendung der komplexen Optimierung nach \eqref{eq
 Gemäß \cite{gross17} lässt sich die Kavität bis zu einer Gapspannung von ungefähr $\SI{570}{\volt}$ gut als linear mit $\Hcompl$ nähern. Durch den Spannungsteiler entspricht dies gemessenen Differenzspannungen von bis zu $\SI{680}{\milli\volt}$.
 \\
 \\
-Bei der Simulation unterschiedlicher Parameter für die Anpassung des Korrekturterms nach \ref{subsec:opt.H.handle_fehler} zeigt sich, dass ohne eine solche Anpassung bereits im \mock-System nicht von einer Verbesserung zu sprechen ist.
+Bei der Simulation unterschiedlicher Parameter für die Manipulation des Korrekturterms nach \ref{subsec:opt.H.handle_fehler} zeigt sich, dass ohne eine solche Anpassung bereits im \mock-System nicht von einer Verbesserung zu sprechen ist.
 Genutzt wird eine Optimierung über 10 Iterationen mit einer Ausgangsspannung von $\SI{0.3}{\volt} ~ V_{pp}$ für $\Uout_{, \mathrm{ideal}}$ um die Simulation im linearen Bereich sicherzustellen und einen Vergleich zu späteren Messungen zu ermöglichen. Die Schrittweite wurde auf $\sigma_H = 0.5$ gesetzt.
-In \figref{fig:opt.H.mock_quality} sind die Verläufe der Qualität des Ausgangssignals über 10 Iterationsschritte bei unterschiedlicher Wahl der Parameter zur Anpassung des Korrekturterms aufgetragen. Offensichtlich führen alle drei möglichen Anpassung zu einer leichten Verbesserung der Qualität in den ersten Iterationsschritten. Weiterhin liegen auch beiden Anpassungen mit Nutzung einer $3 \promille$-Grenze die Minima der Güte bei Schritt 7 beziehungsweise 8. 
+In \figref{fig:opt.H.mock_quality} sind die Verläufe der Qualität des Ausgangssignals über 10 Iterationsschritte bei unterschiedlicher Wahl der Parameter zur Anpassung des Korrekturterms aufgetragen. Offensichtlich führen alle drei vorgestellten möglichen Anpassungen zu einer leichten Verbesserung der Qualität in den ersten Iterationsschritten. Weiterhin liegen auch beiden Anpassungen mit Nutzung einer $3 \promille$-Grenze die Minima der Güte bei Schritt 7 beziehungsweise 8. 
 Es lässt sich also festhalten, dass eine Anpassung des Korrekturterms notwendig ist, dabei jedoch wenige Iterationsschritte für eine Verbesserung genügen, während eine zu große Anzahl Schritte wieder zu Problemen führt. 
 
 %%% read in qualities:
@@ -428,6 +429,24 @@ Es lässt sich also festhalten, dass eine Anpassung des Korrekturterms notwendig
 
 	\addplot table [col sep = comma, x expr=\coordindex+1, y index =0] \qualityAll;
 	 \label{plot:opt.H.quality.mock_all} \addlegendentry{Mit $3 \promille$, Zero-Padding und RMS}
+	 
+	 \addplot table [x expr=\coordindex+1, y index =0]{
+		0.48726213261815016 
+		0.49000679356347154
+		0.5101194806372478
+		0.5266448340807586
+		0.5375527813320436
+		0.5447108764910896
+		0.5499773649457441
+		0.5545875437451622
+		0.5592582035611007
+		0.5643452240862432
+		0.5699343256576608
+		0.5758895933658901
+		0.5819216415470254
+		0.5877172129682854
+		0.5930401259075484
+		}; \label{plot:opt.H.quality.mock_old}\addlegendentry{Vergleich: erster Algorithmus}	
 
 	\end{axis}
 \end{tikzpicture}
@@ -439,9 +458,12 @@ Es lässt sich also festhalten, dass eine Anpassung des Korrekturterms notwendig
 
 Die Änderungen am Betrag der Übertragungsfuntion selbst stellt \figref{fig:opt.H.simulateComplOpt} nach 5 Iterationen dar. Gemäß \figref{fig:opt.H.qualityOverview} stellt dies einen Bereich dar, in dem die Qualität aller Anpassungen noch eine Verbesserung darstellen.
 Gezeigt sind die niedrigsten und höchsten Frequenzen der Übertragungsfunktion. Die Änderungen in diesen Bereichen unterscheiden sich offensichtlich signifikant je nach Parameterwahl. 
-Als Vergleich dient eine Optimierung ohne zusätzliche Anpassung des Korrekturterms nach \ref{subsec:opt.H.handle_fehler} sowie die tatsächlich vom \mock-System repräsentierte Übertragungsfunktion.
+Diese Erkenntnisse konnten durch den ersten Algorithmus bereits am gemessenen System validiert werden.
+Als Vergleich dient eine Optimierung ohne zusätzliche Manipulation des Korrekturterms nach \ref{subsec:opt.H.handle_fehler} sowie die tatsächlich vom \mock-System repräsentierte Übertragungsfunktion.
 Die initiale Funktion wurde gegen die ideale Übertragung um den Faktor $1.05$ im Betrag und $1.03$ in der Phase versetzt.
-Während bei niedrigen Frequenzen größtenteils keine maßgeblichen Änderungen an der Übertragungsfunktion vorgenommen werden, ändert sich das Spektrum von $\Hcompl$ in hohen Frequenzen sowie einigen Frequenzen in mittleren Frequenzen wesentlich.
+Während bei niedrigen Frequenzen größtenteils keine großen Änderungen an der Übertragungsfunktion vorgenommen werden, ändert sich das Spektrum von $\Hcompl$ in hohen Frequenzen sowie einigen mittleren Frequenzbereichen wesentlich. 
+Aufgrund der vorliegenden Daten lässt sich die Verschlechterung der Qualität in \figref{fig:opt.H.mock_quality} also deuten als Einfluss der vor allem in höheren Frequenzen auftretenden starken Veränderung der Übertragungsfunktion. Während in den betragsmäßig stärker vertretenen niedrigen Frequenzen die Optimierung nach wenigen Iterationen keine nennenswerten Änderungen mehr bewirkt, verstärken sich die Ausreißer in höheren Frequenzen mit jedem zusätzlichen Schritt, sodass die Qualität wieder sinkt. 
+Bemerkenswert ist weiterhin, dass die Qualität des Ausgangssignals verbessert werden konnte, obwohl die berechnete Übertragungsfunktion nicht gegen die tatsächlich vom \mock-System repräsentierte Funktion zu konvergieren scheint.
 
 
 %% Read in Transfer-functions
@@ -531,8 +553,7 @@ Während bei niedrigen Frequenzen größtenteils keine maßgeblichen Änderungen
 	\label{fig:opt.H.simulateComplOpt}
 \end{figure}
 
-Aufgrund der vorliegenden Daten lässt sich die Verschlechterung der Qualität in \figref{fig:opt.H.mock_quality} deuten als Einfluss der vor allem in höheren Frequenzen auftretenden starken Veränderung der Übertragungsfunkion. Während in den betragsmäßig stärker vertretenen niedrigen Frequenzen die Optimierung nach wenigen Iterationen keine nennenswerten Änderungen mehr bewirkt, verstärken sich die Ausreißer in höheren Frequenzen mit jedem zusätzlichen Schritt, sodass die Qualität wieder sinkt. 
-Auch lässt sich bei der vorliegenden Anwendung der Optimierung am \mock-System noch nicht auf eine Konvergenz gegen die tatsächliche Lösung schließen.
+Es lässt sich bei der vorliegenden Anwendung der Optimierung am \mock-System noch nicht auf eine Konvergenz gegen die tatsächliche Lösung schließen. Allerdings veranlassen die Ergebnisse aus dem ersten Algorithmus bezüglich der Vergleichbarkeit von \mock-System und Messaufbau nicht dazu, eine erfolgreiche Optimierung am realen System auszuschließen.
 Die Messungen am realen System sind somit Gegenstand weiterer Tests. Ebenso verhält es sich mit einer Begründung der starken Anpassungen bei einigen Frequenzen im Spektrum von $\Hcompl$, die je nach Wahl der Parameter unterschiedlich stark und an unterschiedlichen Frequenzen auftreten. Es ist also nicht auszuschließen, dass bereits mit einer günstigen Wahl von $\sigma_H$, der Grenze für das Ignorieren kleiner Beträge in den Signal-Spektren sowie einer Schranke für den Korrektur-Term bereits nennenswerte Verbesserungen erreicht werden können.
 
 
