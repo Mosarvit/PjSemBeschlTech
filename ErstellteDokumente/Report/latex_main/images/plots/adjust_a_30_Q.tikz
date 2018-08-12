@@ -24,7 +24,7 @@ table {%
 \addplot [semithick, blue, mark=*, mark size=3, mark options={solid}, only marks, forget plot]
 table {%
 2 1.71408593424802
-};
+}; \label{plot:opt.a.iteration.marker}
 \addplot [semithick, blue, mark=*, mark size=3, mark options={solid}, only marks, forget plot]
 table {%
 3 1.14155951351237
