@@ -2,28 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b82f2057-18bf-47bb-80c5-4c58e258d5ff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.blg" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.blg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/.texpadtmp/Report.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_H/adjust_H_frequencies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_H/adjust_H_high_frequencies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_H/adjust_H_mock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_H/adjust_H_quality.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_H/adjust_H_spectre.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_H_einf.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_H_eval.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/Report.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/build/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/build/Report.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Anhang.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Anhang.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Einfuehrung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Einfuehrung.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/Optimierung.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_K_bearbeitet.tikz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/images/plots/adjust_a_kleinerBereich_K_bearbeitet.tikz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.nav" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.nav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/.texpadtmp/Praesentation.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/Praesentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/Praesentation.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/OptimierungH.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Report/latex_main/chapter/OptimierungH.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/Praesentation.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/Praesentation.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_a.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/adjust_a.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Fragen.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/Fragen.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/References.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ErstellteDokumente/Zwischenpraesentation/slides/References.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/adjust_H.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/adjust_H.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
