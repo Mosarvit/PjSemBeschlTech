@@ -2,6 +2,11 @@
 \beamer@sectionintoc {1}{Einf\IeC {\"u}hrung}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{Problemstellung}{3}{0}{1}
 \beamer@subsectionintoc {1}{2}{Aufbau}{7}{0}{1}
-\beamer@sectionintoc {2}{Optimierung}{12}{0}{2}
-\beamer@subsectionintoc {2}{1}{Optimierung der \IeC {\"U}bertragungsfunktion}{12}{0}{2}
-\beamer@subsectionintoc {2}{2}{Optimierung der Kennlinie}{12}{0}{2}
+\beamer@sectionintoc {2}{Code}{12}{0}{2}
+\beamer@subsectionintoc {2}{1}{Design}{12}{0}{2}
+\beamer@subsectionintoc {2}{2}{Vorgehensweise}{30}{0}{2}
+\beamer@sectionintoc {3}{Optimierung}{58}{0}{3}
+\beamer@subsectionintoc {3}{1}{Optimierung der \IeC {\"U}bertragungsfunktion}{58}{0}{3}
+\beamer@subsectionintoc {3}{2}{Optimierung der Kennlinie}{58}{0}{3}
+\beamer@sectionintoc {4}{Ausblick}{65}{0}{4}
+\beamer@sectionintoc {5}{Quellen}{76}{0}{5}

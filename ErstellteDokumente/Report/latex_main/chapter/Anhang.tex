@@ -90,7 +90,7 @@
 \bibitem{system_testing}
 	\url{https://en.wikipedia.org/wiki/System_testing}	
 \bibitem{RF-Tool}
-	Tools zur Berechnung der Verzerrungszahlen, Version: Rev. 0.0.3, 15.06.2018
+	TEMF RF-Tool zur Berechnung der Verzerrungszahlen, Version: Rev. 0.0.3, 15.06.2018
 \end{thebibliography}
 
 \chapter{Anhang}
@@ -105,7 +105,7 @@
   \hline \hline
   adjust\_a & Anpassung der Parameter für die Kennlinie & $a_{old}$ \newline $\Uin$ \newline $\Uquest_{,\textrm{ideal}}$ \newline $\Uquest_{,\textrm{meas}}$ \newline $\sigma_a$ & $a_{new}$\\
   \hline
-  adjust\_H & Anpassung der Übertragungsfunktion & $H_{old}$ \newline $\Uout_{,\textrm{ideal}}$ \newline $\Uout_{,\textrm{meas}}$ \newline $\sigma_H$ & $H_{new}$\\
+  adjust\_H & Anpassung der Übertragungsfunktion & $\Hcompl_{old}$ \newline $\Uout_{,\textrm{ideal}}$ \newline $\Uout_{,\textrm{meas}}$ \newline $\sigma_H$ & $\Hcompl_{new}$\\
   \hline
   compute\_a & Berechnung der Parameter für die Kennlinie & $\Uin$ \newline $\Uquest$ \newline $N$ & $a$\\
   \hline
@@ -113,11 +113,11 @@
   \hline
   compute\_Uin & Berechnung des nichtlinear vorverzerrten Eingangssignals & $\Uquest$ \newline $K$ & $\Uin$\\
   \hline
-  compute\_Uquest & Berechnung es linear vorverzerrten Eingangssignals & $\Uout$ \newline $H$ & $\Uquest$\\
+  compute\_Uquest & Berechnung es linear vorverzerrten Eingangssignals & $\Uout$ \newline $\Hcompl$ & $\Uquest$\\
   \hline
-  determine\_a & Bestimmung der Parameter für die erste Kennlinie & $H$ \newline $\Uout_{,\textrm{ideal}}$ \newline $f_{S,\textrm{DSO}}$ & $a_0$\\
+  determine\_a & Bestimmung der Parameter für die erste Kennlinie & $\Hcompl$ \newline $\Uout_{,\textrm{ideal}}$ \newline $f_{S,\textrm{DSO}}$ & $a_0$\\
   \hline
-  determine\_H & Bestimmung der Übertragungsfunktion über ein Pseudorauschen nach \cite{PJS_Denys} & load\_csv \newline save\_csv  & $H_0$\\
+  determine\_H & Bestimmung der Übertragungsfunktion über ein Pseudorauschen nach \cite{PJS_Denys} & load\_csv \newline save\_csv  & $\Hcompl_0$\\
   \hline
   generate\_BB\_Signal & Erstellen eines idealen Barrier-Bucket Ausgangssignal & $f_{rep}$ \newline $f_{BB}$ \newline $V_{PP}$ \newline $f_{S,\textrm{AWG}}$ \newline save\_csv & $\Uout_{,\textrm{ideal}}$\\
   \hline
@@ -125,7 +125,7 @@
   \hline
   loop\_adust\_a & Ein Iterationsschritt in der Anpassung von $K$ & $a_{old}$ \newline $K_0$ \newline $\Uout_{,\textrm{ideal}}$ \newline Iterationen \newline $f_{S,\textrm{DSO}}$ & $\Uout_{,\textrm{meas}}$ \newline$[Q_i]$ \newline $[K_i]$\\
   \hline
-  loop\_adust\_H & Ein Iterationsschritt in der Anpassung von $\Hcompl$ & $H_0$ \newline $K$ \newline $\Uout_{,\textrm{ideal}}$ \newline Iterationen \newline $f_{S,\textrm{DSO}}$ & $[\Hcompl_i]$ \newline $[Q_i]$ \newline $\Uout_{,\textrm{meas}}$\\
+  loop\_adust\_H & Ein Iterationsschritt in der Anpassung von $\Hcompl$ & $\Hcompl_0$ \newline $K$ \newline $\Uout_{,\textrm{ideal}}$ \newline Iterationen \newline $f_{S,\textrm{DSO}}$ & $[\Hcompl_i]$ \newline $[Q_i]$ \newline $\Uout_{,\textrm{meas}}$\\
   \hline
   measure\_Uout & Messsignal aus DSO auslesen & $a_{old}$ \newline $\Uin$ \newline $f_{S,\textrm{DSO}}$ & $\Uout$\\
   \hline
@@ -143,7 +143,7 @@
   \hline \hline
   signal\_class & Abstract Data Type für Signale & $[time]$ \newline $[U]$  & $U$\\
   \hline
-  transfer\_function & Abstract Data Type für Übertragungsfunktion & $H_{old}$ \newline $\Uout_{,\textrm{ideal}}$ \newline $\Uout_{,\textrm{meas}}$ \newline $\sigma_H$ & $H_{new}$\\
+  transfer\_function & Abstract Data Type für Übertragungsfunktion & $[f]$ & $\Hcompl$\\
   \hline \hline
     \multicolumn{4}{|c|}{helpers} \\
   \hline \hline

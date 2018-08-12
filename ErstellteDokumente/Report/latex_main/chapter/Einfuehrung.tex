@@ -6,7 +6,7 @@
 
 \chapter{Einführung}
 \label{chap:einfuehrung}
-Mit Barrier Bucket (BB) RF Systemen sollen am neu entstehenden Synchrotron SIS100 oder im Experimentier Speicherring (ESR) am GSI Helmholtzzentrum unterschiedliche longitudinale Manipulationen an Teilchenstrahlen vorgenommen werden. Der dazu notwendige Spannungspuls hat die in \figref{fig:BB_req} dargestellte Form. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so führt dies zu einer stationären Potentialbarriere im Phasenraum. Diese Barrieren können dazu verwendet werden, den Strahl longitudinal einzuschließen und ermöglichen somit varialble Bruchlängen. Unterscheiden sich Wiederholfrequenz des Spannungssignals und Umlauffrequenz, so gewegt sich die Barriere im Phasenraum ("moving barrier") und ermöglicht Kompression/Dekompression der Bunches.\\ Eine Herausforderung dieser Systeme liegt darin, eine hohe Qualität des Pulses am Gap der Kavität zu erzeugen, um unerwünschte Effekte auf den Strahl zu verhindern. Laut Spezifikation für das EST System müssen die Nachschwinger nach dem Einzelsinus beispielsweise kleiner als 2,5\% von $\hat{U}_{BB}$ sein.
+Mit Barrier Bucket (BB) RF Systemen sollen am neu entstehenden Synchrotron SIS100 oder im Experimentier Speicherring (ESR) am GSI Helmholtzzentrum unterschiedliche longitudinale Manipulationen an Teilchenstrahlen vorgenommen werden. Der dazu notwendige Spannungspuls hat die in \figref{fig:BB_req} dargestellte Form. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so führt dies zu einer stationären Potentialbarriere im Phasenraum. Diese Barrieren können dazu verwendet werden, den Strahl longitudinal einzuschließen und ermöglichen somit variable Bunchlängen. Unterscheiden sich Wiederholfrequenz des Spannungssignals und Umlauffrequenz, so bewegt sich die Barriere im Phasenraum ("moving barrier") und ermöglicht Kompression/Dekompression der Bunches.\\ Eine Herausforderung dieser Systeme liegt darin, eine hohe Qualität des Pulses am Gap der Kavität zu erzeugen, um unerwünschte Effekte auf den Strahl zu verhindern. Laut Spezifikation für das EST System müssen die Nachschwinger nach dem Einzelsinus beispielsweise kleiner als 2,5\% von $\hat{U}_{BB}$ sein.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{eps/BB_req.pdf}
@@ -65,10 +65,10 @@ Dabei kann angenommen werden, dass sich das System bis $\hat{U}_{BB} = 550V$ ann
 \caption{Ein Messdurchlauf}
   	\label{fig:Messung}
 \end{figure}
-Das berechnete Eingangssignal $\Uin$ wird an das AWG übergeben davon wird es zum einen an das Oszilloskop geleitet und zu anderen an den Verstärker. Der Gapspannungsteiler hat ein Verhältnis von 1:800 dabei ergibt sich die Ausgangsspannung $\Uout$ als die Differenz der Kanäle 3 und 4. Es muss darauf geachtet werden, dass alle Eingang des Oszilloskops auf hoch-ohmig eingestellt sind, um Schäden am Gerät zu verhindern. Dabei müssen die Leitungen von der Kavität mit einem T-Stück und einem $\SI{50}{\Omega}$ Widerstand abgeglichen sein. Die Ausgänge des AWG müssen auch auf $\SI{50}{\Omega}$ eingestellt werden.
+Das berechnete Eingangssignal $\Uin$ wird an das AWG übergeben davon wird es zum einen an das Oszilloskop geleitet und zum anderen an den Verstärker. Der Gapspannungsteiler hat ein Verhältnis von 1:800 dabei ergibt sich die Ausgangsspannung $\Uout$ als die Differenz der Kanäle 3 und 4. Es muss darauf geachtet werden, dass alle Eingänge des Oszilloskops auf hoch-ohmig eingestellt sind, um Schäden am Gerät zu verhindern. Dabei müssen die Leitungen von der Kavität mit einem T-Stück und einem $\SI{50}{\Omega}$ Widerstand abgeglichen sein. Die Ausgänge des AWG müssen auch auf $\SI{50}{\Omega}$ eingestellt werden.
 \subsection{Hammerstein Modell}
 \label{subsec:einf.modell_BB.hammerstein}
-In \figref{fig:Hammerstein} sind alle verwendeten Größen dargestellt. $U_{in}$ ist die Eingangsspannung des Funktionsgenerators. Der erste Block in \figref{fig:Hammerstein} stellt die nichtlineare Modellierung dar. Die Spannung $U_{?}$ ist eine rein virtuelle Größe und kann wie in \eqref{eq:Uquest} aus der Eingangsspannung über die Koeffizienten $a_n$ berechnet werden. Bei der Potenzreihe hatte $N = 3$ in der MATLAB Implementierung schon gute Ergebnisse geliefert und wurde daher weiterhin so verwendet. Die nichtlinearen Kennlinie im Folgenden nur noch als $K$ bezeichnet, wird als Look-Up Tabelle im Programm hinterlegt. Die Spannung $U_{out}$ ist die Gapspannung in der Kavität.
+In \figref{fig:Hammerstein} sind alle verwendeten Größen dargestellt. $U_{in}$ ist die Eingangsspannung des Funktionsgenerators. Der erste Block in \figref{fig:Hammerstein} stellt die nichtlineare Modellierung dar. Die Spannung $U_{?}$ ist eine rein virtuelle Größe und kann wie in \eqref{eq:Uquest} aus der Eingangsspannung über die Koeffizienten $a_n$ berechnet werden. Bei der Potenzreihe hatte $N = 3$ in der MATLAB Implementierung bereits gute Ergebnisse geliefert und wurde daher weiterhin so verwendet. Die nichtlinearen Kennlinie, im Folgenden nur noch als $K$ bezeichnet, wird als Look-Up Tabelle im Programm hinterlegt. Die Spannung $U_{out}$ ist die Gapspannung in der Kavität.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{eps/Hammerstein.pdf}
@@ -84,10 +84,10 @@ In \figref{fig:Hammerstein} sind alle verwendeten Größen dargestellt. $U_{in}$
 
 \section{Motivation}
 \label{sec:einf.motivation}
-Das Hammerstein Modell wurde bis auf die Berechnung von $K$ schon erfolgreich in Python implementiert. Dabei sei auf das Projektseminar \cite{PJS_Denys} verwiesen. Deshalb lag unsere Motivation darin, dieses Modell in Python zu vervollständigen, um dann einen möglichen Optimierungsansatz aufzustellen.
+Das Hammerstein Modell wurde bis auf die Berechnung von $K$ schon erfolgreich in Python implementiert. Dabei sei auf das Projektseminar \cite{PJS_Denys} verwiesen. Deshalb lag unsere Motivation darin, dieses Modell in Python zu vervollständigen, um dananch einen möglichen Optimierungsansatz aufzustellen.
 
 
 \section{Aufgabenstellung}
 \label{sec:einf.aufgabe}
-Im Rahmen dieses Projektseminars sollte eine iterative Optimierung der Vorverzerrung auf Basis einer Hammersteinmodellierung in Python implementiert werden. Dabei sollte das Tool die nichtlineare Kennlinie $K$ und die Übertragungsfunktion $\Hcompl$ wechselseitig optimieren, wobei eine optimale Gewichtung der Parameter zur Optimierung noch nicht erreicht werden musste.
+Im Rahmen dieses Projektseminars soll eine iterative Optimierung der Vorverzerrung auf Basis einer Hammersteinmodellierung in Python implementiert werden. Dabei soll das Tool die nichtlineare Kennlinie $K$ und die Übertragungsfunktion $\Hcompl$ wechselseitig optimieren, wobei eine optimale Gewichtung der Parameter zur Optimierung noch nicht erreicht werden musste.
 \end{document}
