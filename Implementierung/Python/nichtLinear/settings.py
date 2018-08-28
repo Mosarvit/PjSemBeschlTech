@@ -51,6 +51,13 @@ show_plots = 1 # ob die Plots angenzeigt werden sollen
 mock_system = mock_system_class()
 last_directory_used = '000'
 
+f_rep = 900e3
+f_BB = 5e6
+Vpp = 3
+
+sample_rate_AWG = 2e8
+sample_rate_DSO = 999900000
+
 def set_last_directory_used(value):
     global last_directory_used   # declare a to be a global
     last_directory_used = value

@@ -7,7 +7,7 @@ from helpers.csv_helper import read_in_signal
 from helpers.plot_helper import plot_K, plot_2_Ks
 from helpers.tezt_helper import finilize_tezt
 from settings import mock_data_path
-from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
+from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquet
 
 
 class test_compute_K_from_a(TestCase):

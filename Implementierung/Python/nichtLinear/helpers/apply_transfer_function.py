@@ -12,10 +12,11 @@ import numpy as np
 from scipy.interpolate import interp1d
 import warnings
 from classes.signal_class import signal_class
+import settings
 
 def apply_transfer_function(Uout, H):
 
-    f_rep = 900e3
+    f_rep = settings.f_rep
     freq = H.f
 
     fn = Uout.sample_rate / 2

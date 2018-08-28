@@ -13,11 +13,11 @@ from helpers.signal_helper import assemble_signal
 from helpers.overlay import overlay
 from helpers.read_from_DSO_resolution import read_from_DSO_resolution
 from classes.signal_class import signal_class
-from settings import show_plots, use_mock_system, mock_system
+from settings import show_plots, use_mock_system, mock_system, sample_rate_DSO, f_rep
 from helpers.plot_helper import plot_2_signals
 from helpers.csv_helper import save_signal
 
-def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0):
+def measure_Uout(Uin, sample_rate_DSO=sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0):
 
     """
     compute_Uin_from_Uquest berechnet Uin aus Uquest mithilfe der Lookuptabelle K
@@ -52,9 +52,9 @@ def measure_Uout(Uin, sample_rate_DSO, id='', loadCSV=0, saveCSV=0, verbosity=0)
 
     def send_Uin_to_AWG(Uin):
         if use_mock_system:
-            mock_system.write_to_AWG(Uin.normalized, Uin.Vpp, frequency=900e3)
+            mock_system.write_to_AWG(Uin.normalized, Uin.Vpp, frequency=f_rep)
         else:
-            write_to_AWG(Uin.normalized, Uin.Vpp, frequency=900e3)
+            write_to_AWG(Uin.normalized, Uin.Vpp, frequency=f_rep)
         # TODO: change frequency-value to global-data (enable different repetition rate here)
 
     def receive_from_DSO(Uin):

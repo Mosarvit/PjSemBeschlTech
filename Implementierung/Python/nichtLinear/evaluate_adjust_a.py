@@ -6,9 +6,8 @@ from blocks.determine_H import determine_H
 from helpers.csv_helper import save_2cols
 from helpers.csv_helper import save_transfer_function, save_signal, save_a
 from save_results import save, save_text
-from settings import project_path
-from settings import use_mock_system
-
+from settings import project_path, use_mock_system
+import settings
 
 def evaluate_adjust_a(num_iters = 1, verbosity = 0) :
 
@@ -18,12 +17,12 @@ def evaluate_adjust_a(num_iters = 1, verbosity = 0) :
         data_directory = project_path + save(path='data/optimizer', name='adjust_a') + '/'
 
 
-    f_rep = 900e3
-    f_BB = 5e6
-    Vpp = 3
+    f_rep = settings.f_rep
+    f_BB = settings.f_BB
+    Vpp = settings.Vpp
 
-    sample_rate_AWG_max = 2e8
-    sample_rate_DSO = 9999e5
+    sample_rate_AWG_max = settings.sample_rate_AWG
+    sample_rate_DSO = settings.sample_rate_DSO
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max)
 
