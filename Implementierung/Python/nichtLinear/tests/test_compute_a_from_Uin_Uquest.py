@@ -4,7 +4,7 @@ from unittest import TestCase
 from numpy import genfromtxt
 from scipy import linalg
 
-from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
+from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquet
 from helpers.csv_helper import read_in_signal
 from helpers.tezt_helper import  finilize_tezt
 from settings import mock_data_path

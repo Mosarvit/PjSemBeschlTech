@@ -2,26 +2,14 @@ from blocks.generate_BBsignal import generate_BBsignal
 from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
-from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
 from blocks.determine_H import determine_H
 from blocks.measure_Uout import measure_Uout
-from helpers.signal_helper import convert_V_to_mV
-from helpers.signal_helper import convert_mV_to_V
-from helpers.signal_helper import setVpp
-from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
-from settings import project_path
-from copy import copy
 from helpers.csv_helper import save_2cols
 from settings import use_mock_system
-from classes.signal_class import signal_class
-from helpers.csv_helper import save_signal, save_transfer_function, read_in_transfer_function
-from blocks.adjust_H import adjust_H
-from numpy import genfromtxt
-import matplotlib.pyplot as plt
+from helpers.csv_helper import save_signal
 from settings import project_path
-from blocks.loop_adjust_H import loop_adjust_H
+import settings
 from blocks.determine_a import determine_a
-from helpers.plot_helper import plot_vector
 
 from helpers.signal_evaluation import signal_evaluate
 
@@ -42,13 +30,12 @@ def evaluate_K() :
 
         data_directory = project_path + save(path='data', name='evaluate_K') + '/'
 
-
-    f_rep = 900e3
-    f_BB = 5e6
+    f_rep = settings.f_rep
+    f_BB = settings.f_BB
     Vpp = 0.6
 
-    sample_rate_AWG_max = 2e8
-    sample_rate_DSO = 9999e5
+    sample_rate_AWG_max = settings.sample_rate_AWG
+    sample_rate_DSO = settings.sample_rate_DSO
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max)
 

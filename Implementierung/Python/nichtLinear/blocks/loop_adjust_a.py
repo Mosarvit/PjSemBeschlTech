@@ -1,12 +1,11 @@
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
 from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.measure_Uout import measure_Uout
-from helpers.csv_helper import save_2cols
 from helpers.csv_helper import save_signal, save_a, save_K
-from helpers.plot_helper import plot_2_signals
 from helpers.signal_evaluation import signal_evaluate
 from blocks.adjust_a import adjust_a
 from blocks.compute_K_from_a import compute_K_from_a
+from settings import f_rep
 
 
 def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
@@ -33,10 +32,9 @@ def loop_adjust_a(a, K_0, H, Uout_ideal, data_directory, num_iters, sample_rate_
         save_signal(Uout_measured, data_directory + 'Uout_measured_uncut_' + id + '.csv')
         
         # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured_uncut', 'Uout_measured_uncut')
-        
-        f_rep_fix = 9e5     
-        Uout_measured = Uout_measured.cut_one_period(f_rep_fix)
-        Uin_measured = Uin_measured.cut_one_period(f_rep_fix)
+
+        Uout_measured = Uout_measured.cut_one_period(f_rep)
+        Uin_measured = Uin_measured.cut_one_period(f_rep)
 
         # save Uin and Uout
         save_signal(Uin, data_directory + 'Uin_awg_' + id + '.csv')

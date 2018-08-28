@@ -6,6 +6,7 @@ from tools.singlesine_SineRef import SineRef
 from tools.singlesine_Verzerrungszahlen import Verzerrungszahlen
 from tools.singlesine_save_results import save
 import csv
+from settings import f_rep, f_BB
 
 
 def signal_evaluate(Uout_filename, results_filename):
@@ -22,8 +23,8 @@ def signal_evaluate(Uout_filename, results_filename):
         quality - skalar; result of the tool
 
     """
-    fBB = 5e6
-    frev = 9e5
+    fBB = f_BB
+    frev = f_rep
 
     # Die Parameterübergabe ist noch nicht optimal
     signal_output = Signal(dateiName=Uout_filename, frev=frev, fBB=fBB)

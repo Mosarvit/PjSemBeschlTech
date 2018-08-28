@@ -20,39 +20,7 @@ def apply_K(K_x_to_y, Ux, verbosity):
     K_y_to_x = invert_K(K_x_to_y)
     ###################################
 
-    # VAS fuer Funktionalitaet ist Verhalten einer Potenzreihe in K -> keine Spruenge zw zwei Werten
-    # dummy value, damit der unit test kompeliert:
-    # Uin = np.zeros(len(Uquest))
-    # # ideal output, damit der unit test bestanden wird:
-    #
-    # Comments von Beginn an implementiert
-    # global fixPath    # wenn er Uin.csv nicht finden kann
-    # fixPath = '../'   # entweder dies
-    # # fixPath = ''    # oder das waehlen
-    # Uin = genfromtxt(fixPath + 'data/mock_data/Uin.csv', delimiter=',')[:, 1]
-    # Pseudo-Code in Comments:
-    # Uquest i d Form (Time, Voltage) -> Uquest(:, 0) = Time, Uquest(:, 1) = Voltage [V]
-    # K i d Form (Uin, Uquest) -> K(:, 0) = Uin Werte der Kennlinie in [mV], K(:, 1) = Uquest-Werte der Standard-Kennlinie in [mV]
-    # Notwendig:
-    # K = K / 1000 #Umrechnung in Volt
-    # TODO der Teil hatte nicht das gemacht, was er sollte
-    # - skaliere Kennlinie / Uebertragung bzw Ausgang fuer gewuenschte Amplitude max( norm(Uquest(:, 1)))
-    # - pruefe auf Einhalten der Bijektivitaet durch Amplitude von Uquest,
-    # uQuest_max = max(Uquest.in_mV)
-    # uQuest_min = min(Uquest.in_mV)
-    #
-    # # - ggf. Anpassen des Ausgangsbereiches und Ausgeben einer Meldung
-    # if uQuest_max > K[-1, 1]:
-    #     uQuest_max_ind = find_nearest(Uquest.in_mV, uQuest_max)
-    #     Uquest = signal_class( Uquest.time[0:uQuest_max_ind],  Uquest.in_mV [0:uQuest_max_ind] )
-    #     print("Uquest adapted to range of K: max Uquest too high for bijectiv curve")
-    # if uQuest_min < K[0, 1]:
-    #     uQuest_min_ind = find_nearest(Uquest.in_mV, uQuest_min)
-    #     Uquest = signal_class(Uquest.time[uQuest_min_ind:-1], Uquest.in_mV[uQuest_min_ind:-1])
-    #     print("Uquest adapted to range of K: min Uquest too low for bijectiv curve")
-    # setze Uin auf gleiche Groesse und gleiche Zeitwerte wie Uquest
-    # Uin = copy.copy(Uquest)
-    # indices for maximum and minimum initial
+
     imax = K_y_to_x.shape[0]
     imin = 0
     # find index of local maximum and minimum
@@ -80,7 +48,7 @@ def apply_K(K_x_to_y, Ux, verbosity):
 
     ###########
     K_functionV = interp1d(K_x_to_y[:, 0]/1000, K_x_to_y[:, 1]/1000, kind='slinear')
-    #############
+    ###########
 
     K0 = K_x_to_y[:, 0]
     K1 = K_x_to_y[:, 1]
