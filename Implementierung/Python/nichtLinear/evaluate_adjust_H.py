@@ -46,7 +46,7 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     Vpp = 0.3
 
     sample_rate_AWG_max = settings.sample_rate_AWG
-    sample_rate_DSO = settings.sample_rate_DS
+    sample_rate_DSO = settings.sample_rate_DSO
     Vpp = adjust_H_Vpp
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
