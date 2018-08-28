@@ -9,7 +9,7 @@ from helpers.overlay import overlay
 #from scipy import interpolate
 #import csv
 
-def compute_a_from_Uin_Uquet(Uin, Uquest, N):
+def compute_a_from_Uin_Uquest(Uin, Uquest, N):
 
     """
     compute_a_from_Uin_Uquest calculates coefficients a from given U_in and U_quest

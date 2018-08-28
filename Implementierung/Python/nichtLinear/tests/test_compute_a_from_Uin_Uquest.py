@@ -4,7 +4,7 @@ from unittest import TestCase
 from numpy import genfromtxt
 from scipy import linalg
 
-from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquet
+from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquest
 from helpers.csv_helper import read_in_signal
 from helpers.tezt_helper import  finilize_tezt
 from settings import mock_data_path
@@ -35,7 +35,7 @@ class test_compute_a_from_Uin_Uquest(TestCase):
 
         a_300_ideal = genfromtxt(mock_data_path + 'a_300_our.csv', delimiter=',')
 
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
+        a_300_computed = compute_a_from_Uin_Uquest(Uin=Uin, Uquest=Uquest_300, N=3)
 
         test_succeeded = finilize_tezt(values_computed=a_300_computed, set_accepted_values=0, verbosity=0)
         self.assertTrue(test_succeeded)

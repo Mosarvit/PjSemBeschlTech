@@ -6,7 +6,7 @@ from scipy import linalg
 
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
-from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquet
+from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquest
 from helpers import overlay
 from helpers.csv_helper import read_in_signal
 from helpers.overlay import overlay
@@ -41,7 +41,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_300, 3)
+        a = compute_a_from_Uin_Uquest(Uin_ideal, Uquest_300, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_300, K_new, verbosity=0)
@@ -57,7 +57,7 @@ class test_compute_Uin_from_Uquest(TestCase):
 
         Uquest_300 = read_in_signal(mock_data_path + 'Uquest_300_our.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_300, 3)
+        a = compute_a_from_Uin_Uquest(Uin_ideal, Uquest_300, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_300, K_new, verbosity=False)
@@ -74,7 +74,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_awg = read_in_signal(path + 'Uin_initial.csv')
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_awg, Uquest_initial, 3)
+        a = compute_a_from_Uin_Uquest(Uin_awg, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
@@ -91,7 +91,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_awg = read_in_signal(path + 'Uin_initial.csv')
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_awg, Uquest_initial, 3)
+        a = compute_a_from_Uin_Uquest(Uin_awg, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
@@ -108,7 +108,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_initial = read_in_signal(path + 'Uin_initial.csv')
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_initial, Uquest_initial, 3)
+        a = compute_a_from_Uin_Uquest(Uin_initial, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
@@ -125,7 +125,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_awg = read_in_signal(path + 'Uin_initial.csv')
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_awg, Uquest_initial, 3)
+        a = compute_a_from_Uin_Uquest(Uin_awg, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
@@ -143,7 +143,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_ideal = read_in_signal(path + 'Uin_initial.csv')
         Uquest_measured = read_in_signal(path + 'Uquest_initial.csv')
 
-        a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_measured, 3)
+        a = compute_a_from_Uin_Uquest(Uin_ideal, Uquest_measured, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_measured, K_new, verbosity=0)
@@ -160,7 +160,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_awg = read_in_signal(path + 'Uin_initial.csv')
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         
-        a = compute_a_from_Uin_Uquet(Uin_awg, Uquest_initial, 3)
+        a = compute_a_from_Uin_Uquest(Uin_awg, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
@@ -179,7 +179,7 @@ class test_compute_Uin_from_Uquest(TestCase):
         Uin_ideal = read_in_signal(path + 'Uin_initial.csv')
         Uquest_initial = read_in_signal(path + 'Uquest_initial.csv')
         
-        a = compute_a_from_Uin_Uquet(Uin_ideal, Uquest_initial, 3)
+        a = compute_a_from_Uin_Uquest(Uin_ideal, Uquest_initial, 3)
         K_new = compute_K_from_a(a, verbosity=0)
 
         Uin_computed, Uquest_addapted = compute_Uin_from_Uquest(Uquest_initial, K_new, verbosity=0)
