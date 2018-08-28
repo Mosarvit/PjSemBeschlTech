@@ -2,13 +2,17 @@ from blocks.generate_BBsignal import generate_BBsignal
 from blocks.compute_Uquest_from_Uout import compute_Uquest_from_Uout
 from blocks.compute_K_from_a import compute_K_from_a
 from blocks.compute_Uin_from_Uquest import compute_Uin_from_Uquest
-from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
+from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquet
 from blocks.determine_H import determine_H
 from blocks.measure_Uout import measure_Uout
 from settings import use_mock_system
 from classes.signal_class import signal_class
 from helpers.csv_helper import save_signal, save_transfer_function
 from blocks.adjust_H import adjust_H
+from numpy import genfromtxt
+import matplotlib.pyplot as plt
+from settings import project_path, f_rep
+from blocks.determine_a import determine_a
 from helpers.plot_helper import plot_2_transfer_functions, plot_2_signals, plot_K
 from settings import adjust_H_save_to_csv, f_rep, sigma_H
 from helpers.signal_evaluation import signal_evaluate
@@ -34,9 +38,8 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
 
         # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured_uncut', 'Uout_measured_uncut')
 
-        f_rep_fix = f_rep
-        Uout_measured = Uout_measured.cut_one_period(f_rep_fix)
-        Uin_measured = Uin_measured.cut_one_period(f_rep_fix)
+        Uout_measured = Uout_measured.cut_one_period(f_rep)
+        Uin_measured = Uin_measured.cut_one_period(f_rep)
 
         if adjust_H_save_to_csv[0] or adjust_H_save_to_csv[4]:
             # save Uin and Uout

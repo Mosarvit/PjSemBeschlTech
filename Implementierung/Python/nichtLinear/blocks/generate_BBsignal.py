@@ -5,7 +5,7 @@ import settings
 from classes.signal_class import signal_class
 
 
-def generate_BBsignal(f_rep=900e3, f_BB=5e6, Vpp=3, sample_rate_AWG_max=999900000, saveCSV=0, verbosity=0):
+def generate_BBsignal(f_rep=settings.f_rep, f_BB=settings.f_BB, Vpp=settings.Vpp, sample_rate_AWG_max=settings.sample_rate_DSO, saveCSV=0, verbosity=0):
     """
      The method constructs a perfect signle-sinus as needed for the Barrier-Bucket-Applications
      with the given parameters
