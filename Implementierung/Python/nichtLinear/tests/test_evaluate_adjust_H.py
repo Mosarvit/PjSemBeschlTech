@@ -30,21 +30,21 @@ class test_evaluate_adjust_H(TestCase):
 
         self.assertTrue(err < 32e-2)
 
-
-    def test_evaluate_adjust_H_5_steps(self):
-
-        Uout_ideal, Uout_measured, Hs = evaluate_adjust_H(num_iters=1, verbosity=0)
-
-        H_ideal = mock_system.H
-
-        verbosity = 0
-        if verbosity:
-            plot_H_ideal_Hs(H_ideal, Hs)
-            plot_2_signals(Uout_ideal, Uout_measured, legend1='Uout_ideal', legend2='Uout_measured')
-
-        err_0 = calculate_error(Hs[0], H_ideal)
-        err_last = calculate_error(Hs[-1], H_ideal)
-
-        self.assertTrue(err_last < err_0)
+    #
+    # def test_evaluate_adjust_H_5_steps(self):
+    #
+    #     Uout_ideal, Uout_measured, Hs = evaluate_adjust_H(num_iters=1, verbosity=0)
+    #
+    #     H_ideal = mock_system.H
+    #
+    #     verbosity = 0
+    #     if verbosity:
+    #         plot_H_ideal_Hs(H_ideal, Hs)
+    #         plot_2_signals(Uout_ideal, Uout_measured, legend1='Uout_ideal', legend2='Uout_measured')
+    #
+    #     err_0 = calculate_error(Hs[0], H_ideal)
+    #     err_last = calculate_error(Hs[-1], H_ideal)
+    #
+    #     self.assertTrue(err_last < err_0)
 
 

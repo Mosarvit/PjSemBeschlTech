@@ -13,11 +13,22 @@ use_mock_system = 1
 verbosity = 0
 f_rep = 900e3
 f_BB = 5e6
-# Vpp_measure_K = 0.6
 sample_rate_AWG_max = 2e8
 sample_rate_DSO = 9999e5
 max_input_vpp_amplifier = 1
 add_final_comment = 1
+polynomial_order = 3
+
+# parameters just for returning H and K
+get_H_K_Vpp = 0.3
+get_H_K_KVpp = 0.6
+get_H_K_save_to_csv = [
+    1 , # save all data
+    1 , # save H
+    1 , # save exponents a
+    1 , # save nonlinearity K
+    1 , # save signals Uquest (ideal), Uin_measured, Uout_measured
+]
 
 # parameters for adjust H (iterative optimization of H)
 number_iterations = 5
@@ -37,6 +48,7 @@ ratio_of_rms_to_ignore = 0.02
 use_zero_padding = False
 ratio_to_cut = 3e-3
 default_ratio_in_spectre = 3e-3
+show_plots_in_adjust_H = False
 
 
 

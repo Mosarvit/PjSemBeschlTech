@@ -40,8 +40,6 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
         data_directory = project_path + save(path='data/optimizer', name='adjust_H') + '/'
 
 
-    # f_rep = 900e3
-    # f_BB = 5e6
     Vpp = adjust_H_Vpp
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)

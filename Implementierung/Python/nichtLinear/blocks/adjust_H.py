@@ -7,7 +7,7 @@ import time
 import copy
 from helpers.overlay import overlay
 from helpers import adapt_Optimization
-from settings import use_zero_padding, use_rms, ratio_to_cut, default_ratio_in_spectre, ratio_of_rms_to_ignore
+from settings import use_zero_padding, use_rms, ratio_to_cut, default_ratio_in_spectre, ratio_of_rms_to_ignore, show_plots_in_adjust_H
 
 from helpers.FFT import spectrum_from_TimeSignal, spectrum_from_Time_Signal_ZeroPadding
 
@@ -52,23 +52,23 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
             Hneu.c - Complex Value c = a*exp(jp)
 
     """
-
+    verbosity_adjust_H = show_plots_in_adjust_H or verbosity
     type_check_adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H)
 
     Uout_ideal = overlay(Uout_ideal_init, Uout_measured)
-    # if verbosity:
-    #     delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
-    #     delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
-    #     # Plot voltages
-    #     plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
-    #     plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
-    #     plt.title('U_ideal.csv.csv.csv.csv - red, Uout_meas - blue')
-    #     plt.xlabel('t')
-    #     plt.ylabel('U')
-    #     plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
-    #     plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
-    #     plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
-    #     plt.show()
+    if verbosity_adjust_H:
+        delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
+        delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
+        # Plot voltages
+        plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
+        plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
+        plt.title('U_ideal.csv.csv.csv.csv - red, Uout_meas - blue')
+        plt.xlabel('t')
+        plt.ylabel('U')
+        plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
+        plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
+        plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
+        plt.show()
 
     # use_rms = False
     # use_zero_padding = False
@@ -91,7 +91,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
         frequencies_Meas, spectrum_Meas = spectrum_from_TimeSignal(Uout_measured.time,
                                                                    Uout_measured.in_V)
 
-    if verbosity:
+    if verbosity_adjust_H:
         plt.plot(frequencies_Id, np.abs(spectrum_Id), 'r', frequencies_Meas, np.abs(spectrum_Meas), 'b')
         plt.show()
         plt.scatter(frequencies_Id, np.angle(spectrum_Id), c='r')
@@ -245,7 +245,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
 
   
 
-    if verbosity:
+    if verbosity_adjust_H:
 
         # Plot Magnitudes:
             

@@ -16,6 +16,7 @@ from helpers.csv_helper import save_2cols, save_signal
 from helpers.plot_helper import plot_2_signals, plot_K
 from blocks.compute_K_from_a import compute_K_from_a
 from helpers.overlay import overlay
+from settings import polynomial_order
 
 def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory):
     version = 1
@@ -50,6 +51,6 @@ def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory):
 
     # plot_2_signals(Uin, Uquest_measured)
 
-    a = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_measured, N=3)
+    a = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_measured, N=polynomial_order)
 
     return a
