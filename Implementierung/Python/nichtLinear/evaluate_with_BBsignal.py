@@ -31,15 +31,11 @@ def evaluate_with_BBsignal(num_iters = 1) :
 
 
     Vpp = get_H_K_Vpp
-    Vpp_K = get_H_K_KVpp
 
     Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
-    Uout_ideal_for_K = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp_K,
-                                         sample_rate_AWG_max=sample_rate_AWG_max,
-                                         verbosity=0)
 
     H = determine_H(loadCSV=0, saveCSV=0, verbosity=0)
-    a = determine_a(H, Uout_ideal_for_K, sample_rate_DSO, data_directory=data_directory)
+    a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory=data_directory)
 
     K = compute_K_from_a(a=a, verbosity=0)
 
