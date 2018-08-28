@@ -32,15 +32,15 @@ Auf den Ergebnissen des Kapitels \ref{chap:opt} aufbauend, verbleibt eine Reihe 
 \begin{enumerate}
 	\item 	Wie wirkt sich die Optimierung von $K$ aufgrund der Nichtlinearität der Kennlinie auf die Übertragungsfunktion $\Hcompl$ aus und muss diese Problematik in der Optimierung berücksichtigt werden, etwa in der Reihenfolge der Iterationsschritte?
 	
-	\item	Wie damit umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen?
+	\item	Wie wird damit umgegangen, dass im Frequenzbereich unabhängig der Qualität der Messung nur etwa halb so viele Daten für die Anpassung zur Verfügung stehen, wie in $\Hcompl$ selbst vorliegen?
 	
-	\item 	Ist die getrennte Interpolation von Betrag und Phase der Signalspektren an den Frequenzen der Übertragungsfunktion in der Optimierung von $\Hcompl$ die beste Lösung? 
+%	\item 	Ist die getrennte Interpolation von Betrag und Phase der Signalspektren an den Frequenzen der Übertragungsfunktion in der Optimierung von $\Hcompl$ die beste Lösung? 
 	
 	\item	In welcher Reihenfolge wird die Iteration durchgeführt? Wird zuerst $\Hcompl$ in mehreren Durchgängen angepasst und danach $K$? Oder im Wechsel je eine Iteration?
 	
 	\item 	Wie wird die Auswahl der Schrittweiten $\sigma_H$ und $\sigma_a$ vorgenommen? Werden diese pauschal zu Beginn des Algorithmus festgesetzt oder ist eine dynamische Anpassung, etwa durch die Qualität des letzten gemessenen Signals oder in Abhängigkeit des Iterationsschritts vorzuziehen? 
 	
-	\item 	Wie lässt sich der Einfluss von zufälligem Rauschen auf die Optimierung reduzieren? Insbesondere die Auflösung im höherfrequenten Betragsspektrum ist hier problematisch. Auf welchen Wert wird der Korrekturterm bei zu ignorierenden Frequenzen gesetzt?
+	\item 	Wie lässt sich der Einfluss von zufälligem Rauschen auf die Optimierung reduzieren? Insbesondere die Auflösung im höherfrequenten Betragsspektrum ist hier problematisch. Auf welchen Wert wird der Korrekturterm bei zu ignorierenden Frequenzen gesetzt? Möglich wäre etwa, eine Mittelung über mehrere Messungen zu berechnen und mit dem Ergebnis hieraus die Optimierung durchzuführen.
 	
 	\item	Wie lassen sich die im idealen Spektrum des Einzelsinus enthaltenen Nulldurchgänge in der Optimierung von $\Hcompl$ berücksichtigen, um interpolationsbedingt große Fehlerterme zu vermeiden? Ist das einfache Ignorieren dieser Frequenzen für die Anpassung eine Möglichkeit? Und in welchem kleinen Frequenzbereich um einen Nulldurchgang müssten dann die Werte ignoriert werden?
 	

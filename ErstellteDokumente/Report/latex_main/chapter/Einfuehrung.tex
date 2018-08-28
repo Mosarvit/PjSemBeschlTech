@@ -6,9 +6,9 @@
 
 \chapter{Einführung}
 \label{chap:einfuehrung}
-Mit Barrier Bucket (BB) RF Systemen sollen am neu entstehenden Synchrotron SIS100 oder im Experimentier\-speicherring (ESR) am GSI Helmholtzzentrum unterschiedliche longitudinale Manipulationen an Teilchenstrahlen vorgenommen werden. Der dazu notwendige Spannungspuls hat die in \figref{fig:BB_req} dargestellte Form. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so führt dies zu einer stationären Potentialbarriere im Phasenraum. Diese Barrieren können dazu verwendet werden, den Strahl longitudinal einzuschließen und ermöglichen somit variable Bunchlängen. Unterscheiden sich Wiederholfrequenz des Spannungssignals und Umlauffrequenz, so bewegt sich die Barriere im Phasenraum ("moving barrier") und ermöglicht Kompression und Dekompression der Bunches.
+Mit Barrier Bucket (BB) RF Systemen sollen am neu entstehenden Synchrotron SIS100 oder im Experimentier\-speicherring (ESR) am GSI Helmholtzzentrum unterschiedliche longitudinale Manipulationen an Teilchenstrahlen vorgenommen werden. Der dazu notwendige Spannungspuls hat die in \figref{fig:BB_req} dargestellte Form. Wenn die Wiederholfrequenz des Spannungspulses gleich der Umlauffrequenz ist, so führt dies zu einer stationären Potentialbarriere im Phasenraum. Diese Barrieren können dazu verwendet werden, den Strahl longitudinal einzuschließen und ermöglichen somit variable Bunch\-längen. Unterscheiden sich Wiederholfrequenz des Spannungssignals und Umlauffrequenz, so bewegt sich die Barriere im Phasenraum ("moving barrier") und ermöglicht Kompression und Dekompression der Bunches.
 \\ 
-Eine Herausforderung dieser Systeme liegt darin, eine hohe Qualität des Pulses am Gap der Kavität zu erzeugen, um unerwünschte Effekte auf den Strahl zu verhindern. Laut Spezifikation für das EST System müssen die Nachschwinger nach dem Einzelsinus beispielsweise kleiner als 2,5\% der Amplitude des Signals sein.
+Eine Herausforderung dieser Systeme liegt darin, eine hohe Qualität des Pulses am Gap der Kavität zu erzeugen, um unerwünschte Effekte auf den Strahl zu verhindern. Laut Spezifikation für das ESR System müssen die Nachschwinger nach dem Einzelsinus beispielsweise kleiner als 2,5\% der Amplitude des Signals sein.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{eps/BB_req.pdf}
@@ -16,13 +16,13 @@ Eine Herausforderung dieser Systeme liegt darin, eine hohe Qualität des Pulses 
   \label{fig:BB_req}
 \end{figure}
 \noindent
-Im Folgenden wird $f_{rep}$ für die Wiederholfrequenz des Spannungssignals verwendet. Die Barrier Bucket Frequenz $f_{BB}$ bestimmt die Breite der Potential Barriere. Für die Messungen in diesem Projektseminar werden ${f_{rep} = 900 \si{\kilo \hertz}}$ und ${f_{BB} = 5 \si{\mega \hertz}}$ festgelegt.
+Im Folgenden wird $f_{rep}$ für die Wiederholfrequenz des Spannungssignals verwendet. Die Barrier Bucket Frequenz $f_{BB}$ bestimmt die Breite der Potentialbarriere. Für die Messungen in diesem Projektseminar werden $f_{rep} = \SI{900}{\kilo\hertz}$ und $f_{BB} = \SI{5}{\mega \hertz}$ festgelegt.
 
 
 \section[Modell und Konvention]{Versuchsaufbau und Modell}
 \label{sec:einf.modell_BB}
-Der Prototyp des ESR BB besteht aus einem Funktionsgenerator (Keysight 3600A series 2-channel ($50\Omega $) AWG), einem Verstärker (AR1000A225) und der Breitband Ringkern-Kavität. Der Versuchsaufbau ist in \figref{fig:Aufbau} gezeigt. Ein Messablauf ist in \figref{fig:Messung} als Flow Chart Diagramm dargestellt.\\
-Dabei kann angenommen werden, dass sich das System bis $\hat{U}_{BB} = 550V$ annähernd linear verhält und durch die Übertragungsfunktion $\Hcompl$ beschrieben werden kann. Eine mathematische Modellierung ist ebenfalls in \figref{fig:Aufbau} gegeben, in der zusätzlich zur linearen Übertragungsfunktion $\Hcompl$ noch eine nichtlineare Kennlinie enthalten ist. Die Größen werden im nächsten Abschnitt erklärt.
+Der Prototyp des ESR BB besteht aus einem Funktionsgenerator (Keysight 3600A series 2-channel ($\SI{50}{\ohm}$) AWG), einem Verstärker (AR1000A225) und der Breitband Ringkern-Kavität. Der Versuchsaufbau ist in \figref{fig:Aufbau} gezeigt. Ein Messablauf ist in \figref{fig:Messung} als Flow Chart Diagramm dargestellt.\\
+Dabei kann angenommen werden, dass sich das System bis $\hat{U}_{BB} = \SI{500}{\volt}$ annähernd linear verhält und durch die Übertragungsfunktion $\Hcompl$ beschrieben werden kann. Eine mathematische Modellierung ist ebenfalls in \figref{fig:Aufbau} gegeben, in der zusätzlich zur linearen Übertragungsfunktion $\Hcompl$ noch eine nichtlineare Kennlinie enthalten ist. Die Größen werden im nächsten Abschnitt erklärt.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{eps/Aufbau.pdf}
@@ -69,7 +69,7 @@ Dabei kann angenommen werden, dass sich das System bis $\hat{U}_{BB} = 550V$ ann
 \end{figure}
 
 \noindent
-Das berechnete Eingangssignal $\Uin$ wird an das AWG übergeben. Davon wird es zum einen an das Oszilloskop geleitet und zum anderen an den Verstärker. Der Gapspannungsteiler hat ein Verhältnis von 1:800, dabei ergibt sich die Ausgangsspannung $\Uout$ als die Differenz der Kanäle 3 und 4. Es muss darauf geachtet werden, dass alle Eingänge des Oszilloskops auf hoch-ohmig eingestellt sind, um Schäden am Gerät zu verhindern. Dabei müssen die Leitungen von der Kavität mit einem T-Stück und einem $\SI{50}{\Omega}$ Widerstand abgeglichen sein. Die Ausgänge des AWG müssen auch auf $\SI{50}{\Omega}$ eingestellt werden.
+Das berechnete Eingangssignal $\Uin$ wird an das AWG übergeben. Davon wird es zum einen an das Oszilloskop geleitet und zum anderen an den Verstärker. Der Gapspannungsteiler hat ein Verhältnis von 1:800, dabei ergibt sich die Ausgangsspannung $\Uout$ als die Differenz der Kanäle 3 und 4. Es muss darauf geachtet werden, dass alle Eingänge des Oszilloskops auf hoch-ohmig eingestellt sind, um Schäden am Gerät zu verhindern. Dabei müssen die Leitungen von der Kavität mit einem T-Stück und einem $\SI{50}{\ohm}$ Widerstand abgeglichen sein. Die Ausgänge des AWG müssen auch auf $\SI{50}{\ohm}$ eingestellt werden.
 
 \subsection{Hammerstein-Modell}
 \label{subsec:einf.modell_BB.hammerstein}

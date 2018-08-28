@@ -43,7 +43,7 @@ Iterativ mit einer Schrittweite $\sigma_H^i \in \left[ 0 , 1 \right]$ ausgeführ
 für $\Uoutc_{, \mathrm{meas}}^{i}$ in $\fabs^{i}$ als gemessenem Ausgangssignal für das mit $\Hcompl^{i}$ berechnete Eingangssignal
 \footnote{Nachfolgend wird aus Gründen der Übersichtlichkeit $\fabs$ statt dem länglichen Bruch genutzt.}.
 In \figref{fig:opt.spektrum_BB_signal} sind Betrag und Phase der durch FFT erhaltenen Spektren für gemessenes und ideales Ausgangssignal vor Durchführung einer Optimierung dargestellt. Die Transformation erfolgt dabei durch die Erweiterung \lstinline{numpy} in Python mit \lstinline{numpy.fft}. Die Routine nutzt einen Algorithmus von Cooley and Tukey \cite[S. 297-301]{cooley65}.
-Klar erkennbar sind die Nulldurchgänge des Betragsspektrums sowie die große Streuung der Phasenwerte. 
+Klar erkennbar sind die Nulldurchgänge des Betragsspektrums sowie die große Streuung der Phasenwerte. Die Abweichungen im Betragsspektrum zwischen idealem und gemessenem Signal sind hier überproportional dargestellt. Die Zeitachsen der zugehörigen Zeitsignale unterscheiden sich um einen kleinen Zeitversatz, was einer linearen Abweichung des Betragsspektrums entspricht\footnote{Dieses Fehlverhalten des Programms wurde im Lauf der Entwicklung der Optimierung behoben, hier jedoch aus Gründen der Anschaulichkeit beibehalten.}.
 %%% TODO: Samples der Signale!
 % Insbesondere illustriert \figref{subfig:opt.angle_spektrum} die bei gemessenem Signal auftretende Streuung der Phase. 
 \\
@@ -53,7 +53,7 @@ Klar erkennbar sind die Nulldurchgänge des Betragsspektrums sowie die große St
 \pgfplotstableread[col sep = comma] {opt_spect_ideal_angle.csv} \angleSpectIdeal 
 \pgfplotstableread[col sep = comma] {opt_spect_meas_angle.csv} \angleSpectMeas 
 
-\begin{figure}[htb] %%% TODO: prüfen!
+\begin{figure}[p] %%% TODO: prüfen!
 \begin{subfigure}{0.5 \textwidth}
 \centering
     \begin{tikzpicture}
@@ -127,7 +127,7 @@ Klar erkennbar sind die Nulldurchgänge des Betragsspektrums sowie die große St
 Mit diesen Überlegungen gestaltet sich der Programmablauf zur Optimierung der Übertragungsfunktion wie in \figref{fig:Algorithmus.H} illustriert.
 
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \tikzstyle{block_g} = [rectangle, draw, fill=green!20, 
     text width=6.5em, text centered, rounded corners, node distance=2cm, minimum height=4em]
@@ -205,7 +205,7 @@ Verglichen mit der nachfolgend beschriebenen Anpassung hat eine Grenze von $3 \,
 \label{subsubsec:opt.H.RMS}
 
 Ein zweiter, sehr grober Ansatz liegt in der Beschränkung von $\fabs$ auf Werte, die betragsmäßig kleiner als eine vorgegebene Schwelle sind. Zugrunde liegt die Annahme, dass die gerade an Nulldurchgängen des Spektrums aber auch bei vielen hohen Frequenzen auftretenden großen Werte durch die in obiger Aufzählung genannten Fehlerquellen entstehen.
-Hier bedeutet dies insbesondere, dass die Diskretisierung die Nulldurchgänge nicht korrekt darstellen kann. Die Interpolation auf Frequenzen von $\Hcompl$ ist dann aufgrund der Sprünge von Werten in direkter Umgebung der problematischen Frequenzen mit großer Ungenauikgeit behaftet. Dies kann zu den beschriebenen, großen Korrektur-Termen in $\fabs$ führen. Ähnlich verhält es sich mit Änderungen durch Rauschen, die aufgrund ihrer Beträge nicht durch das Ignorieren kleiner Beträge in den Spektren verhindert werden.
+Hier bedeutet dies insbesondere, dass die Diskretisierung die Nulldurchgänge nicht korrekt darstellen kann. Die Interpolation auf Frequenzen von $\Hcompl$ ist dann aufgrund der Sprünge von Werten in direkter Umgebung der problematischen Frequenzen mit großer Ungenauigkeit behaftet. Dies kann zu den beschriebenen, großen Korrektur-Termen in $\fabs$ führen. Ähnlich verhält es sich mit Änderungen durch Rauschen, die aufgrund ihrer Beträge nicht durch das Ignorieren kleiner Beträge in den Spektren verhindert werden.
 
 \lstset{language=Python}
 \begin{lstlisting}[caption={Pseudocode zur Veranschaulichung der Anpassung des Korrekturterms}, label=code:opt.H.pseudoRMS, numbers=none]
