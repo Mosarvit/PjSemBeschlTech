@@ -9,17 +9,14 @@ from helpers.signal_helper import convert_V_to_mV
 from helpers.signal_helper import convert_mV_to_V
 from helpers.signal_helper import setVpp
 from helpers.csv_helper import read_in_transfer_function, read_in_transfer_function_old_convention
-from settings import project_path
 from copy import copy
 from helpers.csv_helper import save_2cols
-from settings import use_mock_system
 from classes.signal_class import signal_class
 from helpers.csv_helper import save_signal, save_transfer_function, read_in_transfer_function
-from blocks.adjust_H import adjust_H
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
-from settings import project_path
 import settings
+from settings import use_mock_system, project_path, f_rep, f_BB, add_final_comment, sample_rate_AWG_max,sample_rate_DSO, adjust_H_Vpp, adjust_H_Vpp_K, adjust_H_save_to_csv
 from blocks.loop_adjust_H import loop_adjust_H
 from blocks.determine_a import determine_a
 from helpers.plot_helper import plot_K
@@ -49,25 +46,31 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     Vpp = 0.3
 
     sample_rate_AWG_max = settings.sample_rate_AWG
-    sample_rate_DSO = settings.sample_rate_DSO
+    sample_rate_DSO = settings.sample_rate_DS
+    Vpp = adjust_H_Vpp
 
-    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp , sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
+    Uout_ideal = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=Vpp, sample_rate_AWG_max=sample_rate_AWG_max, verbosity=0)
+    Uout_ideal_for_K = generate_BBsignal(f_rep=f_rep, f_BB=f_BB, Vpp=adjust_H_Vpp_K, sample_rate_AWG_max=sample_rate_AWG_max,
+                                         verbosity=0)
 
-    H = determine_H(loadCSV=1, saveCSV=1, verbosity=0)
+    H = determine_H(loadCSV=0, saveCSV=0, verbosity=0)
 
-    save_transfer_function(H=H, filename=data_directory + 'H_0.csv')
+    if adjust_H_save_to_csv[0] or adjust_H_save_to_csv[1]:
+        save_transfer_function(H=H, filename=data_directory + 'H_0.csv')
 
-    a = determine_a(H, Uout_ideal, sample_rate_DSO, data_directory)
+    a = determine_a(H, Uout_ideal_for_K, sample_rate_DSO, data_directory)
 
     K = compute_K_from_a(a=a, verbosity=0)
     # plot_K(K)
-    save_2cols(data_directory + '/K_initial.csv', K[:, 0], K[:, 1])
+
+    if adjust_H_save_to_csv[0] or adjust_H_save_to_csv[2]:
+        save_2cols(data_directory + '/K_initial.csv', K[:, 0], K[:, 1])
 
     Hs, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
 
     H_0 = read_in_transfer_function(data_directory + 'H_0.csv')
 
-    if not use_mock_system :
+    if (not use_mock_system) and add_final_comment :
         save_text(data_directory)
 
     return Uout_ideal, Uout_measured, Hs

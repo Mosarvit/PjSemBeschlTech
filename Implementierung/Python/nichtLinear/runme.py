@@ -1,7 +1,9 @@
 from evaluate_adjust_H import evaluate_adjust_H
 from helpers.plot_helper import plot_2_transfer_functions, plot_H_ideal_Hs, plot_2_signals
+from settings import number_iterations
 
-Uout_ideal, Uout_measured, H_development = evaluate_adjust_H(5, verbosity=1)
+
+Uout_ideal, Uout_measured, H_development = evaluate_adjust_H(number_iterations, verbosity=1)
 
 verbosity = 1
 if verbosity:
