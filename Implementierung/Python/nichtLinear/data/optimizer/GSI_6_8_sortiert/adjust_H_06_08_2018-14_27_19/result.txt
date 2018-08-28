@@ -1,1 +1,0 @@
-erste sinnvolle Messung!!! 3 Iterationen, H geladen aus vorheriger Messung (also aktuell) und ohne jede Anpassung. Sieht sinnvoll aus, man sieht die unproportionale Verstärkung einiger Frequenzen gut

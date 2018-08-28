@@ -1,2 +1,0 @@
-3 Durchläufe mit offset 12500 in read from DSO,
-no Prom, RMS=True

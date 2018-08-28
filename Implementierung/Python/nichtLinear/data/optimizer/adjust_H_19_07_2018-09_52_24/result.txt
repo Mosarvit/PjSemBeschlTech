@@ -1,1 +1,0 @@
-neuer versuch samplerate auslesen - es sind 25Gsa/s
