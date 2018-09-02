@@ -1,1 +1,0 @@
-Zum ersten Mal richtige Perioden Dauer - Oszi Version == 2 => Todo: frep als ÜbergabeParameter

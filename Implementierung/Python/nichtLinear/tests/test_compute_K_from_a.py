@@ -7,7 +7,7 @@ from helpers.csv_helper import read_in_signal
 from helpers.plot_helper import plot_K, plot_2_Ks
 from helpers.tezt_helper import finilize_tezt
 from settings import mock_data_path
-from blocks.compute_a_from_Uin_Uquet import compute_a_from_Uin_Uquet
+from blocks.compute_a_from_Uin_Uquest import compute_a_from_Uin_Uquest
 
 
 class test_compute_K_from_a(TestCase):
@@ -45,7 +45,7 @@ class test_compute_K_from_a(TestCase):
 
         a_300_ideal = genfromtxt(mock_data_path + 'a_300_our.csv', delimiter=',')
 
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
+        a_300_computed = compute_a_from_Uin_Uquest(Uin=Uin, Uquest=Uquest_300, N=3)
 
         K_computed = compute_K_from_a(a_300_computed, verbosity=0)
 
@@ -62,7 +62,7 @@ class test_compute_K_from_a(TestCase):
 
         # K_300_ideal = genfromtxt(mock_data_path + 'K_300_our.csv', delimiter=',')
 
-        a_300_computed = compute_a_from_Uin_Uquet(Uin=Uin, Uquest=Uquest_300, N=3)
+        a_300_computed = compute_a_from_Uin_Uquest(Uin=Uin, Uquest=Uquest_300, N=3)
         K_computed = compute_K_from_a(a_300_computed, verbosity=0)
 
         test_succeeded, K_ideal = finilize_tezt(values_computed=K_computed, set_accepted_values=0, verbosity=0)

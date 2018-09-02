@@ -1,1 +1,0 @@
-einen Daten Punkt hinzugefügt - letzter Wert der Periode, der eigenzlich der Anfangspunkt sein sollte

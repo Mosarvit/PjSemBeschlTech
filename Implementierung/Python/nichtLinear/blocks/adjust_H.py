@@ -7,6 +7,7 @@ import time
 import copy
 from helpers.overlay import overlay
 from helpers import adapt_Optimization
+from settings import use_zero_padding, use_rms, ratio_to_cut, default_ratio_in_spectre, ratio_of_rms_to_ignore, show_plots_in_adjust_H
 
 from helpers.FFT import spectrum_from_TimeSignal, spectrum_from_Time_Signal_ZeroPadding
 
@@ -51,27 +52,27 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
             Hneu.c - Complex Value c = a*exp(jp)
 
     """
-
+    verbosity_adjust_H = show_plots_in_adjust_H or verbosity
     type_check_adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H)
 
     Uout_ideal = overlay(Uout_ideal_init, Uout_measured)
-    # if verbosity:
-    #     delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
-    #     delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
-    #     # Plot voltages
-    #     plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
-    #     plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
-    #     plt.title('U_ideal.csv.csv.csv.csv - red, Uout_meas - blue')
-    #     plt.xlabel('t')
-    #     plt.ylabel('U')
-    #     plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
-    #     plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
-    #     plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
-    #     plt.show()
+    if verbosity_adjust_H:
+        delta_t_meas = Uout_measured.time[1] - Uout_measured.time[0]
+        delta_t_id = Uout_ideal.time[1] - Uout_ideal.time[0]
+        # Plot voltages
+        plt.scatter(Uout_ideal.time, Uout_ideal.in_V, c='r', marker=".")
+        plt.scatter(Uout_measured.time, Uout_measured.in_V, c='b', marker=".")
+        plt.title('U_ideal.csv.csv.csv.csv - red, Uout_meas - blue')
+        plt.xlabel('t')
+        plt.ylabel('U')
+        plt.suptitle('Number of points: ' + str(len(Uout_ideal.time)) + ' ideal, ' + str(len(Uout_measured.time)) + ' meas')
+        plt.suptitle('Timestep Meas: ' + str(delta_t_meas) +  ' Timestep Ideal: ' + str(delta_t_id) )
+        plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
+        plt.show()
 
-    use_rms = False
-    use_zero_padding = False
-    ratio_to_cut = 0
+    # use_rms = False
+    # use_zero_padding = False
+    # ratio_to_cut = 0
     ratio_ideal = ratio_to_cut
     ratio_meas = ratio_to_cut
     # calculate Spectrum:
@@ -90,7 +91,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
         frequencies_Meas, spectrum_Meas = spectrum_from_TimeSignal(Uout_measured.time,
                                                                    Uout_measured.in_V)
 
-    if verbosity:
+    if verbosity_adjust_H:
         plt.plot(frequencies_Id, np.abs(spectrum_Id), 'r', frequencies_Meas, np.abs(spectrum_Meas), 'b')
         plt.show()
         plt.scatter(frequencies_Id, np.angle(spectrum_Id), c='r')
@@ -117,7 +118,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
     # check frequency range of signal. If less frequencies than in H,
     # add frequency in signal with amplitude 1 s.t. signal has frequencies >= H
     # here: find default-value as 1 permille of signals
-    default_permille = 1e-3
+    default_permille = default_ratio_in_spectre
     # find indices to set to default:
     permille_in_Ideal = np.max(np.abs(spectrum_Id)) * default_permille
     permille_in_Meas = np.max(np.abs(spectrum_Meas)) * default_permille
@@ -143,14 +144,13 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
 
 
     #####
-    Id_spectrum = signal_class(frequencies_Id, spectrum_Id)
-    Meas_spectrum = signal_class(frequencies_Meas, spectrum_Meas)
+    # Id_spectrum = signal_class(frequencies_Id, spectrum_Id)
+    # Meas_spectrum = signal_class(frequencies_Meas, spectrum_Meas)
     # just to enable return for report 2018!
     ##### end
 
     # to reduce NOISE and avoid problems by dividing by 0: clear lowest percentage of signal amplitudes
     # set ratio (percentage) to any desired value
-    # TODO: add input parameter with ratio to not define it here
 
     # find indices to set to default:
     idx_clear_Id = np.where(abs(spectrum_Id) <= ratio_ideal * np.max(abs(spectrum_Id)))[0]
@@ -198,7 +198,6 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
 
     # to reduce WHITE NOISE attempt 2:
     # cut high amplifying ratios (over RMS)
-    # TODO: add input parameter use_rms to not define it here
     # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
     # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
     # use_rms = False
@@ -220,9 +219,9 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
     rms = np.sqrt(np.mean(np.square(np.abs(f_compl))))
     ###
     # just to enable return for report 2018!
-    rms_orig = copy.copy(rms)
+    #rms_orig = copy.copy(rms)
     ###
-    values = np.abs(f_compl[np.where(np.abs(f_compl) >= 0.02 * rms)[
+    values = np.abs(f_compl[np.where(np.abs(f_compl) >= ratio_of_rms_to_ignore * rms)[
         0]] ) # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
     rms = np.sqrt(np.mean(np.square(values)))
     if use_rms:
@@ -246,7 +245,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
 
   
 
-    if verbosity:
+    if verbosity_adjust_H:
 
         # Plot Magnitudes:
             
