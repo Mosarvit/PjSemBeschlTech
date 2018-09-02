@@ -1,0 +1,20 @@
+unit tests:
+
+all the data relevant to unit tests is located in the folder "tests"
+all unit tests are executed by running all_tezts.py.
+single unit tests can also be executed just as any other method.
+
+finilize_tezt:
+
+Some unit tests are finalized by the method finilize_tezt. The concept of finilizing the unit tests this way is explained in details in the projekt seminar report ***LINK***. If for any reason the ideal output of the method has changed, the unit test of that method needs to be executed with "set_accepted_values" of finilize_tezt set to 1. This way the accepted value is updated. After updating the accepted value, set "set_accepted_values" back to 0.
+
+mock_system :
+
+some unit tests require the communication with the instruments. Since the instruments are mostly not available in the test phase, the mock_system simulats the behaviour of the instruments. In fact, some unit tests will only pass on the mock_system, but not on the real instruments, since the mock_system always behaves exactly the same, which is not true when measuring on the real system. 
+The mock_system can be turned on by setting use_mock_system to 1 in the settings.py.  
+
+
+
+todo:
+
+need a link
