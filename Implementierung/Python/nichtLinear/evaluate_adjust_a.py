@@ -5,6 +5,7 @@ from blocks.loop_adjust_a import loop_adjust_a
 from blocks.determine_H import determine_H
 from helpers.csv_helper import save_2cols
 from helpers.csv_helper import save_transfer_function, save_signal, save_a
+from helpers.plot_helper import plot_Ks
 from save_results import save, save_text
 from settings import project_path, use_mock_system, adjust_a_save_to_csv
 import settings
@@ -43,7 +44,9 @@ def evaluate_adjust_a(num_iters = 1, verbosity = 0) :
        save_2cols(data_directory + '/K_initial.csv', K_0[:, 0], K_0[:, 1])
 
     Uout_measured, quality_development, Ks = loop_adjust_a(a_0, K_0, H_0, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
-
+    
+    if verbosity or settings.show_final_adjustment:
+        plot_Ks(Ks)
     if (not use_mock_system) and settings.add_final_comment :
         save_text(data_directory)
 

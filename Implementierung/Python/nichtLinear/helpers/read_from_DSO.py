@@ -27,6 +27,7 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal, measure_H = False):
     import visa
     import numpy as np
     import time
+    from settings import f_rep
 
     dso_ip = 'TCPIP::169.254.225.181::gpib0,1::INSTR'
     DSO = visa.ResourceManager().get_instrument(dso_ip)
@@ -36,7 +37,8 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal, measure_H = False):
         horizontalScalePerDiv = 1.5*periodTime/10 #At least one period needs to be
                                                   #shown on the DSO 
     else:
-        periodTime = 1/fmax
+        # f_rep from global settings
+        periodTime = 1/f_rep
         horizontalScalePerDiv = 1.5*periodTime/10
     
     # random samplerate versuch max
@@ -133,7 +135,7 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal, measure_H = False):
     DSO.write("DATa:STOP " + DSO.query("HORIZONTAL:RECOrdlength?")) #Sets the
        #last data point that will be transferred when using the CURVe? query
 
-    time_attempt = 2        #chooses version to wait for finishing commands
+    time_attempt = 1        #chooses version to wait for finishing commands
     if time_attempt == 1:
         time.sleep(5)       #enough time to finish every Process
     elif time_attempt == 2:

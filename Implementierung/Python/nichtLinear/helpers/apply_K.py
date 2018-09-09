@@ -85,12 +85,13 @@ def apply_K(K_x_to_y, Ux, verbosity):
     if K_min_V - Uquest_min_V > 0:
         vpp_new2 = abs(K_min_V / (Uquest_min_V / vpp))
         vpp_new2 = math.floor(vpp_new2*10**round_by)/(10**round_by)
-    if vpp_new1 < vpp_new2:
-        Ux.Vpp = vpp_new1
-        print(colorama.Back.RED + colorama.Style.BRIGHT + 'Warning: Uquest Vpp set to: '+ str(vpp_new1) + colorama.Style.NORMAL + colorama.Back.RESET)
-    else:
-        Ux.Vpp = vpp_new2
-        print(colorama.Back.RED + colorama.Style.BRIGHT + 'Warning: Uquest Vpp set to: ' + str(vpp_new2) + colorama.Style.NORMAL + colorama.Back.RESET)
+    if (vpp_new1 != vpp) and (vpp_new2 != vpp):
+        if vpp_new1 < vpp_new2:
+            Ux.Vpp = vpp_new1
+            print(colorama.Back.RED + colorama.Style.BRIGHT + 'Warning: Uquest Vpp set to: '+ str(vpp_new1) + colorama.Style.NORMAL + colorama.Back.RESET)
+        else:
+            Ux.Vpp = vpp_new2
+            print(colorama.Back.RED + colorama.Style.BRIGHT + 'Warning: Uquest Vpp set to: ' + str(vpp_new2) + colorama.Style.NORMAL + colorama.Back.RESET)
     # if Uquest.Vpp*1000 > vpp_max*0.95:
     #     # der Wert 0.9 ist random gewählt, weil 1 nicht geklappt hat.. müssen wir herausfinden was geht
     #     Uquest.Vpp = 0.95*vpp_max/1000

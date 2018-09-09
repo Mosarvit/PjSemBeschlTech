@@ -1,8 +1,0 @@
-"DateiName"	"f_rev" "f_BB"
-Messung_060_TD_y_1  0.9e6 5e6
-Messung_061_TD_y_1  0.9e6 5e6
-Messung_065_TD_y_0  0.9e6 5e6
-Messung_066_TD_y_0  0.9e6 5e6
-Messung_067_TD_y_0  0.9e6 5e6
-Messung_077_TD_y_3  0.9e6 5e6
-Messung_077_TD_y_29 0.9e6 5e6

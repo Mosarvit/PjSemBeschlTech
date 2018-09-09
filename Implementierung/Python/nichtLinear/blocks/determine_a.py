@@ -4,13 +4,16 @@ from blocks.measure_Uout import measure_Uout
 from copy import copy
 from helpers.csv_helper import save_2cols, save_signal
 from helpers.overlay import overlay
-from settings import polynomial_order, Vpp_for_determine_a
+from settings import polynomial_order, Vpp_for_determine_a, max_input_vpp_amplifier, save_signals_for_determine_a
 
 def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory):
     version = 1
     if version == 1:
         Uquest_ideal = compute_Uquest_from_Uout(Uout=Uout_ideal, H=H, verbosity=0)
         Uin = copy(Uquest_ideal)
+        if Vpp_for_determine_a < 0.5*max_input_vpp_amplifier:
+            print('Amplitude '+ str(Vpp_for_determine_a) +' V is probably too low for considerable nonlinearity!')
+        
         Uin.Vpp = Vpp_for_determine_a
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, loadCSV=0, saveCSV=0, id='1',
                                                    verbosity=0)
@@ -23,15 +26,17 @@ def determine_a(H, Uout_ideal, sample_rate_DSO, data_directory):
         Uin_measured, Uout_measured = measure_Uout(Uin=Uin, sample_rate_DSO=sample_rate_DSO, loadCSV=0, saveCSV=0,
                                                    id='1',
                                                    verbosity=0)
-    # save initial Data
-    save_2cols(data_directory + 'Uin_initial.csv', Uin_measured.time, Uin_measured.in_V)
-    save_2cols(data_directory + 'Uout_initial.csv', Uout_measured.time, Uout_measured.in_V)
+    
 
 
     Uout_measured = Uout_measured.cut_one_period(Uin.f_rep)      
     
     Uquest_measured = compute_Uquest_from_Uout(Uout=Uout_measured, H=H, verbosity=0)
-    save_signal(Uquest_measured, data_directory + 'Uquest_initial.csv')
+    # save initial Data
+    if save_signals_for_determine_a:
+        save_2cols(data_directory + 'Uin_determine_a.csv', Uin_measured.time, Uin_measured.in_V)
+        save_2cols(data_directory + 'Uout_determine_a.csv', Uout_measured.time, Uout_measured.in_V)
+        save_signal(Uquest_measured, data_directory + 'Uquest_determine_a.csv')
 
 
     Uquest_measured = overlay(Uquest_measured, Uin)

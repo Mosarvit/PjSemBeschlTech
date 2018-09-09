@@ -63,7 +63,7 @@ def measure_Uout(Uin, sample_rate_DSO=sample_rate_DSO, id='', loadCSV=0, saveCSV
         if use_mock_system:
             [time, dataUin, dataUout] = mock_system.read_from_DSO_resolution(sample_rate_DSO, Uin.Vpp, fmax, Uin.in_V)
         else:
-            [time, dataUin, dataUout] = read_from_DSO_resolution(sample_rate_DSO, Uin.Vpp, fmax, Uin.in_V)
+            [time, dataUin, dataUout] = read_from_DSO_resolution(sample_rate_DSO, Uin.Vpp, fmax, Uin.in_V, measure_H = False)
 
         Uout_measured = signal_class(time, dataUout)
         Uin_measured = signal_class(time, dataUin)

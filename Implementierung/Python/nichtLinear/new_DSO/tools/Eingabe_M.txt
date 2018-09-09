@@ -1,8 +1,0 @@
-"DateiName"	"f_rev" "f_BB"
-Uefkt_Exp120_100kHz_5Mhz_mth1  1e5 5e6
-Uefkt_Exp120_250kHz_5Mhz_mth1  2.5e5 5e6
-Uefkt_Exp120_500kHz_5Mhz_mth1  5e5 5e6
-Uefkt_Exp120_1000kHz_5Mhz_mth1  1e6 5e6
-Uefkt_Exp120_2000kHz_5Mhz_mth1  2e6 5e6
-Uefkt_Exp120_3000kHz_5Mhz_mth1  3e6 5e6
-Uefkt_Exp120_4000kHz_5Mhz_mth1  4e6 5e6

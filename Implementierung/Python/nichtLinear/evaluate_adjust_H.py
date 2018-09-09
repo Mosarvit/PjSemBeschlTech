@@ -15,10 +15,10 @@ from classes.signal_class import signal_class
 from helpers.csv_helper import save_signal, save_transfer_function, read_in_transfer_function
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
-from settings import use_mock_system, project_path, f_rep, f_BB, add_final_comment, sample_rate_AWG_max,sample_rate_DSO, adjust_H_Vpp, adjust_H_save_to_csv
+from settings import use_mock_system, project_path, show_plot_final_adjustment_H ,f_rep, f_BB, add_final_comment, sample_rate_AWG_max,sample_rate_DSO, adjust_H_Vpp, adjust_H_save_to_csv
 from blocks.loop_adjust_H import loop_adjust_H
 from blocks.determine_a import determine_a
-from helpers.plot_helper import plot_K
+from helpers.plot_helper import plot_K, plot_Hs
 
 from helpers.signal_evaluation import signal_evaluate
 
@@ -60,6 +60,8 @@ def evaluate_adjust_H(num_iters = 1, verbosity = 0) :
     Hs, Uout_measured, quality_development = loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters=num_iters, sample_rate_DSO=sample_rate_DSO)
 
     H_0 = read_in_transfer_function(data_directory + 'H_0.csv')
+    if verbosity or show_plot_final_adjustment_H:
+        plot_Hs(Hs)
 
     if (not use_mock_system) and add_final_comment :
         save_text(data_directory)

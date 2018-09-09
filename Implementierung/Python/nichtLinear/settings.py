@@ -9,15 +9,16 @@ Date 29.08.2018
 
 
 # basic parameters
-use_mock_system = 1
+use_mock_system = 0
 verbosity = 0
 f_rep = 900e3
 f_BB = 5e6
 sample_rate_AWG_max = 2e8
 sample_rate_DSO = 9999e5
-max_input_vpp_amplifier = 1
+max_input_vpp_amplifier = 0.632
 polynomial_order = 3
-Vpp_for_determine_a = 0.6
+Vpp_for_determine_a = 0.3
+save_signals_for_determine_a = 0
 add_final_comment = 1
 
 
@@ -36,27 +37,29 @@ number_iterations_H = 5
 sigma_H = 0.5
 adjust_H_Vpp = 0.3
 adjust_H_save_to_csv = [
-    1 , # save all data
+    0 , # save all data
     1 , # save initial H (measured)
     1 , # save K
     0 , # save measured but not reduced to one period input and output signals in every step
     1 , # save measured / calculated Uin, Uin_measured, Uquest, Uout_measured in every step
     1  # save adjusted H in every step
 ]
-use_rms = False
+use_rms = True
 ratio_of_rms_to_ignore = 0.02
-use_zero_padding = False
+use_zero_padding = True
 ratio_to_cut = 3e-3
 default_ratio_in_spectre = 3e-3
-show_plots_in_adjust_H = False
+show_plots_in_adjust_H = True
+show_plot_final_adjustment_H = True
 
 
 # additional parameters only for adjust a (iterative optimization of K)
 number_iterations_K = 5
 adjust_K_Vpp = 3
+ratio_of_K_for_adjustment = 0.6
 sigma_a = 0.5
 adjust_a_save_to_csv = [
-    1 , # save all data
+    0 , # save all data
     1 , # save initial H (measured)
     1 , # save parameters a
     1 , # save inital K
@@ -64,6 +67,7 @@ adjust_a_save_to_csv = [
     1 , # save in every step Uin_measured, Uout_measured, calculated ideal Uquest and Uquest used to calculate Uin(maybe adopted to range of K)
     1  # save adjusted a and K in every step
 ]
+show_final_adjustment = True
 
 
 # global parameters you should be sure you'd like to change

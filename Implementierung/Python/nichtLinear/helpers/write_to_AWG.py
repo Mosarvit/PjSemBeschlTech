@@ -10,6 +10,7 @@ import numpy as np
 from classes import signal_class
 from helpers import FFT
 import os
+from settings import max_input_vpp_amplifier
 
 def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
 
@@ -51,8 +52,8 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
     type_check_write_AWG(signal, awg_Vpp, samplerateAWG, frequency)
 
     # built-in safety: maximum Vpp is 0.8 Volt to avoid damage to the amplifier
-    if awg_Vpp > 0.8:
-        raise ValueError('The voltage is too high for the amplifier, should not be higher than 0.8 ! ')
+    if awg_Vpp > max_input_vpp_amplifier:
+        raise ValueError('The voltage is too high for the amplifier, should not be higher than ' + str(max_input_vpp_amplifier) + ' V ! ')
     else:
 
         if (frequency != 0) and (samplerateAWG != 0):

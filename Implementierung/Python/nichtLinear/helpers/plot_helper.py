@@ -95,6 +95,23 @@ def plot_H_ideal_Hs(H_ideal, Hs):
     ax2.legend(legends)
 
     plt.show()
+    
+def plot_Hs(Hs):
+    legends = []
+
+    ax1 = plt.subplot(2, 1, 1)
+    ax1.plot(H_ideal.f, H_ideal.a)
+
+    i = 0
+    for H in Hs:
+        ax1.plot(H.f, H.a)
+        ax2.plot(H.f, H.p)
+        legends.append('H_' + str(i))
+        i += 1
+
+    ax1.legend(legends)
+
+    plt.show()
 
 
 def plot_K(K, legend ='K'):

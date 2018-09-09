@@ -40,13 +40,14 @@ def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
 
         Uout_measured = Uout_measured.cut_one_period(f_rep)
         Uin_measured = Uin_measured.cut_one_period(f_rep)
+        
+        save_signal(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
 
         if adjust_H_save_to_csv[0] or adjust_H_save_to_csv[4]:
             # save Uin and Uout
             save_signal(Uin, data_directory + 'Uin_awg_' + id + '.csv')
             save_signal(Uquest, data_directory + 'Uquest_' + id + '.csv')
             save_signal(Uin_measured, data_directory + 'Uin_measured_' + id + '.csv')
-            save_signal(Uout_measured, data_directory + 'Uout_measured_' + id + '.csv')
 
         # plot_2_signals(Uin_measured, Uout_measured, 'Uin_measured', 'Uout_measured')
 
