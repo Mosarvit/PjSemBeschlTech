@@ -1,6 +1,6 @@
 from unittest import TestCase
 import unittest
-from blocks.generate_BBsignal import generate_BBsignal, generate_BBsignal_new
+from blocks.generate_BBsignal import generate_BBsignal
 import settings
 from helpers.signal_evaluation import signal_evaluate
 

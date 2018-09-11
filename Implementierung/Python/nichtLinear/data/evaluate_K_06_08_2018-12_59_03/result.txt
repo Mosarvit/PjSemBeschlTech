@@ -1,1 +1,0 @@
-Kinit mit Uout Vpp 6V, Uquest mit unterschiedlichen Amplituden 150mv-270mV jedes Mal über K zurückgerechnet und die Qualität angeschaut, optimal 80%
