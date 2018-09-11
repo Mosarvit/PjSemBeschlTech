@@ -6,17 +6,18 @@ import matplotlib.pyplot as plt
 import time
 import copy
 from helpers.overlay import overlay
-from helpers import adapt_Optimization
 from settings import use_zero_padding, use_rms, ratio_to_cut, default_ratio_in_spectre, ratio_of_rms_to_ignore, show_plots_in_adjust_H
 
 from helpers.FFT import spectrum_from_TimeSignal, spectrum_from_Time_Signal_ZeroPadding
 
+# @author: J. Christ
 
 def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, savePLOT=False):
     """
     adjust_H adopts transfer function H by comparing desired and received Output (Gain) Voltage.
-    This implementation uses a simple first approach in adjusting abs(H).
-    It offers two ideas to reduce problems caused by noise, discretization and interpolation.
+    Furthermore, the implementation offers three ideas to reduce problems caused by noise, discretization and interpolation.
+    These are the use of zero-padding, ignoring values with too little amplitude in the spectres of the signals
+    and ignoring correction-terms with too high amplitudes.
     See report for information.
 
     INPUT:
@@ -27,7 +28,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
             Halt.p - phase shifts p
             Halt.c - Complex Value c = a*exp(jp)
 
-        U_ideal.csv.csv.csv.csv - the desired output Voltage (BB-Signal, normally single-sine), Instance of signal_class
+        Uout_ideal_init - the desired output Voltage (BB-Signal, normally single-sine), Instance of signal_class
 
             Instance of signal_class:
             U.time          - get time vector
@@ -37,7 +38,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
             U.Vpp           - get Vpp
             U.length        - get length of the signal
 
-        Uout_measured - the measured output Voltage to be compared with U_ideal.csv.csv.csv.csv, instance of signal_class
+        Uout_measured - the measured output Voltage to be compared with Uout_ideal_init, instance of signal_class
 
         sigma_H - scalar; step to iterate (positive)
 
@@ -70,16 +71,10 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
         plt.xlim((Uout_ideal.time[0], Uout_ideal.time[-1]))
         plt.show()
 
-    # use_rms = False
-    # use_zero_padding = False
-    # ratio_to_cut = 0
     ratio_ideal = ratio_to_cut
     ratio_meas = ratio_to_cut
+
     # calculate Spectrum:
-
-
-    # # use zero-padding?
-
     if use_zero_padding:
         # here: enlarges the length by factor 3 (setting Uout_ideal_length at each beginning and end of signal)
         frequencies_Id, spectrum_Id = spectrum_from_Time_Signal_ZeroPadding(Uout_ideal.time, Uout_ideal.in_V,
@@ -184,37 +179,16 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
     complex_ideal = magnitude_Ideal(Halt.f) * np.exp(1j * angle_ideal(Halt.f))
     complex_meas = magnitude_Meas(Halt.f) * np.exp(1j*angle_meas(Halt.f))
 
-    # calculate separately for amplitude and angle
-    # ratio_abs = magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) - 1
-    # diff_angle = angle_meas(Halt.f) - angle_ideal(Halt.f)
-    #f_compl = -( (1 / magnitude_Meas(Halt.f)) * magnitude_Ideal(Halt.f) * np.exp(-1j*(angle_meas(Halt.f)-angle_ideal(Halt.f))) - 1)
-    # also working: ???see report -> just different speed of convergence? no further test by august 18
+
     f_compl = (magnitude_Meas(Halt.f) / magnitude_Ideal(Halt.f) * np.exp(1j * (angle_meas(Halt.f) - angle_ideal(Halt.f))) - 1)
+    # The following does also work: ???see report -> just different speed of convergence? no further test by august 18
+    # f_compl = -( (1 / magnitude_Meas(Halt.f)) * magnitude_Ideal(Halt.f) * np.exp(-1j*(angle_meas(Halt.f)-angle_ideal(Halt.f))) - 1)
 
     ###
     # just to enable return for report 2018!
     # fabs_orig = copy.copy(ratio_abs)
     ###
 
-    # to reduce WHITE NOISE attempt 2:
-    # cut high amplifying ratios (over RMS)
-    # use just non-zero values in ratio_abs to calculate rms because of above used setter to reduce white noise
-    # setting white-noise values to cause zeros in ratio_abs but just to enable changes in Hneu.a
-    # use_rms = False
-    # rms = np.sqrt(np.mean(np.square(ratio_abs)))
-    # ###
-    # # just to enable return for report 2018!
-    # rms_orig = copy.copy(rms)
-    # ###
-    # values = ratio_abs[np.where(abs(ratio_abs) >= 0.02 * rms)[
-    #     0]]  # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
-    # rms = np.sqrt(np.mean(np.square(values)))
-    # if use_rms:
-    #     # find indices to set to 1:
-    #     idx_clear = np.where(abs(ratio_abs) > rms)[0]
-    #     if not (len(idx_clear) == len(ratio_abs)):  # check for simple signals with Uout_Id = multiple Uout_Meas
-    #         ratio_abs[idx_clear] = np.zeros(len(idx_clear))
-    #         diff_angle[idx_clear] = np.zeros(len(idx_clear))
 
     rms = np.sqrt(np.mean(np.square(np.abs(f_compl))))
     ###
@@ -222,7 +196,7 @@ def adjust_H(Halt, Uout_ideal_init, Uout_measured, sigma_H, verbosity=False, sav
     #rms_orig = copy.copy(rms)
     ###
     values = np.abs(f_compl[np.where(np.abs(f_compl) >= ratio_of_rms_to_ignore * rms)[
-        0]] ) # just guessing: 2 % of original rms as interpolated results of white-noise adopted values in signals
+        0]] )
     rms = np.sqrt(np.mean(np.square(values)))
     if use_rms:
         # find indices to set to 1:

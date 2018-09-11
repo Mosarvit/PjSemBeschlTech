@@ -6,11 +6,17 @@ from blocks.determine_H import determine_H
 from helpers.csv_helper import save_2cols
 from helpers.csv_helper import save_transfer_function, save_signal, save_a
 from helpers.plot_helper import plot_Ks
-from save_results import save, save_text
+from helpers.save_results import save, save_text
 from settings import project_path, use_mock_system, adjust_a_save_to_csv
 import settings
 
 def evaluate_adjust_a(num_iters = 1, verbosity = 0) :
+    '''
+    This routine handles the adjustment of a on a meta-level. It sets the setup and starts the iterative adjustment.
+    :param num_iters: integer, number of steps to execute
+    :param verbosity: boolean, whether to show plots
+    :return: ideal output signal, last measured signal, list of nonlinearity Ks from the steps
+    '''
 
     if use_mock_system:
         data_directory = project_path + 'tests/mock_data/mock_results/adjust_a/'

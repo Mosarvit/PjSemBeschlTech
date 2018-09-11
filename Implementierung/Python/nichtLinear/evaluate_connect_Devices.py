@@ -5,6 +5,9 @@ import numpy as np
 import timeit
 from blocks.generate_BBsignal import generate_BBsignal
 
+'''
+This file is the playground to try new manipulations with the devices AWG and DSO.
+'''
 
 def wait_for_AWG(AWG, attempt=0):
     """

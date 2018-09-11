@@ -40,9 +40,3 @@ def invert_K(K):
     K_flipped[:, 1] = K[:, 0]
 
     return K_flipped
-
-#
-# K = create_mock_K(points=999, linearVpp_in_mV=300, x_range_in_mV=1200, periods=1)
-# K_flipped = invert_K(K)
-#
-# plot_K1(K)

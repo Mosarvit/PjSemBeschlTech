@@ -19,6 +19,20 @@ from helpers.signal_evaluation import signal_evaluate
 
 
 def loop_adjust_H(H, K, Uout_ideal, data_directory, num_iters, sample_rate_DSO):
+    '''
+    This method controls the iterative adjustment (loop) of the transfer-funtion H.
+    Under perfect circumstances, the nonlinearity K should not affect the output of the method
+    in case it is linear in the voltage amplitudes used to optimize.
+
+    :param H: initial transfer-funtion with which to start, instance of transfer-funtion class
+    :param K: nonlinearity to use to calculate the input signal
+    :param Uout_ideal: desired output voltage, instance of signal class
+    :param data_directory: path, where to save data, string
+    :param num_iters: number of iterative steps to be executed, integer
+    :param sample_rate_DSO: maximum sample rate of the DSO, integer
+    :return: list of transfer-functions calculated in the steps, last measured output signal, string of qualities in the steps
+    '''
+
     quality_development = []
 
     Hs = []

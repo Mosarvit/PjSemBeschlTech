@@ -32,7 +32,7 @@ def get_H(fmax, Vpp, bits=10, writeAWG=True, showPlots=0, createCSV=1, \
     import time
     import matplotlib.pyplot as plt
     import numpy as np
-    from helpers import FFT, write_to_AWG, read_from_DSO_resolution, read_from_DSO, read_from_DSO_alt
+    from helpers import FFT, write_to_AWG, read_from_DSO_resolution, read_from_DSO
     import csv
     import os
 

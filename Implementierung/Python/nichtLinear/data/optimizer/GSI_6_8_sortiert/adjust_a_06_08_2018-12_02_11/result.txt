@@ -1,1 +1,0 @@
-K init mit Uout 6V bestimmt, Optimiert mit Uout 3V und apply_K setzt Vpp auf 0.8*Vpp_Kmax

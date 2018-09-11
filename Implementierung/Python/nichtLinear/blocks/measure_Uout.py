@@ -55,7 +55,6 @@ def measure_Uout(Uin, sample_rate_DSO=sample_rate_DSO, id='', loadCSV=0, saveCSV
             mock_system.write_to_AWG(Uin.normalized, Uin.Vpp, frequency=f_rep)
         else:
             write_to_AWG(Uin.normalized, Uin.Vpp, frequency=f_rep)
-        # TODO: change frequency-value to global-data (enable different repetition rate here)
 
     def receive_from_DSO(Uin):
         fmax = 80e6

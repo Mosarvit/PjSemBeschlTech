@@ -7,6 +7,7 @@ def read(samplerateOszi, vpp_ch1, vpp_out, fmax, signal, measure_H = False):
 
     read_from_DSO liest das Eingagns- und Ausgangssignal aus DSO ein
 
+
     INPUT:
 
         awg_volt : skalar; Output peak-peak voltage of the signal

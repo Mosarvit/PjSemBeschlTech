@@ -2,7 +2,6 @@ import numpy as np
 from scipy.interpolate import interp1d
 from  copy import copy
 from scipy import linalg
-from helpers.find_nearest import find_nearest
 from helpers.custom_value_error import custom_value_error
 from classes.transfer_function_class import transfer_function_class
 
@@ -182,3 +181,20 @@ def transfer_functions_are_equal(H1, H2):
 def arrays_are_equal(array1, array2):
     err = calculate_error(array1, array2)
     return err < 1e-10
+
+def find_nearest(array, value):
+
+    """
+    find_nearest findet den Index des Werts im vektor, der dem gesuchten Wert am nähsten liegt
+
+    INPUT:
+        array - der Vektor
+        value - skalar; die gesuchte Zahl
+
+    OUTPUT:
+        idx - unsigned integer; der gesuchte Index
+    """
+
+    array = np.asarray(array)
+    idx = (np.abs(array - value)).argmin()
+    return idx

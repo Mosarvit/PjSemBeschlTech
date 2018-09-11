@@ -1,1 +1,0 @@
-K init mit Uout 6V, angepasst mit Uout 6V und apply K setzt 80% von Vppax

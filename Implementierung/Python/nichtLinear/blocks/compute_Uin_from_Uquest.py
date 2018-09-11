@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun June 3 2018
-@author: Jonas
-"""
+
 from helpers.apply_K import apply_K
 from helpers.K_helper import invert_K
 

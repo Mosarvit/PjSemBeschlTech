@@ -1,1 +1,0 @@
-nächste sinnvolle Messung heute: RMS an, 5 Iterationen, H geladen wie vorher, keine Verbesserung bei Qualität des Signals erkennbar, trotz einiger greosserer Anpassungen an H

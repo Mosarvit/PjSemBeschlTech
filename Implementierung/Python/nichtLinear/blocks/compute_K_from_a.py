@@ -12,18 +12,19 @@ import settings
 
 def compute_K_from_a(a, verbosity=0):
     """
-    compute_K_a berechten die Lookup-Tabelle K aus den Vorfaktoren a
+    compute_K_a calculates the lookup-table K using the parameters a.
+    The output will be the polynom in its bijective range around zero
 
     INPUT:
 
-        a - Nx1 vektor; die Vorfaktoren; (N - Polynomgrad der Approximierugnsmatrix)
-        verbosity - boolean, ob Uin gelplottet werden soll
+        a - Nx1 vector; parameters of the polynom; (N - polynomial grade of approximation-matrix)
+        verbosity - boolean, whether Uin will be plotted
 
     OUTPUT:
 
-        K - nx2 array; Lookuptabelle (n - Anzahl der Werte der Lookuptabelle)
-            K[:,0] - Werte von Uin
-            K[:,1] - Werte von Uquest
+        K - nx2 array; lookup-table in the bijectiv range, (n - number of values in table)
+            K[:,0] - Uin in mV
+            K[:,1] - Uquest in mV
 
     """
 
@@ -66,7 +67,7 @@ def compute_K_from_a(a, verbosity=0):
 
 
         # limit K to its bijectiv part
-        # exclusive or inclusive?
+        # TODO: exclusive or inclusive?
         K = K[imin:imax, :]
 
     if verbosity:

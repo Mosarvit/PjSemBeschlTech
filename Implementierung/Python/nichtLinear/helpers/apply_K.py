@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun June 3 2018
-@author: Jonas
-"""
+
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 import colorama

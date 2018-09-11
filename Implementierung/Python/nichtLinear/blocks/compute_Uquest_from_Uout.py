@@ -17,18 +17,11 @@ def compute_Uquest_from_Uout(Uout, H, verbosity=0):
     """
     compute_Uquest_from_Uout berechten Uquest aus Uout mithilfe der Invertierung der Übetragungsfunktion H
     INPUT:
-        Uout - nx2 array; Ausgangssignal (n - Länge des Signals)
-            Uout[:,0] - Zeitvektor
-            Uout[:,1] - Signalvektor
-        H - nx3 array; Übertragungsfunktion (n - Anzahl der Frequenzen)
-            H[:,0] - Frequenz f
-            H[:,1] - Amplitudenverstärkung
-            H[:,2] - Phasenverschiebung
+        Uout - output voltage, instance of signal class
+        H - transfer function, instance of transfer funtion class
         verbosity - boolean; ob Uin gelplottet werden soll
     OUTPUT:
-        Uquest - nx2 array; U_? (n - Länge des Signals)
-            Uquest[:,0] - Zeitvektor
-            Uquest[:,1] - Signalvektor
+        Uquest - instance of signal class
     """
 
     Uquest = apply_transfer_function(Uout = Uout, H = H.get_inverse())

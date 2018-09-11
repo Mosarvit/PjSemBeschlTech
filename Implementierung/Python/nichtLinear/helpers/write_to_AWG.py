@@ -46,7 +46,7 @@ def write_to_AWG(signal, awg_Vpp, samplerateAWG=0, frequency=0):
 
     """
 
-    # TODO: wait for AWG after each (nontrivial) command if possible with *OPC?
+    # TODO: wait for AWG after each (nontrivial) command
     # TODO: check for erros (see evaluate connect devices) and throw exceptions
 
     type_check_write_AWG(signal, awg_Vpp, samplerateAWG, frequency)

@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+# @author: M. Nolte
 import numpy as np
 from helpers import overlay
 
 def adjust_a(a_old, Uin, Uquest_ideal, Uquest_measured, sigma_a):
     """
-    adjust_a optimize the coefficient a
+    adjust_a optimizes the coefficients a
 
     INPUT:
 

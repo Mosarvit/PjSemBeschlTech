@@ -16,19 +16,15 @@ def compute_a_from_Uin_Uquest(Uin, Uquest, N):
 
     INPUT:
 
-        Uquest - n1x2 array; U_? (n1 - signal length)
-            Uquest[:,0] - time vector
-            Uquest[:,1] - signal vector
+        Uquest - instance of signal class
 
-        Uin - n2x2 array; input voltage (n2 - signal length)
-            Uin[:,0] - time vector
-            Uin[:,1] - signal vector
+        Uin - input voltage to use, instance of signal class
 
         N - positive integer; polynomial degree
 
     OUTPUT:
 
-        a - Nx1 vector; coefficients
+        lsg - Nx1 vector; coefficients
 
     """
 

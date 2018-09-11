@@ -100,7 +100,7 @@ def plot_Hs(Hs):
     legends = []
 
     ax1 = plt.subplot(2, 1, 1)
-    ax1.plot(H_ideal.f, H_ideal.a)
+    ax2 = plt.subplot(2, 1, 2)
 
     i = 0
     for H in Hs:

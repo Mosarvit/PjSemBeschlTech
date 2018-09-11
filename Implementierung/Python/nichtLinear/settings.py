@@ -9,8 +9,7 @@ Date 29.08.2018
 
 
 # basic parameters
-use_mock_system = 0
-verbosity = 0
+use_mock_system = 1
 f_rep = 900e3
 f_BB = 5e6
 sample_rate_AWG_max = 2e8
@@ -19,7 +18,7 @@ max_input_vpp_amplifier = 0.632
 polynomial_order = 3
 Vpp_for_determine_a = 0.3
 save_signals_for_determine_a = 0
-add_final_comment = 1
+add_final_comment = 0
 
 
 # parameters just for returning H and K
@@ -49,8 +48,8 @@ ratio_of_rms_to_ignore = 0.02
 use_zero_padding = True
 ratio_to_cut = 3e-3
 default_ratio_in_spectre = 3e-3
-show_plots_in_adjust_H = True
-show_plot_final_adjustment_H = True
+show_plots_in_adjust_H = False
+show_plot_final_adjustment_H = False
 
 
 # additional parameters only for adjust a (iterative optimization of K)
@@ -67,10 +66,12 @@ adjust_a_save_to_csv = [
     1 , # save in every step Uin_measured, Uout_measured, calculated ideal Uquest and Uquest used to calculate Uin(maybe adopted to range of K)
     1  # save adjusted a and K in every step
 ]
-show_final_adjustment = True
+show_final_adjustment = False
 
 
 # global parameters you should be sure you'd like to change
+# verbosity = 0
+
 project_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 mock_data_path = project_path + 'tests/mock_data/'
 test_data_path = mock_data_path + 'unit_test_data/'
